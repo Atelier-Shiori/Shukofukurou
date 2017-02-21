@@ -16,8 +16,6 @@
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>${AuthorCopyright}</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 	<key>NSMainNibFile</key>
@@ -30,5 +28,11 @@
 	<string>2.0a1</string>
 	<key>CFBundleVersion</key>
 	<string>2.0a1</string>
+	<key>SUFeedURL</key>
+	<string>https://updates.ateliershiori.moe/mallibrary/profileInfo.php</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2009-2017 Atelier Shiori. All rights reserved.</string>
 </dict>
 </plist>

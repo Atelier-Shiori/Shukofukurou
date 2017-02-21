@@ -1,13 +1,15 @@
-﻿using AppKit;
+using AppKit;
 using Foundation;
+using Sparkle;
 
 namespace MALLibrary
 {
 	[Register("AppDelegate")]
-	public class AppDelegate : NSApplicationDelegate
+	public partial class AppDelegate : NSApplicationDelegate
 	{
 		MainWindowController mainWindowController;
-
+		SUUpdater updater;
+		PreferencesController prefcontroller;
 		public AppDelegate()
 		{
 		}
@@ -16,11 +18,25 @@ namespace MALLibrary
 		{
 			mainWindowController = new MainWindowController();
 			mainWindowController.Window.MakeKeyAndOrderFront(this);
+			updater = new SUUpdater();
 		}
 
 		public override void WillTerminate(NSNotification notification)
 		{
 			// Insert code here to tear down your application
+		}
+		partial void checkforupdates(Foundation.NSObject sender)
+		{
+			updater.CheckForUpdates(sender);	
+		}
+		partial void showpreferences(Foundation.NSObject sender)
+		{
+			if (prefcontroller == null)
+			{
+				prefcontroller = new PreferencesController();
+				prefcontroller.setUpdater(updater);
+			}
+			prefcontroller.Window.MakeKeyAndOrderFront(prefcontroller.getWindow());
 		}
 	}
 }

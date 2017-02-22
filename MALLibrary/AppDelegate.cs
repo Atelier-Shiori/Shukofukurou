@@ -37,7 +37,6 @@ namespace MALLibrary
 				prefcontroller.setUpdater(updater);
 			}
 			prefcontroller.Window.MakeKeyAndOrderFront(prefcontroller.getWindow());
-			prefcontroller.showpreferenceview();
 
 		}
 	}

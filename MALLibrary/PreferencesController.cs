@@ -38,11 +38,11 @@ namespace MALLibrary
 		public override void AwakeFromNib()
 		{
 			base.AwakeFromNib();
-
+			this.showpreferenceview();
 		}
 		public void showpreferenceview()
 		{
-			prefview.AddSubview(generalpref);
+			prefview.AddSubview(new NSView());
 			string selectedpref;
 			// Retrieve last used preference pane
 			if (NSUserDefaults.StandardUserDefaults.ValueForKey(new NSString("selectedpref")) != null)
@@ -73,18 +73,29 @@ namespace MALLibrary
 			{
 				case "General":
 					w.Title = "General";
-					prefview.ReplaceSubviewWith(prefview.Subviews[0], generalpref);
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
 					vsize.Height = 120;
 					vsize.Width = 419;
 					this.resizeWindowToView(generalpref.Frame.Size);
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], generalpref);
 					generalpref.SetFrameOrigin(origin);
 					break;
 				case "Login":
 					w.Title = "Login";
-					prefview.ReplaceSubviewWith(prefview.Subviews[0], loginpref);
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
 					vsize.Height = 198;
 					vsize.Width = 419;
 					this.resizeWindowToView(vsize);
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], loginpref);
+					loginpref.SetFrameOrigin(origin);
+					break;
+				case "updates":
+					w.Title = "Software Updates";
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
+					vsize.Height = 185;
+					vsize.Width = 419;
+					this.resizeWindowToView(vsize);
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], updatepref);
 					loginpref.SetFrameOrigin(origin);
 					break;
 			}
@@ -99,7 +110,7 @@ namespace MALLibrary
 
 			nfloat originY = w.Frame.Location.Y + (w.Frame.Size.Height - windowsize.Height) / 2;
 			CGRect WindowFrame = new CGRect(originX,originY, windowsize.Width, windowsize.Height);
-			w.SetFrame(WindowFrame, true);
+			w.SetFrame(WindowFrame, true, true);
 		}
 		partial void gettingstarted(Foundation.NSObject sender)
 		{
@@ -158,6 +169,10 @@ namespace MALLibrary
 		{
 			NSUrl link = new NSUrl(URL);
 			NSWorkspace.SharedWorkspace.OpenUrl(link);
+		}
+		partial void checkforupdates(Foundation.NSObject sender)
+		{
+			updater.CheckForUpdates(sender);
 		}
 	}
 }

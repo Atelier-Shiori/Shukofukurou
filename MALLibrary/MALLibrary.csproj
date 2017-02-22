@@ -73,6 +73,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-512.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon-512%402x.png" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\updates.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\updates.imageset\su-32.png" />
+    <ImageAsset Include="Assets.xcassets\updates.imageset\su-64.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -108,6 +111,10 @@
     <InterfaceDefinition Include="MainMenu.xib" />
     <InterfaceDefinition Include="MainWindow.xib" />
     <InterfaceDefinition Include="Preferences.xib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\.imageset\" />
+    <Folder Include="Assets.xcassets\updates.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

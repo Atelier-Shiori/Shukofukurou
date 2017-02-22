@@ -1,10 +1,9 @@
-# Hachidori Toshokan
+# MAL Library
 MAL Library an open sourced MyAnimeList library manager, a complete rewrite of MAL Client OSX written in C#. In development, not ready for public consumption.
  
-Requires latest SDK (10.12) and XCode 8 or later, latest version of Xamarin or Visual Studio for Mac to compile. Deployment target is 10.10.
+Requires latest SDK (10.12), XCode 8 or later, and alatest version of Xamarin or Visual Studio for Mac to compile. Deployment target is 10.10.
 
-## How to Compile in XCode
-Warning: This won't work if you don't have a Developer ID installed. If you don't have one, obtain one by joining the Apple Developer Program or turn off code signing.
+## How to Compile
 
 1. Get the Source
 2. Open the project in Xamarin or Visual Studio for Mac
@@ -13,7 +12,7 @@ Warning: This won't work if you don't have a Developer ID installed. If you don'
 ## Dependencies
 All the frameworks and packages are included. Just build!
  
-Licenses for these frameworks and related classes can be seen [here](https://github.com/Atelier-Shiori/hachidori-toshokan/wiki/Credits).
+Licenses for these frameworks and related classes can be seen [here](https://github.com/Atelier-Shiori/mallibrary/wiki/Credits).
 
 ##License
 Unless stated, Source code is licensed under New BSD License

@@ -37,6 +37,9 @@ namespace MALLibrary
 		AppKit.NSToolbar toolbar { get; set; }
 
 		[Outlet]
+		AppKit.NSView updatepref { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField usernamefield { get; set; }
 
 		[Outlet]
@@ -47,6 +50,9 @@ namespace MALLibrary
 
 		[Action ("changePref:")]
 		partial void changePref (Foundation.NSObject sender);
+
+		[Action ("checkforupdates:")]
+		partial void checkforupdates (Foundation.NSObject sender);
 
 		[Action ("gettingstarted:")]
 		partial void gettingstarted (Foundation.NSObject sender);
@@ -68,9 +74,9 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (prefview != null) {
-				prefview.Dispose ();
-				prefview = null;
+			if (updatepref != null) {
+				updatepref.Dispose ();
+				updatepref = null;
 			}
 
 			if (generalpref != null) {
@@ -101,6 +107,11 @@ namespace MALLibrary
 			if (passwordfield != null) {
 				passwordfield.Dispose ();
 				passwordfield = null;
+			}
+
+			if (prefview != null) {
+				prefview.Dispose ();
+				prefview = null;
 			}
 
 			if (toolbar != null) {

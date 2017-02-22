@@ -76,6 +76,18 @@
     <ImageAsset Include="Assets.xcassets\updates.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\updates.imageset\su-32.png" />
     <ImageAsset Include="Assets.xcassets\updates.imageset\su-64.png" />
+    <ImageAsset Include="Assets.xcassets\search.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\search.imageset\searchx16.png" />
+    <ImageAsset Include="Assets.xcassets\search.imageset\searchx2.png" />
+    <ImageAsset Include="Assets.xcassets\animeinfo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\animeinfo.imageset\animeinfo.png" />
+    <ImageAsset Include="Assets.xcassets\animeinfo.imageset\animeinfox2.png" />
+    <ImageAsset Include="Assets.xcassets\library.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\library.imageset\libraryx2.png" />
+    <ImageAsset Include="Assets.xcassets\seasons.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\seasons.imageset\seasonsx2.png" />
+    <ImageAsset Include="Assets.xcassets\seasons.imageset\seasons.png" />
+    <ImageAsset Include="Assets.xcassets\library.imageset\library.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -106,6 +118,10 @@
     </Compile>
     <Compile Include="UserAgent.cs" />
     <Compile Include="Keychain.cs" />
+    <Compile Include="SourceListItem.cs" />
+    <Compile Include="SourceListDataSource.cs" />
+    <Compile Include="SourceListDelegate.cs" />
+    <Compile Include="SourceListView.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainMenu.xib" />
@@ -115,6 +131,10 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\.imageset\" />
     <Folder Include="Assets.xcassets\updates.imageset\" />
+    <Folder Include="Assets.xcassets\search.imageset\" />
+    <Folder Include="Assets.xcassets\animeinfo.imageset\" />
+    <Folder Include="Assets.xcassets\library.imageset\" />
+    <Folder Include="Assets.xcassets\seasons.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

@@ -6,6 +6,7 @@ using Sparkle;
 using RestSharp;
 using RestSharp.Authenticators;
 using Security;
+using CoreGraphics;
 
 namespace MALLibrary
 {
@@ -37,9 +38,69 @@ namespace MALLibrary
 		public override void AwakeFromNib()
 		{
 			base.AwakeFromNib();
+
 		}
+		public void showpreferenceview()
+		{
+			prefview.AddSubview(generalpref);
+			string selectedpref;
+			// Retrieve last used preference pane
+			if (NSUserDefaults.StandardUserDefaults.ValueForKey(new NSString("selectedpref")) != null)
+			{
+				selectedpref = NSUserDefaults.StandardUserDefaults.ValueForKey(new NSString("selectedpref")).ToString();
+			}
+			else
+			{
+				selectedpref = "General";
+			}
+			toolbar.SelectedItemIdentifier = selectedpref;
+			this.changepreferenceview();
+			//w.SetContentSize(generalpref.IntrinsicContentSize);
+		}
+		partial void changePref(Foundation.NSObject sender)
+		{
+			this.changepreferenceview();
+			NSUserDefaults.StandardUserDefaults.SetValueForKey(new NSString(toolbar.SelectedItemIdentifier), new NSString("selectedpref"));
+		}
+		private void changepreferenceview()
+		{
+			//this.showMessage(toolbar.SelectedItemIdentifier, "");
+			CGSize vsize = new CGSize();
+			CGPoint origin = new CGPoint();
+			origin.X = 0;
+			origin.Y = 0;
+			switch (toolbar.SelectedItemIdentifier)
+			{
+				case "General":
+					w.Title = "General";
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], generalpref);
+					vsize.Height = 120;
+					vsize.Width = 419;
+					this.resizeWindowToView(generalpref.Frame.Size);
+					generalpref.SetFrameOrigin(origin);
+					break;
+				case "Login":
+					w.Title = "Login";
+					prefview.ReplaceSubviewWith(prefview.Subviews[0], loginpref);
+					vsize.Height = 198;
+					vsize.Width = 419;
+					this.resizeWindowToView(vsize);
+					loginpref.SetFrameOrigin(origin);
+					break;
+			}
+		}
+		private void resizeWindowToView(CGSize size)
+		{
+			nfloat titlebarheight = w.Frame.Size.Height - w.ContentView.Frame.Size.Height;
+			CGSize windowsize = new CGSize();
+			windowsize.Width = size.Width;
+			windowsize.Height = size.Height + titlebarheight;
+			nfloat originX = w.Frame.Location.X + (w.Frame.Size.Width - windowsize.Width) / 2;
 
-
+			nfloat originY = w.Frame.Location.Y + (w.Frame.Size.Height - windowsize.Height) / 2;
+			CGRect WindowFrame = new CGRect(originX,originY, windowsize.Width, windowsize.Height);
+			w.SetFrame(WindowFrame, true);
+		}
 		partial void gettingstarted(Foundation.NSObject sender)
 		{
 			this.OpenURL("https://github.com/chikorita157/mal-library/wiki/Getting-Started");
@@ -61,7 +122,6 @@ namespace MALLibrary
 				if (response.StatusCode.GetHashCode() == 200)
 				{
 					this.showMessage("Login Successful", "Login is successful");
-					mo
 
 				}
 				else

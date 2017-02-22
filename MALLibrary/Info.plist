@@ -7,7 +7,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>moe.ateliershiori.mal-library</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.9</string>
+	<string>10.10</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleInfoDictionaryVersion</key>

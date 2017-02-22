@@ -13,7 +13,13 @@ namespace MALLibrary
 	partial class PreferencesController
 	{
 		[Outlet]
+		AppKit.NSView generalpref { get; set; }
+
+		[Outlet]
 		AppKit.NSButton loginbut { get; set; }
+
+		[Outlet]
+		AppKit.NSView loginpref { get; set; }
 
 		[Outlet]
 		AppKit.NSView loginview { get; set; }
@@ -25,6 +31,12 @@ namespace MALLibrary
 		AppKit.NSSecureTextField passwordfield { get; set; }
 
 		[Outlet]
+		AppKit.NSView prefview { get; set; }
+
+		[Outlet]
+		AppKit.NSToolbar toolbar { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField usernamefield { get; set; }
 
 		[Outlet]
@@ -32,6 +44,9 @@ namespace MALLibrary
 
 		[Outlet]
 		AppKit.NSWindow w { get; set; }
+
+		[Action ("changePref:")]
+		partial void changePref (Foundation.NSObject sender);
 
 		[Action ("gettingstarted:")]
 		partial void gettingstarted (Foundation.NSObject sender);
@@ -53,6 +68,26 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (prefview != null) {
+				prefview.Dispose ();
+				prefview = null;
+			}
+
+			if (generalpref != null) {
+				generalpref.Dispose ();
+				generalpref = null;
+			}
+
+			if (loginbut != null) {
+				loginbut.Dispose ();
+				loginbut = null;
+			}
+
+			if (loginpref != null) {
+				loginpref.Dispose ();
+				loginpref = null;
+			}
+
 			if (loginview != null) {
 				loginview.Dispose ();
 				loginview = null;
@@ -68,6 +103,11 @@ namespace MALLibrary
 				passwordfield = null;
 			}
 
+			if (toolbar != null) {
+				toolbar.Dispose ();
+				toolbar = null;
+			}
+
 			if (usernamefield != null) {
 				usernamefield.Dispose ();
 				usernamefield = null;
@@ -81,11 +121,6 @@ namespace MALLibrary
 			if (w != null) {
 				w.Dispose ();
 				w = null;
-			}
-
-			if (loginbut != null) {
-				loginbut.Dispose ();
-				loginbut = null;
 			}
 		}
 	}

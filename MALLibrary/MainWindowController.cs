@@ -40,12 +40,12 @@ namespace MALLibrary
 			sourcelist.Initialize();
 
 			var library = new SourceListItem("LIBRARY");
-			library.AddItem("Anime List", NSImage.ImageNamed("library"));
+			library.AddItem("Anime List", NSImage.ImageNamed("library"),this.loadmainview);
 			sourcelist.AddItem(library);
 			var discover = new SourceListItem("DISCOVER");
-			discover.AddItem("Search", NSImage.ImageNamed("search"));
-			discover.AddItem("Title Info", NSImage.ImageNamed("animeinfo"));
-			discover.AddItem("Seasons", NSImage.ImageNamed("seasons"));
+			discover.AddItem("Search", NSImage.ImageNamed("search"), this.loadmainview);
+			discover.AddItem("Title Info", NSImage.ImageNamed("animeinfo"),this.loadmainview);
+			discover.AddItem("Seasons", NSImage.ImageNamed("seasons"),this.loadmainview);
 			sourcelist.AddItem(discover);
 
 			// Display side list
@@ -64,10 +64,6 @@ namespace MALLibrary
 			}
 			this.loadmainview();
 
-		}
-		partial void selectmainview(Foundation.NSObject sender)
-		{
-			this.loadmainview();
 		}
 		private void loadmainview()
 		{
@@ -94,14 +90,14 @@ namespace MALLibrary
 					listview.SetFrameOrigin(origin);
 					break;
 				case "Title Info":
-					mainview.ReplaceSubviewWith(mainview.Subviews[0], searchview);
-					searchview.Frame = mainviewframe;
-					searchview.SetFrameOrigin(origin);
+					mainview.ReplaceSubviewWith(mainview.Subviews[0], animeinfoview);
+					animeinfoview.Frame = mainviewframe;
+					animeinfoview.SetFrameOrigin(origin);
 					break;
 				case "Seasons":
-					mainview.ReplaceSubviewWith(mainview.Subviews[0], searchview);
-					searchview.Frame = mainviewframe;
-					searchview.SetFrameOrigin(origin);
+					mainview.ReplaceSubviewWith(mainview.Subviews[0], seasonsview);
+					seasonsview.Frame = mainviewframe;
+					seasonsview.SetFrameOrigin(origin);
 					break;
 			}
 			this.createtoolbar();
@@ -125,14 +121,17 @@ namespace MALLibrary
 			{
 				case "Anime List":
 					toolbar.InsertItem("refresh", 0);
-					toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 1);
-					toolbar.InsertItem("filter", 2);
+					toolbar.InsertItem("Share", 1);
+					toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 2);
+					toolbar.InsertItem("filter", 3);
 					break;
 				case "Search":
 					toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 0);
 					toolbar.InsertItem("search", 1);
 					break;
 				case "Title Info":
+					toolbar.InsertItem("AddTitle", 0);
+					toolbar.InsertItem("Share", 1);
 					break;
 				case "Seasons":
 					break;
@@ -148,7 +147,25 @@ namespace MALLibrary
 		partial void performrefresh(Foundation.NSObject sender)
 		{
 			NSAlert a = new NSAlert();
-			a.MessageText = "Test";
+			a.MessageText = "Implement Refresh";
+			long l = a.RunModal();
+		}
+		partial void opensharemenu(Foundation.NSObject sender)
+		{
+			NSAlert a = new NSAlert();
+			a.MessageText = "Implement Share Menu";
+			long l = a.RunModal();
+		}
+		partial void addtitle(Foundation.NSObject sender)
+		{
+			NSAlert a = new NSAlert();
+			a.MessageText = "Implement Add Title";
+			long l = a.RunModal();
+		}
+		partial void removetitle(Foundation.NSObject sender)
+		{
+			NSAlert a = new NSAlert();
+			a.MessageText = "Implement Remove Title";
 			long l = a.RunModal();
 		}
 	}

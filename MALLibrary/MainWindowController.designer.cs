@@ -13,6 +13,9 @@ namespace MALLibrary
 	partial class MainWindowController
 	{
 		[Outlet]
+		AppKit.NSView animeinfoview { get; set; }
+
+		[Outlet]
 		AppKit.NSSearchField Filter { get; set; }
 
 		[Outlet]
@@ -28,6 +31,9 @@ namespace MALLibrary
 		AppKit.NSView searchview { get; set; }
 
 		[Outlet]
+		AppKit.NSView seasonsview { get; set; }
+
+		[Outlet]
 		MALLibrary.SourceListView sourcelist { get; set; }
 
 		[Outlet]
@@ -35,6 +41,12 @@ namespace MALLibrary
 
 		[Outlet]
 		AppKit.NSToolbar toolbar { get; set; }
+
+		[Action ("addtitle:")]
+		partial void addtitle (Foundation.NSObject sender);
+
+		[Action ("opensharemenu:")]
+		partial void opensharemenu (Foundation.NSObject sender);
 
 		[Action ("performfilter:")]
 		partial void performfilter (Foundation.NSObject sender);
@@ -45,14 +57,17 @@ namespace MALLibrary
 		[Action ("performsearch:")]
 		partial void performsearch (Foundation.NSObject sender);
 
+		[Action ("removetitle:")]
+		partial void removetitle (Foundation.NSObject sender);
+
 		[Action ("selectmainview:")]
 		partial void selectmainview (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (toolbar != null) {
-				toolbar.Dispose ();
-				toolbar = null;
+			if (animeinfoview != null) {
+				animeinfoview.Dispose ();
+				animeinfoview = null;
 			}
 
 			if (Filter != null) {
@@ -80,6 +95,11 @@ namespace MALLibrary
 				searchview = null;
 			}
 
+			if (seasonsview != null) {
+				seasonsview.Dispose ();
+				seasonsview = null;
+			}
+
 			if (sourcelist != null) {
 				sourcelist.Dispose ();
 				sourcelist = null;
@@ -88,6 +108,11 @@ namespace MALLibrary
 			if (tableview != null) {
 				tableview.Dispose ();
 				tableview = null;
+			}
+
+			if (toolbar != null) {
+				toolbar.Dispose ();
+				toolbar = null;
 			}
 		}
 	}

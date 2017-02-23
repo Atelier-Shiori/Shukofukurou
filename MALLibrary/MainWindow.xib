@@ -9,10 +9,12 @@
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController">
             <connections>
                 <outlet property="Filter" destination="hJ3-aJ-ewl" id="fhE-wv-fuc"/>
+                <outlet property="animeinfoview" destination="t3M-ql-jHG" id="pOB-py-bb0"/>
                 <outlet property="listview" destination="eZH-Eo-1eg" id="9El-Ox-bHK"/>
                 <outlet property="mainview" destination="6qG-d4-wyX" id="1oR-1y-Qe7"/>
                 <outlet property="searchbox" destination="XHn-tL-qoa" id="AVB-z7-pVK"/>
                 <outlet property="searchview" destination="DOV-G3-nXu" id="FT5-Xe-0kB"/>
+                <outlet property="seasonsview" destination="GVP-xG-SWy" id="3u4-IN-MNa"/>
                 <outlet property="sourcelist" destination="GWG-FR-EeD" id="PIw-bb-Dej"/>
                 <outlet property="tableview" destination="vtN-el-FYl" id="WLT-PS-rD2"/>
                 <outlet property="toolbar" destination="w5B-LA-ZRg" id="P19-76-nFS"/>
@@ -141,6 +143,54 @@
                         </button>
                         <connections>
                             <action selector="performrefresh:" target="-2" id="Aob-fc-nxr"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A33E4CD4-11F2-49A5-BDE7-9939070AF50A" explicitItemIdentifier="Share" label="Share" paletteLabel="Share" image="NSShareTemplate" id="aXV-VA-cEZ">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="n3n-5g-Llv">
+                            <rect key="frame" x="1" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a3Q-W9-bQM">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="opensharemenu:" target="-2" id="h2j-Lk-Gbx"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="ADAD3E13-BF63-4980-A5A3-0063AB6A9C29" explicitItemIdentifier="AddTitle" label="Add Title" paletteLabel="Add Title" image="NSAddTemplate" id="BQF-gq-k9k">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="qYd-0k-3zl">
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ClY-eJ-b63">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="addtitle:" target="-2" id="WVi-4G-P0i"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="1018AB88-E852-402B-A971-9F17CFA4ECD8" explicitItemIdentifier="DeleteTitle" label="Delete Title" paletteLabel="Delete Title" image="NSRemoveTemplate" id="i1C-aH-cA3">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="txb-ib-kC6">
+                            <rect key="frame" x="16" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRemoveTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="y5r-Dj-KIA">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="removetitle:" target="-2" id="HYu-1Z-hlh"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="E4AD9955-9633-4254-B39F-B01D6120964A" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" id="ZNF-BW-97d">
@@ -393,9 +443,44 @@
             </subviews>
             <point key="canvasLocation" x="346" y="584"/>
         </customView>
+        <customView identifier="seasonview" misplaced="YES" id="GVP-xG-SWy">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="401"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Oga-Jp-bdO">
+                    <rect key="frame" x="262" y="203" width="144" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Not Implemented Yet" id="ueD-QT-QTn">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="358" y="579.5"/>
+        </customView>
+        <customView identifier="animeinfoview" id="t3M-ql-jHG">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="401"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" id="89d-9h-Y9l">
+                    <rect key="frame" x="262" y="203" width="144" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Not Impletemented Yet" id="ecV-qm-RRA">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="358" y="579.5"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSRemoveTemplate" width="11" height="11"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
     </resources>
 </document>

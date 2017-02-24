@@ -11,6 +11,8 @@ namespace MALLibrary
 	public partial class MainWindowController : NSWindowController
 	{
 		RestClient client;
+		int aniinfoid = 0;
+		NSDictionary currentaniinfo;
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -30,14 +32,11 @@ namespace MALLibrary
 			// Use Unified Toolbar Title Bar
 			base.Window.TitleVisibility = NSWindowTitleVisibility.Hidden;
 			base.Window.SetFrame(base.Window.Frame,true);
-			//Fix Source List Icons to use as templates
-			string[] images = new string[4] { "library", "search", "animeinfo", "seasons"};
-			for (int i = 0; i < 4; i++){
-				NSImage.ImageNamed(images[i]).Template = true;
-			}
 			// Set Main Views to be resizable
 			searchview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			listview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
+			animeinfoview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
+			progressview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			//Set up list view
 			sourcelist.Initialize();
 
@@ -95,9 +94,19 @@ namespace MALLibrary
 					listview.SetFrameOrigin(origin);
 					break;
 				case "Title Info":
-					mainview.ReplaceSubviewWith(mainview.Subviews[0], animeinfoview);
-					animeinfoview.Frame = mainviewframe;
-					animeinfoview.SetFrameOrigin(origin);
+					if (aniinfoid != 0)
+					{
+						mainview.ReplaceSubviewWith(mainview.Subviews[0], animeinfoview);
+						animeinfoview.Frame = mainviewframe;
+						animeinfoview.SetFrameOrigin(origin);
+					}
+					else {
+						mainview.ReplaceSubviewWith(mainview.Subviews[0], progressview);
+						progressview.Frame = mainviewframe;
+						progressview.SetFrameOrigin(origin);
+						noinfo.Hidden = false;
+						loadingwheel.Hidden = true;
+					}
 					break;
 				case "Seasons":
 					mainview.ReplaceSubviewWith(mainview.Subviews[0], seasonsview);
@@ -136,8 +145,11 @@ namespace MALLibrary
 					toolbar.InsertItem("search", 2);
 					break;
 				case "Title Info":
-					toolbar.InsertItem("AddTitle", 0);
-					toolbar.InsertItem("Share", 1);
+					if (aniinfoid != 0)
+					{
+						toolbar.InsertItem("AddTitle", 0);
+						toolbar.InsertItem("Share", 1);
+					}
 					break;
 				case "Seasons":
 					break;
@@ -175,6 +187,18 @@ namespace MALLibrary
 			a.MessageText = "Implement Remove Title";
 			long l = a.RunModal();
 		}
+		partial void edittitle(Foundation.NSObject sender)
+		{
+			NSAlert a = new NSAlert();
+			a.MessageText = "Implement Edit Title";
+			long l = a.RunModal();
+		}
+		partial void viewonmal(Foundation.NSObject sender)
+		{
+			NSAlert a = new NSAlert();
+			a.MessageText = "Implement View on MAL";
+			long l = a.RunModal();
+		}
 		partial void performsearch(Foundation.NSObject sender)
 		{
 			string term = searchbox.StringValue;
@@ -183,7 +207,7 @@ namespace MALLibrary
 			// Perform Search
 			thread.Start();
 		}
-		public void performsearch(string term)
+		private void performsearch(string term)
 		{
 			RestRequest request = new RestRequest("anime/search", Method.GET);
 			request.AddParameter("q", term);
@@ -197,7 +221,7 @@ namespace MALLibrary
 				});
 			}
 		}
-		public void loadsearchdata(String content)
+		private void loadsearchdata(String content)
 		{
 			NSMutableArray a = (NSMutableArray)this.searcharraycontroller.Content;
 			a.RemoveAllObjects();
@@ -207,6 +231,92 @@ namespace MALLibrary
 			this.searcharraycontroller.AddObjects(searchdata);
 			this.stb.ReloadData();
 			this.stb.DeselectAll(Self);
+		}
+		partial void searchtbdoubleclick(Foundation.NSObject sender)
+		{
+			if (stb.ClickedRow > 0)
+			{
+				if ((System.nuint)searcharraycontroller.SelectionIndex >= 1)
+				{
+					this.searchtableclick();
+				}
+			}
+		}
+		public void searchtableclick()
+		{
+			NSArray data = (NSArray)searcharraycontroller.Content;
+			NSDictionary d = data.GetItem<NSDictionary>((System.nuint)searcharraycontroller.SelectionIndex);
+			NSNumber idnum = (NSNumber)d.ValueForKey(new NSString("id"));
+
+			Thread t = new Thread((obj) => loadAnimeInfo(idnum.Int32Value));
+			t.Start();
+		}
+		private void loadAnimeInfo(int id)
+		{
+			// Change page to Anime Info
+			int tmpid = aniinfoid;
+			aniinfoid = 0;
+			InvokeOnMainThread(() =>
+				{
+					sourcelist.SelectRow(4, true);
+
+					this.loadmainview();
+					noinfo.Hidden = true;
+					loadingwheel.Hidden = false;
+					loadingwheel.StartAnimation(null);
+				});
+			RestRequest request = new RestRequest("anime/"+ id, Method.GET);
+
+			IRestResponse response = client.Execute(request);
+			if (response.StatusCode.GetHashCode() == 200)
+			{
+				NSData data = NSData.FromString(response.Content);
+				NSError e;
+				NSDictionary animedata = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
+				InvokeOnMainThread(() =>
+				{
+					// Populate Anime Information
+					animeinfotitle.StringValue = (NSString)animedata.ValueForKey(new NSString("title")).ToString();
+					NSImage img = new NSImage(new NSUrl((NSString)animedata.ValueForKey(new NSString("image_url"))));
+					posterimage.Image = img;
+					NSNumber rank = (NSNumber)animedata.ValueForKey(new NSString("rank"));
+					NSNumber popularityrank = (NSNumber)animedata.ValueForKey(new NSString("popularity_rank"));
+					string type = (NSString)animedata.ValueForKey(new NSString("type")).ToString();
+					NSNumber episodes = (NSNumber)animedata.ValueForKey(new NSString("episodes"));
+					string status = (NSString)animedata.ValueForKey(new NSString("status")).ToString();
+					NSNumber duration = (NSNumber)animedata.ValueForKey(new NSString("duration"));
+					string classification = (NSString)animedata.ValueForKey(new NSString("classification")).ToString();
+					NSNumber memberscore = (NSNumber)animedata.ValueForKey(new NSString("members_score"));
+					NSNumber memberscount = (NSNumber)animedata.ValueForKey(new NSString("members_count"));
+					int favoritedcount;
+					string detail = "Type: " + type + System.Environment.NewLine +
+					                                        "Episodes: " + episodes.Int32Value + " (" + duration.Int32Value +" mins long per episode)" + System.Environment.NewLine +
+									 "Status: " + status + System.Environment.NewLine +
+					                                        "Classification: " + classification + System.Environment.NewLine+
+					                                        "Score: " + memberscore.FloatValue + "(" + memberscount.Int32Value + " users, ranked " + rank.Int32Value +")" + System.Environment.NewLine +
+					                                        "Popularity: " + popularityrank.Int32Value + System.Environment.NewLine  ;
+					detailstextview.Value = detail;
+					if (animedata.ValueForKey(new NSString("background")) != null){
+						backgroundtextview.Value = (NSString)animedata.ValueForKey(new NSString("background")).ToString();
+					}
+					else {
+						backgroundtextview.Value = "None available.";
+					}
+					synopsistextview.Value = (NSString)animedata.ValueForKey(new NSString("synopsis")).ToString();
+					loadingwheel.StopAnimation(null);
+					aniinfoid = id;
+					this.loadmainview();
+				});
+			}
+			else {
+				aniinfoid = tmpid;
+				InvokeOnMainThread(() =>
+				{
+					loadingwheel.StopAnimation(null);
+					this.loadmainview();
+					});
+				}
+				              
 		}
 	}
 	public class MainWindowDelegate : NSWindowDelegate

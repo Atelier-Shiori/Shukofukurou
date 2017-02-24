@@ -14,11 +14,20 @@ namespace MALLibrary
 		{
 		}
 
+		public MainWindowController getMainWindowController(){
+			return mainWindowController;
+		}
 		public override void DidFinishLaunching(NSNotification notification)
 		{
 			mainWindowController = new MainWindowController();
 			mainWindowController.Window.MakeKeyAndOrderFront(this);
 			updater = new SUUpdater();
+			//Fix Icons to use as templates
+			string[] images = new string[6] { "library", "search", "animeinfo", "seasons", "Info", "Edit" };
+			for (int i = 0; i < 4; i++)
+			{
+				NSImage.ImageNamed(images[i]).Template = true;
+			}
 		}
 
 		public override void WillTerminate(NSNotification notification)

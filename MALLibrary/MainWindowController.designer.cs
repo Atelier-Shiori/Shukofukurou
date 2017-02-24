@@ -13,7 +13,19 @@ namespace MALLibrary
 	partial class MainWindowController
 	{
 		[Outlet]
+		AppKit.NSTextField alternativetitlelbl { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField animeinfotitle { get; set; }
+
+		[Outlet]
 		AppKit.NSView animeinfoview { get; set; }
+
+		[Outlet]
+		AppKit.NSTextView backgroundtextview { get; set; }
+
+		[Outlet]
+		AppKit.NSTextView detailstextview { get; set; }
 
 		[Outlet]
 		AppKit.NSSearchField Filter { get; set; }
@@ -22,7 +34,19 @@ namespace MALLibrary
 		AppKit.NSView listview { get; set; }
 
 		[Outlet]
+		AppKit.NSProgressIndicator loadingwheel { get; set; }
+
+		[Outlet]
 		AppKit.NSView mainview { get; set; }
+
+		[Outlet]
+		AppKit.NSView noinfo { get; set; }
+
+		[Outlet]
+		AppKit.NSImageView posterimage { get; set; }
+
+		[Outlet]
+		AppKit.NSView progressview { get; set; }
 
 		[Outlet]
 		AppKit.NSArrayController searcharraycontroller { get; set; }
@@ -43,6 +67,9 @@ namespace MALLibrary
 		AppKit.NSTableView stb { get; set; }
 
 		[Outlet]
+		AppKit.NSTextView synopsistextview { get; set; }
+
+		[Outlet]
 		AppKit.NSScrollView tableview { get; set; }
 
 		[Outlet]
@@ -50,6 +77,9 @@ namespace MALLibrary
 
 		[Action ("addtitle:")]
 		partial void addtitle (Foundation.NSObject sender);
+
+		[Action ("edittitle:")]
+		partial void edittitle (Foundation.NSObject sender);
 
 		[Action ("opensharemenu:")]
 		partial void opensharemenu (Foundation.NSObject sender);
@@ -66,14 +96,35 @@ namespace MALLibrary
 		[Action ("removetitle:")]
 		partial void removetitle (Foundation.NSObject sender);
 
+		[Action ("searchtbdoubleclick:")]
+		partial void searchtbdoubleclick (Foundation.NSObject sender);
+
 		[Action ("selectmainview:")]
 		partial void selectmainview (Foundation.NSObject sender);
+
+		[Action ("viewonmal:")]
+		partial void viewonmal (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (alternativetitlelbl != null) {
+				alternativetitlelbl.Dispose ();
+				alternativetitlelbl = null;
+			}
+
+			if (animeinfotitle != null) {
+				animeinfotitle.Dispose ();
+				animeinfotitle = null;
+			}
+
 			if (animeinfoview != null) {
 				animeinfoview.Dispose ();
 				animeinfoview = null;
+			}
+
+			if (detailstextview != null) {
+				detailstextview.Dispose ();
+				detailstextview = null;
 			}
 
 			if (Filter != null) {
@@ -86,19 +137,39 @@ namespace MALLibrary
 				listview = null;
 			}
 
+			if (loadingwheel != null) {
+				loadingwheel.Dispose ();
+				loadingwheel = null;
+			}
+
 			if (mainview != null) {
 				mainview.Dispose ();
 				mainview = null;
 			}
 
+			if (noinfo != null) {
+				noinfo.Dispose ();
+				noinfo = null;
+			}
+
+			if (posterimage != null) {
+				posterimage.Dispose ();
+				posterimage = null;
+			}
+
+			if (progressview != null) {
+				progressview.Dispose ();
+				progressview = null;
+			}
+
+			if (backgroundtextview != null) {
+				backgroundtextview.Dispose ();
+				backgroundtextview = null;
+			}
+
 			if (searcharraycontroller != null) {
 				searcharraycontroller.Dispose ();
 				searcharraycontroller = null;
-			}
-
-			if (stb != null) {
-				stb.Dispose ();
-				stb = null;
 			}
 
 			if (searchbox != null) {
@@ -119,6 +190,16 @@ namespace MALLibrary
 			if (sourcelist != null) {
 				sourcelist.Dispose ();
 				sourcelist = null;
+			}
+
+			if (stb != null) {
+				stb.Dispose ();
+				stb = null;
+			}
+
+			if (synopsistextview != null) {
+				synopsistextview.Dispose ();
+				synopsistextview = null;
 			}
 
 			if (tableview != null) {

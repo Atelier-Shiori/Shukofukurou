@@ -88,6 +88,11 @@
     <ImageAsset Include="Assets.xcassets\seasons.imageset\seasonsx2.png" />
     <ImageAsset Include="Assets.xcassets\seasons.imageset\seasons.png" />
     <ImageAsset Include="Assets.xcassets\library.imageset\library.png" />
+    <ImageAsset Include="Assets.xcassets\Info.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Info.imageset\Info.png" />
+    <ImageAsset Include="Assets.xcassets\Edit.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Edit.imageset\update-2x.png" />
+    <ImageAsset Include="Assets.xcassets\Edit.imageset\update.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -135,6 +140,8 @@
     <Folder Include="Assets.xcassets\animeinfo.imageset\" />
     <Folder Include="Assets.xcassets\library.imageset\" />
     <Folder Include="Assets.xcassets\seasons.imageset\" />
+    <Folder Include="Assets.xcassets\Info.imageset\" />
+    <Folder Include="Assets.xcassets\Edit.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

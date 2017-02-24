@@ -3,12 +3,14 @@
 using Foundation;
 using AppKit;
 using CoreGraphics;
+using RestSharp;
+using System.Threading;
 
 namespace MALLibrary
 {
 	public partial class MainWindowController : NSWindowController
 	{
-		
+		RestClient client;
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -63,6 +65,9 @@ namespace MALLibrary
 				sourcelist.SelectRow(1, true);
 			}
 			this.loadmainview();
+			// Initalize RestClient
+			client = new RestClient("https://malapi.ateliershiori.moe/2.1/");
+			client.UserAgent = new UserAgent().getUserAgent();
 
 		}
 		private void loadmainview()
@@ -126,8 +131,9 @@ namespace MALLibrary
 					toolbar.InsertItem("filter", 3);
 					break;
 				case "Search":
-					toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 0);
-					toolbar.InsertItem("search", 1);
+					toolbar.InsertItem("AddTitle", 0);
+					toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 1);
+					toolbar.InsertItem("search", 2);
 					break;
 				case "Title Info":
 					toolbar.InsertItem("AddTitle", 0);
@@ -143,6 +149,7 @@ namespace MALLibrary
 		}
 		partial void performfilter(Foundation.NSObject sender)
 		{
+
 		}
 		partial void performrefresh(Foundation.NSObject sender)
 		{
@@ -167,6 +174,39 @@ namespace MALLibrary
 			NSAlert a = new NSAlert();
 			a.MessageText = "Implement Remove Title";
 			long l = a.RunModal();
+		}
+		partial void performsearch(Foundation.NSObject sender)
+		{
+			string term = searchbox.StringValue;
+			// Create Thread
+			Thread thread = new Thread(() => performsearch(term));
+			// Perform Search
+			thread.Start();
+		}
+		public void performsearch(string term)
+		{
+			RestRequest request = new RestRequest("anime/search", Method.GET);
+			request.AddParameter("q", term);
+
+			IRestResponse response = client.Execute(request);
+			if (response.StatusCode.GetHashCode() == 200)
+			{
+				InvokeOnMainThread(() =>
+				{
+					this.loadsearchdata(response.Content);
+				});
+			}
+		}
+		public void loadsearchdata(String content)
+		{
+			NSMutableArray a = (NSMutableArray)this.searcharraycontroller.Content;
+			a.RemoveAllObjects();
+			NSData data = NSData.FromString(content);
+			NSError e;
+			NSArray searchdata = (NSArray)NSJsonSerialization.Deserialize(data, 0, out e);
+			this.searcharraycontroller.AddObjects(searchdata);
+			this.stb.ReloadData();
+			this.stb.DeselectAll(Self);
 		}
 	}
 	public class MainWindowDelegate : NSWindowDelegate

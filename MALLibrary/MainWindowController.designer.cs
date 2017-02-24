@@ -25,6 +25,9 @@ namespace MALLibrary
 		AppKit.NSView mainview { get; set; }
 
 		[Outlet]
+		AppKit.NSArrayController searcharraycontroller { get; set; }
+
+		[Outlet]
 		AppKit.NSSearchField searchbox { get; set; }
 
 		[Outlet]
@@ -35,6 +38,9 @@ namespace MALLibrary
 
 		[Outlet]
 		MALLibrary.SourceListView sourcelist { get; set; }
+
+		[Outlet]
+		AppKit.NSTableView stb { get; set; }
 
 		[Outlet]
 		AppKit.NSScrollView tableview { get; set; }
@@ -83,6 +89,16 @@ namespace MALLibrary
 			if (mainview != null) {
 				mainview.Dispose ();
 				mainview = null;
+			}
+
+			if (searcharraycontroller != null) {
+				searcharraycontroller.Dispose ();
+				searcharraycontroller = null;
+			}
+
+			if (stb != null) {
+				stb.Dispose ();
+				stb = null;
 			}
 
 			if (searchbox != null) {

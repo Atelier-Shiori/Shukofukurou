@@ -5,11 +5,7 @@ namespace MALLibrary
 {
 	public class UserAgent 
 	{
-		public UserAgent()
-		{
-			
-		}
-		public string getUserAgent()
+		public static string getUserAgent()
 		{
 			// Set default user agent
 			string bundlename = NSBundle.MainBundle.InfoDictionary.ObjectForKey(new NSString("CFBundleName")).ToString();

@@ -45,6 +45,8 @@
     <UseRefCounting>true</UseRefCounting>
     <LinkMode>None</LinkMode>
     <PlatformTarget>x86</PlatformTarget>
+    <CodeSigningKey>Developer ID Application</CodeSigningKey>
+    <PackageSigningKey>3rd Party Mac Developer Installer</PackageSigningKey>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -127,6 +129,7 @@
     <Compile Include="SourceListDataSource.cs" />
     <Compile Include="SourceListDelegate.cs" />
     <Compile Include="SourceListView.cs" />
+    <Compile Include="MainWindowDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainMenu.xib" />

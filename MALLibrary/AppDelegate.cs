@@ -24,7 +24,7 @@ namespace MALLibrary
 			updater = new SUUpdater();
 			//Fix Icons to use as templates
 			string[] images = new string[6] { "library", "search", "animeinfo", "seasons", "Info", "Edit" };
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < 6; i++)
 			{
 				NSImage.ImageNamed(images[i]).Template = true;
 			}

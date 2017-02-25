@@ -5,6 +5,7 @@ using AppKit;
 using CoreGraphics;
 using RestSharp;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace MALLibrary
 {
@@ -61,12 +62,12 @@ namespace MALLibrary
 			}
 			else
 			{
-				sourcelist.SelectRow(1, true);
+				sourcelist.SelectRow(1, false);
 			}
 			this.loadmainview();
 			// Initalize RestClient
 			client = new RestClient("https://malapi.ateliershiori.moe/2.1/");
-			client.UserAgent = new UserAgent().getUserAgent();
+			client.UserAgent = UserAgent.getUserAgent();
 
 		}
 		private void loadmainview()
@@ -148,7 +149,8 @@ namespace MALLibrary
 					if (aniinfoid != 0)
 					{
 						toolbar.InsertItem("AddTitle", 0);
-						toolbar.InsertItem("Share", 1);
+						toolbar.InsertItem("viewonmal", 1);
+						toolbar.InsertItem("Share", 2);
 					}
 					break;
 				case "Seasons":
@@ -234,9 +236,9 @@ namespace MALLibrary
 		}
 		partial void searchtbdoubleclick(Foundation.NSObject sender)
 		{
-			if (stb.ClickedRow > 0)
+			if (stb.ClickedRow >= 0)
 			{
-				if ((System.nuint)searcharraycontroller.SelectionIndex >= 1)
+				if ((int)searcharraycontroller.SelectionIndex >= -1)
 				{
 					this.searchtableclick();
 				}
@@ -258,7 +260,8 @@ namespace MALLibrary
 			aniinfoid = 0;
 			InvokeOnMainThread(() =>
 				{
-					sourcelist.SelectRow(4, true);
+					
+					sourcelist.SelectRow(4,false);
 
 					this.loadmainview();
 					noinfo.Hidden = true;
@@ -273,6 +276,7 @@ namespace MALLibrary
 				NSData data = NSData.FromString(response.Content);
 				NSError e;
 				NSDictionary animedata = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
+				currentaniinfo = animedata;
 				InvokeOnMainThread(() =>
 				{
 					// Populate Anime Information
@@ -297,12 +301,12 @@ namespace MALLibrary
 					                                        "Popularity: " + popularityrank.Int32Value + System.Environment.NewLine  ;
 					detailstextview.Value = detail;
 					if (animedata.ValueForKey(new NSString("background")) != null){
-						backgroundtextview.Value = (NSString)animedata.ValueForKey(new NSString("background")).ToString();
+						backgroundtextview.Value = StripHTML((NSString)animedata.ValueForKey(new NSString("background")).ToString());
 					}
 					else {
 						backgroundtextview.Value = "None available.";
 					}
-					synopsistextview.Value = (NSString)animedata.ValueForKey(new NSString("synopsis")).ToString();
+					synopsistextview.Value = StripHTML((NSString)animedata.ValueForKey(new NSString("synopsis")).ToString());
 					loadingwheel.StopAnimation(null);
 					aniinfoid = id;
 					this.loadmainview();
@@ -315,15 +319,12 @@ namespace MALLibrary
 					loadingwheel.StopAnimation(null);
 					this.loadmainview();
 					});
-				}
-				              
+			}           
 		}
-	}
-	public class MainWindowDelegate : NSWindowDelegate
-	{
-		public override void WillClose(NSNotification notification)
+		public static string StripHTML(string input)
 		{
-			System.Environment.Exit(0);
+			return Regex.Replace(input, "<.*?>", String.Empty);
 		}
 	}
+
 }

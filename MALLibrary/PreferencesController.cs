@@ -125,7 +125,7 @@ namespace MALLibrary
 			}
 			else {
 				RestClient client = new RestClient("https://malapi.ateliershiori.moe/2.1/");
-				client.UserAgent = new UserAgent().getUserAgent();
+				client.UserAgent = UserAgent.getUserAgent();
 				RestRequest request = new RestRequest("account/verify_credentials", Method.GET);
 				client.Authenticator = new HttpBasicAuthenticator(usernamefield.StringValue, passwordfield.StringValue);
 				IRestResponse response = client.Execute(request);

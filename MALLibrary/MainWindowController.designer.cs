@@ -75,6 +75,9 @@ namespace MALLibrary
 		[Outlet]
 		AppKit.NSToolbar toolbar { get; set; }
 
+		[Outlet]
+		AppKit.NSWindow w { get; set; }
+
 		[Action ("addtitle:")]
 		partial void addtitle (Foundation.NSObject sender);
 
@@ -107,6 +110,11 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (w != null) {
+				w.Dispose ();
+				w = null;
+			}
+
 			if (alternativetitlelbl != null) {
 				alternativetitlelbl.Dispose ();
 				alternativetitlelbl = null;
@@ -120,6 +128,11 @@ namespace MALLibrary
 			if (animeinfoview != null) {
 				animeinfoview.Dispose ();
 				animeinfoview = null;
+			}
+
+			if (backgroundtextview != null) {
+				backgroundtextview.Dispose ();
+				backgroundtextview = null;
 			}
 
 			if (detailstextview != null) {
@@ -160,11 +173,6 @@ namespace MALLibrary
 			if (progressview != null) {
 				progressview.Dispose ();
 				progressview = null;
-			}
-
-			if (backgroundtextview != null) {
-				backgroundtextview.Dispose ();
-				backgroundtextview = null;
 			}
 
 			if (searcharraycontroller != null) {

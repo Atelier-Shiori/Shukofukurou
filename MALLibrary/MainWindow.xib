@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -398,7 +399,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" id="SMz-KQ-h2h">
                         <rect key="frame" x="1" y="0.0" width="561" height="397"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveName="searchtb" headerView="QkN-mF-MNg" id="XpN-c0-PVU">
                                 <rect key="frame" x="0.0" y="0.0" width="626" height="374"/>
@@ -467,7 +468,7 @@
                         <rect key="frame" x="1" y="381" width="561" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="exY-4b-sAW">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="exY-4b-sAW">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -500,12 +501,12 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="aiB-f7-Pad">
-                            <rect key="frame" x="9" y="133" width="225" height="319"/>
+                            <rect key="frame" x="14" y="189" width="185" height="263"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="27l-mr-JLp"/>
                         </imageView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="Kqf-dd-lp1">
-                            <rect key="frame" x="253" y="428" width="499" height="24"/>
+                            <rect key="frame" x="211" y="428" width="535" height="24"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="08O-gq-SeL">
                                 <font key="font" metaFont="system" size="20"/>
@@ -514,7 +515,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="pn9-cW-i3l">
-                            <rect key="frame" x="253" y="403" width="415" height="17"/>
+                            <rect key="frame" x="211" y="403" width="415" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Alternative Titles" id="wvG-4r-VaO">
                                 <font key="font" metaFont="systemBold"/>
@@ -523,11 +524,11 @@
                             </textFieldCell>
                         </textField>
                         <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="q9E-Tr-tIh">
-                            <rect key="frame" x="255" y="398" width="495" height="5"/>
+                            <rect key="frame" x="213" y="398" width="531" height="5"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </box>
                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" id="4pf-vC-asR">
-                            <rect key="frame" x="253" y="356" width="499" height="39"/>
+                            <rect key="frame" x="211" y="356" width="535" height="39"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="eW4-AV-mTC">
                                 <font key="font" metaFont="system"/>
@@ -536,7 +537,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="BeU-yQ-dyb">
-                            <rect key="frame" x="253" y="331" width="415" height="17"/>
+                            <rect key="frame" x="211" y="331" width="415" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Details" id="URJ-AL-eVx">
                                 <font key="font" metaFont="systemBold"/>
@@ -545,11 +546,11 @@
                             </textFieldCell>
                         </textField>
                         <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="pnU-a4-1Wn">
-                            <rect key="frame" x="255" y="326" width="495" height="5"/>
+                            <rect key="frame" x="213" y="326" width="531" height="5"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </box>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="SpJ-ya-UHR">
-                            <rect key="frame" x="253" y="114" width="415" height="17"/>
+                            <rect key="frame" x="211" y="114" width="415" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Synopsis" id="620-gD-kn1">
                                 <font key="font" metaFont="systemBold"/>
@@ -558,21 +559,21 @@
                             </textFieldCell>
                         </textField>
                         <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="PJK-hT-26i">
-                            <rect key="frame" x="255" y="109" width="495" height="5"/>
+                            <rect key="frame" x="213" y="109" width="531" height="5"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </box>
                         <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="1Kq-IG-hyn">
-                            <rect key="frame" x="255" y="7" width="495" height="95"/>
+                            <rect key="frame" x="213" y="11" width="531" height="91"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8ui-Uk-bpi">
-                                <rect key="frame" x="0.0" y="0.0" width="495" height="95"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="0kX-gz-4uq">
-                                        <rect key="frame" x="0.0" y="0.0" width="495" height="95"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="495" height="95"/>
+                                        <size key="minSize" width="531" height="91"/>
                                         <size key="maxSize" width="1098" height="10000000"/>
                                         <attributedString key="textStorage">
                                             <fragment content="Text">
@@ -592,22 +593,22 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="vcX-Us-CrF">
-                                <rect key="frame" x="479" y="0.0" width="16" height="95"/>
+                                <rect key="frame" x="515" y="0.0" width="16" height="91"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
                         <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="bru-ya-9g9">
-                            <rect key="frame" x="255" y="238" width="495" height="84"/>
+                            <rect key="frame" x="213" y="238" width="531" height="84"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zGy-pl-wWj">
-                                <rect key="frame" x="0.0" y="0.0" width="495" height="84"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="1g6-do-AjF">
-                                        <rect key="frame" x="0.0" y="0.0" width="495" height="84"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="495" height="84"/>
+                                        <size key="minSize" width="531" height="84"/>
                                         <size key="maxSize" width="1098" height="10000000"/>
                                         <attributedString key="textStorage">
                                             <fragment content="Text">
@@ -627,12 +628,12 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="pQT-am-H71">
-                                <rect key="frame" x="479" y="0.0" width="16" height="84"/>
+                                <rect key="frame" x="515" y="0.0" width="16" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" id="obU-33-pIj">
-                            <rect key="frame" x="253" y="211" width="415" height="17"/>
+                            <rect key="frame" x="211" y="211" width="535" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background" id="rkF-y9-A14">
                                 <font key="font" metaFont="systemBold"/>
@@ -641,21 +642,21 @@
                             </textFieldCell>
                         </textField>
                         <box verticalHuggingPriority="750" misplaced="YES" boxType="separator" id="wxL-CV-Vmy">
-                            <rect key="frame" x="255" y="206" width="495" height="5"/>
+                            <rect key="frame" x="213" y="206" width="531" height="5"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                         </box>
                         <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" id="fWy-L2-R7a">
-                            <rect key="frame" x="255" y="150" width="495" height="50"/>
+                            <rect key="frame" x="213" y="150" width="531" height="50"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="DU4-6K-zkL">
-                                <rect key="frame" x="0.0" y="0.0" width="495" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="OwY-Mg-qpb">
-                                        <rect key="frame" x="0.0" y="0.0" width="495" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <size key="minSize" width="495" height="50"/>
+                                        <size key="minSize" width="531" height="50"/>
                                         <size key="maxSize" width="1098" height="10000000"/>
                                         <attributedString key="textStorage">
                                             <fragment content="Text">
@@ -675,7 +676,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="PNh-SH-VaW">
-                                <rect key="frame" x="479" y="0.0" width="16" height="50"/>
+                                <rect key="frame" x="515" y="0.0" width="16" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                             </scroller>
                         </scrollView>

@@ -40,7 +40,14 @@ namespace MALLibrary
 		{
 			get
 			{
-				return _items[index];
+				try
+				{
+					return _items[index];
+				}
+				catch (Exception e)
+				{
+					return _items[0];
+				}
 			}
 
 			set

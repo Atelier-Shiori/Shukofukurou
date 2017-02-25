@@ -99,6 +99,9 @@ namespace MALLibrary
 		[Action ("removetitle:")]
 		partial void removetitle (Foundation.NSObject sender);
 
+		[Action ("returnpreviousview:")]
+		partial void returnpreviousview (Foundation.NSObject sender);
+
 		[Action ("searchtbdoubleclick:")]
 		partial void searchtbdoubleclick (Foundation.NSObject sender);
 
@@ -110,11 +113,6 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (w != null) {
-				w.Dispose ();
-				w = null;
-			}
-
 			if (alternativetitlelbl != null) {
 				alternativetitlelbl.Dispose ();
 				alternativetitlelbl = null;
@@ -218,6 +216,11 @@ namespace MALLibrary
 			if (toolbar != null) {
 				toolbar.Dispose ();
 				toolbar = null;
+			}
+
+			if (w != null) {
+				w.Dispose ();
+				w = null;
 			}
 		}
 	}

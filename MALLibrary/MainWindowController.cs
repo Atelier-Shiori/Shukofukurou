@@ -52,7 +52,7 @@ namespace MALLibrary
 
 			// Display side list
 			sourcelist.ReloadData();
-			sourcelist.ExpandItem(null, true);
+			sourcelist.ExpandItem(null,true);
 
 			// Retrieve last used main view
 			if (NSUserDefaults.StandardUserDefaults.ValueForKey(new NSString("selectedmainview")) != null)
@@ -64,7 +64,6 @@ namespace MALLibrary
 			{
 				sourcelist.SelectRow(1, false);
 			}
-			this.loadmainview();
 			// Initalize RestClient
 			client = new RestClient("https://malapi.ateliershiori.moe/2.1/");
 			client.UserAgent = UserAgent.getUserAgent();
@@ -72,7 +71,7 @@ namespace MALLibrary
 		}
 		private void loadmainview()
 		{
-			
+			// Loads the view based on the selection from the source list
 			CGRect mainviewframe = mainview.Frame;
 			mainview.AddSubview(new NSView());
 			nint selectedrow = sourcelist.SelectedRow;
@@ -121,7 +120,7 @@ namespace MALLibrary
 		}
 		public void createtoolbar()
 		{
-
+			// Shows toolbar items based on current main view.
 			NSToolbarItem[] items = toolbar.Items;
 			if (items != null)
 			{
@@ -148,8 +147,9 @@ namespace MALLibrary
 				case "Title Info":
 					if (aniinfoid != 0)
 					{
-						toolbar.InsertItem("AddTitle", 0);
-						toolbar.InsertItem("viewonmal", 1);
+						
+							toolbar.InsertItem("AddTitle", 0);
+							toolbar.InsertItem("viewonmal", 1);
 						toolbar.InsertItem("Share", 2);
 					}
 					break;
@@ -157,6 +157,7 @@ namespace MALLibrary
 					break;
 			}
 		}
+
 		public new MainWindow Window
 		{
 			get { return (MainWindow)base.Window; }
@@ -173,9 +174,10 @@ namespace MALLibrary
 		}
 		partial void opensharemenu(Foundation.NSObject sender)
 		{
-			
+			// Share Menu
 			var selecteditem = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
 			NSObject[] shareitems = new NSObject[2];
+			// Generate share items based on which view the Share button has been pressed.
 			switch (selecteditem.Title)
 			{
 				case "Anime List":
@@ -209,11 +211,13 @@ namespace MALLibrary
 		}
 		partial void viewonmal(Foundation.NSObject sender)
 		{
+			// Opens the anime title's page on MyAnimeList
 			NSUrl link = new NSUrl("https://myanimelist.net/anime/" + aniinfoid);
 			NSWorkspace.SharedWorkspace.OpenUrl(link);
 		}
 		partial void performsearch(Foundation.NSObject sender)
 		{
+			// Performs Search
 			string term = searchbox.StringValue;
 			// Create Thread
 			Thread thread = new Thread(() => performsearch(term));
@@ -222,6 +226,7 @@ namespace MALLibrary
 		}
 		private void performsearch(string term)
 		{
+			// Retrieves Search Data from Atarashii-API
 			RestRequest request = new RestRequest("anime/search", Method.GET);
 			request.AddParameter("q", term);
 
@@ -230,17 +235,21 @@ namespace MALLibrary
 			{
 				InvokeOnMainThread(() =>
 				{
+					// Populate data in Search Table View
 					this.loadsearchdata(response.Content);
 				});
 			}
 		}
 		private void loadsearchdata(String content)
 		{
+			// Populates search data from JSON
 			NSMutableArray a = (NSMutableArray)this.searcharraycontroller.Content;
 			a.RemoveAllObjects();
+			// Deserialize JSON
 			NSData data = NSData.FromString(content);
 			NSError e;
 			NSArray searchdata = (NSArray)NSJsonSerialization.Deserialize(data, 0, out e);
+			// Populate Table View
 			this.searcharraycontroller.AddObjects(searchdata);
 			this.stb.ReloadData();
 			this.stb.DeselectAll(Self);
@@ -251,14 +260,14 @@ namespace MALLibrary
 			{
 				if ((int)searcharraycontroller.SelectionIndex >= -1)
 				{
+					// Loads Anime Information
 					this.searchtableclick();
 				}
 			}
 		}
 		public void searchtableclick()
 		{
-			NSArray data = (NSArray)searcharraycontroller.Content;
-			NSDictionary d = data.GetItem<NSDictionary>((System.nuint)searcharraycontroller.SelectionIndex);
+			NSDictionary d = (NSDictionary)searcharraycontroller.SelectedObjects[0];
 			NSNumber idnum = (NSNumber)d.ValueForKey(new NSString("id"));
 
 			Thread t = new Thread((obj) => loadAnimeInfo(idnum.Int32Value));
@@ -271,10 +280,8 @@ namespace MALLibrary
 			aniinfoid = 0;
 			InvokeOnMainThread(() =>
 				{
-					
+					// Change Source List selection to Anime Info
 					sourcelist.SelectRow(4,false);
-
-					this.loadmainview();
 					noinfo.Hidden = true;
 					loadingwheel.Hidden = false;
 					loadingwheel.StartAnimation(null);
@@ -284,43 +291,14 @@ namespace MALLibrary
 			IRestResponse response = client.Execute(request);
 			if (response.StatusCode.GetHashCode() == 200)
 			{
+				// Deserialize data
 				NSData data = NSData.FromString(response.Content);
 				NSError e;
 				NSDictionary animedata = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
 				currentaniinfo = animedata;
 				InvokeOnMainThread(() =>
 				{
-					// Populate Anime Information
-					animeinfotitle.StringValue = (NSString)animedata.ValueForKey(new NSString("title")).ToString();
-					NSImage img = new NSImage(new NSUrl((NSString)animedata.ValueForKey(new NSString("image_url"))));
-					posterimage.Image = img;
-					NSNumber rank = (NSNumber)animedata.ValueForKey(new NSString("rank"));
-					NSNumber popularityrank = (NSNumber)animedata.ValueForKey(new NSString("popularity_rank"));
-					string type = (NSString)animedata.ValueForKey(new NSString("type")).ToString();
-					NSNumber episodes = (NSNumber)animedata.ValueForKey(new NSString("episodes"));
-					string status = (NSString)animedata.ValueForKey(new NSString("status")).ToString();
-					NSNumber duration = (NSNumber)animedata.ValueForKey(new NSString("duration"));
-					string classification = (NSString)animedata.ValueForKey(new NSString("classification")).ToString();
-					NSNumber memberscore = (NSNumber)animedata.ValueForKey(new NSString("members_score"));
-					NSNumber memberscount = (NSNumber)animedata.ValueForKey(new NSString("members_count"));
-					int favoritedcount;
-					string detail = "Type: " + type + System.Environment.NewLine +
-					                                        "Episodes: " + episodes.Int32Value + " (" + duration.Int32Value +" mins long per episode)" + System.Environment.NewLine +
-									 "Status: " + status + System.Environment.NewLine +
-					                                        "Classification: " + classification + System.Environment.NewLine+
-					                                        "Score: " + memberscore.FloatValue + "(" + memberscount.Int32Value + " users, ranked " + rank.Int32Value +")" + System.Environment.NewLine +
-					                                        "Popularity: " + popularityrank.Int32Value + System.Environment.NewLine  ;
-					detailstextview.Value = detail;
-					if (animedata.ValueForKey(new NSString("background")) != null){
-						backgroundtextview.Value = StripHTML((NSString)animedata.ValueForKey(new NSString("background")).ToString());
-					}
-					else {
-						backgroundtextview.Value = "None available.";
-					}
-					synopsistextview.Value = StripHTML((NSString)animedata.ValueForKey(new NSString("synopsis")).ToString());
-					loadingwheel.StopAnimation(null);
-					aniinfoid = id;
-					this.loadmainview();
+					populateanimeinfo(id, animedata);
 				});
 			}
 			else {
@@ -329,13 +307,113 @@ namespace MALLibrary
 				{
 					loadingwheel.StopAnimation(null);
 					this.loadmainview();
-					});
-			}           
+				});
+			}
+		}
+
+		private void populateanimeinfo(int id, NSDictionary animedata)
+		{
+			// Populate Anime Information
+			animeinfotitle.StringValue = (NSString)animedata.ValueForKey(new NSString("title")).ToString();
+			alternativetitlelbl.StringValue = this.generatetitleslist(animedata);
+			NSImage img = new NSImage(new NSUrl((NSString)animedata.ValueForKey(new NSString("image_url"))));
+			posterimage.Image = img;
+			NSNumber rank = (NSNumber)animedata.ValueForKey(new NSString("rank"));
+			NSNumber popularityrank = (NSNumber)animedata.ValueForKey(new NSString("popularity_rank"));
+			string type = (NSString)animedata.ValueForKey(new NSString("type")).ToString();
+			NSNumber episodes = (NSNumber)animedata.ValueForKey(new NSString("episodes"));
+			string status = (NSString)animedata.ValueForKey(new NSString("status")).ToString();
+			NSNumber duration = (NSNumber)animedata.ValueForKey(new NSString("duration"));
+			string classification = (NSString)animedata.ValueForKey(new NSString("classification")).ToString();
+			NSNumber memberscore = (NSNumber)animedata.ValueForKey(new NSString("members_score"));
+			NSNumber memberscount = (NSNumber)animedata.ValueForKey(new NSString("members_count"));
+			NSArray genrelist = (NSArray)animedata.ValueForKey(new NSString("genres"));
+			string genres = "None";
+			//Populate Genres
+			if (genrelist != null){
+				for (nuint i = 0; i > genrelist.Count; i++)
+				{
+					if (i == 0)
+					{
+						genres = genrelist.GetItem<NSString>(i).ToString();
+					}
+					else {
+						genres = genres + ", " + genrelist.GetItem<NSString>(i).ToString();
+					}
+				}
+			}
+			NSNumber favoritedcount = (NSNumber)animedata.ValueForKey(new NSString("favorited_count"));
+			string detail = "Type: " + type + System.Environment.NewLine;
+			detail = detail + "Episodes: " + episodes.Int32Value + " (" + duration.Int32Value + " mins long per episode)" + System.Environment.NewLine;
+			detail = detail + "Status: " + status + System.Environment.NewLine;
+			detail = detail + "Genres: " + genres + System.Environment.NewLine;
+			detail = detail + "Classification: " + classification + System.Environment.NewLine;
+			detail = detail + "Score: " + memberscore.FloatValue + " (" + memberscount.Int32Value + " users, ranked " + rank.Int32Value + ")" + System.Environment.NewLine;
+			detail = detail + "Popularity: " + popularityrank.Int32Value + System.Environment.NewLine;
+			detail = detail + "Favorites: " + favoritedcount.Int32Value;
+			detailstextview.Value = detail;
+			if (animedata.ValueForKey(new NSString("background")) != null)
+			{
+				backgroundtextview.Value = StripHTML((NSString)animedata.ValueForKey(new NSString("background")).ToString());
+			}
+			else {
+				backgroundtextview.Value = "None available.";
+			}
+			synopsistextview.Value = StripHTML((NSString)animedata.ValueForKey(new NSString("synopsis")).ToString());
+			loadingwheel.StopAnimation(null);
+			aniinfoid = id;
+			this.loadmainview();
+		}
+		private string generatetitleslist(NSDictionary d)
+		{
+			NSMutableArray a = new NSMutableArray();
+			NSDictionary titles = (NSDictionary)d.ValueForKey(new NSString("other_titles"));
+			for (int i = 0; i < 3; i++)
+			{
+				NSArray titleslist = new NSArray();
+				switch (i)
+				{
+					
+					case 0:
+						if ((NSArray)titles.ValueForKey(new NSString("english")) != null)
+						{
+							titleslist = (NSArray)titles.ValueForKey(new NSString("english"));
+						}
+						break;
+					case 1:
+						if ((NSArray)titles.ValueForKey(new NSString("japanese")) != null)
+						{
+							titleslist = (NSArray)titles.ValueForKey(new NSString("japanese"));
+						}
+						break;
+					case 2:
+						if ((NSArray)titles.ValueForKey(new NSString("synonyms")) != null)
+						{
+							titleslist = (NSArray)titles.ValueForKey(new NSString("synonyms"));
+						}
+						break;
+				}
+
+				for (nuint s = 0; s < titleslist.Count; s++){
+					a.Add(titleslist.GetItem<NSString>(s));
+				}
+			}
+			string strtitles = "";
+			for (nuint i = 0; i < a.Count; i++)
+			{
+				if (i == 0)
+				{
+					strtitles = (NSString)a.GetItem<NSString>(i).ToString();
+				}
+				else {
+					strtitles = strtitles + ", " + (NSString)a.GetItem<NSString>(i).ToString();
+				}
+			}
+			return strtitles;
 		}
 		public static string StripHTML(string input)
 		{
 			return Regex.Replace(input, "<.*?>", String.Empty);
 		}
 	}
-
 }

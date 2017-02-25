@@ -1,10 +1,14 @@
 ﻿using System;
+using Foundation;
+using AppKit;
 namespace MALLibrary
 {
-	public class MainWindowDelegate
+	[Register("MainWindowDelegate")]
+	public class MainWindowDelegate : NSWindowDelegate
 	{
-		public MainWindowDelegate()
+		public override void WillClose(NSNotification notification)
 		{
+			System.Environment.Exit(0);
 		}
 	}
 }

@@ -173,9 +173,21 @@ namespace MALLibrary
 		}
 		partial void opensharemenu(Foundation.NSObject sender)
 		{
-			NSAlert a = new NSAlert();
-			a.MessageText = "Implement Share Menu";
-			long l = a.RunModal();
+			
+			var selecteditem = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
+			NSObject[] shareitems = new NSObject[2];
+			switch (selecteditem.Title)
+			{
+				case "Anime List":
+					return;
+				case "Title Info":
+					shareitems[0] = new NSString("Check " + animeinfotitle.StringValue + " out - ");
+					shareitems[1] = new NSUrl("https://myanimelist.net/anime/" + aniinfoid);
+					break;
+			}
+			NSSharingServicePicker picker = new NSSharingServicePicker(shareitems);
+			NSButton btn = (NSButton)sender;
+			picker.ShowRelativeToRect(btn.Bounds, btn, NSRectEdge.MinYEdge);
 		}
 		partial void addtitle(Foundation.NSObject sender)
 		{
@@ -197,9 +209,8 @@ namespace MALLibrary
 		}
 		partial void viewonmal(Foundation.NSObject sender)
 		{
-			NSAlert a = new NSAlert();
-			a.MessageText = "Implement View on MAL";
-			long l = a.RunModal();
+			NSUrl link = new NSUrl("https://myanimelist.net/anime/" + aniinfoid);
+			NSWorkspace.SharedWorkspace.OpenUrl(link);
 		}
 		partial void performsearch(Foundation.NSObject sender)
 		{

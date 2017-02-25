@@ -22,7 +22,11 @@
                 <outlet property="searcharraycontroller" destination="jIW-aU-GF5" id="ebI-h0-osG"/>
                 <outlet property="searchbox" destination="XHn-tL-qoa" id="AVB-z7-pVK"/>
                 <outlet property="searchview" destination="DOV-G3-nXu" id="FT5-Xe-0kB"/>
+                <outlet property="seasonarraycontroller" destination="cMx-hs-7a6" id="oBE-Pi-XOf"/>
+                <outlet property="seasonselect" destination="sd6-UL-2fc" id="zD8-8A-MKt"/>
                 <outlet property="seasonsview" destination="GVP-xG-SWy" id="3u4-IN-MNa"/>
+                <outlet property="seasontb" destination="cT7-vq-fW1" id="ftI-lE-mDh"/>
+                <outlet property="seasonyrselect" destination="eW0-eC-nef" id="Fot-ix-oKD"/>
                 <outlet property="sourcelist" destination="GWG-FR-EeD" id="PIw-bb-Dej"/>
                 <outlet property="stb" destination="XpN-c0-PVU" id="aWu-4f-jXb"/>
                 <outlet property="synopsistextview" destination="0kX-gz-4uq" id="Rl7-vm-jDe"/>
@@ -265,6 +269,50 @@
                             <action selector="viewonmal:" target="-2" id="Zpv-Vj-bBe"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="520323CD-5E58-4625-9175-E5E0270F677D" explicitItemIdentifier="yearselect" label="Year" paletteLabel="Year" toolTip="Year" id="Eu4-5q-25Z">
+                        <size key="minSize" width="100" height="25"/>
+                        <size key="maxSize" width="100" height="25"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="eW0-eC-nef">
+                            <rect key="frame" x="0.0" y="14" width="100" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="ao0-SC-Qqb" id="Yxo-iW-BZj">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="GW3-M4-ZnS">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="ao0-SC-Qqb"/>
+                                        <menuItem title="Item 2" id="FhU-CI-jIc"/>
+                                        <menuItem title="Item 3" id="L9R-vb-21G"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="yearchanged:" target="-2" id="caO-t3-xyL"/>
+                            </connections>
+                        </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="74EA59B3-7ACC-45E8-94E3-3BEB34159804" explicitItemIdentifier="seasonselect" label="Season" paletteLabel="Season" toolTip="Season" id="aM7-lP-IG9">
+                        <size key="minSize" width="100" height="25"/>
+                        <size key="maxSize" width="100" height="25"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="sd6-UL-2fc">
+                            <rect key="frame" x="0.0" y="14" width="100" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Kon-JK-aEB" id="rJh-Ho-uom">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="FAa-8R-3Gz">
+                                    <items>
+                                        <menuItem title="Item 1" state="on" id="Kon-JK-aEB"/>
+                                        <menuItem title="Item 2" id="ZJJ-u1-ZNd"/>
+                                        <menuItem title="Item 3" id="bT1-ea-wxa"/>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="seasonchanged:" target="-2" id="3ax-6R-JNI"/>
+                            </connections>
+                        </popUpButton>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems/>
             </toolbar>
@@ -272,7 +320,7 @@
             <connections>
                 <outlet property="delegate" destination="Av3-XZ-Iwe" id="OlA-xM-XZ1"/>
             </connections>
-            <point key="canvasLocation" x="135" y="107"/>
+            <point key="canvasLocation" x="27" y="288"/>
         </window>
         <customView identifier="ListView" id="eZH-Eo-1eg">
             <rect key="frame" x="0.0" y="0.0" width="394" height="228"/>
@@ -283,9 +331,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="99e-Ep-qJ1">
                         <rect key="frame" x="1" y="0.0" width="392" height="227"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="QqA-Oo-XVw" viewBased="YES" id="YZy-Yw-LYT">
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="QqA-Oo-XVw" viewBased="YES" id="YZy-Yw-LYT">
                                 <rect key="frame" x="0.0" y="0.0" width="392" height="204"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -486,9 +534,9 @@
                 </imageView>
                 <scrollView focusRingType="none" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="W7n-FV-8bC">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="401"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" id="Rwp-YU-NI2">
-                        <rect key="frame" x="1" y="23" width="598" height="377"/>
+                        <rect key="frame" x="1" y="0.0" width="598" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="9cI-fV-lkC" id="cT7-vq-fW1">
@@ -498,8 +546,8 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="116" minWidth="40" maxWidth="1000" id="joq-kC-yhk">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                    <tableColumn editable="NO" width="528" minWidth="40" maxWidth="1000" id="joq-kC-yhk">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -510,9 +558,16 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="cMx-hs-7a6" name="value" keyPath="arrangedObjects.title" id="aqC-OR-mU0">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
-                                    <tableColumn width="476" minWidth="40" maxWidth="1000" id="JnK-HS-hqq">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                    <tableColumn editable="NO" width="62" minWidth="40" maxWidth="1000" id="JnK-HS-hqq">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Type">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -523,13 +578,26 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="cMx-hs-7a6" name="value" keyPath="arrangedObjects.type" id="ahU-Bw-h7X">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <string key="NSValueTransformerName">SeasonTypeConvert</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="seasontbdoubleclicked:" target="-2" id="GTT-c7-7XS"/>
+                                    <binding destination="cMx-hs-7a6" name="selectionIndexes" keyPath="selectionIndexes" id="WPP-Tc-xfp"/>
+                                    <binding destination="cMx-hs-7a6" name="sortDescriptors" keyPath="sortDescriptors" previousBinding="WPP-Tc-xfp" id="Tky-io-87g"/>
+                                </connections>
                             </tableView>
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="e3R-LI-4WI">
-                        <rect key="frame" x="1" y="384" width="586" height="16"/>
+                        <rect key="frame" x="1" y="384" width="598" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7mJ-bX-1Ee">
@@ -779,6 +847,11 @@
             <point key="canvasLocation" x="272.5" y="1051"/>
         </customView>
         <customObject id="Av3-XZ-Iwe" customClass="MainWindowDelegate"/>
+        <arrayController objectClassName="NSDictionary" editable="NO" automaticallyRearrangesObjects="YES" id="cMx-hs-7a6" userLabel="SeasonArrayController">
+            <declaredKeys>
+                <string>allValues</string>
+            </declaredKeys>
+        </arrayController>
     </objects>
     <resources>
         <image name="Edit" width="32" height="32"/>

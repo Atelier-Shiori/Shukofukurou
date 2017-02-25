@@ -106,9 +106,10 @@ namespace MALLibrary
 			CGSize windowsize = new CGSize();
 			windowsize.Width = size.Width;
 			windowsize.Height = size.Height + titlebarheight;
-			nfloat originX = w.Frame.Location.X + (w.Frame.Size.Width - windowsize.Width) / 2;
-
-			nfloat originY = w.Frame.Location.Y + (w.Frame.Size.Height - windowsize.Height) / 2;
+			nfloat originX = w.Frame.Location.X + w.Frame.Size.Width;
+			originX = originX - windowsize.Width;
+			nfloat originY = w.Frame.Location.Y + w.Frame.Size.Height;
+			originY = originY - windowsize.Height;
 			CGRect WindowFrame = new CGRect(originX,originY, windowsize.Width, windowsize.Height);
 			w.SetFrame(WindowFrame, true, true);
 		}

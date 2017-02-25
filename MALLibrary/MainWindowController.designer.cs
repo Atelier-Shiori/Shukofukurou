@@ -58,7 +58,19 @@ namespace MALLibrary
 		AppKit.NSView searchview { get; set; }
 
 		[Outlet]
+		AppKit.NSArrayController seasonarraycontroller { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton seasonselect { get; set; }
+
+		[Outlet]
 		AppKit.NSView seasonsview { get; set; }
+
+		[Outlet]
+		AppKit.NSTableView seasontb { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton seasonyrselect { get; set; }
 
 		[Outlet]
 		MALLibrary.SourceListView sourcelist { get; set; }
@@ -105,11 +117,20 @@ namespace MALLibrary
 		[Action ("searchtbdoubleclick:")]
 		partial void searchtbdoubleclick (Foundation.NSObject sender);
 
+		[Action ("seasonchanged:")]
+		partial void seasonchanged (Foundation.NSObject sender);
+
+		[Action ("seasontbdoubleclicked:")]
+		partial void seasontbdoubleclicked (Foundation.NSObject sender);
+
 		[Action ("selectmainview:")]
 		partial void selectmainview (Foundation.NSObject sender);
 
 		[Action ("viewonmal:")]
 		partial void viewonmal (Foundation.NSObject sender);
+
+		[Action ("yearchanged:")]
+		partial void yearchanged (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{
@@ -188,9 +209,29 @@ namespace MALLibrary
 				searchview = null;
 			}
 
+			if (seasonarraycontroller != null) {
+				seasonarraycontroller.Dispose ();
+				seasonarraycontroller = null;
+			}
+
+			if (seasonselect != null) {
+				seasonselect.Dispose ();
+				seasonselect = null;
+			}
+
 			if (seasonsview != null) {
 				seasonsview.Dispose ();
 				seasonsview = null;
+			}
+
+			if (seasontb != null) {
+				seasontb.Dispose ();
+				seasontb = null;
+			}
+
+			if (seasonyrselect != null) {
+				seasonyrselect.Dispose ();
+				seasonyrselect = null;
 			}
 
 			if (sourcelist != null) {

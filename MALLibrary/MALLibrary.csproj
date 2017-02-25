@@ -130,6 +130,7 @@
     <Compile Include="SourceListDelegate.cs" />
     <Compile Include="SourceListView.cs" />
     <Compile Include="MainWindowDelegate.cs" />
+    <Compile Include="SeasonTypeConvert.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainMenu.xib" />

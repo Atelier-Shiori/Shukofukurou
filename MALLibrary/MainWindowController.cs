@@ -14,6 +14,8 @@ namespace MALLibrary
 		RestClient client;
 		int aniinfoid = 0;
 		NSDictionary currentaniinfo;
+		NSArray seasonindex;
+		NSArray seasonsdata;
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -154,6 +156,13 @@ namespace MALLibrary
 					}
 					break;
 				case "Seasons":
+					toolbar.InsertItem("AddTitle", 0);
+					toolbar.InsertItem("yearselect", 1);
+					toolbar.InsertItem("seasonselect",2);
+					if (seasonindex == null)
+					{
+						this.retrieveseasonindex();
+					}
 					break;
 			}
 		}
@@ -162,6 +171,7 @@ namespace MALLibrary
 		{
 			get { return (MainWindow)base.Window; }
 		}
+		// Toolbar Functions
 		partial void performfilter(Foundation.NSObject sender)
 		{
 
@@ -215,6 +225,7 @@ namespace MALLibrary
 			NSUrl link = new NSUrl("https://myanimelist.net/anime/" + aniinfoid);
 			NSWorkspace.SharedWorkspace.OpenUrl(link);
 		}
+		// Searchview
 		partial void performsearch(Foundation.NSObject sender)
 		{
 			// Performs Search
@@ -273,6 +284,7 @@ namespace MALLibrary
 			Thread t = new Thread((obj) => loadAnimeInfo(idnum.Int32Value));
 			t.Start();
 		}
+		// Anime Information View
 		private void loadAnimeInfo(int id)
 		{
 			// Change page to Anime Info
@@ -411,9 +423,133 @@ namespace MALLibrary
 			}
 			return strtitles;
 		}
+		// Season View
+		private void performseasonindexretrieval()
+		{
+			// Create Thread
+			Thread thread = new Thread(new ThreadStart(retrieveseasonindex));
+			// Perform Search
+			thread.Start();
+		}
+		private void retrieveseasonindex()
+		{
+			// Retrieves Season Data from Repo
+			RestClient seasonclient = new RestClient("https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/");
+			seasonclient.UserAgent = UserAgent.getUserAgent();
+			RestRequest request = new RestRequest("index.json", Method.GET);
+
+			IRestResponse response = seasonclient.Execute(request);
+			if (response.StatusCode.GetHashCode() == 200)
+			{
+				InvokeOnMainThread(() =>
+				{
+					// Populate data in Search Table View
+					this.populateyearpopup(response.Content);
+					seasonyrselect.SelectItem(seasonyrselect.ItemCount - 1); //Select current year;
+					this.populateseasonpopup((nuint)seasonyrselect.IndexOfSelectedItem);
+					if (seasonselect.ItemCount - 1 >= 0)
+					{
+						seasonselect.SelectItem(seasonselect.ItemCount - 1); //Select most recent season, only if it has more than two seasons;
+					}
+					this.performseasondata();
+				});
+			}
+		}
+		private void populateyearpopup(string content)
+		{
+			seasonyrselect.RemoveAllItems();
+			if (seasonindex != null)
+			{
+				seasonindex = new NSArray();
+			}
+			// Deserialize JSON
+			NSData data = NSData.FromString(content);
+			NSError e;
+			NSDictionary d = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
+			seasonindex = (NSArray)d.ValueForKey(new NSString("years"));
+			for (int i = 0; i < (int)seasonindex.Count; i++)
+			{
+				NSDictionary yr = seasonindex.GetItem<NSDictionary>((nuint)i);
+				seasonyrselect.AddItem((NSString)yr.ValueForKey(new NSString("year")).ToString());
+			}
+		}
+		private void populateseasonpopup(nuint selected)
+		{
+			seasonselect.RemoveAllItems();
+			NSDictionary d = seasonindex.GetItem<NSDictionary>(selected);
+			NSArray seasons = (NSArray)d.ValueForKey(new NSString("seasons"));
+			for (nuint i = 0; i < seasons.Count; i++)
+			{
+				NSDictionary s = seasons.GetItem<NSDictionary>(i);
+				seasonselect.AddItem((NSString)s.ValueForKey(new NSString("season")).ToString());
+			}
+		}
+		partial void yearchanged(Foundation.NSObject sender)
+		{
+			this.populateseasonpopup((nuint)seasonyrselect.IndexOfSelectedItem);
+			this.performseasondata();
+		}
+		partial void seasonchanged(Foundation.NSObject sender)
+		{
+			this.performseasondata();
+		}
+		private void performseasondata()
+		{
+			// Retrieve JSON Season URL
+			NSDictionary d = seasonindex.GetItem<NSDictionary>((System.nuint)seasonyrselect.IndexOfSelectedItem);
+			NSArray a1 = (NSArray)d.ValueForKey((NSString)"seasons");
+			d = a1.GetItem<NSDictionary>((System.nuint)seasonselect.IndexOfSelectedItem);
+			string url = d.ValueForKey((NSString)"url").ToString();
+			// Create Thread
+			Thread thread = new Thread(() => this.loadseasondata(url));
+			// Perform Search
+			thread.Start();
+		}
+		private void loadseasondata(string URL)
+		{
+			// Retrieves Season Data from Repo
+			RestClient seasonclient = new RestClient(URL);
+			seasonclient.UserAgent = UserAgent.getUserAgent();
+			RestRequest request = new RestRequest(Method.GET);
+
+			IRestResponse response = seasonclient.Execute(request);
+			if (response.StatusCode.GetHashCode() == 200)
+			{
+				InvokeOnMainThread(() =>
+				{
+					// Populate data in Search Table View
+					this.performseasondatapop(response.Content);
+				});
+			}
+		}
+		private void performseasondatapop(string Content)
+		{
+			// Populates search data from JSON
+			NSMutableArray a = (NSMutableArray)this.seasonarraycontroller.Content;
+			a.RemoveAllObjects();
+			// Deserialize JSON
+			NSData data = NSData.FromString(Content);
+			NSError e;
+			NSDictionary json = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
+			NSArray seasondataarray = (NSArray)json.ValueForKey((NSString)"anime");
+			// Populate Table View
+			this.seasonarraycontroller.AddObjects(seasondataarray);
+			this.seasontb.ReloadData();
+			this.seasontb.DeselectAll(Self);
+		}
+		partial void seasontbdoubleclicked(Foundation.NSObject sender)
+		{
+			NSDictionary d = (NSDictionary)seasonarraycontroller.SelectedObjects[0];
+			d = (NSDictionary)d.ValueForKey((NSString)"id");
+
+			Thread t = new Thread((obj) => loadAnimeInfo(Convert.ToInt32((NSString)d.ValueForKey((NSString)"id").ToString())));
+			t.Start();
+		}
+		// Other
 		public static string StripHTML(string input)
 		{
 			return Regex.Replace(input, "<.*?>", String.Empty);
 		}
+
 	}
 }

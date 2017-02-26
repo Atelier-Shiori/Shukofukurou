@@ -131,11 +131,17 @@
     <Compile Include="SourceListView.cs" />
     <Compile Include="MainWindowDelegate.cs" />
     <Compile Include="SeasonTypeConvert.cs" />
+    <Compile Include="DonationWindowController.cs" />
+    <Compile Include="DonationWindowController.designer.cs">
+      <DependentUpon>DonationWindowController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Donation.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainMenu.xib" />
     <InterfaceDefinition Include="MainWindow.xib" />
     <InterfaceDefinition Include="Preferences.xib" />
+    <InterfaceDefinition Include="DonationWindow.xib" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\.imageset\" />

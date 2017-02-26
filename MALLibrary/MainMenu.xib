@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -30,6 +30,13 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="checkforupdates:" target="Voe-Tx-rLC" id="ylE-DM-sle"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Enter Donation Key…" id="wEs-t0-zJw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showdonationkeywin:" target="Voe-Tx-rLC" id="dY7-ss-taA"/>
+                                    <binding destination="Ax7-dr-nfv" name="hidden" keyPath="values.donated" id="Hp3-dS-3i9"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -305,7 +312,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="MyAnimeList" id="oCs-f4-Vnr">
                         <items>
-                            <menuItem title="Item" id="u6P-K1-TIs">
+                            <menuItem title="Export Anime List…" id="u6P-K1-TIs">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
@@ -342,7 +349,7 @@
                         <items>
                             <menuItem title="MALLibrary Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
+                                    <action selector="viewhelp:" target="Voe-Tx-rLC" id="bFx-2H-gTC"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -350,5 +357,6 @@
                 </menuItem>
             </items>
         </menu>
+        <userDefaultsController representsSharedInstance="YES" id="Ax7-dr-nfv"/>
     </objects>
 </document>

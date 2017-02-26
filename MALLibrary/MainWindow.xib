@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
@@ -331,7 +330,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="99e-Ep-qJ1">
                         <rect key="frame" x="1" y="0.0" width="392" height="227"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="QqA-Oo-XVw" viewBased="YES" id="YZy-Yw-LYT">
                                 <rect key="frame" x="0.0" y="0.0" width="392" height="204"/>
@@ -440,9 +439,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" id="SMz-KQ-h2h">
                         <rect key="frame" x="1" y="0.0" width="561" height="397"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" autosaveName="searchtb" headerView="QkN-mF-MNg" id="XpN-c0-PVU">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="searchtb" headerView="QkN-mF-MNg" id="XpN-c0-PVU">
                                 <rect key="frame" x="0.0" y="0.0" width="626" height="374"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -521,10 +520,10 @@
                     </tableHeaderView>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="303.5" y="557"/>
+            <point key="canvasLocation" x="96" y="752"/>
         </customView>
         <customView identifier="seasonview" misplaced="YES" id="GVP-xG-SWy">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="401"/>
+            <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="LRW-ny-GZy">
@@ -533,20 +532,20 @@
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Y2i-9B-MdF"/>
                 </imageView>
                 <scrollView focusRingType="none" misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="W7n-FV-8bC">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="401"/>
+                    <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" id="Rwp-YU-NI2">
-                        <rect key="frame" x="1" y="0.0" width="598" height="400"/>
+                        <rect key="frame" x="1" y="0.0" width="560" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="9cI-fV-lkC" id="cT7-vq-fW1">
-                                <rect key="frame" x="0.0" y="0.0" width="598" height="377"/>
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="9cI-fV-lkC" id="cT7-vq-fW1">
+                                <rect key="frame" x="0.0" y="0.0" width="560" height="377"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn editable="NO" width="528" minWidth="40" maxWidth="1000" id="joq-kC-yhk">
+                                    <tableColumn identifier="title" editable="NO" width="488" minWidth="40" maxWidth="1000" id="joq-kC-yhk">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -566,7 +565,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn editable="NO" width="62" minWidth="40" maxWidth="1000" id="JnK-HS-hqq">
+                                    <tableColumn identifier="type" editable="NO" width="66" minWidth="40" maxWidth="1000" id="JnK-HS-hqq">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Type">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -597,7 +596,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="e3R-LI-4WI">
-                        <rect key="frame" x="1" y="384" width="598" height="16"/>
+                        <rect key="frame" x="1" y="384" width="554" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7mJ-bX-1Ee">
@@ -605,12 +604,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="9cI-fV-lkC">
-                        <rect key="frame" x="0.0" y="0.0" width="598" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="560" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="358" y="579.5"/>
+            <point key="canvasLocation" x="96" y="783.5"/>
         </customView>
         <customView identifier="animeinfo" misplaced="YES" id="3ou-aw-dMd">
             <rect key="frame" x="0.0" y="0.0" width="759" height="464"/>
@@ -687,7 +686,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="8ui-Uk-bpi">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="0kX-gz-4uq">
                                         <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
@@ -722,7 +721,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="zGy-pl-wWj">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="1g6-do-AjF">
                                         <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
@@ -770,7 +769,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="DU4-6K-zkL">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
                                     <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="OwY-Mg-qpb">
                                         <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>

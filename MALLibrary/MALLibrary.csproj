@@ -136,6 +136,7 @@
       <DependentUpon>DonationWindowController.cs</DependentUpon>
     </Compile>
     <Compile Include="Donation.cs" />
+    <Compile Include="MyAnimeList.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainMenu.xib" />

@@ -14,6 +14,7 @@ namespace MALLibrary
 		DonationWindowController donationWindowController;
 		SUUpdater updater;
 		PreferencesController prefcontroller;
+		MyAnimeList malengine;
 		public AppDelegate()
 		{
 		}
@@ -22,8 +23,10 @@ namespace MALLibrary
 		}
 		public override void DidFinishLaunching(NSNotification notification)
 		{
+			malengine = new MyAnimeList();
 			this.performNoticeCheck();
 			mainWindowController = new MainWindowController();
+			mainWindowController.malengine = malengine;
 			mainWindowController.Window.MakeKeyAndOrderFront(this);
 			updater = new SUUpdater();
 			//Fix Icons to use as templates

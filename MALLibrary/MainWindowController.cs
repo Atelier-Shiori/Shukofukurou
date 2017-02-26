@@ -11,13 +11,15 @@ namespace MALLibrary
 {
 	public partial class MainWindowController : NSWindowController
 	{
-		RestClient client;
+		
 		int aniinfoid = 0;
 		NSDictionary currentaniinfo;
 		NSArray seasonindex;
+		public MyAnimeList malengine { get; set; }
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
+
 
 		[Export("initWithCoder:")]
 		public MainWindowController(NSCoder coder) : base(coder)
@@ -33,7 +35,7 @@ namespace MALLibrary
 			base.AwakeFromNib();
 			// Use Unified Toolbar Title Bar
 			base.Window.TitleVisibility = NSWindowTitleVisibility.Hidden;
-			base.Window.SetFrame(base.Window.Frame,true);
+			base.Window.SetFrame(base.Window.Frame, true);
 			// Set Main Views to be resizable
 			searchview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			listview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
@@ -42,19 +44,23 @@ namespace MALLibrary
 			seasonsview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			//Set up list view
 			sourcelist.Initialize();
+			generatesourcelist();
 
+		}
+		private void generatesourcelist()
+		{
 			var library = new SourceListItem("LIBRARY");
-			library.AddItem("Anime List", NSImage.ImageNamed("library"),this.loadmainview);
+			library.AddItem("Anime List", NSImage.ImageNamed("library"), this.loadmainview);
 			sourcelist.AddItem(library);
 			var discover = new SourceListItem("DISCOVER");
 			discover.AddItem("Search", NSImage.ImageNamed("search"), this.loadmainview);
-			discover.AddItem("Title Info", NSImage.ImageNamed("animeinfo"),this.loadmainview);
-			discover.AddItem("Seasons", NSImage.ImageNamed("seasons"),this.loadmainview);
+			discover.AddItem("Title Info", NSImage.ImageNamed("animeinfo"), this.loadmainview);
+			discover.AddItem("Seasons", NSImage.ImageNamed("seasons"), this.loadmainview);
 			sourcelist.AddItem(discover);
 
 			// Display side list
 			sourcelist.ReloadData();
-			sourcelist.ExpandItem(null,true);
+			sourcelist.ExpandItem(null, true);
 
 			// Retrieve last used main view
 			if (NSUserDefaults.StandardUserDefaults.ValueForKey(new NSString("selectedmainview")) != null)
@@ -66,11 +72,8 @@ namespace MALLibrary
 			{
 				sourcelist.SelectRow(1, false);
 			}
-			// Initalize RestClient
-			client = new RestClient("https://malapi.ateliershiori.moe/2.1/");
-			client.UserAgent = UserAgent.getUserAgent();
-
 		}
+
 		private void loadmainview()
 		{
 			// Loads the view based on the selection from the source list
@@ -237,11 +240,7 @@ namespace MALLibrary
 		}
 		private void performsearch(string term)
 		{
-			// Retrieves Search Data from Atarashii-API
-			RestRequest request = new RestRequest("anime/search", Method.GET);
-			request.AddParameter("q", term);
-
-			IRestResponse response = client.Execute(request);
+			IRestResponse response = malengine.search(term);
 			if (response.StatusCode.GetHashCode() == 200)
 			{
 				InvokeOnMainThread(() =>
@@ -298,9 +297,7 @@ namespace MALLibrary
 					loadingwheel.Hidden = false;
 					loadingwheel.StartAnimation(null);
 				});
-			RestRequest request = new RestRequest("anime/"+ id, Method.GET);
-
-			IRestResponse response = client.Execute(request);
+			IRestResponse response = malengine.loadanimeinfo(id);
 			if (response.StatusCode.GetHashCode() == 200)
 			{
 				// Deserialize data
@@ -356,7 +353,28 @@ namespace MALLibrary
 			}
 			NSNumber favoritedcount = (NSNumber)animedata.ValueForKey(new NSString("favorited_count"));
 			string detail = "Type: " + type + System.Environment.NewLine;
-			detail = detail + "Episodes: " + episodes.Int32Value + " (" + duration.Int32Value + " mins long per episode)" + System.Environment.NewLine;
+			if (episodes == null)
+			{
+				if (duration == null)
+				{
+					detail = detail + "Episodes: Unknown" + System.Environment.NewLine;
+
+				}
+				else {
+					detail = detail + "Episodes: Unknown (" + duration.Int32Value + " mins long per episode)" + System.Environment.NewLine;
+				}
+			}
+			else {
+				if (duration == null)
+				{
+					detail = detail + "Episodes: " + episodes.Int32Value + System.Environment.NewLine;
+
+				}
+				else {
+					detail = detail + "Episodes: " + episodes.Int32Value + " (" + duration.Int32Value + " mins long per episode)" + System.Environment.NewLine;
+
+				}
+			}
 			detail = detail + "Status: " + status + System.Environment.NewLine;
 			detail = detail + "Genres: " + genres + System.Environment.NewLine;
 			detail = detail + "Classification: " + classification + System.Environment.NewLine;

@@ -52,6 +52,10 @@ namespace MALLibrary
 				prefcontroller = new PreferencesController();
 				prefcontroller.setUpdater(updater);
 			}
+			if (prefcontroller.malengine == null)
+			{
+				prefcontroller.malengine = this.malengine;
+			}
 			prefcontroller.Window.MakeKeyAndOrderFront(prefcontroller.getWindow());
 
 		}

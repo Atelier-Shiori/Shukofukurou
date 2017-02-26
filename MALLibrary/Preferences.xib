@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesController">
             <connections>
+                <outlet property="appicon" destination="7e9-Dj-ChZ" id="N4W-bn-Thr"/>
                 <outlet property="generalpref" destination="BXD-xc-gcq" id="hNe-CD-Iet"/>
                 <outlet property="loginbut" destination="LZE-KK-Wy7" id="BBi-rQ-E58"/>
                 <outlet property="loginpref" destination="6fA-1D-Sm3" id="Poe-Nk-xfp"/>
@@ -15,11 +15,15 @@
                 <outlet property="logoutview" destination="McV-GT-5fp" id="YDg-CU-Yhw"/>
                 <outlet property="passwordfield" destination="Rwe-B2-WTm" id="8FO-wk-O8A"/>
                 <outlet property="prefview" destination="exV-4Z-BfO" id="pCR-Uk-4SB"/>
+                <outlet property="reauthlogin" destination="8RA-KE-N8A" id="cLF-eu-gRA"/>
+                <outlet property="reauthorizepanel" destination="lgO-LM-plH" id="7E3-nC-0fk"/>
+                <outlet property="reauthpassword" destination="feW-Wk-52m" id="zoE-5V-JYi"/>
                 <outlet property="toolbar" destination="RUS-vT-BUt" id="AtA-87-r14"/>
                 <outlet property="updatepref" destination="tzM-QX-TlX" id="uyx-1X-Htv"/>
                 <outlet property="usernamefield" destination="eTU-tE-QjK" id="Ekm-5p-JaL"/>
                 <outlet property="usernamelabel" destination="n6g-Eg-oXR" id="hdc-en-tZR"/>
                 <outlet property="w" destination="2" id="ST7-73-GWt"/>
+                <outlet property="warningicon" destination="usO-sK-rYR" id="SzW-gr-dfI"/>
                 <outlet property="window" destination="2" id="83l-88-kIu"/>
             </connections>
         </customObject>
@@ -73,7 +77,7 @@
             <rect key="frame" x="0.0" y="0.0" width="418" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VL-82-AgK">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0VL-82-AgK">
                     <rect key="frame" x="175" y="49" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="Wym-zG-mbY">
@@ -86,7 +90,7 @@
             <point key="canvasLocation" x="-55" y="424.5"/>
         </customView>
         <customView identifier="Login" id="6fA-1D-Sm3">
-            <rect key="frame" x="0.0" y="0.0" width="418" height="198"/>
+            <rect key="frame" x="0.0" y="0.0" width="419" height="312"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="McV-GT-5fp" userLabel="Logged in View">
@@ -209,6 +213,9 @@
                             <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iKb-nD-vVJ">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                             </buttonCell>
                             <connections>
                                 <action selector="login:" target="-2" id="6gD-aW-U43"/>
@@ -225,8 +232,13 @@
                         </textField>
                     </subviews>
                 </customView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7e9-Dj-ChZ">
+                    <rect key="frame" x="153" y="188" width="114" height="106"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSApplicationIcon" id="qmo-MU-CbH"/>
+                </imageView>
             </subviews>
-            <point key="canvasLocation" x="412" y="464"/>
+            <point key="canvasLocation" x="412" y="407"/>
         </customView>
         <customView id="tzM-QX-TlX">
             <rect key="frame" x="0.0" y="0.0" width="419" height="185"/>
@@ -315,8 +327,86 @@
             </subviews>
             <point key="canvasLocation" x="179.5" y="397.5"/>
         </customView>
+        <window title="Reauthorize" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="lgO-LM-plH">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="131" y="159" width="412" height="145"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="3mz-f4-bE1">
+                <rect key="frame" x="0.0" y="0.0" width="412" height="145"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sby-Do-FaX">
+                        <rect key="frame" x="18" y="99" width="390" height="34"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Please type your password for the account you are currently logged in to generate a new token." id="Daa-k5-ZVE">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OXd-QD-Pxo">
+                        <rect key="frame" x="30" y="61" width="105" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Password:" id="ckO-yB-nXT">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feW-Wk-52m">
+                        <rect key="frame" x="146" y="58" width="213" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="UER-0u-bkG">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <allowedInputSourceLocales>
+                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                            </allowedInputSourceLocales>
+                        </secureTextFieldCell>
+                    </secureTextField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8RA-KE-N8A">
+                        <rect key="frame" x="324" y="6" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6KC-tJ-CgY">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="performreauth:" target="-2" id="xvh-Vm-AIt"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q6V-3m-FwO">
+                        <rect key="frame" x="237" y="6" width="82" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XUR-Xt-chL">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="cancelreauth:" target="-2" id="NCg-z8-aOY"/>
+                        </connections>
+                    </button>
+                    <imageView hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usO-sK-rYR">
+                        <rect key="frame" x="364" y="54" width="28" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSInvalidDataFreestandingTemplate" id="P9X-0f-7IQ"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <point key="canvasLocation" x="187" y="-245.5"/>
+        </window>
     </objects>
     <resources>
+        <image name="NSApplicationIcon" width="128" height="128"/>
+        <image name="NSInvalidDataFreestandingTemplate" width="14" height="14"/>
         <image name="NSPreferencesGeneral" width="32" height="32"/>
         <image name="NSUser" width="32" height="32"/>
         <image name="updates" width="32" height="32"/>

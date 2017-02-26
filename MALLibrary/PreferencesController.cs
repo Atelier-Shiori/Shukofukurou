@@ -3,16 +3,16 @@
 using Foundation;
 using AppKit;
 using Sparkle;
-using RestSharp;
-using RestSharp.Authenticators;
 using Security;
+using RestSharp;
 using CoreGraphics;
-
+using System.Threading;
 namespace MALLibrary
 {
 	public partial class PreferencesController : NSWindowController
 	{
 		SUUpdater updater;
+		public MyAnimeList malengine { get; set; }
 		public void setUpdater(SUUpdater u)
 		{
 			// Point sparkle updater from app delegate so it can access the updater functions.
@@ -39,6 +39,14 @@ namespace MALLibrary
 		{
 			base.AwakeFromNib();
 			this.showpreferenceview();
+			var rec = Keychain.retrieveaccount();
+			if (rec != null)
+			{
+				logoutview.Hidden = false;
+				loginview.Hidden = true;
+				usernamelabel.StringValue = rec.Account;
+			}
+			appicon.Image = NSApplication.SharedApplication.ApplicationIconImage;
 		}
 		public void showpreferenceview()
 		{
@@ -83,7 +91,7 @@ namespace MALLibrary
 				case "Login":
 					w.Title = "Login";
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
-					vsize.Height = 198;
+					vsize.Height = 312;
 					vsize.Width = 419;
 					this.resizeWindowToView(vsize);
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], loginpref);
@@ -115,7 +123,7 @@ namespace MALLibrary
 		}
 		partial void gettingstarted(Foundation.NSObject sender)
 		{
-			this.OpenURL("https://github.com/chikorita157/mal-library/wiki/Getting-Started");
+			this.OpenURL("https://github.com/Atelier-Shiori/MALLibrary/wiki/Getting-Started");
 		}
 
 		partial void login(Foundation.NSObject sender)
@@ -123,35 +131,89 @@ namespace MALLibrary
 			if (usernamefield.StringValue.Length == 0 || passwordfield.StringValue.Length == 0)
 			{
 				this.showMessage("Username or Password missing.", "Please enter your username and password and try again.");
+				loginbut.KeyEquivalent = "\r";
 			}
 			else {
-				RestClient client = new RestClient("https://malapi.ateliershiori.moe/2.1/");
-				client.UserAgent = UserAgent.getUserAgent();
-				RestRequest request = new RestRequest("account/verify_credentials", Method.GET);
-				client.Authenticator = new HttpBasicAuthenticator(usernamefield.StringValue, passwordfield.StringValue);
-				IRestResponse response = client.Execute(request);
-				var content = response.Content; // raw content as string
-				if (response.StatusCode.GetHashCode() == 200)
-				{
-					this.showMessage("Login Successful", "Login is successful");
-
-				}
-				else
-				{
-					this.showMessage("MAL Library was unable to log you in since you don't have the correct username and/or password.", "Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again.");
-				}
-
+				string username = usernamefield.StringValue;
+				string password = passwordfield.StringValue;
+				Thread t = new Thread(() => performlogin(username, password));
+				loginbut.Enabled = false;
+				t.Start();
 			}
 		}
 
+		public void performlogin(string username, string password)
+		{
+			IRestResponse response = malengine.login(username, password);
+			var content = response.Content; // raw content as string
+			InvokeOnMainThread(() =>
+			{
+				loginbut.Enabled = true;
+				if (response.StatusCode.GetHashCode() == 200)
+				{
+					usernamelabel.StringValue = username;
+					logoutview.Hidden = false;
+					loginview.Hidden = true;
+					usernamefield.StringValue = "";
+					passwordfield.StringValue = "";
+					this.showMessage("Login Successful", "Login is successful");
+					bool success = Keychain.saveaccount(username, password);
+				}
+				else
+				{
+					logoutview.Hidden = true;
+					loginview.Hidden = false;
+					loginbut.KeyEquivalent = "\r";
+					this.showMessage("MAL Library was unable to log you in since you don't have the correct username and/or password.", "Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again.");
+				}
+			});
+		}
 		partial void logout(Foundation.NSObject sender)
 		{
+			NSAlert a = new NSAlert();
+			a.AddButton("Logout");
+			a.AddButton("Cancel");
+			a.MessageText = "Do you want to log out?";
+			a.InformativeText = "Once you logged out, you need to log back in before you can use this application.";
+			a.AlertStyle = NSAlertStyle.Informational;
+			long choice = a.RunSheetModal(this.w);
+			if (choice == (long)NSAlertButtonReturn.First)
+			{
+				var success = Keychain.removeaccount();
+				logoutview.Hidden = true;
+				loginview.Hidden = false;
+				loginbut.KeyEquivalent = "\r";
+			}
+
+	
 		}
 
 		partial void reauthorize(Foundation.NSObject sender)
 		{
+			NSApplication.SharedApplication.BeginSheet(reauthorizepanel, w);
 		}
+		partial void performreauth(Foundation.NSObject sender)
+		{
+			if (reauthpassword.StringValue.Length == 0)
+			{
+				warningicon.Hidden = false;
+				return;
+			}
+			string password = reauthpassword.StringValue;
+			reauthorizepanel.Close();
+			string username = usernamelabel.StringValue;
+			var success = Keychain.removeaccount();
+			if (success)
+			{
+				reauthpassword.StringValue = "";
+				Thread t = new Thread(() => performlogin(username, password));
+				t.Start();
+			}
+		}
+		partial void cancelreauth(Foundation.NSObject sender)
+		{
 
+		}
 		partial void registeraccount(Foundation.NSObject sender)
 		{
 			this.OpenURL("https://myanimelist.net/register.php");

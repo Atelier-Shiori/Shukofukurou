@@ -1,6 +1,6 @@
 // WARNING
 //
-// This file has been generated automatically by Visual Studio to store outlets and
+// This file has been generated automatically by Xamarin Studio to store outlets and
 // actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
@@ -12,6 +12,9 @@ namespace MALLibrary
 	[Register ("PreferencesController")]
 	partial class PreferencesController
 	{
+		[Outlet]
+		AppKit.NSImageView appicon { get; set; }
+
 		[Outlet]
 		AppKit.NSView generalpref { get; set; }
 
@@ -34,6 +37,12 @@ namespace MALLibrary
 		AppKit.NSView prefview { get; set; }
 
 		[Outlet]
+		AppKit.NSWindow reauthorizepanel { get; set; }
+
+		[Outlet]
+		AppKit.NSSecureTextField reauthpassword { get; set; }
+
+		[Outlet]
 		AppKit.NSToolbar toolbar { get; set; }
 
 		[Outlet]
@@ -47,6 +56,12 @@ namespace MALLibrary
 
 		[Outlet]
 		AppKit.NSWindow w { get; set; }
+
+		[Outlet]
+		AppKit.NSImageView warningicon { get; set; }
+
+		[Action ("cancelreauth:")]
+		partial void cancelreauth (Foundation.NSObject sender);
 
 		[Action ("changePref:")]
 		partial void changePref (Foundation.NSObject sender);
@@ -63,6 +78,9 @@ namespace MALLibrary
 		[Action ("logout:")]
 		partial void logout (Foundation.NSObject sender);
 
+		[Action ("performreauth:")]
+		partial void performreauth (Foundation.NSObject sender);
+
 		[Action ("reauthorize:")]
 		partial void reauthorize (Foundation.NSObject sender);
 
@@ -74,9 +92,24 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (updatepref != null) {
-				updatepref.Dispose ();
-				updatepref = null;
+			if (reauthorizepanel != null) {
+				reauthorizepanel.Dispose ();
+				reauthorizepanel = null;
+			}
+
+			if (reauthpassword != null) {
+				reauthpassword.Dispose ();
+				reauthpassword = null;
+			}
+
+			if (warningicon != null) {
+				warningicon.Dispose ();
+				warningicon = null;
+			}
+
+			if (appicon != null) {
+				appicon.Dispose ();
+				appicon = null;
 			}
 
 			if (generalpref != null) {
@@ -117,6 +150,11 @@ namespace MALLibrary
 			if (toolbar != null) {
 				toolbar.Dispose ();
 				toolbar = null;
+			}
+
+			if (updatepref != null) {
+				updatepref.Dispose ();
+				updatepref = null;
 			}
 
 			if (usernamefield != null) {

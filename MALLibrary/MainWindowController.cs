@@ -15,7 +15,6 @@ namespace MALLibrary
 		int aniinfoid = 0;
 		NSDictionary currentaniinfo;
 		NSArray seasonindex;
-		NSArray seasonsdata;
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -343,7 +342,7 @@ namespace MALLibrary
 			string genres = "None";
 			//Populate Genres
 			if (genrelist != null){
-				for (nuint i = 0; i > genrelist.Count; i++)
+				for (nuint i = 0; i <  genrelist.Count; i++)
 				{
 					if (i == 0)
 					{

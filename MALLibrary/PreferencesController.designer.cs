@@ -69,6 +69,9 @@ namespace MALLibrary
 		[Action ("checkforupdates:")]
 		partial void checkforupdates (Foundation.NSObject sender);
 
+		[Action ("clearimagecache:")]
+		partial void clearimagecache (Foundation.NSObject sender);
+
 		[Action ("gettingstarted:")]
 		partial void gettingstarted (Foundation.NSObject sender);
 
@@ -77,6 +80,9 @@ namespace MALLibrary
 
 		[Action ("logout:")]
 		partial void logout (Foundation.NSObject sender);
+
+		[Action ("performappearencechange:")]
+		partial void performappearencechange (Foundation.NSObject sender);
 
 		[Action ("performreauth:")]
 		partial void performreauth (Foundation.NSObject sender);
@@ -92,21 +98,6 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (reauthorizepanel != null) {
-				reauthorizepanel.Dispose ();
-				reauthorizepanel = null;
-			}
-
-			if (reauthpassword != null) {
-				reauthpassword.Dispose ();
-				reauthpassword = null;
-			}
-
-			if (warningicon != null) {
-				warningicon.Dispose ();
-				warningicon = null;
-			}
-
 			if (appicon != null) {
 				appicon.Dispose ();
 				appicon = null;
@@ -147,6 +138,16 @@ namespace MALLibrary
 				prefview = null;
 			}
 
+			if (reauthorizepanel != null) {
+				reauthorizepanel.Dispose ();
+				reauthorizepanel = null;
+			}
+
+			if (reauthpassword != null) {
+				reauthpassword.Dispose ();
+				reauthpassword = null;
+			}
+
 			if (toolbar != null) {
 				toolbar.Dispose ();
 				toolbar = null;
@@ -170,6 +171,11 @@ namespace MALLibrary
 			if (w != null) {
 				w.Dispose ();
 				w = null;
+			}
+
+			if (warningicon != null) {
+				warningicon.Dispose ();
+				warningicon = null;
 			}
 		}
 	}

@@ -52,6 +52,14 @@ namespace MALLibrary
 				return true;
 			}
 		}
-
+		public static bool checkacountexists()
+		{
+			var rec = retrieveaccount();
+			if (rec == null)
+			{
+				return false;
+			}
+			return true;
+		}
 	}
 }

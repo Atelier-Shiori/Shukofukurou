@@ -23,6 +23,7 @@ namespace MALLibrary
 		}
 		public override void DidFinishLaunching(NSNotification notification)
 		{
+			this.setdefaults();
 			malengine = new MyAnimeList();
 			this.performNoticeCheck();
 			mainWindowController = new MainWindowController();
@@ -35,8 +36,8 @@ namespace MALLibrary
 			{
 				NSImage.ImageNamed(images[i]).Template = true;
 			}
+			this.checkaccount();
 		}
-
 		public override void WillTerminate(NSNotification notification)
 		{
 			// Insert code here to tear down your application
@@ -47,6 +48,10 @@ namespace MALLibrary
 		}
 		partial void showpreferences(Foundation.NSObject sender)
 		{
+			this.showpreferences();
+		}
+		private void showpreferences()
+		{
 			if (prefcontroller == null)
 			{
 				prefcontroller = new PreferencesController();
@@ -56,8 +61,11 @@ namespace MALLibrary
 			{
 				prefcontroller.malengine = this.malengine;
 			}
+			if (prefcontroller.mainwindowcontrol== null)
+			{
+				prefcontroller.mainwindowcontrol = this.mainWindowController;
+			}
 			prefcontroller.Window.MakeKeyAndOrderFront(prefcontroller.getWindow());
-
 		}
 		partial void showdonationkeywin(Foundation.NSObject sender)
 		{
@@ -136,6 +144,35 @@ namespace MALLibrary
 				donationWindowController = new DonationWindowController();
 			}
 			donationWindowController.Window.MakeKeyAndOrderFront(this);
+		}
+		private void checkaccount()
+		{
+			if (Keychain.checkacountexists() == false)
+			{
+				NSAlert a = new NSAlert();
+				a.AddButton("Yes");
+				a.AddButton("No");
+				a.MessageText = "Welcome to MAL Library";
+				a.InformativeText = "To take full advantage of MAL Library you need to login. Do you want to open Preferences to log in now?" + System.Environment.NewLine + System.Environment.NewLine +
+					"Note that you do not need to login to use the explore features.";
+				a.AlertStyle = NSAlertStyle.Informational;
+				long choice = a.RunSheetModal(mainWindowController.Window);
+				if (choice == (long)NSAlertButtonReturn.First)
+				{
+					this.showpreferences();
+					prefcontroller.gotopreference("Login");
+
+				}
+			}
+		}
+		private void setdefaults()
+		{
+			// Sets default settings
+			NSMutableDictionary defaultvalues = new NSMutableDictionary();
+			defaultvalues.Add((NSString)"doubeclickaction", (NSString)"Edit Title");
+			defaultvalues.Add((NSString)"windowappearence", (NSString)"Light");
+			defaultvalues.Add((NSString)"selectedmainview", new NSNumber(0));
+			NSUserDefaults.StandardUserDefaults.RegisterDefaults(defaultvalues);
 		}
 	}
 }

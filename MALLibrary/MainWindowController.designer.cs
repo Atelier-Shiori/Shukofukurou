@@ -13,6 +13,18 @@ namespace MALLibrary
 	partial class MainWindowController
 	{
 		[Outlet]
+		AppKit.NSPopover addpopover { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField addpopoverepifield { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton addpopoverscore { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton addpopoverstatus { get; set; }
+
+		[Outlet]
 		AppKit.NSTextField alternativetitlelbl { get; set; }
 
 		[Outlet]
@@ -90,6 +102,9 @@ namespace MALLibrary
 		[Outlet]
 		AppKit.NSWindow w { get; set; }
 
+		[Action ("addpopoveraddtitle:")]
+		partial void addpopoveraddtitle (Foundation.NSObject sender);
+
 		[Action ("addtitle:")]
 		partial void addtitle (Foundation.NSObject sender);
 
@@ -134,6 +149,26 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (addpopover != null) {
+				addpopover.Dispose ();
+				addpopover = null;
+			}
+
+			if (addpopoverepifield != null) {
+				addpopoverepifield.Dispose ();
+				addpopoverepifield = null;
+			}
+
+			if (addpopoverscore != null) {
+				addpopoverscore.Dispose ();
+				addpopoverscore = null;
+			}
+
+			if (addpopoverstatus != null) {
+				addpopoverstatus.Dispose ();
+				addpopoverstatus = null;
+			}
+
 			if (alternativetitlelbl != null) {
 				alternativetitlelbl.Dispose ();
 				alternativetitlelbl = null;

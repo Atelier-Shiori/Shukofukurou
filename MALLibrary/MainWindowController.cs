@@ -36,6 +36,10 @@ namespace MALLibrary
 			// Use Unified Toolbar Title Bar
 			base.Window.TitleVisibility = NSWindowTitleVisibility.Hidden;
 			base.Window.SetFrame(base.Window.Frame, true);
+			// Fix TextView text color
+			backgroundtextview.TextColor = NSColor.ControlText;
+			detailstextview.TextColor = NSColor.ControlText;
+			synopsistextview.TextColor = NSColor.ControlText;
 			// Set Main Views to be resizable
 			searchview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			listview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
@@ -45,7 +49,7 @@ namespace MALLibrary
 			//Set up list view
 			sourcelist.Initialize();
 			generatesourcelist();
-
+			performappearencechange();
 		}
 		private void generatesourcelist()
 		{
@@ -164,7 +168,7 @@ namespace MALLibrary
 					toolbar.InsertItem("seasonselect",2);
 					if (seasonindex == null)
 					{
-						this.retrieveseasonindex();
+						this.retrieveseasonindex(false);
 					}
 					break;
 			}
@@ -206,9 +210,8 @@ namespace MALLibrary
 		}
 		partial void addtitle(Foundation.NSObject sender)
 		{
-			NSAlert a = new NSAlert();
-			a.MessageText = "Implement Add Title";
-			long l = a.RunModal();
+			NSButton btn = (NSButton)sender;
+			addpopover.Show(btn.Bounds, btn, NSRectEdge.MinYEdge);
 		}
 		partial void removetitle(Foundation.NSObject sender)
 		{
@@ -445,24 +448,20 @@ namespace MALLibrary
 		private void performseasonindexretrieval()
 		{
 			// Create Thread
-			Thread thread = new Thread(new ThreadStart(retrieveseasonindex));
+			Thread thread = new Thread(() => retrieveseasonindex(false));
 			// Perform Search
 			thread.Start();
 		}
-		private void retrieveseasonindex()
+		private void retrieveseasonindex(bool refreshindex)
 		{
-			// Retrieves Season Data from Repo
-			RestClient seasonclient = new RestClient("https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/");
-			seasonclient.UserAgent = UserAgent.getUserAgent();
-			RestRequest request = new RestRequest("index.json", Method.GET);
-
-			IRestResponse response = seasonclient.Execute(request);
-			if (response.StatusCode.GetHashCode() == 200)
+			// Retrieves Season Data 
+			string content = SupportFiles.retrieveSeasonIndex(refreshindex);
+			if (content.Length > 0)
 			{
 				InvokeOnMainThread(() =>
 				{
 					// Populate data in Search Table View
-					this.populateyearpopup(response.Content);
+					this.populateyearpopup(content);
 					seasonyrselect.SelectItem(seasonyrselect.ItemCount - 1); //Select current year;
 					this.populateseasonpopup((nuint)seasonyrselect.IndexOfSelectedItem);
 					if (seasonselect.ItemCount - 1 >= 0)
@@ -471,6 +470,11 @@ namespace MALLibrary
 					}
 					this.performseasondata();
 				});
+			}
+			else
+			{
+				seasonyrselect.RemoveAllItems();
+				seasonselect.RemoveAllItems();
 			}
 		}
 		private void populateyearpopup(string content)
@@ -515,28 +519,25 @@ namespace MALLibrary
 		{
 			// Retrieve JSON Season URL
 			NSDictionary d = seasonindex.GetItem<NSDictionary>((System.nuint)seasonyrselect.IndexOfSelectedItem);
+			string year = d.ValueForKey((NSString)"year").ToString();
 			NSArray a1 = (NSArray)d.ValueForKey((NSString)"seasons");
 			d = a1.GetItem<NSDictionary>((System.nuint)seasonselect.IndexOfSelectedItem);
-			string url = d.ValueForKey((NSString)"url").ToString();
+			string season = d.ValueForKey((NSString)"season").ToString();
 			// Create Thread
-			Thread thread = new Thread(() => this.loadseasondata(url));
+			Thread thread = new Thread(() => this.loadseasondata(season,year));
 			// Perform Search
 			thread.Start();
 		}
-		private void loadseasondata(string URL)
+		private void loadseasondata(string season, string year)
 		{
-			// Retrieves Season Data from Repo
-			RestClient seasonclient = new RestClient(URL);
-			seasonclient.UserAgent = UserAgent.getUserAgent();
-			RestRequest request = new RestRequest(Method.GET);
-
-			IRestResponse response = seasonclient.Execute(request);
-			if (response.StatusCode.GetHashCode() == 200)
+			// Retrieves Season Data 
+			string content = SupportFiles.retrievedataforyrseason(year, season, false);
+			if (content.Length > 0)
 			{
 				InvokeOnMainThread(() =>
 				{
 					// Populate data in Search Table View
-					this.performseasondatapop(response.Content);
+					this.performseasondatapop(content);
 				});
 			}
 		}
@@ -568,6 +569,24 @@ namespace MALLibrary
 		{
 			return Regex.Replace(input, "<.*?>", String.Empty);
 		}
+		public void performappearencechange()
+		{
+			string appearence = (NSString)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"windowappearence").ToString();
+			NSString appearencename = new NSString();
+			switch (appearence)
+			{
+				case "Light":
+					appearencename = NSAppearance.NameVibrantLight;
+					break;
+				case "Dark":
+					appearencename = NSAppearance.NameVibrantDark;
+					break;
 
+			}
+			w.Appearance = NSAppearance.GetAppearance(appearencename);
+			progressview.Appearance = NSAppearance.GetAppearance(appearencename);
+			animeinfoview.Appearance = NSAppearance.GetAppearance(appearencename);
+			base.Window.SetFrame(base.Window.Frame, true);
+		}
 	}
 }

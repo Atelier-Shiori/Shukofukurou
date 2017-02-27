@@ -13,6 +13,7 @@ namespace MALLibrary
 	{
 		SUUpdater updater;
 		public MyAnimeList malengine { get; set; }
+		public MainWindowController mainwindowcontrol { get; set; }
 		public void setUpdater(SUUpdater u)
 		{
 			// Point sparkle updater from app delegate so it can access the updater functions.
@@ -65,6 +66,14 @@ namespace MALLibrary
 			this.changepreferenceview();
 			//w.SetContentSize(generalpref.IntrinsicContentSize);
 		}
+		public void gotopreference(string preference)
+		{
+			if (toolbar.SelectedItemIdentifier != preference)
+			{
+				toolbar.SelectedItemIdentifier = preference;
+				this.changepreferenceview();
+			}
+		}
 		partial void changePref(Foundation.NSObject sender)
 		{
 			this.changepreferenceview();
@@ -82,7 +91,7 @@ namespace MALLibrary
 				case "General":
 					w.Title = "General";
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
-					vsize.Height = 120;
+					vsize.Height = 159;
 					vsize.Width = 419;
 					this.resizeWindowToView(generalpref.Frame.Size);
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], generalpref);
@@ -212,7 +221,7 @@ namespace MALLibrary
 		}
 		partial void cancelreauth(Foundation.NSObject sender)
 		{
-
+			reauthorizepanel.Close();
 		}
 		partial void registeraccount(Foundation.NSObject sender)
 		{
@@ -236,6 +245,14 @@ namespace MALLibrary
 		partial void checkforupdates(Foundation.NSObject sender)
 		{
 			updater.CheckForUpdates(sender);
+		}
+		partial void performappearencechange(Foundation.NSObject sender)
+		{
+			mainwindowcontrol.performappearencechange();
+		}
+		partial void clearimagecache(Foundation.NSObject sender)
+		{
+
 		}
 	}
 }

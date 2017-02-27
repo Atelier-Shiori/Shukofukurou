@@ -166,6 +166,7 @@ namespace MALLibrary
 					toolbar.InsertItem("AddTitle", 0);
 					toolbar.InsertItem("yearselect", 1);
 					toolbar.InsertItem("seasonselect",2);
+					toolbar.InsertItem("refresh", 3);
 					if (seasonindex == null)
 					{
 						this.retrieveseasonindex(false);
@@ -185,9 +186,15 @@ namespace MALLibrary
 		}
 		partial void performrefresh(Foundation.NSObject sender)
 		{
-			NSAlert a = new NSAlert();
-			a.MessageText = "Implement Refresh";
-			long l = a.RunModal();
+			var selecteditem = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
+			switch (selecteditem.Title)
+			{
+				case "Anime List":
+					return;
+				case "Seasons":
+					this.performseasondatarefresh();
+					break;
+			}
 		}
 		partial void opensharemenu(Foundation.NSObject sender)
 		{
@@ -328,7 +335,7 @@ namespace MALLibrary
 			// Populate Anime Information
 			animeinfotitle.StringValue = (NSString)animedata.ValueForKey(new NSString("title")).ToString();
 			alternativetitlelbl.StringValue = this.generatetitleslist(animedata);
-			NSImage img = new NSImage(new NSUrl((NSString)animedata.ValueForKey(new NSString("image_url"))));
+			NSImage img = SupportFiles.retrieveImage((NSString)animedata.ValueForKey(new NSString("image_url")),id);
 			posterimage.Image = img;
 			NSNumber rank = (NSNumber)animedata.ValueForKey(new NSString("rank"));
 			NSNumber popularityrank = (NSNumber)animedata.ValueForKey(new NSString("popularity_rank"));
@@ -445,6 +452,26 @@ namespace MALLibrary
 			return strtitles;
 		}
 		// Season View
+		private void performseasondatarefresh()
+		{
+			// Create Thread
+			Thread thread = new Thread(new ThreadStart(refreshseasondata));
+			// Perform Search
+			thread.Start();
+		}
+		private void refreshseasondata()
+		{
+			string content = SupportFiles.retrieveSeasonIndex(true);
+			if (content.Length > 0)
+			{
+				bool success = SupportFiles.retrieveallseasondata(true);
+				InvokeOnMainThread(() =>
+				{
+					// Refresh popup menus and populate season data
+					retrieveseasonindex(false);
+				});
+			}
+		}
 		private void performseasonindexretrieval()
 		{
 			// Create Thread
@@ -556,6 +583,7 @@ namespace MALLibrary
 			this.seasontb.ReloadData();
 			this.seasontb.DeselectAll(Self);
 		}
+
 		partial void seasontbdoubleclicked(Foundation.NSObject sender)
 		{
 			NSDictionary d = (NSDictionary)seasonarraycontroller.SelectedObjects[0];

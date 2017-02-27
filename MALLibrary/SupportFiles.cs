@@ -7,6 +7,43 @@ namespace MALLibrary
 {
 	public class SupportFiles
 	{
+		public static NSImage retrieveImage(string url, int id)
+		{
+			string path = SupportFiles.retrieveApplicationSupportDirectory("/imgcache/");
+			if (path.Length > 0)
+			{
+				string filepath = path + id + ".jpg";
+				if (File.Exists(filepath))
+				{
+					return new NSImage(filepath);
+				}
+				return SupportFiles.downloadImage(url,id);
+			}
+			return new NSImage();
+		}
+		public static NSImage downloadImage(string url, int id)
+		{
+			string path = SupportFiles.retrieveApplicationSupportDirectory("/imgcache/");
+			Uri uri = new Uri(url);
+			string filename = System.IO.Path.GetFileName(uri.AbsolutePath);
+			if (filename.Length > 0)
+			{
+				string imgfile = path + id + ".jpg";
+				using (var writer = File.OpenWrite(imgfile))
+				{
+					var client = new RestClient(url.Replace(filename,""));
+					client.UserAgent = UserAgent.getUserAgent();
+					var request = new RestRequest(filename);
+					request.ResponseWriter = (responseStream) => responseStream.CopyTo(writer);
+					var response = client.DownloadData(request);
+					if (File.Exists(imgfile))
+					{
+						return new NSImage(imgfile);
+					}
+				}
+			}
+			return new NSImage();
+		}
 		public static string retrieveSeasonIndex(bool replaceexisting)
 		{
 			if (replaceexisting == false)
@@ -94,8 +131,8 @@ namespace MALLibrary
 			if (response.StatusCode.GetHashCode() == 200)
 			{
 				string directory = SupportFiles.retrieveApplicationSupportDirectory("/seasondata/");
-				System.IO.File.WriteAllText(directory + year + " - " + season + ".json", response.Content);
-				return System.IO.File.ReadAllText(directory + year + " - " + season + ".json");
+				System.IO.File.WriteAllText(directory + year + "-" + season + ".json", response.Content);
+				return System.IO.File.ReadAllText(directory + year + "-" + season + ".json");
 			}
 			return "";
 		}

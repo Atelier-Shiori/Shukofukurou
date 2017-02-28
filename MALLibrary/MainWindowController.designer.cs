@@ -34,6 +34,12 @@ namespace MALLibrary
 		AppKit.NSView animeinfoview { get; set; }
 
 		[Outlet]
+		AppKit.NSArrayController animelistarraycontroller { get; set; }
+
+		[Outlet]
+		AppKit.NSTableView animetb { get; set; }
+
+		[Outlet]
 		AppKit.NSTextView backgroundtextview { get; set; }
 
 		[Outlet]
@@ -43,10 +49,31 @@ namespace MALLibrary
 		AppKit.NSSearchField Filter { get; set; }
 
 		[Outlet]
+		AppKit.NSButton filtercompleted { get; set; }
+
+		[Outlet]
+		AppKit.NSButton filterdropped { get; set; }
+
+		[Outlet]
+		AppKit.NSButton filteronhold { get; set; }
+
+		[Outlet]
+		AppKit.NSButton filterplantowatch { get; set; }
+
+		[Outlet]
+		AppKit.NSButton filterwatching { get; set; }
+
+		[Outlet]
+		AppKit.NSVisualEffectView listloggedoutview { get; set; }
+
+		[Outlet]
 		AppKit.NSView listview { get; set; }
 
 		[Outlet]
 		AppKit.NSProgressIndicator loadingwheel { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField loggedinuser { get; set; }
 
 		[Outlet]
 		AppKit.NSView mainview { get; set; }
@@ -94,9 +121,6 @@ namespace MALLibrary
 		AppKit.NSTextView synopsistextview { get; set; }
 
 		[Outlet]
-		AppKit.NSScrollView tableview { get; set; }
-
-		[Outlet]
 		AppKit.NSToolbar toolbar { get; set; }
 
 		[Outlet]
@@ -107,6 +131,9 @@ namespace MALLibrary
 
 		[Action ("addtitle:")]
 		partial void addtitle (Foundation.NSObject sender);
+
+		[Action ("animelistdoubleclick:")]
+		partial void animelistdoubleclick (Foundation.NSObject sender);
 
 		[Action ("edittitle:")]
 		partial void edittitle (Foundation.NSObject sender);
@@ -122,6 +149,9 @@ namespace MALLibrary
 
 		[Action ("performsearch:")]
 		partial void performsearch (Foundation.NSObject sender);
+
+		[Action ("performstatusfilter:")]
+		partial void performstatusfilter (Foundation.NSObject sender);
 
 		[Action ("removetitle:")]
 		partial void removetitle (Foundation.NSObject sender);
@@ -140,6 +170,9 @@ namespace MALLibrary
 
 		[Action ("selectmainview:")]
 		partial void selectmainview (Foundation.NSObject sender);
+
+		[Action ("viewloginpref:")]
+		partial void viewloginpref (Foundation.NSObject sender);
 
 		[Action ("viewonmal:")]
 		partial void viewonmal (Foundation.NSObject sender);
@@ -184,6 +217,16 @@ namespace MALLibrary
 				animeinfoview = null;
 			}
 
+			if (animelistarraycontroller != null) {
+				animelistarraycontroller.Dispose ();
+				animelistarraycontroller = null;
+			}
+
+			if (animetb != null) {
+				animetb.Dispose ();
+				animetb = null;
+			}
+
 			if (backgroundtextview != null) {
 				backgroundtextview.Dispose ();
 				backgroundtextview = null;
@@ -197,6 +240,36 @@ namespace MALLibrary
 			if (Filter != null) {
 				Filter.Dispose ();
 				Filter = null;
+			}
+
+			if (filtercompleted != null) {
+				filtercompleted.Dispose ();
+				filtercompleted = null;
+			}
+
+			if (filterdropped != null) {
+				filterdropped.Dispose ();
+				filterdropped = null;
+			}
+
+			if (filteronhold != null) {
+				filteronhold.Dispose ();
+				filteronhold = null;
+			}
+
+			if (filterplantowatch != null) {
+				filterplantowatch.Dispose ();
+				filterplantowatch = null;
+			}
+
+			if (filterwatching != null) {
+				filterwatching.Dispose ();
+				filterwatching = null;
+			}
+
+			if (listloggedoutview != null) {
+				listloggedoutview.Dispose ();
+				listloggedoutview = null;
 			}
 
 			if (listview != null) {
@@ -284,11 +357,6 @@ namespace MALLibrary
 				synopsistextview = null;
 			}
 
-			if (tableview != null) {
-				tableview.Dispose ();
-				tableview = null;
-			}
-
 			if (toolbar != null) {
 				toolbar.Dispose ();
 				toolbar = null;
@@ -297,6 +365,11 @@ namespace MALLibrary
 			if (w != null) {
 				w.Dispose ();
 				w = null;
+			}
+
+			if (loggedinuser != null) {
+				loggedinuser.Dispose ();
+				loggedinuser = null;
 			}
 		}
 	}

@@ -28,6 +28,7 @@ namespace MALLibrary
 			this.performNoticeCheck();
 			mainWindowController = new MainWindowController();
 			mainWindowController.malengine = malengine;
+			mainWindowController.appdel = this;
 			mainWindowController.Window.MakeKeyAndOrderFront(this);
 			updater = new SUUpdater();
 			//Fix Icons to use as templates
@@ -159,11 +160,15 @@ namespace MALLibrary
 				long choice = a.RunSheetModal(mainWindowController.Window);
 				if (choice == (long)NSAlertButtonReturn.First)
 				{
-					this.showpreferences();
-					prefcontroller.gotopreference("Login");
+					this.showloginprefs();
 
 				}
 			}
+		}
+		public void showloginprefs()
+		{
+			this.showpreferences();
+			prefcontroller.gotopreference("Login");
 		}
 		private void setdefaults()
 		{
@@ -171,7 +176,11 @@ namespace MALLibrary
 			NSMutableDictionary defaultvalues = new NSMutableDictionary();
 			defaultvalues.Add((NSString)"doubeclickaction", (NSString)"Edit Title");
 			defaultvalues.Add((NSString)"windowappearence", (NSString)"Light");
-			defaultvalues.Add((NSString)"selectedmainview", new NSNumber(0));
+			defaultvalues.Add((NSString)"filterwatching", new NSNumber(1));
+			defaultvalues.Add((NSString)"filtercompleted", new NSNumber(1));
+			defaultvalues.Add((NSString)"filteronhold", new NSNumber(1));
+			defaultvalues.Add((NSString)"filterdropped", new NSNumber(1));
+			defaultvalues.Add((NSString)"filterplantowatch", new NSNumber(1));
 			NSUserDefaults.StandardUserDefaults.RegisterDefaults(defaultvalues);
 		}
 	}

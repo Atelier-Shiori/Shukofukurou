@@ -2,10 +2,13 @@
 
 using Foundation;
 using AppKit;
+using ObjCRuntime;
 using CoreGraphics;
 using RestSharp;
 using System.Threading;
 using System.Text.RegularExpressions;
+using Security;
+using System.Collections.Generic;
 
 namespace MALLibrary
 {
@@ -16,6 +19,7 @@ namespace MALLibrary
 		NSDictionary currentaniinfo;
 		NSArray seasonindex;
 		public MyAnimeList malengine { get; set; }
+		public AppDelegate appdel{ get; set; }
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -46,10 +50,20 @@ namespace MALLibrary
 			animeinfoview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			progressview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			seasonsview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
+			listloggedoutview.AutoresizingMask = NSViewResizingMask.HeightSizable | NSViewResizingMask.WidthSizable;
 			//Set up list view
 			sourcelist.Initialize();
 			generatesourcelist();
 			performappearencechange();
+			//Load List
+			if (Keychain.checkacountexists() == true)
+			{
+				this.performloadlist(false);
+			}
+			else
+			{
+				loggedinuser.StringValue = "Not logged in";
+			}
 		}
 		private void generatesourcelist()
 		{
@@ -78,7 +92,7 @@ namespace MALLibrary
 			}
 		}
 
-		private void loadmainview()
+		public void loadmainview()
 		{
 			// Loads the view based on the selection from the source list
 			CGRect mainviewframe = mainview.Frame;
@@ -91,10 +105,19 @@ namespace MALLibrary
 			switch (selecteditem.Title)
 			{
 				case "Anime List":
-					mainview.ReplaceSubviewWith(mainview.Subviews[0], listview);
-					listview.Frame = mainviewframe;
-					listview.SetFrameOrigin(origin);
-					//toolbar.InsertItem("filter", 2);
+					if (Keychain.checkacountexists() == true)
+					{
+						mainview.ReplaceSubviewWith(mainview.Subviews[0], listview);
+						listview.Frame = mainviewframe;
+						listview.SetFrameOrigin(origin);
+
+					}
+					else
+					{
+						mainview.ReplaceSubviewWith(mainview.Subviews[0], listloggedoutview);
+						listloggedoutview.Frame = mainviewframe;
+						listloggedoutview.SetFrameOrigin(origin);
+					}
 				break;
 				case "Search":
 					mainview.ReplaceSubviewWith(mainview.Subviews[0], searchview);
@@ -143,10 +166,14 @@ namespace MALLibrary
 			switch (selecteditem.Title)
 			{
 				case "Anime List":
-					toolbar.InsertItem("refresh", 0);
-					toolbar.InsertItem("Share", 1);
-					toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 2);
-					toolbar.InsertItem("filter", 3);
+					if (Keychain.checkacountexists() == true)
+					{
+						toolbar.InsertItem("edit", 0);
+						toolbar.InsertItem("refresh", 1);
+						toolbar.InsertItem("Share", 2);
+						toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 3);
+						toolbar.InsertItem("filter", 4);
+					}
 					break;
 				case "Search":
 					toolbar.InsertItem("AddTitle", 0);
@@ -156,9 +183,8 @@ namespace MALLibrary
 				case "Title Info":
 					if (aniinfoid != 0)
 					{
-						
-							toolbar.InsertItem("AddTitle", 0);
-							toolbar.InsertItem("viewonmal", 1);
+						toolbar.InsertItem("AddTitle", 0);
+						toolbar.InsertItem("viewonmal", 1);
 						toolbar.InsertItem("Share", 2);
 					}
 					break;
@@ -182,7 +208,7 @@ namespace MALLibrary
 		// Toolbar Functions
 		partial void performfilter(Foundation.NSObject sender)
 		{
-
+			this.filterlist();
 		}
 		partial void performrefresh(Foundation.NSObject sender)
 		{
@@ -190,6 +216,7 @@ namespace MALLibrary
 			switch (selecteditem.Title)
 			{
 				case "Anime List":
+					this.performloadlist(true);
 					return;
 				case "Seasons":
 					this.performseasondatarefresh();
@@ -237,6 +264,180 @@ namespace MALLibrary
 			// Opens the anime title's page on MyAnimeList
 			NSUrl link = new NSUrl("https://myanimelist.net/anime/" + aniinfoid);
 			NSWorkspace.SharedWorkspace.OpenUrl(link);
+		}
+		// Anime List View
+		public void performloadlist(bool refresh)
+		{
+			var account = Keychain.retrieveaccount();
+			string username = account.Account;
+			Thread t = new Thread(() => loadlist(refresh,username));
+			t.Start();
+		}
+		public void loadlist(bool refresh, string username)
+		{
+			string content = malengine.loadanimeList(username, refresh);
+			if (content.Length > 0)
+			{
+				InvokeOnMainThread(() =>
+				{
+					loggedinuser.StringValue = "Logged in as " + username;
+					// Populate data in list view
+					this.populateanimelist(content);
+				});
+			}
+		}
+		private void populateanimelist(string content)
+		{
+			// Populates list data from JSON
+			NSMutableArray a = (NSMutableArray)this.animelistarraycontroller.Content;
+			a.RemoveAllObjects();
+			// Deserialize JSON
+			NSData data = NSData.FromString(content);
+			NSError e;
+			NSDictionary adata = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
+			NSArray alist = (NSArray)adata.ValueForKey((NSString)"anime");
+			// Populate counts for status filters
+			this.countstatus(alist);
+			// Populate Table View
+			this.animelistarraycontroller.AddObjects(alist);
+			this.animetb.ReloadData();
+			this.animetb.DeselectAll(Self);
+			//Filter List
+			this.filterlist();
+		}
+		public void clearanimelist()
+		{
+			//When user is logged out
+			NSMutableArray a = (NSMutableArray)this.animelistarraycontroller.Content;
+			a.RemoveAllObjects();
+			loggedinuser.StringValue = "Not logged in";
+			var selected = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
+			if (selected.Title == "Anime List")
+			{
+				this.loadmainview();
+			}
+		}
+		private void filterlist()
+		{
+			string finalpredicate = "";
+			List<string> predicates = new List<string>();
+			if (Filter.StringValue.Length > 0)
+			{
+				predicates.Add("(title CONTAINS[cd] %@)");
+			
+			}
+			List<string> statuses = new List<string>();
+			for (int i = 0; i < 5; i++)
+			{
+				string status = "";
+				int state = 0;
+				switch (i)
+				{
+					case 0:
+						status = "watching";
+						state = filterwatching.State.GetHashCode();
+						break;
+						case 1:
+						status = "completed";
+						state = filtercompleted.State.GetHashCode();
+						break;
+						case 2:
+						status = "on-hold";
+						state = filteronhold.State.GetHashCode();
+						break;
+						case 3:
+						status = "dropped";
+						state = filterdropped.State.GetHashCode();
+						break;
+						case 4:
+						status = "plan to watch";
+						state = filterplantowatch.State.GetHashCode();
+						break;
+				}
+				if (state == 1)
+				{
+					statuses.Add(status);//("watched_status ==[c] %@");
+				}
+			}
+			List<NSObject> objects = new List<NSObject>();
+			//NSObject[] objects = new NSObject[filterobjects];
+			if (predicates.Count + statuses.Count> 0)
+			{
+				if (Filter.StringValue.Length > 0)
+				{
+					objects.Add((NSString)Filter.StringValue);
+					finalpredicate = predicates[0];
+				}
+				for (int i = 0; i < statuses.Count; i++)
+				{
+					objects.Add((NSString)statuses[i]);
+					predicates.Add((NSString)"watched_status ==[c] %@");
+				}
+				for (int i = 0; i < predicates.Count; i++)
+				{
+					if (Filter.StringValue.Length > 0 && i == 0)
+					{
+						if (i == 0)
+						{
+							finalpredicate = finalpredicate + " AND (" + predicates[i + 1];
+						}
+						else if (i < predicates.Count - 1)
+						{
+							finalpredicate = finalpredicate + " OR " + predicates[i + 1];
+						}
+						else
+						{
+							finalpredicate = finalpredicate + " OR " + predicates[i + 1] +")";
+						}
+					}
+					else
+					{
+						if (i == 0)
+						{
+							finalpredicate = predicates[i];
+						}
+						else 
+						{
+							finalpredicate = finalpredicate + " OR " + predicates[i];
+						}
+					}
+				}
+				NSPredicate predicate = NSPredicate.FromFormat(finalpredicate, objects.ToArray());
+				animelistarraycontroller.FilterPredicate = predicate;
+			}
+			else
+			{
+				NSPredicate predicate = NSPredicate.FromFormat((NSString)"watch_status == %@", (NSString)"none");
+				animelistarraycontroller.FilterPredicate = predicate;
+			}
+		}
+		partial void performstatusfilter(Foundation.NSObject sender)
+		{
+			filterlist();
+
+		}
+		private void countstatus(NSArray a)
+		{
+			int watching = this.countstatus(a, "watching");
+			int completed = this.countstatus(a, "completed");
+			int onhold = this.countstatus(a, "on-hold");
+			int plantowatch = this.countstatus(a, "plan to watch");
+			int dropped = this.countstatus(a, "dropped");
+			// add item counts to filter buttons
+			filterwatching.Title = "Watching (" + watching + ")";
+			filtercompleted.Title = "Completed (" +completed + ")";
+			filteronhold.Title = "On-hold (" + onhold + ")";
+			filterdropped.Title = "Dropped (" + dropped + ")";
+			filterplantowatch.Title = "Plan to watch (" + plantowatch + ")";
+		}
+		private int countstatus(NSArray a, string status)
+		{
+			NSObject[] objects = new NSObject[1];
+			string filterfield = "(watched_status ==[c] %@)";
+			objects[0] = (NSString)status;
+			NSPredicate predicate = NSPredicate.FromFormat(filterfield, objects);
+			a = a.Filter(predicate);
+			return (int)a.Count;
 		}
 		// Searchview
 		partial void performsearch(Foundation.NSObject sender)
@@ -614,7 +815,12 @@ namespace MALLibrary
 			w.Appearance = NSAppearance.GetAppearance(appearencename);
 			progressview.Appearance = NSAppearance.GetAppearance(appearencename);
 			animeinfoview.Appearance = NSAppearance.GetAppearance(appearencename);
+			listloggedoutview.Appearance = NSAppearance.GetAppearance(appearencename);
 			base.Window.SetFrame(base.Window.Frame, true);
+		}
+		partial void viewloginpref(Foundation.NSObject sender)
+		{
+			appdel.showloginprefs();
 		}
 	}
 }

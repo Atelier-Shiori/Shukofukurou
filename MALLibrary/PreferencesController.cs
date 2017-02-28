@@ -7,6 +7,7 @@ using Security;
 using RestSharp;
 using CoreGraphics;
 using System.Threading;
+using System.IO;
 namespace MALLibrary
 {
 	public partial class PreferencesController : NSWindowController
@@ -167,6 +168,8 @@ namespace MALLibrary
 					passwordfield.StringValue = "";
 					this.showMessage("Login Successful", "Login is successful");
 					bool success = Keychain.saveaccount(username, password);
+					mainwindowcontrol.performloadlist(true);
+					mainwindowcontrol.loadmainview();
 				}
 				else
 				{
@@ -188,10 +191,12 @@ namespace MALLibrary
 			long choice = a.RunSheetModal(this.w);
 			if (choice == (long)NSAlertButtonReturn.First)
 			{
+				File.Delete(SupportFiles.retrieveApplicationSupportDirectory() + "list-" + usernamelabel.StringValue + ".json");
 				var success = Keychain.removeaccount();
 				logoutview.Hidden = true;
 				loginview.Hidden = false;
 				loginbut.KeyEquivalent = "\r";
+				mainwindowcontrol.clearanimelist();
 			}
 
 	
@@ -252,6 +257,22 @@ namespace MALLibrary
 		}
 		partial void clearimagecache(Foundation.NSObject sender)
 		{
+			// Prompt to remove images from cache
+			NSAlert a = new NSAlert();
+			a.AddButton("Clear");
+			a.AddButton("Cancel");
+			a.MessageText = "Do you really want to clear the image cache?";
+			a.InformativeText = "Once done, this cannot be undone.";
+			a.AlertStyle = NSAlertStyle.Informational;
+			long choice = a.RunSheetModal(this.w);
+			if (choice == (long)NSAlertButtonReturn.First)
+			{
+				string path = SupportFiles.retrieveApplicationSupportDirectory("/imgcache/");
+				if (Directory.Exists(path)){
+					// Remove images
+					Array.ForEach(Directory.GetFiles(path), File.Delete);
+				}
+			}
 
 		}
 	}

@@ -5,6 +5,7 @@ using AppKit;
 using RestSharp;
 using RestSharp.Authenticators;
 using System.Threading;
+using System.IO;
 namespace MALLibrary
 {
 	public class MyAnimeList
@@ -32,11 +33,35 @@ namespace MALLibrary
 			IRestResponse response = client.Execute(request);
 			return response;
 		}
-		public IRestResponse loadanimeinfo(int i){
+		public IRestResponse loadanimeinfo(int i)
+		{
 			// Loads Anime Information from Atarashii-API
 			RestRequest request = new RestRequest("anime/" + i, Method.GET);
 			IRestResponse response = client.Execute(request);
 			return response;
+		}
+		public string loadanimeList(string username, bool refreshlist)
+		{
+			string path = SupportFiles.retrieveApplicationSupportDirectory();
+			if (refreshlist == true || File.Exists(path + "/list-" + username + ".json") == false)
+			{
+				return retrievelist(username);
+			}
+			return System.IO.File.ReadAllText(path + "/list-" + username + ".json");
+		}
+		public string retrievelist(string username)
+		{
+			RestRequest request = new RestRequest("animelist/"+username, Method.GET);
+
+			IRestResponse response = client.Execute(request);
+			if (response.StatusCode.GetHashCode() == 200)
+			{
+				string directory = SupportFiles.retrieveApplicationSupportDirectory("/");
+				System.IO.File.WriteAllText(directory + "list-"+ username + ".json", response.Content);
+				return System.IO.File.ReadAllText(directory + "list-" + username + ".json");
+			}
+			return "";
+
 		}
 	}
 }

@@ -20,6 +20,7 @@ namespace MALLibrary
 		NSArray seasonindex;
 		public MyAnimeList malengine { get; set; }
 		public AppDelegate appdel{ get; set; }
+		int selectedlisteditid = 9;
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -168,28 +169,29 @@ namespace MALLibrary
 				case "Anime List":
 					if (Keychain.checkacountexists() == true)
 					{
-						toolbar.InsertItem("edit", 0);
-						toolbar.InsertItem("refresh", 1);
-						toolbar.InsertItem("Share", 2);
-						toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 3);
-						toolbar.InsertItem("filter", 4);
+						toolbar.InsertItem("editList", 0);
+						toolbar.InsertItem("DeleteTitle", 1);
+						toolbar.InsertItem("refresh", 2);
+						toolbar.InsertItem("ShareList", 3);
+						toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 4);
+						toolbar.InsertItem("filter", 5);
 					}
 					break;
 				case "Search":
-					toolbar.InsertItem("AddTitle", 0);
+					toolbar.InsertItem("AddTitleSearch", 0);
 					toolbar.InsertItem("NSToolbarFlexibleSpaceItem", 1);
 					toolbar.InsertItem("search", 2);
 					break;
 				case "Title Info":
 					if (aniinfoid != 0)
 					{
-						toolbar.InsertItem("AddTitle", 0);
+						toolbar.InsertItem("AddTitleInfo", 0);
 						toolbar.InsertItem("viewonmal", 1);
-						toolbar.InsertItem("Share", 2);
+						toolbar.InsertItem("ShareInfo", 2);
 					}
 					break;
 				case "Seasons":
-					toolbar.InsertItem("AddTitle", 0);
+					toolbar.InsertItem("AddTitleSeason", 0);
 					toolbar.InsertItem("yearselect", 1);
 					toolbar.InsertItem("seasonselect",2);
 					toolbar.InsertItem("refresh", 3);
@@ -255,9 +257,16 @@ namespace MALLibrary
 		}
 		partial void edittitle(Foundation.NSObject sender)
 		{
-			NSAlert a = new NSAlert();
-			a.MessageText = "Implement Edit Title";
-			long l = a.RunModal();
+			// Shows edit popup;
+			var selecteditem = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
+			switch (selecteditem.Title)
+			{
+				case "Anime List":
+					showminieditpopup();
+					return;
+				case "Title Info":
+					break;
+			}
 		}
 		partial void viewonmal(Foundation.NSObject sender)
 		{
@@ -439,6 +448,108 @@ namespace MALLibrary
 			a = a.Filter(predicate);
 			return (int)a.Count;
 		}
+		partial void animelistdoubleclick(Foundation.NSObject sender)
+		{
+			if (animetb.ClickedRow >= 0)
+			{
+				if ((int)animelistarraycontroller.SelectionIndex >= -1)
+				{
+					NSString animelistaction = (NSString)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"doubeclickaction").ToString();
+					switch (animelistaction)
+					{
+						case "Do Nothing":
+							break;
+						case "View Anime Info":
+							// Loads Anime Information
+							this.listtableclick();
+							break;
+						case "Modify Title":
+							this.showminieditpopup();
+							break;
+					}
+				}
+			}
+		}
+		private void showminieditpopup()
+		{
+			NSDictionary d = (NSDictionary)animelistarraycontroller.SelectedObjects[0];
+			NSNumber id = (NSNumber)d.ValueForKey((NSString)"id");
+			minipopupeepi.StringValue = (NSString)d.ValueForKey((NSString)"watched_episodes").ToString();
+			NSNumber episodes = (NSNumber)d.ValueForKey((NSString)"episodes");
+			if (episodes.Int16Value > 0)
+			{
+				minipopupepiformat.Maximum = episodes;
+			}
+			else
+			{
+				minipopupepiformat.Maximum = null;
+			}
+			minipopuptotalepi.StringValue = episodes.ToString();
+			minipopupstatus.Title = (NSString)d.ValueForKey((NSString)"watched_status").ToString();
+			NSNumber score = (NSNumber)d.ValueForKey((NSString)"score");
+			minipopupscore.SelectItemWithTag(score.NIntValue);
+			selectedlisteditid = id.Int32Value;
+			minipopupprogressindicatoor.Hidden = true;
+			minipopupeditstatus.Hidden = true;
+			minieditpopover.Show(animetb.GetCellFrame(0, animetb.SelectedRow), animetb, 0);
+		}
+		public void listtableclick()
+		{
+			NSDictionary d = (NSDictionary)animelistarraycontroller.SelectedObjects[0];
+			NSNumber idnum = (NSNumber)d.ValueForKey(new NSString("id"));
+
+			Thread t = new Thread((obj) => loadAnimeInfo(idnum.Int32Value));
+			t.Start();
+		}
+		partial void performeditminipopover(Foundation.NSObject sender)
+		{
+			// Set UI
+			minipopupprogressindicatoor.StartAnimation(sender);
+			minipopupprogressindicatoor.Hidden = false;
+			minieditpopover.Behavior = NSPopoverBehavior.ApplicationDefined;
+			// Validate update data
+			if (minipopupeepi.StringValue == minipopuptotalepi.StringValue && minipopupstatus.Title != "completed")
+			{
+				minipopupstatus.Title = "completed";
+			}
+			// Set Values to pass
+			string status = minipopupstatus.Title;
+			string episode = minipopupeepi.StringValue;
+			int score = (int)minipopupscore.Tag;
+			Thread t = new Thread(() => editminipopover(selectedlisteditid,episode,status,score));;
+			t.Start();
+
+		}
+		private void editminipopover(int id, string epi, string status, int score)
+		{
+			IRestResponse response = malengine.updatetitle(id,epi,status,score);
+			if (response.StatusCode.GetHashCode() == 200)
+			{
+				// Refresh List
+				this.performloadlist(true);
+				InvokeOnMainThread(() =>
+				{
+					// UI
+					minipopupprogressindicatoor.Hidden = true;
+					minipopupeditstatus.Hidden = true;;
+					// Apply Filters
+					this.filterlist();
+					minieditpopover.Behavior = NSPopoverBehavior.Transient;
+					minieditpopover.Close();
+				});
+			}
+			else
+			{
+				InvokeOnMainThread(() =>
+				{
+					// Apply Filters
+					minipopupprogressindicatoor.Hidden = true;;
+					minipopupeditstatus.Hidden = false;
+					minipopupeditstatus.StringValue = "Update failed.";
+					minieditpopover.Behavior = NSPopoverBehavior.Transient;
+				});
+			}
+		}
 		// Searchview
 		partial void performsearch(Foundation.NSObject sender)
 		{
@@ -461,6 +572,7 @@ namespace MALLibrary
 				});
 			}
 		}
+
 		private void loadsearchdata(String content)
 		{
 			// Populates search data from JSON
@@ -766,7 +878,7 @@ namespace MALLibrary
 				{
 					// Populate data in Search Table View
 					this.performseasondatapop(content);
-				});
+					});
 			}
 		}
 		private void performseasondatapop(string Content)

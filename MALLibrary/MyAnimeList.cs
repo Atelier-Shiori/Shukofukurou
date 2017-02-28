@@ -6,6 +6,7 @@ using RestSharp;
 using RestSharp.Authenticators;
 using System.Threading;
 using System.IO;
+using Security;
 namespace MALLibrary
 {
 	public class MyAnimeList
@@ -21,6 +22,17 @@ namespace MALLibrary
 		{
 			RestRequest request = new RestRequest("account/verify_credentials", Method.GET);
 			client.Authenticator = new HttpBasicAuthenticator(username, password);
+			IRestResponse response = client.Execute(request);
+			return response;
+		}
+		public IRestResponse updatetitle(int id, string episode, string status, int score)
+		{
+			RestRequest request = new RestRequest("animelist/anime/"+id, Method.PUT);
+			SecRecord account = Keychain.retrieveaccount();
+			client.Authenticator = new HttpBasicAuthenticator(account.Account, account.Generic.ToString());
+			request.AddParameter("episodes", episode);
+			request.AddParameter("status", status);
+			request.AddParameter("score", score);
 			IRestResponse response = client.Execute(request);
 			return response;
 		}

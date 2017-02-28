@@ -9,7 +9,7 @@ namespace MALLibrary
 	{
 		public static NSImage retrieveImage(string url, int id)
 		{
-			string path = SupportFiles.retrieveApplicationSupportDirectory("/imgcache/");
+			string path = retrieveApplicationSupportDirectory("/imgcache/");
 			if (path.Length > 0)
 			{
 				string filepath = path + id + ".jpg";
@@ -17,15 +17,15 @@ namespace MALLibrary
 				{
 					return new NSImage(filepath);
 				}
-				return SupportFiles.downloadImage(url,id);
+				return downloadImage(url,id);
 			}
 			return new NSImage();
 		}
 		public static NSImage downloadImage(string url, int id)
 		{
-			string path = SupportFiles.retrieveApplicationSupportDirectory("/imgcache/");
+			string path = retrieveApplicationSupportDirectory("/imgcache/");
 			Uri uri = new Uri(url);
-			string filename = System.IO.Path.GetFileName(uri.AbsolutePath);
+			string filename = Path.GetFileName(uri.AbsolutePath);
 			if (filename.Length > 0)
 			{
 				string imgfile = path + id + ".jpg";
@@ -48,18 +48,18 @@ namespace MALLibrary
 		{
 			if (replaceexisting == false)
 			{
-				string path = SupportFiles.retrieveApplicationSupportDirectory("/seasondata/");
+				string path = retrieveApplicationSupportDirectory("/seasondata/");
 				if (path.Length > 0)
 				{
 					string filepath = path + "index.json";
 					if (File.Exists(filepath))
 					{
-						return System.IO.File.ReadAllText(filepath);
+						return File.ReadAllText(filepath);
 					}
-					return SupportFiles.downloadseasonindex();;
+					return downloadseasonindex();;
 				}
 			}
-			return SupportFiles.downloadseasonindex();
+			return downloadseasonindex();
 		}
 		public static string downloadseasonindex()
 		{
@@ -71,18 +71,18 @@ namespace MALLibrary
 			IRestResponse response = seasonclient.Execute(request);
 			if (response.StatusCode.GetHashCode() == 200)
 			{
-				string directory = SupportFiles.retrieveApplicationSupportDirectory("/seasondata/");
-				System.IO.File.WriteAllText(directory + "index.json", response.Content);
-				return System.IO.File.ReadAllText(directory + "index.json");
+				string directory = retrieveApplicationSupportDirectory("/seasondata/");
+				File.WriteAllText(directory + "index.json", response.Content);
+				return File.ReadAllText(directory + "index.json");
 			}
 			return "";
 		}
 		public static string retrievedataforyrseason(string year, string season, bool replaceexisting)
 		{
-			string path = SupportFiles.retrieveApplicationSupportDirectory("/seasondata/");
+			string path = retrieveApplicationSupportDirectory("/seasondata/");
 			if (File.Exists(path + year + "-" + season + ".json") == false || replaceexisting == true)
 			{
-				string content = SupportFiles.downloadseasondata(year, season);
+				string content = downloadseasondata(year, season);
 				if (content.Length == 0)
 				{
 					// Download error, fail
@@ -90,12 +90,12 @@ namespace MALLibrary
 				}
 				return content;
 			}
-			return System.IO.File.ReadAllText(path + year + "-" + season + ".json");
+			return File.ReadAllText(path + year + "-" + season + ".json");
 		}
 		public static bool retrieveallseasondata(bool replaceexisting)
 		{
-			string path = SupportFiles.retrieveApplicationSupportDirectory("/seasondata/");
-			NSData data = NSData.FromString(SupportFiles.retrieveSeasonIndex(false));
+			string path = retrieveApplicationSupportDirectory("/seasondata/");
+			NSData data = NSData.FromString(retrieveSeasonIndex(false));
 			NSError e;
 			NSDictionary d = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
 			NSArray seasonindex = (NSArray)d.ValueForKey(new NSString("years"));
@@ -109,7 +109,7 @@ namespace MALLibrary
 					NSDictionary sd = seasons.GetItem<NSDictionary>(s);
 					string seasonname = (NSString)sd.ValueForKey(new NSString("season")).ToString();
 					if (File.Exists(path + year + "-" + seasonname + ".json") == false || replaceexisting == true){
-						string content = SupportFiles.downloadseasondata(year, seasonname);
+						string content = downloadseasondata(year, seasonname);
 						if (content.Length == 0)
 						{
 							// Download error, fail
@@ -130,9 +130,9 @@ namespace MALLibrary
 			IRestResponse response = seasonclient.Execute(request);
 			if (response.StatusCode.GetHashCode() == 200)
 			{
-				string directory = SupportFiles.retrieveApplicationSupportDirectory("/seasondata/");
-				System.IO.File.WriteAllText(directory + year + "-" + season + ".json", response.Content);
-				return System.IO.File.ReadAllText(directory + year + "-" + season + ".json");
+				string directory = retrieveApplicationSupportDirectory("/seasondata/");
+				File.WriteAllText(directory + year + "-" + season + ".json", response.Content);
+				return File.ReadAllText(directory + year + "-" + season + ".json");
 			}
 			return "";
 		}

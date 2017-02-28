@@ -138,6 +138,7 @@
     <Compile Include="Donation.cs" />
     <Compile Include="MyAnimeList.cs" />
     <Compile Include="SupportFiles.cs" />
+    <Compile Include="NSTextFieldNumOnly.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="MainMenu.xib" />

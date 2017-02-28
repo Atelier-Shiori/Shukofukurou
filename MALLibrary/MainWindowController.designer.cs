@@ -79,6 +79,36 @@ namespace MALLibrary
 		AppKit.NSView mainview { get; set; }
 
 		[Outlet]
+		AppKit.NSPopover minieditpopover { get; set; }
+
+		[Outlet]
+		AppKit.NSButton minieditpopoveredit { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField miniedittitle { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField minipopupeditstatus { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField minipopupeepi { get; set; }
+
+		[Outlet]
+		Foundation.NSNumberFormatter minipopupepiformat { get; set; }
+
+		[Outlet]
+		AppKit.NSProgressIndicator minipopupprogressindicatoor { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton minipopupscore { get; set; }
+
+		[Outlet]
+		AppKit.NSPopUpButton minipopupstatus { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField minipopuptotalepi { get; set; }
+
+		[Outlet]
 		AppKit.NSView noinfo { get; set; }
 
 		[Outlet]
@@ -141,6 +171,9 @@ namespace MALLibrary
 		[Action ("opensharemenu:")]
 		partial void opensharemenu (Foundation.NSObject sender);
 
+		[Action ("performeditminipopover:")]
+		partial void performeditminipopover (Foundation.NSObject sender);
+
 		[Action ("performfilter:")]
 		partial void performfilter (Foundation.NSObject sender);
 
@@ -182,9 +215,19 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (miniedittitle != null) {
+				miniedittitle.Dispose ();
+				miniedittitle = null;
+			}
+
 			if (addpopover != null) {
 				addpopover.Dispose ();
 				addpopover = null;
+			}
+
+			if (minieditpopoveredit != null) {
+				minieditpopoveredit.Dispose ();
+				minieditpopoveredit = null;
 			}
 
 			if (addpopoverepifield != null) {
@@ -282,9 +325,54 @@ namespace MALLibrary
 				loadingwheel = null;
 			}
 
+			if (loggedinuser != null) {
+				loggedinuser.Dispose ();
+				loggedinuser = null;
+			}
+
 			if (mainview != null) {
 				mainview.Dispose ();
 				mainview = null;
+			}
+
+			if (minieditpopover != null) {
+				minieditpopover.Dispose ();
+				minieditpopover = null;
+			}
+
+			if (minipopupeditstatus != null) {
+				minipopupeditstatus.Dispose ();
+				minipopupeditstatus = null;
+			}
+
+			if (minipopupeepi != null) {
+				minipopupeepi.Dispose ();
+				minipopupeepi = null;
+			}
+
+			if (minipopupepiformat != null) {
+				minipopupepiformat.Dispose ();
+				minipopupepiformat = null;
+			}
+
+			if (minipopupprogressindicatoor != null) {
+				minipopupprogressindicatoor.Dispose ();
+				minipopupprogressindicatoor = null;
+			}
+
+			if (minipopupscore != null) {
+				minipopupscore.Dispose ();
+				minipopupscore = null;
+			}
+
+			if (minipopupstatus != null) {
+				minipopupstatus.Dispose ();
+				minipopupstatus = null;
+			}
+
+			if (minipopuptotalepi != null) {
+				minipopuptotalepi.Dispose ();
+				minipopuptotalepi = null;
 			}
 
 			if (noinfo != null) {
@@ -365,11 +453,6 @@ namespace MALLibrary
 			if (w != null) {
 				w.Dispose ();
 				w = null;
-			}
-
-			if (loggedinuser != null) {
-				loggedinuser.Dispose ();
-				loggedinuser = null;
 			}
 		}
 	}

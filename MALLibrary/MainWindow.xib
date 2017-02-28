@@ -29,6 +29,16 @@
                 <outlet property="loadingwheel" destination="Cdj-67-oi0" id="jjp-vu-4zr"/>
                 <outlet property="loggedinuser" destination="ZQF-Ex-TaN" id="ajB-uy-ift"/>
                 <outlet property="mainview" destination="6qG-d4-wyX" id="1oR-1y-Qe7"/>
+                <outlet property="minieditpopover" destination="RHi-Vy-z8C" id="QP4-RR-IgB"/>
+                <outlet property="minieditpopoveredit" destination="qia-YK-CuK" id="ak5-oN-rQm"/>
+                <outlet property="miniedittitle" destination="i7G-Rn-LZm" id="mF3-9R-1GS"/>
+                <outlet property="minipopupeditstatus" destination="ZLV-4y-Q9b" id="oC2-xd-0iU"/>
+                <outlet property="minipopupeepi" destination="2SC-DW-SY8" id="Vri-s7-Stc"/>
+                <outlet property="minipopupepiformat" destination="x5m-c0-JGZ" id="myG-ma-E8o"/>
+                <outlet property="minipopupprogressindicatoor" destination="2ed-DB-T5o" id="Gxu-5k-7Yt"/>
+                <outlet property="minipopupscore" destination="zvD-07-5b1" id="FJu-0r-c19"/>
+                <outlet property="minipopupstatus" destination="Ne8-12-A1S" id="K01-ud-lRV"/>
+                <outlet property="minipopuptotalepi" destination="7SY-9N-oro" id="ztP-La-cVR"/>
                 <outlet property="noinfo" destination="y5z-kZ-03k" id="4yQ-0d-bdV"/>
                 <outlet property="posterimage" destination="aiB-f7-Pad" id="PLj-Jv-OfH"/>
                 <outlet property="progressview" destination="RJC-HU-bWa" id="lqC-t1-XYz"/>
@@ -186,7 +196,7 @@
                             <action selector="performrefresh:" target="-2" id="Aob-fc-nxr"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A33E4CD4-11F2-49A5-BDE7-9939070AF50A" explicitItemIdentifier="Share" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="aXV-VA-cEZ">
+                    <toolbarItem implicitItemIdentifier="A33E4CD4-11F2-49A5-BDE7-9939070AF50A" explicitItemIdentifier="ShareList" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="aXV-VA-cEZ">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="n3n-5g-Llv">
@@ -201,19 +211,55 @@
                             <action selector="opensharemenu:" target="-2" id="h2j-Lk-Gbx"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="ADAD3E13-BF63-4980-A5A3-0063AB6A9C29" explicitItemIdentifier="AddTitle" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="BQF-gq-k9k">
+                    <toolbarItem implicitItemIdentifier="2A6F2A04-5B6F-43F4-8E05-C85F9E36CA05" explicitItemIdentifier="AddTitleInfo" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="z6P-xx-ceR">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
-                        <button key="view" verticalHuggingPriority="750" id="qYd-0k-3zl">
+                        <button key="view" verticalHuggingPriority="750" id="kvU-8m-13Y">
                             <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ClY-eJ-b63">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="X9m-Rw-I9v">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
                         <connections>
-                            <action selector="addtitle:" target="-2" id="WVi-4G-P0i"/>
+                            <action selector="addtitle:" target="-2" id="Nwy-ed-3mp"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="00428A81-7FE0-4904-B3DC-6948A9D8068D" explicitItemIdentifier="AddTitleSeason" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="xEN-DM-CJv">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="Pgg-ib-e6P">
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7iQ-9g-8tZ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="cMx-hs-7a6" name="enabled" keyPath="selectedObjects.@count" id="ror-wO-50T"/>
+                            </connections>
+                        </button>
+                        <connections>
+                            <action selector="addtitle:" target="-2" id="zq5-aU-JnV"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="ED611BEF-97DF-46AC-8867-6338DF7BA8F2" explicitItemIdentifier="AddTitleSearch" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="gx6-Sg-qS4">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="coU-xS-m5L">
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="h9u-eO-OMl">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <binding destination="cMx-hs-7a6" name="enabled" keyPath="selectedObjects.@count" id="r4g-2p-0Os"/>
+                            </connections>
+                        </button>
+                        <connections>
+                            <action selector="addtitle:" target="-2" id="iWK-JB-Bwf"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="1018AB88-E852-402B-A971-9F17CFA4ECD8" explicitItemIdentifier="DeleteTitle" label="Delete Title" paletteLabel="Delete Title" toolTip="Delete Title" image="NSRemoveTemplate" id="i1C-aH-cA3">
@@ -226,6 +272,9 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="bEr-qq-7kA" name="enabled" keyPath="selectedObjects.@count" id="ENh-eE-Ay7"/>
+                            </connections>
                         </button>
                         <connections>
                             <action selector="removetitle:" target="-2" id="HYu-1Z-hlh"/>
@@ -265,7 +314,7 @@
                             </connections>
                         </searchField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="10ABA7C2-0587-4D3E-85FF-130C6769062A" explicitItemIdentifier="edit" label="Edit Title" paletteLabel="Edit Title" toolTip="Edit Title" image="Edit" id="c2Q-tf-fGS">
+                    <toolbarItem implicitItemIdentifier="10ABA7C2-0587-4D3E-85FF-130C6769062A" explicitItemIdentifier="editList" label="Edit Title" paletteLabel="Edit Title" toolTip="Edit Title" image="Edit" id="c2Q-tf-fGS">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="t22-9E-wFv">
@@ -278,6 +327,7 @@
                         </button>
                         <connections>
                             <action selector="edittitle:" target="-2" id="a74-ll-tP1"/>
+                            <binding destination="bEr-qq-7kA" name="enabled" keyPath="selectedObjects.@count" id="i9s-PQ-lmp"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="DA319A3B-571B-4206-918A-93C36AB7F87E" explicitItemIdentifier="viewonmal" label="View on MyAnimeList" paletteLabel="View on MyAnimeList" toolTip="View on MyAnimeList" image="Info" id="hVl-GO-tC0">
@@ -339,6 +389,52 @@
                             </connections>
                         </popUpButton>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="ACC99882-F760-40C4-91D3-7410B1EB0844" explicitItemIdentifier="editInfo" label="Edit Title" paletteLabel="Edit Title" toolTip="Edit Title" image="Edit" id="0fr-MG-v9m">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="DTW-Es-kC3">
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Edit" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lg4-B8-cb1">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="edittitle:" target="-2" id="9nm-ib-tlP"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="5E70E9D5-35C9-457C-B74F-FA5F9B319998" explicitItemIdentifier="ShareSearch" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="Dvk-Zx-nfv">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="QCe-4O-FbQ">
+                            <rect key="frame" x="1" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fL6-vw-1cf">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="opensharemenu:" target="-2" id="ciT-M6-xaj"/>
+                            <binding destination="jIW-aU-GF5" name="enabled" keyPath="selectedObjects.@count" id="zXL-Rs-5Vf"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="4E4297EE-120A-4784-92ED-C990D6DAA12D" explicitItemIdentifier="ShareInfo" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="Ryh-8Z-T3d">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="x1w-dG-GL7">
+                            <rect key="frame" x="1" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="taP-s9-paP">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="opensharemenu:" target="-2" id="l9d-Kk-YcC"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems/>
             </toolbar>
@@ -395,12 +491,12 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="bEr-qq-7kA" name="displayPatternValue1" keyPath="arrangedObjects.watched_episodes" id="7Zk-Rn-4Rg">
+                                            <binding destination="bEr-qq-7kA" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="7Zk-Rn-4Rg" id="MGw-Lb-Q3Y">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="bEr-qq-7kA" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="7Zk-Rn-4Rg" id="MGw-Lb-Q3Y">
+                                            <binding destination="bEr-qq-7kA" name="displayPatternValue1" keyPath="arrangedObjects.watched_episodes" id="7Zk-Rn-4Rg">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                                 </dictionary>
@@ -573,7 +669,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" id="SMz-KQ-h2h">
                         <rect key="frame" x="0.0" y="0.0" width="563" height="398"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="searchtb" headerView="QkN-mF-MNg" id="XpN-c0-PVU">
                                 <rect key="frame" x="0.0" y="0.0" width="626" height="375"/>
@@ -793,6 +889,9 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="iJo-oz-f1E" id="Szj-EH-hBr"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="usK-cb-wAD">
                     <rect key="frame" x="168" y="106" width="23" height="17"/>
@@ -894,7 +993,7 @@
                 <menuItem title="dropped" id="Js1-ZJ-zKV">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="plan-to-watch" id="VvL-Hk-PHk">
+                <menuItem title="plan to watch" id="VvL-Hk-PHk">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
@@ -1195,6 +1294,151 @@
             <point key="canvasLocation" x="93.5" y="1146"/>
         </visualEffectView>
         <userDefaultsController representsSharedInstance="YES" id="a6U-Xv-TXb"/>
+        <viewController id="8ol-5B-Rfv" userLabel="Mini EditPopover View Controller">
+            <connections>
+                <outlet property="view" destination="4dy-bQ-XEU" id="799-Gn-ExD"/>
+            </connections>
+        </viewController>
+        <popover appearance="vibrantLight" behavior="t" id="RHi-Vy-z8C" userLabel="Mini Edit Popover">
+            <connections>
+                <outlet property="contentViewController" destination="8ol-5B-Rfv" id="LPe-aG-ALu"/>
+            </connections>
+        </popover>
+        <visualEffectView appearanceType="vibrantLight" misplaced="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="4dy-bQ-XEU" userLabel="ListMiniEdit">
+            <rect key="frame" x="0.0" y="0.0" width="257" height="138"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="gHl-69-iYd">
+                    <rect key="frame" x="11" y="101" width="91" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Episode:" id="oSB-ri-szj">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField verticalHuggingPriority="750" misplaced="YES" id="2SC-DW-SY8">
+                    <rect key="frame" x="108" y="98" width="50" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2uN-Kk-Hoz">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="x5m-c0-JGZ"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="iJo-oz-f1E" id="dDz-eA-71s"/>
+                    </connections>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="tDj-54-rZS">
+                    <rect key="frame" x="164" y="101" width="23" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="c6g-5g-XCF">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="7SY-9N-oro">
+                    <rect key="frame" x="179" y="100" width="37" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="f51-kn-69T">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="2QK-9J-q15">
+                    <rect key="frame" x="23" y="73" width="79" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Status:" id="aDo-Wk-B7C">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="OuQ-XW-aHE">
+                    <rect key="frame" x="23" y="47" width="79" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Score:" id="e53-4o-CNW">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="zvD-07-5b1">
+                    <rect key="frame" x="104" y="40" width="143" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="y7y-4g-DVd" id="ta7-fq-60P">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="2DU-bP-4Bl">
+                            <items>
+                                <menuItem title="0 - No Score" state="on" id="y7y-4g-DVd"/>
+                                <menuItem title="Item 2" id="Mue-Qi-mJZ"/>
+                                <menuItem title="Item 3" id="XEa-cV-brD"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <outlet property="menu" destination="sil-7m-Gb7" id="TYy-pV-Lz2"/>
+                    </connections>
+                </popUpButton>
+                <popUpButton verticalHuggingPriority="750" misplaced="YES" id="Ne8-12-A1S">
+                    <rect key="frame" x="104" y="67" width="143" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="Watching" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Fqk-k2-kaw" id="L4d-c0-urc">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="1H6-0G-aVT">
+                            <items>
+                                <menuItem title="Watching" state="on" id="Fqk-k2-kaw"/>
+                                <menuItem title="Item 2" id="ybo-f9-EMb"/>
+                                <menuItem title="Item 3" id="oAW-iL-xW0"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <outlet property="menu" destination="Fq6-ce-uz2" id="HhT-6D-hhP"/>
+                    </connections>
+                </popUpButton>
+                <button verticalHuggingPriority="750" misplaced="YES" id="qia-YK-CuK">
+                    <rect key="frame" x="171" y="4" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Tqg-Bm-6Yg">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="performeditminipopover:" target="-2" id="Mbf-gL-Xbb"/>
+                    </connections>
+                </button>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="2ed-DB-T5o">
+                    <rect key="frame" x="153" y="14" width="16" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
+                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="ZLV-4y-Q9b">
+                    <rect key="frame" x="21" y="14" width="126" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status" id="zlt-4m-Qrp">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" id="i7G-Rn-LZm">
+                    <rect key="frame" x="10" y="119" width="230" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="0Wo-LA-Zm8">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <point key="canvasLocation" x="-153.5" y="699"/>
+        </visualEffectView>
+        <customObject id="iJo-oz-f1E" customClass="NSTextFieldNumOnlyDel"/>
     </objects>
     <resources>
         <image name="Edit" width="32" height="32"/>

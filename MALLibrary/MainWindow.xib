@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
@@ -356,7 +357,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" id="99e-Ep-qJ1">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" headerView="QqA-Oo-XVw" id="YZy-Yw-LYT">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="252"/>
@@ -394,7 +395,16 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="bEr-qq-7kA" name="value" keyPath="arrangedObjects.watched_episodes" id="GgX-pB-eqB"/>
+                                            <binding destination="bEr-qq-7kA" name="displayPatternValue1" keyPath="arrangedObjects.watched_episodes" id="7Zk-Rn-4Rg">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="bEr-qq-7kA" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="7Zk-Rn-4Rg" id="MGw-Lb-Q3Y">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="" editable="NO" width="55" minWidth="10" maxWidth="70" id="NqW-qo-ksl">
@@ -485,7 +495,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button verticalHuggingPriority="750" misplaced="YES" id="rav-og-ysS">
-                            <rect key="frame" x="8" y="4" width="89" height="17"/>
+                            <rect key="frame" x="4" y="3" width="89" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" title="Watching" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fcQ-Oe-7pb">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -497,7 +507,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" misplaced="YES" id="yLw-yI-jRt">
-                            <rect key="frame" x="199" y="4" width="86" height="17"/>
+                            <rect key="frame" x="195" y="3" width="86" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" title="On Hold" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mJP-yE-Kiy">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -509,7 +519,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" misplaced="YES" id="qsv-fQ-6vC">
-                            <rect key="frame" x="288" y="4" width="92" height="17"/>
+                            <rect key="frame" x="284" y="3" width="92" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" title="Dropped" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="moa-U2-fPI">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -521,7 +531,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" misplaced="YES" id="Afu-NE-085">
-                            <rect key="frame" x="383" y="4" width="103" height="17"/>
+                            <rect key="frame" x="379" y="3" width="103" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" title="Plan to watch" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LFq-7f-3Jw">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -533,7 +543,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" misplaced="YES" id="PLR-Wk-csG">
-                            <rect key="frame" x="100" y="4" width="96" height="17"/>
+                            <rect key="frame" x="96" y="3" width="96" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" title="Completed" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tTo-hE-1oy">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>

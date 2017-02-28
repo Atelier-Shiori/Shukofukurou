@@ -177,10 +177,10 @@ namespace MALLibrary
 			defaultvalues.Add((NSString)"doubeclickaction", (NSString)"Edit Title");
 			defaultvalues.Add((NSString)"windowappearence", (NSString)"Light");
 			defaultvalues.Add((NSString)"filterwatching", new NSNumber(1));
-			defaultvalues.Add((NSString)"filtercompleted", new NSNumber(1));
-			defaultvalues.Add((NSString)"filteronhold", new NSNumber(1));
-			defaultvalues.Add((NSString)"filterdropped", new NSNumber(1));
-			defaultvalues.Add((NSString)"filterplantowatch", new NSNumber(1));
+			defaultvalues.Add((NSString)"filtercompleted", new NSNumber(0));
+			defaultvalues.Add((NSString)"filteronhold", new NSNumber(0));
+			defaultvalues.Add((NSString)"filterdropped", new NSNumber(0));
+			defaultvalues.Add((NSString)"filterplantowatch", new NSNumber(0));
 			NSUserDefaults.StandardUserDefaults.RegisterDefaults(defaultvalues);
 		}
 	}

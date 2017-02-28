@@ -100,7 +100,6 @@
     <None Include="Info.plist" />
     <None Include="packages.config" />
     <None Include="3rdparty\Sparkle.framework.zip" />
-    <None Include="dsa_pub.pem" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -155,6 +154,11 @@
     <Folder Include="Assets.xcassets\seasons.imageset\" />
     <Folder Include="Assets.xcassets\Info.imageset\" />
     <Folder Include="Assets.xcassets\Edit.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="dsa_pub.pem">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

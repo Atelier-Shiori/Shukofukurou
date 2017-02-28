@@ -34,5 +34,7 @@
 	<string>dsa_pub.pem</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>© 2009-2017 Atelier Shiori. All rights reserved.</string>
+	<key>SUEnableSystemProfiling</key>
+	<true/>
 </dict>
 </plist>

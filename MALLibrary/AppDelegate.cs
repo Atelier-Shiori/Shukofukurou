@@ -174,7 +174,7 @@ namespace MALLibrary
 		{
 			// Sets default settings
 			NSMutableDictionary defaultvalues = new NSMutableDictionary();
-			defaultvalues.Add((NSString)"doubeclickaction", (NSString)"Edit Title");
+			defaultvalues.Add((NSString)"doubeclickaction", (NSString)"Modify Title");
 			defaultvalues.Add((NSString)"windowappearence", (NSString)"Light");
 			defaultvalues.Add((NSString)"filterwatching", new NSNumber(1));
 			defaultvalues.Add((NSString)"filtercompleted", new NSNumber(0));

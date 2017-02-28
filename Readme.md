@@ -1,5 +1,6 @@
 # MAL Library
 ![screenshot](http://i.imgur.com/kFAvRM6.png)
+
 MAL Library an open sourced and mostly native MyAnimeList library manager, a complete rewrite of MAL Client OSX written in C# in Xamarin. In development, not ready for public consumption.
  
 Requires latest SDK (10.12), XCode 8 or later, and a latest version of Xamarin or Visual Studio for Mac with Xamarin.Mac installed to compile. Deployment target is 10.10.

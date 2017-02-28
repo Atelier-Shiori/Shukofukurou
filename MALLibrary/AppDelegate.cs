@@ -32,8 +32,8 @@ namespace MALLibrary
 			mainWindowController.Window.MakeKeyAndOrderFront(this);
 			updater = new SUUpdater();
 			//Fix Icons to use as templates
-			string[] images = new string[6] { "library", "search", "animeinfo", "seasons", "Info", "Edit" };
-			for (int i = 0; i < 6; i++)
+			string[] images = new string[7] { "library", "search", "animeinfo", "seasons", "Info", "Edit", "delete" };
+			for (int i = 0; i < 7; i++)
 			{
 				NSImage.ImageNamed(images[i]).Template = true;
 			}

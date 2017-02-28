@@ -19,10 +19,31 @@ namespace MALLibrary
 		AppKit.NSTextField addpopoverepifield { get; set; }
 
 		[Outlet]
+		Foundation.NSNumberFormatter addpopoverformat { get; set; }
+
+		[Outlet]
 		AppKit.NSPopUpButton addpopoverscore { get; set; }
 
 		[Outlet]
 		AppKit.NSPopUpButton addpopoverstatus { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField addpopovertotal { get; set; }
+
+		[Outlet]
+		AppKit.NSProgressIndicator addprogressview { get; set; }
+
+		[Outlet]
+		AppKit.NSButton addtitlebutton { get; set; }
+
+		[Outlet]
+		AppKit.NSView addtitleexists { get; set; }
+
+		[Outlet]
+		AppKit.NSTextField addtitlelbl { get; set; }
+
+		[Outlet]
+		AppKit.NSView addtitleview { get; set; }
 
 		[Outlet]
 		AppKit.NSTextField alternativetitlelbl { get; set; }
@@ -168,6 +189,9 @@ namespace MALLibrary
 		[Action ("edittitle:")]
 		partial void edittitle (Foundation.NSObject sender);
 
+		[Action ("minieditstatuschanged:")]
+		partial void minieditstatuschanged (Foundation.NSObject sender);
+
 		[Action ("opensharemenu:")]
 		partial void opensharemenu (Foundation.NSObject sender);
 
@@ -215,9 +239,9 @@ namespace MALLibrary
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (miniedittitle != null) {
-				miniedittitle.Dispose ();
-				miniedittitle = null;
+			if (addtitlelbl != null) {
+				addtitlelbl.Dispose ();
+				addtitlelbl = null;
 			}
 
 			if (addpopover != null) {
@@ -225,14 +249,14 @@ namespace MALLibrary
 				addpopover = null;
 			}
 
-			if (minieditpopoveredit != null) {
-				minieditpopoveredit.Dispose ();
-				minieditpopoveredit = null;
-			}
-
 			if (addpopoverepifield != null) {
 				addpopoverepifield.Dispose ();
 				addpopoverepifield = null;
+			}
+
+			if (addpopoverformat != null) {
+				addpopoverformat.Dispose ();
+				addpopoverformat = null;
 			}
 
 			if (addpopoverscore != null) {
@@ -243,6 +267,31 @@ namespace MALLibrary
 			if (addpopoverstatus != null) {
 				addpopoverstatus.Dispose ();
 				addpopoverstatus = null;
+			}
+
+			if (addpopovertotal != null) {
+				addpopovertotal.Dispose ();
+				addpopovertotal = null;
+			}
+
+			if (addprogressview != null) {
+				addprogressview.Dispose ();
+				addprogressview = null;
+			}
+
+			if (addtitlebutton != null) {
+				addtitlebutton.Dispose ();
+				addtitlebutton = null;
+			}
+
+			if (addtitleexists != null) {
+				addtitleexists.Dispose ();
+				addtitleexists = null;
+			}
+
+			if (addtitleview != null) {
+				addtitleview.Dispose ();
+				addtitleview = null;
 			}
 
 			if (alternativetitlelbl != null) {
@@ -338,6 +387,16 @@ namespace MALLibrary
 			if (minieditpopover != null) {
 				minieditpopover.Dispose ();
 				minieditpopover = null;
+			}
+
+			if (minieditpopoveredit != null) {
+				minieditpopoveredit.Dispose ();
+				minieditpopoveredit = null;
+			}
+
+			if (miniedittitle != null) {
+				miniedittitle.Dispose ();
+				miniedittitle = null;
 			}
 
 			if (minipopupeditstatus != null) {

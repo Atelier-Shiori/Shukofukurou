@@ -25,6 +25,18 @@ namespace MALLibrary
 			IRestResponse response = client.Execute(request);
 			return response;
 		}
+		public IRestResponse addtitle(int id, string episode, string status, int score)
+		{
+			RestRequest request = new RestRequest("animelist/anime", Method.POST);
+			SecRecord account = Keychain.retrieveaccount();
+			client.Authenticator = new HttpBasicAuthenticator(account.Account, account.Generic.ToString());
+			request.AddParameter("anime_id", id);
+			request.AddParameter("episodes", episode);
+			request.AddParameter("status", status);
+			request.AddParameter("score", score);
+			IRestResponse response = client.Execute(request);
+			return response;
+		}
 		public IRestResponse updatetitle(int id, string episode, string status, int score)
 		{
 			RestRequest request = new RestRequest("animelist/anime/"+id, Method.PUT);
@@ -33,6 +45,14 @@ namespace MALLibrary
 			request.AddParameter("episodes", episode);
 			request.AddParameter("status", status);
 			request.AddParameter("score", score);
+			IRestResponse response = client.Execute(request);
+			return response;
+		}
+		public IRestResponse deletetitle(int id)
+		{
+			RestRequest request = new RestRequest("animelist/anime/" + id, Method.DELETE);
+			SecRecord account = Keychain.retrieveaccount();
+			client.Authenticator = new HttpBasicAuthenticator(account.Account, account.Generic.ToString());
 			IRestResponse response = client.Execute(request);
 			return response;
 		}

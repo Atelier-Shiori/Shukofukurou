@@ -7,20 +7,21 @@ using CoreGraphics;
 using RestSharp;
 using System.Threading;
 using System.Text.RegularExpressions;
-using Security;
 using System.Collections.Generic;
 
 namespace MALLibrary
 {
 	public partial class MainWindowController : NSWindowController
 	{
-		
+
 		int aniinfoid = 0;
 		NSDictionary currentaniinfo;
 		NSArray seasonindex;
 		public MyAnimeList malengine { get; set; }
-		public AppDelegate appdel{ get; set; }
-		int selectedlisteditid = 9;
+		public AppDelegate appdel { get; set; }
+		int selectedlisteditid = 0;
+		bool selectedlistairing = false;
+		int selectedaddtitleid = 0;
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -119,7 +120,7 @@ namespace MALLibrary
 						listloggedoutview.Frame = mainviewframe;
 						listloggedoutview.SetFrameOrigin(origin);
 					}
-				break;
+					break;
 				case "Search":
 					mainview.ReplaceSubviewWith(mainview.Subviews[0], searchview);
 					searchview.Frame = mainviewframe;
@@ -133,7 +134,8 @@ namespace MALLibrary
 						animeinfoview.Frame = mainviewframe;
 						animeinfoview.SetFrameOrigin(origin);
 					}
-					else {
+					else
+					{
 						mainview.ReplaceSubviewWith(mainview.Subviews[0], progressview);
 						progressview.Frame = mainviewframe;
 						progressview.SetFrameOrigin(origin);
@@ -185,7 +187,14 @@ namespace MALLibrary
 				case "Title Info":
 					if (aniinfoid != 0)
 					{
-						toolbar.InsertItem("AddTitleInfo", 0);
+						if (checkiftitleexistsonlist(aniinfoid) == true)
+						{
+							toolbar.InsertItem("editInfo", 0);
+						}
+						else
+						{
+							toolbar.InsertItem("AddTitleInfo", 0);
+						}
 						toolbar.InsertItem("viewonmal", 1);
 						toolbar.InsertItem("ShareInfo", 2);
 					}
@@ -193,7 +202,7 @@ namespace MALLibrary
 				case "Seasons":
 					toolbar.InsertItem("AddTitleSeason", 0);
 					toolbar.InsertItem("yearselect", 1);
-					toolbar.InsertItem("seasonselect",2);
+					toolbar.InsertItem("seasonselect", 2);
 					toolbar.InsertItem("refresh", 3);
 					if (seasonindex == null)
 					{
@@ -246,14 +255,162 @@ namespace MALLibrary
 		}
 		partial void addtitle(Foundation.NSObject sender)
 		{
+			// Shows Add Title Popover
+			var selecteditem = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
+			NSDictionary d = new NSDictionary();
+			switch (selecteditem.Title)
+			{
+				case "Search":
+					d = (NSDictionary)searcharraycontroller.SelectedObjects[0];
+					return;
+				case "Title Info":
+					d = currentaniinfo;
+					break;
+				case "Seasons":
+					d = (NSDictionary)seasonarraycontroller.SelectedObjects[0];
+					d = (NSDictionary)d.ValueForKey((NSString)"id");
+					NSString sid = (NSString)d.ValueForKey((NSString)"id").ToString();
+					// Deserialize data
+					NSData data = NSData.FromString(malengine.loadanimeinfo(Convert.ToInt32(sid)).Content);
+					NSError e;
+					d= (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
+					data.Dispose();
+					break;
+			}
+			NSNumber id = (NSNumber)d.ValueForKey((NSString)"id");
+			addtitlelbl.StringValue = (NSString)d.ValueForKey((NSString)"title");
+			if (this.checkiftitleexistsonlist(id.Int32Value) == true)
+			{
+				addtitleview.Hidden = true;
+				addtitleexists.Hidden = false;
+			}
+			else
+			{
+				string airstatus = (NSString)d.ValueForKey((NSString)"status").ToString();
+				if (airstatus == "finished airing")
+				{
+					selectedlistairing = false;
+				}
+				else
+				{
+					selectedlistairing = true;
+				}
+				addtitleview.Hidden = false;
+				addtitleexists.Hidden = true;
+				selectedaddtitleid = id.Int32Value;
+				addpopoverepifield.StringValue = "0";
+				NSNumber episodes = (NSNumber)d.ValueForKey((NSString)"episodes");
+				if (episodes.Int16Value > 0)
+				{
+					addpopoverformat.Maximum = episodes;
+				}
+				else
+				{
+					addpopoverformat.Maximum = null;
+				}
+				addpopovertotal.StringValue = episodes.ToString();
+				addpopoverstatus.Title = "watching";
+				addpopoverscore.SelectItemWithTag(0);
+				selectedaddtitleid = id.Int32Value;
+				addprogressview.Hidden = true;
+			}
 			NSButton btn = (NSButton)sender;
-			addpopover.Show(btn.Bounds, btn, NSRectEdge.MinYEdge);
+			addpopover.Show(btn.Bounds, btn, NSRectEdge.MaxYEdge);
+		}
+		partial void addpopoveraddtitle(Foundation.NSObject sender)
+		{
+			// Set UI
+			addprogressview.StartAnimation(sender);
+			addprogressview.Hidden = false;
+			addpopover.Behavior = NSPopoverBehavior.ApplicationDefined;
+			// Validate update data
+			if (addpopoverepifield.StringValue == addpopovertotal.StringValue && addpopovertotal.StringValue != "0" && addpopoverstatus.Title != "completed")
+			{
+				addpopoverstatus.Title = "completed";
+			}
+			if (selectedlistairing == true && addpopoverstatus.Title == "completed")
+			{
+				//Invalid
+				addprogressview.StartAnimation(sender);
+				addprogressview.Hidden = false;
+				addpopover.Behavior = NSPopoverBehavior.Transient;
+				return;
+			}
+			// Set Values to pass
+			string status = addpopoverstatus.Title;
+			string episode = addpopoverepifield.StringValue;
+			int score = (int)addpopoverscore.SelectedTag;
+			addtitlebutton.Enabled = false;
+			Thread t = new Thread(() => addtitlepopover(selectedaddtitleid, episode, status, score)); ;
+			t.Start();
+		}
+		private void addtitlepopover(int id, string epi, string status, int score)
+		{
+			IRestResponse response = malengine.addtitle(id, epi, status, score);
+			if (response.StatusCode.GetHashCode() == 201)
+			{
+				// Refresh List
+				this.performloadlist(true);
+				InvokeOnMainThread(() =>
+				{
+					// UI
+					addprogressview.Hidden = true;
+					addtitlebutton.Enabled = true; 
+					// Apply Filters
+					this.filterlist();
+					addpopover.Behavior = NSPopoverBehavior.Transient;
+					addpopover.Close();
+				});
+			}
+			else
+			{
+				InvokeOnMainThread(() =>
+				{
+					// Apply Filters
+					addprogressview.Hidden = true; 
+					addtitlebutton.Enabled = true; 
+					addpopover.Behavior = NSPopoverBehavior.Transient;
+				});
+			}
 		}
 		partial void removetitle(Foundation.NSObject sender)
 		{
+			NSDictionary d = (NSDictionary)animelistarraycontroller.SelectedObjects[0];
+			NSNumber idnum = (NSNumber)d.ValueForKey(new NSString("id"));
+			string title = (NSString)d.ValueForKey(new NSString("title")).ToString();
 			NSAlert a = new NSAlert();
-			a.MessageText = "Implement Remove Title";
-			long l = a.RunModal();
+			a.AddButton("Yes");
+			a.AddButton("No");
+			a.MessageText = "Do you want to remove title " + title;
+			a.InformativeText = "Once done, this cannot be undone.";
+			a.AlertStyle = NSAlertStyle.Informational;
+			long choice = a.RunSheetModal(this.w);
+			if (choice == (long)NSAlertButtonReturn.First)
+			{
+				Thread t = new Thread(() => performremovetitle(idnum.Int32Value));
+				t.Start();
+			}
+		}
+		private void performremovetitle(int id)
+		{
+			IRestResponse response = malengine.deletetitle(id);
+			if (response.StatusCode.GetHashCode() != 200)
+			{
+				InvokeOnMainThread(() =>
+				{
+					NSAlert a = new NSAlert();
+					a.MessageText = "Can't remove title.";
+					a.InformativeText = "Please try again later.";
+					a.AlertStyle = NSAlertStyle.Critical;
+				});
+			}
+			else
+			{
+				InvokeOnMainThread(() =>
+				{
+					this.performloadlist(true);
+				});
+			}
 		}
 		partial void edittitle(Foundation.NSObject sender)
 		{
@@ -262,9 +419,10 @@ namespace MALLibrary
 			switch (selecteditem.Title)
 			{
 				case "Anime List":
-					showminieditpopup();
+					showminieditpopup((NSDictionary)animelistarraycontroller.SelectedObjects[0],sender);
 					return;
 				case "Title Info":
+					this.showminieditpopup(this.retrievetitlerecordfromlist(aniinfoid),sender);
 					break;
 			}
 		}
@@ -279,7 +437,7 @@ namespace MALLibrary
 		{
 			var account = Keychain.retrieveaccount();
 			string username = account.Account;
-			Thread t = new Thread(() => loadlist(refresh,username));
+			Thread t = new Thread(() => loadlist(refresh, username));
 			t.Start();
 		}
 		public void loadlist(bool refresh, string username)
@@ -333,7 +491,7 @@ namespace MALLibrary
 			if (Filter.StringValue.Length > 0)
 			{
 				predicates.Add("(title CONTAINS[cd] %@)");
-			
+
 			}
 			List<string> statuses = new List<string>();
 			for (int i = 0; i < 5; i++)
@@ -346,31 +504,30 @@ namespace MALLibrary
 						status = "watching";
 						state = filterwatching.State.GetHashCode();
 						break;
-						case 1:
+					case 1:
 						status = "completed";
 						state = filtercompleted.State.GetHashCode();
 						break;
-						case 2:
+					case 2:
 						status = "on-hold";
 						state = filteronhold.State.GetHashCode();
 						break;
-						case 3:
+					case 3:
 						status = "dropped";
 						state = filterdropped.State.GetHashCode();
 						break;
-						case 4:
+					case 4:
 						status = "plan to watch";
 						state = filterplantowatch.State.GetHashCode();
 						break;
 				}
 				if (state == 1)
 				{
-					statuses.Add(status);//("watched_status ==[c] %@");
+					statuses.Add(status);
 				}
 			}
 			List<NSObject> objects = new List<NSObject>();
-			//NSObject[] objects = new NSObject[filterobjects];
-			if (predicates.Count + statuses.Count> 0)
+			if (predicates.Count + statuses.Count > 0)
 			{
 				if (Filter.StringValue.Length > 0)
 				{
@@ -396,7 +553,7 @@ namespace MALLibrary
 						}
 						else
 						{
-							finalpredicate = finalpredicate + " OR " + predicates[i + 1] +")";
+							finalpredicate = finalpredicate + " OR " + predicates[i + 1] + ")";
 						}
 					}
 					else
@@ -405,7 +562,7 @@ namespace MALLibrary
 						{
 							finalpredicate = predicates[i];
 						}
-						else 
+						else
 						{
 							finalpredicate = finalpredicate + " OR " + predicates[i];
 						}
@@ -434,7 +591,7 @@ namespace MALLibrary
 			int dropped = this.countstatus(a, "dropped");
 			// add item counts to filter buttons
 			filterwatching.Title = "Watching (" + watching + ")";
-			filtercompleted.Title = "Completed (" +completed + ")";
+			filtercompleted.Title = "Completed (" + completed + ")";
 			filteronhold.Title = "On-hold (" + onhold + ")";
 			filterdropped.Title = "Dropped (" + dropped + ")";
 			filterplantowatch.Title = "Plan to watch (" + plantowatch + ")";
@@ -464,15 +621,14 @@ namespace MALLibrary
 							this.listtableclick();
 							break;
 						case "Modify Title":
-							this.showminieditpopup();
+							this.showminieditpopup((NSDictionary)animelistarraycontroller.SelectedObjects[0], sender);
 							break;
 					}
 				}
 			}
 		}
-		private void showminieditpopup()
+		private void showminieditpopup(NSDictionary d, NSObject sender)
 		{
-			NSDictionary d = (NSDictionary)animelistarraycontroller.SelectedObjects[0];
 			NSNumber id = (NSNumber)d.ValueForKey((NSString)"id");
 			minipopupeepi.StringValue = (NSString)d.ValueForKey((NSString)"watched_episodes").ToString();
 			NSNumber episodes = (NSNumber)d.ValueForKey((NSString)"episodes");
@@ -484,6 +640,15 @@ namespace MALLibrary
 			{
 				minipopupepiformat.Maximum = null;
 			}
+			string airstatus = (NSString)d.ValueForKey((NSString)"status").ToString();
+			if (airstatus == "finished airing")
+			{
+				selectedlistairing = false;
+			}
+			else
+			{
+				selectedlistairing = true;
+			}
 			minipopuptotalepi.StringValue = episodes.ToString();
 			minipopupstatus.Title = (NSString)d.ValueForKey((NSString)"watched_status").ToString();
 			NSNumber score = (NSNumber)d.ValueForKey((NSString)"score");
@@ -491,7 +656,18 @@ namespace MALLibrary
 			selectedlisteditid = id.Int32Value;
 			minipopupprogressindicatoor.Hidden = true;
 			minipopupeditstatus.Hidden = true;
-			minieditpopover.Show(animetb.GetCellFrame(0, animetb.SelectedRow), animetb, 0);
+			var selecteditem = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
+			switch (selecteditem.Title)
+			{
+				case "Anime List":
+					minieditpopover.Show(animetb.GetCellFrame(0, animetb.SelectedRow), animetb, 0);
+					return;
+				case "Title Info":
+					NSButton btn = (NSButton)sender;
+					minieditpopover.Show(btn.Bounds, btn, NSRectEdge.MaxYEdge);
+					break;
+			}
+
 		}
 		public void listtableclick()
 		{
@@ -504,21 +680,38 @@ namespace MALLibrary
 		partial void performeditminipopover(Foundation.NSObject sender)
 		{
 			// Set UI
+			minipopupeditstatus.StringValue = "";
 			minipopupprogressindicatoor.StartAnimation(sender);
 			minipopupprogressindicatoor.Hidden = false;
 			minieditpopover.Behavior = NSPopoverBehavior.ApplicationDefined;
 			// Validate update data
-			if (minipopupeepi.StringValue == minipopuptotalepi.StringValue && minipopupstatus.Title != "completed")
+			if (minipopupeepi.StringValue == minipopuptotalepi.StringValue && minipopuptotalepi.StringValue != "0" && minipopupstatus.Title != "completed")
 			{
 				minipopupstatus.Title = "completed";
+			}
+			if (selectedlistairing == true && minipopupstatus.Title == "completed")
+			{
+				//Invalid
+				minipopupeditstatus.StringValue = "Invalid Update..";
+				minipopupprogressindicatoor.StartAnimation(sender);
+				minipopupprogressindicatoor.Hidden = false;
+				minieditpopover.Behavior = NSPopoverBehavior.Transient;
+				return;
 			}
 			// Set Values to pass
 			string status = minipopupstatus.Title;
 			string episode = minipopupeepi.StringValue;
-			int score = (int)minipopupscore.Tag;
-			Thread t = new Thread(() => editminipopover(selectedlisteditid,episode,status,score));;
+			int score = (int)minipopupscore.SelectedTag;
+			minieditpopoveredit.Enabled = false;
+			Thread t = new Thread(() => editminipopover(selectedlisteditid, episode, status, score)); ;
 			t.Start();
 
+		}
+		partial void minieditstatuschanged(Foundation.NSObject sender){
+			if (minipopupeepi.StringValue != "0" && minipopupstatus.Title == "completed")
+			{
+				minipopupeepi.StringValue = minipopuptotalepi.StringValue;
+			}
 		}
 		private void editminipopover(int id, string epi, string status, int score)
 		{
@@ -531,7 +724,8 @@ namespace MALLibrary
 				{
 					// UI
 					minipopupprogressindicatoor.Hidden = true;
-					minipopupeditstatus.Hidden = true;;
+					minipopupeditstatus.Hidden = true;
+					minieditpopoveredit.Enabled = true;;
 					// Apply Filters
 					this.filterlist();
 					minieditpopover.Behavior = NSPopoverBehavior.Transient;
@@ -545,6 +739,7 @@ namespace MALLibrary
 					// Apply Filters
 					minipopupprogressindicatoor.Hidden = true;;
 					minipopupeditstatus.Hidden = false;
+					minieditpopoveredit.Enabled = true;;
 					minipopupeditstatus.StringValue = "Update failed.";
 					minieditpopover.Behavior = NSPopoverBehavior.Transient;
 				});
@@ -715,6 +910,8 @@ namespace MALLibrary
 			synopsistextview.Value = StripHTML((NSString)animedata.ValueForKey(new NSString("synopsis")).ToString());
 			loadingwheel.StopAnimation(null);
 			aniinfoid = id;
+			// Save current data
+			this.currentaniinfo = animedata;
 			this.loadmainview();
 		}
 		private string generatetitleslist(NSDictionary d)
@@ -933,6 +1130,29 @@ namespace MALLibrary
 		partial void viewloginpref(Foundation.NSObject sender)
 		{
 			appdel.showloginprefs();
+		}
+		private bool checkiftitleexistsonlist(int id)
+		{
+			NSDictionary d = this.retrievetitlerecordfromlist(id);
+			if (d != null)
+			{
+				return true;
+			}
+			return false;
+		}
+		private NSDictionary retrievetitlerecordfromlist(int id)
+		{
+			NSArray a = (NSArray)animelistarraycontroller.Content;
+			NSObject[] objects = new NSObject[1];
+			string filterfield = "(id ==[c] %@)";
+			objects[0] = new NSNumber(id);
+			NSPredicate predicate = NSPredicate.FromFormat(filterfield, objects);
+			a = a.Filter(predicate);
+			if (a.Count > 0)
+			{
+				return a.GetItem<NSDictionary>(0);
+			}
+			return null;
 		}
 	}
 }

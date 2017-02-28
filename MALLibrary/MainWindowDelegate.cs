@@ -8,7 +8,7 @@ namespace MALLibrary
 	{
 		public override void WillClose(NSNotification notification)
 		{
-			System.Environment.Exit(0);
+			Environment.Exit(0);
 		}
 	}
 }

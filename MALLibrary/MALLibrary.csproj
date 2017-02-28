@@ -95,6 +95,9 @@
     <ImageAsset Include="Assets.xcassets\Edit.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Edit.imageset\update-2x.png" />
     <ImageAsset Include="Assets.xcassets\Edit.imageset\update.png" />
+    <ImageAsset Include="Assets.xcassets\delete.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\delete.imageset\delete.png" />
+    <ImageAsset Include="Assets.xcassets\delete.imageset\deletex2.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -155,6 +158,7 @@
     <Folder Include="Assets.xcassets\seasons.imageset\" />
     <Folder Include="Assets.xcassets\Info.imageset\" />
     <Folder Include="Assets.xcassets\Edit.imageset\" />
+    <Folder Include="Assets.xcassets\delete.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="dsa_pub.pem">

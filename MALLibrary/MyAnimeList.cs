@@ -80,10 +80,14 @@ namespace MALLibrary
 			RestRequest request = new RestRequest("animelist/"+username, Method.GET);
 
 			IRestResponse response = client.Execute(request);
+			string directory = SupportFiles.retrieveApplicationSupportDirectory("/");
 			if (response.StatusCode.GetHashCode() == 200)
 			{
-				string directory = SupportFiles.retrieveApplicationSupportDirectory("/");
 				File.WriteAllText(directory + "list-"+ username + ".json", response.Content);
+				return File.ReadAllText(directory + "list-" + username + ".json");
+			}
+			if (File.Exists(directory + "list-" + username + ".json") == true)
+			{
 				return File.ReadAllText(directory + "list-" + username + ".json");
 			}
 			return "";

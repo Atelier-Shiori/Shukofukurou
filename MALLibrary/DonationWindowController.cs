@@ -32,7 +32,7 @@ namespace MALLibrary
 		}
 		partial void cancel(Foundation.NSObject sender)
 		{
-			this.w.Close();
+			w.Close();
 		}
 		partial void opendonationpage(Foundation.NSObject sender)
 		{
@@ -55,13 +55,13 @@ namespace MALLibrary
 				switch (valid)
 				{
 					case 0:
-						this.showMessage("Invalid Key", "Please make sure you copied the name and key exactly from the email.");
+						showMessage("Invalid Key", "Please make sure you copied the name and key exactly from the email.");
 						break;
 					case 1:
-						this.showsuccess(name, key);
+						showsuccess(name, key);
 						break;
 					case 2:
-						this.showMessage("No Internet", "Make sure you are connected to the internet and try again.");
+						showMessage("No Internet", "Make sure you are connected to the internet and try again.");
 						break;
 						
 				}
@@ -74,7 +74,7 @@ namespace MALLibrary
 			msgbox.MessageText = message;
 			msgbox.InformativeText = explaination;
 			msgbox.AlertStyle = NSAlertStyle.Warning;
-			msgbox.RunSheetModal(this.w);
+			msgbox.RunSheetModal(w);
 
 		}
 		private void showsuccess(string name, string key)
@@ -90,7 +90,7 @@ namespace MALLibrary
 				NSUserDefaults.StandardUserDefaults.SetValueForKey(new NSNumber(true), (NSString)"donated");
 				NSUserDefaults.StandardUserDefaults.SetValueForKey((NSString)name, (NSString)"donor");
 				NSUserDefaults.StandardUserDefaults.SetValueForKey((NSString)key, (NSString)"key");
-				this.w.Close();
+				w.Close();
 			}
 		}
 	}

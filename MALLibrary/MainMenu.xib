@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
     </dependencies>
     <objects>
@@ -347,7 +346,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                         <items>
-                            <menuItem title="MALLibrary Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                            <menuItem title="MAL Library Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="viewhelp:" target="Voe-Tx-rLC" id="bFx-2H-gTC"/>
                                 </connections>

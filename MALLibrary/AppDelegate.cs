@@ -1,9 +1,8 @@
 using AppKit;
 using Foundation;
 using Sparkle;
-
-using System.Threading;
 using System;
+using System.Threading;
 
 namespace MALLibrary
 {
@@ -23,9 +22,9 @@ namespace MALLibrary
 		}
 		public override void DidFinishLaunching(NSNotification notification)
 		{
-			this.setdefaults();
+			setdefaults();
 			malengine = new MyAnimeList();
-			this.performNoticeCheck();
+			performNoticeCheck();
 			mainWindowController = new MainWindowController();
 			mainWindowController.malengine = malengine;
 			mainWindowController.appdel = this;
@@ -33,11 +32,11 @@ namespace MALLibrary
 			updater = new SUUpdater();
 			//Fix Icons to use as templates
 			string[] images = new string[7] { "library", "search", "animeinfo", "seasons", "Info", "Edit", "delete" };
-			for (int i = 0; i < 7; i++)
+			for (int i = 0; i < images.Length; i++)
 			{
 				NSImage.ImageNamed(images[i]).Template = true;
 			}
-			this.checkaccount();
+			checkaccount();
 		}
 		public override void WillTerminate(NSNotification notification)
 		{
@@ -49,7 +48,7 @@ namespace MALLibrary
 		}
 		partial void showpreferences(Foundation.NSObject sender)
 		{
-			this.showpreferences();
+			showpreferences();
 		}
 		private void showpreferences()
 		{
@@ -60,17 +59,17 @@ namespace MALLibrary
 			}
 			if (prefcontroller.malengine == null)
 			{
-				prefcontroller.malengine = this.malengine;
+				prefcontroller.malengine = malengine;
 			}
 			if (prefcontroller.mainwindowcontrol== null)
 			{
-				prefcontroller.mainwindowcontrol = this.mainWindowController;
+				prefcontroller.mainwindowcontrol = mainWindowController;
 			}
 			prefcontroller.Window.MakeKeyAndOrderFront(prefcontroller.getWindow());
 		}
 		partial void showdonationkeywin(Foundation.NSObject sender)
 		{
-			this.openDonationKeyEnterWindow();
+			openDonationKeyEnterWindow();
 		}
 		partial void viewhelp(Foundation.NSObject sender)
 		{
@@ -92,10 +91,10 @@ namespace MALLibrary
 						break;
 					case 1:
 						//Show Message
-						this.showDonationNotice();
+						showDonationNotice();
 						break;
 					case 2:
-						this.showInvalidKeyNotice();
+						showInvalidKeyNotice();
 						break;
 				}
 				});
@@ -107,7 +106,7 @@ namespace MALLibrary
 			a.AddButton("Enter Key");
 			a.AddButton("Remind Me Later");
 			a.MessageText = "Please Support MAL Library";
-			a.InformativeText = "We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program." + System.Environment.NewLine + "If you find this program helpful, please consider making a donation. You will recieve a key to remove this message and enable new features.";
+			a.InformativeText = "We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program." + Environment.NewLine + "If you find this program helpful, please consider making a donation. You will recieve a key to remove this message and enable new features.";
 			a.AlertStyle = NSAlertStyle.Informational;
 			long choice = a.RunModal();
 			if (choice == (long)NSAlertButtonReturn.First)
@@ -118,7 +117,7 @@ namespace MALLibrary
 			}
 			else if (choice == (long)NSAlertButtonReturn.Second)
 			{
-				this.openDonationKeyEnterWindow();
+				openDonationKeyEnterWindow();
 				Donation.setReminderDate();
 			}
 			else {
@@ -135,7 +134,7 @@ namespace MALLibrary
 			long choice = a.RunModal();
 			if (choice == (long)NSAlertButtonReturn.First)
 			{
-				System.Environment.Exit(0);
+				Environment.Exit(0);
 			}
 		}
 		private void openDonationKeyEnterWindow()
@@ -154,20 +153,20 @@ namespace MALLibrary
 				a.AddButton("Yes");
 				a.AddButton("No");
 				a.MessageText = "Welcome to MAL Library";
-				a.InformativeText = "To take full advantage of MAL Library you need to login. Do you want to open Preferences to log in now?" + System.Environment.NewLine + System.Environment.NewLine +
+				a.InformativeText = "To take full advantage of MAL Library you need to login. Do you want to open Preferences to log in now?" + Environment.NewLine + Environment.NewLine +
 					"Note that you do not need to login to use the explore features.";
 				a.AlertStyle = NSAlertStyle.Informational;
 				long choice = a.RunSheetModal(mainWindowController.Window);
 				if (choice == (long)NSAlertButtonReturn.First)
 				{
-					this.showloginprefs();
+					showloginprefs();
 
 				}
 			}
 		}
 		public void showloginprefs()
 		{
-			this.showpreferences();
+			showpreferences();
 			prefcontroller.gotopreference("Login");
 		}
 		private void setdefaults()

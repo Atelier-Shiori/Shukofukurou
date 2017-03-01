@@ -17,7 +17,7 @@ namespace MALLibrary
 				{
 					return new NSImage(filepath);
 				}
-				return downloadImage(url,id);
+				return downloadImage(url, id);
 			}
 			return new NSImage();
 		}
@@ -31,7 +31,7 @@ namespace MALLibrary
 				string imgfile = path + id + ".jpg";
 				using (var writer = File.OpenWrite(imgfile))
 				{
-					var client = new RestClient(url.Replace(filename,""));
+					var client = new RestClient(url.Replace(filename, ""));
 					client.UserAgent = UserAgent.getUserAgent();
 					var request = new RestRequest(filename);
 					request.ResponseWriter = (responseStream) => responseStream.CopyTo(writer);
@@ -56,7 +56,7 @@ namespace MALLibrary
 					{
 						return File.ReadAllText(filepath);
 					}
-					return downloadseasonindex();;
+					return downloadseasonindex();
 				}
 			}
 			return downloadseasonindex();
@@ -108,7 +108,8 @@ namespace MALLibrary
 				{
 					NSDictionary sd = seasons.GetItem<NSDictionary>(s);
 					string seasonname = (NSString)sd.ValueForKey(new NSString("season")).ToString();
-					if (File.Exists(path + year + "-" + seasonname + ".json") == false || replaceexisting == true){
+					if (File.Exists(path + year + "-" + seasonname + ".json") == false || replaceexisting == true)
+					{
 						string content = downloadseasondata(year, seasonname);
 						if (content.Length == 0)
 						{
@@ -146,7 +147,7 @@ namespace MALLibrary
 			NSFileManager filemanager = NSFileManager.DefaultManager;
 			NSError error;
 			string bundlename = NSBundle.MainBundle.InfoDictionary.ObjectForKey(new NSString("CFBundleName")).ToString();
-			NSUrl directory = filemanager.GetUrl(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User,null,true,out error);
+			NSUrl directory = filemanager.GetUrl(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomain.User, null, true, out error);
 			string basepath = directory.Path + "/" + bundlename + appenddirectory;
 			if (Directory.Exists(basepath) == false)
 			{

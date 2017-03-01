@@ -1,6 +1,4 @@
-﻿using System;
-using Security;
-using AppKit;
+﻿using Security;
 using Foundation;
 
 namespace MALLibrary
@@ -39,7 +37,7 @@ namespace MALLibrary
 		public static bool removeaccount()
 		{
 			// Removes account from user's keychain
-			var rec = Keychain.retrieveaccount();
+			var rec = retrieveaccount();
 			var rec2 = new SecRecord(SecKind.GenericPassword);
 			rec2.Account = rec.Account;
 			rec2.Service = NSBundle.MainBundle.InfoDictionary.ObjectForKey(new NSString("CFBundleName")).ToString();

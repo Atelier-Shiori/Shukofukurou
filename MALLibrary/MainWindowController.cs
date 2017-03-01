@@ -2,7 +2,6 @@
 
 using Foundation;
 using AppKit;
-using ObjCRuntime;
 using CoreGraphics;
 using RestSharp;
 using System.Threading;
@@ -60,7 +59,7 @@ namespace MALLibrary
 			//Load List
 			if (Keychain.checkacountexists() == true)
 			{
-				this.performloadlist(false);
+				performloadlist(false);
 			}
 			else
 			{
@@ -70,12 +69,12 @@ namespace MALLibrary
 		private void generatesourcelist()
 		{
 			var library = new SourceListItem("LIBRARY");
-			library.AddItem("Anime List", NSImage.ImageNamed("library"), this.loadmainview);
+			library.AddItem("Anime List", NSImage.ImageNamed("library"), loadmainview);
 			sourcelist.AddItem(library);
 			var discover = new SourceListItem("DISCOVER");
-			discover.AddItem("Search", NSImage.ImageNamed("search"), this.loadmainview);
-			discover.AddItem("Title Info", NSImage.ImageNamed("animeinfo"), this.loadmainview);
-			discover.AddItem("Seasons", NSImage.ImageNamed("seasons"), this.loadmainview);
+			discover.AddItem("Search", NSImage.ImageNamed("search"), loadmainview);
+			discover.AddItem("Title Info", NSImage.ImageNamed("animeinfo"), loadmainview);
+			discover.AddItem("Seasons", NSImage.ImageNamed("seasons"), loadmainview);
 			sourcelist.AddItem(discover);
 
 			// Display side list
@@ -149,7 +148,7 @@ namespace MALLibrary
 					seasonsview.SetFrameOrigin(origin);
 					break;
 			}
-			this.createtoolbar();
+			createtoolbar();
 			// Save Current Main View
 			NSUserDefaults.StandardUserDefaults.SetValueForKey(new NSNumber(sourcelist.SelectedRow), new NSString("selectedmainview"));
 		}
@@ -206,7 +205,7 @@ namespace MALLibrary
 					toolbar.InsertItem("refresh", 3);
 					if (seasonindex == null)
 					{
-						this.retrieveseasonindex(false);
+						retrieveseasonindex(false);
 					}
 					break;
 			}
@@ -219,7 +218,7 @@ namespace MALLibrary
 		// Toolbar Functions
 		partial void performfilter(Foundation.NSObject sender)
 		{
-			this.filterlist();
+			filterlist();
 		}
 		partial void performrefresh(Foundation.NSObject sender)
 		{
@@ -227,10 +226,10 @@ namespace MALLibrary
 			switch (selecteditem.Title)
 			{
 				case "Anime List":
-					this.performloadlist(true);
+					performloadlist(true);
 					return;
 				case "Seasons":
-					this.performseasondatarefresh();
+					performseasondatarefresh();
 					break;
 			}
 		}
@@ -243,7 +242,12 @@ namespace MALLibrary
 			switch (selecteditem.Title)
 			{
 				case "Anime List":
-					return;
+					NSDictionary d = (NSDictionary)animelistarraycontroller.SelectedObjects[0];
+					NSNumber idnum = (NSNumber)d.ValueForKey(new NSString("id"));
+					string title = (NSString)d.ValueForKey(new NSString("title")).ToString();
+					shareitems[0] = new NSString("Check " + title + " out - ");
+					shareitems[1] = new NSUrl("https://myanimelist.net/anime/" + idnum.Int32Value);
+					break;
 				case "Title Info":
 					shareitems[0] = new NSString("Check " + animeinfotitle.StringValue + " out - ");
 					shareitems[1] = new NSUrl("https://myanimelist.net/anime/" + aniinfoid);
@@ -255,31 +259,44 @@ namespace MALLibrary
 		}
 		partial void addtitle(Foundation.NSObject sender)
 		{
+			// Checks if title exist
+			if (Keychain.checkacountexists() == false)
+			{
+				showneedaccountdialog();
+				return;
+			}
 			// Shows Add Title Popover
 			var selecteditem = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
 			NSDictionary d = new NSDictionary();
+			NSString sid;
+			NSData data;
+			NSError e;
 			switch (selecteditem.Title)
 			{
 				case "Search":
 					d = (NSDictionary)searcharraycontroller.SelectedObjects[0];
-					return;
+					sid = (NSString)d.ValueForKey((NSString)"id").ToString();
+					// Deserialize data
+					data = NSData.FromString(malengine.loadanimeinfo(Convert.ToInt32(sid)).Content);
+					d = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
+					data.Dispose();
+					break;
 				case "Title Info":
 					d = currentaniinfo;
 					break;
 				case "Seasons":
 					d = (NSDictionary)seasonarraycontroller.SelectedObjects[0];
 					d = (NSDictionary)d.ValueForKey((NSString)"id");
-					NSString sid = (NSString)d.ValueForKey((NSString)"id").ToString();
+					sid = (NSString)d.ValueForKey((NSString)"id").ToString();
 					// Deserialize data
-					NSData data = NSData.FromString(malengine.loadanimeinfo(Convert.ToInt32(sid)).Content);
-					NSError e;
+					 data = NSData.FromString(malengine.loadanimeinfo(Convert.ToInt32(sid)).Content);
 					d= (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
 					data.Dispose();
 					break;
 			}
 			NSNumber id = (NSNumber)d.ValueForKey((NSString)"id");
 			addtitlelbl.StringValue = (NSString)d.ValueForKey((NSString)"title");
-			if (this.checkiftitleexistsonlist(id.Int32Value) == true)
+			if (checkiftitleexistsonlist(id.Int32Value) == true)
 			{
 				addtitleview.Hidden = true;
 				addtitleexists.Hidden = false;
@@ -350,14 +367,14 @@ namespace MALLibrary
 			if (response.StatusCode.GetHashCode() == 201)
 			{
 				// Refresh List
-				this.performloadlist(true);
+				performloadlist(true);
 				InvokeOnMainThread(() =>
 				{
 					// UI
 					addprogressview.Hidden = true;
 					addtitlebutton.Enabled = true; 
 					// Apply Filters
-					this.filterlist();
+					filterlist();
 					addpopover.Behavior = NSPopoverBehavior.Transient;
 					addpopover.Close();
 				});
@@ -384,7 +401,7 @@ namespace MALLibrary
 			a.MessageText = "Do you want to remove title " + title;
 			a.InformativeText = "Once done, this cannot be undone.";
 			a.AlertStyle = NSAlertStyle.Informational;
-			long choice = a.RunSheetModal(this.w);
+			long choice = a.RunSheetModal(w);
 			if (choice == (long)NSAlertButtonReturn.First)
 			{
 				Thread t = new Thread(() => performremovetitle(idnum.Int32Value));
@@ -408,7 +425,7 @@ namespace MALLibrary
 			{
 				InvokeOnMainThread(() =>
 				{
-					this.performloadlist(true);
+					performloadlist(true);
 				});
 			}
 		}
@@ -422,7 +439,7 @@ namespace MALLibrary
 					showminieditpopup((NSDictionary)animelistarraycontroller.SelectedObjects[0],sender);
 					return;
 				case "Title Info":
-					this.showminieditpopup(this.retrievetitlerecordfromlist(aniinfoid),sender);
+					showminieditpopup(retrievetitlerecordfromlist(aniinfoid),sender);
 					break;
 			}
 		}
@@ -449,14 +466,14 @@ namespace MALLibrary
 				{
 					loggedinuser.StringValue = "Logged in as " + username;
 					// Populate data in list view
-					this.populateanimelist(content);
+					populateanimelist(content);
 				});
 			}
 		}
 		private void populateanimelist(string content)
 		{
 			// Populates list data from JSON
-			NSMutableArray a = (NSMutableArray)this.animelistarraycontroller.Content;
+			NSMutableArray a = (NSMutableArray)animelistarraycontroller.Content;
 			a.RemoveAllObjects();
 			// Deserialize JSON
 			NSData data = NSData.FromString(content);
@@ -464,24 +481,24 @@ namespace MALLibrary
 			NSDictionary adata = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
 			NSArray alist = (NSArray)adata.ValueForKey((NSString)"anime");
 			// Populate counts for status filters
-			this.countstatus(alist);
+			countstatus(alist);
 			// Populate Table View
-			this.animelistarraycontroller.AddObjects(alist);
-			this.animetb.ReloadData();
-			this.animetb.DeselectAll(Self);
+			animelistarraycontroller.AddObjects(alist);
+			animetb.ReloadData();
+			animetb.DeselectAll(Self);
 			//Filter List
-			this.filterlist();
+			filterlist();
 		}
 		public void clearanimelist()
 		{
 			//When user is logged out
-			NSMutableArray a = (NSMutableArray)this.animelistarraycontroller.Content;
+			NSMutableArray a = (NSMutableArray)animelistarraycontroller.Content;
 			a.RemoveAllObjects();
 			loggedinuser.StringValue = "Not logged in";
 			var selected = (SourceListItem)sourcelist.ItemAtRow(sourcelist.SelectedRow);
 			if (selected.Title == "Anime List")
 			{
-				this.loadmainview();
+				loadmainview();
 			}
 		}
 		private void filterlist()
@@ -584,11 +601,11 @@ namespace MALLibrary
 		}
 		private void countstatus(NSArray a)
 		{
-			int watching = this.countstatus(a, "watching");
-			int completed = this.countstatus(a, "completed");
-			int onhold = this.countstatus(a, "on-hold");
-			int plantowatch = this.countstatus(a, "plan to watch");
-			int dropped = this.countstatus(a, "dropped");
+			int watching = countstatus(a, "watching");
+			int completed = countstatus(a, "completed");
+			int onhold = countstatus(a, "on-hold");
+			int plantowatch = countstatus(a, "plan to watch");
+			int dropped = countstatus(a, "dropped");
 			// add item counts to filter buttons
 			filterwatching.Title = "Watching (" + watching + ")";
 			filtercompleted.Title = "Completed (" + completed + ")";
@@ -618,10 +635,10 @@ namespace MALLibrary
 							break;
 						case "View Anime Info":
 							// Loads Anime Information
-							this.listtableclick();
+							listtableclick();
 							break;
 						case "Modify Title":
-							this.showminieditpopup((NSDictionary)animelistarraycontroller.SelectedObjects[0], sender);
+							showminieditpopup((NSDictionary)animelistarraycontroller.SelectedObjects[0], sender);
 							break;
 					}
 				}
@@ -719,15 +736,15 @@ namespace MALLibrary
 			if (response.StatusCode.GetHashCode() == 200)
 			{
 				// Refresh List
-				this.performloadlist(true);
+				performloadlist(true);
 				InvokeOnMainThread(() =>
 				{
 					// UI
 					minipopupprogressindicatoor.Hidden = true;
 					minipopupeditstatus.Hidden = true;
-					minieditpopoveredit.Enabled = true;;
+					minieditpopoveredit.Enabled = true;
 					// Apply Filters
-					this.filterlist();
+					filterlist();
 					minieditpopover.Behavior = NSPopoverBehavior.Transient;
 					minieditpopover.Close();
 				});
@@ -737,9 +754,9 @@ namespace MALLibrary
 				InvokeOnMainThread(() =>
 				{
 					// Apply Filters
-					minipopupprogressindicatoor.Hidden = true;;
+					minipopupprogressindicatoor.Hidden = true;
 					minipopupeditstatus.Hidden = false;
-					minieditpopoveredit.Enabled = true;;
+					minieditpopoveredit.Enabled = true;
 					minipopupeditstatus.StringValue = "Update failed.";
 					minieditpopover.Behavior = NSPopoverBehavior.Transient;
 				});
@@ -763,7 +780,7 @@ namespace MALLibrary
 				InvokeOnMainThread(() =>
 				{
 					// Populate data in Search Table View
-					this.loadsearchdata(response.Content);
+					loadsearchdata(response.Content);
 				});
 			}
 		}
@@ -771,16 +788,16 @@ namespace MALLibrary
 		private void loadsearchdata(String content)
 		{
 			// Populates search data from JSON
-			NSMutableArray a = (NSMutableArray)this.searcharraycontroller.Content;
+			NSMutableArray a = (NSMutableArray)searcharraycontroller.Content;
 			a.RemoveAllObjects();
 			// Deserialize JSON
 			NSData data = NSData.FromString(content);
 			NSError e;
 			NSArray searchdata = (NSArray)NSJsonSerialization.Deserialize(data, 0, out e);
 			// Populate Table View
-			this.searcharraycontroller.AddObjects(searchdata);
-			this.stb.ReloadData();
-			this.stb.DeselectAll(Self);
+			searcharraycontroller.AddObjects(searchdata);
+			stb.ReloadData();
+			stb.DeselectAll(Self);
 		}
 		partial void searchtbdoubleclick(Foundation.NSObject sender)
 		{
@@ -789,7 +806,7 @@ namespace MALLibrary
 				if ((int)searcharraycontroller.SelectionIndex >= -1)
 				{
 					// Loads Anime Information
-					this.searchtableclick();
+					searchtableclick();
 				}
 			}
 		}
@@ -833,7 +850,7 @@ namespace MALLibrary
 				InvokeOnMainThread(() =>
 				{
 					loadingwheel.StopAnimation(null);
-					this.loadmainview();
+					loadmainview();
 				});
 			}
 		}
@@ -842,7 +859,7 @@ namespace MALLibrary
 		{
 			// Populate Anime Information
 			animeinfotitle.StringValue = (NSString)animedata.ValueForKey(new NSString("title")).ToString();
-			alternativetitlelbl.StringValue = this.generatetitleslist(animedata);
+			alternativetitlelbl.StringValue = generatetitleslist(animedata);
 			NSImage img = SupportFiles.retrieveImage((NSString)animedata.ValueForKey(new NSString("image_url")),id);
 			posterimage.Image = img;
 			NSNumber rank = (NSNumber)animedata.ValueForKey(new NSString("rank"));
@@ -870,34 +887,37 @@ namespace MALLibrary
 				}
 			}
 			NSNumber favoritedcount = (NSNumber)animedata.ValueForKey(new NSString("favorited_count"));
-			string detail = "Type: " + type + System.Environment.NewLine;
+			string detail = "Type: " + type + Environment.NewLine;
 			if (episodes == null)
 			{
 				if (duration == null)
 				{
-					detail = detail + "Episodes: Unknown" + System.Environment.NewLine;
+					detail = detail + "Episodes: Unknown" + Environment.NewLine;
 
 				}
 				else {
-					detail = detail + "Episodes: Unknown (" + duration.Int32Value + " mins long per episode)" + System.Environment.NewLine;
+					detail = detail + "Episodes: Unknown (" + duration.Int32Value + " mins long per episode)" + Environment.NewLine;
 				}
 			}
 			else {
 				if (duration == null)
 				{
-					detail = detail + "Episodes: " + episodes.Int32Value + System.Environment.NewLine;
+					detail = detail + "Episodes: " + episodes.Int32Value + Environment.NewLine;
 
 				}
 				else {
-					detail = detail + "Episodes: " + episodes.Int32Value + " (" + duration.Int32Value + " mins long per episode)" + System.Environment.NewLine;
+					detail = detail + "Episodes: " + episodes.Int32Value + " (" + duration.Int32Value + " mins long per episode)" + Environment.NewLine;
 
 				}
 			}
-			detail = detail + "Status: " + status + System.Environment.NewLine;
-			detail = detail + "Genres: " + genres + System.Environment.NewLine;
-			detail = detail + "Classification: " + classification + System.Environment.NewLine;
-			detail = detail + "Score: " + memberscore.FloatValue + " (" + memberscount.Int32Value + " users, ranked " + rank.Int32Value + ")" + System.Environment.NewLine;
-			detail = detail + "Popularity: " + popularityrank.Int32Value + System.Environment.NewLine;
+			detail = detail + "Status: " + status + Environment.NewLine;
+			detail = detail + "Genres: " + genres + Environment.NewLine;
+			detail = detail + "Classification: " + classification + Environment.NewLine;
+			if (memberscore != null)
+			{
+				detail = detail + "Score: " + memberscore.FloatValue + " (" + memberscount.Int32Value + " users, ranked " + rank.Int32Value + ")" + Environment.NewLine;
+			}
+			detail = detail + "Popularity: " + popularityrank.Int32Value + Environment.NewLine;
 			detail = detail + "Favorites: " + favoritedcount.Int32Value;
 			detailstextview.Value = detail;
 			if (animedata.ValueForKey(new NSString("background")) != null)
@@ -911,8 +931,8 @@ namespace MALLibrary
 			loadingwheel.StopAnimation(null);
 			aniinfoid = id;
 			// Save current data
-			this.currentaniinfo = animedata;
-			this.loadmainview();
+			currentaniinfo = animedata;
+			loadmainview();
 		}
 		private string generatetitleslist(NSDictionary d)
 		{
@@ -998,14 +1018,14 @@ namespace MALLibrary
 				InvokeOnMainThread(() =>
 				{
 					// Populate data in Search Table View
-					this.populateyearpopup(content);
+					populateyearpopup(content);
 					seasonyrselect.SelectItem(seasonyrselect.ItemCount - 1); //Select current year;
-					this.populateseasonpopup((nuint)seasonyrselect.IndexOfSelectedItem);
+					populateseasonpopup((nuint)seasonyrselect.IndexOfSelectedItem);
 					if (seasonselect.ItemCount - 1 >= 0)
 					{
 						seasonselect.SelectItem(seasonselect.ItemCount - 1); //Select most recent season, only if it has more than two seasons;
 					}
-					this.performseasondata();
+					performseasondata();
 				});
 			}
 			else
@@ -1045,23 +1065,23 @@ namespace MALLibrary
 		}
 		partial void yearchanged(Foundation.NSObject sender)
 		{
-			this.populateseasonpopup((nuint)seasonyrselect.IndexOfSelectedItem);
-			this.performseasondata();
+			populateseasonpopup((nuint)seasonyrselect.IndexOfSelectedItem);
+			performseasondata();
 		}
 		partial void seasonchanged(Foundation.NSObject sender)
 		{
-			this.performseasondata();
+			performseasondata();
 		}
 		private void performseasondata()
 		{
 			// Retrieve JSON Season URL
-			NSDictionary d = seasonindex.GetItem<NSDictionary>((System.nuint)seasonyrselect.IndexOfSelectedItem);
+			NSDictionary d = seasonindex.GetItem<NSDictionary>((nuint)seasonyrselect.IndexOfSelectedItem);
 			string year = d.ValueForKey((NSString)"year").ToString();
 			NSArray a1 = (NSArray)d.ValueForKey((NSString)"seasons");
-			d = a1.GetItem<NSDictionary>((System.nuint)seasonselect.IndexOfSelectedItem);
+			d = a1.GetItem<NSDictionary>((nuint)seasonselect.IndexOfSelectedItem);
 			string season = d.ValueForKey((NSString)"season").ToString();
 			// Create Thread
-			Thread thread = new Thread(() => this.loadseasondata(season,year));
+			Thread thread = new Thread(() => loadseasondata(season,year));
 			// Perform Search
 			thread.Start();
 		}
@@ -1074,14 +1094,14 @@ namespace MALLibrary
 				InvokeOnMainThread(() =>
 				{
 					// Populate data in Search Table View
-					this.performseasondatapop(content);
+					performseasondatapop(content);
 					});
 			}
 		}
 		private void performseasondatapop(string Content)
 		{
 			// Populates search data from JSON
-			NSMutableArray a = (NSMutableArray)this.seasonarraycontroller.Content;
+			NSMutableArray a = (NSMutableArray)seasonarraycontroller.Content;
 			a.RemoveAllObjects();
 			// Deserialize JSON
 			NSData data = NSData.FromString(Content);
@@ -1089,9 +1109,9 @@ namespace MALLibrary
 			NSDictionary json = (NSDictionary)NSJsonSerialization.Deserialize(data, 0, out e);
 			NSArray seasondataarray = (NSArray)json.ValueForKey((NSString)"anime");
 			// Populate Table View
-			this.seasonarraycontroller.AddObjects(seasondataarray);
-			this.seasontb.ReloadData();
-			this.seasontb.DeselectAll(Self);
+			seasonarraycontroller.AddObjects(seasondataarray);
+			seasontb.ReloadData();
+			seasontb.DeselectAll(Self);
 		}
 
 		partial void seasontbdoubleclicked(Foundation.NSObject sender)
@@ -1133,7 +1153,7 @@ namespace MALLibrary
 		}
 		private bool checkiftitleexistsonlist(int id)
 		{
-			NSDictionary d = this.retrievetitlerecordfromlist(id);
+			NSDictionary d = retrievetitlerecordfromlist(id);
 			if (d != null)
 			{
 				return true;
@@ -1153,6 +1173,22 @@ namespace MALLibrary
 				return a.GetItem<NSDictionary>(0);
 			}
 			return null;
+		}
+		private void showneedaccountdialog()
+		{
+			//Notifies user if he or she uses a feature that requires credentials
+			NSAlert a = new NSAlert();
+			a.AddButton("Yes");
+			a.AddButton("No");
+			a.MessageText = "This functionality needs an account.";
+			a.InformativeText = "To take advantage of this feature need to login. Do you want to open Preferences to log in now?" + Environment.NewLine + Environment.NewLine +
+					"Note that you do not need to login to use the explore features.";
+			a.AlertStyle = NSAlertStyle.Informational;
+			long choice = a.RunSheetModal(w);
+			if (choice == (long)NSAlertButtonReturn.First)
+			{
+				appdel.showloginprefs();
+			}
 		}
 	}
 }

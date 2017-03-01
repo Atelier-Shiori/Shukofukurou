@@ -1,10 +1,5 @@
-﻿using System;
-
-using Foundation;
-using AppKit;
-using RestSharp;
+﻿using RestSharp;
 using RestSharp.Authenticators;
-using System.Threading;
 using System.IO;
 using Security;
 namespace MALLibrary
@@ -61,7 +56,6 @@ namespace MALLibrary
 			// Retrieves Search Data from Atarashii-API
 			RestRequest request = new RestRequest("anime/search", Method.GET);
 			request.AddParameter("q", term);
-
 			IRestResponse response = client.Execute(request);
 			return response;
 		}
@@ -79,7 +73,7 @@ namespace MALLibrary
 			{
 				return retrievelist(username);
 			}
-			return System.IO.File.ReadAllText(path + "/list-" + username + ".json");
+			return File.ReadAllText(path + "/list-" + username + ".json");
 		}
 		public string retrievelist(string username)
 		{
@@ -89,8 +83,8 @@ namespace MALLibrary
 			if (response.StatusCode.GetHashCode() == 200)
 			{
 				string directory = SupportFiles.retrieveApplicationSupportDirectory("/");
-				System.IO.File.WriteAllText(directory + "list-"+ username + ".json", response.Content);
-				return System.IO.File.ReadAllText(directory + "list-" + username + ".json");
+				File.WriteAllText(directory + "list-"+ username + ".json", response.Content);
+				return File.ReadAllText(directory + "list-" + username + ".json");
 			}
 			return "";
 

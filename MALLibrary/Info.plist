@@ -25,9 +25,9 @@
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.entertainment</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0a1</string>
+	<string>2.0a2</string>
 	<key>CFBundleVersion</key>
-	<string>2.0a1</string>
+	<string>2.0a2</string>
 	<key>SUFeedURL</key>
 	<string>https://updates.ateliershiori.moe/mallibrary/profileInfo.php</string>
 	<key>SUPublicDSAKeyFile</key>

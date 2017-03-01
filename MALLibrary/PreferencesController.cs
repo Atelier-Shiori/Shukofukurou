@@ -3,7 +3,6 @@
 using Foundation;
 using AppKit;
 using Sparkle;
-using Security;
 using RestSharp;
 using CoreGraphics;
 using System.Threading;
@@ -26,7 +25,7 @@ namespace MALLibrary
 		}
 		public NSWindow getWindow()
 		{
-			return this.w;
+			return w;
 		}
 		[Export("initWithCoder:")]
 		public PreferencesController(NSCoder coder) : base(coder)
@@ -40,7 +39,7 @@ namespace MALLibrary
 		public override void AwakeFromNib()
 		{
 			base.AwakeFromNib();
-			this.showpreferenceview();
+			showpreferenceview();
 			var rec = Keychain.retrieveaccount();
 			if (rec != null)
 			{
@@ -64,7 +63,7 @@ namespace MALLibrary
 				selectedpref = "General";
 			}
 			toolbar.SelectedItemIdentifier = selectedpref;
-			this.changepreferenceview();
+			changepreferenceview();
 			//w.SetContentSize(generalpref.IntrinsicContentSize);
 		}
 		public void gotopreference(string preference)
@@ -72,17 +71,17 @@ namespace MALLibrary
 			if (toolbar.SelectedItemIdentifier != preference)
 			{
 				toolbar.SelectedItemIdentifier = preference;
-				this.changepreferenceview();
+				changepreferenceview();
 			}
 		}
 		partial void changePref(Foundation.NSObject sender)
 		{
-			this.changepreferenceview();
+			changepreferenceview();
 			NSUserDefaults.StandardUserDefaults.SetValueForKey(new NSString(toolbar.SelectedItemIdentifier), new NSString("selectedpref"));
 		}
 		private void changepreferenceview()
 		{
-			//this.showMessage(toolbar.SelectedItemIdentifier, "");
+			//showMessage(toolbar.SelectedItemIdentifier, "");
 			CGSize vsize = new CGSize();
 			CGPoint origin = new CGPoint();
 			origin.X = 0;
@@ -94,7 +93,7 @@ namespace MALLibrary
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
 					vsize.Height = 159;
 					vsize.Width = 419;
-					this.resizeWindowToView(generalpref.Frame.Size);
+					resizeWindowToView(generalpref.Frame.Size);
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], generalpref);
 					generalpref.SetFrameOrigin(origin);
 					break;
@@ -103,7 +102,7 @@ namespace MALLibrary
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
 					vsize.Height = 312;
 					vsize.Width = 419;
-					this.resizeWindowToView(vsize);
+					resizeWindowToView(vsize);
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], loginpref);
 					loginpref.SetFrameOrigin(origin);
 					break;
@@ -112,7 +111,7 @@ namespace MALLibrary
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
 					vsize.Height = 185;
 					vsize.Width = 419;
-					this.resizeWindowToView(vsize);
+					resizeWindowToView(vsize);
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], updatepref);
 					loginpref.SetFrameOrigin(origin);
 					break;
@@ -133,14 +132,14 @@ namespace MALLibrary
 		}
 		partial void gettingstarted(Foundation.NSObject sender)
 		{
-			this.OpenURL("https://github.com/Atelier-Shiori/MALLibrary/wiki/Getting-Started");
+			OpenURL("https://github.com/Atelier-Shiori/MALLibrary/wiki/Getting-Started");
 		}
 
 		partial void login(Foundation.NSObject sender)
 		{
 			if (usernamefield.StringValue.Length == 0 || passwordfield.StringValue.Length == 0)
 			{
-				this.showMessage("Username or Password missing.", "Please enter your username and password and try again.");
+				showMessage("Username or Password missing.", "Please enter your username and password and try again.");
 				loginbut.KeyEquivalent = "\r";
 			}
 			else {
@@ -166,7 +165,7 @@ namespace MALLibrary
 					loginview.Hidden = true;
 					usernamefield.StringValue = "";
 					passwordfield.StringValue = "";
-					this.showMessage("Login Successful", "Login is successful");
+					showMessage("Login Successful", "Login is successful");
 					bool success = Keychain.saveaccount(username, password);
 					mainwindowcontrol.performloadlist(true);
 					mainwindowcontrol.loadmainview();
@@ -176,7 +175,7 @@ namespace MALLibrary
 					logoutview.Hidden = true;
 					loginview.Hidden = false;
 					loginbut.KeyEquivalent = "\r";
-					this.showMessage("MAL Library was unable to log you in since you don't have the correct username and/or password.", "Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again.");
+					showMessage("MAL Library was unable to log you in since you don't have the correct username and/or password.", "Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again.");
 				}
 			});
 		}
@@ -188,7 +187,7 @@ namespace MALLibrary
 			a.MessageText = "Do you want to log out?";
 			a.InformativeText = "Once you logged out, you need to log back in before you can use this application.";
 			a.AlertStyle = NSAlertStyle.Informational;
-			long choice = a.RunSheetModal(this.w);
+			long choice = a.RunSheetModal(w);
 			if (choice == (long)NSAlertButtonReturn.First)
 			{
 				File.Delete(SupportFiles.retrieveApplicationSupportDirectory() + "list-" + usernamelabel.StringValue + ".json");
@@ -230,7 +229,7 @@ namespace MALLibrary
 		}
 		partial void registeraccount(Foundation.NSObject sender)
 		{
-			this.OpenURL("https://myanimelist.net/register.php");
+			OpenURL("https://myanimelist.net/register.php");
 		}
 
 		private void showMessage(string message, string explaination)
@@ -239,7 +238,7 @@ namespace MALLibrary
 			msgbox.MessageText = message;
 			msgbox.InformativeText = explaination;
 			msgbox.AlertStyle = NSAlertStyle.Warning;
-			msgbox.RunSheetModal(this.w);
+			msgbox.RunSheetModal(w);
 
 		}
 		private void OpenURL(string URL)
@@ -264,7 +263,7 @@ namespace MALLibrary
 			a.MessageText = "Do you really want to clear the image cache?";
 			a.InformativeText = "Once done, this cannot be undone.";
 			a.AlertStyle = NSAlertStyle.Informational;
-			long choice = a.RunSheetModal(this.w);
+			long choice = a.RunSheetModal(w);
 			if (choice == (long)NSAlertButtonReturn.First)
 			{
 				string path = SupportFiles.retrieveApplicationSupportDirectory("/imgcache/");

@@ -1,8 +1,5 @@
-﻿using System;
-using Foundation;
-using AppKit;
+﻿using Foundation;
 using RestSharp;
-using System.Threading;
 using System.Collections.Generic;
 namespace MALLibrary
 {
@@ -49,7 +46,7 @@ namespace MALLibrary
 		{
 			if (NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"donatereminderdate") == null)
 			{
-				Donation.setReminderDate();
+				setReminderDate();
 				return 0;
 			}
 			NSDate date = (NSDate)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"donatereminderdate");
@@ -61,7 +58,7 @@ namespace MALLibrary
 				{
 					string donor = (NSString)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"donor").ToString();
 					string key = (NSString)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"key").ToString();
-					int validkey = Donation.performKeyValidation(donor, key);
+					int validkey = performKeyValidation(donor, key);
 					switch (validkey)
 					{
 						case 0:
@@ -70,7 +67,7 @@ namespace MALLibrary
 							NSUserDefaults.StandardUserDefaults.SetValueForKey(new NSString(), (NSString)"key");
 							return 2;
 						case 1:
-							Donation.setReminderDate();
+							setReminderDate();
 							return 0;
 						case 2:
 							return 0;

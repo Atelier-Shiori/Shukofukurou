@@ -180,6 +180,7 @@ namespace MALLibrary
 			defaultvalues.Add((NSString)"filteronhold", new NSNumber(0));
 			defaultvalues.Add((NSString)"filterdropped", new NSNumber(0));
 			defaultvalues.Add((NSString)"filterplantowatch", new NSNumber(0));
+			defaultvalues.Add((NSString)"refreshlistonstart", new NSNumber(1));
 			NSUserDefaults.StandardUserDefaults.RegisterDefaults(defaultvalues);
 		}
 	}

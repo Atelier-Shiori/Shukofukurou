@@ -59,7 +59,8 @@ namespace MALLibrary
 			//Load List
 			if (Keychain.checkacountexists() == true)
 			{
-				performloadlist(false);
+				NSNumber shouldrefreshlist = (NSNumber)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"refreshlistonstart");
+				performloadlist(shouldrefreshlist.BoolValue);
 			}
 			else
 			{

@@ -7,6 +7,7 @@ using RestSharp;
 using System.Threading;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using System.Timers;
 
 namespace MALLibrary
 {
@@ -21,6 +22,7 @@ namespace MALLibrary
 		int selectedlisteditid = 0;
 		bool selectedlistairing = false;
 		int selectedaddtitleid = 0;
+		System.Timers.Timer listtimer;
 		public MainWindowController(IntPtr handle) : base(handle)
 		{
 		}
@@ -66,6 +68,23 @@ namespace MALLibrary
 			{
 				loggedinuser.StringValue = "Not logged in";
 			}
+			//Setup Timer
+			listtimer = new System.Timers.Timer();
+			listtimer.Elapsed += new ElapsedEventHandler((sender, e) => firetimer());
+			listtimer.Interval = 1800;
+			NSNumber autorefreshlist = (NSNumber)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"autorefresh");
+			listtimer.Enabled = autorefreshlist.BoolValue;
+
+		}
+		public void settimer()
+		{
+			NSNumber autorefreshlist = (NSNumber)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"autorefresh");
+			listtimer.Enabled = autorefreshlist.BoolValue;
+		}
+		private void firetimer()
+		{
+			Thread t = new Thread(() => this.performloadlist(true));
+			t.Start();
 		}
 		private void generatesourcelist()
 		{
@@ -112,7 +131,6 @@ namespace MALLibrary
 						mainview.ReplaceSubviewWith(mainview.Subviews[0], listview);
 						listview.Frame = mainviewframe;
 						listview.SetFrameOrigin(origin);
-
 					}
 					else
 					{

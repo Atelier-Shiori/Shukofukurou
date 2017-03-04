@@ -91,7 +91,7 @@ namespace MALLibrary
 				case "General":
 					w.Title = "General";
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], new NSView());
-					vsize.Height = 159;
+					vsize.Height = 185;
 					vsize.Width = 419;
 					resizeWindowToView(generalpref.Frame.Size);
 					prefview.ReplaceSubviewWith(prefview.Subviews[0], generalpref);
@@ -273,6 +273,10 @@ namespace MALLibrary
 				}
 			}
 
+		}
+		partial void settimer(Foundation.NSObject sender)
+		{
+			mainwindowcontrol.settimer();
 		}
 	}
 }

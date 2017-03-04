@@ -95,6 +95,9 @@ namespace MALLibrary
 
 		[Action ("registerpassword:")]
 		partial void registerpassword (Foundation.NSObject sender);
+
+		[Action ("settimer:")]
+		partial void settimer (Foundation.NSObject sender);
 		
 		void ReleaseDesignerOutlets ()
 		{

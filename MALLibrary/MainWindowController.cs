@@ -71,7 +71,7 @@ namespace MALLibrary
 			//Setup Timer
 			listtimer = new System.Timers.Timer();
 			listtimer.Elapsed += new ElapsedEventHandler((sender, e) => firetimer());
-			listtimer.Interval = 1800;
+			listtimer.Interval = 1800000;
 			NSNumber autorefreshlist = (NSNumber)NSUserDefaults.StandardUserDefaults.ValueForKey((NSString)"autorefresh");
 			listtimer.Enabled = autorefreshlist.BoolValue;
 

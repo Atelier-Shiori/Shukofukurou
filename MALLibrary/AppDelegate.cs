@@ -182,6 +182,7 @@ namespace MALLibrary
 			defaultvalues.Add((NSString)"filterplantowatch", new NSNumber(0));
 			defaultvalues.Add((NSString)"refreshlistonstart", new NSNumber(1));
 			defaultvalues.Add((NSString)"autorefresh", new NSNumber(0));
+			defaultvalues.Add((NSString)"donated", new NSNumber(0));
 			NSUserDefaults.StandardUserDefaults.RegisterDefaults(defaultvalues);
 		}
 	}

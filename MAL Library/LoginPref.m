@@ -115,6 +115,7 @@
         [savebut setEnabled:YES];
         [mw loadlist:@(1)];
         [mw loadmainview];
+        [mw refreshloginlabel];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"%@",error);
         if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
@@ -165,6 +166,7 @@
             [fieldusername setStringValue:@""];
             [fieldpassword setStringValue:@""];
             [mw loadmainview];
+            [mw refreshloginlabel];
         }
     }];
 }

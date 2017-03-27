@@ -47,6 +47,10 @@
 		91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		91AECE591E89921200824C2D /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		91D3D89B1E89BFEF0046C4CC /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8981E89BFEF0046C4CC /* PFAboutWindow.xib */; };
+		91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
+		91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
+		91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -121,6 +125,13 @@
 		9199BB011E8984E300F6E9FF /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PXSourceList.framework; path = "/Users/kirimansharo/Desktop/MAL Library/MAL Library/PXSourceList.framework"; sourceTree = "<absolute>"; };
 		9199BB031E8984F600F6E9FF /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = "/Users/kirimansharo/Desktop/MAL Library/MAL Library/MASPreferences.framework"; sourceTree = "<absolute>"; };
 		91AECE5A1E89922A00824C2D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
+		91D3D8981E89BFEF0046C4CC /* PFAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PFAboutWindow.xib; path = PFAboutWindow/PFAboutWindow.xib; sourceTree = "<group>"; };
+		91D3D8991E89BFEF0046C4CC /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFAboutWindowController.h; path = PFAboutWindow/PFAboutWindowController.h; sourceTree = "<group>"; };
+		91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFAboutWindowController.m; path = PFAboutWindow/PFAboutWindowController.m; sourceTree = "<group>"; };
+		91D3D89E1E89C0E40046C4CC /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
+		91D3D8A21E89C1850046C4CC /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = EULA.rtf; sourceTree = "<group>"; };
+		91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeNumtoStringType.h; sourceTree = "<group>"; };
+		91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeNumtoStringType.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +176,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				91D3D89D1E89C0020046C4CC /* about */,
 				9199BAEF1E89843B00F6E9FF /* Frameworks */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
 				9199BAAB1E89842400F6E9FF /* AppDelegate.m */,
@@ -180,6 +192,8 @@
 				9199BAB81E89842400F6E9FF /* main.m */,
 				9199BAB91E89842400F6E9FF /* MainWindow.h */,
 				9199BABA1E89842400F6E9FF /* MainWindow.m */,
+				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
+				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
 				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
 				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
@@ -200,6 +214,7 @@
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				9199BA991E89836000F6E9FF /* AppDelegate.h */,
+				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9199BA9F1E89836000F6E9FF /* Assets.xcassets */,
 				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
@@ -211,6 +226,7 @@
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				9168F92D1E89861300CCB5B3 /* Keychain.m */,
+				91D3D8A21E89C1850046C4CC /* EULA.rtf */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -232,6 +248,16 @@
 				9199BAF01E89844500F6E9FF /* AFNetworking.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		91D3D89D1E89C0020046C4CC /* about */ = {
+			isa = PBXGroup;
+			children = (
+				91D3D8981E89BFEF0046C4CC /* PFAboutWindow.xib */,
+				91D3D8991E89BFEF0046C4CC /* PFAboutWindowController.h */,
+				91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */,
+			);
+			name = about;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,9 +325,11 @@
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
+				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
+				91D3D89B1E89BFEF0046C4CC /* PFAboutWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +348,9 @@
 				9199BAD61E89842400F6E9FF /* LoginPref.m in Sources */,
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
+				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
+				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
 				9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				9168F92E1E89861300CCB5B3 /* Keychain.m in Sources */,
@@ -468,6 +498,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -491,6 +522,7 @@
 				);
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -500,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -523,6 +556,7 @@
 				);
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

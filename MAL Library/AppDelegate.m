@@ -10,9 +10,11 @@
 #import "Preferences.h"
 #import "PFMoveApplication.h"
 #import "Keychain.h"
+#import "PFAboutWindowController.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
+@property PFAboutWindowController *aboutWindowController;
 @end
 
 @implementation AppDelegate
@@ -93,5 +95,12 @@
 -(void)showloginpref{
     [self.preferencesWindowController showWindow:nil];
     [(MASPreferencesWindowController *)self.preferencesWindowController selectControllerAtIndex:1];
+}
+- (IBAction)showaboutwindow:(id)sender{
+    if (!_aboutWindowController){
+        _aboutWindowController = [PFAboutWindowController new];
+    }
+    [self.aboutWindowController setAppURL:[[NSURL alloc] initWithString:@"https://mallibrary.ateliershiori.moe"]];
+    [self.aboutWindowController showWindow:nil];
 }
 @end

@@ -69,10 +69,17 @@
     [_seasonview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_notloggedinview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
+    // Fix window size
+    NSRect frame = [self.window frame];
+    frame.size.height = frame.size.height - 22;
+    [[self window] setFrame:frame display:NO];
     [self setAppearence];
     // Fix textview text color
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
+    
+    // Set logged in user
+    [self refreshloginlabel];
 }
 
 - (void)windowDidLoad {
@@ -92,7 +99,6 @@
     if (autorefreshlist.boolValue){
         [self startTimer];
     }
-    
     
 }
 
@@ -158,6 +164,14 @@
     _notloggedinview.appearance = [NSAppearance appearanceNamed:appearencename];
     _filterbarview.appearance = [NSAppearance appearanceNamed:appearencename];
     [w setFrame:[w frame] display:false];
+}
+-(void)refreshloginlabel{
+    if ([Keychain checkaccount]){
+        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@",[Keychain getusername]];
+    }
+    else {
+        _loggedinuser.stringValue = @"Not logged in.";
+    }
 }
 #pragma mark -
 #pragma mark Source List Data Source Methods
@@ -524,7 +538,7 @@
     NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
     [alert addButtonWithTitle:@"Yes"];
     [alert addButtonWithTitle:@"No"];
-    [alert setMessageText:[NSString stringWithFormat:@"Are you sure you want to delete %@ from your list?", d[@"title_romaji"]]];
+    [alert setMessageText:[NSString stringWithFormat:@"Are you sure you want to delete %@ from your list?", d[@"title"]]];
     [alert setInformativeText:@"Once you delete this title, this cannot be undone."];
     [alert setAlertStyle:NSAlertStyleWarning];
     [alert beginSheetModalForWindow:[self window] completionHandler:^(NSModalResponse returnCode) {
@@ -564,10 +578,10 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     manager.responseSerializer = [AFHTTPResponseSerializer new];
-    [manager DELETE:[NSString stringWithFormat:@"https://malapi/2.1/animelist/%i", selid.intValue] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager DELETE:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%i", selid.intValue] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
         [self loadlist:@(true)];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        
+        NSLog(@"%@",error);
     }];
 }
 #pragma mark Edit Popover
@@ -614,7 +628,7 @@
 -(void)performupdate{
     [_minipopovereditbtn setEnabled:false];
     [_minipopoverstatustext setStringValue:@""];
-    if(![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue){
+    if(![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue && selectedaircompleted){
         [_minipopoverstatus selectItemWithTitle:@"completed"];
     }
     if(!selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)){
@@ -625,7 +639,7 @@
         [_minipopoverindicator stopAnimation:nil];
         return;
     }
-    if (_minipopoverepfield.intValue == _minipopovertotalep.intValue && _minipopovertotalep.intValue != 0){
+    if (_minipopoverepfield.intValue == _minipopovertotalep.intValue && _minipopovertotalep.intValue != 0 && selectedaircompleted && selectedaired){
         [_minipopoverstatus selectItemWithTitle:@"completed"];
         [_minipopoverepfield setIntValue:[_minipopovertotalep intValue]];
     }
@@ -658,10 +672,22 @@
         [self showAddPopover:d showRelativeToRec:[searchtb frameOfCellAtColumn:0 row:[searchtb selectedRow]] ofView:searchtb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [self showAddPopover:[self retreveentryfromlist:selectedid]showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+        [self showAddPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+    }
+    else if ([identifier isEqualToString:@"seasons"]){
+        NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
+        d = d[@"id"];
+        NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+        [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/anime/%i",idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [self showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
     }
 }
-    
+
 -(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge{
     NSNumber * idnum = d[@"id"];
     if (![self checkiftitleisonlist:idnum.intValue]){
@@ -699,7 +725,7 @@
 }
 -(void)addtitletolist{
     [_addfield setEnabled:false];
-    if(![_addstatusfield isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue){
+    if(![_addstatusfield isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && selectedaircompleted){
         [_addstatusfield selectItemWithTitle:@"completed"];
     }
     if(!selectedaired && (![_addstatusfield.title isEqual:@"plan to watch"] ||_addepifield.intValue > 0)){
@@ -708,7 +734,7 @@
         [_addpopover setBehavior:NSPopoverBehaviorTransient];
         return;
     }
-    if (_addepifield.intValue == _addtotalepisodes.intValue && _addtotalepisodes.intValue != 0){
+    if (_addepifield.intValue == _addtotalepisodes.intValue && _addtotalepisodes.intValue != 0 && selectedaircompleted && selectedaired){
         [_addstatusfield selectItemWithTitle:@"completed"];
         [_addepifield setIntValue:[_minipopovertotalep intValue]];
     }
@@ -716,7 +742,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
      manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager POST:@"https://malapi.ateliershiori.moe/2.1/animelist/anime" parameters:@{@"id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager POST:@"https://malapi.ateliershiori.moe/2.1/animelist/anime" parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [self loadlist:@(true)];
         [_addfield setEnabled:true];
         [_addpopover setBehavior:NSPopoverBehaviorTransient];
@@ -757,6 +783,7 @@
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
     NSMutableString *genres = [NSMutableString new];
+    NSString *background;
     [_infoviewtitle setStringValue:d[@"title"]];
     NSDictionary * dtitles =  d[@"other_titles"];
     NSMutableArray * othertitles = [NSMutableArray new];
@@ -787,23 +814,56 @@
     else{
         [genres appendString:@"None"];
     }
+    if (d[@"background"] != nil){
+        background = d[@"background"];
+    }
+    else {
+        background = @"None available";
+    }
     NSString * type = d[@"type"];
     NSNumber * score = d[@"members_score"];
     NSNumber * popularity = d[@"popularity_rank"];
+    NSNumber * memberscount = d[@"members_count"];
+    NSNumber *rank = d[@"rank"];
+    NSNumber * favorites = d[@"favorited_count"];
     NSImage * posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     [_infoviewposterimage setImage:posterimage];
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
+    if (d[@"episodes"] == nil){
+        if (d[@"duration"] == nil){
+            [details appendString:@"Episodes: Unknown\n"];
+        }
+        else{
+            [details appendString:[NSString stringWithFormat:@"Episodes: Unknown (%i mins per episode)\n", [(NSNumber *)d[@"duration"] intValue]]];
+        }
+    }
+    else {
+        if (d[@"duration"] == nil){
+            [details appendString:[NSString stringWithFormat:@"Episodes: %i\n", [(NSNumber *)d[@"episodes"] intValue]]];
+        }
+        else{
+            [details appendString:[NSString stringWithFormat:@"Episodes: %i (%i mins per episode)\n", [(NSNumber *)d[@"episodes"] intValue], [(NSNumber *)d[@"duration"] intValue]]];
+        }
+    }
+    [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
-    [details appendString:[NSString stringWithFormat:@"Score: %f/100\n", score.floatValue]];
+    if (d[@"classification"] != nil){
+        [details appendString:[NSString stringWithFormat:@"Classification: %@\n", d[@"classification"]]];
+    }
+    if (d[@"members_score"]!=nil){
+        [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
+    }
     [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
+    [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
     NSString * synopsis = d[@"synopsis"];
     [_infoviewdetailstextview setString:details];
     [_infoviewsynopsistextview setString:[synopsis stripHtml]];
+    [_infoviewbackgroundtextview setString:background];
     [self loadmainview];
     selectedanimeinfo = d;
 }
 - (IBAction)viewonmal:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",selectedid]]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%i",selectedid]]];
 }
 -(bool)checkiftitleisonlist:(int)idnum{
     NSArray * list = [_animelistarraycontroller content];
@@ -823,7 +883,14 @@
 }
 #pragma mark Seasons View
 - (IBAction)seasondoubleclick:(id)sender {
-
+    if ([_seasontableview clickedRow] >=0){
+        if ([_seasontableview clickedRow] >-1){
+            NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
+            d = d[@"id"];
+            NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
+            [self loadanimeinfo:idnum];
+        }
+    }
 }
     
 - (IBAction)yearchange:(id)sender {
@@ -842,7 +909,7 @@
     }
 }
 -(void)loadseasondata:(int)year forSeason:(NSString *)season{
-    if (_seasonyrpicker.itemArray.count == 0){
+    if (_seasonyrpicker.itemArray.count > 0){
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/seasondata/"]){
             NSMutableArray * sarray = [_seasonarraycontroller content];
             [sarray removeAllObjects];
@@ -866,25 +933,25 @@
         NSNumber * year = yr[@"year"];
         [_seasonyrpicker addItemWithTitle:year.stringValue];
     }
+    [_seasonyrpicker selectItemAtIndex:[[_seasonyrpicker itemArray] count]-1];
     [self populateseasonpopup];
 }
 -(void)populateseasonpopup{
     [_seasonpicker removeAllItems];
     NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
     NSArray * a = d[@"years"];
-    for (int i = 0; i < a.count; i++){
-        NSDictionary * yr = [a objectAtIndex:i];
-        NSArray * s = yr[@"seasons"];
-        for (int i = 0; i < s.count; i++){
-            NSDictionary * season = [s objectAtIndex:i];
-            NSString * seasonname = season[@"season"];
-            [_seasonpicker addItemWithTitle:seasonname];
-        }
+    NSDictionary * yr = [a objectAtIndex:_seasonyrpicker.indexOfSelectedItem];
+    NSArray * s = yr[@"seasons"];
+    for (int i = 0; i < s.count; i++){
+        NSDictionary * season = [s objectAtIndex:i];
+        NSString * seasonname = season[@"season"];
+        [_seasonpicker addItemWithTitle:seasonname];
     }
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
 }
 -(void)performseasonindexretrieval{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [manager GET:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/index.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [Utility saveJSON:responseObject withFilename:@"index.json" appendpath:@"/seasondata/" replace:true];
         [self populateyearpopup];
@@ -894,6 +961,7 @@
 }
 -(void)performseasondataretrieval:(int)year forSeason:(NSString *)season loaddata:(bool)loaddata {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [manager GET:[NSString stringWithFormat:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/data/%i-%@.json",year,season] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [Utility saveJSON:responseObject withFilename:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/" replace:true];
         if (loaddata){

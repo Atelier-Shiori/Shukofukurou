@@ -23,7 +23,7 @@
                             <menuItem title="About MAL Library" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
+                                    <action selector="showaboutwindow:" target="Voe-Tx-rLC" id="eea-qa-mpp"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Check for Updates…" id="ojI-PM-LyS">

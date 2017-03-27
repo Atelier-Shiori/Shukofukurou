@@ -30,6 +30,7 @@
     NSDictionary * selectedanimeinfo;
 
 }
+@property (strong) IBOutlet NSTextField *loggedinuser;
 //Anime List View
 @property (strong) IBOutlet NSArrayController *animelistarraycontroller;
 @property (strong) IBOutlet NSTableView *animelisttb;
@@ -59,6 +60,7 @@
 @property (strong) IBOutlet NSTextView *infoviewdetailstextview;
 @property (strong) IBOutlet NSTextView *infoviewsynopsistextview;
 @property (strong) IBOutlet NSImageView *infoviewposterimage;
+@property (strong) IBOutlet NSTextView *infoviewbackgroundtextview;
 // Edit Popover
 @property (strong) IBOutlet NSTextFieldNumber *minipopoverepfield;
 @property (strong) IBOutlet NSTextField *minipopovertotalep;
@@ -100,6 +102,7 @@
 -(void)startTimer;
 -(void)stopTimer;
 -(void)fireTimer;
+-(void)refreshloginlabel;
 
 //Anime List View
 - (IBAction)refreshlist:(id)sender;

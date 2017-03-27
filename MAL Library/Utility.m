@@ -103,16 +103,16 @@
     NSMutableString *string = [NSMutableString new];
     for (int i=0; i < [a count]; i++){
         if (i == [a count]-1 && i != 0){
-            [string appendString:[NSString stringWithFormat:@"and %@",[a objectAtIndex:i]]];
+            [string appendString:[NSString stringWithFormat:@"and %@",(NSString *)[a objectAtIndex:i]]];
         }
         else if ([a count] == 1){
-            [string appendString:[NSString stringWithFormat:@"%@",[a objectAtIndex:i]]];
+            [string appendString:[NSString stringWithFormat:@"%@",(NSString *)[a objectAtIndex:i]]];
         }
         else{
-            [string appendString:[NSString stringWithFormat:@"%@, ",[a objectAtIndex:i]]];
+            [string appendString:[NSString stringWithFormat:@"%@, ",(NSString *)[a objectAtIndex:i]]];
         }
     }
-    return string;
+    return (NSString *)string;
 }
 +(bool)checkifFileExists:(NSString *)filename appendPath:(NSString *) appendpath{
     NSString * path = [Utility retrieveApplicationSupportDirectory:appendpath];

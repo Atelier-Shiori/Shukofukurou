@@ -1,6 +1,6 @@
 //
 //  MainWindow.m
-//  Nekomata
+//  MAL Library
 //
 //  Created by 桐間紗路 on 2017/02/28.
 //  Copyright © 2017 Atelier Shiori. All rights reserved.
@@ -29,7 +29,7 @@
 - (void)awakeFromNib
 {
     // Register queue
-    _privateQueue = dispatch_queue_create("moe.ateliershiori.nekomata", DISPATCH_QUEUE_CONCURRENT);
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
@@ -53,9 +53,9 @@
       [searchItem setIcon:[NSImage imageNamed:@"search"]];
     PXSourceListItem *titleinfoItem = [PXSourceListItem itemWithTitle:@"Title Info" identifier:@"titleinfo"];
     [titleinfoItem setIcon:[NSImage imageNamed:@"animeinfo"]];
-    //PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
-    //[seasonsItem setIcon:[NSImage imageNamed:@"seasons"]];
- [discoverItem setChildren:[NSArray arrayWithObjects:searchItem, titleinfoItem/*,seasonsItem*/, nil]];
+    PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
+    [seasonsItem setIcon:[NSImage imageNamed:@"seasons"]];
+    [discoverItem setChildren:[NSArray arrayWithObjects:searchItem, titleinfoItem,seasonsItem, nil]];
    
    // Populate Source List
     [self.sourceListItems addObject:libraryItem];
@@ -115,7 +115,7 @@
     }
 
     //Generate Items to Share
-    NSArray *shareItems = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Check out %@ out on AniList ", d[@"title_romaji"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%@", d[@"id"]]] ,nil];
+    NSArray *shareItems = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%@", d[@"id"]]] ,nil];
     //Get Share Picker
     NSSharingServicePicker *sharePicker = [[NSSharingServicePicker alloc] initWithItems:shareItems];
     sharePicker.delegate = nil;
@@ -308,6 +308,7 @@
         [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1];
         [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2];
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
+        [self populateseasonpopups];
     }
 }
 #pragma mark -
@@ -451,7 +452,14 @@
     }
 }
 - (IBAction)refreshlist:(id)sender {
+    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
+    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    if ([identifier isEqualToString:@"animelist"]){
     [self loadlist:@(true)];
+    }
+    else if ([identifier isEqualToString:@"seasons"]){
+        [self performseasonindexretrieval];
+    }
 }
 
 - (IBAction)animelistdoubleclick:(id)sender {
@@ -611,6 +619,7 @@
         [self showAddPopover:[self retreveentryfromlist:selectedid]showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
     }
 }
+    
 -(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge{
     NSNumber * idnum = d[@"id"];
     if (![self checkiftitleisonlist:idnum.intValue]){
@@ -706,13 +715,19 @@
     [_infoviewtitle setStringValue:d[@"title"]];
     NSDictionary * dtitles =  d[@"other_titles"];
     NSMutableArray * othertitles = [NSMutableArray new];
-    if (dtitles[@"english"] != [NSNull null]){
-        [othertitles addObject:dtitles[@"english"]];
+    if (dtitles[@"english"] != nil){
+        NSArray * e = dtitles[@"english"];
+        for (NSString * etitle in e){
+            [othertitles addObject:etitle];
+        }
     }
-    if (dtitles[@"japanese"] != [NSNull null]){
-        [othertitles addObject:dtitles[@"japanese"]];
+    if (dtitles[@"japanese"] != nil){
+        NSArray * j = dtitles[@"japanese"];
+        for (NSString * jtitle in j){
+            [othertitles addObject:jtitle];
+        }
     }
-    if (dtitles[@"synonyms"] != [NSNull null]){
+    if (dtitles[@"synonyms"] != nil){
         NSArray * syn = dtitles[@"synonyms"];
         for (NSString * stitle in syn){
             [othertitles addObject:stitle];
@@ -720,8 +735,13 @@
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
     [_infoviewalttitles setStringValue:titles];
-    NSArray * genresa = d[@"genres"];
-    [genres appendString:[Utility appendstringwithArray:genresa]];
+    if (d[@"genres"]!= nil){
+        NSArray * genresa = d[@"genres"];
+        [genres appendString:[Utility appendstringwithArray:genresa]];
+    }
+    else{
+        [genres appendString:@"None"];
+    }
     NSString * type = d[@"type"];
     NSNumber * score = d[@"members_score"];
     NSNumber * popularity = d[@"popularity_rank"];
@@ -737,7 +757,7 @@
     [self loadmainview];
     selectedanimeinfo = d;
 }
-- (IBAction)viewonanilist:(id)sender {
+- (IBAction)viewonmal:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",selectedid]]];
 }
 -(bool)checkiftitleisonlist:(int)idnum{
@@ -755,6 +775,88 @@
         return [list objectAtIndex:0];
     }
     return nil;
+}
+#pragma mark Seasons View
+- (IBAction)seasondoubleclick:(id)sender {
+
+}
+    
+- (IBAction)yearchange:(id)sender {
+    [self populateseasonpopup];
+}
+    
+- (IBAction)seasonchange:(id)sender {
+    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
+}
+-(void)populateseasonpopups{
+    if ([Utility checkifFileExists:@"index.json" appendPath:@"/seasondata/"]){
+        [self populateyearpopup];
+    }
+    else {
+        [self performseasonindexretrieval];
+    }
+}
+-(void)loadseasondata:(int)year forSeason:(NSString *)season{
+    if (_seasonyrpicker.itemArray.count == 0){
+        if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/seasondata/"]){
+            NSMutableArray * sarray = [_seasonarraycontroller content];
+            [sarray removeAllObjects];
+            NSDictionary * d =  [Utility loadJSON:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/"];
+            NSArray * a = d[@"anime"];
+            [_seasonarraycontroller addObjects:a];
+            [_seasontableview reloadData];
+            [_seasontableview deselectAll:self];
+        }
+        else {
+            [self performseasondataretrieval:year forSeason:season loaddata:true];
+        }
+    }
+}
+-(void)populateyearpopup{
+    [_seasonyrpicker removeAllItems];
+    NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
+    NSArray * a = d[@"years"];
+    for (int i = 0; i < a.count; i++){
+        NSDictionary * yr = [a objectAtIndex:i];
+        NSNumber * year = yr[@"year"];
+        [_seasonyrpicker addItemWithTitle:year.stringValue];
+    }
+    [self populateseasonpopup];
+}
+-(void)populateseasonpopup{
+    [_seasonpicker removeAllItems];
+    NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
+    NSArray * a = d[@"years"];
+    for (int i = 0; i < a.count; i++){
+        NSDictionary * yr = [a objectAtIndex:i];
+        NSArray * s = yr[@"seasons"];
+        for (int i = 0; i < s.count; i++){
+            NSDictionary * season = [s objectAtIndex:i];
+            NSString * seasonname = season[@"season"];
+            [_seasonpicker addItemWithTitle:seasonname];
+        }
+    }
+    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
+}
+-(void)performseasonindexretrieval{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/index.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [Utility saveJSON:responseObject withFilename:@"index.json" appendpath:@"/seasondata/" replace:true];
+        [self populateyearpopup];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+-(void)performseasondataretrieval:(int)year forSeason:(NSString *)season loaddata:(bool)loaddata {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager GET:[NSString stringWithFormat:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/data/%i-%@.json",year,season] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [Utility saveJSON:responseObject withFilename:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/" replace:true];
+        if (loaddata){
+            [self loadseasondata:year forSeason:season];
+        }
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
 }
 @end
 

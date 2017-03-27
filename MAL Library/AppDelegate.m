@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  Nekomata
+//  MAL Library
 //
 //  Created by 桐間紗路 on 2017/02/28.
 //  Copyright © 2017 Atelier Shiori. All rights reserved.

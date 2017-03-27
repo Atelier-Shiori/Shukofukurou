@@ -1,6 +1,6 @@
 //
 //  MainWindow.h
-//  Nekomata
+//  MAL Library
 //
 //  Created by 桐間紗路 on 2017/02/28.
 //  Copyright © 2017 Atelier Shiori. All rights reserved.
@@ -80,6 +80,12 @@
 @property (strong) IBOutlet NSPopUpButton *addstatusfield;
 @property (strong) IBOutlet NSButton *addfield;
 @property (strong) IBOutlet NSPopover *addpopover;
+    
+// Season View
+@property (strong) IBOutlet NSPopUpButton *seasonyrpicker;
+@property (strong) IBOutlet NSPopUpButton *seasonpicker;
+@property (strong) IBOutlet NSArrayController *seasonarraycontroller;
+@property (strong) IBOutlet NSTableView *seasontableview;
 
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong, nonatomic) MSWeakTimer * refreshtimer;
@@ -105,12 +111,15 @@
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;
 // Info View
-- (IBAction)viewonanilist:(id)sender;
+- (IBAction)viewonmal:(id)sender;
 // Modify Popover
 - (IBAction)performmodifytitle:(id)sender;
 - (IBAction)performupdatetitle:(id)sender;
 // Add Title
 - (IBAction)showaddpopover:(id)sender;
 
+- (IBAction)seasondoubleclick:(id)sender;
+- (IBAction)yearchange:(id)sender;
+- (IBAction)seasonchange:(id)sender;
 
 @end

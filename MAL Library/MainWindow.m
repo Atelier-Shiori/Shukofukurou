@@ -67,6 +67,7 @@
     [_progressview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_searchview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_seasonview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_notloggedinview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
     [self setAppearence];
     // Fix textview text color
@@ -274,6 +275,7 @@
     }
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    int indexoffset = 0;
     
     if ([identifier isEqualToString:@"animelist"]){
         if ([Keychain checkaccount]){
@@ -286,28 +288,42 @@
         }
     }
     else if ([identifier isEqualToString:@"search"]){
-        [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
-        [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1];
-        [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2];
-      
+        if ([Keychain checkaccount]){
+            [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
+        }
+        else {
+            indexoffset = -1;
+        }
+        [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
+        [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2+indexoffset];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         if (selectedid > 0){
-            if ([self checkiftitleisonlist:selectedid]){
-                 [_toolbar insertItemWithItemIdentifier:@"editInfo" atIndex:0];
+            if ([Keychain checkaccount]){
+                if ([self checkiftitleisonlist:selectedid]){
+                     [_toolbar insertItemWithItemIdentifier:@"editInfo" atIndex:0];
+                }
+                else{
+                    [_toolbar insertItemWithItemIdentifier:@"AddTitleInfo" atIndex:0];
+                }
             }
             else{
-                [_toolbar insertItemWithItemIdentifier:@"AddTitleInfo" atIndex:0];
+                indexoffset = -1;
             }
-            [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1];
-            [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:2+indexoffset];
         }
     }
     else if ([identifier isEqualToString:@"seasons"]){
-       [_toolbar insertItemWithItemIdentifier:@"AddTitleSeason" atIndex:0];
-        [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1];
-        [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2];
-        [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
+        if ([Keychain checkaccount]){
+            [_toolbar insertItemWithItemIdentifier:@"AddTitleSeason" atIndex:0+indexoffset];
+        }
+        else {
+            indexoffset = -1;
+        }
+        [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1+indexoffset];
+        [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2+indexoffset];
+        [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3+indexoffset];
         [self populateseasonpopups];
     }
 }
@@ -377,18 +393,43 @@
     NSDictionary * data = object;
     NSArray * list=data[@"anime"];
     [_animelistarraycontroller addObjects:list];
-    [self populatefiltercounts:data[@"status_count"]];
+    [self populatefiltercounts:list];
     [_animelisttb reloadData];
     [_animelisttb deselectAll:self];
     [self performfilter];
 }
--(void)populatefiltercounts:(NSDictionary*)d{
+-(void)populatefiltercounts:(NSArray *)a{
     // Generates item counts for each status filter
-    NSNumber *watching = d[@"watching"];
-    NSNumber *completed = d[@"completed"];
-    NSNumber *onhold = d[@"on_hold"];
-    NSNumber *dropped = d[@"dropped"];
-    NSNumber *plantowatch = d[@"plan_to_watch"];
+    NSArray * filtered;
+    NSNumber *watching;
+    NSNumber *completed;
+    NSNumber *onhold;
+    NSNumber *dropped;
+    NSNumber *plantowatch;
+    for (int i = 0; i < 5; i++){
+        switch(i){
+            case 0:
+                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"watching"]];
+                watching = @(filtered.count);
+                break;
+            case 1:
+                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"completed"]];
+                completed = @(filtered.count);
+                break;
+            case 2:
+                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"on-hold"]];
+                 onhold = @(filtered.count);
+                break;
+            case 3:
+                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"dropped"]];
+                dropped = @(filtered.count);
+                break;
+            case 4:
+                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"plan to watch"]];
+                plantowatch = @(filtered.count);
+                break;
+        }
+    }
     _watchingfilter.title = [NSString stringWithFormat:@"Watching (%i)",watching.intValue];
     _completedfilter.title = [NSString stringWithFormat:@"Completed (%i)",completed.intValue];
     _onholdfilter.title = [NSString stringWithFormat:@"On Hold (%i)",onhold.intValue];
@@ -592,6 +633,7 @@
     [_minipopoverindicator startAnimation:nil];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager PUT:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%@", @(selectededitid)] parameters:@{ @"status":_minipopoverstatus.title, @"score":@(_minipopoverscore.intValue), @"episodes":@(_minipopoverepfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
         [self loadlist:@(true)];
          [_minipopovereditbtn setEnabled:true];
@@ -672,14 +714,17 @@
     }
     [_addpopover setBehavior:NSPopoverBehaviorApplicationDefined];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manager POST:@"https://malapi.ateliershiori.moe/2.1/animelist/anime" parameters:@{@"id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [self loadlist:@(true)];
         [_addfield setEnabled:true];
         [_addpopover setBehavior:NSPopoverBehaviorTransient];
         [_addpopover close];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
-        [_addfield setEnabled:true];
+        NSLog(@"%@",error);
+        NSData * errordata = [error userInfo] [@"com.alamofire.serialization.response.error.data" ];
+        NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
         [_addpopover setBehavior:NSPopoverBehaviorTransient];
     }];
 }

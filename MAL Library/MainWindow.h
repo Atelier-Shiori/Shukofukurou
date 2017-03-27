@@ -107,6 +107,7 @@
 - (IBAction)deletetitle:(id)sender;
 -(void)clearlist;
 - (IBAction)filterperform:(id)sender;
+-(void)loadlist:(NSNumber *)refresh;
 //Search View
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;

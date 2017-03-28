@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -293,10 +292,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="592B486B-1906-4FCE-A1B7-A21E0C346794" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" id="nBW-W8-5VV">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="96" height="22"/>
-                        <size key="maxSize" width="96" height="22"/>
+                        <size key="minSize" width="150" height="22"/>
+                        <size key="maxSize" width="150" height="22"/>
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="KKI-5U-zIm">
-                            <rect key="frame" x="0.0" y="14" width="96" height="22"/>
+                            <rect key="frame" x="0.0" y="14" width="150" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="26j-cp-6cl">
                                 <font key="font" metaFont="system"/>
@@ -310,10 +309,10 @@
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="405D4DDB-1D52-4DF2-95F5-DB3C2BBBA108" explicitItemIdentifier="search" label="Title Search" paletteLabel="Title Search" id="A84-pG-n29">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="100" height="22"/>
-                        <size key="maxSize" width="100" height="22"/>
+                        <size key="minSize" width="150" height="22"/>
+                        <size key="maxSize" width="150" height="22"/>
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="UGJ-OX-Y5p">
-                            <rect key="frame" x="0.0" y="14" width="100" height="22"/>
+                            <rect key="frame" x="0.0" y="14" width="150" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="Ytj-EV-Pud">
                                 <font key="font" metaFont="system"/>
@@ -1000,7 +999,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EUC-6r-NMV">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="lcO-cB-Nug" id="oys-2G-zkA">
                                 <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>

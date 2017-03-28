@@ -459,7 +459,7 @@
     NSMutableArray * predicateobjects = [NSMutableArray new];
     bool titlefilterused = false;
     if (_animelistfilter.stringValue.length > 0){
-        [predicateformat addObject: @"(title_romaji CONTAINS [cd] %@)"];
+        [predicateformat addObject: @"(title CONTAINS [cd] %@)"];
         [predicateobjects addObject: _animelistfilter.stringValue];
         titlefilterused = true;
     }

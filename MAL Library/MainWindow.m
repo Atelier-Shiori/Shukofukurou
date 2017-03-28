@@ -101,6 +101,9 @@
     }
     
 }
+- (IBAction)addlicense:(id)sender {
+    [appdel enterDonationKey:sender];
+}
 
 -(void)setDelegate:(AppDelegate*) adelegate{
     appdel = adelegate;

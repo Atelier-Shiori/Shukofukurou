@@ -12,6 +12,8 @@
 #import "Keychain.h"
 #import "PFAboutWindowController.h"
 #import "DonationWindowController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -32,6 +34,7 @@
     defaultValues[@"appearence"] = @"Light";
     defaultValues[@"refreshautomatically"] = @(1);
     defaultValues[@"donated"] = @(0);
+    defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
@@ -50,6 +53,7 @@
     [mainwindowcontroller setDelegate:self];
     [mainwindowcontroller.window makeKeyAndOrderFront:self];
     [self showloginnotice];
+    [Fabric with:@[[Crashlytics class]]];
 }
 
 

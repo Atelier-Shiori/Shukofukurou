@@ -155,10 +155,10 @@
                                 <action selector="startlogin:" target="-2" id="46"/>
                             </connections>
                         </button>
-                        <textField verticalHuggingPriority="750" id="13">
-                            <rect key="frame" x="13" y="98" width="353" height="50"/>
+                        <textField verticalHuggingPriority="750" misplaced="YES" id="13">
+                            <rect key="frame" x="13" y="106" width="353" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="You need to login to MyAnimeList to view and manage your list.  Login information is stored in the login Keychain." id="14">
+                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="You need to login to MyAnimeList to manage your list.  Login information is stored in the login Keychain." id="14">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>

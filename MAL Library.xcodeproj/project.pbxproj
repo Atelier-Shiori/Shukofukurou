@@ -16,7 +16,8 @@
 		9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
-		917897EA1E89E6BE00C155DF /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897E91E89E6BE00C155DF /* DonationWindow.xib */; };
+		917897EB1E89F19900C155DF /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897ED1E89F19900C155DF /* DonationWindow.xib */; };
+		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
 		9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAA11E89836000F6E9FF /* MainMenu.xib */; };
 		9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
@@ -49,7 +50,6 @@
 		91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		91AECE591E89921200824C2D /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
-		91D3D89B1E89BFEF0046C4CC /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8981E89BFEF0046C4CC /* PFAboutWindow.xib */; };
 		91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
 		91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
 		91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
@@ -80,7 +80,8 @@
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		917897E61E89E6AD00C155DF /* DonationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationWindowController.h; sourceTree = "<group>"; };
 		917897E71E89E6AD00C155DF /* DonationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationWindowController.m; sourceTree = "<group>"; };
-		917897E91E89E6BE00C155DF /* DonationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationWindow.xib; sourceTree = "<group>"; };
+		917897EC1E89F19900C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationWindow.xib; sourceTree = "<group>"; };
+		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA991E89836000F6E9FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9199BA9A1E89836000F6E9FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -130,7 +131,6 @@
 		9199BB011E8984E300F6E9FF /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PXSourceList.framework; path = "/Users/kirimansharo/Desktop/MAL Library/MAL Library/PXSourceList.framework"; sourceTree = "<absolute>"; };
 		9199BB031E8984F600F6E9FF /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = "/Users/kirimansharo/Desktop/MAL Library/MAL Library/MASPreferences.framework"; sourceTree = "<absolute>"; };
 		91AECE5A1E89922A00824C2D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
-		91D3D8981E89BFEF0046C4CC /* PFAboutWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PFAboutWindow.xib; path = PFAboutWindow/PFAboutWindow.xib; sourceTree = "<group>"; };
 		91D3D8991E89BFEF0046C4CC /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFAboutWindowController.h; path = PFAboutWindow/PFAboutWindowController.h; sourceTree = "<group>"; };
 		91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFAboutWindowController.m; path = PFAboutWindow/PFAboutWindowController.m; sourceTree = "<group>"; };
 		91D3D89E1E89C0E40046C4CC /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
@@ -181,7 +181,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				917897E91E89E6BE00C155DF /* DonationWindow.xib */,
+				917897ED1E89F19900C155DF /* DonationWindow.xib */,
 				917897E61E89E6AD00C155DF /* DonationWindowController.h */,
 				917897E71E89E6AD00C155DF /* DonationWindowController.m */,
 				91D3D89D1E89C0020046C4CC /* about */,
@@ -261,7 +261,7 @@
 		91D3D89D1E89C0020046C4CC /* about */ = {
 			isa = PBXGroup;
 			children = (
-				91D3D8981E89BFEF0046C4CC /* PFAboutWindow.xib */,
+				917897F01E89F19C00C155DF /* PFAboutWindow.xib */,
 				91D3D8991E89BFEF0046C4CC /* PFAboutWindowController.h */,
 				91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */,
 			);
@@ -331,14 +331,14 @@
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
-				917897EA1E89E6BE00C155DF /* DonationWindow.xib in Resources */,
+				917897EB1E89F19900C155DF /* DonationWindow.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
-				91D3D89B1E89BFEF0046C4CC /* PFAboutWindow.xib in Resources */,
+				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +374,23 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		917897ED1E89F19900C155DF /* DonationWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				917897EC1E89F19900C155DF /* Base */,
+			);
+			name = DonationWindow.xib;
+			sourceTree = "<group>";
+		};
+		917897F01E89F19C00C155DF /* PFAboutWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				917897EF1E89F19C00C155DF /* Base */,
+			);
+			name = PFAboutWindow.xib;
+			path = PFAboutWindow;
+			sourceTree = "<group>";
+		};
 		9199BAA11E89836000F6E9FF /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

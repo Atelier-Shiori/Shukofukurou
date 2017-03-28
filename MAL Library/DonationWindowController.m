@@ -28,11 +28,14 @@
 }
 -(IBAction)validate:(id)sender{
     if ([[name stringValue] length] > 0 && [[key stringValue] length]>0){
+        __block NSButton * btn = sender;
+        [btn setEnabled:NO];
         // Check donation key
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":name.stringValue, @"key":key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [btn setEnabled:YES];
             NSDictionary * d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
             int valid = [(NSNumber *)d[@"valid"] intValue];
             if (valid == 1) {
@@ -53,6 +56,9 @@
             NSLog(@"%@",error);
             [Utility showsheetmessage:@"No Internet" explaination:@"Make sure you are connected to the internet and try again." window:[self window]];
                    }];
+    }
+    else{
+        [Utility showsheetmessage:@"Missing Information" explaination:@"Please type in the name and key exactly from the email and try again." window:[self window]];
     }
 }
 

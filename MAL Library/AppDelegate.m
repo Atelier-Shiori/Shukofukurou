@@ -111,7 +111,7 @@
     if (!_aboutWindowController){
         _aboutWindowController = [PFAboutWindowController new];
     }
-    [self.aboutWindowController setAppURL:[[NSURL alloc] initWithString:@"https://mallibrary.ateliershiori.moe"]];
+    [self.aboutWindowController setAppURL:[[NSURL alloc] initWithString:@"https://malupdaterosx.ateliershiori.moe/mallibrary/"]];
     NSMutableString * copyrightstr = [NSMutableString new];
     NSDictionary *bundleDict = [[NSBundle mainBundle] infoDictionary];
     [copyrightstr appendFormat:@"%@ \r\r",[bundleDict objectForKey:@"NSHumanReadableCopyright"]];

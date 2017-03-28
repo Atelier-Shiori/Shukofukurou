@@ -7,6 +7,8 @@
 //
 
 #import "Utility.h"
+#import <AFNetworking/AFNetworking.h>
+#import "AppDelegate.h"
 
 @implementation Utility
 +(void)showsheetmessage:(NSString *)message
@@ -142,4 +144,72 @@
     [imgdata writeToFile: [NSString stringWithFormat:@"%@/%@",path, filename] atomically:TRUE];
     return [Utility loadImage:filename withAppendPath:append fromURL:url];
 }
++(void)donateCheck:(AppDelegate*)delegate{
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] == nil){
+        [Utility setReminderDate];
+    }
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]){
+            // Check donation key
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            manager.requestSerializer = [AFJSONRequestSerializer serializer];
+            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                NSDictionary * d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+                int valid = [(NSNumber *)d[@"valid"] intValue];
+                if (valid == 1) {
+                    //Reset check
+                    [Utility setReminderDate];
+                }
+                else if (valid == 0){
+                    //Invalid Key
+                    [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. MAL Library will now quit." window:nil];
+                    [Utility showDonateReminder:delegate];
+                    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:NO] forKey:@"donated"];
+                    [[NSApplication sharedApplication] terminate:nil];
+                }
+
+            } failure:^(NSURLSessionTask *operation, NSError *error) {
+            }];
+        }
+        else{
+            [Utility showDonateReminder:delegate];
+        }
+    }
+}
++(void)showDonateReminder:(AppDelegate*)delegate{
+    // Shows Donation Reminder
+    NSAlert * alert = [[NSAlert alloc] init] ;
+    [alert addButtonWithTitle:@"Donate"];
+    [alert addButtonWithTitle:@"Enter Key"];
+    [alert addButtonWithTitle:@"Remind Me Later"];
+    [alert setMessageText:@"Please Support MAL Library"];
+    [alert setInformativeText:@"We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program. \r\rIf you find this program helpful, please consider making a donation. You will recieve a key to remove this message and enable additional features."];
+    [alert setShowsSuppressionButton:NO];
+    // Set Message type to Warning
+    [alert setAlertStyle:NSInformationalAlertStyle];
+    long choice = [alert runModal];
+    if (choice == NSAlertFirstButtonReturn) {
+        // Open Donation Page
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.ateliershiori.moe/donate/"]];
+        [Utility setReminderDate];
+    }
+    else if (choice == NSAlertSecondButtonReturn) {
+        // Show Add Donation Key dialog.
+        [delegate enterDonationKey:nil];
+        [Utility setReminderDate];
+    }
+    else{
+        // Surpress message for 2 weeks.
+        [Utility setReminderDate];
+    }
+}
+
++(void)setReminderDate{
+    //Sets Reminder Date
+    NSDate *now = [NSDate date];
+    NSDate * reminderdate = [now dateByAddingTimeInterval:60*60*24*14];
+    [[NSUserDefaults standardUserDefaults] setObject:reminderdate forKey:@"donatereminderdate"];
+}
+
 @end

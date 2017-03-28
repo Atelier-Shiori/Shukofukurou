@@ -15,6 +15,8 @@
 		9168F9301E8991C800CCB5B3 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB031E8984F600F6E9FF /* MASPreferences.framework */; };
 		9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
+		917897EA1E89E6BE00C155DF /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897E91E89E6BE00C155DF /* DonationWindow.xib */; };
 		9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
 		9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAA11E89836000F6E9FF /* MainMenu.xib */; };
 		9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
@@ -76,6 +78,9 @@
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F92D1E89861300CCB5B3 /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
+		917897E61E89E6AD00C155DF /* DonationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationWindowController.h; sourceTree = "<group>"; };
+		917897E71E89E6AD00C155DF /* DonationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationWindowController.m; sourceTree = "<group>"; };
+		917897E91E89E6BE00C155DF /* DonationWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DonationWindow.xib; sourceTree = "<group>"; };
 		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA991E89836000F6E9FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9199BA9A1E89836000F6E9FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -176,6 +181,9 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				917897E91E89E6BE00C155DF /* DonationWindow.xib */,
+				917897E61E89E6AD00C155DF /* DonationWindowController.h */,
+				917897E71E89E6AD00C155DF /* DonationWindowController.m */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				9199BAEF1E89843B00F6E9FF /* Frameworks */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
@@ -323,6 +331,7 @@
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
+				917897EA1E89E6BE00C155DF /* DonationWindow.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
@@ -341,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9168F92F1E898BD000CCB5B3 /* AppDelegate.m in Sources */,
+				917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */,
 				9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */,
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,

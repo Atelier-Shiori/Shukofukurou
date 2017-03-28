@@ -20,5 +20,7 @@
 -(MainWindow *)getMainWindowController;
 - (IBAction)showpreferences:(id)sender;
 -(void)showloginpref;
+- (IBAction)enterDonationKey:(id)sender;
+
 @end
 

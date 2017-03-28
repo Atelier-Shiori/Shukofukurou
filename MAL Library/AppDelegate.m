@@ -11,10 +11,12 @@
 #import "PFMoveApplication.h"
 #import "Keychain.h"
 #import "PFAboutWindowController.h"
+#import "DonationWindowController.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
+@property (strong) DonationWindowController * donationwincontroller;
 @end
 
 @implementation AppDelegate
@@ -29,6 +31,7 @@
     defaultValues[@"refreshlistonstart"] = @(0);
     defaultValues[@"appearence"] = @"Light";
     defaultValues[@"refreshautomatically"] = @(1);
+    defaultValues[@"donated"] = @(0);
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
@@ -96,11 +99,34 @@
     [self.preferencesWindowController showWindow:nil];
     [(MASPreferencesWindowController *)self.preferencesWindowController selectControllerAtIndex:1];
 }
+
+- (IBAction)enterDonationKey:(id)sender {
+    if (!_donationwincontroller){
+        _donationwincontroller = [DonationWindowController new];
+    }
+    [[_donationwincontroller window] makeKeyAndOrderFront:nil];
+}
+
 - (IBAction)showaboutwindow:(id)sender{
     if (!_aboutWindowController){
         _aboutWindowController = [PFAboutWindowController new];
     }
     [self.aboutWindowController setAppURL:[[NSURL alloc] initWithString:@"https://mallibrary.ateliershiori.moe"]];
+    NSMutableString * copyrightstr = [NSMutableString new];
+    NSDictionary *bundleDict = [[NSBundle mainBundle] infoDictionary];
+    [copyrightstr appendFormat:@"%@ \r\r",[bundleDict objectForKey:@"NSHumanReadableCopyright"]];
+    if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"] boolValue]){
+        [copyrightstr appendFormat:@"This copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
+    }
+    else {
+        [copyrightstr appendString:@"UNREGISTERED COPY"];
+    }
+    [self.aboutWindowController setAppCopyright:[[NSAttributedString alloc] initWithString:copyrightstr
+                                                                                attributes:@{
+                                                                                             NSForegroundColorAttributeName:[NSColor labelColor],
+                                                                                             NSFontAttributeName:[NSFont fontWithName:@"HelveticaNeue" size:11]}]];
+
     [self.aboutWindowController showWindow:nil];
+    
 }
 @end

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
     </dependencies>
     <objects>
@@ -30,6 +29,13 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="checkForUpdates:" target="8pF-JQ-aL5" id="tCe-cK-eLT"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Enter Donation Key…" id="WN9-mm-xrF">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="enterDonationKey:" target="Voe-Tx-rLC" id="2b7-rg-c9a"/>
+                                    <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="Hzg-dp-o6L"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -365,5 +371,6 @@
             </items>
         </menu>
         <customObject id="8pF-JQ-aL5" customClass="SUUpdater"/>
+        <userDefaultsController representsSharedInstance="YES" id="kZr-4I-AQm"/>
     </objects>
 </document>

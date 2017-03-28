@@ -103,6 +103,7 @@
 -(void)stopTimer;
 -(void)fireTimer;
 -(void)refreshloginlabel;
+-(void)loadanimeinfo:(NSNumber *) idnum;
 
 //Anime List View
 - (IBAction)refreshlist:(id)sender;

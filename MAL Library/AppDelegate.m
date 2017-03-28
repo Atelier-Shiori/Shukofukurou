@@ -39,7 +39,6 @@
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
-
     
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -54,6 +53,11 @@
     [mainwindowcontroller.window makeKeyAndOrderFront:self];
     [self showloginnotice];
     [Fabric with:@[[Crashlytics class]]];
+    [[NSAppleEventManager sharedAppleEventManager]
+     setEventHandler:self
+     andSelector:@selector(handleURLEvent:withReplyEvent:)
+     forEventClass:kInternetEventClass
+     andEventID:kAEGetURL];
 }
 
 
@@ -136,5 +140,19 @@
 -(IBAction)getHelp:(id)sender{
     //Show Help
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/MALLibrary/wiki/Getting-Started"]];
+}
+
+- (void)handleURLEvent:(NSAppleEventDescriptor*)event
+        withReplyEvent:(NSAppleEventDescriptor*)replyEvent
+{
+    NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
+                     stringValue];
+    NSLog(@"%@", url);
+    url = [url stringByReplacingOccurrencesOfString:@"mallibrary://" withString:@""];
+    if ([url containsString:@"anime/"]){
+        // Loads Anime Information with specified id.
+        url = [url stringByReplacingOccurrencesOfString:@"anime/" withString:@""];
+        [mainwindowcontroller loadanimeinfo:@(url.intValue)];
+    }
 }
 @end

@@ -58,6 +58,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		918C0D551E8A00ED0037898E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9199BB001E89847D00F6E9FF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -86,6 +96,7 @@
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		918C0D361E89FF8B0037898E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		918C0D381E89FF920037898E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		918C0D401E8A00ED0037898E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA991E89836000F6E9FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9199BA9A1E89836000F6E9FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -168,10 +179,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				918C0D401E8A00ED0037898E /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9199BA8D1E89836000F6E9FF = {
 			isa = PBXGroup;
 			children = (
 				9199BA981E89836000F6E9FF /* MAL Library */,
+				918C0D3F1E8A00ED0037898E /* Frameworks */,
 				9199BA971E89836000F6E9FF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -288,6 +308,7 @@
 				9199BA941E89836000F6E9FF /* Resources */,
 				9199BB001E89847D00F6E9FF /* Embed Frameworks */,
 				917897F21E89FE8400C155DF /* ShellScript */,
+				918C0D551E8A00ED0037898E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);

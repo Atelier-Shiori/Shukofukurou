@@ -14,7 +14,6 @@ var eventHandler = function(event) {
 					var firstmatch = matchurl[1]
 					var replacestring = /(myanimelist.net\/)/
 					var url = "mallibrary://" + firstmatch.replace(replacestring,"")
-					alert(url)
 					tab.url = url
 				}
 			}

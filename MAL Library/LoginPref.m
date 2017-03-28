@@ -77,13 +77,13 @@
 		[savebut displayIfNeeded];
 		if ( [[fieldusername stringValue] length] == 0) {
 			//No Username Entered! Show error message
-			[Utility showsheetmessage:@"MAL Updater OS X was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:[[self view] window]];
+			[Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:[[self view] window]];
 			[savebut setEnabled: YES];
 		}
 		else {
 			if ( [[fieldpassword stringValue] length] == 0 ) {
 				//No Password Entered! Show error message.
-				[Utility showsheetmessage:@"MAL Updater OS X was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:[[self view] window]];
+				[Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:[[self view] window]];
 				[savebut setEnabled: YES];
 			}
 			else {
@@ -120,12 +120,12 @@
         NSLog(@"%@",error);
         if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
             //Login Failed, show error message
-            [Utility showsheetmessage:@"Hachidori was unable to log you into your MyAnimeList account since you don't have the correct username and/or password." explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
+            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account since you don't have the correct username and/or password." explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
             [savebut setEnabled: YES];
             savebut.keyEquivalent = @"\r";
         }
         else{
-            [Utility showsheetmessage:@"Hachidori was unable to log you into your MyAnimeList account since you are not connected to the internet" explaination:@"Check your internet connection and try again." window:self.view.window];
+            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account since you are not connected to the internet" explaination:@"Check your internet connection and try again." window:self.view.window];
             [savebut setEnabled: YES];
             savebut.keyEquivalent = @"\r";
         }

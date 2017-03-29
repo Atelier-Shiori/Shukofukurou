@@ -8,7 +8,7 @@
 
 #import "MainWindow.h"
 #import "AppDelegate.h"
-#import "NSString_stripHtml.h"
+#import "NSString+HTMLtoNSAttributedString.h"
 #import "Utility.h"
 #import "NSTextFieldNumber.h"
 #import "MSWeakTimer.h"
@@ -666,7 +666,7 @@
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
     NSMutableString *genres = [NSMutableString new];
-    NSString *background;
+    NSAttributedString *background;
     [_infoviewtitle setStringValue:d[@"title"]];
     NSDictionary * dtitles =  d[@"other_titles"];
     NSMutableArray * othertitles = [NSMutableArray new];
@@ -698,10 +698,10 @@
         [genres appendString:@"None"];
     }
     if (d[@"background"] != nil){
-        background = d[@"background"];
+        background = [(NSString *)d[@"background"] convertHTMLtoAttStr];
     }
     else {
-        background = @"None available";
+        background = [[NSAttributedString alloc] initWithString:@"None available"];
     }
     NSString * type = d[@"type"];
     NSNumber * score = d[@"members_score"];
@@ -740,8 +740,8 @@
     [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
     NSString * synopsis = d[@"synopsis"];
     [_infoviewdetailstextview setString:details];
-    [_infoviewsynopsistextview setString:[synopsis stripHtml]];
-    [_infoviewbackgroundtextview setString:background];
+    [[_infoviewsynopsistextview textStorage] setAttributedString:[synopsis convertHTMLtoAttStr]];
+    [[_infoviewbackgroundtextview  textStorage] setAttributedString:background];
     [self loadmainview];
     selectedanimeinfo = d;
 }

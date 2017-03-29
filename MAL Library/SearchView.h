@@ -8,6 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface SearchView : NSViewController
+@class MainWindow;
+@interface SearchView : NSViewController {
+    IBOutlet MainWindow *mw;
+}
+typedef enum  {
+    AnimeSearch = 0,
+    MangaSearch = 1
+} SearchType;
+@property (strong) IBOutlet NSSearchField *searchtitlefield;
+@property (strong) IBOutlet NSTableView *searchtb;
+@property (strong) IBOutlet NSArrayController *searcharraycontroller;
 
+- (IBAction)performsearch:(id)sender;
+- (IBAction)searchtbdoubleclick:(id)sender;
 @end

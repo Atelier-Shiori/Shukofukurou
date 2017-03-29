@@ -32,7 +32,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" headerView="QGW-Oe-htQ" id="etv-3f-0Uh">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="QGW-Oe-htQ" id="etv-3f-0Uh">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -72,12 +72,12 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="hZg-UC-ATg" name="displayPatternValue1" keyPath="arrangedObjects.watched_episodes" id="PBr-Cs-oo1">
+                                            <binding destination="hZg-UC-ATg" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="PBr-Cs-oo1" id="dFP-kf-ts1">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="hZg-UC-ATg" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="PBr-Cs-oo1" id="dFP-kf-ts1">
+                                            <binding destination="hZg-UC-ATg" name="displayPatternValue1" keyPath="arrangedObjects.watched_episodes" id="PBr-Cs-oo1">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                                 </dictionary>

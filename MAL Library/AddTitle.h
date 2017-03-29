@@ -7,7 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+@class MainWindow;
+@interface AddTitle : NSViewController{
+    IBOutlet MainWindow * mw;
+    int selectededitid;
+    bool selectedaired;
+    bool selectedaircompleted;
+    NSDictionary * selecteditem;
+}
 
-@interface AddTitle : NSViewController
-
+@property (strong) IBOutlet NSPopover *addpopover;
+-(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge;
 @end

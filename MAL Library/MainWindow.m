@@ -15,6 +15,8 @@
 #import "Keychain.h"
 #import "AddTitle.h"
 #import "EditTitle.h"
+#import "ListView.h"
+#import "NotLoggedIn.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -65,11 +67,11 @@
     [sourceList reloadData];
     // Set Resizeing mask
     [_animeinfoview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_animelistview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_listview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_progressview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_searchview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_seasonview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_notloggedinview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_notloggedin.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
     // Fix window size
     NSRect frame = [self.window frame];
@@ -112,16 +114,13 @@
     appdel = adelegate;
 }
 
-- (IBAction)performlogin:(id)sender {
-    [appdel showloginpref];
-}
 
 - (IBAction)sharetitle:(id)sender {
     NSDictionary * d;
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
     if ([identifier isEqualToString:@"animelist"]){
-        d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
+        d = [[_listview.animelistarraycontroller selectedObjects] objectAtIndex:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         d = selectedanimeinfo;
@@ -167,8 +166,8 @@
     w.appearance = [NSAppearance appearanceNamed:appearancename];
     _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
     _animeinfoview.appearance = [NSAppearance appearanceNamed:appearancename];
-    _notloggedinview.appearance = [NSAppearance appearanceNamed:appearancename];
-    _filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
+    _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
     [w setFrame:[w frame] display:false];
 }
 -(void)refreshloginlabel{
@@ -251,14 +250,14 @@
     NSPoint origin = NSMakePoint(0, 0);
         if ([identifier isEqualToString:@"animelist"]){
             if ([Keychain checkaccount]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_animelistview];
-                _animelistview.frame = mainviewframe;
-                [_animelistview setFrameOrigin:origin];
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_listview.view];
+                _listview.view.frame = mainviewframe;
+                [_listview.view setFrameOrigin:origin];
             }
             else {
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_notloggedinview];
-                _notloggedinview.frame = mainviewframe;
-                [_notloggedinview setFrameOrigin:origin];
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_notloggedin.view];
+                _notloggedin.view.frame = mainviewframe;
+                [_notloggedin.view setFrameOrigin:origin];
             }
         }
         else if ([identifier isEqualToString:@"search"]){
@@ -395,217 +394,51 @@
     [_advsearchpopover showRelativeToRect:[btn bounds] ofView:btn preferredEdge:NSMaxYEdge];
 }
 #pragma mark Anime List
+- (IBAction)refreshlist:(id)sender {
+    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
+    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    if ([identifier isEqualToString:@"animelist"]){
+        [self loadlist:@(true)];
+    }
+    else if ([identifier isEqualToString:@"seasons"]){
+        [self performseasonindexretrieval];
+    }
+}
 -(void)loadlist:(NSNumber *)refresh{
     id list;
     bool exists = [Utility checkifFileExists:@"animelist.json" appendPath:@""];
     bool refreshlist = refresh.boolValue;
     list = [Utility loadJSON:@"animelist.json" appendpath:@""];
     if (exists && !refreshlist){
-        [self populateList:list];
+        [_listview populateList:list];
         return;
     }
     else if (!exists || refreshlist){
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 
     [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/%@", [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [self populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE]];
+        [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE]];
     
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"%@", error.userInfo);
     }];
     }
 }
--(void)populateList:(id)object{
-    // Populates list
-    NSMutableArray * a = [_animelistarraycontroller content];
-    [a removeAllObjects];
-    NSDictionary * data = object;
-    NSArray * list=data[@"anime"];
-    [_animelistarraycontroller addObjects:list];
-    [self populatefiltercounts:list];
-    [_animelisttb reloadData];
-    [_animelisttb deselectAll:self];
-    [self performfilter];
-}
--(void)populatefiltercounts:(NSArray *)a{
-    // Generates item counts for each status filter
-    NSArray * filtered;
-    NSNumber *watching;
-    NSNumber *completed;
-    NSNumber *onhold;
-    NSNumber *dropped;
-    NSNumber *plantowatch;
-    for (int i = 0; i < 5; i++){
-        switch(i){
-            case 0:
-                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"watching"]];
-                watching = @(filtered.count);
-                break;
-            case 1:
-                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"completed"]];
-                completed = @(filtered.count);
-                break;
-            case 2:
-                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"on-hold"]];
-                 onhold = @(filtered.count);
-                break;
-            case 3:
-                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"dropped"]];
-                dropped = @(filtered.count);
-                break;
-            case 4:
-                filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"plan to watch"]];
-                plantowatch = @(filtered.count);
-                break;
-        }
-    }
-    _watchingfilter.title = [NSString stringWithFormat:@"Watching (%i)",watching.intValue];
-    _completedfilter.title = [NSString stringWithFormat:@"Completed (%i)",completed.intValue];
-    _onholdfilter.title = [NSString stringWithFormat:@"On Hold (%i)",onhold.intValue];
-    _droppedfilter.title = [NSString stringWithFormat:@"Dropped (%i)",dropped.intValue];
-    _plantowatchfilter.title = [NSString stringWithFormat:@"Plan to watch (%i)",plantowatch.intValue];
-}
-- (IBAction)filterperform:(id)sender {
-    [self performfilter];
-}
--(void)performfilter{
-    // This method generates a predicate rule to use as a filter
-    NSMutableArray * predicateformat = [NSMutableArray new];
-    NSMutableArray * predicateobjects = [NSMutableArray new];
-    bool titlefilterused = false;
-    if (_animelistfilter.stringValue.length > 0){
-        [predicateformat addObject: @"(title CONTAINS [cd] %@)"];
-        [predicateobjects addObject: _animelistfilter.stringValue];
-        titlefilterused = true;
-    }
-    NSArray * filterstatus = [self obtainfilterstatus];
-    for (int i=0; i < [filterstatus count]; i++){
-        NSDictionary *d = [filterstatus objectAtIndex:i];
-        if ([filterstatus count] == 1){
-            [predicateformat addObject:@"(watched_status ==[cd] %@)"];
-            
-        }
-        else if (i == [filterstatus count]-1){
-            [predicateformat addObject:@"watched_status ==[cd] %@)"];
-        }
-        else if (i == 0){
-            [predicateformat addObject:@"(watched_status ==[cd] %@ OR "];
-        }
-        else{
-                [predicateformat addObject:@"watched_status ==[cd] %@ OR "];
-        }
-        [predicateobjects addObject:[[d allKeys] objectAtIndex:0]];
-    }
-    if ([predicateformat count] ==0 || [filterstatus count] == 0){
-        // Empty filter predicate
-        _animelistarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"watched_status == %@",@""];
-    }
-    else{
-        // Build Predicate rules
-        NSMutableString * predicaterule = [NSMutableString new];
-        for (int i=0; i < [predicateformat count]; i++){
-            NSString *format = [predicateformat objectAtIndex:i];
-            if (titlefilterused && i==0){
-                if ([predicateformat count] == 1) {
-                    [predicaterule appendString:format];
-                    continue;
-                }
-                else{
-                    [predicaterule appendFormat:@"%@ AND ", format];
-                    continue;
-                }
-            }
-            [predicaterule appendString:format];
-        }
-        NSPredicate * predicate = [NSPredicate predicateWithFormat:predicaterule argumentArray:predicateobjects];
-        _animelistarraycontroller.filterPredicate = predicate;
-    }
-}
-- (IBAction)refreshlist:(id)sender {
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
-    if ([identifier isEqualToString:@"animelist"]){
-    [self loadlist:@(true)];
-    }
-    else if ([identifier isEqualToString:@"seasons"]){
-        [self performseasonindexretrieval];
-    }
-}
-
-- (IBAction)animelistdoubleclick:(id)sender {
-    if ([_animelisttb clickedRow] >=0){
-        if ([_animelisttb clickedRow] >-1){
-            NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
-            NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
-            if ([action isEqualToString:@"View Anime Info"]){
-                NSNumber * idnum = d[@"id"];
-               [self loadanimeinfo:idnum];
-            }
-            else if([action isEqualToString:@"Modify Title"]){
-                [_editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:[_animelisttb selectedRow]] ofView:_animelisttb preferredEdge:0];
-            }
-        }
-    }
-}
-
-- (IBAction)deletetitle:(id)sender {
-    NSAlert * alert = [[NSAlert alloc] init] ;
-    NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
-    [alert addButtonWithTitle:@"Yes"];
-    [alert addButtonWithTitle:@"No"];
-    [alert setMessageText:[NSString stringWithFormat:@"Are you sure you want to delete %@ from your list?", d[@"title"]]];
-    [alert setInformativeText:@"Once you delete this title, this cannot be undone."];
-    [alert setAlertStyle:NSAlertStyleWarning];
-    [alert beginSheetModalForWindow:[self window] completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode== NSAlertFirstButtonReturn) {
-            [self deletetitle];
-        }
-    }];
-}
 -(void)clearlist{
     //Clears List
-    NSMutableArray * a = [_animelistarraycontroller content];
+    NSMutableArray * a = [_listview.animelistarraycontroller content];
     [a removeAllObjects];
     [Utility deleteFile:@"animelist.json" appendpath:@""];
-    [_animelisttb reloadData];
-    [_animelisttb deselectAll:self];
-}
--(NSArray *)obtainfilterstatus{
-    // Generates an array of selected filters
-    NSMutableArray * a = [NSMutableArray new];
-    NSMutableArray * final = [NSMutableArray new];
-    [a addObject:@{@"watching":@(_watchingfilter.state)}];
-    [a addObject:@{@"completed":@(_completedfilter.state)}];
-    [a addObject:@{@"on-hold":@(_onholdfilter.state)}];
-    [a addObject:@{@"dropped":@(_droppedfilter.state)}];
-    [a addObject:@{@"plan to watch":@(_plantowatchfilter.state)}];
-    for (NSDictionary *d in a){
-            NSNumber *add = [d objectForKey:[[d allKeys] objectAtIndex:0]];
-        if (add.boolValue){
-            [final addObject:d];
-        }
-    }
-    return final;
-}
--(void)deletetitle{
-    NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
-    NSNumber * selid = d[@"id"];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [AFHTTPResponseSerializer new];
-    [manager DELETE:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%i", selid.intValue] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [self loadlist:@(true)];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"%@",error);
-    }];
+    [_listview.animelisttb reloadData];
+    [_listview.animelisttb deselectAll:self];
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
     if ([identifier isEqualToString:@"animelist"]){
-           NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
-        [_editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:[_animelisttb selectedRow]] ofView:_animelisttb preferredEdge:0];
+           NSDictionary *d = [[_listview.animelistarraycontroller selectedObjects] objectAtIndex:0];
+        [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.animelisttb frameOfCellAtColumn:0 row:[_listview.animelisttb selectedRow]] ofView:_listview.animelisttb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         [_editviewcontroller showEditPopover:[self retreveentryfromlist:selectedid]showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
@@ -749,7 +582,7 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%i",selectedid]]];
 }
 -(bool)checkiftitleisonlist:(int)idnum{
-    NSArray * list = [_animelistarraycontroller content];
+    NSArray * list = [_listview.animelistarraycontroller content];
     list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
     if ([list count] > 0){
         return true;
@@ -757,7 +590,7 @@
     return false;
 }
 -(id)retreveentryfromlist:(int)idnum{
-    NSArray * list = [_animelistarraycontroller content];
+    NSArray * list = [_listview.animelistarraycontroller content];
     list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
     if ([list count] > 0){
         return [list objectAtIndex:0];

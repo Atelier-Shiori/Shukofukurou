@@ -7,7 +7,6 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EditTitle">
             <connections>
-                <outlet property="mainview" destination="z80-JN-AgD" id="ZaA-09-mRo"/>
                 <outlet property="minieditpopovernumformat" destination="uM6-Sd-fSL" id="NxJ-7a-qpa"/>
                 <outlet property="minipopovereditbtn" destination="vEg-dI-wG3" id="noF-yW-jv7"/>
                 <outlet property="minipopoverepfield" destination="fyo-hZ-5iq" id="ekT-1N-ayN"/>

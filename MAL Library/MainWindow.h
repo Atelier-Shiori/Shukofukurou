@@ -15,6 +15,8 @@
 @class MSWeakTimer;
 @class AddTitle;
 @class EditTitle;
+@class ListView;
+@class NotLoggedIn;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -34,26 +36,17 @@
 }
 @property (strong) IBOutlet NSTextField *loggedinuser;
 //Anime List View
-@property (strong) IBOutlet NSArrayController *animelistarraycontroller;
-@property (strong) IBOutlet NSTableView *animelisttb;
-@property (strong) IBOutlet NSButton *watchingfilter;
-@property (strong) IBOutlet NSButton *completedfilter;
-@property (strong) IBOutlet NSButton *onholdfilter;
-@property (strong) IBOutlet NSButton *droppedfilter;
-@property (strong) IBOutlet NSButton *plantowatchfilter;
-@property (strong) IBOutlet NSSearchField *animelistfilter;
-@property (strong) IBOutlet NSVisualEffectView *filterbarview;
-
+@property (strong) IBOutlet ListView * listview;
+// Not Logged In View
+@property (strong) IBOutlet NotLoggedIn * notloggedin;
 //Search View
 @property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSView *mainview;
 @property (nonatomic, assign) AppDelegate *app;
 @property (strong) IBOutlet NSVisualEffectView *animeinfoview;
-@property (strong) IBOutlet NSView *animelistview;
 @property (strong) IBOutlet NSVisualEffectView *progressview;
 @property (strong) IBOutlet NSView *searchview;
 @property (strong) IBOutlet NSView *seasonview;
-@property (strong) IBOutlet NSVisualEffectView *notloggedinview;
 @property (strong) IBOutlet NSPopover *advsearchpopover;
 // Info View
 @property (strong) IBOutlet NSProgressIndicator *progressindicator;
@@ -96,13 +89,8 @@
 -(void)clearsearchtb;
 -(bool)checkiftitleisonlist:(int)idnum;
 -(void)loadlist:(NSNumber *)refresh;
-
-//Anime List View
-- (IBAction)refreshlist:(id)sender;
-- (IBAction)animelistdoubleclick:(id)sender;
-- (IBAction)deletetitle:(id)sender;
 -(void)clearlist;
-- (IBAction)filterperform:(id)sender;
+
 //Search View
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;

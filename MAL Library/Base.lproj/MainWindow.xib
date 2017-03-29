@@ -1017,7 +1017,7 @@
                     </subviews>
                 </customView>
             </subviews>
-            <point key="canvasLocation" x="-365" y="767.5"/>
+            <point key="canvasLocation" x="-469" y="762"/>
         </customView>
         <customView identifier="seasonview" id="wr8-9U-tfn" userLabel="seasonview">
             <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
@@ -1485,7 +1485,7 @@
             </subviews>
             <point key="canvasLocation" x="317" y="1813"/>
         </visualEffectView>
-        <popover appearance="vibrantLight" id="o05-dg-F2u" userLabel="AdvancedSearchPopover">
+        <popover appearance="vibrantLight" behavior="t" id="o05-dg-F2u" userLabel="AdvancedSearchPopover">
             <connections>
                 <outlet property="contentViewController" destination="aSh-hJ-Fpb" id="hnQ-yd-vZ7"/>
             </connections>

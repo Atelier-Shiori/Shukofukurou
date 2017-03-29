@@ -36,6 +36,7 @@
 }
 
 -(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge{
+    [self view];
     NSNumber * idnum = d[@"id"];
     if (![mw checkiftitleisonlist:idnum.intValue]){
         [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_addtitleview];

@@ -77,7 +77,7 @@
     _exclude.state = 0;
     _usedaterange.state = 0;
     [self usedaterange:sender];
-    _minscore.stringValue = @"";
+    _minscore.stringValue = @"0";
     [self resetdate];
     
 }

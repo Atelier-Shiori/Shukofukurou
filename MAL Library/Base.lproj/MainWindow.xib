@@ -17,6 +17,7 @@
                 <outlet property="animelistview" destination="3i9-yL-qQG" id="AMZ-w2-b0a"/>
                 <outlet property="completedfilter" destination="MwY-oK-6fE" id="gPO-ES-yfV"/>
                 <outlet property="droppedfilter" destination="wfc-6g-6L8" id="O0d-br-ybN"/>
+                <outlet property="editviewcontroller" destination="w9r-Zw-PrM" id="5wH-sy-WVV"/>
                 <outlet property="filterbarview" destination="qKb-rB-YJZ" id="0eR-TP-ayw"/>
                 <outlet property="infoviewalttitles" destination="tOX-cr-AEr" id="faW-hQ-NOs"/>
                 <outlet property="infoviewbackgroundtextview" destination="3w2-UP-NTh" id="PQR-zF-CjM"/>
@@ -27,14 +28,6 @@
                 <outlet property="loggedinuser" destination="oiY-f1-sHX" id="DQV-9y-36M"/>
                 <outlet property="mainview" destination="bkX-dG-MlV" id="hvu-zy-EK5"/>
                 <outlet property="minieditpopover" destination="TrX-YX-OCN" id="eHt-fd-a2y"/>
-                <outlet property="minieditpopovernumformat" destination="OWj-IV-fdf" id="xkP-UO-t9T"/>
-                <outlet property="minipopovereditbtn" destination="hdA-sc-FAg" id="cfk-Xx-njs"/>
-                <outlet property="minipopoverepfield" destination="hJh-u6-mqp" id="svc-b3-4lo"/>
-                <outlet property="minipopoverindicator" destination="TRA-QY-vLq" id="jea-rw-Nch"/>
-                <outlet property="minipopoverscore" destination="BTp-ti-Be1" id="inC-6u-69n"/>
-                <outlet property="minipopoverstatus" destination="eYG-jo-rwk" id="IZU-HJ-0CO"/>
-                <outlet property="minipopoverstatustext" destination="PND-Eo-3fo" id="NTD-bf-A4f"/>
-                <outlet property="minipopovertotalep" destination="bzI-xg-VHl" id="Ivj-e4-nYd"/>
                 <outlet property="noinfoview" destination="Idi-HR-8Ng" id="yub-Og-56z"/>
                 <outlet property="notloggedinview" destination="Bid-LM-YGW" id="X7P-bv-gBz"/>
                 <outlet property="onholdfilter" destination="Oy4-2S-514" id="Fcw-W3-0QG"/>
@@ -42,7 +35,6 @@
                 <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
                 <outlet property="refreshlist" destination="6qy-e4-N2b" id="K7X-ly-jCN"/>
-                <outlet property="score" destination="BTp-ti-Be1" id="tGD-U2-k2g"/>
                 <outlet property="searcharraycontroller" destination="zFi-L7-BaW" id="Upl-me-s91"/>
                 <outlet property="searchtb" destination="0oH-PF-Un2" id="nQ0-YQ-a9Y"/>
                 <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="oNQ-5C-6jX"/>
@@ -483,25 +475,6 @@
             </connections>
             <point key="canvasLocation" x="81" y="112"/>
         </window>
-        <menu title="Status" id="JMq-2e-mww" userLabel="status">
-            <items>
-                <menuItem title="watching" id="Siz-cg-4Ci">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="completed" id="35h-rS-zMv">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="on-hold" id="Kev-h9-l5Q">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="dropped" id="J9c-Lq-rXO">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem title="plan to watch" id="Tr3-UJ-Tlc">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-            </items>
-        </menu>
         <customView identifier="ListView" id="3i9-yL-qQG" userLabel="AnimeList">
             <rect key="frame" x="0.0" y="0.0" width="564" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -992,126 +965,6 @@
             </subviews>
             <point key="canvasLocation" x="34" y="1099"/>
         </visualEffectView>
-        <customView id="z2B-wC-5cy" userLabel="editpopover">
-            <rect key="frame" x="0.0" y="0.0" width="255" height="138"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eaC-Gw-FEN">
-                    <rect key="frame" x="8" y="104" width="91" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Episode:" id="ctE-y4-sou">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hJh-u6-mqp" customClass="NSTextFieldNumber">
-                    <rect key="frame" x="105" y="101" width="50" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="IB2-i1-j5m">
-                        <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="OWj-IV-fdf" customClass="NSNumberFormatterNumberOnly"/>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJm-TT-S6r">
-                    <rect key="frame" x="161" y="104" width="23" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="DcY-DY-cL1">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bzI-xg-VHl">
-                    <rect key="frame" x="176" y="103" width="37" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="0uZ-3B-KY7">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ur3-Gp-LwG">
-                    <rect key="frame" x="20" y="76" width="79" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Status:" id="jfG-Mv-Y7Y">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yOr-EZ-Kc4">
-                    <rect key="frame" x="20" y="50" width="79" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Score:" id="W3Q-8S-Yvi">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eYG-jo-rwk">
-                    <rect key="frame" x="101" y="70" width="143" height="26"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="Watching" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="gPa-5I-GBn" id="b7g-at-r0e">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="menu"/>
-                        <menu key="menu" title="OtherViews" id="d2e-Gu-epd">
-                            <items>
-                                <menuItem title="Watching" state="on" id="gPa-5I-GBn"/>
-                                <menuItem title="Item 2" id="jpi-vX-Yzw"/>
-                                <menuItem title="Item 3" id="Nsr-7b-bIh"/>
-                            </items>
-                        </menu>
-                    </popUpButtonCell>
-                    <connections>
-                        <outlet property="menu" destination="JMq-2e-mww" id="lau-HE-udY"/>
-                    </connections>
-                </popUpButton>
-                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hdA-sc-FAg">
-                    <rect key="frame" x="168" y="7" width="81" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="push" title="Edit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="B6T-hH-J5W">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <connections>
-                        <action selector="performupdatetitle:" target="-2" id="3gA-Zf-amM"/>
-                    </connections>
-                </button>
-                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="TRA-QY-vLq">
-                    <rect key="frame" x="150" y="17" width="16" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </progressIndicator>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PND-Eo-3fo">
-                    <rect key="frame" x="18" y="17" width="126" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status" id="Epm-Yb-ezo">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BTp-ti-Be1" customClass="NSTextFieldNumber">
-                    <rect key="frame" x="103" y="47" width="52" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="E1e-9e-rcN">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="nW3-Kh-0Kk" customClass="NSNumberFormatterNumberOnly">
-                            <real key="minimum" value="0.0"/>
-                            <real key="maximum" value="10"/>
-                        </numberFormatter>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                    <connections>
-                        <outlet property="delegate" destination="lXH-h1-ka3" id="k88-JF-t7b"/>
-                    </connections>
-                </textField>
-            </subviews>
-            <point key="canvasLocation" x="-93" y="851"/>
-        </customView>
         <popover appearance="vibrantLight" behavior="t" id="TrX-YX-OCN" userLabel="Mini Edit Popover">
             <connections>
                 <outlet property="contentViewController" destination="w9r-Zw-PrM" id="2D7-0N-AUJ"/>
@@ -1122,14 +975,11 @@
                 <outlet property="contentViewController" destination="WWH-Kx-8dQ" id="2bd-C4-isX"/>
             </connections>
         </popover>
-        <customObject id="lXH-h1-ka3" customClass="NSTextFieldNumber">
+        <customObject id="lXH-h1-ka3" customClass="NSTextFieldNumber"/>
+        <viewController nibName="EditTitle" id="w9r-Zw-PrM" userLabel="Mini EditPopover View Controller" customClass="EditTitle">
             <connections>
-                <outlet property="delegate" destination="hJh-u6-mqp" id="JaN-JM-rSA"/>
-            </connections>
-        </customObject>
-        <viewController id="w9r-Zw-PrM" userLabel="Mini EditPopover View Controller">
-            <connections>
-                <outlet property="view" destination="z2B-wC-5cy" id="j6W-hU-AXf"/>
+                <outlet property="minieditpopover" destination="TrX-YX-OCN" id="wVO-hV-Euz"/>
+                <outlet property="mw" destination="-2" id="5g1-ck-tC3"/>
             </connections>
         </viewController>
         <arrayController objectClassName="NSDictionary" editable="NO" id="zFi-L7-BaW" userLabel="Search Array Controller">

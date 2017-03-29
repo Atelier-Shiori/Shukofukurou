@@ -14,6 +14,7 @@
 @class NSTextFieldNumber;
 @class MSWeakTimer;
 @class AddTitle;
+@class EditTitle;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -64,15 +65,8 @@
 @property (strong) IBOutlet NSImageView *infoviewposterimage;
 @property (strong) IBOutlet NSTextView *infoviewbackgroundtextview;
 // Edit Popover
-@property (strong) IBOutlet NSTextFieldNumber *minipopoverepfield;
-@property (strong) IBOutlet NSTextField *minipopovertotalep;
-@property (strong) IBOutlet NSPopUpButton *minipopoverstatus;
-@property (strong) IBOutlet NSTextField *minipopoverscore;
-@property (strong) IBOutlet NSTextField *minipopoverstatustext;
-@property (strong) IBOutlet NSProgressIndicator *minipopoverindicator;
-@property (strong) IBOutlet NSButton *minipopovereditbtn;
 @property (strong) IBOutlet NSPopover *minieditpopover;
-@property (strong) IBOutlet NSNumberFormatter *minieditpopovernumformat;
+@property (strong) IBOutlet EditTitle *editviewcontroller;
 
 // Add Popover
 @property (strong) IBOutlet NSPopover *addpopover;
@@ -116,7 +110,7 @@
 - (IBAction)viewonmal:(id)sender;
 // Modify Popover
 - (IBAction)performmodifytitle:(id)sender;
-- (IBAction)performupdatetitle:(id)sender;
+
 // Add Title
 - (IBAction)showaddpopover:(id)sender;
 

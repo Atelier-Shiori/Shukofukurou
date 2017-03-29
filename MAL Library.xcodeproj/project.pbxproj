@@ -13,6 +13,8 @@
 		915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
 		915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
 		915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */; };
+		915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
+		915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
 		9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
 		9168F92E1E89861300CCB5B3 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92D1E89861300CCB5B3 /* Keychain.m */; };
 		9168F92F1E898BD000CCB5B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAAB1E89842400F6E9FF /* AppDelegate.m */; };
@@ -95,6 +97,9 @@
 		915E8C471E8C1AEC005A49A4 /* AddTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTitle.m; sourceTree = "<group>"; };
 		915E8C4C1E8C235D005A49A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AddTitle.xib; sourceTree = "<group>"; };
 		915E8C4F1E8C2362005A49A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedSearch.xib; sourceTree = "<group>"; };
+		915E8C561E8C24B3005A49A4 /* EditTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTitle.h; sourceTree = "<group>"; };
+		915E8C571E8C24B3005A49A4 /* EditTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTitle.m; sourceTree = "<group>"; };
+		915E8C5C1E8C2B4D005A49A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditTitle.xib; sourceTree = "<group>"; };
 		9168F9291E89858900CCB5B3 /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
 		9168F92A1E89858900CCB5B3 /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
@@ -217,27 +222,42 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				917897ED1E89F19900C155DF /* DonationWindow.xib */,
-				917897E61E89E6AD00C155DF /* DonationWindowController.h */,
-				917897E71E89E6AD00C155DF /* DonationWindowController.m */,
 				91D3D89D1E89C0020046C4CC /* about */,
-				9199BAEF1E89843B00F6E9FF /* Frameworks */,
+				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
+				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
+				915E8C4D1E8C235D005A49A4 /* AddTitle.xib */,
+				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
+				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
+				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
 				9199BAAB1E89842400F6E9FF /* AppDelegate.m */,
+				9199BA9F1E89836000F6E9FF /* Assets.xcassets */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				9199BAAF1E89842400F6E9FF /* Credits.rtf */,
+				917897ED1E89F19900C155DF /* DonationWindow.xib */,
+				917897E61E89E6AD00C155DF /* DonationWindowController.h */,
+				917897E71E89E6AD00C155DF /* DonationWindowController.m */,
 				9199BAB01E89842400F6E9FF /* dsa_pub.pem */,
+				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
+				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
+				915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */,
+				91D3D8A21E89C1850046C4CC /* EULA.rtf */,
+				9199BAEF1E89843B00F6E9FF /* Frameworks */,
 				9199BAB11E89842400F6E9FF /* GeneralPref.h */,
 				9199BAB21E89842400F6E9FF /* GeneralPref.m */,
+				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
 				9199BAB31E89842400F6E9FF /* Info.plist */,
+				9168F92C1E89861300CCB5B3 /* Keychain.h */,
+				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				9199BAB61E89842400F6E9FF /* LoginPref.h */,
 				9199BAB71E89842400F6E9FF /* LoginPref.m */,
+				9199BAE41E89843300F6E9FF /* LoginView.xib */,
 				9199BAB81E89842400F6E9FF /* main.m */,
+				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
 				9199BAB91E89842400F6E9FF /* MainWindow.h */,
 				9199BABA1E89842400F6E9FF /* MainWindow.m */,
-				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
-				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
+				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
 				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
 				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
 				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
@@ -251,32 +271,20 @@
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
 				9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */,
-				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
+				9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */,
 				9199BAC81E89842400F6E9FF /* SSKeychain.h */,
 				9199BAC91E89842400F6E9FF /* SSKeychain.m */,
 				9199BACA1E89842400F6E9FF /* SSKeychainQuery.h */,
 				9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */,
+				9199BA9C1E89836000F6E9FF /* Supporting Files */,
+				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
+				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				9199BA991E89836000F6E9FF /* AppDelegate.h */,
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
-				9199BA9F1E89836000F6E9FF /* Assets.xcassets */,
-				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
-				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
-				9199BAE41E89843300F6E9FF /* LoginView.xib */,
-				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
-				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
-				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
-				915E8C4D1E8C235D005A49A4 /* AddTitle.xib */,
-				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
-				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
-				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
-				9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */,
 				9199BAA41E89836000F6E9FF /* Info.plist */,
-				9199BA9C1E89836000F6E9FF /* Supporting Files */,
-				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				9168F92D1E89861300CCB5B3 /* Keychain.m */,
-				91D3D8A21E89C1850046C4CC /* EULA.rtf */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -374,6 +382,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
@@ -429,6 +438,7 @@
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				9168F92E1E89861300CCB5B3 /* Keychain.m in Sources */,
+				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
 				9199BADB1E89842400F6E9FF /* NSString_stripHtml.m in Sources */,
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
@@ -454,6 +464,14 @@
 				915E8C4F1E8C2362005A49A4 /* Base */,
 			);
 			name = AdvancedSearch.xib;
+			sourceTree = "<group>";
+		};
+		915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				915E8C5C1E8C2B4D005A49A4 /* Base */,
+			);
+			name = EditTitle.xib;
 			sourceTree = "<group>";
 		};
 		917897ED1E89F19900C155DF /* DonationWindow.xib */ = {

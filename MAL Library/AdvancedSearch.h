@@ -18,7 +18,10 @@
 @property (strong) IBOutlet NSDatePicker *startdate;
 @property (strong) IBOutlet NSDatePicker *enddate;
 @property (strong) IBOutlet NSTextFieldNumber *minscore;
-@property (strong) IBOutlet NSButton *usedaterange;
+@property (strong) IBOutlet NSButton *usestartdate;
+@property (strong) IBOutlet NSButton *useenddate;
+@property (strong) IBOutlet NSPopUpButton *airstatus;
+@property (strong) IBOutlet NSPopUpButton *rating;
 
 @property (strong) IBOutlet NSSearchField *searchfield;
 - (IBAction)performadvancedsearch:(id)sender;

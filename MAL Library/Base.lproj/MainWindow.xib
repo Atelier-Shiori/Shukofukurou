@@ -7,14 +7,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="MainWindow">
             <connections>
-                <outlet property="addepifield" destination="yS0-GV-xIs" id="vnD-5a-Qve"/>
-                <outlet property="addfield" destination="kYJ-S3-Kwx" id="sRk-Aw-jgr"/>
-                <outlet property="addnumformat" destination="Y1C-Pd-QfX" id="GWo-p9-52R"/>
                 <outlet property="addpopover" destination="XPV-h5-bEU" id="axW-OG-EM0"/>
-                <outlet property="addscorefiled" destination="BVM-Kt-eH2" id="c79-R6-vLN"/>
-                <outlet property="addstatusfield" destination="1Hd-J0-wmg" id="iEP-vu-6lB"/>
-                <outlet property="addtitleview" destination="7Or-jW-V5r" id="bvr-Y8-fZ2"/>
-                <outlet property="addtotalepisodes" destination="mN3-m6-y9e" id="lEG-sn-tla"/>
+                <outlet property="addtitlecontroller" destination="WWH-Kx-8dQ" id="qjM-eG-o1K"/>
                 <outlet property="advsearchpopover" destination="o05-dg-F2u" id="8nj-Kh-UcI"/>
                 <outlet property="animeinfoview" destination="jlp-Ya-DgE" id="I0H-T3-yoK"/>
                 <outlet property="animelistarraycontroller" destination="mWb-w6-hzi" id="aul-bg-rUM"/>
@@ -32,7 +26,7 @@
                 <outlet property="infoviewtitle" destination="W0Q-Fb-zhX" id="K1Y-qb-55j"/>
                 <outlet property="loggedinuser" destination="oiY-f1-sHX" id="DQV-9y-36M"/>
                 <outlet property="mainview" destination="bkX-dG-MlV" id="hvu-zy-EK5"/>
-                <outlet property="minieditpopover" destination="TrX-YX-OCN" id="9xL-ci-Qrb"/>
+                <outlet property="minieditpopover" destination="TrX-YX-OCN" id="eHt-fd-a2y"/>
                 <outlet property="minieditpopovernumformat" destination="OWj-IV-fdf" id="xkP-UO-t9T"/>
                 <outlet property="minipopovereditbtn" destination="hdA-sc-FAg" id="cfk-Xx-njs"/>
                 <outlet property="minipopoverepfield" destination="hJh-u6-mqp" id="svc-b3-4lo"/>
@@ -45,7 +39,6 @@
                 <outlet property="notloggedinview" destination="Bid-LM-YGW" id="X7P-bv-gBz"/>
                 <outlet property="onholdfilter" destination="Oy4-2S-514" id="Fcw-W3-0QG"/>
                 <outlet property="plantowatchfilter" destination="UgS-qr-B0W" id="fuR-Wo-YR2"/>
-                <outlet property="popoveraddtitleexistsview" destination="HbP-Ea-6oT" id="lW8-LV-QHh"/>
                 <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
                 <outlet property="refreshlist" destination="6qy-e4-N2b" id="K7X-ly-jCN"/>
@@ -876,149 +869,6 @@
             </subviews>
             <point key="canvasLocation" x="96" y="752"/>
         </customView>
-        <customView id="b2q-72-5Fu" userLabel="addtitleview">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="153"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HbP-Ea-6oT">
-                    <rect key="frame" x="1" y="0.0" width="329" height="151"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f4D-pu-pCl">
-                            <rect key="frame" x="67" y="67" width="207" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Title Already Exists" id="O7O-0X-U9u">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                </customView>
-                <customView hidden="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Or-jW-V5r">
-                    <rect key="frame" x="0.0" y="-9" width="333" height="164"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d4X-yl-WGH">
-                            <rect key="frame" x="12" y="134" width="311" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="J5p-fi-3zW">
-                                <font key="font" metaFont="systemBold"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YXF-6b-niR">
-                            <rect key="frame" x="18" y="110" width="91" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Episode:" id="vkS-H8-pJi">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yS0-GV-xIs" customClass="NSTextFieldNumber">
-                            <rect key="frame" x="115" y="107" width="50" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="rWt-oM-Y0b">
-                                <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" groupingSize="0" minimumIntegerDigits="0" maximumIntegerDigits="42" id="Y1C-Pd-QfX" customClass="NSNumberFormatterNumberOnly"/>
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <outlet property="delegate" destination="lXH-h1-ka3" id="hfj-Lg-cOy"/>
-                            </connections>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sG1-3f-FBr">
-                            <rect key="frame" x="171" y="110" width="23" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="Gbx-VY-iJ6">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mN3-m6-y9e">
-                            <rect key="frame" x="186" y="109" width="37" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="OvS-AG-8Kp">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pRZ-Dy-X0B">
-                            <rect key="frame" x="30" y="82" width="79" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Status:" id="K9e-Of-SqB">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z9H-VK-dXz">
-                            <rect key="frame" x="30" y="56" width="79" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Score:" id="w2k-id-7VP">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Hd-J0-wmg">
-                            <rect key="frame" x="111" y="76" width="143" height="26"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="push" title="Watching" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="DvS-7x-hDQ" id="czQ-K2-mhC">
-                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="menu"/>
-                                <menu key="menu" title="OtherViews" id="mz0-YV-MMQ">
-                                    <items>
-                                        <menuItem title="Watching" state="on" id="DvS-7x-hDQ"/>
-                                        <menuItem title="Item 2" id="gc2-aG-m4U"/>
-                                        <menuItem title="Item 3" id="LYK-wC-Jg8"/>
-                                    </items>
-                                </menu>
-                            </popUpButtonCell>
-                            <connections>
-                                <outlet property="menu" destination="JMq-2e-mww" id="a7y-Gs-9Zm"/>
-                            </connections>
-                        </popUpButton>
-                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kYJ-S3-Kwx">
-                            <rect key="frame" x="238" y="13" width="81" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TiD-Hw-Ydk">
-                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
-                            </buttonCell>
-                            <connections>
-                                <action selector="PerformAddTitle:" target="-2" id="H0s-u4-4vb"/>
-                            </connections>
-                        </button>
-                        <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="3rj-f1-CE8">
-                            <rect key="frame" x="220" y="20" width="16" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </progressIndicator>
-                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BVM-Kt-eH2">
-                            <rect key="frame" x="113" y="53" width="52" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JbN-2a-gCA">
-                                <numberFormatter key="formatter" formatterBehavior="custom10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="53J-8f-ysv" customClass="NSNumberFormatterNumberOnly">
-                                    <real key="maximum" value="10"/>
-                                </numberFormatter>
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <outlet property="delegate" destination="lXH-h1-ka3" id="Qz7-sS-Tp2"/>
-                            </connections>
-                        </textField>
-                    </subviews>
-                </customView>
-            </subviews>
-            <point key="canvasLocation" x="-469" y="762"/>
-        </customView>
         <customView identifier="seasonview" id="wr8-9U-tfn" userLabel="seasonview">
             <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -1033,7 +883,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EUC-6r-NMV">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="lcO-cB-Nug" id="oys-2G-zkA">
                                 <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>
@@ -1262,11 +1112,6 @@
             </subviews>
             <point key="canvasLocation" x="-93" y="851"/>
         </customView>
-        <viewController id="I6H-BN-sao" userLabel="AddPopoverViewController">
-            <connections>
-                <outlet property="view" destination="b2q-72-5Fu" id="yGG-wK-eNz"/>
-            </connections>
-        </viewController>
         <popover appearance="vibrantLight" behavior="t" id="TrX-YX-OCN" userLabel="Mini Edit Popover">
             <connections>
                 <outlet property="contentViewController" destination="w9r-Zw-PrM" id="2D7-0N-AUJ"/>
@@ -1274,7 +1119,7 @@
         </popover>
         <popover appearance="vibrantLight" behavior="t" id="XPV-h5-bEU">
             <connections>
-                <outlet property="contentViewController" destination="I6H-BN-sao" id="VQo-uW-9WG"/>
+                <outlet property="contentViewController" destination="WWH-Kx-8dQ" id="2bd-C4-isX"/>
             </connections>
         </popover>
         <customObject id="lXH-h1-ka3" customClass="NSTextFieldNumber">
@@ -1494,6 +1339,12 @@
             <connections>
                 <outlet property="mw" destination="-2" id="0nF-m6-VDH"/>
                 <outlet property="popover" destination="o05-dg-F2u" id="iia-qB-cwu"/>
+            </connections>
+        </viewController>
+        <viewController id="WWH-Kx-8dQ" customClass="AddTitle">
+            <connections>
+                <outlet property="addpopover" destination="XPV-h5-bEU" id="V2i-yc-u8S"/>
+                <outlet property="mw" destination="-2" id="Z8w-uu-cop"/>
             </connections>
         </viewController>
     </objects>

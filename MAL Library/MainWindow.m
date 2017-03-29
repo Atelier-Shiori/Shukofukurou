@@ -13,6 +13,7 @@
 #import "NSTextFieldNumber.h"
 #import "MSWeakTimer.h"
 #import "Keychain.h"
+#import "AddTitle.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -681,91 +682,24 @@
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
     if ([identifier isEqualToString:@"search"]){
         NSDictionary *d = [[searcharraycontroller selectedObjects] objectAtIndex:0];
-        [self showAddPopover:d showRelativeToRec:[searchtb frameOfCellAtColumn:0 row:[searchtb selectedRow]] ofView:searchtb preferredEdge:0];
+        [_addtitlecontroller showAddPopover:d showRelativeToRec:[searchtb frameOfCellAtColumn:0 row:[searchtb selectedRow]] ofView:searchtb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [self showAddPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+        [_addtitlecontroller showAddPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"seasons"]){
         NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
         d = d[@"id"];
         NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
         [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/anime/%i",idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [self showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasontableview frameOfCellAtColumn:0 row:[_seasontableview selectedRow]] ofView:_seasontableview preferredEdge:0];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
     }
 }
 
--(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge{
-    NSNumber * idnum = d[@"id"];
-    if (![self checkiftitleisonlist:idnum.intValue]){
-        [_popoveraddtitleexistsview setHidden:YES];
-        [_addtitleview setHidden:NO];
-        selecteditem = d;
-        [_addnumformat setMaximum:d[@"episodes"]];
-        NSString *airingstatus = d[@"status"];
-        if ([airingstatus isEqualToString:@"finished airing"]){
-            selectedaircompleted = true;
-        }
-        else{
-            selectedaircompleted = false;
-        }
-        if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]){
-            selectedaired = true;
-        }
-        else{
-            selectedaired = false;
-        }
-        [_addepifield setIntValue:0];
-        [_addtotalepisodes setIntValue:[(NSNumber *)d[@"episodes"] intValue]];
-        [_addstatusfield selectItemWithTitle:@"watching"];
-        [_addscorefiled setIntValue:0];
-        selectededitid = [(NSNumber *)d[@"id"] intValue];
-    }
-    else {
-        [_popoveraddtitleexistsview setHidden:NO];
-        [_addtitleview setHidden:YES];
-    }
-    [_addpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
-}
-- (IBAction)PerformAddTitle:(id)sender {
-    [self addtitletolist];
-}
--(void)addtitletolist{
-    [_addfield setEnabled:false];
-    if(![_addstatusfield isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && selectedaircompleted){
-        [_addstatusfield selectItemWithTitle:@"completed"];
-    }
-    if(!selectedaired && (![_addstatusfield.title isEqual:@"plan to watch"] ||_addepifield.intValue > 0)){
-        // Invalid input, mark it as such
-        [_addfield setEnabled:true];
-        [_addpopover setBehavior:NSPopoverBehaviorTransient];
-        return;
-    }
-    if (_addepifield.intValue == _addtotalepisodes.intValue && _addtotalepisodes.intValue != 0 && selectedaircompleted && selectedaired){
-        [_addstatusfield selectItemWithTitle:@"completed"];
-        [_addepifield setIntValue:[_minipopovertotalep intValue]];
-    }
-    [_addpopover setBehavior:NSPopoverBehaviorApplicationDefined];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    [manager POST:@"https://malapi.ateliershiori.moe/2.1/animelist/anime" parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [self loadlist:@(true)];
-        [_addfield setEnabled:true];
-        [_addpopover setBehavior:NSPopoverBehaviorTransient];
-        [_addpopover close];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"%@",error);
-        NSData * errordata = [error userInfo] [@"com.alamofire.serialization.response.error.data" ];
-        NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
-        [_addpopover setBehavior:NSPopoverBehaviorTransient];
-    }];
-}
 
 #pragma mark Title Information View
 -(void)loadanimeinfo:(NSNumber *) idnum{

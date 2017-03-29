@@ -13,6 +13,7 @@
 @class AppDelegate;
 @class NSTextFieldNumber;
 @class MSWeakTimer;
+@class AddTitle;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -74,15 +75,8 @@
 @property (strong) IBOutlet NSNumberFormatter *minieditpopovernumformat;
 
 // Add Popover
-@property (strong) IBOutlet NSView *popoveraddtitleexistsview;
-@property (strong) IBOutlet NSView *addtitleview;
-@property (strong) IBOutlet NSTextField *addepifield;
-@property (strong) IBOutlet NSNumberFormatter *addnumformat;
-@property (strong) IBOutlet NSTextField *addtotalepisodes;
-@property (strong) IBOutlet NSTextField *addscorefiled;
-@property (strong) IBOutlet NSPopUpButton *addstatusfield;
-@property (strong) IBOutlet NSButton *addfield;
 @property (strong) IBOutlet NSPopover *addpopover;
+@property (strong) IBOutlet AddTitle * addtitlecontroller;
     
 // Season View
 @property (strong) IBOutlet NSPopUpButton *seasonyrpicker;
@@ -96,7 +90,6 @@
 //Public Methods
 -(void)setDelegate:(AppDelegate*) adelegate;
 - (IBAction)performlogin:(id)sender;
-- (IBAction)PerformAddTitle:(id)sender;
 - (IBAction)sharetitle:(id)sender;
 -(void)loadmainview;
 -(void)setAppearence;
@@ -107,6 +100,8 @@
 -(void)loadanimeinfo:(NSNumber *) idnum;
 -(void)populatesearchtb:(id)json;
 -(void)clearsearchtb;
+-(bool)checkiftitleisonlist:(int)idnum;
+-(void)loadlist:(NSNumber *)refresh;
 
 //Anime List View
 - (IBAction)refreshlist:(id)sender;
@@ -114,7 +109,6 @@
 - (IBAction)deletetitle:(id)sender;
 -(void)clearlist;
 - (IBAction)filterperform:(id)sender;
--(void)loadlist:(NSNumber *)refresh;
 //Search View
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;

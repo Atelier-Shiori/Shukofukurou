@@ -22,6 +22,7 @@
 {
     return [super initWithNibName:@"AdvancedSearch" bundle:nil];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.

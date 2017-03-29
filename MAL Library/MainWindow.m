@@ -312,7 +312,8 @@
             indexoffset = -1;
         }
         [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
-        [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2+indexoffset];
+        [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
+        [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         if (selectedid > 0){
@@ -356,10 +357,7 @@
         }];
     }
     else{
-        NSMutableArray * a = [searcharraycontroller content];
-        [a removeAllObjects];
-        [searchtb reloadData];
-        [searchtb deselectAll:self];
+        [self clearsearchtb];
     }
    }
 
@@ -381,6 +379,17 @@
     }
     [searchtb reloadData];
     [searchtb deselectAll:self];
+}
+-(void)clearsearchtb{
+    NSMutableArray * a = [searcharraycontroller content];
+    [a removeAllObjects];
+    [searchtb reloadData];
+    [searchtb deselectAll:self];
+}
+- (IBAction)showadvancedpopover:(id)sender {
+    NSButton * btn = (NSButton *)sender;
+    // Show Share Box
+    [_advsearchpopover showRelativeToRect:[btn bounds] ofView:btn preferredEdge:NSMaxYEdge];
 }
 #pragma mark Anime List
 -(void)loadlist:(NSNumber *)refresh{

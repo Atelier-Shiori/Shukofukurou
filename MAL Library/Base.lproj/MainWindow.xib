@@ -15,6 +15,7 @@
                 <outlet property="addstatusfield" destination="1Hd-J0-wmg" id="iEP-vu-6lB"/>
                 <outlet property="addtitleview" destination="7Or-jW-V5r" id="bvr-Y8-fZ2"/>
                 <outlet property="addtotalepisodes" destination="mN3-m6-y9e" id="lEG-sn-tla"/>
+                <outlet property="advsearchpopover" destination="o05-dg-F2u" id="8nj-Kh-UcI"/>
                 <outlet property="animeinfoview" destination="jlp-Ya-DgE" id="I0H-T3-yoK"/>
                 <outlet property="animelistarraycontroller" destination="mWb-w6-hzi" id="aul-bg-rUM"/>
                 <outlet property="animelistfilter" destination="KKI-5U-zIm" id="rxX-Rl-AtR"/>
@@ -145,6 +146,7 @@
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="Xjs-Ky-zUy" firstAttribute="leading" secondItem="RBu-Gy-yec" secondAttribute="leading" constant="3" id="8yO-lc-AOP"/>
                                                         <constraint firstItem="Xjs-Ky-zUy" firstAttribute="leading" secondItem="RBu-Gy-yec" secondAttribute="leading" constant="3" id="Dnr-uD-Fdv"/>
                                                         <constraint firstItem="nhp-S5-ceN" firstAttribute="leading" secondItem="Xjs-Ky-zUy" secondAttribute="trailing" constant="7" id="ZaC-t9-gDa"/>
                                                         <constraint firstItem="Xjs-Ky-zUy" firstAttribute="top" secondItem="RBu-Gy-yec" secondAttribute="top" id="eIP-eN-OKQ"/>
@@ -459,6 +461,24 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Mt7-WY-45F"/>
+                    <toolbarItem implicitItemIdentifier="F8DE7553-EAA2-4394-967D-77376189FB67" explicitItemIdentifier="advsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="AdvancedSearch" image="NSActionTemplate" id="34Q-Qt-FYM">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="zKh-eH-mHX">
+                            <rect key="frame" x="25" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSActionTemplate" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y0O-hv-e07">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showadvancedpopover:" target="-2" id="Guf-IV-8bL"/>
+                            </connections>
+                        </button>
+                        <connections>
+                            <action selector="performmodifytitle:" target="-2" id="eco-nX-xxF"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -498,7 +518,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="FS0-0V-x3s">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" headerView="WvY-eG-gZD" id="EK1-W7-f3l">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
@@ -635,7 +655,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="tCL-Au-5bw">
-                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
+                        <rect key="frame" x="-8" y="23" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="gmM-sJ-tLE">
@@ -714,7 +734,7 @@
                     </subviews>
                 </visualEffectView>
             </subviews>
-            <point key="canvasLocation" x="-28" y="507"/>
+            <point key="canvasLocation" x="13" y="564"/>
         </customView>
         <arrayController objectClassName="NSDictionary" editable="NO" id="mWb-w6-hzi">
             <declaredKeys>
@@ -806,7 +826,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="zFi-L7-BaW" name="value" keyPath="arrangedObjects.total_episodes" id="BnT-aB-P0e">
+                                            <binding destination="zFi-L7-BaW" name="value" keyPath="arrangedObjects.episodes" id="shB-Ed-FkV">
                                                 <dictionary key="options">
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
@@ -983,8 +1003,8 @@
                             <rect key="frame" x="113" y="53" width="52" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="JbN-2a-gCA">
-                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="53J-8f-ysv" customClass="NSNumberFormatterNumberOnly">
-                                    <real key="maximum" value="100"/>
+                                <numberFormatter key="formatter" formatterBehavior="custom10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="53J-8f-ysv" customClass="NSNumberFormatterNumberOnly">
+                                    <real key="maximum" value="10"/>
                                 </numberFormatter>
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1013,7 +1033,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EUC-6r-NMV">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="lcO-cB-Nug" id="oys-2G-zkA">
                                 <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>
@@ -1227,9 +1247,9 @@
                     <rect key="frame" x="103" y="47" width="52" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="E1e-9e-rcN">
-                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="nW3-Kh-0Kk" customClass="NSNumberFormatterNumberOnly">
+                        <numberFormatter key="formatter" formatterBehavior="custom10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="nW3-Kh-0Kk" customClass="NSNumberFormatterNumberOnly">
                             <real key="minimum" value="0.0"/>
-                            <real key="maximum" value="100"/>
+                            <real key="maximum" value="10"/>
                         </numberFormatter>
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -1240,7 +1260,7 @@
                     </connections>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="-49.5" y="655"/>
+            <point key="canvasLocation" x="-93" y="851"/>
         </customView>
         <viewController id="I6H-BN-sao" userLabel="AddPopoverViewController">
             <connections>
@@ -1465,6 +1485,17 @@
             </subviews>
             <point key="canvasLocation" x="317" y="1813"/>
         </visualEffectView>
+        <popover appearance="vibrantLight" id="o05-dg-F2u" userLabel="AdvancedSearchPopover">
+            <connections>
+                <outlet property="contentViewController" destination="aSh-hJ-Fpb" id="hnQ-yd-vZ7"/>
+            </connections>
+        </popover>
+        <viewController id="aSh-hJ-Fpb" customClass="AdvancedSearch">
+            <connections>
+                <outlet property="mw" destination="-2" id="0nF-m6-VDH"/>
+                <outlet property="popover" destination="o05-dg-F2u" id="iia-qB-cwu"/>
+            </connections>
+        </viewController>
     </objects>
     <resources>
         <image name="Edit" width="32" height="32"/>

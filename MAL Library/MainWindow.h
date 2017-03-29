@@ -52,6 +52,7 @@
 @property (strong) IBOutlet NSView *searchview;
 @property (strong) IBOutlet NSView *seasonview;
 @property (strong) IBOutlet NSVisualEffectView *notloggedinview;
+@property (strong) IBOutlet NSPopover *advsearchpopover;
 // Info View
 @property (strong) IBOutlet NSProgressIndicator *progressindicator;
 @property (strong) IBOutlet NSView *noinfoview;
@@ -104,6 +105,8 @@
 -(void)fireTimer;
 -(void)refreshloginlabel;
 -(void)loadanimeinfo:(NSNumber *) idnum;
+-(void)populatesearchtb:(id)json;
+-(void)clearsearchtb;
 
 //Anime List View
 - (IBAction)refreshlist:(id)sender;

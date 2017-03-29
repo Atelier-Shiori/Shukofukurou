@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
 		9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
+		915E8C451E8C0ACC005A49A4 /* AdvancedSearch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C431E8C0ACC005A49A4 /* AdvancedSearch.xib */; };
 		9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
 		9168F92E1E89861300CCB5B3 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92D1E89861300CCB5B3 /* Keychain.m */; };
 		9168F92F1E898BD000CCB5B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAAB1E89842400F6E9FF /* AppDelegate.m */; };
@@ -85,6 +87,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
+		915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearch.m; sourceTree = "<group>"; };
+		915E8C431E8C0ACC005A49A4 /* AdvancedSearch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdvancedSearch.xib; sourceTree = "<group>"; };
 		9168F9291E89858900CCB5B3 /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
 		9168F92A1E89858900CCB5B3 /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
@@ -241,6 +246,7 @@
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
 				9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */,
+				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				9199BAC81E89842400F6E9FF /* SSKeychain.h */,
 				9199BAC91E89842400F6E9FF /* SSKeychain.m */,
 				9199BACA1E89842400F6E9FF /* SSKeychainQuery.h */,
@@ -248,13 +254,15 @@
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				9199BA991E89836000F6E9FF /* AppDelegate.h */,
-				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9199BA9F1E89836000F6E9FF /* Assets.xcassets */,
 				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
 				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
 				9199BAE41E89843300F6E9FF /* LoginView.xib */,
 				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
+				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
+				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
+				915E8C431E8C0ACC005A49A4 /* AdvancedSearch.xib */,
 				9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */,
 				9199BAA41E89836000F6E9FF /* Info.plist */,
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
@@ -369,6 +377,7 @@
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
+				915E8C451E8C0ACC005A49A4 /* AdvancedSearch.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +423,7 @@
 				9199BADB1E89842400F6E9FF /* NSString_stripHtml.m in Sources */,
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
+				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

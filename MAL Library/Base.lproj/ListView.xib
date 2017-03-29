@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ListView">
+            <connections>
+                <outlet property="animelistarraycontroller" destination="hZg-UC-ATg" id="3OZ-jP-GiR"/>
+                <outlet property="animelisttb" destination="etv-3f-0Uh" id="vFX-RV-BNA"/>
+                <outlet property="animelistview" destination="pfO-Zc-dit" id="eQG-FW-2Ed"/>
+                <outlet property="completedfilter" destination="ahz-wi-lKe" id="Uwo-EW-sOI"/>
+                <outlet property="droppedfilter" destination="eQD-fk-uzw" id="Xqw-4e-xyJ"/>
+                <outlet property="filterbarview" destination="T41-us-5RD" id="sro-Ul-wFw"/>
+                <outlet property="onholdfilter" destination="bS2-qQ-E4F" id="Ckv-bP-Cyp"/>
+                <outlet property="plantowatchfilter" destination="fqN-qH-lgL" id="Lxb-N2-Qxl"/>
+                <outlet property="view" destination="pfO-Zc-dit" id="bOD-1N-h9R"/>
+                <outlet property="watchingfilter" destination="zDk-CP-6y1" id="b94-uc-yDc"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView identifier="ListView" id="pfO-Zc-dit" userLabel="AnimeList">
+            <rect key="frame" x="0.0" y="0.0" width="564" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeN-3O-bua">
+                    <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <clipView key="contentView" focusRingType="none" ambiguous="YES" id="eGM-Vy-iY0">
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveColumns="NO" headerView="QGW-Oe-htQ" id="etv-3f-0Uh">
+                                <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn identifier="title" editable="NO" width="230" minWidth="40" maxWidth="1000" id="DNa-6J-sgF">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="4le-Ny-1Ot">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.title" id="vJ2-TN-Pgi">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="Episodes" editable="NO" width="60" minWidth="60" maxWidth="60" id="RuF-sM-oAM">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Watched">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="Gpk-Gc-YK7">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="displayPatternValue1" keyPath="arrangedObjects.watched_episodes" id="PBr-Cs-oo1">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="hZg-UC-ATg" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="PBr-Cs-oo1" id="dFP-kf-ts1">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="progress" editable="NO" width="55" minWidth="10" maxWidth="70" id="huN-ki-nxc">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Progress">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <levelIndicatorCell key="dataCell" controlSize="small" state="on" alignment="left" doubleValue="3" maxValue="3" warningValue="3" criticalValue="3" levelIndicatorStyle="continuousCapacity" id="5Gf-eL-YOC">
+                                            <font key="font" metaFont="smallSystem"/>
+                                        </levelIndicatorCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="maxValue" keyPath="arrangedObjects.episodes" id="NJn-dh-iRj"/>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.watched_episodes" previousBinding="NJn-dh-iRj" id="Kbo-VB-DmZ"/>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="score" editable="NO" width="50" minWidth="50" maxWidth="50" id="CPD-Wd-FF0">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Score">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="8Rv-mz-Pwy">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.score" id="u4y-CU-mQY">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="type" editable="NO" width="60" minWidth="60" maxWidth="60" id="me1-yQ-9KJ">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="JG4-qQ-ZVn">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.type" id="7Do-Vs-XWZ">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="watchstatus" editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="dSg-tj-7bc">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Status">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Gf9-RI-KYr">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.watched_status" id="Ub0-b1-37j">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="animelistdoubleclick:" target="-2" id="G1z-4A-yaL"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
+                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="B5h-dx-wLN">
+                        <rect key="frame" x="-15" y="23" width="15" height="0.0"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <tableHeaderView key="headerView" id="QGW-Oe-htQ">
+                        <rect key="frame" x="0.0" y="0.0" width="565" height="23"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </tableHeaderView>
+                </scrollView>
+                <visualEffectView appearanceType="vibrantLight" fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="T41-us-5RD">
+                    <rect key="frame" x="0.0" y="275" width="564" height="25"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zDk-CP-6y1">
+                            <rect key="frame" x="4" y="3" width="89" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="recessed" title="Watching" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UKY-ND-C5K">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="F09-eO-YbX"/>
+                                <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.watchingfilter" id="309-gM-jN9"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bS2-qQ-E4F">
+                            <rect key="frame" x="195" y="3" width="86" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="recessed" title="On Hold" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qnv-JO-XEO">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="u9l-RP-OPn"/>
+                                <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.onholdfilter" id="rKO-r5-2ye"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQD-fk-uzw">
+                            <rect key="frame" x="284" y="3" width="92" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="recessed" title="Dropped" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dHi-zi-9B3">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="bkg-CB-0yg"/>
+                                <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.droppedfilter" id="Ml4-9E-Z9q"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fqN-qH-lgL">
+                            <rect key="frame" x="379" y="3" width="103" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="recessed" title="Plan to watch" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WTR-lq-1U1">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="YfN-gW-Cj6"/>
+                                <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.plantowatchfilter" id="Fde-JT-INo"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ahz-wi-lKe">
+                            <rect key="frame" x="96" y="3" width="96" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="recessed" title="Completed" bezelStyle="recessed" alignment="center" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zP1-XM-YMN">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                <font key="font" metaFont="miniSystem"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="filterperform:" target="-2" id="opJ-r4-7Rb"/>
+                                <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.completedfilter" id="PUe-pQ-Meq"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </visualEffectView>
+            </subviews>
+            <point key="canvasLocation" x="13" y="564"/>
+        </customView>
+        <arrayController objectClassName="NSDictionary" editable="NO" id="hZg-UC-ATg">
+            <declaredKeys>
+                <string>allValues</string>
+            </declaredKeys>
+        </arrayController>
+        <userDefaultsController representsSharedInstance="YES" id="vm0-rJ-Ss3"/>
+    </objects>
+</document>

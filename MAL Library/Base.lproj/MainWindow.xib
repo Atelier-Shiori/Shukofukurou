@@ -27,17 +27,13 @@
                 <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
                 <outlet property="refreshlist" destination="6qy-e4-N2b" id="K7X-ly-jCN"/>
-                <outlet property="searcharraycontroller" destination="zFi-L7-BaW" id="Upl-me-s91"/>
-                <outlet property="searchtb" destination="0oH-PF-Un2" id="nQ0-YQ-a9Y"/>
-                <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="oNQ-5C-6jX"/>
-                <outlet property="searchview" destination="Tq7-7W-RfW" id="j0E-1L-oZd"/>
+                <outlet property="searchview" destination="3aF-oI-xAM" id="Kt7-Uz-xOb"/>
                 <outlet property="seasonarraycontroller" destination="nPC-GD-SGg" id="NWF-0a-PpD"/>
                 <outlet property="seasonpicker" destination="E2N-f0-9rS" id="FGQ-ls-qlH"/>
                 <outlet property="seasontableview" destination="oys-2G-zkA" id="SNU-b8-TVw"/>
                 <outlet property="seasonview" destination="wr8-9U-tfn" id="SFa-nH-6Ij"/>
                 <outlet property="seasonyrpicker" destination="UWH-1l-PJ4" id="wbP-iF-ADn"/>
                 <outlet property="sourceList" destination="TSK-C5-xyA" id="iX9-mH-h8g"/>
-                <outlet property="titlesearchfield" destination="UGJ-OX-Y5p" id="u9F-Kc-edI"/>
                 <outlet property="toolbar" destination="6eG-p3-l2S" id="wTZ-w8-9cJ"/>
                 <outlet property="w" destination="F0z-JX-Cv5" id="rtl-lI-YpK"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -253,9 +249,6 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <connections>
-                                <binding destination="zFi-L7-BaW" name="enabled" keyPath="selectedObjects.@count" id="m9O-Fp-1pK"/>
-                            </connections>
                         </button>
                         <connections>
                             <action selector="showaddpopover:" target="-2" id="ura-2a-B0E"/>
@@ -306,7 +299,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
                             <connections>
-                                <action selector="performsearch:" target="-2" id="a8s-Ha-G32"/>
+                                <action selector="performsearch:" target="3aF-oI-xAM" id="FWe-kJ-K1N"/>
                             </connections>
                         </searchField>
                     </toolbarItem>
@@ -493,107 +486,6 @@
                 </progressIndicator>
             </subviews>
         </visualEffectView>
-        <customView identifier="searchview" id="Tq7-7W-RfW" userLabel="searchview">
-            <rect key="frame" x="0.0" y="0.0" width="563" height="398"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SHB-y0-IVl">
-                    <rect key="frame" x="0.0" y="0.0" width="563" height="398"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EAK-w1-dkl">
-                        <rect key="frame" x="0.0" y="0.0" width="563" height="383"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="searchtb" headerView="leu-2E-e7l" id="0oH-PF-Un2">
-                                <rect key="frame" x="0.0" y="0.0" width="626" height="360"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                <tableColumns>
-                                    <tableColumn identifier="titlecol" editable="NO" width="400" minWidth="40" maxWidth="1000" id="xY5-VF-ka5">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="qKx-3d-Y9Z">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="zFi-L7-BaW" name="value" keyPath="arrangedObjects.title" id="U9X-Im-fd4">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
-                                    <tableColumn identifier="episodecol" editable="NO" width="80" minWidth="40" maxWidth="80" id="C5r-jy-OG0">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Episodes">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="rPR-Pz-2Kv">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="zFi-L7-BaW" name="value" keyPath="arrangedObjects.episodes" id="shB-Ed-FkV">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
-                                    <tableColumn identifier="typecol" editable="NO" width="137" minWidth="10" maxWidth="3.4028234663852886e+38" id="AuV-8p-1e3">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="bdO-cx-bs2">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="zFi-L7-BaW" name="value" keyPath="arrangedObjects.type" id="XiZ-Yb-ndI">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
-                                </tableColumns>
-                                <connections>
-                                    <action trigger="doubleAction" selector="searchtbdoubleclick:" target="-2" id="SZt-Ga-bAF"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                    </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="Eyb-fP-Q9M">
-                        <rect key="frame" x="0.0" y="383" width="563" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="8Mr-bQ-2eQ">
-                        <rect key="frame" x="-15" y="23" width="15" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <tableHeaderView key="headerView" id="leu-2E-e7l">
-                        <rect key="frame" x="0.0" y="0.0" width="626" height="23"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </tableHeaderView>
-                </scrollView>
-            </subviews>
-            <point key="canvasLocation" x="96" y="752"/>
-        </customView>
         <customView identifier="seasonview" id="wr8-9U-tfn" userLabel="seasonview">
             <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -608,7 +500,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EUC-6r-NMV">
                         <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="lcO-cB-Nug" id="oys-2G-zkA">
                                 <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>
@@ -698,11 +590,6 @@
                 <outlet property="mw" destination="-2" id="5g1-ck-tC3"/>
             </connections>
         </viewController>
-        <arrayController objectClassName="NSDictionary" editable="NO" id="zFi-L7-BaW" userLabel="Search Array Controller">
-            <declaredKeys>
-                <string>allValues</string>
-            </declaredKeys>
-        </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="2F9-Ng-hjJ"/>
         <arrayController objectClassName="NSDictionary" editable="NO" id="nPC-GD-SGg">
             <declaredKeys>
@@ -780,7 +667,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="P0k-wb-qt7">
                         <rect key="frame" x="0.0" y="0.0" width="516" height="91"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="AXG-Zn-Y0c">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
@@ -806,7 +693,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Uoe-5G-mHa">
-                        <rect key="frame" x="516" y="0.0" width="15" height="91"/>
+                        <rect key="frame" x="0.0" y="0.0" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -815,7 +702,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Kxc-zK-i13">
                         <rect key="frame" x="0.0" y="0.0" width="516" height="84"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ptk-xe-Bu4">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
@@ -841,7 +728,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3Eh-1G-g8m">
-                        <rect key="frame" x="516" y="0.0" width="15" height="84"/>
+                        <rect key="frame" x="0.0" y="0.0" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -863,7 +750,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="eko-p9-Mhx">
                         <rect key="frame" x="0.0" y="0.0" width="516" height="50"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3w2-UP-NTh">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
@@ -889,7 +776,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iAf-ge-Zre">
-                        <rect key="frame" x="516" y="0.0" width="15" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -922,6 +809,12 @@
         <viewController id="N7e-Wr-mOx" customClass="NotLoggedIn">
             <connections>
                 <outlet property="mw" destination="-2" id="qFV-XG-fxY"/>
+            </connections>
+        </viewController>
+        <viewController id="3aF-oI-xAM" customClass="SearchView">
+            <connections>
+                <outlet property="mw" destination="-2" id="ldd-gL-JEn"/>
+                <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="4Xs-bj-wtA"/>
             </connections>
         </viewController>
     </objects>

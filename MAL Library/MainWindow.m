@@ -17,6 +17,7 @@
 #import "EditTitle.h"
 #import "ListView.h"
 #import "NotLoggedIn.h"
+#import "SearchView.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -69,7 +70,7 @@
     [_animeinfoview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_listview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_progressview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_searchview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_searchview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_seasonview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_notloggedin.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
@@ -261,9 +262,9 @@
             }
         }
         else if ([identifier isEqualToString:@"search"]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_searchview];
-                _searchview.frame = mainviewframe;
-                [_searchview setFrameOrigin:origin];
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_searchview.view];
+                _searchview.view.frame = mainviewframe;
+                [_searchview.view setFrameOrigin:origin];
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
             if (selectedid > 0){
@@ -349,45 +350,24 @@
 }
 #pragma mark -
 #pragma mark Search View
-- (IBAction)performsearch:(id)sender {
-    if ([searchtitlefield.stringValue length] > 0){
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/anime/search?q=%@",[Utility urlEncodeString:searchtitlefield.stringValue]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [self populatesearchtb:responseObject];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-        }];
-    }
-    else{
-        [self clearsearchtb];
-    }
-   }
-
-- (IBAction)searchtbdoubleclick:(id)sender {
-    if ([searchtb clickedRow] >=0){
-        if ([searchtb clickedRow] >-1){
-            NSDictionary *d = [[searcharraycontroller selectedObjects] objectAtIndex:0];
-            NSNumber * idnum = d[@"id"];
-            [self loadanimeinfo:idnum];
-        }
-    }
-}
 -(void)populatesearchtb:(id)json{
-    NSMutableArray * a = [searcharraycontroller content];
+    NSMutableArray * a = [_searchview.searcharraycontroller content];
     [a removeAllObjects];
     if ([json isKindOfClass:[NSArray class]]){
        // Valid Search Results, populate
-        [searcharraycontroller addObjects:json];
+        [_searchview.searcharraycontroller addObjects:json];
     }
-    [searchtb reloadData];
-    [searchtb deselectAll:self];
+    [_searchview.searchtb reloadData];
+    [_searchview.searchtb deselectAll:self];
 }
+
 -(void)clearsearchtb{
-    NSMutableArray * a = [searcharraycontroller content];
+    NSMutableArray * a = [_searchview.searcharraycontroller content];
     [a removeAllObjects];
-    [searchtb reloadData];
-    [searchtb deselectAll:self];
+    [_searchview.searchtb reloadData];
+    [_searchview.searchtb deselectAll:self];
 }
+
 - (IBAction)showadvancedpopover:(id)sender {
     NSButton * btn = (NSButton *)sender;
     // Show Share Box
@@ -451,8 +431,8 @@
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
     if ([identifier isEqualToString:@"search"]){
-        NSDictionary *d = [[searcharraycontroller selectedObjects] objectAtIndex:0];
-        [_addtitlecontroller showAddPopover:d showRelativeToRec:[searchtb frameOfCellAtColumn:0 row:[searchtb selectedRow]] ofView:searchtb preferredEdge:0];
+        NSDictionary *d = [[_searchview.searcharraycontroller selectedObjects] objectAtIndex:0];
+        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_searchview.searchtb frameOfCellAtColumn:0 row:[_searchview.searchtb selectedRow]] ofView:_searchview.searchtb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         [_addtitlecontroller showAddPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];

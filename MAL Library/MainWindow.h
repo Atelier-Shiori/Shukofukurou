@@ -17,14 +17,12 @@
 @class EditTitle;
 @class ListView;
 @class NotLoggedIn;
+@class SearchView;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
     IBOutlet PXSourceList *sourceList;
     AppDelegate *appdel;
-    IBOutlet NSSearchField *searchtitlefield;
-    IBOutlet NSArrayController *searcharraycontroller;
-    IBOutlet NSTableView *searchtb;
     // Title Info
     int selectedid;
     int selectededitid;
@@ -34,21 +32,21 @@
     NSDictionary * selectedanimeinfo;
 
 }
+@property (strong) IBOutlet NSView *mainview;
+@property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSTextField *loggedinuser;
+
+@property (nonatomic, assign) AppDelegate *app;
 //Anime List View
 @property (strong) IBOutlet ListView * listview;
 // Not Logged In View
 @property (strong) IBOutlet NotLoggedIn * notloggedin;
 //Search View
-@property (strong) IBOutlet NSToolbar *toolbar;
-@property (strong) IBOutlet NSView *mainview;
-@property (nonatomic, assign) AppDelegate *app;
-@property (strong) IBOutlet NSVisualEffectView *animeinfoview;
-@property (strong) IBOutlet NSVisualEffectView *progressview;
-@property (strong) IBOutlet NSView *searchview;
-@property (strong) IBOutlet NSView *seasonview;
+@property (strong) IBOutlet SearchView * searchview;
 @property (strong) IBOutlet NSPopover *advsearchpopover;
 // Info View
+@property (strong) IBOutlet NSVisualEffectView *animeinfoview;
+@property (strong) IBOutlet NSVisualEffectView *progressview;
 @property (strong) IBOutlet NSProgressIndicator *progressindicator;
 @property (strong) IBOutlet NSView *noinfoview;
 @property (strong) IBOutlet NSTextField *infoviewtitle;
@@ -66,6 +64,7 @@
 @property (strong) IBOutlet AddTitle * addtitlecontroller;
     
 // Season View
+@property (strong) IBOutlet NSView *seasonview;
 @property (strong) IBOutlet NSPopUpButton *seasonyrpicker;
 @property (strong) IBOutlet NSPopUpButton *seasonpicker;
 @property (strong) IBOutlet NSArrayController *seasonarraycontroller;
@@ -91,9 +90,6 @@
 -(void)loadlist:(NSNumber *)refresh;
 -(void)clearlist;
 
-//Search View
-- (IBAction)performsearch:(id)sender;
-- (IBAction)searchtbdoubleclick:(id)sender;
 // Info View
 - (IBAction)viewonmal:(id)sender;
 // Modify Popover

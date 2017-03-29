@@ -37,7 +37,7 @@
     return NSLocalizedString(@"General", @"Toolbar item name for the General preference pane");
 }
 - (IBAction)changeappearence:(id)sender {
-    [mainwindowcontroller setAppearence];
+    [mainwindowcontroller setAppearance];
 }
 -(void)setMainWindowController:(MainWindow*)mw{
     mainwindowcontroller = mw;

@@ -86,7 +86,7 @@
 - (IBAction)performlogin:(id)sender;
 - (IBAction)sharetitle:(id)sender;
 -(void)loadmainview;
--(void)setAppearence;
+-(void)setAppearance;
 -(void)startTimer;
 -(void)stopTimer;
 -(void)fireTimer;

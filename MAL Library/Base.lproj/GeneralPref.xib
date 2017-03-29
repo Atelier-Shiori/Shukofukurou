@@ -73,7 +73,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9r-YE-zwR">
                     <rect key="frame" x="41" y="55" width="190" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Appearence:" id="t5V-yX-BQh">
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Appearance:" id="t5V-yX-BQh">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -118,7 +118,7 @@
                     </popUpButtonCell>
                     <connections>
                         <action selector="changeappearence:" target="-2" id="eLf-ye-8E5"/>
-                        <binding destination="MdS-ya-WtK" name="selectedValue" keyPath="values.appearence" id="LIB-Z2-KGw"/>
+                        <binding destination="MdS-ya-WtK" name="selectedValue" keyPath="values.appearance" id="ryt-T0-Pzj"/>
                     </connections>
                 </popUpButton>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kFc-vJ-4Ut">

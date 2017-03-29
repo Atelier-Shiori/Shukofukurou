@@ -31,7 +31,7 @@
     defaultValues[@"watchingfilter"] = @(1);
     defaultValues[@"listdoubleclickaction"] = @"Modify Title";
     defaultValues[@"refreshlistonstart"] = @(0);
-    defaultValues[@"appearence"] = @"Light";
+    defaultValues[@"appearance"] = @"Light";
     defaultValues[@"refreshautomatically"] = @(1);
     defaultValues[@"donated"] = @(0);
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;

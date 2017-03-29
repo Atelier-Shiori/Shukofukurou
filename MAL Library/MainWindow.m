@@ -75,10 +75,11 @@
     NSRect frame = [self.window frame];
     frame.size.height = frame.size.height - 22;
     [[self window] setFrame:frame display:NO];
-    [self setAppearence];
+    [self setAppearance];
     // Fix textview text color
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
+    _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
     
     // Set logged in user
     [self refreshloginlabel];
@@ -154,20 +155,20 @@
 - (void)windowWillClose:(NSNotification *)notification{
     [[NSApplication sharedApplication] terminate:0];
 }
--(void)setAppearence{
-    NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearence"];
-    NSString *appearencename;
+-(void)setAppearance{
+    NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
+    NSString *appearancename;
     if ([appearence isEqualToString:@"Light"]){
-        appearencename = NSAppearanceNameVibrantLight;
+        appearancename = NSAppearanceNameVibrantLight;
     }
     else{
-        appearencename = NSAppearanceNameVibrantDark;
+        appearancename = NSAppearanceNameVibrantDark;
     }
-    w.appearance = [NSAppearance appearanceNamed:appearencename];
-    _progressview.appearance = [NSAppearance appearanceNamed:appearencename];
-    _animeinfoview.appearance = [NSAppearance appearanceNamed:appearencename];
-    _notloggedinview.appearance = [NSAppearance appearanceNamed:appearencename];
-    _filterbarview.appearance = [NSAppearance appearanceNamed:appearencename];
+    w.appearance = [NSAppearance appearanceNamed:appearancename];
+    _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _animeinfoview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _notloggedinview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
     [w setFrame:[w frame] display:false];
 }
 -(void)refreshloginlabel{
@@ -607,7 +608,7 @@
         [_editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:[_animelisttb selectedRow]] ofView:_animelisttb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [_editviewcontroller showEditPopover:[self retreveentryfromlist:selectedid]showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+        [_editviewcontroller showEditPopover:[self retreveentryfromlist:selectedid]showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
     }
 }
 

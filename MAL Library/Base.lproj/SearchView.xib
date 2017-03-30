@@ -30,7 +30,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="563" height="398"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="searchtb" headerView="TpQ-tp-8r6" id="WdW-cE-aev">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="searchtb" headerView="TpQ-tp-8r6" id="WdW-cE-aev" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="563" height="375"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>

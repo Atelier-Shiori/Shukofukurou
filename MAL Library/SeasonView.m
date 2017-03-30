@@ -31,8 +31,8 @@
 
 #pragma mark Seasons View
 - (IBAction)seasondoubleclick:(id)sender {
-    if ([_seasontableview clickedRow] >=0){
-        if ([_seasontableview clickedRow] >-1){
+    if ([_seasontableview selectedRow] >=0){
+        if ([_seasontableview selectedRow] >-1){
             NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
             d = d[@"id"];
             NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);

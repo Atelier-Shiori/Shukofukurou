@@ -137,8 +137,8 @@
 }
 
 - (IBAction)animelistdoubleclick:(id)sender {
-    if ([_animelisttb clickedRow] >=0){
-        if ([_animelisttb clickedRow] >-1){
+    if ([_animelisttb selectedRow] >=0){
+        if ([_animelisttb selectedRow] >-1){
             NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
             NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
             if ([action isEqualToString:@"View Anime Info"]){

@@ -43,8 +43,8 @@
 }
 
 - (IBAction)searchtbdoubleclick:(id)sender {
-    if ([_searchtb clickedRow] >=0){
-        if ([_searchtb clickedRow] >-1){
+    if ([_searchtb selectedRow] >=0){
+        if ([_searchtb selectedRow] >-1){
             NSDictionary *d = [[_searcharraycontroller selectedObjects] objectAtIndex:0];
             NSNumber * idnum = d[@"id"];
             [mw loadanimeinfo:idnum];

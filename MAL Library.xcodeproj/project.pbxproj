@@ -16,6 +16,7 @@
 		915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
 		915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
 		915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */; };
+		9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */; };
 		916502BD1E8C576B00565D30 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502BB1E8C576B00565D30 /* ListView.m */; };
 		916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
 		916502C41E8C65A500565D30 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C61E8C65A500565D30 /* ListView.xib */; };
@@ -112,6 +113,8 @@
 		915E8C5C1E8C2B4D005A49A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EditTitle.xib; sourceTree = "<group>"; };
 		915E8C5E1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTMLtoNSAttributedString.h"; sourceTree = "<group>"; };
 		915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTMLtoNSAttributedString.m"; sourceTree = "<group>"; };
+		9164FFD01E8D697600EA34D9 /* NSTableViewAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTableViewAction.h; sourceTree = "<group>"; };
+		9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTableViewAction.m; sourceTree = "<group>"; };
 		916502BA1E8C576B00565D30 /* ListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListView.h; sourceTree = "<group>"; };
 		916502BB1E8C576B00565D30 /* ListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListView.m; sourceTree = "<group>"; };
 		916502BF1E8C606E00565D30 /* NotLoggedIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotLoggedIn.h; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 				91999D0E1E8C87F10026D3E9 /* Resources */,
 				91999CFD1E8C73300026D3E9 /* SearchView.h */,
 				91999CFE1E8C73300026D3E9 /* SearchView.m */,
+				9164FFD01E8D697600EA34D9 /* NSTableViewAction.h */,
+				9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */,
 				91999D041E8C7DFE0026D3E9 /* SearchView.xib */,
 				91999D051E8C81580026D3E9 /* SeasonView.h */,
 				91999D061E8C81580026D3E9 /* SeasonView.m */,
@@ -489,6 +494,7 @@
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
 				9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */,
+				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				9168F92E1E89861300CCB5B3 /* Keychain.m in Sources */,

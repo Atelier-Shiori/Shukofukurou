@@ -31,7 +31,7 @@
 #pragma mark Anime List
 -(void)populateList:(id)object{
     // Populates list
-    NSMutableArray * a = [_animelistarraycontroller content];
+    NSMutableArray * a = [_animelistarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     NSDictionary * data = object;
     NSArray * list=data[@"anime"];

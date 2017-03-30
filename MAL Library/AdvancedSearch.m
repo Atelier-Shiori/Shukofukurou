@@ -92,7 +92,7 @@
     [self resetdate];
     [_airstatus selectItemAtIndex:0];
     [_rating selectItemAtIndex:0];
-    
+    [mw clearsearchtb];
 }
 - (void)resetdate{
     [_startdate setDateValue:[[NSDate alloc] initWithTimeIntervalSinceNow:-315360000]]; // Last 10 years from today's date

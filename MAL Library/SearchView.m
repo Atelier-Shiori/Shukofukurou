@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    [_addtitleitem setEnabled:NO];
 }
 
 - (IBAction)performsearch:(id)sender {
@@ -37,7 +38,7 @@
         }];
     }
     else{
-        [mw clearsearchtb];
+        [self clearsearchtb];
     }
 }
 
@@ -59,5 +60,9 @@
         [_addtitleitem setEnabled:NO];
     }
 }
-
+-(void)clearsearchtb{
+    [[_searcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
+    [_searchtb reloadData];
+    [_searchtb deselectAll:self];
+}
 @end

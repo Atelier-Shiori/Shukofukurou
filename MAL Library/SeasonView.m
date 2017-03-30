@@ -59,7 +59,7 @@
 -(void)loadseasondata:(int)year forSeason:(NSString *)season{
     if (_seasonyrpicker.itemArray.count > 0){
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/seasondata/"]){
-            NSMutableArray * sarray = [_seasonarraycontroller content];
+            NSMutableArray * sarray = [_seasonarraycontroller mutableArrayValueForKey:@"content"];
             [sarray removeAllObjects];
             NSDictionary * d =  [Utility loadJSON:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/"];
             NSArray * a = d[@"anime"];

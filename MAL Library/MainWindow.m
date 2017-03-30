@@ -362,10 +362,7 @@
 }
 
 -(void)clearsearchtb{
-    NSMutableArray * a = [_searchview.searcharraycontroller content];
-    [a removeAllObjects];
-    [_searchview.searchtb reloadData];
-    [_searchview.searchtb deselectAll:self];
+    [_searchview clearsearchtb];
 }
 
 - (IBAction)showadvancedpopover:(id)sender {

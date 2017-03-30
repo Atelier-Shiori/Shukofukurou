@@ -23,4 +23,5 @@ typedef enum  {
 @property (strong) IBOutlet NSToolbarItem * addtitleitem;
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;
+-(void)clearsearchtb;
 @end

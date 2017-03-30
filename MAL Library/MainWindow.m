@@ -18,6 +18,7 @@
 #import "ListView.h"
 #import "NotLoggedIn.h"
 #import "SearchView.h"
+#import "SeasonView.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -71,7 +72,7 @@
     [_listview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_progressview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_searchview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_seasonview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_seasonview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_notloggedin.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
     // Fix window size
@@ -279,9 +280,9 @@
             }
         }
         else if ([identifier isEqualToString:@"seasons"]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_seasonview];
-                _seasonview.frame = mainviewframe;
-                [_seasonview setFrameOrigin:origin];
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_seasonview.view];
+                _seasonview.view.frame = mainviewframe;
+                [_seasonview.view setFrameOrigin:origin];
         }
     // Save current view
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithLong:selectedrow] forKey:@"selectedmainview"];
@@ -345,7 +346,7 @@
         [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1+indexoffset];
         [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2+indexoffset];
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3+indexoffset];
-        [self populateseasonpopups];
+        [_seasonview populateseasonpopups];
     }
 }
 #pragma mark -
@@ -381,7 +382,7 @@
         [self loadlist:@(true)];
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        [self performseasonindexretrieval];
+        [_seasonview performseasonindexretrieval];
     }
 }
 -(void)loadlist:(NSNumber *)refresh{
@@ -438,12 +439,12 @@
         [_addtitlecontroller showAddPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
+        NSDictionary *d = [[_seasonview.seasonarraycontroller selectedObjects] objectAtIndex:0];
         d = d[@"id"];
         NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/anime/%i",idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasontableview frameOfCellAtColumn:0 row:[_seasontableview selectedRow]] ofView:_seasontableview preferredEdge:0];
+            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:[_seasonview.seasontableview selectedRow]] ofView:_seasonview.seasontableview preferredEdge:0];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
@@ -577,95 +578,6 @@
     }
     return nil;
 }
-#pragma mark Seasons View
-- (IBAction)seasondoubleclick:(id)sender {
-    if ([_seasontableview clickedRow] >=0){
-        if ([_seasontableview clickedRow] >-1){
-            NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
-            d = d[@"id"];
-            NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
-            [self loadanimeinfo:idnum];
-        }
-    }
-}
-    
-- (IBAction)yearchange:(id)sender {
-    [self populateseasonpopup];
-}
-    
-- (IBAction)seasonchange:(id)sender {
-    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
-}
--(void)populateseasonpopups{
-    if ([Utility checkifFileExists:@"index.json" appendPath:@"/seasondata/"]){
-        [self populateyearpopup];
-    }
-    else {
-        [self performseasonindexretrieval];
-    }
-}
--(void)loadseasondata:(int)year forSeason:(NSString *)season{
-    if (_seasonyrpicker.itemArray.count > 0){
-        if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/seasondata/"]){
-            NSMutableArray * sarray = [_seasonarraycontroller content];
-            [sarray removeAllObjects];
-            NSDictionary * d =  [Utility loadJSON:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/"];
-            NSArray * a = d[@"anime"];
-            [_seasonarraycontroller addObjects:a];
-            [_seasontableview reloadData];
-            [_seasontableview deselectAll:self];
-        }
-        else {
-            [self performseasondataretrieval:year forSeason:season loaddata:true];
-        }
-    }
-}
--(void)populateyearpopup{
-    [_seasonyrpicker removeAllItems];
-    NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
-    NSArray * a = d[@"years"];
-    for (int i = 0; i < a.count; i++){
-        NSDictionary * yr = [a objectAtIndex:i];
-        NSNumber * year = yr[@"year"];
-        [_seasonyrpicker addItemWithTitle:year.stringValue];
-    }
-    [_seasonyrpicker selectItemAtIndex:[[_seasonyrpicker itemArray] count]-1];
-    [self populateseasonpopup];
-}
--(void)populateseasonpopup{
-    [_seasonpicker removeAllItems];
-    NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
-    NSArray * a = d[@"years"];
-    NSDictionary * yr = [a objectAtIndex:_seasonyrpicker.indexOfSelectedItem];
-    NSArray * s = yr[@"seasons"];
-    for (int i = 0; i < s.count; i++){
-        NSDictionary * season = [s objectAtIndex:i];
-        NSString * seasonname = season[@"season"];
-        [_seasonpicker addItemWithTitle:seasonname];
-    }
-    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
-}
--(void)performseasonindexretrieval{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-    [manager GET:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/index.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [Utility saveJSON:responseObject withFilename:@"index.json" appendpath:@"/seasondata/" replace:true];
-        [self populateyearpopup];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-}
--(void)performseasondataretrieval:(int)year forSeason:(NSString *)season loaddata:(bool)loaddata {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
-    [manager GET:[NSString stringWithFormat:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/data/%i-%@.json",year,season] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [Utility saveJSON:responseObject withFilename:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/" replace:true];
-        if (loaddata){
-            [self loadseasondata:year forSeason:season];
-        }
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-}
+
 @end
 

@@ -18,6 +18,7 @@
 @class ListView;
 @class NotLoggedIn;
 @class SearchView;
+@class SeasonView;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -30,7 +31,6 @@
     bool selectedaircompleted;
     NSDictionary * selecteditem;
     NSDictionary * selectedanimeinfo;
-
 }
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet NSToolbar *toolbar;
@@ -55,6 +55,9 @@
 @property (strong) IBOutlet NSTextView *infoviewsynopsistextview;
 @property (strong) IBOutlet NSImageView *infoviewposterimage;
 @property (strong) IBOutlet NSTextView *infoviewbackgroundtextview;
+//Season View
+@property (strong) IBOutlet SeasonView * seasonview;
+
 // Edit Popover
 @property (strong) IBOutlet NSPopover *minieditpopover;
 @property (strong) IBOutlet EditTitle *editviewcontroller;
@@ -62,13 +65,6 @@
 // Add Popover
 @property (strong) IBOutlet NSPopover *addpopover;
 @property (strong) IBOutlet AddTitle * addtitlecontroller;
-    
-// Season View
-@property (strong) IBOutlet NSView *seasonview;
-@property (strong) IBOutlet NSPopUpButton *seasonyrpicker;
-@property (strong) IBOutlet NSPopUpButton *seasonpicker;
-@property (strong) IBOutlet NSArrayController *seasonarraycontroller;
-@property (strong) IBOutlet NSTableView *seasontableview;
 
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong, nonatomic) MSWeakTimer * refreshtimer;
@@ -97,9 +93,5 @@
 
 // Add Title
 - (IBAction)showaddpopover:(id)sender;
-
-- (IBAction)seasondoubleclick:(id)sender;
-- (IBAction)yearchange:(id)sender;
-- (IBAction)seasonchange:(id)sender;
 
 @end

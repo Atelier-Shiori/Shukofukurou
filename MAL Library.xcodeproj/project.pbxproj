@@ -33,6 +33,8 @@
 		918C0D391E89FF920037898E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D381E89FF920037898E /* Crashlytics.framework */; };
 		91999D001E8C73300026D3E9 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
 		91999D021E8C7DFE0026D3E9 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D041E8C7DFE0026D3E9 /* SearchView.xib */; };
+		91999D081E8C81580026D3E9 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
+		91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D0C1E8C86A40026D3E9 /* SeasonView.xib */; };
 		9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
 		9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAA11E89836000F6E9FF /* MainMenu.xib */; };
 		9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
@@ -129,6 +131,9 @@
 		91999CFD1E8C73300026D3E9 /* SearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchView.h; sourceTree = "<group>"; };
 		91999CFE1E8C73300026D3E9 /* SearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchView.m; sourceTree = "<group>"; };
 		91999D031E8C7DFE0026D3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SearchView.xib; sourceTree = "<group>"; };
+		91999D051E8C81580026D3E9 /* SeasonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonView.h; sourceTree = "<group>"; };
+		91999D061E8C81580026D3E9 /* SeasonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonView.m; sourceTree = "<group>"; };
+		91999D0B1E8C86A40026D3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SeasonView.xib; sourceTree = "<group>"; };
 		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA991E89836000F6E9FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9199BA9A1E89836000F6E9FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -245,7 +250,7 @@
 				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
-				9199BAAB1E89842400F6E9FF /* AppDelegate.m */,
+				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9199BA9F1E89836000F6E9FF /* Assets.xcassets */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
@@ -257,9 +262,6 @@
 				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
 				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
 				915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */,
-				91999CFD1E8C73300026D3E9 /* SearchView.h */,
-				91999CFE1E8C73300026D3E9 /* SearchView.m */,
-				91999D041E8C7DFE0026D3E9 /* SearchView.xib */,
 				91D3D8A21E89C1850046C4CC /* EULA.rtf */,
 				9199BAEF1E89843B00F6E9FF /* Frameworks */,
 				9199BAB11E89842400F6E9FF /* GeneralPref.h */,
@@ -268,6 +270,9 @@
 				9199BAB31E89842400F6E9FF /* Info.plist */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
+				916502BA1E8C576B00565D30 /* ListView.h */,
+				916502BB1E8C576B00565D30 /* ListView.m */,
+				916502C61E8C65A500565D30 /* ListView.xib */,
 				9199BAB61E89842400F6E9FF /* LoginPref.h */,
 				9199BAB71E89842400F6E9FF /* LoginPref.m */,
 				9199BAE41E89843300F6E9FF /* LoginView.xib */,
@@ -276,14 +281,11 @@
 				9199BAB91E89842400F6E9FF /* MainWindow.h */,
 				9199BABA1E89842400F6E9FF /* MainWindow.m */,
 				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
-				916502BA1E8C576B00565D30 /* ListView.h */,
-				916502BB1E8C576B00565D30 /* ListView.m */,
-				916502C61E8C65A500565D30 /* ListView.xib */,
+				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
+				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
 				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
 				916502C01E8C606E00565D30 /* NotLoggedIn.m */,
 				916502C91E8C65A900565D30 /* NotLoggedIn.xib */,
-				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
-				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
 				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
 				9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */,
 				915E8C5E1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.h */,
@@ -293,6 +295,9 @@
 				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
 				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
+				91999CFD1E8C73300026D3E9 /* SearchView.h */,
+				91999CFE1E8C73300026D3E9 /* SearchView.m */,
+				91999D041E8C7DFE0026D3E9 /* SearchView.xib */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
 				9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */,
 				9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */,
@@ -309,6 +314,9 @@
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9199BAA41E89836000F6E9FF /* Info.plist */,
 				9168F92D1E89861300CCB5B3 /* Keychain.m */,
+				91999D051E8C81580026D3E9 /* SeasonView.h */,
+				91999D061E8C81580026D3E9 /* SeasonView.m */,
+				91999D0C1E8C86A40026D3E9 /* SeasonView.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -421,6 +429,7 @@
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
+				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
 			);
@@ -456,6 +465,7 @@
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
+				91999D081E8C81580026D3E9 /* SeasonView.m in Sources */,
 				9199BAD61E89842400F6E9FF /* LoginPref.m in Sources */,
 				91999D001E8C73300026D3E9 /* SearchView.m in Sources */,
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
@@ -543,6 +553,14 @@
 				91999D031E8C7DFE0026D3E9 /* Base */,
 			);
 			name = SearchView.xib;
+			sourceTree = "<group>";
+		};
+		91999D0C1E8C86A40026D3E9 /* SeasonView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91999D0B1E8C86A40026D3E9 /* Base */,
+			);
+			name = SeasonView.xib;
 			sourceTree = "<group>";
 		};
 		9199BAA11E89836000F6E9FF /* MainMenu.xib */ = {

@@ -28,10 +28,8 @@
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
                 <outlet property="refreshlist" destination="6qy-e4-N2b" id="K7X-ly-jCN"/>
                 <outlet property="searchview" destination="3aF-oI-xAM" id="Kt7-Uz-xOb"/>
-                <outlet property="seasonarraycontroller" destination="nPC-GD-SGg" id="NWF-0a-PpD"/>
                 <outlet property="seasonpicker" destination="E2N-f0-9rS" id="FGQ-ls-qlH"/>
-                <outlet property="seasontableview" destination="oys-2G-zkA" id="SNU-b8-TVw"/>
-                <outlet property="seasonview" destination="wr8-9U-tfn" id="SFa-nH-6Ij"/>
+                <outlet property="seasonview" destination="UX5-t5-v6p" id="gj6-7B-Eyh"/>
                 <outlet property="seasonyrpicker" destination="UWH-1l-PJ4" id="wbP-iF-ADn"/>
                 <outlet property="sourceList" destination="TSK-C5-xyA" id="iX9-mH-h8g"/>
                 <outlet property="toolbar" destination="6eG-p3-l2S" id="wTZ-w8-9cJ"/>
@@ -231,9 +229,6 @@
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
-                            <connections>
-                                <binding destination="nPC-GD-SGg" name="enabled" keyPath="selectedObjects.@count" id="2oH-d3-lcb"/>
-                            </connections>
                         </button>
                         <connections>
                             <action selector="showaddpopover:" target="-2" id="CS3-hB-7dd"/>
@@ -351,7 +346,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <action selector="yearchange:" target="-2" id="ocd-w1-gqS"/>
+                                <action selector="yearchange:" target="UX5-t5-v6p" id="h7e-eb-aXE"/>
                             </connections>
                         </popUpButton>
                     </toolbarItem>
@@ -373,7 +368,7 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
-                                <action selector="seasonchange:" target="-2" id="tbR-1J-f3h"/>
+                                <action selector="seasonchange:" target="UX5-t5-v6p" id="1re-IJ-qST"/>
                             </connections>
                         </popUpButton>
                     </toolbarItem>
@@ -486,93 +481,6 @@
                 </progressIndicator>
             </subviews>
         </visualEffectView>
-        <customView identifier="seasonview" id="wr8-9U-tfn" userLabel="seasonview">
-            <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zac-SG-ixh">
-                    <rect key="frame" x="0.0" y="132" width="173" height="269"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="yck-gO-Je2"/>
-                </imageView>
-                <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cDU-Ub-Hzg">
-                    <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" focusRingType="none" ambiguous="YES" id="EUC-6r-NMV">
-                        <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="lcO-cB-Nug" id="oys-2G-zkA">
-                                <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                <tableColumns>
-                                    <tableColumn identifier="title" editable="NO" width="488" minWidth="40" maxWidth="1000" id="NYK-Sp-VkJ">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="gkX-Of-gLr">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="nPC-GD-SGg" name="value" keyPath="arrangedObjects.title" id="m3b-O9-dJ2">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
-                                    <tableColumn identifier="type" editable="NO" width="68" minWidth="40" maxWidth="1000" id="tJm-Vg-UyV">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Type">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="qJm-rw-s67">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="nPC-GD-SGg" name="value" keyPath="arrangedObjects.type" id="EOr-jk-EhI">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                    <string key="NSValueTransformerName">TypeNumtoStringType</string>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
-                                </tableColumns>
-                                <connections>
-                                    <action trigger="doubleAction" selector="seasondoubleclick:" target="-2" id="8pZ-lO-z0t"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="44M-Tx-kPU">
-                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="xRy-yB-Cxa">
-                        <rect key="frame" x="-15" y="16" width="15" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <tableHeaderView key="headerView" id="lcO-cB-Nug">
-                        <rect key="frame" x="0.0" y="0.0" width="562" height="23"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </tableHeaderView>
-                </scrollView>
-            </subviews>
-            <point key="canvasLocation" x="96" y="783.5"/>
-        </customView>
         <popover appearance="vibrantLight" behavior="t" id="TrX-YX-OCN" userLabel="Mini Edit Popover">
             <connections>
                 <outlet property="contentViewController" destination="w9r-Zw-PrM" id="2D7-0N-AUJ"/>
@@ -591,11 +499,6 @@
             </connections>
         </viewController>
         <userDefaultsController representsSharedInstance="YES" id="2F9-Ng-hjJ"/>
-        <arrayController objectClassName="NSDictionary" editable="NO" id="nPC-GD-SGg">
-            <declaredKeys>
-                <string>allValues</string>
-            </declaredKeys>
-        </arrayController>
         <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="jlp-Ya-DgE" userLabel="AnimeInfoView">
             <rect key="frame" x="0.0" y="0.0" width="759" height="464"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -667,7 +570,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="P0k-wb-qt7">
                         <rect key="frame" x="0.0" y="0.0" width="516" height="91"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="AXG-Zn-Y0c">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
@@ -693,7 +596,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Uoe-5G-mHa">
-                        <rect key="frame" x="0.0" y="0.0" width="15" height="0.0"/>
+                        <rect key="frame" x="516" y="0.0" width="15" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -702,7 +605,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Kxc-zK-i13">
                         <rect key="frame" x="0.0" y="0.0" width="516" height="84"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ptk-xe-Bu4">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
@@ -728,7 +631,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3Eh-1G-g8m">
-                        <rect key="frame" x="0.0" y="0.0" width="15" height="0.0"/>
+                        <rect key="frame" x="516" y="0.0" width="15" height="84"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -750,7 +653,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="eko-p9-Mhx">
                         <rect key="frame" x="0.0" y="0.0" width="516" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3w2-UP-NTh">
                                 <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
@@ -776,7 +679,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iAf-ge-Zre">
-                        <rect key="frame" x="0.0" y="0.0" width="15" height="0.0"/>
+                        <rect key="frame" x="516" y="0.0" width="15" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -815,6 +718,13 @@
             <connections>
                 <outlet property="mw" destination="-2" id="ldd-gL-JEn"/>
                 <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="4Xs-bj-wtA"/>
+            </connections>
+        </viewController>
+        <viewController id="UX5-t5-v6p" customClass="SeasonView">
+            <connections>
+                <outlet property="mw" destination="-2" id="cV5-eg-WRR"/>
+                <outlet property="seasonpicker" destination="E2N-f0-9rS" id="tb4-bL-qy2"/>
+                <outlet property="seasonyrpicker" destination="UWH-1l-PJ4" id="vY9-cb-c0j"/>
             </connections>
         </viewController>
     </objects>

@@ -29,6 +29,7 @@
 		917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
 		917897EB1E89F19900C155DF /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897ED1E89F19900C155DF /* DonationWindow.xib */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
+		9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
 		918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D361E89FF8B0037898E /* Fabric.framework */; };
 		918C0D391E89FF920037898E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D381E89FF920037898E /* Crashlytics.framework */; };
 		91999D001E8C73300026D3E9 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
@@ -36,7 +37,6 @@
 		91999D081E8C81580026D3E9 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
 		91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D0C1E8C86A40026D3E9 /* SeasonView.xib */; };
 		91999D121E8C88280026D3E9 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D101E8C88280026D3E9 /* InfoView.m */; };
-		91999D131E8C88280026D3E9 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D111E8C88280026D3E9 /* InfoView.xib */; };
 		9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
 		9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAA11E89836000F6E9FF /* MainMenu.xib */; };
 		9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
@@ -127,6 +127,7 @@
 		917897E71E89E6AD00C155DF /* DonationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationWindowController.m; sourceTree = "<group>"; };
 		917897EC1E89F19900C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationWindow.xib; sourceTree = "<group>"; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
+		9188226E1E8C90A700C7FEF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InfoView.xib; sourceTree = "<group>"; };
 		918C0D361E89FF8B0037898E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		918C0D381E89FF920037898E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		918C0D401E8A00ED0037898E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -138,7 +139,6 @@
 		91999D0B1E8C86A40026D3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SeasonView.xib; sourceTree = "<group>"; };
 		91999D0F1E8C88280026D3E9 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		91999D101E8C88280026D3E9 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
-		91999D111E8C88280026D3E9 /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA991E89836000F6E9FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9199BA9A1E89836000F6E9FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -267,7 +267,6 @@
 				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
-				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				917897ED1E89F19900C155DF /* DonationWindow.xib */,
@@ -320,7 +319,7 @@
 				9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */,
 				91999D0F1E8C88280026D3E9 /* InfoView.h */,
 				91999D101E8C88280026D3E9 /* InfoView.m */,
-				91999D111E8C88280026D3E9 /* InfoView.xib */,
+				9188226F1E8C90A700C7FEF1 /* InfoView.xib */,
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
 				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
@@ -444,7 +443,7 @@
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
-				91999D131E8C88280026D3E9 /* InfoView.xib in Resources */,
+				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
@@ -563,6 +562,14 @@
 			);
 			name = PFAboutWindow.xib;
 			path = PFAboutWindow;
+			sourceTree = "<group>";
+		};
+		9188226F1E8C90A700C7FEF1 /* InfoView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9188226E1E8C90A700C7FEF1 /* Base */,
+			);
+			name = InfoView.xib;
 			sourceTree = "<group>";
 		};
 		91999D041E8C7DFE0026D3E9 /* SearchView.xib */ = {

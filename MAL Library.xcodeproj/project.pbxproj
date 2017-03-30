@@ -35,6 +35,8 @@
 		91999D021E8C7DFE0026D3E9 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D041E8C7DFE0026D3E9 /* SearchView.xib */; };
 		91999D081E8C81580026D3E9 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
 		91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D0C1E8C86A40026D3E9 /* SeasonView.xib */; };
+		91999D121E8C88280026D3E9 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D101E8C88280026D3E9 /* InfoView.m */; };
+		91999D131E8C88280026D3E9 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D111E8C88280026D3E9 /* InfoView.xib */; };
 		9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
 		9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAA11E89836000F6E9FF /* MainMenu.xib */; };
 		9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
@@ -134,6 +136,9 @@
 		91999D051E8C81580026D3E9 /* SeasonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonView.h; sourceTree = "<group>"; };
 		91999D061E8C81580026D3E9 /* SeasonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonView.m; sourceTree = "<group>"; };
 		91999D0B1E8C86A40026D3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SeasonView.xib; sourceTree = "<group>"; };
+		91999D0F1E8C88280026D3E9 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
+		91999D101E8C88280026D3E9 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
+		91999D111E8C88280026D3E9 /* InfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoView.xib; sourceTree = "<group>"; };
 		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA991E89836000F6E9FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9199BA9A1E89836000F6E9FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -222,6 +227,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		91999D0E1E8C87F10026D3E9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9199BAAF1E89842400F6E9FF /* Credits.rtf */,
+				9199BAB01E89842400F6E9FF /* dsa_pub.pem */,
+				91D3D8A21E89C1850046C4CC /* EULA.rtf */,
+				9199BA9F1E89836000F6E9FF /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		9199BA8D1E89836000F6E9FF = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +258,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				91999D0E1E8C87F10026D3E9 /* Resources */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -251,18 +268,14 @@
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
-				9199BA9F1E89836000F6E9FF /* Assets.xcassets */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
-				9199BAAF1E89842400F6E9FF /* Credits.rtf */,
 				917897ED1E89F19900C155DF /* DonationWindow.xib */,
 				917897E61E89E6AD00C155DF /* DonationWindowController.h */,
 				917897E71E89E6AD00C155DF /* DonationWindowController.m */,
-				9199BAB01E89842400F6E9FF /* dsa_pub.pem */,
 				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
 				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
 				915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */,
-				91D3D8A21E89C1850046C4CC /* EULA.rtf */,
 				9199BAEF1E89843B00F6E9FF /* Frameworks */,
 				9199BAB11E89842400F6E9FF /* GeneralPref.h */,
 				9199BAB21E89842400F6E9FF /* GeneralPref.m */,
@@ -305,6 +318,9 @@
 				9199BAC91E89842400F6E9FF /* SSKeychain.m */,
 				9199BACA1E89842400F6E9FF /* SSKeychainQuery.h */,
 				9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */,
+				91999D0F1E8C88280026D3E9 /* InfoView.h */,
+				91999D101E8C88280026D3E9 /* InfoView.m */,
+				91999D111E8C88280026D3E9 /* InfoView.xib */,
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
 				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
@@ -428,6 +444,7 @@
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
+				91999D131E8C88280026D3E9 /* InfoView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
@@ -484,6 +501,7 @@
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
+				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

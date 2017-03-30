@@ -28,6 +28,7 @@
 
 #pragma mark Not Logged in View
 - (IBAction)performlogin:(id)sender {
-    [[mw app] showloginpref];
+    AppDelegate * del = [mw getDelegate];
+    [del showloginpref];
 }
 @end

@@ -8,7 +8,6 @@
 
 #import "MainWindow.h"
 #import "AppDelegate.h"
-#import "NSString+HTMLtoNSAttributedString.h"
 #import "Utility.h"
 #import "NSTextFieldNumber.h"
 #import "MSWeakTimer.h"
@@ -18,6 +17,7 @@
 #import "ListView.h"
 #import "NotLoggedIn.h"
 #import "SearchView.h"
+#import "InfoView.h"
 #import "SeasonView.h"
 
 @interface MainWindow ()
@@ -68,7 +68,7 @@
     [self.sourceListItems addObject:discoverItem];
     [sourceList reloadData];
     // Set Resizeing mask
-    [_animeinfoview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_infoview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_listview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_progressview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_searchview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
@@ -81,9 +81,9 @@
     [[self window] setFrame:frame display:NO];
     [self setAppearance];
     // Fix textview text color
-    _infoviewdetailstextview.textColor = NSColor.controlTextColor;
-    _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
-    _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
+    _infoview.infoviewdetailstextview.textColor = NSColor.controlTextColor;
+    _infoview.infoviewsynopsistextview.textColor = NSColor.controlTextColor;
+    _infoview.infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
     
     // Set logged in user
     [self refreshloginlabel];
@@ -91,7 +91,7 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    selectedid = 0;
+    [_infoview setSelectedId:0];
     // Set Mainview
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"]){
         NSNumber *selected = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"];
@@ -109,11 +109,11 @@
     
 }
 - (IBAction)addlicense:(id)sender {
-    [appdel enterDonationKey:sender];
+    [_appdel enterDonationKey:sender];
 }
 
 -(void)setDelegate:(AppDelegate*) adelegate{
-    appdel = adelegate;
+    _appdel = adelegate;
 }
 
 
@@ -125,7 +125,7 @@
         d = [[_listview.animelistarraycontroller selectedObjects] objectAtIndex:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        d = selectedanimeinfo;
+        d = [_infoview getSelectedInfo];
     }
 
     //Generate Items to Share
@@ -167,7 +167,7 @@
     }
     w.appearance = [NSAppearance appearanceNamed:appearancename];
     _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
-    _animeinfoview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
     [w setFrame:[w frame] display:false];
@@ -268,10 +268,10 @@
                 [_searchview.view setFrameOrigin:origin];
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
-            if (selectedid > 0){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_animeinfoview];
-                _animeinfoview.frame = mainviewframe;
-                [_animeinfoview setFrameOrigin:origin];
+            if ([_infoview getSelectedId] > 0){
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_infoview.view];
+                _infoview.view.frame = mainviewframe;
+                [_infoview.view setFrameOrigin:origin];
             }
             else{
                 [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_progressview];
@@ -320,9 +320,9 @@
         [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        if (selectedid > 0){
+        if ([_infoview getSelectedId] > 0){
             if ([Keychain checkaccount]){
-                if ([self checkiftitleisonlist:selectedid]){
+                if ([self checkiftitleisonlist:[_infoview getSelectedId]]){
                      [_toolbar insertItemWithItemIdentifier:@"editInfo" atIndex:0];
                 }
                 else{
@@ -422,7 +422,7 @@
         [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.animelisttb frameOfCellAtColumn:0 row:[_listview.animelisttb selectedRow]] ofView:_listview.animelisttb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [_editviewcontroller showEditPopover:[self retreveentryfromlist:selectedid]showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+        [_editviewcontroller showEditPopover:[self retreveentryfromlist:[_infoview getSelectedId]] showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
     }
 }
 
@@ -436,7 +436,7 @@
         [_addtitlecontroller showAddPopover:d showRelativeToRec:[_searchview.searchtb frameOfCellAtColumn:0 row:[_searchview.searchtb selectedRow]] ofView:_searchview.searchtb preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [_addtitlecontroller showAddPopover:selectedanimeinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
+        [_addtitlecontroller showAddPopover:[_infoview getSelectedInfo] showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0];
     }
     else if ([identifier isEqualToString:@"seasons"]){
         NSDictionary *d = [[_seasonview.seasonarraycontroller selectedObjects] objectAtIndex:0];
@@ -454,8 +454,8 @@
 
 #pragma mark Title Information View
 -(void)loadanimeinfo:(NSNumber *) idnum{
-    int previd = selectedid;
-    selectedid = 0;
+    int previd = [_infoview getSelectedId];
+    [_infoview setSelectedId:0];
      [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:4]byExtendingSelection:false];
     [self loadmainview];
     [_noinfoview setHidden:YES];
@@ -463,104 +463,17 @@
     [_progressindicator startAnimation:nil];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/anime/%i",idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        selectedid = idnum.intValue;
+        [_infoview setSelectedId:idnum.intValue];
         [_progressindicator stopAnimation:nil];
-        [self populateInfoView:responseObject];
+        [_infoview populateInfoView:responseObject];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         [_progressindicator stopAnimation:nil];
-        selectedid = previd;
-        if (selectedid == 0)
+        [_infoview setSelectedId:previd];
+        if ([_infoview getSelectedId] == 0)
             [_noinfoview setHidden:NO];
         [self loadmainview];
     }];
-}
--(void)populateInfoView:(id)object{
-    NSDictionary * d = object;
-    NSMutableString *titles = [NSMutableString new];
-    NSMutableString *details = [NSMutableString new];
-    NSMutableString *genres = [NSMutableString new];
-    NSAttributedString *background;
-    [_infoviewtitle setStringValue:d[@"title"]];
-    NSDictionary * dtitles =  d[@"other_titles"];
-    NSMutableArray * othertitles = [NSMutableArray new];
-    if (dtitles[@"english"] != nil){
-        NSArray * e = dtitles[@"english"];
-        for (NSString * etitle in e){
-            [othertitles addObject:etitle];
-        }
-    }
-    if (dtitles[@"japanese"] != nil){
-        NSArray * j = dtitles[@"japanese"];
-        for (NSString * jtitle in j){
-            [othertitles addObject:jtitle];
-        }
-    }
-    if (dtitles[@"synonyms"] != nil){
-        NSArray * syn = dtitles[@"synonyms"];
-        for (NSString * stitle in syn){
-            [othertitles addObject:stitle];
-        }
-    }
-    [titles appendString:[Utility appendstringwithArray:othertitles]];
-    [_infoviewalttitles setStringValue:titles];
-    if (d[@"genres"]!= nil){
-        NSArray * genresa = d[@"genres"];
-        [genres appendString:[Utility appendstringwithArray:genresa]];
-    }
-    else{
-        [genres appendString:@"None"];
-    }
-    if (d[@"background"] != nil){
-        background = [(NSString *)d[@"background"] convertHTMLtoAttStr];
-    }
-    else {
-        background = [[NSAttributedString alloc] initWithString:@"None available"];
-    }
-    NSString * type = d[@"type"];
-    NSNumber * score = d[@"members_score"];
-    NSNumber * popularity = d[@"popularity_rank"];
-    NSNumber * memberscount = d[@"members_count"];
-    NSNumber *rank = d[@"rank"];
-    NSNumber * favorites = d[@"favorited_count"];
-    NSImage * posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
-    [_infoviewposterimage setImage:posterimage];
-    [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
-    if (d[@"episodes"] == nil){
-        if (d[@"duration"] == nil){
-            [details appendString:@"Episodes: Unknown\n"];
-        }
-        else{
-            [details appendString:[NSString stringWithFormat:@"Episodes: Unknown (%i mins per episode)\n", [(NSNumber *)d[@"duration"] intValue]]];
-        }
-    }
-    else {
-        if (d[@"duration"] == nil){
-            [details appendString:[NSString stringWithFormat:@"Episodes: %i\n", [(NSNumber *)d[@"episodes"] intValue]]];
-        }
-        else{
-            [details appendString:[NSString stringWithFormat:@"Episodes: %i (%i mins per episode)\n", [(NSNumber *)d[@"episodes"] intValue], [(NSNumber *)d[@"duration"] intValue]]];
-        }
-    }
-    [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
-    [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
-    if (d[@"classification"] != nil){
-        [details appendString:[NSString stringWithFormat:@"Classification: %@\n", d[@"classification"]]];
-    }
-    if (d[@"members_score"]!=nil){
-        [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
-    }
-    [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
-    [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
-    NSString * synopsis = d[@"synopsis"];
-    [_infoviewdetailstextview setString:details];
-    [[_infoviewsynopsistextview textStorage] setAttributedString:[synopsis convertHTMLtoAttStr]];
-    [[_infoviewbackgroundtextview  textStorage] setAttributedString:background];
-    [self loadmainview];
-    selectedanimeinfo = d;
-}
-- (IBAction)viewonmal:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%i",selectedid]]];
 }
 -(bool)checkiftitleisonlist:(int)idnum{
     NSArray * list = [_listview.animelistarraycontroller content];

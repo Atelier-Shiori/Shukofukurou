@@ -10,14 +10,8 @@
                 <outlet property="addpopover" destination="XPV-h5-bEU" id="axW-OG-EM0"/>
                 <outlet property="addtitlecontroller" destination="WWH-Kx-8dQ" id="qjM-eG-o1K"/>
                 <outlet property="advsearchpopover" destination="o05-dg-F2u" id="8nj-Kh-UcI"/>
-                <outlet property="animeinfoview" destination="jlp-Ya-DgE" id="I0H-T3-yoK"/>
                 <outlet property="editviewcontroller" destination="w9r-Zw-PrM" id="5wH-sy-WVV"/>
-                <outlet property="infoviewalttitles" destination="tOX-cr-AEr" id="faW-hQ-NOs"/>
-                <outlet property="infoviewbackgroundtextview" destination="3w2-UP-NTh" id="PQR-zF-CjM"/>
-                <outlet property="infoviewdetailstextview" destination="ptk-xe-Bu4" id="15M-Gq-C2d"/>
-                <outlet property="infoviewposterimage" destination="8Of-sH-9qp" id="4uX-Ba-QBn"/>
-                <outlet property="infoviewsynopsistextview" destination="AXG-Zn-Y0c" id="yzy-e1-EO5"/>
-                <outlet property="infoviewtitle" destination="W0Q-Fb-zhX" id="K1Y-qb-55j"/>
+                <outlet property="infoview" destination="4iy-i9-GZD" id="oXl-Eu-DXx"/>
                 <outlet property="listview" destination="Xk3-JH-b4a" id="RkD-Tp-e0A"/>
                 <outlet property="loggedinuser" destination="oiY-f1-sHX" id="DQV-9y-36M"/>
                 <outlet property="mainview" destination="bkX-dG-MlV" id="hvu-zy-EK5"/>
@@ -325,7 +319,7 @@
                             </buttonCell>
                         </button>
                         <connections>
-                            <action selector="viewonmal:" target="-2" id="pKh-ts-638"/>
+                            <action selector="viewonmal:" target="4iy-i9-GZD" id="cjd-gI-3l1"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="B007FB1F-D7B7-4E1C-B09F-A81CF140598C" explicitItemIdentifier="yearselect" label="Year" paletteLabel="Year" toolTip="Year" id="hME-DZ-uLk">
@@ -499,193 +493,6 @@
             </connections>
         </viewController>
         <userDefaultsController representsSharedInstance="YES" id="2F9-Ng-hjJ"/>
-        <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="jlp-Ya-DgE" userLabel="AnimeInfoView">
-            <rect key="frame" x="0.0" y="0.0" width="759" height="464"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Of-sH-9qp">
-                    <rect key="frame" x="14" y="189" width="185" height="263"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Vj8-1s-vyy"/>
-                </imageView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0Q-Fb-zhX">
-                    <rect key="frame" x="211" y="428" width="535" height="24"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Title" id="ppz-2G-scA">
-                        <font key="font" metaFont="system" size="18"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Cs-x8-dq9">
-                    <rect key="frame" x="211" y="403" width="415" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Alternative Titles" id="JNZ-A5-iUv">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="gQM-LI-7yp">
-                    <rect key="frame" x="213" y="398" width="531" height="5"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tOX-cr-AEr">
-                    <rect key="frame" x="211" y="356" width="535" height="39"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Multiline Label" id="ROw-bM-V0F">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xf-IN-vWr">
-                    <rect key="frame" x="211" y="331" width="415" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Details" id="DlJ-Ns-ii2">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="I0F-Cd-Wpf">
-                    <rect key="frame" x="213" y="326" width="531" height="5"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mis-qm-C8l">
-                    <rect key="frame" x="211" y="114" width="415" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Synopsis" id="Ted-jn-xiS">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="est-ED-oB0">
-                    <rect key="frame" x="213" y="109" width="531" height="5"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTW-n3-aCE">
-                    <rect key="frame" x="213" y="11" width="531" height="91"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
-                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="P0k-wb-qt7">
-                        <rect key="frame" x="0.0" y="0.0" width="516" height="91"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="AXG-Zn-Y0c">
-                                <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="516" height="91"/>
-                                <size key="maxSize" width="1098" height="10000000"/>
-                                <attributedString key="textStorage">
-                                    <fragment content="Text">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="YwP-wY-Alz">
-                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="Uoe-5G-mHa">
-                        <rect key="frame" x="516" y="0.0" width="15" height="91"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
-                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8u-tq-bKp">
-                    <rect key="frame" x="213" y="238" width="531" height="84"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="Kxc-zK-i13">
-                        <rect key="frame" x="0.0" y="0.0" width="516" height="84"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="ptk-xe-Bu4">
-                                <rect key="frame" x="0.0" y="0.0" width="531" height="84"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="516" height="84"/>
-                                <size key="maxSize" width="1098" height="10000000"/>
-                                <attributedString key="textStorage">
-                                    <fragment content="Text">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="DXM-wW-AXV">
-                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="3Eh-1G-g8m">
-                        <rect key="frame" x="516" y="0.0" width="15" height="84"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T61-Zt-0yv">
-                    <rect key="frame" x="211" y="211" width="535" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Background" id="O2O-q8-X97">
-                        <font key="font" metaFont="systemBold"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="YK9-YM-Fta">
-                    <rect key="frame" x="213" y="206" width="531" height="5"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                </box>
-                <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYv-Mc-sNx">
-                    <rect key="frame" x="213" y="150" width="531" height="50"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="eko-p9-Mhx">
-                        <rect key="frame" x="0.0" y="0.0" width="516" height="50"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="3w2-UP-NTh">
-                                <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="minSize" width="516" height="50"/>
-                                <size key="maxSize" width="1098" height="10000000"/>
-                                <attributedString key="textStorage">
-                                    <fragment content="Text">
-                                        <attributes>
-                                            <font key="NSFont" metaFont="system"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            </textView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="C9y-gg-6EX">
-                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="iAf-ge-Zre">
-                        <rect key="frame" x="516" y="0.0" width="15" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                </scrollView>
-            </subviews>
-            <point key="canvasLocation" x="317" y="1813"/>
-        </visualEffectView>
         <popover appearance="vibrantLight" behavior="t" id="o05-dg-F2u" userLabel="AdvancedSearchPopover">
             <connections>
                 <outlet property="contentViewController" destination="aSh-hJ-Fpb" id="hnQ-yd-vZ7"/>
@@ -725,6 +532,11 @@
                 <outlet property="mw" destination="-2" id="cV5-eg-WRR"/>
                 <outlet property="seasonpicker" destination="E2N-f0-9rS" id="tb4-bL-qy2"/>
                 <outlet property="seasonyrpicker" destination="UWH-1l-PJ4" id="vY9-cb-c0j"/>
+            </connections>
+        </viewController>
+        <viewController id="4iy-i9-GZD" customClass="InfoView">
+            <connections>
+                <outlet property="mw" destination="-2" id="Hld-0g-zJV"/>
             </connections>
         </viewController>
     </objects>

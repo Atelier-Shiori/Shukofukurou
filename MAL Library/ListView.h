@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 @class MainWindow;
-@interface ListView : NSViewController{
+@interface ListView : NSViewController <NSTableViewDelegate>{
     IBOutlet MainWindow * mw;
 }
 // Anime List View
@@ -21,6 +21,12 @@
 @property (strong) IBOutlet NSButton *plantowatchfilter;
 @property (strong) IBOutlet NSSearchField *animelistfilter;
 @property (strong) IBOutlet NSVisualEffectView *filterbarview;
+
+// Toolbar Items
+@property (strong) IBOutlet NSToolbarItem *edittitleitem;
+@property (strong) IBOutlet NSToolbarItem *deletetitleitem;
+@property (strong) IBOutlet NSToolbarItem *shareitem;
+
 - (IBAction)deletetitle:(id)sender;
 - (IBAction)filterperform:(id)sender;
 - (void)populateList:(id)object;

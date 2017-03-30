@@ -70,9 +70,10 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="QNQ-5A-Omf" name="value" keyPath="arrangedObjects.type" id="fyK-dm-qe0">
+                                            <binding destination="QNQ-5A-Omf" name="value" keyPath="arrangedObjects.type" id="dR0-aJ-djS">
                                                 <dictionary key="options">
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <string key="NSValueTransformerName">TypeNumtoStringType</string>
                                                 </dictionary>
                                             </binding>
                                         </connections>
@@ -80,6 +81,7 @@
                                 </tableColumns>
                                 <connections>
                                     <action trigger="doubleAction" selector="seasondoubleclick:" target="-2" id="aIq-RU-UlQ"/>
+                                    <outlet property="delegate" destination="-2" id="ryK-1a-naN"/>
                                 </connections>
                             </tableView>
                         </subviews>

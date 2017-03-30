@@ -152,7 +152,6 @@
 		9199BAB01E89842400F6E9FF /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		9199BAB11E89842400F6E9FF /* GeneralPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPref.h; sourceTree = "<group>"; };
 		9199BAB21E89842400F6E9FF /* GeneralPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPref.m; sourceTree = "<group>"; };
-		9199BAB31E89842400F6E9FF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9199BAB61E89842400F6E9FF /* LoginPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPref.h; sourceTree = "<group>"; };
 		9199BAB71E89842400F6E9FF /* LoginPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPref.m; sourceTree = "<group>"; };
 		9199BAB81E89842400F6E9FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -258,7 +257,6 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				91999D0E1E8C87F10026D3E9 /* Resources */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -280,7 +278,10 @@
 				9199BAB11E89842400F6E9FF /* GeneralPref.h */,
 				9199BAB21E89842400F6E9FF /* GeneralPref.m */,
 				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
-				9199BAB31E89842400F6E9FF /* Info.plist */,
+				9199BAA41E89836000F6E9FF /* Info.plist */,
+				91999D0F1E8C88280026D3E9 /* InfoView.h */,
+				91999D101E8C88280026D3E9 /* InfoView.m */,
+				9188226F1E8C90A700C7FEF1 /* InfoView.xib */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				916502BA1E8C576B00565D30 /* ListView.h */,
@@ -308,9 +309,13 @@
 				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
 				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
+				91999D0E1E8C87F10026D3E9 /* Resources */,
 				91999CFD1E8C73300026D3E9 /* SearchView.h */,
 				91999CFE1E8C73300026D3E9 /* SearchView.m */,
 				91999D041E8C7DFE0026D3E9 /* SearchView.xib */,
+				91999D051E8C81580026D3E9 /* SeasonView.h */,
+				91999D061E8C81580026D3E9 /* SeasonView.m */,
+				91999D0C1E8C86A40026D3E9 /* SeasonView.xib */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
 				9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */,
 				9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */,
@@ -318,9 +323,6 @@
 				9199BAC91E89842400F6E9FF /* SSKeychain.m */,
 				9199BACA1E89842400F6E9FF /* SSKeychainQuery.h */,
 				9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */,
-				91999D0F1E8C88280026D3E9 /* InfoView.h */,
-				91999D101E8C88280026D3E9 /* InfoView.m */,
-				9188226F1E8C90A700C7FEF1 /* InfoView.xib */,
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
 				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
@@ -330,9 +332,6 @@
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9199BAA41E89836000F6E9FF /* Info.plist */,
 				9168F92D1E89861300CCB5B3 /* Keychain.m */,
-				91999D051E8C81580026D3E9 /* SeasonView.h */,
-				91999D061E8C81580026D3E9 /* SeasonView.m */,
-				91999D0C1E8C86A40026D3E9 /* SeasonView.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";

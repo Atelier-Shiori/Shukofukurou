@@ -50,4 +50,14 @@
         }
     }
 }
+
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    if ([[_searcharraycontroller selectedObjects] count] > 0){
+        [_addtitleitem setEnabled:YES];
+    }
+    else {
+        [_addtitleitem setEnabled:NO];
+    }
+}
+
 @end

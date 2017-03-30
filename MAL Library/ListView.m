@@ -196,4 +196,18 @@
     }];
 }
 
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    if ([[_animelistarraycontroller selectedObjects] count] > 0){
+        [_edittitleitem setEnabled:YES];
+        [_deletetitleitem setEnabled:YES];
+        [_shareitem setEnabled:YES];
+    }
+    else {
+        [_edittitleitem setEnabled:NO];
+        [_deletetitleitem setEnabled:NO];
+        [_shareitem setEnabled:NO];
+    }
+}
+
+
 @end

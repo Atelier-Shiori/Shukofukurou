@@ -80,10 +80,6 @@
     frame.size.height = frame.size.height - 22;
     [[self window] setFrame:frame display:NO];
     [self setAppearance];
-    // Fix textview text color
-    _infoview.infoviewdetailstextview.textColor = NSColor.controlTextColor;
-    _infoview.infoviewsynopsistextview.textColor = NSColor.controlTextColor;
-    _infoview.infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
     
     // Set logged in user
     [self refreshloginlabel];
@@ -170,6 +166,9 @@
     _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _advsearchpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+    _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+    _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     [w setFrame:[w frame] display:false];
 }
 -(void)refreshloginlabel{

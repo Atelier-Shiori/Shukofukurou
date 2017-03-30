@@ -162,6 +162,7 @@
                                 </tableColumns>
                                 <connections>
                                     <action trigger="doubleAction" selector="animelistdoubleclick:" target="-2" id="G1z-4A-yaL"/>
+                                    <outlet property="delegate" destination="-2" id="TLF-CO-cQY"/>
                                 </connections>
                             </tableView>
                         </subviews>

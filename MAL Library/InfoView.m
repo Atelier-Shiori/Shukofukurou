@@ -109,6 +109,10 @@
     [_infoviewdetailstextview setString:details];
     [[_infoviewsynopsistextview textStorage] setAttributedString:[synopsis convertHTMLtoAttStr]];
     [[_infoviewbackgroundtextview  textStorage] setAttributedString:background];
+    // Fix textview text color
+    _infoviewdetailstextview.textColor = NSColor.controlTextColor;
+    _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
+    _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
     [mw loadmainview];
     _selectedanimeinfo = d;
 }

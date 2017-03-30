@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindow;
-@interface SearchView : NSViewController {
+@interface SearchView : NSViewController <NSTableViewDelegate> {
     IBOutlet MainWindow *mw;
 }
 typedef enum  {
@@ -19,7 +19,8 @@ typedef enum  {
 @property (strong) IBOutlet NSSearchField *searchtitlefield;
 @property (strong) IBOutlet NSTableView *searchtb;
 @property (strong) IBOutlet NSArrayController *searcharraycontroller;
-
+// Toolbar Items
+@property (strong) IBOutlet NSToolbarItem * addtitleitem;
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;
 @end

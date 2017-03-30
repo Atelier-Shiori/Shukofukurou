@@ -197,6 +197,9 @@
                                 <action selector="sharetitle:" target="-2" id="y79-2p-3tA"/>
                             </connections>
                         </button>
+                        <connections>
+                            <action selector="sharetitle:" target="-2" id="BmE-Tv-vyp"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="22093AE0-3D95-4384-8267-78CAA08B0B3C" explicitItemIdentifier="AddTitleInfo" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="qiG-Dd-1QN">
                         <size key="minSize" width="8" height="25"/>
@@ -513,7 +516,10 @@
         <viewController id="Xk3-JH-b4a" customClass="ListView">
             <connections>
                 <outlet property="animelistfilter" destination="KKI-5U-zIm" id="5xL-g5-CGy"/>
+                <outlet property="deletetitleitem" destination="WJo-Ig-ng6" id="MNY-fm-VYU"/>
+                <outlet property="edittitleitem" destination="7Ap-pp-DuY" id="itg-Y5-qvz"/>
                 <outlet property="mw" destination="-2" id="S3J-3L-VdW"/>
+                <outlet property="shareitem" destination="pus-xr-wEI" id="VcF-Gi-jFy"/>
             </connections>
         </viewController>
         <viewController id="N7e-Wr-mOx" customClass="NotLoggedIn">
@@ -523,12 +529,14 @@
         </viewController>
         <viewController id="3aF-oI-xAM" customClass="SearchView">
             <connections>
+                <outlet property="addtitleitem" destination="2dK-au-ShY" id="xXc-hT-v5f"/>
                 <outlet property="mw" destination="-2" id="ldd-gL-JEn"/>
                 <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="4Xs-bj-wtA"/>
             </connections>
         </viewController>
         <viewController id="UX5-t5-v6p" customClass="SeasonView">
             <connections>
+                <outlet property="addtitleitem" destination="DVY-q1-nSf" id="INh-zh-4qv"/>
                 <outlet property="mw" destination="-2" id="cV5-eg-WRR"/>
                 <outlet property="seasonpicker" destination="E2N-f0-9rS" id="tb4-bL-qy2"/>
                 <outlet property="seasonyrpicker" destination="UWH-1l-PJ4" id="vY9-cb-c0j"/>

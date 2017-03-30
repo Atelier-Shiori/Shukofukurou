@@ -119,4 +119,12 @@
         NSLog(@"Error: %@", error);
     }];
 }
+- (void)tableViewSelectionDidChange:(NSNotification *)notification {
+    if ([[_seasonarraycontroller selectedObjects] count] > 0){
+        [_addtitleitem setEnabled:YES];
+    }
+    else {
+        [_addtitleitem setEnabled:NO];
+    }
+}
 @end

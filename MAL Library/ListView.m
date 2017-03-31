@@ -328,6 +328,7 @@
     NSString * deleteURL;
     if (currentlist == 0){
         d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
+        selid = d[@"id"];
         deleteURL = [NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%i", selid.intValue];
     }
     else {

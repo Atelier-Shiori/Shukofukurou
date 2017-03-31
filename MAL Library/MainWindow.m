@@ -130,7 +130,7 @@
     NSDictionary * d;
     NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
     NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
-    int type;
+    int type = 0;
     if ([identifier isEqualToString:@"animelist"]){
         d = [[_listview.animelistarraycontroller selectedObjects] objectAtIndex:0];
         type = AnimeType;

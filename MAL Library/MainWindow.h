@@ -58,6 +58,8 @@
 @property (strong) IBOutlet NSPopover *addpopover;
 @property (strong) IBOutlet AddTitle * addtitlecontroller;
 
+@property (strong) IBOutlet NSVisualEffectView *requireslicense;
+
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong, nonatomic) MSWeakTimer * refreshtimer;
 
@@ -70,11 +72,11 @@
 -(void)stopTimer;
 -(void)fireTimer;
 -(void)refreshloginlabel;
--(void)loadanimeinfo:(NSNumber *) idnum;
--(void)populatesearchtb:(id)json;
+- (void)loadinfo:(NSNumber *) idnum type:(int)type;
+-(void)populatesearchtb:(id)json type:(int)type;
 -(void)clearsearchtb;
--(bool)checkiftitleisonlist:(int)idnum;
--(void)loadlist:(NSNumber *)refresh;
+-(bool)checkiftitleisonlist:(int)idnum type:(int)type;
+-(void)loadlist:(NSNumber *)refresh type:(int)type;
 -(void)clearlist;
 
 // Modify Popover

@@ -55,7 +55,7 @@
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:@"https://malapi.ateliershiori.moe/2.1/anime/browse" parameters:d progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [mw populatesearchtb:responseObject];
+        [mw populatesearchtb:responseObject type:0];
         [btn setEnabled:YES];
         [popover setBehavior:NSPopoverBehaviorTransient];
         [popover close];

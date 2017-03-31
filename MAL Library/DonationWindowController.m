@@ -9,6 +9,8 @@
 #import "DonationWindowController.h"
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
+#import "AppDelegate.h"
+#import "MainWindow.h"
 
 @interface DonationWindowController ()
 
@@ -45,6 +47,9 @@
                 [[NSUserDefaults standardUserDefaults] setObject:[name stringValue] forKey:@"donor"];
                 [[NSUserDefaults standardUserDefaults] setObject:[key stringValue] forKey:@"donatekey"];
                 [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"donated"];
+                // Refresh Mainview
+                AppDelegate * del = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+                [[del getMainWindowController] loadmainview];
                 //Close Window
                 [self.window orderOut:self];
             }

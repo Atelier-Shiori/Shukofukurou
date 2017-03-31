@@ -11,11 +11,12 @@
 @interface AddTitle : NSViewController{
     IBOutlet MainWindow * mw;
     int selectededitid;
+    int selectedtype;
     bool selectedaired;
     bool selectedaircompleted;
     NSDictionary * selecteditem;
 }
 
 @property (strong) IBOutlet NSPopover *addpopover;
--(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge;
+-(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type;
 @end

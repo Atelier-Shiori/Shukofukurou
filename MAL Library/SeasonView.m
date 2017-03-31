@@ -36,7 +36,7 @@
             NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
             d = d[@"id"];
             NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
-            [mw loadanimeinfo:idnum];
+            [mw loadinfo:idnum type:0];
         }
     }
 }

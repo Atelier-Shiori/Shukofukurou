@@ -7,7 +7,7 @@ Requires latest SDK (10.12), XCode 8 or later. The C#/Xamarin version is depreca
 
 ## Supporting this Project
 
-Like this program and want to support the development of this program? [Become our Patreon](http://www.patreon.com/ateliershiori) or [Donate](https://malupdaterosx.ateliershiori.moe/donate/). By donating more than $5 or becoming a patron, you will recieve a donation key to remove the reminder message.
+Like this program and want to support the development of this program? [Become our Patreon](http://www.patreon.com/ateliershiori) or [Donate](https://malupdaterosx.ateliershiori.moe/donate/). By donating more than $5 or becoming a patron, you will recieve a donation key to remove the reminder message and unlock Manga support.
 
 You can also donate cryptocurrencies to these addresses (send an email with the transaction ID and address to get a donation key as long the amount is equilivant to $5 USD or more):
 * Bitcoin - Use the Bitpay form on the [donation page](https://malupdaterosx.ateliershiori.moe/donate/).

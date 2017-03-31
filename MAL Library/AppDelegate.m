@@ -35,6 +35,7 @@
     defaultValues[@"refreshautomatically"] = @(1);
     defaultValues[@"donated"] = @(0);
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
+    defaultValues[@"readingfilter"] = @(1);
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
@@ -152,7 +153,12 @@
     if ([url containsString:@"anime/"]){
         // Loads Anime Information with specified id.
         url = [url stringByReplacingOccurrencesOfString:@"anime/" withString:@""];
-        [mainwindowcontroller loadanimeinfo:@(url.intValue)];
+        [mainwindowcontroller loadinfo:@(url.intValue) type:0];
+    }
+    if ([url containsString:@"manga/"]){
+        // Loads Anime Information with specified id.
+        url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
+        [mainwindowcontroller loadinfo:@(url.intValue) type:0];
     }
 }
 @end

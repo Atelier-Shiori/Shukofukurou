@@ -13,11 +13,18 @@
 @interface InfoView : NSViewController{
     IBOutlet MainWindow * mw;
 }
+typedef enum  {
+    AnimeType = 0,
+    MangaType = 1
+} InfoType;
 @property (getter=getSelectedId, setter=setSelectedId:) int selectedid;
-@property (getter=getSelectedInfo, readonly) NSDictionary * selectedanimeinfo;
+@property (getter=getSelectedInfo, readonly) NSDictionary * selectedinfo;
+@property (getter=getType, setter=setType:) int type;
+
 @property (strong) IBOutlet NSTextView *infoviewbackgroundtextview;
 @property (strong) IBOutlet NSTextView *infoviewdetailstextview;
 @property (strong) IBOutlet NSTextView *infoviewsynopsistextview;
-- (void)populateInfoView:(id)object;
+- (void)populateAnimeInfoView:(id)object;
+- (void)populateMangaInfoView:(id)object;
 - (IBAction)viewonmal:(id)sender;
 @end

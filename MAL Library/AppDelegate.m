@@ -156,9 +156,11 @@
         [mainwindowcontroller loadinfo:@(url.intValue) type:0];
     }
     if ([url containsString:@"manga/"]){
-        // Loads Anime Information with specified id.
-        url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
-        [mainwindowcontroller loadinfo:@(url.intValue) type:0];
+        if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"] boolValue]){
+            // Loads Manga Information with specified id.
+            url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
+            [mainwindowcontroller loadinfo:@(url.intValue) type:0];
+        }
     }
 }
 @end

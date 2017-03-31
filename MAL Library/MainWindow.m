@@ -194,6 +194,7 @@
     _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
     _advsearchpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];

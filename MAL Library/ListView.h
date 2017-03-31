@@ -23,6 +23,7 @@
 @property (strong) IBOutlet NSSearchField *animelistfilter;
 @property (strong) IBOutlet NSVisualEffectView *filterbarview;
 @property (strong) IBOutlet NSView *animelistview;
+@property (strong) IBOutlet NSVisualEffectView *filterbarview2;
 
 // Manga List View
 @property (strong) IBOutlet NSArrayController *mangalistarraycontroller;

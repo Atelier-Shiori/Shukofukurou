@@ -555,6 +555,10 @@
            NSDictionary *d = [[_listview.animelistarraycontroller selectedObjects] objectAtIndex:0];
         [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.animelisttb frameOfCellAtColumn:0 row:[_listview.animelisttb selectedRow]] ofView:_listview.animelisttb preferredEdge:0 type:0];
     }
+    if ([identifier isEqualToString:@"mangalist"]){
+        NSDictionary *d = [[_listview.mangalistarraycontroller selectedObjects] objectAtIndex:0];
+        [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.mangalisttb frameOfCellAtColumn:0 row:[_listview.mangalisttb selectedRow]] ofView:_listview.mangalisttb preferredEdge:0 type:1];
+    }
     else if ([identifier isEqualToString:@"titleinfo"]){
         [_editviewcontroller showEditPopover:[self retreveentryfromlist:[_infoview getSelectedId] type:[_infoview getType]] showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge type:[_infoview getType]];
     }

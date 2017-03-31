@@ -78,6 +78,7 @@
 -(bool)checkiftitleisonlist:(int)idnum type:(int)type;
 -(void)loadlist:(NSNumber *)refresh type:(int)type;
 -(void)clearlist;
+-(void)createToolbar;
 
 // Modify Popover
 - (IBAction)performmodifytitle:(id)sender;

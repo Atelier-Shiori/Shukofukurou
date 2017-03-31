@@ -243,7 +243,7 @@
             if ([_animelisttb selectedRow] >-1){
                 NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
                 NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
-                if ([action isEqualToString:@"View Anime Info"]){
+                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]){
                     NSNumber * idnum = d[@"id"];
                     [mw loadinfo:idnum type:0];
                 }
@@ -258,12 +258,12 @@
             if ([_mangalisttb selectedRow] >-1){
                 NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
                 NSDictionary *d = [[_mangalistarraycontroller selectedObjects] objectAtIndex:0];
-                if ([action isEqualToString:@"View Anime Info"]){
+                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]){
                     NSNumber * idnum = d[@"id"];
-                    [mw loadinfo:idnum type:1];
+                    [mw loadinfo:idnum type:currentlist];
                 }
                 else if([action isEqualToString:@"Modify Title"]){
-                    [mw.editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:[_animelisttb selectedRow]] ofView:_animelisttb preferredEdge:0 type:currentlist];
+                    [mw.editviewcontroller showEditPopover:d showRelativeToRec:[_mangalisttb frameOfCellAtColumn:0 row:[_mangalisttb selectedRow]] ofView:_mangalisttb preferredEdge:0 type:currentlist];
                 }
             }
         }

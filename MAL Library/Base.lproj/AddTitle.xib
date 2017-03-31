@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="AddTitle">
             <connections>
                 <outlet property="addchapfield" destination="dOT-nn-7J4" id="YGr-RQ-E5i"/>
+                <outlet property="addchapnumformat" destination="Xru-8X-Ciz" id="PQU-7G-GPp"/>
                 <outlet property="addepifield" destination="Mgu-LH-9kb" id="wnF-Lx-0aI"/>
                 <outlet property="addfield" destination="SeU-1j-19i" id="K2l-Mq-pfE"/>
                 <outlet property="addmangabtn" destination="woj-Y0-5Md" id="WUo-jW-yZV"/>
@@ -22,6 +23,7 @@
                 <outlet property="addtotalepisodes" destination="QyR-8x-UO5" id="6RK-H2-uea"/>
                 <outlet property="addtotalvol" destination="1EZ-Q3-qMk" id="b7L-HM-ftI"/>
                 <outlet property="addvolfield" destination="EaW-U8-rbl" id="eLr-SG-fXg"/>
+                <outlet property="addvolnumformat" destination="fN7-sT-J7M" id="swL-4F-jwN"/>
                 <outlet property="popoveraddtitleexistsview" destination="RsA-E2-DVB" id="QJV-E6-wrl"/>
                 <outlet property="view" destination="4pl-ha-hfb" id="aP6-5P-Dma"/>
             </connections>

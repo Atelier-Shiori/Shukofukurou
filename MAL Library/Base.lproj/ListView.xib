@@ -12,7 +12,7 @@
                 <outlet property="animelistview" destination="pfO-Zc-dit" id="CA3-6g-TFJ"/>
                 <outlet property="completedfilter" destination="ahz-wi-lKe" id="Uwo-EW-sOI"/>
                 <outlet property="droppedfilter" destination="eQD-fk-uzw" id="Xqw-4e-xyJ"/>
-                <outlet property="filterbarview" destination="T41-us-5RD" id="sro-Ul-wFw"/>
+                <outlet property="filterbarview" destination="zwH-Mn-Icd" id="EsH-1Y-dhf"/>
                 <outlet property="mangacompletedfilter" destination="w88-lF-lUJ" id="ftQ-XU-PnI"/>
                 <outlet property="mangadroppedfilter" destination="byB-Cc-JM3" id="sAC-AZ-SNc"/>
                 <outlet property="mangalistarraycontroller" destination="Ckb-CV-hJI" id="m6G-pb-vfn"/>
@@ -38,7 +38,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="eGM-Vy-iY0">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="QGW-Oe-htQ" id="etv-3f-0Uh" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
@@ -176,7 +176,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
-                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
+                        <rect key="frame" x="-8" y="23" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="B5h-dx-wLN">
@@ -364,12 +364,12 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="Ckb-CV-hJI" name="displayPatternValue1" keyPath="arrangedObjects.volumes_read" id="0zN-GT-w1G">
+                                            <binding destination="Ckb-CV-hJI" name="displayPatternValue2" keyPath="arrangedObjects.volumes" previousBinding="0zN-GT-w1G" id="yga-FI-4om">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="Ckb-CV-hJI" name="displayPatternValue2" keyPath="arrangedObjects.volumes" previousBinding="0zN-GT-w1G" id="yga-FI-4om">
+                                            <binding destination="Ckb-CV-hJI" name="displayPatternValue1" keyPath="arrangedObjects.volumes_read" id="0zN-GT-w1G">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@/%{value2}@</string>
                                                 </dictionary>

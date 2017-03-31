@@ -52,7 +52,7 @@
                         <menu key="menu" id="ezL-ER-b3X">
                             <items>
                                 <menuItem title="Do Nothing" id="XHo-yo-db2"/>
-                                <menuItem title="View Anime Info" id="t7w-HJ-6Yj"/>
+                                <menuItem title="View Info" id="t7w-HJ-6Yj"/>
                                 <menuItem title="Modify Title" state="on" id="Z0d-eb-6XW"/>
                             </items>
                         </menu>

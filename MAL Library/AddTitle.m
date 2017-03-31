@@ -56,7 +56,12 @@
         if (![mw checkiftitleisonlist:idnum.intValue type:0]){
             [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_addtitleview];
             selecteditem = d;
-            [_addnumformat setMaximum:d[@"episodes"]];
+            if ([(NSNumber *)d[@"episodes"] intValue] > 0){
+                [_addnumformat setMaximum:d[@"episodes"]];
+            }
+            else {
+                [_addnumformat setMaximum:nil];
+            }
             NSString *airingstatus = d[@"status"];
             if ([airingstatus isEqualToString:@"finished airing"]){
                 selectedaircompleted = true;
@@ -86,7 +91,18 @@
         if (![mw checkiftitleisonlist:idnum.intValue type:1]){
             [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_addmangaview];
             selecteditem = d;
-            [_addchapnumformat setMaximum:d[@"chapters"]];
+            if ([(NSNumber *)d[@"chapters"] intValue] > 0){
+                [_addchapnumformat setMaximum:d[@"chapters"]];
+            }
+            else {
+                [_addchapnumformat setMaximum:nil];
+            }
+            if ([(NSNumber *)d[@"volumes"] intValue] > 0){
+                [_addvolnumformat setMaximum:d[@"chapters"]];
+            }
+            else {
+                [_addvolnumformat setMaximum:nil];
+            }
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/manga/%i",idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 selecteditem = responseObject;
@@ -164,7 +180,7 @@
         if(![_addstatusfield isEqual:@"completed"] && _addchapfield.intValue == _addtotalchap.intValue && _addvolfield.intValue == _addtotalvol.intValue && selectedfinished){
             [_addstatusfield selectItemWithTitle:@"completed"];
         }
-        if(!selectedpublished && (![_addstatusfield.title isEqual:@"plan to read"] ||_addepifield.intValue > 0 || _addvolfield.intValue > 0)){
+        if(!selectedpublished && (![_addstatusfield.title isEqual:@"plan to read"] ||_addchapfield.intValue > 0 || _addvolfield.intValue > 0)){
             // Invalid input, mark it as such
             [_addmangabtn setEnabled:true];
             [_addpopover setBehavior:NSPopoverBehaviorTransient];
@@ -179,7 +195,7 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager POST:@"https://malapi.ateliershiori.moe/2.1/mangalist/manga" parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters_read":@(_addchapfield.intValue), @"volumes_read":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:@"https://malapi.ateliershiori.moe/2.1/mangalist/manga" parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:1];
             [_addmangabtn setEnabled:true];
             [_addpopover setBehavior:NSPopoverBehaviorTransient];

@@ -23,6 +23,16 @@
 @property (strong) IBOutlet NSButton *addfield;
 
 // Manga
+@property (strong) IBOutlet NSView *addmangaview;
+@property (strong) IBOutlet NSTextField *addchapfield;
+@property (strong) IBOutlet NSNumberFormatter *addchapnumformat;
+@property (strong) IBOutlet NSTextField *addvolfield;
+@property (strong) IBOutlet NSNumberFormatter *addvolnumformat;
+@property (strong) IBOutlet NSTextField *addtotalchap;
+@property (strong) IBOutlet NSTextField *addtotalvol;
+@property (strong) IBOutlet NSTextField *addmangascorefiled;
+@property (strong) IBOutlet NSPopUpButton *addmangastatusfield;
+@property (strong) IBOutlet NSButton *addmangabtn;
 
 @end
 
@@ -72,6 +82,46 @@
         [_addpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         selectedtype = type;
     }
+    else {
+        if (![mw checkiftitleisonlist:idnum.intValue type:1]){
+            [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_addmangaview];
+            selecteditem = d;
+            [_addchapnumformat setMaximum:d[@"chapters"]];
+            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+            [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/manga/%i",idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                selecteditem = responseObject;
+                NSString *publishtatus = selecteditem[@"status"];
+                if ([publishtatus isEqualToString:@"finished"]){
+                    selectedfinished = true;
+                }
+                else{
+                    selectedfinished = false;
+                }
+                if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]){
+                    selectedpublished = true;
+                }
+                else{
+                    selectedpublished = false;
+                }
+
+            } failure:^(NSURLSessionTask *operation, NSError *error) {
+                NSLog(@"Error: %@", error);
+            }];
+            [_addchapfield setIntValue:0];
+            [_addtotalchap setIntValue:[(NSNumber *)d[@"chapters"] intValue]];
+            [_addvolfield setIntValue:0];
+            [_addtotalvol setIntValue:[(NSNumber *)d[@"volumes"] intValue]];
+            [_addmangastatusfield selectItemWithTitle:@"reading"];
+            [_addmangascorefiled setIntValue:0];
+            selectededitid = [(NSNumber *)d[@"id"] intValue];
+        }
+        else {
+            [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_popoveraddtitleexistsview];
+        }
+        [_addpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
+        selectedtype = type;
+    }
+    
 }
 - (IBAction)PerformAddTitle:(id)sender {
     [self addtitletolist];
@@ -106,10 +156,41 @@
             NSData * errordata = [error userInfo] [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
             [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            [_addfield setEnabled:true];
         }];
     }
     else {
-        
+        [_addmangabtn setEnabled:false];
+        if(![_addstatusfield isEqual:@"completed"] && _addchapfield.intValue == _addtotalchap.intValue && _addvolfield.intValue == _addtotalvol.intValue && selectedfinished){
+            [_addstatusfield selectItemWithTitle:@"completed"];
+        }
+        if(!selectedpublished && (![_addstatusfield.title isEqual:@"plan to read"] ||_addepifield.intValue > 0 || _addvolfield.intValue > 0)){
+            // Invalid input, mark it as such
+            [_addmangabtn setEnabled:true];
+            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            return;
+        }
+        if (((_addchapfield.intValue == _addtotalchap.intValue && _addchapfield.intValue != 0) || (_addvolfield.intValue == _addtotalvol.intValue && _addtotalvol.intValue != 0)) && selectedfinished && selectedpublished){
+            [_addmangastatusfield selectItemWithTitle:@"completed"];
+            [_addchapfield setIntValue:[_addtotalchap intValue]];
+            [_addvolfield setIntValue:[_addtotalvol intValue]];
+        }
+        [_addpopover setBehavior:NSPopoverBehaviorApplicationDefined];
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        [manager POST:@"https://malapi.ateliershiori.moe/2.1/mangalist/manga" parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters_read":@(_addchapfield.intValue), @"volumes_read":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [mw loadlist:@(true) type:1];
+            [_addmangabtn setEnabled:true];
+            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            [_addpopover close];
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            NSLog(@"%@",error);
+            NSData * errordata = [error userInfo] [@"com.alamofire.serialization.response.error.data" ];
+            NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
+            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            [_addmangabtn setEnabled:true];
+        }];
     }
 }
 

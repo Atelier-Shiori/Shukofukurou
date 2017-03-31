@@ -14,6 +14,8 @@
     int selectedtype;
     bool selectedaired;
     bool selectedaircompleted;
+    bool selectedfinished;
+    bool selectedpublished;
     NSDictionary * selecteditem;
 }
 

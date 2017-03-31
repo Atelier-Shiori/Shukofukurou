@@ -323,16 +323,27 @@
     return final;
 }
 -(void)deletetitle{
-    NSDictionary *d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
-    NSNumber * selid = d[@"id"];
+    NSDictionary *d;
+    NSNumber * selid;
+    NSString * deleteURL;
+    if (currentlist == 0){
+        d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
+        deleteURL = [NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%i", selid.intValue];
+    }
+    else {
+        d = [[_mangalistarraycontroller selectedObjects] objectAtIndex:0];
+        selid = d[@"id"];
+        deleteURL = [NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/mangalist/manga/%i", selid.intValue];
+    }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     manager.responseSerializer = [AFHTTPResponseSerializer new];
-    [manager DELETE:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%i", selid.intValue] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager DELETE:deleteURL parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
         [mw loadlist:@(true) type:currentlist];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"%@",error);
     }];
+
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {

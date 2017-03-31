@@ -171,12 +171,10 @@
         [details appendString:[NSString stringWithFormat:@"Episodes: %i \n", [(NSNumber *)d[@"chapters"] intValue]]];
     }
     if (d[@"volumes"] == nil){
-        if (d[@"volumes"] == nil){
-            [details appendString:@"Volumes: Unknown\n"];
-        }
+        [details appendString:@"Volumes: Unknown\n"];
     }
     else {
-        [details appendString:[NSString stringWithFormat:@"Volumes: %i \n", [(NSNumber *)d[@"Volumes"] intValue]]];
+        [details appendString:[NSString stringWithFormat:@"Volumes: %i \n", [(NSNumber *)d[@"volumes"] intValue]]];
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
-
+@class AppDelegate;
 @interface Utility : NSObject
 +(void)showsheetmessage:(NSString *)message
            explaination:(NSString *)explaination
@@ -22,4 +22,5 @@
 +(NSString *)appendstringwithArray:(NSArray *) a;
 +(NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url;
 +(NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url;
++(void)donateCheck:(AppDelegate*)delegate;
 @end

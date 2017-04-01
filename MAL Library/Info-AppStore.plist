@@ -56,14 +56,8 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017 Atelier Shiori. All rights reserved.</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<string>MainMenu-AppStore</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-	<key>SUEnableSystemProfiling</key>
-	<true/>
-	<key>SUFeedURL</key>
-	<string>https://updates.ateliershiori.moe/mallibrary/profileInfo.php</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>dsa_pub.pem</string>
 </dict>
 </plist>

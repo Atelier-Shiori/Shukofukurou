@@ -9,6 +9,69 @@
 /* Begin PBXBuildFile section */
 		9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
 		9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
+		913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		913A11611E8F206A00450B66 /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
+		913A11621E8F206A00450B66 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
+		913A11631E8F206A00450B66 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		913A11641E8F206A00450B66 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502BB1E8C576B00565D30 /* ListView.m */; };
+		913A11651E8F206A00450B66 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABA1E89842400F6E9FF /* MainWindow.m */; };
+		913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
+		913A11671E8F206A00450B66 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
+		913A11681E8F206A00450B66 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB71E89842400F6E9FF /* LoginPref.m */; };
+		913A11691E8F206A00450B66 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
+		913A116A1E8F206A00450B66 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACD1E89842400F6E9FF /* Utility.m */; };
+		913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABC1E89842400F6E9FF /* MSWeakTimer.m */; };
+		913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
+		913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
+		913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB21E89842400F6E9FF /* GeneralPref.m */; };
+		913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
+		913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */; };
+		913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */; };
+		913A11721E8F206A00450B66 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
+		913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */; };
+		913A11741E8F206A00450B66 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92D1E89861300CCB5B3 /* Keychain.m */; };
+		913A11751E8F206A00450B66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 918822701E8C916400C7FEF1 /* AppDelegate.m */; };
+		913A11761E8F206A00450B66 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
+		913A11771E8F206A00450B66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
+		913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */; };
+		913A11791E8F206A00450B66 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC91E89842400F6E9FF /* SSKeychain.m */; };
+		913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */; };
+		913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
+		913A117C1E8F206A00450B66 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D101E8C88280026D3E9 /* InfoView.m */; };
+		913A117E1E8F206A00450B66 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		913A117F1E8F206A00450B66 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
+		913A11801E8F206A00450B66 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
+		913A11821E8F206A00450B66 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		913A11831E8F206A00450B66 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF21E89844C00F6E9FF /* MASPreferences.framework */; };
+		913A11841E8F206A00450B66 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		913A11851E8F206A00450B66 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D381E89FF920037898E /* Crashlytics.framework */; };
+		913A11861E8F206A00450B66 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
+		913A11871E8F206A00450B66 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB031E8984F600F6E9FF /* MASPreferences.framework */; };
+		913A11881E8F206A00450B66 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D361E89FF8B0037898E /* Fabric.framework */; };
+		913A118A1E8F206A00450B66 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF31E89844C00F6E9FF /* PXSourceList.framework */; };
+		913A118B1E8F206A00450B66 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
+		913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
+		913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAB01E89842400F6E9FF /* dsa_pub.pem */; };
+		913A11901E8F206A00450B66 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
+		913A11911E8F206A00450B66 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D041E8C7DFE0026D3E9 /* SearchView.xib */; };
+		913A11931E8F206A00450B66 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE41E89843300F6E9FF /* LoginView.xib */; };
+		913A11941E8F206A00450B66 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE61E89843300F6E9FF /* MainWindow.xib */; };
+		913A11951E8F206A00450B66 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
+		913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE21E89843300F6E9FF /* GeneralPref.xib */; };
+		913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C91E8C65A900565D30 /* NotLoggedIn.xib */; };
+		913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */; };
+		913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
+		913A119B1E8F206A00450B66 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
+		913A119C1E8F206A00450B66 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
+		913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D0C1E8C86A40026D3E9 /* SeasonView.xib */; };
+		913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */; };
+		913A119F1E8F206A00450B66 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C61E8C65A500565D30 /* ListView.xib */; };
+		913A11A11E8F206A00450B66 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */; };
 		915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
 		915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
 		915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
@@ -61,9 +124,7 @@
 		9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
 		9199BAF51E89844C00F6E9FF /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF21E89844C00F6E9FF /* MASPreferences.framework */; };
 		9199BAF61E89844C00F6E9FF /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF31E89844C00F6E9FF /* PXSourceList.framework */; };
-		9199BAF71E89844C00F6E9FF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
 		9199BAFC1E89847D00F6E9FF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
-		9199BAFD1E89847D00F6E9FF /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9199BAFE1E89847D00F6E9FF /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
 		9199BAFF1E89847D00F6E9FF /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
@@ -75,6 +136,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		913A11A01E8F206A00450B66 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				913A11A11E8F206A00450B66 /* AFNetworking.framework in Embed Frameworks */,
+				913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */,
+				913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		913A11A61E8F206A00450B66 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		918C0D551E8A00ED0037898E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -92,9 +176,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9199BAFF1E89847D00F6E9FF /* AFNetworking.framework in Embed Frameworks */,
-				9199BAFD1E89847D00F6E9FF /* Sparkle.framework in Embed Frameworks */,
 				91AECE591E89921200824C2D /* PXSourceList.framework in Embed Frameworks */,
 				9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */,
+				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +186,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		913A11AA1E8F206A00450B66 /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		913A11AB1E8F206A00450B66 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "/Volumes/MacStorage/MALLibrary/MAL Library/Info-AppStore.plist"; sourceTree = "<absolute>"; };
+		913A11AD1E8F212600450B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-AppStore.xib"; sourceTree = "<group>"; };
 		915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
 		915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearch.m; sourceTree = "<group>"; };
 		915E8C461E8C1AEC005A49A4 /* AddTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTitle.h; sourceTree = "<group>"; };
@@ -126,6 +213,7 @@
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F92D1E89861300CCB5B3 /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
+		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
 		917897E61E89E6AD00C155DF /* DonationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationWindowController.h; sourceTree = "<group>"; };
 		917897E71E89E6AD00C155DF /* DonationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationWindowController.m; sourceTree = "<group>"; };
 		917897EC1E89F19900C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationWindow.xib; sourceTree = "<group>"; };
@@ -197,6 +285,25 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		913A117D1E8F206A00450B66 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				913A117E1E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
+				913A117F1E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
+				913A11801E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
+				913A11821E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
+				913A11831E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
+				913A11841E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
+				913A11851E8F206A00450B66 /* Crashlytics.framework in Frameworks */,
+				913A11861E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
+				913A11871E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
+				913A11881E8F206A00450B66 /* Fabric.framework in Frameworks */,
+				913A118A1E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
+				913A118B1E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9199BA931E89836000F6E9FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +311,7 @@
 				91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */,
 				9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */,
 				9199BAFE1E89847D00F6E9FF /* AFNetworking.framework in Frameworks */,
+				913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */,
 				9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */,
 				9199BAF51E89844C00F6E9FF /* MASPreferences.framework in Frameworks */,
 				9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */,
@@ -214,7 +322,6 @@
 				9199BAFC1E89847D00F6E9FF /* Sparkle.framework in Frameworks */,
 				9199BAF61E89844C00F6E9FF /* PXSourceList.framework in Frameworks */,
 				91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */,
-				9199BAF71E89844C00F6E9FF /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				9199BA961E89836000F6E9FF /* MAL Library.app */,
+				913A11AA1E8F206A00450B66 /* MAL Library.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -260,6 +368,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -294,6 +403,7 @@
 				9199BAE41E89843300F6E9FF /* LoginView.xib */,
 				9199BAB81E89842400F6E9FF /* main.m */,
 				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
+				913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */,
 				9199BAB91E89842400F6E9FF /* MainWindow.h */,
 				9199BABA1E89842400F6E9FF /* MainWindow.m */,
 				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
@@ -335,6 +445,7 @@
 				9199BA991E89836000F6E9FF /* AppDelegate.h */,
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9199BAA41E89836000F6E9FF /* Info.plist */,
+				913A11AB1E8F206A00450B66 /* Info-AppStore.plist */,
 				9168F92D1E89861300CCB5B3 /* Keychain.m */,
 			);
 			path = "MAL Library";
@@ -374,6 +485,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		913A115F1E8F206A00450B66 /* MAL Library (AppStore) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */;
+			buildPhases = (
+				913A11601E8F206A00450B66 /* Sources */,
+				913A117D1E8F206A00450B66 /* Frameworks */,
+				913A118C1E8F206A00450B66 /* Resources */,
+				913A11A01E8F206A00450B66 /* Embed Frameworks */,
+				913A11A51E8F206A00450B66 /* ShellScript */,
+				913A11A61E8F206A00450B66 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MAL Library (AppStore)";
+			productName = "MAL Library";
+			productReference = 913A11AA1E8F206A00450B66 /* MAL Library.app */;
+			productType = "com.apple.product-type.application";
+		};
 		9199BA951E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library" */;
@@ -403,6 +534,17 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Atelier Shiori";
 				TargetAttributes = {
+					913A115F1E8F206A00450B66 = {
+						DevelopmentTeam = 9HDZTER525;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
+					};
 					9199BA951E89836000F6E9FF = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9HDZTER525;
@@ -424,11 +566,37 @@
 			projectRoot = "";
 			targets = (
 				9199BA951E89836000F6E9FF /* MAL Library */,
+				913A115F1E8F206A00450B66 /* MAL Library (AppStore) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		913A118C1E8F206A00450B66 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */,
+				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
+				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
+				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
+				913A11911E8F206A00450B66 /* SearchView.xib in Resources */,
+				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
+				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
+				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
+				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
+				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
+				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
+				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
+				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
+				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
+				913A119C1E8F206A00450B66 /* PFAboutWindow.xib in Resources */,
+				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
+				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
+				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9199BA941E89836000F6E9FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +626,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		913A11A51E8F206A00450B66 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./MAL\\ Library/Fabric.framework/run edf1f68ef4cfd794c1422ddd2479104d63a34c60 ade433e882a67945940f2ec881e3037340dd4257128bf5ded4a841135d3800ad";
+		};
 		917897F21E89FE8400C155DF /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -474,6 +655,41 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		913A11601E8F206A00450B66 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				913A11611E8F206A00450B66 /* DonationWindowController.m in Sources */,
+				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
+				913A11631E8F206A00450B66 /* PFMoveApplication.m in Sources */,
+				913A11641E8F206A00450B66 /* ListView.m in Sources */,
+				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
+				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
+				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
+				913A11681E8F206A00450B66 /* LoginPref.m in Sources */,
+				913A11691E8F206A00450B66 /* SearchView.m in Sources */,
+				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
+				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
+				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
+				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
+				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
+				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
+				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
+				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
+				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
+				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
+				913A11741E8F206A00450B66 /* Keychain.m in Sources */,
+				913A11751E8F206A00450B66 /* AppDelegate.m in Sources */,
+				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
+				913A11771E8F206A00450B66 /* main.m in Sources */,
+				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				913A11791E8F206A00450B66 /* SSKeychain.m in Sources */,
+				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
+				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
+				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9199BA921E89836000F6E9FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -512,6 +728,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				913A11AD1E8F212600450B66 /* Base */,
+			);
+			name = "MainMenu-AppStore.xib";
+			sourceTree = "<group>";
+		};
 		915E8C4D1E8C235D005A49A4 /* AddTitle.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -636,6 +860,86 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		913A11A81E8F206A00450B66 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MAL Library.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
+				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
+				PRODUCT_NAME = "MAL Library";
+			};
+			name = Debug;
+		};
+		913A11A91E8F206A00450B66 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MAL Library.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
+				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
+				PRODUCT_NAME = "MAL Library";
+			};
+			name = Release;
+		};
 		9199BAA51E89836000F6E9FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -751,7 +1055,9 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -788,7 +1094,9 @@
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -800,6 +1108,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				913A11A81E8F206A00450B66 /* Debug */,
+				913A11A91E8F206A00450B66 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "MAL Library" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

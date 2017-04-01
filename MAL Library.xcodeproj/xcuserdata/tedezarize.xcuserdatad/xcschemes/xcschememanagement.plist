@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MAL Library (Mac App Store).xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>MAL Library.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>913A115F1E8F206A00450B66</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>918C0D3D1E8A00EC0037898E</key>
 		<dict>
 			<key>primary</key>

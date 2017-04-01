@@ -14,6 +14,7 @@
 #import "DonationWindowController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "Utility.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -33,7 +34,11 @@
     defaultValues[@"refreshlistonstart"] = @(0);
     defaultValues[@"appearance"] = @"Light";
     defaultValues[@"refreshautomatically"] = @(1);
+    #if defined(AppStore)
+    defaultValues[@"donated"] = @(1);
+    #else
     defaultValues[@"donated"] = @(0);
+    #endif
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"readingfilter"] = @(1);
     
@@ -44,9 +49,13 @@
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Ask to move application
-#ifdef DEBUG
-#else
+    #if defined(AppStore)
+    #else
+    #ifdef DEBUG
+    #else
     PFMoveToApplicationsFolderIfNecessary();
+    #endif
+    [Utility donateCheck:self];
     #endif
     // Load main window
     mainwindowcontroller = [MainWindow new];
@@ -75,8 +84,12 @@
         GeneralPref * genview =[[GeneralPref alloc] init];
         [genview setMainWindowController:mainwindowcontroller];
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
+        #if defined(AppStore)
+        NSArray *controllers = @[genview,loginViewController];
+        #else
         NSViewController *suViewController = [[SoftwareUpdatesPref alloc] init];
         NSArray *controllers = @[genview,loginViewController,suViewController];
+        #endif
         _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }
     return _preferencesWindowController;
@@ -124,12 +137,16 @@
     NSMutableString * copyrightstr = [NSMutableString new];
     NSDictionary *bundleDict = [[NSBundle mainBundle] infoDictionary];
     [copyrightstr appendFormat:@"%@ \r\r",[bundleDict objectForKey:@"NSHumanReadableCopyright"]];
+    #if defined(AppStore)
+    [copyrightstr appendString:@"Mac App Store version."];
+    #else
     if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"] boolValue]){
         [copyrightstr appendFormat:@"This copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
     }
     else {
         [copyrightstr appendString:@"UNREGISTERED COPY"];
     }
+    #endif
     [self.aboutWindowController setAppCopyright:[[NSAttributedString alloc] initWithString:copyrightstr
                                                                                 attributes:@{
                                                                                              NSForegroundColorAttributeName:[NSColor labelColor],

@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 
 @implementation Utility
-+(void)showsheetmessage:(NSString *)message
++ (void)showsheetmessage:(NSString *)message
             explaination:(NSString *)explaination
                  window:(NSWindow *)w {
     // Set Up Prompt Message Window
@@ -27,7 +27,7 @@
                      didEndSelector:nil
                         contextInfo:NULL];
 }
-+(NSString *)urlEncodeString:(NSString *)string{
++ (NSString *)urlEncodeString:(NSString *)string{
 	return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                                                                                   NULL,
                                                                                                   (CFStringRef)string,
@@ -35,7 +35,7 @@
                                                                                                   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                                                                                   kCFStringEncodingUTF8 ));
 }
-+(NSString *)retrieveApplicationSupportDirectory:(NSString*)append{
++ (NSString *)retrieveApplicationSupportDirectory:(NSString*)append{
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSError * error;
     NSString * bundlename = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
@@ -52,7 +52,7 @@
     }
     return dir;
 }
-+(id)saveJSON:(id) object withFilename:(NSString*) filename appendpath:(NSString*)appendpath replace:(bool)replace{
++ (id)saveJSON:(id) object withFilename:(NSString*) filename appendpath:(NSString*)appendpath replace:(bool)replace{
     //Save as json object
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&error];
@@ -77,7 +77,7 @@
     }
     return nil;
 }
-+(id)loadJSON:(NSString *)filename appendpath:(NSString*)appendpath{
++ (id)loadJSON:(NSString *)filename appendpath:(NSString*)appendpath{
     NSString * path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSString * fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
@@ -88,7 +88,7 @@
     }
     return nil;
 }
-+(bool)deleteFile:(NSString *)filename appendpath:(NSString*)appendpath{
++ (bool)deleteFile:(NSString *)filename appendpath:(NSString*)appendpath{
     NSString * path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSString * fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
@@ -101,7 +101,7 @@
     }
     return false;
 }
-+(NSString *)appendstringwithArray:(NSArray *) a{
++ (NSString *)appendstringwithArray:(NSArray *) a{
     NSMutableString *string = [NSMutableString new];
     for (int i=0; i < [a count]; i++){
         if (i == [a count]-1 && i != 0){
@@ -116,7 +116,7 @@
     }
     return (NSString *)string;
 }
-+(bool)checkifFileExists:(NSString *)filename appendPath:(NSString *) appendpath{
++ (bool)checkifFileExists:(NSString *)filename appendPath:(NSString *) appendpath{
     NSString * path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSString * fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
@@ -125,7 +125,7 @@
     }
     return false;
 }
-+(NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
++ (NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
     NSString * path = [Utility retrieveApplicationSupportDirectory:append];
     NSFileManager *filemanager = [NSFileManager defaultManager];
     if ([filemanager fileExistsAtPath:[NSString stringWithFormat:@"%@/%@",path, filename]]){
@@ -133,7 +133,7 @@
     }
     return [Utility retrieveimageandsave:filename withAppendPath:append fromURL:url];
 }
-+(NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
++ (NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
     NSImage * img = [[NSImage alloc] initWithContentsOfURL:url];
     CGImageRef cgref = [img CGImageForProposedRect:NULL context:nil hints:nil];
     NSBitmapImageRep * bitmaprep = [[NSBitmapImageRep alloc] initWithCGImage:cgref];
@@ -144,7 +144,7 @@
     [imgdata writeToFile: [NSString stringWithFormat:@"%@/%@",path, filename] atomically:TRUE];
     return [Utility loadImage:filename withAppendPath:append fromURL:url];
 }
-+(void)donateCheck:(AppDelegate*)delegate{
++ (void)donateCheck:(AppDelegate*)delegate{
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] == nil){
         [Utility setReminderDate];
     }
@@ -177,7 +177,7 @@
         }
     }
 }
-+(void)showDonateReminder:(AppDelegate*)delegate{
++ (void)showDonateReminder:(AppDelegate*)delegate{
     // Shows Donation Reminder
     NSAlert * alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:@"Donate"];
@@ -205,7 +205,7 @@
     }
 }
 
-+(void)setReminderDate{
++ (void)setReminderDate{
     //Sets Reminder Date
     NSDate *now = [NSDate date];
     NSDate * reminderdate = [now dateByAddingTimeInterval:60*60*24*14];

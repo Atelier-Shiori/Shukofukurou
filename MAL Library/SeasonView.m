@@ -48,7 +48,7 @@
 - (IBAction)seasonchange:(id)sender {
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
 }
--(void)populateseasonpopups{
+- (void)populateseasonpopups{
     if ([Utility checkifFileExists:@"index.json" appendPath:@"/seasondata/"]){
         [self populateyearpopup];
     }
@@ -56,7 +56,7 @@
         [self performseasonindexretrieval];
     }
 }
--(void)loadseasondata:(int)year forSeason:(NSString *)season{
+- (void)loadseasondata:(int)year forSeason:(NSString *)season{
     if (_seasonyrpicker.itemArray.count > 0){
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/seasondata/"]){
             NSMutableArray * sarray = [_seasonarraycontroller mutableArrayValueForKey:@"content"];
@@ -72,7 +72,7 @@
         }
     }
 }
--(void)populateyearpopup{
+- (void)populateyearpopup{
     [_seasonyrpicker removeAllItems];
     NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
     NSArray * a = d[@"years"];
@@ -84,7 +84,7 @@
     [_seasonyrpicker selectItemAtIndex:[[_seasonyrpicker itemArray] count]-1];
     [self populateseasonpopup];
 }
--(void)populateseasonpopup{
+- (void)populateseasonpopup{
     [_seasonpicker removeAllItems];
     NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
     NSArray * a = d[@"years"];
@@ -97,7 +97,7 @@
     }
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
 }
--(void)performseasonindexretrieval{
+- (void)performseasonindexretrieval{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [manager GET:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/index.json" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -107,7 +107,7 @@
         NSLog(@"Error: %@", error);
     }];
 }
--(void)performseasondataretrieval:(int)year forSeason:(NSString *)season loaddata:(bool)loaddata {
+- (void)performseasondataretrieval:(int)year forSeason:(NSString *)season loaddata:(bool)loaddata {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [manager GET:[NSString stringWithFormat:@"https://raw.githubusercontent.com/Atelier-Shiori/anime-season-json/master/data/%i-%@.json",year,season] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {

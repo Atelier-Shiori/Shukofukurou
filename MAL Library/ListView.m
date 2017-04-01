@@ -33,7 +33,7 @@
     [_mangalistview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
 }
 
--(void)loadList:(int)list{
+- (void)loadList:(int)list{
     if (list == 0){
         [[self view] replaceSubview:[[self.view subviews] objectAtIndex:0] with:_animelistview];
         currentlist = list;
@@ -46,7 +46,7 @@
     }
 }
 
--(void)populateList:(id)object type:(int)type{
+- (void)populateList:(id)object type:(int)type{
     if (type == 0){
         // Populates list
         NSMutableArray * a = [_animelistarraycontroller mutableArrayValueForKey:@"content"];
@@ -73,7 +73,7 @@
     }
     [self setToolbarButtonState];
 }
--(void)populatefiltercounts:(NSArray *)a type:(int)type{
+- (void)populatefiltercounts:(NSArray *)a type:(int)type{
     // Generates item counts for each status filter
     NSArray * filtered;
     if (type == 0){
@@ -152,7 +152,7 @@
 - (IBAction)filterperform:(id)sender {
     [self performfilter:currentlist];
 }
--(void)performfilter:(int)type{
+- (void)performfilter:(int)type{
     // This method generates a predicate rule to use as a filter
     NSMutableArray * predicateformat = [NSMutableArray new];
     NSMutableArray * predicateobjects = [NSMutableArray new];
@@ -290,7 +290,7 @@
         }
     }];
 }
--(NSArray *)obtainfilterstatus:(int)type{
+- (NSArray *)obtainfilterstatus:(int)type{
     // Generates an array of selected filters
     NSMutableArray * a = [NSMutableArray new];
     NSMutableArray * final = [NSMutableArray new];
@@ -322,7 +322,7 @@
     }
     return final;
 }
--(void)deletetitle{
+- (void)deletetitle{
     NSDictionary *d;
     NSNumber * selid;
     NSString * deleteURL;

@@ -49,7 +49,7 @@
     [self.view addSubview:[NSView new]];
 }
 
--(void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
+- (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
     [self view];
     NSNumber * idnum = d[@"id"];
     if (type == 0){
@@ -142,7 +142,7 @@
 - (IBAction)PerformAddTitle:(id)sender {
     [self addtitletolist];
 }
--(void)addtitletolist{
+- (void)addtitletolist{
     if (selectedtype == 0){
         [_addfield setEnabled:false];
         if(![_addstatusfield isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && selectedaircompleted){

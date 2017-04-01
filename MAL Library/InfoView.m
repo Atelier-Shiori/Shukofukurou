@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do view setup here.
 }
--(void)populateAnimeInfoView:(id)object{
+- (void)populateAnimeInfoView:(id)object{
     NSDictionary * d = object;
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];

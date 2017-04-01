@@ -39,7 +39,7 @@
 - (IBAction)changeappearence:(id)sender {
     [mainwindowcontroller setAppearance];
 }
--(void)setMainWindowController:(MainWindow*)mw{
+- (void)setMainWindowController:(MainWindow*)mw{
     mainwindowcontroller = mw;
 }
 

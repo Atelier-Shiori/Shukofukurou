@@ -132,7 +132,7 @@
     self.window.backgroundColor = self.backgroundColor;
 }
 
--(void) showCredits:(id)sender {
+- (void) showCredits:(id)sender {
 	if (self.windowState!=1) {
 		CGFloat amountToIncreaseHeight = 100;
 		NSRect oldFrame = [self.window frame];
@@ -145,7 +145,7 @@
     _textField.textColor = self.textColor;
 }
 
--(void) showEULA:(id)sender {
+- (void) showEULA:(id)sender {
 	if (self.windowState!=1) {
 		CGFloat amountToIncreaseHeight = 100;
 		NSRect oldFrame = [self.window frame];
@@ -158,7 +158,7 @@
     _textField.textColor = self.textColor;
 }
 
--(void) showCopyright:(id)sender {
+- (void) showCopyright:(id)sender {
 	if (self.windowState!=0) {
 		CGFloat amountToIncreaseHeight = -100;
 		NSRect oldFrame = [self.window frame];

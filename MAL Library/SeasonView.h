@@ -21,8 +21,8 @@
 - (IBAction)seasondoubleclick:(id)sender;
 - (IBAction)yearchange:(id)sender;
 - (IBAction)seasonchange:(id)sender;
--(void)populateseasonpopup;
--(void)populateyearpopup;
--(void)populateseasonpopups;
--(void)performseasonindexretrieval;
+- (void)populateseasonpopup;
+- (void)populateyearpopup;
+- (void)populateseasonpopups;
+- (void)performseasonindexretrieval;
 @end

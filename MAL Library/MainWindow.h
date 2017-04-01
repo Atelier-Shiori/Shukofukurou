@@ -64,21 +64,21 @@
 @property (strong, nonatomic) MSWeakTimer * refreshtimer;
 
 //Public Methods
--(void)setDelegate:(AppDelegate*) adelegate;
+- (void)setDelegate:(AppDelegate*) adelegate;
 - (IBAction)sharetitle:(id)sender;
--(void)loadmainview;
--(void)setAppearance;
--(void)startTimer;
--(void)stopTimer;
--(void)fireTimer;
--(void)refreshloginlabel;
+- (void)loadmainview;
+- (void)setAppearance;
+- (void)startTimer;
+- (void)stopTimer;
+- (void)fireTimer;
+- (void)refreshloginlabel;
 - (void)loadinfo:(NSNumber *) idnum type:(int)type;
--(void)populatesearchtb:(id)json type:(int)type;
--(void)clearsearchtb;
--(bool)checkiftitleisonlist:(int)idnum type:(int)type;
--(void)loadlist:(NSNumber *)refresh type:(int)type;
--(void)clearlist;
--(void)createToolbar;
+- (void)populatesearchtb:(id)json type:(int)type;
+- (void)clearsearchtb;
+- (bool)checkiftitleisonlist:(int)idnum type:(int)type;
+- (void)loadlist:(NSNumber *)refresh type:(int)type;
+- (void)clearlist;
+- (void)createToolbar;
 
 // Modify Popover
 - (IBAction)performmodifytitle:(id)sender;

@@ -26,7 +26,7 @@
 
 @implementation MainWindow
 
--(id)init{
+- (id)init{
     self = [super initWithWindowNibName:@"MainWindow"];
     if(!self)
         return nil;
@@ -82,6 +82,7 @@
     [_searchview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_seasonview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_notloggedin.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_requireslicense setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
     // Fix window size
     NSRect frame = [self.window frame];
@@ -121,7 +122,7 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.ateliershiori.moe/donate/"]];
 }
 
--(void)setDelegate:(AppDelegate*) adelegate{
+- (void)setDelegate:(AppDelegate*) adelegate{
     _appdel = adelegate;
 }
 
@@ -159,7 +160,7 @@
     // Show Share Box
     [sharePicker showRelativeToRect:[btn bounds] ofView:btn preferredEdge:NSMinYEdge];
 }
--(void)startTimer{
+- (void)startTimer{
     _refreshtimer =  [MSWeakTimer scheduledTimerWithTimeInterval:900
                                                           target:self
                                                         selector:@selector(fireTimer)
@@ -167,10 +168,10 @@
                                                          repeats:YES
                                                    dispatchQueue:_privateQueue];
 }
--(void)stopTimer{
+- (void)stopTimer{
     [_refreshtimer invalidate];
 }
--(void)fireTimer{
+- (void)fireTimer{
     if ([Keychain checkaccount]){
         [self loadlist:@(true) type:0];
         [self loadlist:@(true) type:1];
@@ -180,7 +181,7 @@
 - (void)windowWillClose:(NSNotification *)notification{
     [[NSApplication sharedApplication] terminate:0];
 }
--(void)setAppearance{
+- (void)setAppearance{
     NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
     NSString *appearancename;
     if ([appearence isEqualToString:@"Light"]){
@@ -200,7 +201,7 @@
     _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     [w setFrame:[w frame] display:false];
 }
--(void)refreshloginlabel{
+- (void)refreshloginlabel{
     if ([Keychain checkaccount]){
         _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@",[Keychain getusername]];
     }
@@ -273,7 +274,7 @@
 
 #pragma mark -
 #pragma mark Main View Control
--(void)loadmainview{
+- (void)loadmainview{
     NSRect mainviewframe = _mainview.frame;
     [_mainview addSubview:[NSView new]];
     long selectedrow = [sourceList selectedRow];
@@ -361,7 +362,7 @@
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithLong:selectedrow] forKey:@"selectedmainview"];
     [self createToolbar];
 }
--(void)createToolbar{
+- (void)createToolbar{
     NSArray *toolbaritems = [_toolbar items];
     // Remove Toolbar Items
     for (int i = 0; i < [toolbaritems count]; i++){
@@ -449,7 +450,7 @@
 }
 #pragma mark -
 #pragma mark Search View
--(void)populatesearchtb:(id)json type:(int)type{
+- (void)populatesearchtb:(id)json type:(int)type{
     if (type == 0){
         NSMutableArray * a = [_searchview.searcharraycontroller content];
         [a removeAllObjects];
@@ -472,7 +473,7 @@
     }
 }
 
--(void)clearsearchtb{
+- (void)clearsearchtb{
     [_searchview clearsearchtb];
 }
 
@@ -495,7 +496,7 @@
         [_seasonview performseasonindexretrieval];
     }
 }
--(void)loadlist:(NSNumber *)refresh type:(int)type{
+- (void)loadlist:(NSNumber *)refresh type:(int)type{
     id list;
     bool refreshlist = refresh.boolValue;
     if (type == 0){
@@ -535,7 +536,7 @@
         }
     }
 }
--(void)clearlist{
+- (void)clearlist{
     //Clears List
     NSMutableArray * a = [_listview.animelistarraycontroller content];
     [a removeAllObjects];
@@ -639,7 +640,7 @@
         }];
     }
 }
--(bool)checkiftitleisonlist:(int)idnum type:(int)type{
+- (bool)checkiftitleisonlist:(int)idnum type:(int)type{
     if (type == 0){
         NSArray * list = [_listview.animelistarraycontroller content];
         list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
@@ -656,7 +657,7 @@
     }
     return false;
 }
--(id)retreveentryfromlist:(int)idnum type:(int)type{
+- (id)retreveentryfromlist:(int)idnum type:(int)type{
     if (type == 0){
         NSArray * list = [_listview.animelistarraycontroller content];
         list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];

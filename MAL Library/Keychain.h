@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Keychain : NSObject
-+(BOOL)checkaccount;
-+(NSString *)getusername;
-+(BOOL)storeaccount:(NSString *)uname password:(NSString *)password;
-+(BOOL)removeaccount;
-+(NSString *)getBase64;
++ (BOOL)checkaccount;
++ (NSString *)getusername;
++ (BOOL)storeaccount:(NSString *)uname password:(NSString *)password;
++ (BOOL)removeaccount;
++ (NSString *)getBase64;
 @end

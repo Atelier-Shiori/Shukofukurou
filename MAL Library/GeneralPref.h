@@ -13,7 +13,7 @@
     MainWindow * mainwindowcontroller;
 }
 - (IBAction)changeappearence:(id)sender;
--(void)setMainWindowController:(MainWindow*)mw;
+- (void)setMainWindowController:(MainWindow*)mw;
 - (IBAction)performtoggletimer:(id)sender;
 - (IBAction)clearimages:(id)sender;
 

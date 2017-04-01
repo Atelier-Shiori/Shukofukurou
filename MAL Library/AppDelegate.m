@@ -23,7 +23,7 @@
 @end
 
 @implementation AppDelegate
-+(void)initialize{
++ (void)initialize{
     
     //Create a Dictionary
     NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
@@ -74,7 +74,7 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
--(MainWindow *)getMainWindowController{
+- (MainWindow *)getMainWindowController{
     return mainwindowcontroller;
 }
 - (NSWindowController *)preferencesWindowController
@@ -98,7 +98,7 @@
 - (IBAction)showpreferences:(id)sender {
         [self.preferencesWindowController showWindow:nil];
 }
--(void)showloginnotice{
+- (void)showloginnotice{
     if (![Keychain checkaccount]) {
         // First time prompt
         NSAlert * alert = [[NSAlert alloc] init] ;
@@ -117,7 +117,7 @@
     }
 
 }
--(void)showloginpref{
+- (void)showloginpref{
     [self.preferencesWindowController showWindow:nil];
     [(MASPreferencesWindowController *)self.preferencesWindowController selectControllerAtIndex:1];
 }
@@ -155,7 +155,7 @@
     [self.aboutWindowController showWindow:nil];
     
 }
--(IBAction)getHelp:(id)sender{
+- (IBAction)getHelp:(id)sender{
     //Show Help
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/MALLibrary/wiki/Getting-Started"]];
 }

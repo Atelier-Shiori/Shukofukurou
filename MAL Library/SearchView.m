@@ -102,7 +102,7 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     [self setToolbarButtonStatus];
 }
--(void)setToolbarButtonStatus{
+- (void)setToolbarButtonStatus{
     if (currentsearch == AnimeSearch){
         if ([[_searcharraycontroller selectedObjects] count] > 0){
             [_addtitleitem setEnabled:YES];
@@ -120,7 +120,7 @@
         }
     }
 }
--(void)clearsearchtb{
+- (void)clearsearchtb{
     if (currentsearch == AnimeSearch){
         [[_searcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
         [_searchtb reloadData];

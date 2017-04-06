@@ -130,7 +130,7 @@
             </subviews>
             <point key="canvasLocation" x="96" y="752"/>
         </customView>
-        <customView identifier="searchview" id="b3v-Bf-Onm" userLabel="mangasearchview">
+        <customView identifier="mangasearchview" id="b3v-Bf-Onm" userLabel="mangasearchview">
             <rect key="frame" x="0.0" y="0.0" width="563" height="398"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -148,7 +148,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="titlecol" editable="NO" width="400" minWidth="40" maxWidth="1000" id="flB-rc-Al4">
+                                    <tableColumn identifier="mangatitlecol" editable="NO" width="400" minWidth="40" maxWidth="1000" id="flB-rc-Al4">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -188,7 +188,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="volumescol]" editable="NO" width="74" minWidth="10" maxWidth="100" id="mVy-nv-Bcl">
+                                    <tableColumn identifier="volumescol" editable="NO" width="74" minWidth="10" maxWidth="100" id="mVy-nv-Bcl">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Volumes">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

@@ -20,6 +20,7 @@
 @class SearchView;
 @class SeasonView;
 @class InfoView;
+@class AdvancedSearch;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -41,6 +42,7 @@
 //Search View
 @property (strong) IBOutlet SearchView * searchview;
 @property (strong) IBOutlet NSPopover *advsearchpopover;
+    @property (strong) IBOutlet AdvancedSearch *advancedsearchcontroller;
 // Info View
 @property (strong) IBOutlet NSVisualEffectView *progressview;
 @property (strong) IBOutlet NSProgressIndicator *progressindicator;

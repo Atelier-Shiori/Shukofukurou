@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="addpopover" destination="XPV-h5-bEU" id="axW-OG-EM0"/>
                 <outlet property="addtitlecontroller" destination="WWH-Kx-8dQ" id="qjM-eG-o1K"/>
+                <outlet property="advancedsearchcontroller" destination="aSh-hJ-Fpb" id="YDJ-Vs-j3N"/>
                 <outlet property="advsearchpopover" destination="o05-dg-F2u" id="8nj-Kh-UcI"/>
                 <outlet property="editviewcontroller" destination="w9r-Zw-PrM" id="5wH-sy-WVV"/>
                 <outlet property="infoview" destination="4iy-i9-GZD" id="oXl-Eu-DXx"/>

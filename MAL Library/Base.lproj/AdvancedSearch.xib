@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -8,9 +8,11 @@
         <customObject id="-2" userLabel="File's Owner" customClass="AdvancedSearch">
             <connections>
                 <outlet property="airstatus" destination="Rv0-5y-wpE" id="dtN-UV-WlP"/>
+                <outlet property="animestatusmenu" destination="Zgt-Tn-fjT" id="Y0E-fc-ojO"/>
                 <outlet property="enddate" destination="MhM-Dt-PAe" id="Z6D-nm-suZ"/>
                 <outlet property="exclude" destination="40g-m3-R3c" id="FTN-Eq-R93"/>
                 <outlet property="genretokenfield" destination="pEi-0a-QBE" id="1Sm-Wr-eeW"/>
+                <outlet property="mangastatusmenu" destination="dha-19-ghU" id="RjO-u0-Z2E"/>
                 <outlet property="minscore" destination="hsL-Cx-wev" id="IL7-Qg-fm7"/>
                 <outlet property="rating" destination="n48-bo-arP" id="4yq-nt-Ido"/>
                 <outlet property="searchfield" destination="UcF-sv-Ysm" id="NzB-ts-XMz"/>
@@ -201,19 +203,10 @@
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rv0-5y-wpE">
                     <rect key="frame" x="151" y="35" width="209" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="All" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="iG4-CF-Zcv" id="lUs-YT-BX8">
+                    <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="lUs-YT-BX8">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
-                        <menu key="menu" id="Ivx-WW-t0D">
-                            <items>
-                                <menuItem title="All" state="on" id="iG4-CF-Zcv"/>
-                                <menuItem title="Currently Airing" tag="1" id="2r6-XB-0Bl"/>
-                                <menuItem title="Finished Airing" tag="2" id="Ndq-wU-vDi"/>
-                                <menuItem title="Not yet aired" tag="3" id="Ond-or-Oco">
-                                    <modifierMask key="keyEquivalentModifierMask"/>
-                                </menuItem>
-                            </items>
-                        </menu>
+                        <menu key="menu" id="Ivx-WW-t0D"/>
                     </popUpButtonCell>
                 </popUpButton>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n48-bo-arP">
@@ -246,5 +239,25 @@
             </subviews>
             <point key="canvasLocation" x="130.5" y="533.5"/>
         </customView>
+        <menu id="Zgt-Tn-fjT" userLabel="anime">
+            <items>
+                <menuItem title="All" state="on" id="iG4-CF-Zcv"/>
+                <menuItem title="Currently Airing" tag="1" id="2r6-XB-0Bl"/>
+                <menuItem title="Finished Airing" tag="2" id="Ndq-wU-vDi"/>
+                <menuItem title="Not yet aired" tag="3" id="Ond-or-Oco">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+        <menu id="dha-19-ghU" userLabel="manga">
+            <items>
+                <menuItem title="All" state="on" id="Lz0-7l-jvd"/>
+                <menuItem title="Currently Publishing" tag="1" id="7kH-6K-vRz"/>
+                <menuItem title="Finished " tag="2" id="Nqv-5d-oip"/>
+                <menuItem title="Not yet published" tag="3" id="bU1-he-AaS">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
     </objects>
 </document>

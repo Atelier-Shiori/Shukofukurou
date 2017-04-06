@@ -13,8 +13,31 @@
 #import "Utility.h"
 
 
-@interface AdvancedSearch ()
-
+@interface AdvancedSearch (){
+    int searchtype;
+}
+    // Anime
+    @property (strong) NSString *animekeyword;
+    @property (strong) NSString *animegenre;
+    @property long animeexclude;
+    @property long animeusestartdate;
+    @property long animeuseenddate;
+    @property (strong) NSDate * animestartdate;
+    @property (strong) NSDate * animeenddate;
+    @property (strong) NSString * animescore;
+    @property long animestatus;
+    @property long animerating;
+    // Manga
+    @property (strong) NSString *mangakeyword;
+    @property (strong) NSString *mangagenre;
+    @property long mangaexclude;
+    @property long mangausestartdate;
+    @property long mangauseenddate;
+    @property (strong) NSDate * mangastartdate;
+    @property (strong) NSDate * mangaenddate;
+    @property (strong) NSString * mangascore;
+    @property long mangastatus;
+    @property long mangarating;
 @end
 
 @implementation AdvancedSearch
@@ -28,9 +51,46 @@
     // Do view setup here.
     // Set dates
     [self resetdate];
+    [self setDefaultValues];
+    [self view];
+    [self setSearchType:searchtype];
 
 }
-
+- (void)setSearchType:(int)type{
+    [self saveSearchValuesForType:searchtype];
+    if (type == 0){
+        [_airstatus setMenu:_animestatusmenu];
+        [_airstatus selectItemAtIndex:0];
+        _searchfield.stringValue = _animekeyword;
+        _genretokenfield.stringValue = _animegenre;
+        _exclude.state = _animeexclude;
+        _usestartdate.state = _animeusestartdate;
+        _useenddate.state = _animeuseenddate;
+        _minscore.stringValue = _animescore;
+        [_startdate setDateValue:_animestartdate];
+        [_enddate setDateValue:_animeenddate];
+        [_airstatus selectItemAtIndex:_animestatus];
+        [_rating selectItemAtIndex:_animerating];
+    }
+    else {
+        [_airstatus setMenu:_mangastatusmenu];
+        [_airstatus selectItemAtIndex:0];
+        _searchfield.stringValue = _mangakeyword;
+        _genretokenfield.stringValue = _mangagenre;
+        _exclude.state = _mangaexclude;
+        _usestartdate.state = _mangausestartdate;
+        _useenddate.state = _mangauseenddate;
+        _minscore.stringValue = _mangascore;
+        [_startdate setDateValue:_mangastartdate];
+        [_enddate setDateValue:_mangaenddate];
+        [_airstatus selectItemAtIndex:_mangastatus];
+        [_rating selectItemAtIndex:_mangarating];
+    }
+    if ([[_airstatus title] length] == 0){
+        [_airstatus setTitle:@"All"];
+    }
+    searchtype = type;
+}
 - (IBAction)performadvancedsearch:(id)sender {
     __block NSButton * btn = sender;
     [popover setBehavior:NSPopoverBehaviorApplicationDefined];
@@ -54,17 +114,26 @@
     [d setValue:@(_rating.selectedTag) forKey:@"rating"];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"https://malapi.ateliershiori.moe/2.1/anime/browse" parameters:d progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [mw populatesearchtb:responseObject type:0];
+    NSString * URL;
+    if (searchtype == 0){
+        URL = @"https://malapi.ateliershiori.moe/2.1/anime/browse";
+    }
+    else {
+        URL = @"https://malapi.ateliershiori.moe/2.1/manga/browse";
+    }
+    [manager GET:URL parameters:d progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [mw populatesearchtb:responseObject type:searchtype];
         [btn setEnabled:YES];
         [popover setBehavior:NSPopoverBehaviorTransient];
         [popover close];
+        [self saveSearchValuesForType:searchtype];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         [mw clearsearchtb];
         [btn setEnabled:YES];
         [popover setBehavior:NSPopoverBehaviorTransient];
         [popover close];
+        [self saveSearchValuesForType:searchtype];
     }];
 }
 - (IBAction)usedaterange:(id)sender {
@@ -97,5 +166,53 @@
 - (void)resetdate{
     [_startdate setDateValue:[[NSDate alloc] initWithTimeIntervalSinceNow:-315360000]]; // Last 10 years from today's date
     [_enddate setDateValue:[NSDate date]];
+}
+- (void)saveSearchValuesForType:(int)type{
+    if (type == 0){
+        _animekeyword = _searchfield.stringValue;
+        _animegenre = _genretokenfield.stringValue;
+        _animeexclude = _exclude.state;
+        _animeusestartdate = _usestartdate.state;
+        _animeuseenddate = _useenddate.state;
+        _animestartdate = _startdate.dateValue;
+        _animeenddate = _enddate.dateValue;
+        _animescore = _minscore.stringValue;
+        _animestatus = _airstatus.indexOfSelectedItem;
+        _animerating = _rating.indexOfSelectedItem;
+    }
+    else {
+        _mangakeyword = _searchfield.stringValue;
+        _mangagenre = _genretokenfield.stringValue;
+        _mangaexclude = _exclude.state;
+        _mangausestartdate = _usestartdate.state;
+        _mangauseenddate = _useenddate.state;
+        _mangastartdate = _startdate.dateValue;
+        _mangaenddate = _enddate.dateValue;
+        _mangascore = _minscore.stringValue;
+        _mangastatus = _airstatus.indexOfSelectedItem;
+        _mangarating = _rating.indexOfSelectedItem;
+    }
+}
+- (void)setDefaultValues{
+    _animekeyword = _searchfield.stringValue;
+    _animegenre = _genretokenfield.stringValue;
+    _animeexclude = _exclude.state;
+    _animeusestartdate = _usestartdate.state;
+    _animeuseenddate = _useenddate.state;
+    _animestartdate = _startdate.dateValue;
+    _animeenddate = _enddate.dateValue;
+    _animescore = _minscore.stringValue;
+    _animestatus = _airstatus.indexOfSelectedItem;
+    _animerating = _rating.indexOfSelectedItem;
+    _mangakeyword = _searchfield.stringValue;
+    _mangagenre = _genretokenfield.stringValue;
+    _mangaexclude = _exclude.state;
+    _mangausestartdate = _usestartdate.state;
+    _mangauseenddate = _useenddate.state;
+    _mangastartdate = _startdate.dateValue;
+    _mangaenddate = _enddate.dateValue;
+    _mangascore = _minscore.stringValue;
+    _mangastatus = _airstatus.indexOfSelectedItem;
+    _mangarating = _rating.indexOfSelectedItem;
 }
 @end

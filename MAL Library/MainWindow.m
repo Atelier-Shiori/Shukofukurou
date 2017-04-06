@@ -19,6 +19,7 @@
 #import "SearchView.h"
 #import "InfoView.h"
 #import "SeasonView.h"
+#import "AdvancedSearch.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -414,8 +415,8 @@
                 indexoffset = -1;
             }
             [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
-            //[_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
         }
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
@@ -479,6 +480,14 @@
 
 - (IBAction)showadvancedpopover:(id)sender {
     NSButton * btn = (NSButton *)sender;
+    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
+    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    if ([identifier isEqualToString:@"search"]){
+        [_advancedsearchcontroller setSearchType:0];
+    }
+    else if ([identifier isEqualToString:@"mangasearch"]){
+        [_advancedsearchcontroller setSearchType:1];
+    }
     // Show Share Box
     [_advsearchpopover showRelativeToRect:[btn bounds] ofView:btn preferredEdge:NSMaxYEdge];
 }
@@ -489,8 +498,8 @@
     if ([identifier isEqualToString:@"animelist"]){
         [self loadlist:@(true) type:0];
     }
-    if ([identifier isEqualToString:@"mangalist"]){
-        [self loadlist:@(true) type:0];
+    else if ([identifier isEqualToString:@"mangalist"]){
+        [self loadlist:@(true) type:1];
     }
     else if ([identifier isEqualToString:@"seasons"]){
         [_seasonview performseasonindexretrieval];

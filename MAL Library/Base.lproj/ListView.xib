@@ -39,7 +39,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="eGM-Vy-iY0">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="QGW-Oe-htQ" id="etv-3f-0Uh" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
@@ -177,7 +177,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
-                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
+                        <rect key="frame" x="-8" y="23" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="B5h-dx-wLN">
@@ -274,7 +274,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="46" y="955"/>
         </customView>
-        <customView identifier="ListView" id="eI4-4E-pGL" userLabel="MangaList">
+        <customView identifier="mangaListView" id="eI4-4E-pGL" userLabel="MangaList">
             <rect key="frame" x="0.0" y="0.0" width="564" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -292,7 +292,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="title" editable="NO" width="230" minWidth="40" maxWidth="1000" id="RPx-Ue-cHA">
+                                    <tableColumn identifier="mangatitle" editable="NO" width="230" minWidth="40" maxWidth="1000" id="RPx-Ue-cHA">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -312,7 +312,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="Episodes" editable="NO" width="60" minWidth="60" maxWidth="60" id="FdI-rc-1zn">
+                                    <tableColumn identifier="chapters" editable="NO" width="60" minWidth="60" maxWidth="60" id="FdI-rc-1zn">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Chapters">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -337,7 +337,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="progress" editable="NO" width="55" minWidth="10" maxWidth="70" id="kHv-2Q-EdN">
+                                    <tableColumn identifier="chapprogress" editable="NO" width="55" minWidth="10" maxWidth="70" id="kHv-2Q-EdN">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Progress">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -352,7 +352,7 @@
                                             <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.chapters_read" previousBinding="Kcb-oo-Xk8" id="R4Q-yv-9rH"/>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="type" editable="NO" width="60" minWidth="60" maxWidth="60" id="qlV-Uo-Pgt">
+                                    <tableColumn identifier="volumes" editable="NO" width="60" minWidth="60" maxWidth="60" id="qlV-Uo-Pgt">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Volumes">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -377,7 +377,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="score" editable="NO" width="50" minWidth="50" maxWidth="50" id="nxv-5k-q0g">
+                                    <tableColumn identifier="mangascore" editable="NO" width="50" minWidth="50" maxWidth="50" id="nxv-5k-q0g">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Score">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -397,7 +397,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="watchstatus" editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="YFY-cm-gEc">
+                                    <tableColumn identifier="readstatus" editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="YFY-cm-gEc">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Status">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

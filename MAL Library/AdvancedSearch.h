@@ -22,7 +22,10 @@
 @property (strong) IBOutlet NSButton *useenddate;
 @property (strong) IBOutlet NSPopUpButton *airstatus;
 @property (strong) IBOutlet NSPopUpButton *rating;
+@property (strong) IBOutlet NSMenu *animestatusmenu;
+@property (strong) IBOutlet NSMenu *mangastatusmenu;
 
 @property (strong) IBOutlet NSSearchField *searchfield;
 - (IBAction)performadvancedsearch:(id)sender;
+- (void)setSearchType:(int)type;
 @end

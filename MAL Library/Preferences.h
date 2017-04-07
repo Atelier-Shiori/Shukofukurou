@@ -13,5 +13,6 @@
 #import "GeneralPref.h"
 #import "SoftwareUpdatesPref.h"
 #import "LoginPref.h"
+#import "AdvancedPref.h"
 
 #endif

@@ -329,12 +329,12 @@
     if (currentlist == 0){
         d = [[_animelistarraycontroller selectedObjects] objectAtIndex:0];
         selid = d[@"id"];
-        deleteURL = [NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%i", selid.intValue];
+        deleteURL = [NSString stringWithFormat:@"%@/2.1/animelist/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], selid.intValue];
     }
     else {
         d = [[_mangalistarraycontroller selectedObjects] objectAtIndex:0];
         selid = d[@"id"];
-        deleteURL = [NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/mangalist/manga/%i", selid.intValue];
+        deleteURL = [NSString stringWithFormat:@"%@/2.1/mangalist/manga/%i", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], selid.intValue];
     }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];

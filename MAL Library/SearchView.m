@@ -58,7 +58,7 @@
     if ([_searchtitlefield.stringValue length] > 0){
         if (currentsearch == AnimeSearch){
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/anime/search?q=%@",[Utility urlEncodeString:_searchtitlefield.stringValue]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 [mw populatesearchtb:responseObject type:currentsearch];
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 NSLog(@"Error: %@", error);
@@ -66,7 +66,7 @@
         }
         else {
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/manga/search?q=%@",[Utility urlEncodeString:_searchtitlefield.stringValue]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 [mw populatesearchtb:responseObject type: currentsearch];
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 NSLog(@"Error: %@", error);

@@ -104,7 +104,7 @@
                 [_addvolnumformat setMaximum:nil];
             }
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/manga/%i",idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 selecteditem = responseObject;
                 NSString *publishtatus = selecteditem[@"status"];
                 if ([publishtatus isEqualToString:@"finished"]){
@@ -162,7 +162,7 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager POST:@"https://malapi.ateliershiori.moe/2.1/animelist/anime" parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:0];
             [_addfield setEnabled:true];
             [_addpopover setBehavior:NSPopoverBehaviorTransient];
@@ -195,7 +195,7 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager POST:@"https://malapi.ateliershiori.moe/2.1/mangalist/manga" parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:1];
             [_addmangabtn setEnabled:true];
             [_addpopover setBehavior:NSPopoverBehaviorTransient];

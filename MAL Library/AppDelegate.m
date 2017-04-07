@@ -41,6 +41,7 @@
     #endif
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"readingfilter"] = @(1);
+    defaultValues[@"malapiurl"] = @"https://malapi.ateliershiori.moe";
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
@@ -84,11 +85,12 @@
         GeneralPref * genview =[[GeneralPref alloc] init];
         [genview setMainWindowController:mainwindowcontroller];
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
+        NSViewController *advancedviewController = [AdvancedPref new];
         #if defined(AppStore)
-        NSArray *controllers = @[genview,loginViewController];
+        NSArray *controllers = @[genview,loginViewController,advancedviewController];
         #else
         NSViewController *suViewController = [[SoftwareUpdatesPref alloc] init];
-        NSArray *controllers = @[genview,loginViewController,suViewController];
+        NSArray *controllers = @[genview,loginViewController,suViewController,advancedviewController];
         #endif
         _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }

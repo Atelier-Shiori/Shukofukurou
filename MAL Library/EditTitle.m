@@ -154,7 +154,7 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager PUT:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/animelist/anime/%@", @(selectededitid)] parameters:@{ @"status":_minipopoverstatus.title, @"score":@(_minipopoverscore.intValue), @"episodes":@(_minipopoverepfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_minipopoverstatus.title, @"score":@(_minipopoverscore.intValue), @"episodes":@(_minipopoverepfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:selectedtype];
             [_minipopovereditbtn setEnabled:true];
             [_minieditpopover setBehavior:NSPopoverBehaviorTransient];
@@ -193,7 +193,7 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager PUT:[NSString stringWithFormat:@"https://malapi.ateliershiori.moe/2.1/mangalist/manga/%@", @(selectededitid)] parameters:@{ @"status":_mangapopoverstatus.title, @"score":@(_mangapopoverscore.intValue), @"chapters":@(_mangapopoverchapfield.intValue),@"volumes":@(_mangapopovervolfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_mangapopoverstatus.title, @"score":@(_mangapopoverscore.intValue), @"chapters":@(_mangapopoverchapfield.intValue),@"volumes":@(_mangapopovervolfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:selectedtype];
             [_mangapopovereditbtn setEnabled:true];
             [_minieditpopover setBehavior:NSPopoverBehaviorTransient];

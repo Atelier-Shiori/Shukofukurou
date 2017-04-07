@@ -116,10 +116,10 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString * URL;
     if (searchtype == 0){
-        URL = @"https://malapi.ateliershiori.moe/2.1/anime/browse";
+        URL = [NSString stringWithFormat:@"%@/2.1/anime/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
     }
     else {
-        URL = @"https://malapi.ateliershiori.moe/2.1/manga/browse";
+        URL = [NSString stringWithFormat:@"%@/2.1/manga/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
     }
     [manager GET:URL parameters:d progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [mw populatesearchtb:responseObject type:searchtype];

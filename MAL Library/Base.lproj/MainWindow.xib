@@ -414,7 +414,7 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Mt7-WY-45F"/>
-                    <toolbarItem implicitItemIdentifier="F8DE7553-EAA2-4394-967D-77376189FB67" explicitItemIdentifier="advsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="AdvancedSearch" image="NSActionTemplate" id="34Q-Qt-FYM">
+                    <toolbarItem implicitItemIdentifier="F8DE7553-EAA2-4394-967D-77376189FB67" explicitItemIdentifier="advsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="Advanced Search" image="NSActionTemplate" id="34Q-Qt-FYM">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="zKh-eH-mHX">

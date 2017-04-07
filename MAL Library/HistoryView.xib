@@ -43,7 +43,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <connections>
                                             <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.title" id="hUy-7H-AEh">
                                                 <dictionary key="options">
@@ -63,7 +63,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <connections>
                                             <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.type" id="RqV-pQ-SiG">
                                                 <dictionary key="options">
@@ -72,7 +72,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="lastupdated" width="116" minWidth="10" maxWidth="3.4028234663852886e+38" id="qtu-Li-QWM">
+                                    <tableColumn identifier="lastupdated" editable="NO" width="116" minWidth="10" maxWidth="3.4028234663852886e+38" id="qtu-Li-QWM">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Last Updated">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -83,7 +83,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
                                         <connections>
                                             <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.last_updated" id="FGy-UN-5ah"/>
                                         </connections>
@@ -96,7 +96,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cig-Ss-qvG">
-                        <rect key="frame" x="0.0" y="406" width="430" height="15"/>
+                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="UQR-6L-hb7">

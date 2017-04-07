@@ -21,6 +21,7 @@
 @class SeasonView;
 @class InfoView;
 @class AdvancedSearch;
+@class HistoryView;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -48,6 +49,9 @@
 @property (strong) IBOutlet NSProgressIndicator *progressindicator;
 @property (strong) IBOutlet NSView *noinfoview;
 @property (strong) IBOutlet InfoView *infoview;
+
+// History View
+@property (strong) IBOutlet HistoryView *historyview;
 
 //Season View
 @property (strong) IBOutlet SeasonView * seasonview;

@@ -20,6 +20,7 @@
 #import "InfoView.h"
 #import "SeasonView.h"
 #import "AdvancedSearch.h"
+#import "HistoryView.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -40,7 +41,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -55,13 +56,15 @@
     [animelistItem setIcon:[NSImage imageNamed:@"library"]];
     PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
     [mangalistItem setIcon:[NSImage imageNamed:@"library"]];
-    [libraryItem setChildren:[NSArray arrayWithObjects:animelistItem, mangalistItem, nil]];
+    PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
+    [historyItem setIcon:[NSImage imageNamed:@"history"]];
+    [libraryItem setChildren:[NSArray arrayWithObjects:animelistItem, mangalistItem, historyItem, nil]];
     // Search
     PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
     PXSourceListItem *searchItem = [PXSourceListItem itemWithTitle:@"Anime" identifier:@"search"];
-    [searchItem setIcon:[NSImage imageNamed:@"search"]];
+    [searchItem setIcon:[NSImage imageNamed:@"anime"]];
     PXSourceListItem *mangasearchItem = [PXSourceListItem itemWithTitle:@"Manga" identifier:@"mangasearch"];
-    [mangasearchItem setIcon:[NSImage imageNamed:@"search"]];
+    [mangasearchItem setIcon:[NSImage imageNamed:@"manga"]];
     [searchgroupItem setChildren:[NSArray arrayWithObjects:searchItem, mangasearchItem, nil]];
     // Discover Group
     PXSourceListItem *discoverItem = [PXSourceListItem itemWithTitle:@"DISCOVER" identifier:@"discover"];
@@ -79,6 +82,7 @@
     // Set Resizeing mask
     [_infoview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_listview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_historyview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_progressview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_searchview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_seasonview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
@@ -109,6 +113,7 @@
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
     [self loadlist:shouldrefresh type:0];
     [self loadlist:shouldrefresh type:1];
+    [self loadlist:shouldrefresh type:2];
     NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
         [self startTimer];
@@ -176,6 +181,7 @@
     if ([Keychain checkaccount]){
         [self loadlist:@(true) type:0];
         [self loadlist:@(true) type:1];
+        [self loadlist:@(true) type:2];
     }
 }
 
@@ -292,12 +298,10 @@
                 [_listview.animelistview setFrameOrigin:origin];
             }
             else {
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_notloggedin.view];
-                _notloggedin.view.frame = mainviewframe;
-                [_notloggedin.view setFrameOrigin:origin];
+                [self loadNotLoggedIn];
             }
         }
-        if ([identifier isEqualToString:@"mangalist"]){
+        else if ([identifier isEqualToString:@"mangalist"]){
             if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
                 if ([Keychain checkaccount]){
                     [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_listview.view];
@@ -308,15 +312,21 @@
                     [_listview.mangalistview setFrameOrigin:origin];
                 }
                 else {
-                    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_notloggedin.view];
-                    _notloggedin.view.frame = mainviewframe;
-                    [_notloggedin.view setFrameOrigin:origin];
+                     [self loadNotLoggedIn];
                 }
             }
             else {
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_requireslicense];
-                _requireslicense.frame = mainviewframe;
-                [_requireslicense setFrameOrigin:origin];
+                [self loadnotLicensed];
+            }
+        }
+        else if ([identifier isEqualToString:@"history"]){
+            if ([Keychain checkaccount]){
+                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_historyview.view];
+                _historyview.view.frame = mainviewframe;
+                [_historyview.view setFrameOrigin:origin];
+            }
+            else{
+                [self loadNotLoggedIn];
             }
         }
         else if ([identifier isEqualToString:@"search"]){
@@ -339,7 +349,7 @@
             else {
                 [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_requireslicense];
                 _requireslicense.frame = mainviewframe;
-                [_requireslicense setFrameOrigin:origin];
+                [self loadnotLicensed];
             }
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
@@ -363,6 +373,20 @@
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithLong:selectedrow] forKey:@"selectedmainview"];
     [self createToolbar];
 }
+- (void)loadNotLoggedIn{
+    NSRect mainviewframe = _mainview.frame;
+    NSPoint origin = NSMakePoint(0, 0);
+    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_notloggedin.view];
+    _notloggedin.view.frame = mainviewframe;
+    [_notloggedin.view setFrameOrigin:origin];
+}
+- (void)loadnotLicensed{
+    NSRect mainviewframe = _mainview.frame;
+    NSPoint origin = NSMakePoint(0, 0);
+    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_requireslicense];
+    _requireslicense.frame = mainviewframe;
+    [_requireslicense setFrameOrigin:origin];
+}
 - (void)createToolbar{
     NSArray *toolbaritems = [_toolbar items];
     // Remove Toolbar Items
@@ -383,7 +407,7 @@
             [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
         }
     }
-    if ([identifier isEqualToString:@"mangalist"]){
+    else if ([identifier isEqualToString:@"mangalist"]){
         if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
             if ([Keychain checkaccount]){
                 [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
@@ -394,6 +418,12 @@
                 [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
             }
         }
+    }
+    else if ([identifier isEqualToString:@"history"]){
+        if ([Keychain checkaccount]){
+            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:0];
+        }
+        
     }
     else if ([identifier isEqualToString:@"search"]){
         if ([Keychain checkaccount]){
@@ -501,6 +531,9 @@
     else if ([identifier isEqualToString:@"mangalist"]){
         [self loadlist:@(true) type:1];
     }
+    else if ([identifier isEqualToString:@"history"]){
+        [self loadlist:@(true) type:2];
+    }
     else if ([identifier isEqualToString:@"seasons"]){
         [_seasonview performseasonindexretrieval];
     }
@@ -508,41 +541,49 @@
 - (void)loadlist:(NSNumber *)refresh type:(int)type{
     id list;
     bool refreshlist = refresh.boolValue;
-    if (type == 0){
-        bool exists = [Utility checkifFileExists:@"animelist.json" appendPath:@""];
-        list = [Utility loadJSON:@"animelist.json" appendpath:@""];
-        if (exists && !refreshlist){
-            [_listview populateList:list type:0];
-            return;
-        }
-        else if (!exists || refreshlist){
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-
-        [manager GET:[NSString stringWithFormat:@"%@/2.1/animelist/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
-        
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
-            NSLog(@"%@", error.userInfo);
-        }];
-        }
-    }
-    else {
-        bool exists = [Utility checkifFileExists:@"mangalist.json" appendPath:@""];
-        list = [Utility loadJSON:@"mangalist.json" appendpath:@""];
-        if (exists && !refreshlist){
-            [_listview populateList:list type:1];
-            return;
-        }
-        else if (!exists || refreshlist){
+    bool exists = false;
+    switch (type) {
+        case 0:
+            exists = [Utility checkifFileExists:@"animelist.json" appendPath:@""];
+            list = [Utility loadJSON:@"animelist.json" appendpath:@""];
+            if (exists && !refreshlist){
+                [_listview populateList:list type:0];
+                return;
+            }
+            else if (!exists || refreshlist){
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
+            [manager GET:[NSString stringWithFormat:@"%@/2.1/animelist/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
             
-            [manager GET:[NSString stringWithFormat:@"%@/2.1/mangalist/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
-                
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 NSLog(@"%@", error.userInfo);
             }];
-        }
+            }
+            break;
+        case 1:
+            exists = [Utility checkifFileExists:@"mangalist.json" appendPath:@""];
+            list = [Utility loadJSON:@"mangalist.json" appendpath:@""];
+            if (exists && !refreshlist){
+                [_listview populateList:list type:1];
+                return;
+            }
+            else if (!exists || refreshlist){
+                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+                
+                [manager GET:[NSString stringWithFormat:@"%@/2.1/mangalist/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
+                    
+                } failure:^(NSURLSessionTask *operation, NSError *error) {
+                    NSLog(@"%@", error.userInfo);
+                }];
+            }
+            break;
+        case 2:
+                [_historyview loadHistory:refresh];
+                break;
+        default:
+                break;
     }
 }
 - (void)clearlist{
@@ -557,6 +598,8 @@
     [Utility deleteFile:@"mangalist.json" appendpath:@""];
     [_listview.mangalisttb reloadData];
     [_listview.mangalisttb deselectAll:self];
+    [_historyview clearHistory];
+    
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {
@@ -610,7 +653,7 @@
     int previd = [_infoview getSelectedId];
     int prevtype = [_infoview getType];
     [_infoview setSelectedId:0];
-     [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:7]byExtendingSelection:false];
+     [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
     [self loadmainview];
     [_noinfoview setHidden:YES];
     [_progressindicator setHidden: NO];

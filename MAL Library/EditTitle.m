@@ -195,6 +195,7 @@
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_mangapopoverstatus.title, @"score":@(_mangapopoverscore.intValue), @"chapters":@(_mangapopoverchapfield.intValue),@"volumes":@(_mangapopovervolfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:selectedtype];
+            [mw loadlist:@(true) type:2];
             [_mangapopovereditbtn setEnabled:true];
             [_minieditpopover setBehavior:NSPopoverBehaviorTransient];
             [_mangapopoverindicator stopAnimation:nil];

@@ -164,6 +164,7 @@
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:0];
+            [mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
             [_addpopover setBehavior:NSPopoverBehaviorTransient];
             [_addpopover close];
@@ -197,6 +198,7 @@
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:1];
+            [mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];
             [_addpopover setBehavior:NSPopoverBehaviorTransient];
             [_addpopover close];

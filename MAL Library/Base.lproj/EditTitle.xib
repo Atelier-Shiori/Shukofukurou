@@ -21,7 +21,7 @@
                 <outlet property="mangapopovertotalvol" destination="Sa7-Xd-frU" id="YyR-OY-YZY"/>
                 <outlet property="mangapopovervolfield" destination="CbC-1i-nUF" id="Xks-Cs-dTw"/>
                 <outlet property="minieditpopovernumformat" destination="fWX-nH-UsN" id="7k2-tO-6gy"/>
-                <outlet property="minipopovereditbtn" destination="vEg-dI-wG3" id="noF-yW-jv7"/>
+                <outlet property="minipopovereditbtn" destination="PJc-Aj-zA6" id="Om9-EO-cdp"/>
                 <outlet property="minipopoverepfield" destination="xsn-em-iq2" id="wqt-Ff-FlF"/>
                 <outlet property="minipopoverindicator" destination="CAN-5p-U7b" id="aty-YT-D8a"/>
                 <outlet property="minipopoverscore" destination="QN2-0i-Esj" id="Om9-Ti-IST"/>

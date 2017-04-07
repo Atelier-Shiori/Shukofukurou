@@ -42,6 +42,7 @@
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"readingfilter"] = @(1);
     defaultValues[@"malapiurl"] = @"https://malapi.ateliershiori.moe";
+    defaultValues[@"filtersastabs"] = @(1);
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]

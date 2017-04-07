@@ -150,6 +150,74 @@
     }
 }
 - (IBAction)filterperform:(id)sender {
+    NSButton * btn = (NSButton *)sender;
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    if ([(NSNumber *)[defaults valueForKey:@"filtersastabs"] boolValue]){
+        if (currentlist == 0){
+            if (_watchingfilter != btn){
+                [defaults setValue:@(0) forKey:@"watchingfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"watchingfilter"];
+            }
+            if (_completedfilter != btn){
+                [defaults setValue:@(0) forKey:@"completedfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"completedfilter"];
+            }
+            if (_droppedfilter != btn){
+                [defaults setValue:@(0) forKey:@"droppedfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"droppedfilter"];
+            }
+            if (_onholdfilter != btn){
+                [defaults setValue:@(0) forKey:@"onholdfilter"];
+            }
+            else{
+                [defaults setValue:@(1) forKey:@"onholdfilter"];
+            }
+            if (_plantowatchfilter != btn){
+                [defaults setValue:@(0) forKey:@"plantowatchfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"plantowatchfilter"];
+            }
+        }
+        else {
+            if (_readingfilter != btn){
+                [defaults setValue:@(0) forKey:@"readingfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"readingfilter"];
+            }
+            if (_mangacompletedfilter != btn){
+                [defaults setValue:@(0) forKey:@"mcompletedfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"mcompletedfilter"];
+            }
+            if (_mangadroppedfilter != btn){
+                [defaults setValue:@(0) forKey:@"mdroppedfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"mdroppedfilter"];
+            }
+            if (_mangaonholdfilter != btn){
+                [defaults setValue:@(0) forKey:@"monholdfilter"];
+            }
+            else{
+                [defaults setValue:@(1) forKey:@"monholdfilter"];
+            }
+            if (_plantoreadfilter != btn){
+                [defaults setValue:@(0) forKey:@"plantoreadfilter"];
+            }
+            else {
+                [defaults setValue:@(1) forKey:@"plantoreadfilter"];
+            }
+        }
+    }
     [self performfilter:currentlist];
 }
 - (void)performfilter:(int)type{

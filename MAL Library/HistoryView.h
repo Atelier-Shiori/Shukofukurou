@@ -7,7 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+@class NSTableViewAction;
+@class MainWindow;
 @interface HistoryView : NSViewController
-
+@property (strong) IBOutlet MainWindow * mw;
+@property (strong) IBOutlet NSTableViewAction *historytb;
+@property (strong) IBOutlet NSArrayController *historyarraycontroller;
+- (void)loadHistory:(NSNumber *)refresh;
+- (void)clearHistory;
 @end

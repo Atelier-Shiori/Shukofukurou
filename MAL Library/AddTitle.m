@@ -38,7 +38,7 @@
 
 @implementation AddTitle
 
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"AddTitle" bundle:nil];
 }
@@ -50,14 +50,14 @@
 }
 
 - (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
-    [self view];
-    NSNumber * idnum = d[@"id"];
+    self.view;
+    NSNumber *idnum = d[@"id"];
     if (type == 0){
         if (![mw checkiftitleisonlist:idnum.intValue type:0]){
-            [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_addtitleview];
+            [self.view replaceSubview:(self.view.subviews)[0] with:_addtitleview];
             selecteditem = d;
-            if ([(NSNumber *)d[@"episodes"] intValue] > 0){
-                [_addnumformat setMaximum:d[@"episodes"]];
+            if (((NSNumber *)d[@"episodes"]).intValue > 0){
+                _addnumformat.maximum = d[@"episodes"];
             }
             else {
                 [_addnumformat setMaximum:nil];
@@ -75,30 +75,30 @@
             else{
                 selectedaired = false;
             }
-            [_addepifield setIntValue:0];
-            [_addtotalepisodes setIntValue:[(NSNumber *)d[@"episodes"] intValue]];
+            _addepifield.intValue = 0;
+            _addtotalepisodes.intValue = ((NSNumber *)d[@"episodes"]).intValue;
             [_addstatusfield selectItemWithTitle:@"watching"];
-            [_addscorefiled setIntValue:0];
-            selectededitid = [(NSNumber *)d[@"id"] intValue];
+            _addscorefiled.intValue = 0;
+            selectededitid = ((NSNumber *)d[@"id"]).intValue;
         }
         else {
-            [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_popoveraddtitleexistsview];
+            [self.view replaceSubview:(self.view.subviews)[0] with:_popoveraddtitleexistsview];
         }
         [_addpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         selectedtype = type;
     }
     else {
         if (![mw checkiftitleisonlist:idnum.intValue type:1]){
-            [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_addmangaview];
+            [self.view replaceSubview:(self.view.subviews)[0] with:_addmangaview];
             selecteditem = d;
-            if ([(NSNumber *)d[@"chapters"] intValue] > 0){
-                [_addchapnumformat setMaximum:d[@"chapters"]];
+            if (((NSNumber *)d[@"chapters"]).intValue > 0){
+                _addchapnumformat.maximum = d[@"chapters"];
             }
             else {
                 [_addchapnumformat setMaximum:nil];
             }
-            if ([(NSNumber *)d[@"volumes"] intValue] > 0){
-                [_addvolnumformat setMaximum:d[@"chapters"]];
+            if (((NSNumber *)d[@"volumes"]).intValue > 0){
+                _addvolnumformat.maximum = d[@"chapters"];
             }
             else {
                 [_addvolnumformat setMaximum:nil];
@@ -123,16 +123,16 @@
             } failure:^(NSURLSessionTask *operation, NSError *error) {
                 NSLog(@"Error: %@", error);
             }];
-            [_addchapfield setIntValue:0];
-            [_addtotalchap setIntValue:[(NSNumber *)d[@"chapters"] intValue]];
-            [_addvolfield setIntValue:0];
-            [_addtotalvol setIntValue:[(NSNumber *)d[@"volumes"] intValue]];
+            _addchapfield.intValue = 0;
+            _addtotalchap.intValue = ((NSNumber *)d[@"chapters"]).intValue;
+            _addvolfield.intValue = 0;
+            _addtotalvol.intValue = ((NSNumber *)d[@"volumes"]).intValue;
             [_addmangastatusfield selectItemWithTitle:@"reading"];
-            [_addmangascorefiled setIntValue:0];
-            selectededitid = [(NSNumber *)d[@"id"] intValue];
+            _addmangascorefiled.intValue = 0;
+            selectededitid = ((NSNumber *)d[@"id"]).intValue;
         }
         else {
-            [self.view replaceSubview:[self.view.subviews objectAtIndex:0] with:_popoveraddtitleexistsview];
+            [self.view replaceSubview:(self.view.subviews)[0] with:_popoveraddtitleexistsview];
         }
         [_addpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         selectedtype = type;
@@ -143,6 +143,9 @@
     [self addtitletolist];
 }
 - (void)addtitletolist{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     if (selectedtype == 0){
         [_addfield setEnabled:false];
         if(![_addstatusfield isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && selectedaircompleted){
@@ -151,28 +154,25 @@
         if(!selectedaired && (![_addstatusfield.title isEqual:@"plan to watch"] ||_addepifield.intValue > 0)){
             // Invalid input, mark it as such
             [_addfield setEnabled:true];
-            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            _addpopover.behavior = NSPopoverBehaviorTransient;
             return;
         }
         if (_addepifield.intValue == _addtotalepisodes.intValue && _addtotalepisodes.intValue != 0 && selectedaircompleted && selectedaired){
             [_addstatusfield selectItemWithTitle:@"completed"];
-            [_addepifield setIntValue:[_addtotalepisodes intValue]];
+            _addepifield.intValue = _addtotalepisodes.intValue;
         }
-        [_addpopover setBehavior:NSPopoverBehaviorApplicationDefined];
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:0];
             [mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
-            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"%@",error);
-            NSData * errordata = [error userInfo] [@"com.alamofire.serialization.response.error.data" ];
+            NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
-            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addfield setEnabled:true];
         }];
     }
@@ -184,29 +184,26 @@
         if(!selectedpublished && (![_addstatusfield.title isEqual:@"plan to read"] ||_addchapfield.intValue > 0 || _addvolfield.intValue > 0)){
             // Invalid input, mark it as such
             [_addmangabtn setEnabled:true];
-            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            _addpopover.behavior = NSPopoverBehaviorTransient;
             return;
         }
         if (((_addchapfield.intValue == _addtotalchap.intValue && _addchapfield.intValue != 0) || (_addvolfield.intValue == _addtotalvol.intValue && _addtotalvol.intValue != 0)) && selectedfinished && selectedpublished){
             [_addmangastatusfield selectItemWithTitle:@"completed"];
-            [_addchapfield setIntValue:[_addtotalchap intValue]];
-            [_addvolfield setIntValue:[_addtotalvol intValue]];
+            _addchapfield.intValue = _addtotalchap.intValue;
+            _addvolfield.intValue = _addtotalvol.intValue;
         }
-        [_addpopover setBehavior:NSPopoverBehaviorApplicationDefined];
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:1];
             [mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];
-            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"%@",error);
-            NSData * errordata = [error userInfo] [@"com.alamofire.serialization.response.error.data" ];
+            NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
-            [_addpopover setBehavior:NSPopoverBehaviorTransient];
+            _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addmangabtn setEnabled:true];
         }];
     }

@@ -12,13 +12,13 @@
 @interface SearchView : NSViewController <NSTableViewDelegate> {
     IBOutlet MainWindow *mw;
     int currentsearch;
-    NSString * AnimeSearchTerm;
-    NSString * MangaSearchTerm;
+    NSString *AnimeSearchTerm;
+    NSString *MangaSearchTerm;
 }
-typedef enum  {
+typedef NS_ENUM(unsigned int, SearchType) {
     AnimeSearch = 0,
     MangaSearch = 1
-} SearchType;
+};
 @property (strong) IBOutlet NSSearchField *searchtitlefield;
 
 // Anime Search
@@ -32,7 +32,7 @@ typedef enum  {
 @property (strong) IBOutlet NSArrayController *mangasearcharraycontroller;
 
 // Toolbar Items
-@property (strong) IBOutlet NSToolbarItem * addtitleitem;
+@property (strong) IBOutlet NSToolbarItem *addtitleitem;
 
 - (void)loadsearchView:(int)type;
 - (IBAction)performsearch:(id)sender;

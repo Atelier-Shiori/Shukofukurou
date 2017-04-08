@@ -19,14 +19,14 @@
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
-@property (strong) DonationWindowController * donationwincontroller;
+@property (strong) DonationWindowController *donationwincontroller;
 @end
 
 @implementation AppDelegate
 + (void)initialize{
     
     //Create a Dictionary
-    NSMutableDictionary * defaultValues = [NSMutableDictionary dictionary];
+    NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
     
     // Defaults
     defaultValues[@"watchingfilter"] = @(1);
@@ -83,7 +83,7 @@
 {
     if (_preferencesWindowController == nil)
     {
-        GeneralPref * genview =[[GeneralPref alloc] init];
+        GeneralPref *genview =[[GeneralPref alloc] init];
         [genview setMainWindowController:mainwindowcontroller];
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
         NSViewController *advancedviewController = [AdvancedPref new];
@@ -104,7 +104,7 @@
 - (void)showloginnotice{
     if (![Keychain checkaccount]) {
         // First time prompt
-        NSAlert * alert = [[NSAlert alloc] init] ;
+        NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
         [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
         [alert setMessageText:NSLocalizedString(@"Welcome to MAL Library",nil)];
@@ -129,31 +129,31 @@
     if (!_donationwincontroller){
         _donationwincontroller = [DonationWindowController new];
     }
-    [[_donationwincontroller window] makeKeyAndOrderFront:nil];
+    [_donationwincontroller.window makeKeyAndOrderFront:nil];
 }
 
 - (IBAction)showaboutwindow:(id)sender{
     if (!_aboutWindowController){
         _aboutWindowController = [PFAboutWindowController new];
     }
-    [self.aboutWindowController setAppURL:[[NSURL alloc] initWithString:@"https://malupdaterosx.ateliershiori.moe/mallibrary/"]];
-    NSMutableString * copyrightstr = [NSMutableString new];
-    NSDictionary *bundleDict = [[NSBundle mainBundle] infoDictionary];
-    [copyrightstr appendFormat:@"%@ \r\r",[bundleDict objectForKey:@"NSHumanReadableCopyright"]];
+    (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://malupdaterosx.ateliershiori.moe/mallibrary/"];
+    NSMutableString *copyrightstr = [NSMutableString new];
+    NSDictionary *bundleDict = [NSBundle mainBundle].infoDictionary;
+    [copyrightstr appendFormat:@"%@ \r\r",bundleDict[@"NSHumanReadableCopyright"]];
     #if defined(AppStore)
     [copyrightstr appendString:@"Mac App Store version."];
     #else
-    if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"] boolValue]){
+    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue){
         [copyrightstr appendFormat:@"This copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
     }
     else {
         [copyrightstr appendString:@"UNREGISTERED COPY"];
     }
     #endif
-    [self.aboutWindowController setAppCopyright:[[NSAttributedString alloc] initWithString:copyrightstr
+    (self.aboutWindowController).appCopyright = [[NSAttributedString alloc] initWithString:copyrightstr
                                                                                 attributes:@{
                                                                                              NSForegroundColorAttributeName:[NSColor labelColor],
-                                                                                             NSFontAttributeName:[NSFont fontWithName:[[NSFont systemFontOfSize:12.0f] familyName] size:11]}]];
+                                                                                             NSFontAttributeName:[NSFont fontWithName:[NSFont systemFontOfSize:12.0f].familyName size:11]}];
 
     [self.aboutWindowController showWindow:nil];
     
@@ -166,8 +166,7 @@
 - (void)handleURLEvent:(NSAppleEventDescriptor*)event
         withReplyEvent:(NSAppleEventDescriptor*)replyEvent
 {
-    NSString* url = [[event paramDescriptorForKeyword:keyDirectObject]
-                     stringValue];
+    NSString* url = [event paramDescriptorForKeyword:keyDirectObject].stringValue;
     NSLog(@"%@", url);
     url = [url stringByReplacingOccurrencesOfString:@"mallibrary://" withString:@""];
     if ([url containsString:@"anime/"]){
@@ -176,7 +175,7 @@
         [mainwindowcontroller loadinfo:@(url.intValue) type:0];
     }
     if ([url containsString:@"manga/"]){
-        if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"] boolValue]){
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue){
             // Loads Manga Information with specified id.
             url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
             [mainwindowcontroller loadinfo:@(url.intValue) type:0];

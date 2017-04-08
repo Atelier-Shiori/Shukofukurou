@@ -18,7 +18,7 @@
 
 @implementation AdvancedPref
 
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"AdvancedPref" bundle:nil];
 }

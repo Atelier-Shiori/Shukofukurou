@@ -10,7 +10,7 @@
 #import <MASPreferences/MASPreferences.h>
 @class MainWindow;
 @interface GeneralPref : NSViewController <MASPreferencesViewController>{
-    MainWindow * mainwindowcontroller;
+    MainWindow *mainwindowcontroller;
 }
 - (IBAction)changeappearence:(id)sender;
 - (void)setMainWindowController:(MainWindow*)mw;

@@ -18,7 +18,7 @@
 
 @implementation SeasonView
 
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"SeasonView" bundle:nil];
 }
@@ -31,11 +31,11 @@
 
 #pragma mark Seasons View
 - (IBAction)seasondoubleclick:(id)sender {
-    if ([_seasontableview selectedRow] >=0){
-        if ([_seasontableview selectedRow] >-1){
-            NSDictionary *d = [[_seasonarraycontroller selectedObjects] objectAtIndex:0];
+    if (_seasontableview.selectedRow >=0){
+        if (_seasontableview.selectedRow >-1){
+            NSDictionary *d = _seasonarraycontroller.selectedObjects[0];
             d = d[@"id"];
-            NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
+            NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
             [mw loadinfo:idnum type:0];
         }
     }
@@ -59,10 +59,10 @@
 - (void)loadseasondata:(int)year forSeason:(NSString *)season{
     if (_seasonyrpicker.itemArray.count > 0){
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/seasondata/"]){
-            NSMutableArray * sarray = [_seasonarraycontroller mutableArrayValueForKey:@"content"];
+            NSMutableArray *sarray = [_seasonarraycontroller mutableArrayValueForKey:@"content"];
             [sarray removeAllObjects];
-            NSDictionary * d =  [Utility loadJSON:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/"];
-            NSArray * a = d[@"anime"];
+            NSDictionary *d =  [Utility loadJSON:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/"];
+            NSArray *a = d[@"anime"];
             [_seasonarraycontroller addObjects:a];
             [_seasontableview reloadData];
             [_seasontableview deselectAll:self];
@@ -74,25 +74,25 @@
 }
 - (void)populateyearpopup{
     [_seasonyrpicker removeAllItems];
-    NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
-    NSArray * a = d[@"years"];
+    NSDictionary *d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
+    NSArray *a = d[@"years"];
     for (int i = 0; i < a.count; i++){
-        NSDictionary * yr = [a objectAtIndex:i];
-        NSNumber * year = yr[@"year"];
+        NSDictionary *yr = a[i];
+        NSNumber *year = yr[@"year"];
         [_seasonyrpicker addItemWithTitle:year.stringValue];
     }
-    [_seasonyrpicker selectItemAtIndex:[[_seasonyrpicker itemArray] count]-1];
+    [_seasonyrpicker selectItemAtIndex:_seasonyrpicker.itemArray.count-1];
     [self populateseasonpopup];
 }
 - (void)populateseasonpopup{
     [_seasonpicker removeAllItems];
-    NSDictionary * d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
-    NSArray * a = d[@"years"];
-    NSDictionary * yr = [a objectAtIndex:_seasonyrpicker.indexOfSelectedItem];
-    NSArray * s = yr[@"seasons"];
+    NSDictionary *d = [Utility loadJSON:@"index.json" appendpath:@"/seasondata/"];
+    NSArray *a = d[@"years"];
+    NSDictionary *yr = a[_seasonyrpicker.indexOfSelectedItem];
+    NSArray *s = yr[@"seasons"];
     for (int i = 0; i < s.count; i++){
-        NSDictionary * season = [s objectAtIndex:i];
-        NSString * seasonname = season[@"season"];
+        NSDictionary *season = s[i];
+        NSString *seasonname = season[@"season"];
         [_seasonpicker addItemWithTitle:seasonname];
     }
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
@@ -120,7 +120,7 @@
     }];
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    if ([[_seasonarraycontroller selectedObjects] count] > 0){
+    if (_seasonarraycontroller.selectedObjects.count > 0){
         [_addtitleitem setEnabled:YES];
     }
     else {

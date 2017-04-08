@@ -46,11 +46,11 @@
 }
 - (void)populateHistory:(id)history{
     // Populates history
-    NSMutableArray * a = [_historyarraycontroller mutableArrayValueForKey:@"content"];
+    NSMutableArray *a = [_historyarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_historyarraycontroller addObjects:history];
-    if (![(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
-        [_historyarraycontroller setFilterPredicate:[NSPredicate predicateWithFormat:@"type == [cd] %@", @"anime"]];
+    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
+        _historyarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"type == [cd] %@", @"anime"];
     }
     else {
         [_historyarraycontroller setFilterPredicate:nil];
@@ -59,18 +59,18 @@
     [_historytb deselectAll:self];
 }
 - (void)clearHistory{
-    NSMutableArray * a = [_historyarraycontroller content];
+    NSMutableArray *a = _historyarraycontroller.content;
     [a removeAllObjects];
     [Utility deleteFile:@"history.json" appendpath:@""];
     [self.historytb reloadData];
     [self.historytb deselectAll:self];
 }
 - (IBAction)historydoubleclick:(id)sender {
-    if ([_historytb selectedRow] >=0){
-        if ([_historytb selectedRow] >-1){
-            NSDictionary *d = [[_historyarraycontroller selectedObjects] objectAtIndex:0];
-            NSNumber * idnum = d[@"id"];
-            NSString * type = d[@"type"];
+    if (_historytb.selectedRow >=0){
+        if (_historytb.selectedRow >-1){
+            NSDictionary *d = _historyarraycontroller.selectedObjects[0];
+            NSNumber *idnum = d[@"id"];
+            NSString *type = d[@"type"];
             int typenum = 0;
             if ([type isEqualToString:@"anime"]){
                 typenum = 0;
@@ -83,15 +83,15 @@
     }
 }
 -(id)processHistory:(id)object{
-    NSArray * a = object;
-    NSMutableArray * history = [NSMutableArray new];
-    for (NSDictionary * d in a){
-        NSDictionary * item = d[@"item"];
-        NSNumber * idnum = item[@"id"];
-        NSString * title = item[@"title"];
-        NSString * type = d[@"type"];
-        NSNumber * segment;
-        NSString * segment_type = @"";
+    NSArray *a = object;
+    NSMutableArray *history = [NSMutableArray new];
+    for (NSDictionary *d in a){
+        NSDictionary *item = d[@"item"];
+        NSNumber *idnum = item[@"id"];
+        NSString *title = item[@"title"];
+        NSString *type = d[@"type"];
+        NSNumber *segment;
+        NSString *segment_type = @"";
         if (item[@"watched_episodes"]){
             segment = item[@"watched_episodes"];
             segment_type = @"Episode";
@@ -101,13 +101,13 @@
             segment_type = @"Chapter";
         }
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
-        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSString * strdate = d[@"time_updated"];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+        NSString *strdate = d[@"time_updated"];
         strdate = [strdate substringWithRange:NSMakeRange(0, 10)];
-        NSDate * datetime = [dateFormatter dateFromString:strdate];
+        NSDate *datetime = [dateFormatter dateFromString:strdate];
         [dateFormatter setDateFormat:nil];
-        [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-        NSString * lastupdated = [dateFormatter stringFromDate:datetime];
+        dateFormatter.dateStyle = NSDateFormatterMediumStyle;
+        NSString *lastupdated = [dateFormatter stringFromDate:datetime];
         [history addObject:@{@"id":idnum, @"title":title, @"type":type, @"last_updated":lastupdated, @"segment":segment, @"segment_type":segment_type}];
     }
     return history;

@@ -19,7 +19,7 @@
 
 @implementation AiringView
 
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"AiringView" bundle:nil];
 }
@@ -35,8 +35,8 @@
     bool refreshlist = refresh.boolValue;
     bool exists = [Utility checkifFileExists:@"airing.json" appendPath:@""];
     list = [Utility loadJSON:@"airing.json" appendpath:@""];
-    NSDate * refresheddate = [[NSUserDefaults standardUserDefaults] valueForKey:@"airschdaterefreshed"];
-    if (exists && !refreshlist && [refresheddate timeIntervalSinceNow] > -2592000){
+    NSDate *refresheddate = [[NSUserDefaults standardUserDefaults] valueForKey:@"airschdaterefreshed"];
+    if (exists && !refreshlist && refresheddate.timeIntervalSinceNow > -2592000){
         [self populateAiring:list];
         return;
     }
@@ -54,7 +54,7 @@
 }
 - (void)populateAiring:(id)airing{
     // Populates history
-    NSMutableArray * a = [_airingarraycontroller mutableArrayValueForKey:@"content"];
+    NSMutableArray *a = [_airingarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_airingarraycontroller addObjects:airing];
     [self filterTitles];
@@ -62,17 +62,17 @@
     [_airingtb deselectAll:self];
 }
 - (void)clearHistory{
-    NSMutableArray * a = [_airingarraycontroller content];
+    NSMutableArray *a = _airingarraycontroller.content;
     [a removeAllObjects];
     [Utility deleteFile:@"airing.json" appendpath:@""];
     [self.airingtb reloadData];
     [self.airingtb deselectAll:self];
 }
 - (IBAction)airingdoubleclick:(id)sender {
-    if ([_airingtb selectedRow] >=0){
-        if ([_airingtb selectedRow] >-1){
-            NSDictionary *d = [[_airingarraycontroller selectedObjects] objectAtIndex:0];
-            NSNumber * idnum = d[@"id"];
+    if (_airingtb.selectedRow >=0){
+        if (_airingtb.selectedRow >-1){
+            NSDictionary *d = _airingarraycontroller.selectedObjects[0];
+            NSNumber *idnum = d[@"id"];
             [_mw loadinfo:idnum type:0];
         }
     }
@@ -82,14 +82,14 @@
 }
 
 - (void)filterTitles{
-    [_airingarraycontroller setFilterPredicate:[NSPredicate predicateWithFormat:@"day == [cd] %@",_day.title]];
+    _airingarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"day == [cd] %@",_day.title];
 }
 
 -(id)processAiring:(id)object{
-    NSDictionary * d = object;
-    NSMutableArray * airing = [NSMutableArray new];
-    NSArray * tmparray;
-    NSString * day;
+    NSDictionary *d = object;
+    NSMutableArray *airing = [NSMutableArray new];
+    NSArray *tmparray;
+    NSString *day;
     for (int i = 0; i < 9; i++){
         switch (i){
             case 0: // Monday
@@ -124,9 +124,9 @@
         }
         if (d[day] != nil){
             tmparray = d[day];
-            for (NSDictionary * entry in tmparray){
-                NSMutableDictionary * newentry = [[NSMutableDictionary alloc] initWithDictionary:entry];
-                [newentry setValue:[day uppercaseString] forKey:@"day"];
+            for (NSDictionary *entry in tmparray){
+                NSMutableDictionary *newentry = [[NSMutableDictionary alloc] initWithDictionary:entry];
+                [newentry setValue:day.uppercaseString forKey:@"day"];
                 [airing addObject:newentry];
             }
         }
@@ -137,7 +137,7 @@
     return airing;
 }
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    if ([[_airingarraycontroller selectedObjects] count] > 0){
+    if (_airingarraycontroller.selectedObjects.count > 0){
         [_addtitleitem setEnabled:YES];
     }
     else {

@@ -10,10 +10,10 @@
 @class NSTableViewAction;
 @class MainWindow;
 @interface AiringView : NSViewController <NSTableViewDelegate>;
-@property (strong) IBOutlet MainWindow * mw;
+@property (strong) IBOutlet MainWindow *mw;
 @property (strong) IBOutlet NSArrayController *airingarraycontroller;
 @property (strong) IBOutlet NSTableViewAction *airingtb;
-@property (strong) IBOutlet NSPopUpButton * day;
+@property (strong) IBOutlet NSPopUpButton *day;
 @property (strong) IBOutlet NSToolbarItem *addtitleitem;
 - (void)loadAiring:(NSNumber *)refresh;
 

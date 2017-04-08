@@ -11,14 +11,14 @@
 @class MainWindow;
 
 @interface InfoView : NSViewController{
-    IBOutlet MainWindow * mw;
+    IBOutlet MainWindow *mw;
 }
-typedef enum  {
+typedef NS_ENUM(unsigned int, InfoType) {
     AnimeType = 0,
     MangaType = 1
-} InfoType;
+};
 @property (getter=getSelectedId, setter=setSelectedId:) int selectedid;
-@property (getter=getSelectedInfo, readonly) NSDictionary * selectedinfo;
+@property (getter=getSelectedInfo, readonly) NSDictionary *selectedinfo;
 @property (getter=getType, setter=setType:) int type;
 
 @property (strong) IBOutlet NSTextView *infoviewbackgroundtextview;

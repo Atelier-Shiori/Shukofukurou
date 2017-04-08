@@ -30,7 +30,7 @@
     int selectededitid;
     bool selectedaired;
     bool selectedaircompleted;
-    NSDictionary * selecteditem;
+    NSDictionary *selecteditem;
 }
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet NSToolbar *toolbar;
@@ -38,11 +38,11 @@
 
 @property (nonatomic, assign, getter=getDelegate) AppDelegate *appdel;
 //Anime List View
-@property (strong) IBOutlet ListView * listview;
+@property (strong) IBOutlet ListView *listview;
 // Not Logged In View
-@property (strong) IBOutlet NotLoggedIn * notloggedin;
+@property (strong) IBOutlet NotLoggedIn *notloggedin;
 //Search View
-@property (strong) IBOutlet SearchView * searchview;
+@property (strong) IBOutlet SearchView *searchview;
 @property (strong) IBOutlet NSPopover *advsearchpopover;
     @property (strong) IBOutlet AdvancedSearch *advancedsearchcontroller;
 // Info View
@@ -55,7 +55,7 @@
 @property (strong) IBOutlet HistoryView *historyview;
 
 //Season View
-@property (strong) IBOutlet SeasonView * seasonview;
+@property (strong) IBOutlet SeasonView *seasonview;
 
 // Edit Popover
 @property (strong) IBOutlet NSPopover *minieditpopover;
@@ -63,12 +63,12 @@
 
 // Add Popover
 @property (strong) IBOutlet NSPopover *addpopover;
-@property (strong) IBOutlet AddTitle * addtitlecontroller;
+@property (strong) IBOutlet AddTitle *addtitlecontroller;
 
 @property (strong) IBOutlet NSVisualEffectView *requireslicense;
 
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
-@property (strong, nonatomic) MSWeakTimer * refreshtimer;
+@property (strong, nonatomic) MSWeakTimer *refreshtimer;
 
 // Airing View
 @property (strong) IBOutlet AiringView *airingview;

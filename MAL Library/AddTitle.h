@@ -9,14 +9,14 @@
 #import <Cocoa/Cocoa.h>
 @class MainWindow;
 @interface AddTitle : NSViewController{
-    IBOutlet MainWindow * mw;
+    IBOutlet MainWindow *mw;
     int selectededitid;
     int selectedtype;
     bool selectedaired;
     bool selectedaircompleted;
     bool selectedfinished;
     bool selectedpublished;
-    NSDictionary * selecteditem;
+    NSDictionary *selecteditem;
 }
 
 @property (strong) IBOutlet NSPopover *addpopover;

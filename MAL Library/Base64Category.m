@@ -13,7 +13,7 @@
 - (NSString *)base64Encoding
 {
     // Use native methods
-    NSData * plainData = [self dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *plainData = [self dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64String;
     base64String = [plainData base64EncodedStringWithOptions:0];
     return base64String;

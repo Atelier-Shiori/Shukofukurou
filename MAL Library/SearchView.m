@@ -17,7 +17,7 @@
 
 @implementation SearchView
 
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"SearchView" bundle:nil];
 }
@@ -26,10 +26,10 @@
     [super viewDidLoad];
     // Do view setup here.
     [_addtitleitem setEnabled:NO];
-    [self view];
+    self.view;
     // Set Resizing Mask
-    [_animesearch setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_mangasearch setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    _animesearch.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _mangasearch.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     // Add Placeholder Subview
     [self.view addSubview:_animesearch];
     AnimeSearchTerm = @"";
@@ -41,37 +41,34 @@
             MangaSearchTerm = _searchtitlefield.stringValue;
             _searchtitlefield.stringValue = AnimeSearchTerm;
             currentsearch = type;
-            [[self view] replaceSubview:[[self.view subviews] objectAtIndex:0] with:_animesearch];
+            [self.view replaceSubview:(self.view).subviews[0] with:_animesearch];
             [self setToolbarButtonStatus];
             break;
         case MangaSearch:
             AnimeSearchTerm = _searchtitlefield.stringValue;
             _searchtitlefield.stringValue = MangaSearchTerm;
             currentsearch = type;
-            [[self view] replaceSubview:[[self.view subviews] objectAtIndex:0] with:_mangasearch];
+            [self.view replaceSubview:(self.view).subviews[0] with:_mangasearch];
             [self setToolbarButtonStatus];
             break;
     }
 }
 
 - (IBAction)performsearch:(id)sender {
-    if ([_searchtitlefield.stringValue length] > 0){
+    if ((_searchtitlefield.stringValue).length > 0){
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSString *url = @"";
         if (currentsearch == AnimeSearch){
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                [mw populatesearchtb:responseObject type:currentsearch];
-            } failure:^(NSURLSessionTask *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
-            }];
+            url = [NSString stringWithFormat:@"%@/2.1/anime/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]];
         }
         else {
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                [mw populatesearchtb:responseObject type: currentsearch];
-            } failure:^(NSURLSessionTask *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
-            }];
+            url = [NSString stringWithFormat:@"%@/2.1/manga/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]];
         }
+        [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [mw populatesearchtb:responseObject type:currentsearch];
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
     }
     else{
         [self clearsearchtb];
@@ -80,19 +77,19 @@
 
 - (IBAction)searchtbdoubleclick:(id)sender {
     if (currentsearch == AnimeSearch){
-        if ([_searchtb selectedRow] >=0){
-            if ([_searchtb selectedRow] >-1){
-                NSDictionary *d = [[_searcharraycontroller selectedObjects] objectAtIndex:0];
-                NSNumber * idnum = d[@"id"];
+        if (_searchtb.selectedRow >=0){
+            if (_searchtb.selectedRow >-1){
+                NSDictionary *d = _searcharraycontroller.selectedObjects[0];
+                NSNumber *idnum = d[@"id"];
                 [mw loadinfo:idnum type:AnimeSearch];
             }
         }
     }
     else{
-        if ([_mangasearchtb selectedRow] >=0){
-            if ([_mangasearchtb selectedRow] >-1){
-                NSDictionary *d = [[_mangasearcharraycontroller selectedObjects] objectAtIndex:0];
-                NSNumber * idnum = d[@"id"];
+        if (_mangasearchtb.selectedRow >=0){
+            if (_mangasearchtb.selectedRow >-1){
+                NSDictionary *d = _mangasearcharraycontroller.selectedObjects[0];
+                NSNumber *idnum = d[@"id"];
                 [mw loadinfo:idnum type:MangaSearch];
             }
         }
@@ -104,7 +101,7 @@
 }
 - (void)setToolbarButtonStatus{
     if (currentsearch == AnimeSearch){
-        if ([[_searcharraycontroller selectedObjects] count] > 0){
+        if (_searcharraycontroller.selectedObjects.count > 0){
             [_addtitleitem setEnabled:YES];
         }
         else {
@@ -112,7 +109,7 @@
         }
     }
     else if (currentsearch == MangaSearch){
-        if ([[_mangasearcharraycontroller selectedObjects] count] > 0){
+        if (_mangasearcharraycontroller.selectedObjects.count > 0){
             [_addtitleitem setEnabled:YES];
         }
         else {

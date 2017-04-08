@@ -22,9 +22,9 @@
     @property long animeexclude;
     @property long animeusestartdate;
     @property long animeuseenddate;
-    @property (strong) NSDate * animestartdate;
-    @property (strong) NSDate * animeenddate;
-    @property (strong) NSString * animescore;
+    @property (strong) NSDate *animestartdate;
+    @property (strong) NSDate *animeenddate;
+    @property (strong) NSString *animescore;
     @property long animestatus;
     @property long animerating;
     // Manga
@@ -33,15 +33,15 @@
     @property long mangaexclude;
     @property long mangausestartdate;
     @property long mangauseenddate;
-    @property (strong) NSDate * mangastartdate;
-    @property (strong) NSDate * mangaenddate;
-    @property (strong) NSString * mangascore;
+    @property (strong) NSDate *mangastartdate;
+    @property (strong) NSDate *mangaenddate;
+    @property (strong) NSString *mangascore;
     @property long mangastatus;
     @property long mangarating;
 @end
 
 @implementation AdvancedSearch
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"AdvancedSearch" bundle:nil];
 }
@@ -52,14 +52,14 @@
     // Set dates
     [self resetdate];
     [self setDefaultValues];
-    [self view];
+    self.view;
     [self setSearchType:searchtype];
 
 }
 - (void)setSearchType:(int)type{
     [self saveSearchValuesForType:searchtype];
     if (type == 0){
-        [_airstatus setMenu:_animestatusmenu];
+        _airstatus.menu = _animestatusmenu;
         [_airstatus selectItemAtIndex:0];
         _searchfield.stringValue = _animekeyword;
         _genretokenfield.stringValue = _animegenre;
@@ -67,13 +67,13 @@
         _usestartdate.state = _animeusestartdate;
         _useenddate.state = _animeuseenddate;
         _minscore.stringValue = _animescore;
-        [_startdate setDateValue:_animestartdate];
-        [_enddate setDateValue:_animeenddate];
+        _startdate.dateValue = _animestartdate;
+        _enddate.dateValue = _animeenddate;
         [_airstatus selectItemAtIndex:_animestatus];
         [_rating selectItemAtIndex:_animerating];
     }
     else {
-        [_airstatus setMenu:_mangastatusmenu];
+        _airstatus.menu = _mangastatusmenu;
         [_airstatus selectItemAtIndex:0];
         _searchfield.stringValue = _mangakeyword;
         _genretokenfield.stringValue = _mangagenre;
@@ -81,40 +81,40 @@
         _usestartdate.state = _mangausestartdate;
         _useenddate.state = _mangauseenddate;
         _minscore.stringValue = _mangascore;
-        [_startdate setDateValue:_mangastartdate];
-        [_enddate setDateValue:_mangaenddate];
+        _startdate.dateValue = _mangastartdate;
+        _enddate.dateValue = _mangaenddate;
         [_airstatus selectItemAtIndex:_mangastatus];
         [_rating selectItemAtIndex:_mangarating];
     }
-    if ([[_airstatus title] length] == 0){
+    if (_airstatus.title.length == 0){
         [_airstatus setTitle:@"All"];
     }
     searchtype = type;
 }
 - (IBAction)performadvancedsearch:(id)sender {
-    __block NSButton * btn = sender;
-    [popover setBehavior:NSPopoverBehaviorApplicationDefined];
+    __block NSButton *btn = sender;
+    popover.behavior = NSPopoverBehaviorApplicationDefined;
     [btn setEnabled:NO];
-    NSMutableDictionary * d = [NSMutableDictionary new];
+    NSMutableDictionary *d = [NSMutableDictionary new];
     [d setValue:_searchfield.stringValue forKey:@"keyword"];
     [d setValue:_minscore.stringValue forKey:@"score"];
     [d setValue:@(_exclude.state) forKey:@"genre_type"];
-    if ([(NSArray *)_genretokenfield.objectValue count] > 0){
+    if (((NSArray *)_genretokenfield.objectValue).count > 0){
         [d setValue:[(NSArray *)_genretokenfield.objectValue componentsJoinedByString:@","] forKey:@"genres"];
     }
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
-    [dateformat setDateFormat:@"YYYY-MM-DD"];
+    dateformat.dateFormat = @"YYYY-MM-DD";
     if (_usestartdate.state == 1){
-        [d setValue:[dateformat stringFromDate:[_startdate dateValue]] forKey:@"start_date"];
+        [d setValue:[dateformat stringFromDate:_startdate.dateValue] forKey:@"start_date"];
     }
     if (_useenddate.state == 1){
-        [d setValue:[dateformat stringFromDate:[_enddate dateValue]] forKey:@"end_date"];
+        [d setValue:[dateformat stringFromDate:_enddate.dateValue] forKey:@"end_date"];
     }
     [d setValue:@(_airstatus.selectedTag) forKey:@"status"];
     [d setValue:@(_rating.selectedTag) forKey:@"rating"];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString * URL;
+    NSString *URL;
     if (searchtype == 0){
         URL = [NSString stringWithFormat:@"%@/2.1/anime/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
     }
@@ -124,14 +124,14 @@
     [manager GET:URL parameters:d progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [mw populatesearchtb:responseObject type:searchtype];
         [btn setEnabled:YES];
-        [popover setBehavior:NSPopoverBehaviorTransient];
+        popover.behavior = NSPopoverBehaviorTransient;
         [popover close];
         [self saveSearchValuesForType:searchtype];
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         NSLog(@"Error: %@", error);
         [mw clearsearchtb];
         [btn setEnabled:YES];
-        [popover setBehavior:NSPopoverBehaviorTransient];
+        popover.behavior = NSPopoverBehaviorTransient;
         [popover close];
         [self saveSearchValuesForType:searchtype];
     }];
@@ -164,8 +164,8 @@
     [mw clearsearchtb];
 }
 - (void)resetdate{
-    [_startdate setDateValue:[[NSDate alloc] initWithTimeIntervalSinceNow:-315360000]]; // Last 10 years from today's date
-    [_enddate setDateValue:[NSDate date]];
+    _startdate.dateValue = [[NSDate alloc] initWithTimeIntervalSinceNow:-315360000]; // Last 10 years from today's date
+    _enddate.dateValue = [NSDate date];
 }
 - (void)saveSearchValuesForType:(int)type{
     if (type == 0){

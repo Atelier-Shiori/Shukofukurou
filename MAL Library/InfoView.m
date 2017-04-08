@@ -19,7 +19,7 @@
 
 @implementation InfoView
 
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"InfoView" bundle:nil];
 }
@@ -29,36 +29,36 @@
     // Do view setup here.
 }
 - (void)populateAnimeInfoView:(id)object{
-    NSDictionary * d = object;
+    NSDictionary *d = object;
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
     NSMutableString *genres = [NSMutableString new];
     NSAttributedString *background;
-    [_infoviewtitle setStringValue:d[@"title"]];
-    NSDictionary * dtitles =  d[@"other_titles"];
-    NSMutableArray * othertitles = [NSMutableArray new];
+    _infoviewtitle.stringValue = d[@"title"];
+    NSDictionary *dtitles =  d[@"other_titles"];
+    NSMutableArray *othertitles = [NSMutableArray new];
     if (dtitles[@"english"] != nil){
-        NSArray * e = dtitles[@"english"];
-        for (NSString * etitle in e){
+        NSArray *e = dtitles[@"english"];
+        for (NSString *etitle in e){
             [othertitles addObject:etitle];
         }
     }
     if (dtitles[@"japanese"] != nil){
-        NSArray * j = dtitles[@"japanese"];
-        for (NSString * jtitle in j){
+        NSArray *j = dtitles[@"japanese"];
+        for (NSString *jtitle in j){
             [othertitles addObject:jtitle];
         }
     }
     if (dtitles[@"synonyms"] != nil){
-        NSArray * syn = dtitles[@"synonyms"];
-        for (NSString * stitle in syn){
+        NSArray *syn = dtitles[@"synonyms"];
+        for (NSString *stitle in syn){
             [othertitles addObject:stitle];
         }
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
-    [_infoviewalttitles setStringValue:titles];
+    _infoviewalttitles.stringValue = titles;
     if (d[@"genres"]!= nil){
-        NSArray * genresa = d[@"genres"];
+        NSArray *genresa = d[@"genres"];
         [genres appendString:[Utility appendstringwithArray:genresa]];
     }
     else{
@@ -70,29 +70,29 @@
     else {
         background = [[NSAttributedString alloc] initWithString:@"None available"];
     }
-    NSString * type = d[@"type"];
-    NSNumber * score = d[@"members_score"];
-    NSNumber * popularity = d[@"popularity_rank"];
-    NSNumber * memberscount = d[@"members_count"];
+    NSString *type = d[@"type"];
+    NSNumber *score = d[@"members_score"];
+    NSNumber *popularity = d[@"popularity_rank"];
+    NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
-    NSNumber * favorites = d[@"favorited_count"];
-    NSImage * posterimage = [Utility loadImage:[NSString stringWithFormat:@"anime-%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
-    [_infoviewposterimage setImage:posterimage];
+    NSNumber *favorites = d[@"favorited_count"];
+    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"anime-%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"episodes"] == nil){
         if (d[@"duration"] == nil){
             [details appendString:@"Episodes: Unknown\n"];
         }
         else{
-            [details appendString:[NSString stringWithFormat:@"Episodes: Unknown (%i mins per episode)\n", [(NSNumber *)d[@"duration"] intValue]]];
+            [details appendString:[NSString stringWithFormat:@"Episodes: Unknown (%i mins per episode)\n", ((NSNumber *)d[@"duration"]).intValue]];
         }
     }
     else {
         if (d[@"duration"] == nil){
-            [details appendString:[NSString stringWithFormat:@"Episodes: %i\n", [(NSNumber *)d[@"episodes"] intValue]]];
+            [details appendString:[NSString stringWithFormat:@"Episodes: %i\n", ((NSNumber *)d[@"episodes"]).intValue]];
         }
         else{
-            [details appendString:[NSString stringWithFormat:@"Episodes: %i (%i mins per episode)\n", [(NSNumber *)d[@"episodes"] intValue], [(NSNumber *)d[@"duration"] intValue]]];
+            [details appendString:[NSString stringWithFormat:@"Episodes: %i (%i mins per episode)\n", ((NSNumber *)d[@"episodes"]).intValue, ((NSNumber *)d[@"duration"]).intValue]];
         }
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
@@ -105,10 +105,10 @@
     }
     [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
     [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
-    NSString * synopsis = d[@"synopsis"];
-    [_infoviewdetailstextview setString:details];
-    [[_infoviewsynopsistextview textStorage] setAttributedString:[synopsis convertHTMLtoAttStr]];
-    [[_infoviewbackgroundtextview  textStorage] setAttributedString:background];
+    NSString *synopsis = d[@"synopsis"];
+    _infoviewdetailstextview.string = details;
+    [_infoviewsynopsistextview.textStorage setAttributedString:[synopsis convertHTMLtoAttStr]];
+    [_infoviewbackgroundtextview.textStorage setAttributedString:background];
     // Fix textview text color
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
@@ -117,50 +117,50 @@
     _selectedinfo = d;
 }
 - (void)populateMangaInfoView:(id)object{
-    NSDictionary * d = object;
+    NSDictionary *d = object;
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
     NSMutableString *genres = [NSMutableString new];
     NSAttributedString *background;
-    [_infoviewtitle setStringValue:d[@"title"]];
-    NSDictionary * dtitles =  d[@"other_titles"];
-    NSMutableArray * othertitles = [NSMutableArray new];
+    _infoviewtitle.stringValue = d[@"title"];
+    NSDictionary *dtitles =  d[@"other_titles"];
+    NSMutableArray *othertitles = [NSMutableArray new];
     if (dtitles[@"english"] != nil){
-        NSArray * e = dtitles[@"english"];
-        for (NSString * etitle in e){
+        NSArray *e = dtitles[@"english"];
+        for (NSString *etitle in e){
             [othertitles addObject:etitle];
         }
     }
     if (dtitles[@"japanese"] != nil){
-        NSArray * j = dtitles[@"japanese"];
-        for (NSString * jtitle in j){
+        NSArray *j = dtitles[@"japanese"];
+        for (NSString *jtitle in j){
             [othertitles addObject:jtitle];
         }
     }
     if (dtitles[@"synonyms"] != nil){
-        NSArray * syn = dtitles[@"synonyms"];
-        for (NSString * stitle in syn){
+        NSArray *syn = dtitles[@"synonyms"];
+        for (NSString *stitle in syn){
             [othertitles addObject:stitle];
         }
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
-    [_infoviewalttitles setStringValue:titles];
+    _infoviewalttitles.stringValue = titles;
     if (d[@"genres"]!= nil){
-        NSArray * genresa = d[@"genres"];
+        NSArray *genresa = d[@"genres"];
         [genres appendString:[Utility appendstringwithArray:genresa]];
     }
     else{
         [genres appendString:@"None"];
     }
     background = [[NSAttributedString alloc] initWithString:@"None available"];
-    NSString * type = d[@"type"];
-    NSNumber * score = d[@"members_score"];
-    NSNumber * popularity = d[@"popularity_rank"];
-    NSNumber * memberscount = d[@"members_count"];
+    NSString *type = d[@"type"];
+    NSNumber *score = d[@"members_score"];
+    NSNumber *popularity = d[@"popularity_rank"];
+    NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
-    NSNumber * favorites = d[@"favorited_count"];
-    NSImage * posterimage = [Utility loadImage:[NSString stringWithFormat:@"manga-%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
-    [_infoviewposterimage setImage:posterimage];
+    NSNumber *favorites = d[@"favorited_count"];
+    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"manga-%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"chapters"] == nil){
         if (d[@"duration"] == nil){
@@ -168,13 +168,13 @@
         }
     }
     else {
-        [details appendString:[NSString stringWithFormat:@"Episodes: %i \n", [(NSNumber *)d[@"chapters"] intValue]]];
+        [details appendString:[NSString stringWithFormat:@"Episodes: %i \n", ((NSNumber *)d[@"chapters"]).intValue]];
     }
     if (d[@"volumes"] == nil){
         [details appendString:@"Volumes: Unknown\n"];
     }
     else {
-        [details appendString:[NSString stringWithFormat:@"Volumes: %i \n", [(NSNumber *)d[@"volumes"] intValue]]];
+        [details appendString:[NSString stringWithFormat:@"Volumes: %i \n", ((NSNumber *)d[@"volumes"]).intValue]];
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
@@ -183,10 +183,10 @@
     }
     [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
     [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
-    NSString * synopsis = d[@"synopsis"];
-    [_infoviewdetailstextview setString:details];
-    [[_infoviewsynopsistextview textStorage] setAttributedString:[synopsis convertHTMLtoAttStr]];
-    [[_infoviewbackgroundtextview  textStorage] setAttributedString:background];
+    NSString *synopsis = d[@"synopsis"];
+    _infoviewdetailstextview.string = details;
+    [_infoviewsynopsistextview.textStorage setAttributedString:[synopsis convertHTMLtoAttStr]];
+    [_infoviewbackgroundtextview.textStorage setAttributedString:background];
     // Fix textview text color
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;

@@ -14,20 +14,20 @@
 @class MainWindow;
 
 @interface LoginPref : NSViewController <MASPreferencesViewController> {
-    IBOutlet NSImageView * logo;
+    IBOutlet NSImageView *logo;
 	//Login Preferences
-	IBOutlet NSTextField * fieldusername;
-	IBOutlet NSTextField * fieldpassword;
-	IBOutlet NSButton * savebut;
-	IBOutlet NSButton * clearbut;
-    IBOutlet NSTextField * loggedinuser;
+	IBOutlet NSTextField *fieldusername;
+	IBOutlet NSTextField *fieldpassword;
+	IBOutlet NSButton *savebut;
+	IBOutlet NSButton *clearbut;
+    IBOutlet NSTextField *loggedinuser;
     AppDelegate* appdelegate;
     MainWindow* mw;
-    IBOutlet NSView * loginview;
-    IBOutlet NSView * loggedinview;
+    IBOutlet NSView *loginview;
+    IBOutlet NSView *loggedinview;
     //Reauthorize Panel
-    IBOutlet NSTextField * passwordinput;
-    IBOutlet NSImageView * invalidinput;
+    IBOutlet NSTextField *passwordinput;
+    IBOutlet NSImageView *invalidinput;
 }
 @property (weak) IBOutlet NSWindow *loginpanel;
 - (id)initwithAppDelegate:(AppDelegate *)adelegate;

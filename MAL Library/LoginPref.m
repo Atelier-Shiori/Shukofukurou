@@ -16,7 +16,7 @@
 @implementation LoginPref
 @synthesize loginpanel;
 
-- (id)init
+- (instancetype)init
 {
 	return [super initWithNibName:@"LoginView" bundle:nil];
 }
@@ -29,7 +29,7 @@
     // Retrieve MyAnimeList Engine instance from app delegate
     mw = [appdelegate getMainWindowController];
     // Set Logo
-    [logo setImage:[NSApp applicationIconImage]];
+    logo.image = NSApp.applicationIconImage;
     // Load Login State
 	[self loadlogin];
 }
@@ -60,7 +60,7 @@
 		[savebut setEnabled: NO];
         [loggedinview setHidden:NO];
         [loginview setHidden:YES];
-        [loggedinuser setStringValue:[Keychain getusername]];
+        loggedinuser.stringValue = [Keychain getusername];
 	}
 	else {
 		//Disable Clearbut
@@ -75,15 +75,15 @@
 		//Disable Login Button
 		[savebut setEnabled: NO];
 		[savebut displayIfNeeded];
-		if ( [[fieldusername stringValue] length] == 0) {
+		if ( fieldusername.stringValue.length == 0) {
 			//No Username Entered! Show error message
-			[Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:[[self view] window]];
+			[Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:self.view.window];
 			[savebut setEnabled: YES];
 		}
 		else {
-			if ( [[fieldpassword stringValue] length] == 0 ) {
+			if ( fieldpassword.stringValue.length == 0 ) {
 				//No Password Entered! Show error message.
-				[Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:[[self view] window]];
+				[Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:self.view.window];
 				[savebut setEnabled: YES];
 			}
 			else {
@@ -92,7 +92,7 @@
                                                                    DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
                 
                 dispatch_async(queue, ^{
-                    [self login:[fieldusername stringValue] password:[fieldpassword stringValue]];
+                    [self login:fieldusername.stringValue password:fieldpassword.stringValue];
                 });
                 }
 		}
@@ -147,14 +147,14 @@
 - (IBAction)clearlogin:(id)sender
 {
     // Set Up Prompt Message Window
-    NSAlert * alert = [[NSAlert alloc] init] ;
+    NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:@"Yes"];
     [alert addButtonWithTitle:@"No"];
-    [alert setMessageText:@"Do you want to log out?"];
-    [alert setInformativeText:@"Once you logged out, you need to log back in before you can use this application."];
+    alert.messageText = @"Do you want to log out?";
+    alert.informativeText = @"Once you logged out, you need to log back in before you can use this application.";
     // Set Message type to Warning
-    [alert setAlertStyle:NSAlertStyleWarning];
-    [alert beginSheetModalForWindow:[[self view] window] completionHandler:^(NSModalResponse returnCode) {
+    alert.alertStyle = NSAlertStyleWarning;
+    [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
             [mw clearlist];
             //Remove account from keychain
@@ -162,11 +162,11 @@
             //Disable Clearbut
             [clearbut setEnabled: NO];
             [savebut setEnabled: YES];
-            [loggedinuser setStringValue:@""];
+            loggedinuser.stringValue = @"";
             [loggedinview setHidden:YES];
             [loginview setHidden:NO];
-            [fieldusername setStringValue:@""];
-            [fieldpassword setStringValue:@""];
+            fieldusername.stringValue = @"";
+            fieldpassword.stringValue = @"";
             [mw loadmainview];
             [mw refreshloginlabel];
         }
@@ -177,7 +177,7 @@
  */
 - (IBAction)reauthorize:(id)sender{
     [NSApp beginSheet:self.loginpanel
-       modalForWindow:[[self view] window] modalDelegate:self
+       modalForWindow:self.view.window modalDelegate:self
        didEndSelector:@selector(reAuthPanelDidEnd:returnCode:contextInfo:)
           contextInfo:(void *)nil];
 }
@@ -187,11 +187,11 @@
                                                            DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         
         dispatch_async(queue, ^{
-        [self login: (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"Username"] password:[passwordinput stringValue]];
+        [self login: (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:@"Username"] password:passwordinput.stringValue];
         });
     }
     //Reset and Close
-    [passwordinput setStringValue:@""];
+    passwordinput.stringValue = @"";
     [invalidinput setHidden:YES];
     [self.loginpanel close];
 }
@@ -201,7 +201,7 @@
     
 }
 - (IBAction)performreauthorization:(id)sender{
-    if ([[passwordinput stringValue] length] == 0) {
+    if (passwordinput.stringValue.length == 0) {
         // No password, indicate it
         NSBeep();
         [invalidinput setHidden:NO];

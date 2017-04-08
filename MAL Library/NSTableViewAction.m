@@ -14,12 +14,12 @@
     [super drawRect:dirtyRect];
 }
 - (void)keyUp:(NSEvent *)event {
-    if(([event keyCode] == 36) || [event keyCode] == 76){
-        [NSApp sendAction:[self doubleAction] to:nil from:self];
+    if((event.keyCode == 36) || event.keyCode == 76){
+        [NSApp sendAction:self.doubleAction to:nil from:self];
     }
 }
 - (BOOL)performKeyEquivalent:(NSEvent *)event{
-    if(([event keyCode] == 36) || [event keyCode] == 76){
+    if((event.keyCode == 36) || event.keyCode == 76){
         return YES;
     }
     return NO;

@@ -17,7 +17,7 @@
 @end
 
 @implementation DonationWindowController
-- (id)init{
+- (instancetype)init{
     self = [super initWithWindowNibName:@"DonationWindow"];
     if(!self)
         return nil;
@@ -29,8 +29,8 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 - (IBAction)validate:(id)sender{
-    if ([[name stringValue] length] > 0 && [[key stringValue] length]>0){
-        __block NSButton * btn = sender;
+    if (name.stringValue.length > 0 && key.stringValue.length>0){
+        __block NSButton *btn = sender;
         [btn setEnabled:NO];
         // Check donation key
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -38,32 +38,32 @@
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":name.stringValue, @"key":key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [btn setEnabled:YES];
-            NSDictionary * d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-            int valid = [(NSNumber *)d[@"valid"] intValue];
+            NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+            int valid = ((NSNumber *)d[@"valid"]).intValue;
             if (valid == 1) {
                 // Valid Key
                 [Utility showsheetmessage:@"Registered" explaination:@"Thank you for donating. The donation reminder will no longer appear and access to weekly builds is now unlocked." window:nil];
                 // Add to the preferences
-                [[NSUserDefaults standardUserDefaults] setObject:[name stringValue] forKey:@"donor"];
-                [[NSUserDefaults standardUserDefaults] setObject:[key stringValue] forKey:@"donatekey"];
-                [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithBool:YES] forKey:@"donated"];
+                [[NSUserDefaults standardUserDefaults] setObject:name.stringValue forKey:@"donor"];
+                [[NSUserDefaults standardUserDefaults] setObject:key.stringValue forKey:@"donatekey"];
+                [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
                 // Refresh Mainview
-                AppDelegate * del = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+                AppDelegate *del = (AppDelegate *)[NSApplication sharedApplication].delegate;
                 [[del getMainWindowController] loadmainview];
                 //Close Window
                 [self.window orderOut:self];
             }
             else if (valid == 0){
-                [Utility showsheetmessage:@"Invalid Key" explaination:@"Please make sure you copied the name and key exactly from the email." window:[self window]];
+                [Utility showsheetmessage:@"Invalid Key" explaination:@"Please make sure you copied the name and key exactly from the email." window:self.window];
             }
 
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"%@",error);
-            [Utility showsheetmessage:@"No Internet" explaination:@"Make sure you are connected to the internet and try again." window:[self window]];
+            [Utility showsheetmessage:@"No Internet" explaination:@"Make sure you are connected to the internet and try again." window:self.window];
                    }];
     }
     else{
-        [Utility showsheetmessage:@"Missing Information" explaination:@"Please type in the name and key exactly from the email and try again." window:[self window]];
+        [Utility showsheetmessage:@"Missing Information" explaination:@"Please type in the name and key exactly from the email and try again." window:self.window];
     }
 }
 

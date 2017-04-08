@@ -15,9 +15,7 @@
 		9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
 		913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		913A11611E8F206A00450B66 /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
 		913A11621E8F206A00450B66 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
-		913A11631E8F206A00450B66 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		913A11641E8F206A00450B66 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502BB1E8C576B00565D30 /* ListView.m */; };
 		913A11651E8F206A00450B66 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABA1E89842400F6E9FF /* MainWindow.m */; };
 		913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
@@ -138,6 +136,7 @@
 		91B378B31E989C7C000061E6 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
 		91B378B61E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91B378B71E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
+		91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
 		91D094C21E983095009454F8 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
 		91D094C41E983098009454F8 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
 		91D094D01E9876D8009454F8 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
@@ -403,7 +402,7 @@
 				91D094CE1E9876D8009454F8 /* AiringView.m */,
 				91B378B51E989C7C000061E6 /* AiringView.xib */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
-				918822701E8C916400C7FEF1 /* AppDelegate.m */,
+				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				917897ED1E89F19900C155DF /* DonationWindow.xib */,
@@ -695,9 +694,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				913A11611E8F206A00450B66 /* DonationWindowController.m in Sources */,
+				91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
-				913A11631E8F206A00450B66 /* PFMoveApplication.m in Sources */,
 				91D094C41E983098009454F8 /* HistoryView.m in Sources */,
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,

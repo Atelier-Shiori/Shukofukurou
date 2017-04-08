@@ -11,7 +11,7 @@
 @class MainWindow;
 
 @interface SeasonView : NSViewController <NSTableViewDelegate>{
-    IBOutlet MainWindow * mw;
+    IBOutlet MainWindow *mw;
 }
 @property (strong) IBOutlet NSTableView *seasontableview;
 @property (strong) IBOutlet NSArrayController *seasonarraycontroller;

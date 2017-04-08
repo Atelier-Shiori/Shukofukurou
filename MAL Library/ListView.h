@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 @class MainWindow;
 @interface ListView : NSViewController <NSTableViewDelegate>{
-    IBOutlet MainWindow * mw;
+    IBOutlet MainWindow *mw;
     int currentlist;
 }
 // Anime List View

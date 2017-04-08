@@ -12,7 +12,7 @@
 #import "MainWindow.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>{
-    MainWindow * mainwindowcontroller;
+    MainWindow *mainwindowcontroller;
     NSWindowController *_preferencesWindowController;
 }
 // Preference Window

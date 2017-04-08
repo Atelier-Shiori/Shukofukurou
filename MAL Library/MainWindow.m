@@ -30,7 +30,7 @@
 
 @implementation MainWindow
 
-- (id)init{
+- (instancetype)init{
     self = [super initWithWindowNibName:@"MainWindow"];
     if(!self)
         return nil;
@@ -54,21 +54,21 @@
     [self generateSourceList];
     
     // Set Resizing mask
-    [_infoview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_listview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_historyview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_progressview setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_searchview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_seasonview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_notloggedin.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_requireslicense setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [_airingview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    (_infoview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    (_listview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    (_historyview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _progressview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    (_searchview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    (_seasonview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    (_notloggedin.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _requireslicense.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    (_airingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     self.window.titleVisibility = NSWindowTitleHidden;
     
     // Fix window size
-    NSRect frame = [self.window frame];
+    NSRect frame = (self.window).frame;
     frame.size.height = frame.size.height - 22;
-    [[self window] setFrame:frame display:NO];
+    [self.window setFrame:frame display:NO];
     [self setAppearance];
     
     // Set logged in user
@@ -77,11 +77,11 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    [_infoview setSelectedId:0];
+    _infoview.selectedid = 0;
     // Set Mainview
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"]){
         NSNumber *selected = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"];
-        [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex: [selected unsignedIntegerValue]]byExtendingSelection:false];
+        [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex: selected.unsignedIntegerValue]byExtendingSelection:false];
     }
     else{
          [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
@@ -108,28 +108,28 @@
     //Library Group
     PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
     PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
-    [animelistItem setIcon:[NSImage imageNamed:@"library"]];
+    animelistItem.icon = [NSImage imageNamed:@"library"];
     PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
-    [mangalistItem setIcon:[NSImage imageNamed:@"library"]];
+    mangalistItem.icon = [NSImage imageNamed:@"library"];
     PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
-    [historyItem setIcon:[NSImage imageNamed:@"history"]];
-    [libraryItem setChildren:[NSArray arrayWithObjects:animelistItem, mangalistItem, historyItem, nil]];
+    historyItem.icon = [NSImage imageNamed:@"history"];
+    libraryItem.children = @[animelistItem, mangalistItem, historyItem];
     // Search
     PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
     PXSourceListItem *searchItem = [PXSourceListItem itemWithTitle:@"Anime" identifier:@"search"];
-    [searchItem setIcon:[NSImage imageNamed:@"anime"]];
+    searchItem.icon = [NSImage imageNamed:@"anime"];
     PXSourceListItem *mangasearchItem = [PXSourceListItem itemWithTitle:@"Manga" identifier:@"mangasearch"];
-    [mangasearchItem setIcon:[NSImage imageNamed:@"manga"]];
-    [searchgroupItem setChildren:[NSArray arrayWithObjects:searchItem, mangasearchItem, nil]];
+    mangasearchItem.icon = [NSImage imageNamed:@"manga"];
+    searchgroupItem.children = @[searchItem, mangasearchItem];
     // Discover Group
     PXSourceListItem *discoverItem = [PXSourceListItem itemWithTitle:@"DISCOVER" identifier:@"discover"];
     PXSourceListItem *titleinfoItem = [PXSourceListItem itemWithTitle:@"Title Info" identifier:@"titleinfo"];
-    [titleinfoItem setIcon:[NSImage imageNamed:@"animeinfo"]];
+    titleinfoItem.icon = [NSImage imageNamed:@"animeinfo"];
     PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
-    [seasonsItem setIcon:[NSImage imageNamed:@"seasons"]];
+    seasonsItem.icon = [NSImage imageNamed:@"seasons"];
     PXSourceListItem *airingItem = [PXSourceListItem itemWithTitle:@"Airing" identifier:@"airing"];
-    [airingItem setIcon:[NSImage imageNamed:@"airing"]];
-    [discoverItem setChildren:[NSArray arrayWithObjects:titleinfoItem,seasonsItem, airingItem, nil]];
+    airingItem.icon = [NSImage imageNamed:@"airing"];
+    discoverItem.children = @[titleinfoItem,seasonsItem, airingItem];
     
     // Populate Source List
     [self.sourceListItems addObject:libraryItem];
@@ -155,36 +155,36 @@
 
 - (IBAction)sharetitle:(id)sender {
     NSDictionary * d;
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
+    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     int type = 0;
     if ([identifier isEqualToString:@"animelist"]){
-        d = [[_listview.animelistarraycontroller selectedObjects] objectAtIndex:0];
+        d = (_listview.animelistarraycontroller).selectedObjects[0];
         type = AnimeType;
     }
     if ([identifier isEqualToString:@"mangalist"]){
-        d = [[_listview.mangalistarraycontroller selectedObjects] objectAtIndex:0];
+        d = (_listview.mangalistarraycontroller).selectedObjects[0];
         type = MangaType;
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        d = [_infoview getSelectedInfo];
-        type = [_infoview getType];
+        d = _infoview.selectedinfo;
+        type = _infoview.type;
     }
 
     //Generate Items to Share
     NSArray *shareItems;
     if (type == AnimeType){
-        shareItems = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%@", d[@"id"]]] ,nil];
+        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%@", d[@"id"]]]];
     }
     else {
-        shareItems = [NSArray arrayWithObjects:[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%@", d[@"id"]]] ,nil];
+        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%@", d[@"id"]]]];
     }
     //Get Share Picker
     NSSharingServicePicker *sharePicker = [[NSSharingServicePicker alloc] initWithItems:shareItems];
     sharePicker.delegate = nil;
     NSButton * btn = (NSButton *)sender;
     // Show Share Box
-    [sharePicker showRelativeToRect:[btn bounds] ofView:btn preferredEdge:NSMinYEdge];
+    [sharePicker showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMinYEdge];
 }
 - (void)startTimer{
     _refreshtimer =  [MSWeakTimer scheduledTimerWithTimeInterval:900
@@ -226,7 +226,7 @@
     _advsearchpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
-    [w setFrame:[w frame] display:false];
+    [w setFrame:w.frame display:false];
 }
 - (void)refreshloginlabel{
     if ([Keychain checkaccount]){
@@ -243,7 +243,7 @@
     if (!item)
         return self.sourceListItems.count;
     
-    return [[item children] count];
+    return [item children].count;
 }
 
 - (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item
@@ -251,7 +251,7 @@
     if (!item)
         return self.sourceListItems[index];
     
-    return [[item children] objectAtIndex:index];
+    return [item children][index];
 }
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item
@@ -304,9 +304,9 @@
 - (void)loadmainview{
     NSRect mainviewframe = _mainview.frame;
     [_mainview addSubview:[NSView new]];
-    long selectedrow = [sourceList selectedRow];
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    long selectedrow = sourceList.selectedRow;
+    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
+    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     NSPoint origin = NSMakePoint(0, 0);
         if ([identifier isEqualToString:@"animelist"]){
             if ([Keychain checkaccount]){
@@ -320,7 +320,7 @@
             }
         }
         else if ([identifier isEqualToString:@"mangalist"]){
-            if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
+            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
                 if ([Keychain checkaccount]){
                     [self replaceMainViewWithView:_listview.view];
                     [_listview loadList:1];
@@ -350,20 +350,20 @@
             [_searchview.animesearch setFrameOrigin:origin];
         }
         else if ([identifier isEqualToString:@"mangasearch"]){
-            if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
+            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
                 [self replaceMainViewWithView:_searchview.view];
                 [_searchview loadsearchView:MangaSearch];
                 _searchview.mangasearch.frame = mainviewframe;
                 [_searchview.mangasearch setFrameOrigin:origin];
             }
             else {
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_requireslicense];
+                [_mainview replaceSubview:(_mainview.subviews)[0] with:_requireslicense];
                 _requireslicense.frame = mainviewframe;
                 [self loadnotLicensed];
             }
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
-            if ([_infoview getSelectedId] > 0){
+            if (_infoview.selectedid > 0){
                 [self replaceMainViewWithView:_infoview.view];
             }
             else{
@@ -375,7 +375,7 @@
         }
         else if ([identifier isEqualToString:@"airing"]){
             [self replaceMainViewWithView:_airingview.view];
-            if ([[[_airingview airingarraycontroller] arrangedObjects] count] == 0){
+            if ([_airingview.airingarraycontroller.arrangedObjects count] == 0){
                 // Load Airing List
                 [_airingview loadAiring:@(false)];
             }
@@ -387,13 +387,13 @@
             return;
         }
     // Save current view
-    [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithLong:selectedrow] forKey:@"selectedmainview"];
+    [[NSUserDefaults standardUserDefaults] setValue:@(selectedrow) forKey:@"selectedmainview"];
     [self createToolbar];
 }
 - (void)replaceMainViewWithView:(NSView *)view{
     NSRect mainviewframe = _mainview.frame;
     NSPoint origin = NSMakePoint(0, 0);
-    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:view];
+    [_mainview replaceSubview:(_mainview.subviews)[0] with:view];
     view.frame = mainviewframe;
     [view setFrameOrigin:origin];
 }
@@ -404,13 +404,13 @@
     [self replaceMainViewWithView:_requireslicense];
 }
 - (void)createToolbar{
-    NSArray *toolbaritems = [_toolbar items];
+    NSArray *toolbaritems = _toolbar.items;
     // Remove Toolbar Items
-    for (int i = 0; i < [toolbaritems count]; i++){
+    for (int i = 0; i < toolbaritems.count; i++){
         [_toolbar removeItemAtIndex:0];
     }
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
+    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     int indexoffset = 0;
     
     if ([identifier isEqualToString:@"animelist"]){
@@ -424,7 +424,7 @@
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
-        if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
             if ([Keychain checkaccount]){
                 [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
                 [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
@@ -453,7 +453,7 @@
         [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
     }
     else if ([identifier isEqualToString:@"mangasearch"]){
-        if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
             if ([Keychain checkaccount]){
                 [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
             }
@@ -466,9 +466,9 @@
         }
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        if ([_infoview getSelectedId] > 0){
+        if (_infoview.selectedid > 0){
             if ([Keychain checkaccount]){
-                if ([self checkiftitleisonlist:[_infoview getSelectedId] type:[_infoview getType]]){
+                if ([self checkiftitleisonlist:_infoview.selectedid type:_infoview.type]){
                      [_toolbar insertItemWithItemIdentifier:@"editInfo" atIndex:0];
                 }
                 else{
@@ -509,7 +509,7 @@
 #pragma mark Search View
 - (void)populatesearchtb:(id)json type:(int)type{
     if (type == 0){
-        NSMutableArray * a = [_searchview.searcharraycontroller content];
+        NSMutableArray * a = (_searchview.searcharraycontroller).content;
         [a removeAllObjects];
         if ([json isKindOfClass:[NSArray class]]){
            // Valid Search Results, populate
@@ -519,7 +519,7 @@
         [_searchview.searchtb deselectAll:self];
     }
     else {
-        NSMutableArray * a = [_searchview.mangasearcharraycontroller content];
+        NSMutableArray * a = (_searchview.mangasearcharraycontroller).content;
         [a removeAllObjects];
         if ([json isKindOfClass:[NSArray class]]){
             // Valid Search Results, populate
@@ -536,8 +536,8 @@
 
 - (IBAction)showadvancedpopover:(id)sender {
     NSButton * btn = (NSButton *)sender;
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
+    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"search"]){
         [_advancedsearchcontroller setSearchType:0];
     }
@@ -545,12 +545,12 @@
         [_advancedsearchcontroller setSearchType:1];
     }
     // Show Share Box
-    [_advsearchpopover showRelativeToRect:[btn bounds] ofView:btn preferredEdge:NSMaxYEdge];
+    [_advsearchpopover showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMaxYEdge];
 }
 #pragma mark Anime List
 - (IBAction)refreshlist:(id)sender {
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
+    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"animelist"]){
         [self loadlist:@(true) type:0];
     }
@@ -619,12 +619,12 @@
 }
 - (void)clearlist{
     //Clears List
-    NSMutableArray * a = [_listview.animelistarraycontroller content];
+    NSMutableArray * a = (_listview.animelistarraycontroller).content;
     [a removeAllObjects];
     [Utility deleteFile:@"animelist.json" appendpath:@""];
     [_listview.animelisttb reloadData];
     [_listview.animelisttb deselectAll:self];
-     a = [_listview.mangalistarraycontroller content];
+     a = (_listview.mangalistarraycontroller).content;
     [a removeAllObjects];
     [Utility deleteFile:@"mangalist.json" appendpath:@""];
     [_listview.mangalisttb reloadData];
@@ -634,133 +634,124 @@
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
+    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"animelist"]){
-           NSDictionary *d = [[_listview.animelistarraycontroller selectedObjects] objectAtIndex:0];
-        [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.animelisttb frameOfCellAtColumn:0 row:[_listview.animelisttb selectedRow]] ofView:_listview.animelisttb preferredEdge:0 type:0];
+           NSDictionary *d = (_listview.animelistarraycontroller).selectedObjects[0];
+        [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.animelisttb frameOfCellAtColumn:0 row:(_listview.animelisttb).selectedRow] ofView:_listview.animelisttb preferredEdge:0 type:0];
     }
     if ([identifier isEqualToString:@"mangalist"]){
-        NSDictionary *d = [[_listview.mangalistarraycontroller selectedObjects] objectAtIndex:0];
-        [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.mangalisttb frameOfCellAtColumn:0 row:[_listview.mangalisttb selectedRow]] ofView:_listview.mangalisttb preferredEdge:0 type:1];
+        NSDictionary *d = (_listview.mangalistarraycontroller).selectedObjects[0];
+        [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.mangalisttb frameOfCellAtColumn:0 row:(_listview.mangalisttb).selectedRow] ofView:_listview.mangalisttb preferredEdge:0 type:1];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [_editviewcontroller showEditPopover:[self retreveentryfromlist:[_infoview getSelectedId] type:[_infoview getType]] showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge type:[_infoview getType]];
+        [_editviewcontroller showEditPopover:[self retreveentryfromlist:_infoview.selectedid type:_infoview.type] showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge type:_infoview.type];
     }
 }
 
 #pragma mark Add Title
 
 - (IBAction)showaddpopover:(id)sender {
-    NSIndexSet *selectedIndexes = [sourceList selectedRowIndexes];
-    NSString *identifier = [[sourceList itemAtRow:[selectedIndexes firstIndex]] identifier];
+    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
+    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"search"]){
-        NSDictionary *d = [[_searchview.searcharraycontroller selectedObjects] objectAtIndex:0];
-        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_searchview.searchtb frameOfCellAtColumn:0 row:[_searchview.searchtb selectedRow]] ofView:_searchview.searchtb preferredEdge:0 type:AnimeSearch];
+        NSDictionary *d = (_searchview.searcharraycontroller).selectedObjects[0];
+        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_searchview.searchtb frameOfCellAtColumn:0 row:(_searchview.searchtb).selectedRow] ofView:_searchview.searchtb preferredEdge:0 type:AnimeSearch];
     }
     if ([identifier isEqualToString:@"mangasearch"]){
-        NSDictionary *d = [[_searchview.mangasearcharraycontroller selectedObjects] objectAtIndex:0];
-        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_searchview.mangasearchtb frameOfCellAtColumn:0 row:[_searchview.mangasearchtb selectedRow]] ofView:_searchview.mangasearchtb preferredEdge:0 type:MangaSearch];
+        NSDictionary *d = (_searchview.mangasearcharraycontroller).selectedObjects[0];
+        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_searchview.mangasearchtb frameOfCellAtColumn:0 row:(_searchview.mangasearchtb).selectedRow] ofView:_searchview.mangasearchtb preferredEdge:0 type:MangaSearch];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
-        [_addtitlecontroller showAddPopover:[_infoview getSelectedInfo] showRelativeToRec:[sender bounds] ofView:sender preferredEdge:0 type:[_infoview getType]];
+        [_addtitlecontroller showAddPopover:_infoview.selectedinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge type:_infoview.type];
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        NSDictionary *d = [[_seasonview.seasonarraycontroller selectedObjects] objectAtIndex:0];
+        NSDictionary *d = (_seasonview.seasonarraycontroller).selectedObjects[0];
         d = d[@"id"];
-        NSNumber * idnum = @([[NSString stringWithFormat:@"%@",d[@"id"]] integerValue]);
+        NSNumber * idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:[_seasonview.seasontableview selectedRow]] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
+            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"Error: %@", error);
         }];
     }
     if ([identifier isEqualToString:@"airing"]){
-        NSDictionary *d = [[_airingview.airingarraycontroller selectedObjects] objectAtIndex:0];
-        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:[_airingview.airingtb  selectedRow]] ofView:_airingview.airingtb preferredEdge:0 type:0];
+        NSDictionary *d = (_airingview.airingarraycontroller).selectedObjects[0];
+        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
     }
 
 }
 
-
 #pragma mark Title Information View
 - (void)loadinfo:(NSNumber *) idnum type:(int)type {
-    int previd = [_infoview getSelectedId];
-    int prevtype = [_infoview getType];
-    [_infoview setSelectedId:0];
+    int previd = _infoview.selectedid;
+    int prevtype = _infoview.type;
+    _infoview.selectedid = 0;
     [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
     [self loadmainview];
     [_noinfoview setHidden:YES];
     [_progressindicator setHidden: NO];
     [_progressindicator startAnimation:nil];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *url = @"";
     if (type == AnimeType){
-        [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [_infoview setSelectedId:idnum.intValue];
-            [_infoview setType:type];
-            [_progressindicator stopAnimation:nil];
-            [_infoview populateAnimeInfoView:responseObject];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-            [_progressindicator stopAnimation:nil];
-            [_infoview setSelectedId:previd];
-            [_infoview setType:prevtype];
-            if ([_infoview getSelectedId] == 0)
-                [_noinfoview setHidden:NO];
-            [self loadmainview];
-        }];
+        url = [NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue];
+        
     }
     else {
-        [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [_infoview setSelectedId:idnum.intValue];
-            [_infoview setType:type];
-            [_progressindicator stopAnimation:nil];
-            [_infoview populateMangaInfoView:responseObject];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
-            NSLog(@"Error: %@", error);
-            [_progressindicator stopAnimation:nil];
-            [_infoview setSelectedId:previd];
-            [_infoview setType:prevtype];
-            if ([_infoview getSelectedId] == 0)
-                [_noinfoview setHidden:NO];
-            [self loadmainview];
-        }];
+        url = [NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue];
     }
+    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        _infoview.selectedid = idnum.intValue;
+        _infoview.type = type;
+        [_progressindicator stopAnimation:nil];
+        [_infoview populateAnimeInfoView:responseObject];
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+        [_progressindicator stopAnimation:nil];
+        _infoview.selectedid = previd;
+        _infoview.type = prevtype;
+        if (_infoview.selectedid == 0)
+            [_noinfoview setHidden:NO];
+        [self loadmainview];
+    }];
 }
+
 - (bool)checkiftitleisonlist:(int)idnum type:(int)type{
     if (type == 0){
-        NSArray * list = [_listview.animelistarraycontroller content];
+        NSArray * list = (_listview.animelistarraycontroller).content;
         list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
-        if ([list count] > 0){
+        if (list.count > 0){
             return true;
         }
     }
     else {
-        NSArray * list = [_listview.mangalistarraycontroller content];
+        NSArray * list = (_listview.mangalistarraycontroller).content;
         list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
-        if ([list count] > 0){
+        if (list.count > 0){
             return true;
         }
     }
     return false;
 }
+
 - (id)retreveentryfromlist:(int)idnum type:(int)type{
     if (type == 0){
-        NSArray * list = [_listview.animelistarraycontroller content];
+        NSArray * list = (_listview.animelistarraycontroller).content;
         list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
-        if ([list count] > 0){
-            return [list objectAtIndex:0];
+        if (list.count > 0){
+            return list[0];
         }
         else {
              return nil;
         }
     }
     else {
-        NSArray * list = [_listview.mangalistarraycontroller content];
+        NSArray * list = (_listview.mangalistarraycontroller).content;
         list = [list filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
-        if ([list count] > 0){
-            return [list objectAtIndex:0];
+        if (list.count > 0){
+            return list[0];
         }
         else {
             return nil;

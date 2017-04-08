@@ -10,13 +10,13 @@
 
 @implementation NSString (HTMLtoNSAttributedString)
 - (NSAttributedString *)convertHTMLtoAttStr{
-    NSString * style = @"<meta charset=\"UTF-8\"><style> body { font-family: -apple-system; }</style>";
+    NSString *style = @"<meta charset=\"UTF-8\"><style> body { font-family: -apple-system; }</style>";
     // Convert HTML to attributed string
     NSDictionary *options = @{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType };
     
-    NSString * combined = [NSString stringWithFormat:@"%@%@", style, self];
+    NSString *combined = [NSString stringWithFormat:@"%@%@", style, self];
     
-    NSAttributedString * stringwithHTML = [[NSAttributedString alloc] initWithData:[combined dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:NULL error:NULL];
+    NSAttributedString *stringwithHTML = [[NSAttributedString alloc] initWithData:[combined dataUsingEncoding:NSUTF8StringEncoding] options:options documentAttributes:NULL error:NULL];
     return stringwithHTML;
 }
 @end

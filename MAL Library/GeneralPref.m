@@ -14,7 +14,7 @@
 @end
 
 @implementation GeneralPref
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"GeneralPref" bundle:nil];
 }
@@ -44,7 +44,7 @@
 }
 
 - (IBAction)performtoggletimer:(id)sender {
-    NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
+    NSNumber *autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
         [mainwindowcontroller startTimer];
     }
@@ -54,21 +54,21 @@
 }
 
 - (IBAction)clearimages:(id)sender {
-    NSAlert * alert = [[NSAlert alloc] init] ;
+    NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
     [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
     [alert setMessageText:NSLocalizedString(@"Do you really want to clear the image cache?",nil)];
     [alert setInformativeText:NSLocalizedString(@"Once done, this action cannot be undone.",nil)];
     // Set Message type to Warning
     alert.alertStyle = NSAlertStyleInformational;
-    [alert beginSheetModalForWindow:[[self view] window] completionHandler:^(NSModalResponse returnCode) {
+    [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
-            NSFileManager * fm = [NSFileManager defaultManager];
-            NSString * path = [Utility retrieveApplicationSupportDirectory:@"imgcache"];
-            NSDirectoryEnumerator * en = [fm enumeratorAtPath:path];
-            NSError * error = nil;
+            NSFileManager *fm = [NSFileManager defaultManager];
+            NSString *path = [Utility retrieveApplicationSupportDirectory:@"imgcache"];
+            NSDirectoryEnumerator *en = [fm enumeratorAtPath:path];
+            NSError *error = nil;
             bool success;
-            NSString * file;
+            NSString *file;
             while (file = [en nextObject]){
                 success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@/%@",path,file] error:&error];
                 if (!success && error){

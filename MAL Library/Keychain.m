@@ -11,7 +11,7 @@
 #import "Base64Category.h"
 
 @implementation Keychain
-NSString * const kserviceName = @"MAL Library";
+NSString *const kserviceName = @"MAL Library";
 
 + (BOOL)checkaccount{
     if ([Keychain getusername]){
@@ -21,10 +21,10 @@ NSString * const kserviceName = @"MAL Library";
 }
 + (NSString *)getusername{
     // This method checks for any accounts that Hachidori can use
-    NSArray * accounts = [SSKeychain accountsForService:kserviceName];
+    NSArray *accounts = [SSKeychain accountsForService:kserviceName];
     if (accounts > 0){
         //retrieve first valid account
-        for (NSDictionary * account in accounts){
+        for (NSDictionary *account in accounts){
             return (NSString *)account[@"acct"];
         }
     }
@@ -32,7 +32,7 @@ NSString * const kserviceName = @"MAL Library";
 }
 + (BOOL)storeaccount:(NSString *)uname password:(NSString *)password{
     //Clear Account Information in the plist file if it hasn't been done already
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"Base64Token"];
     [defaults setObject:@"" forKey:@"Username"];
     return [SSKeychain setPassword:password forService:kserviceName account:uname];

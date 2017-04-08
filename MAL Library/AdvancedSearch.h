@@ -10,8 +10,8 @@
 @class MainWindow;
 @class NSTextFieldNumber;
 @interface AdvancedSearch : NSViewController{
-    IBOutlet MainWindow * mw;
-    IBOutlet NSPopover * popover;
+    IBOutlet MainWindow *mw;
+    IBOutlet NSPopover *popover;
 }
 @property (strong) IBOutlet NSTokenField *genretokenfield;
 @property (strong) IBOutlet NSButton *exclude;

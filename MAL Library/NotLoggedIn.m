@@ -15,7 +15,7 @@
 
 @implementation NotLoggedIn
 
-- (id)init
+- (instancetype)init
 {
     return [super initWithNibName:@"NotLoggedIn" bundle:nil];
 }
@@ -23,12 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    [self view];
+    self.view;
 }
 
 #pragma mark Not Logged in View
 - (IBAction)performlogin:(id)sender {
-    AppDelegate * del = [mw getDelegate];
+    AppDelegate * del = mw.appdel;
     [del showloginpref];
 }
 @end

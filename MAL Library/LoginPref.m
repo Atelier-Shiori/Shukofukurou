@@ -1,6 +1,6 @@
 //
 //  LoginPref.m
-//  MAL Updater OS X
+//  MAL Library
 //
 //  Created by Nanoha Takamachi on 2014/10/18.
 //  Copyright 2014 Atelier Shiori. All rights reserved.

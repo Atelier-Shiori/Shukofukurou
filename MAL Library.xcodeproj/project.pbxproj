@@ -134,14 +134,14 @@
 		91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		91AECE591E89921200824C2D /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		91B378B21E989C7C000061E6 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
+		91B378B31E989C7C000061E6 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
+		91B378B61E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
+		91B378B71E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91D094C21E983095009454F8 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
-		91D094C31E983095009454F8 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094C11E983095009454F8 /* HistoryView.xib */; };
 		91D094C41E983098009454F8 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
-		91D094C51E9830A8009454F8 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094C11E983095009454F8 /* HistoryView.xib */; };
 		91D094D01E9876D8009454F8 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
 		91D094D11E9876D8009454F8 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
-		91D094D21E9876D8009454F8 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094CF1E9876D8009454F8 /* AiringView.xib */; };
-		91D094D31E9876D8009454F8 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094CF1E9876D8009454F8 /* AiringView.xib */; };
 		91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
 		91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
 		91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
@@ -291,12 +291,12 @@
 		9199BB011E8984E300F6E9FF /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PXSourceList.framework; path = "/Users/kirimansharo/Desktop/MAL Library/MAL Library/PXSourceList.framework"; sourceTree = "<absolute>"; };
 		9199BB031E8984F600F6E9FF /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = "/Users/kirimansharo/Desktop/MAL Library/MAL Library/MASPreferences.framework"; sourceTree = "<absolute>"; };
 		91AECE5A1E89922A00824C2D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
+		91B378B41E989C7C000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringView.xib; sourceTree = "<group>"; };
+		91B378B81E989C83000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HistoryView.xib; sourceTree = "<group>"; };
 		91D094BF1E983095009454F8 /* HistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryView.h; sourceTree = "<group>"; };
 		91D094C01E983095009454F8 /* HistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryView.m; sourceTree = "<group>"; };
-		91D094C11E983095009454F8 /* HistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
 		91D094CD1E9876D8009454F8 /* AiringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringView.h; sourceTree = "<group>"; };
 		91D094CE1E9876D8009454F8 /* AiringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringView.m; sourceTree = "<group>"; };
-		91D094CF1E9876D8009454F8 /* AiringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AiringView.xib; sourceTree = "<group>"; };
 		91D3D8991E89BFEF0046C4CC /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFAboutWindowController.h; path = PFAboutWindow/PFAboutWindowController.h; sourceTree = "<group>"; };
 		91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFAboutWindowController.m; path = PFAboutWindow/PFAboutWindowController.m; sourceTree = "<group>"; };
 		91D3D89E1E89C0E40046C4CC /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
@@ -389,17 +389,19 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
 				915E8C4D1E8C235D005A49A4 /* AddTitle.xib */,
-				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
-				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
 				910589E81E981E1A00501B9A /* AdvancedPref.h */,
 				910589E91E981E1A00501B9A /* AdvancedPref.m */,
 				910589F21E981E2400501B9A /* AdvancedPref.xib */,
+				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
+				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
+				91D094CD1E9876D8009454F8 /* AiringView.h */,
+				91D094CE1E9876D8009454F8 /* AiringView.m */,
+				91B378B51E989C7C000061E6 /* AiringView.xib */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
 				918822701E8C916400C7FEF1 /* AppDelegate.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
@@ -416,7 +418,9 @@
 				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
 				91D094BF1E983095009454F8 /* HistoryView.h */,
 				91D094C01E983095009454F8 /* HistoryView.m */,
-				91D094C11E983095009454F8 /* HistoryView.xib */,
+				91B378B91E989C83000061E6 /* HistoryView.xib */,
+				913A11AB1E8F206A00450B66 /* Info-AppStore.plist */,
+				9199BAA41E89836000F6E9FF /* Info.plist */,
 				91999D0F1E8C88280026D3E9 /* InfoView.h */,
 				91999D101E8C88280026D3E9 /* InfoView.m */,
 				9188226F1E8C90A700C7FEF1 /* InfoView.xib */,
@@ -429,11 +433,12 @@
 				9199BAB71E89842400F6E9FF /* LoginPref.m */,
 				9199BAE41E89843300F6E9FF /* LoginView.xib */,
 				9199BAB81E89842400F6E9FF /* main.m */,
-				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
 				913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */,
+				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
 				9199BAB91E89842400F6E9FF /* MainWindow.h */,
 				9199BABA1E89842400F6E9FF /* MainWindow.m */,
 				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
+				916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */,
 				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
 				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
 				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
@@ -443,6 +448,8 @@
 				9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */,
 				915E8C5E1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.h */,
 				915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */,
+				9164FFD01E8D697600EA34D9 /* NSTableViewAction.h */,
+				9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */,
 				9199BAC11E89842400F6E9FF /* NSTextFieldNumber.h */,
 				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
 				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
@@ -451,8 +458,6 @@
 				91999D0E1E8C87F10026D3E9 /* Resources */,
 				91999CFD1E8C73300026D3E9 /* SearchView.h */,
 				91999CFE1E8C73300026D3E9 /* SearchView.m */,
-				9164FFD01E8D697600EA34D9 /* NSTableViewAction.h */,
-				9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */,
 				91999D041E8C7DFE0026D3E9 /* SearchView.xib */,
 				91999D051E8C81580026D3E9 /* SeasonView.h */,
 				91999D061E8C81580026D3E9 /* SeasonView.m */,
@@ -471,12 +476,7 @@
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				9199BA991E89836000F6E9FF /* AppDelegate.h */,
 				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
-				9199BAA41E89836000F6E9FF /* Info.plist */,
-				913A11AB1E8F206A00450B66 /* Info-AppStore.plist */,
 				9168F92D1E89861300CCB5B3 /* Keychain.m */,
-				91D094CD1E9876D8009454F8 /* AiringView.h */,
-				91D094CE1E9876D8009454F8 /* AiringView.m */,
-				91D094CF1E9876D8009454F8 /* AiringView.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -611,7 +611,7 @@
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
 				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
 				913A11911E8F206A00450B66 /* SearchView.xib in Resources */,
-				91D094D31E9876D8009454F8 /* AiringView.xib in Resources */,
+				91B378B31E989C7C000061E6 /* AiringView.xib in Resources */,
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
 				910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */,
@@ -624,7 +624,7 @@
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
 				913A119C1E8F206A00450B66 /* PFAboutWindow.xib in Resources */,
 				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
-				91D094C51E9830A8009454F8 /* HistoryView.xib in Resources */,
+				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
 			);
@@ -634,7 +634,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91D094C31E983095009454F8 /* HistoryView.xib in Resources */,
+				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
@@ -652,7 +652,7 @@
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
-				91D094D21E9876D8009454F8 /* AiringView.xib in Resources */,
+				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
@@ -905,6 +905,22 @@
 				9199BAE91E89843300F6E9FF /* Base */,
 			);
 			name = SoftwareUpdateView.xib;
+			sourceTree = "<group>";
+		};
+		91B378B51E989C7C000061E6 /* AiringView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91B378B41E989C7C000061E6 /* Base */,
+			);
+			name = AiringView.xib;
+			sourceTree = "<group>";
+		};
+		91B378B91E989C83000061E6 /* HistoryView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91B378B81E989C83000061E6 /* Base */,
+			);
+			name = HistoryView.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

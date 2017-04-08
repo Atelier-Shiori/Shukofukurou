@@ -153,7 +153,7 @@
     [self.aboutWindowController setAppCopyright:[[NSAttributedString alloc] initWithString:copyrightstr
                                                                                 attributes:@{
                                                                                              NSForegroundColorAttributeName:[NSColor labelColor],
-                                                                                             NSFontAttributeName:[NSFont fontWithName:@"HelveticaNeue" size:11]}]];
+                                                                                             NSFontAttributeName:[NSFont fontWithName:[[NSFont systemFontOfSize:12.0f] familyName] size:11]}]];
 
     [self.aboutWindowController showWindow:nil];
     

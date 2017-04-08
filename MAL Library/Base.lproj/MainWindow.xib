@@ -22,12 +22,9 @@
                 <outlet property="notloggedin" destination="N7e-Wr-mOx" id="i8v-Pv-cu4"/>
                 <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
-                <outlet property="refreshlist" destination="6qy-e4-N2b" id="K7X-ly-jCN"/>
                 <outlet property="requireslicense" destination="LUW-Wj-as8" id="fud-9q-qyV"/>
                 <outlet property="searchview" destination="3aF-oI-xAM" id="Kt7-Uz-xOb"/>
-                <outlet property="seasonpicker" destination="E2N-f0-9rS" id="FGQ-ls-qlH"/>
                 <outlet property="seasonview" destination="UX5-t5-v6p" id="gj6-7B-Eyh"/>
-                <outlet property="seasonyrpicker" destination="UWH-1l-PJ4" id="wbP-iF-ADn"/>
                 <outlet property="sourceList" destination="tEv-Dd-bgp" id="SSj-Vb-fUB"/>
                 <outlet property="toolbar" destination="6eG-p3-l2S" id="wTZ-w8-9cJ"/>
                 <outlet property="w" destination="F0z-JX-Cv5" id="rtl-lI-YpK"/>
@@ -441,7 +438,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-144" y="32"/>
+            <point key="canvasLocation" x="76" y="-272"/>
         </window>
         <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="K71-hX-Lqz" userLabel="ProgressView">
             <rect key="frame" x="0.0" y="0.0" width="549" height="434"/>

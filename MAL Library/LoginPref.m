@@ -115,6 +115,7 @@
         [savebut setEnabled:YES];
         [mw loadlist:@(1) type:0];
         [mw loadlist:@(1) type:1];
+        [mw loadlist:@(1) type:2];
         [mw loadmainview];
         [mw refreshloginlabel];
     } failure:^(NSURLSessionTask *operation, NSError *error) {

@@ -110,6 +110,11 @@
     else{
          [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
     }
+    // Load Touchbar
+    if (NSClassFromString(@"NSTouchBar") != nil) {
+        [[NSBundle mainBundle] loadNibNamed:@"MainWindow_Touch_Bar" owner:self topLevelObjects:nil];
+    }
+    
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
     [self loadlist:shouldrefresh type:0];
     [self loadlist:shouldrefresh type:1];
@@ -539,51 +544,53 @@
     }
 }
 - (void)loadlist:(NSNumber *)refresh type:(int)type{
-    id list;
-    bool refreshlist = refresh.boolValue;
-    bool exists = false;
-    switch (type) {
-        case 0:
-            exists = [Utility checkifFileExists:@"animelist.json" appendPath:@""];
-            list = [Utility loadJSON:@"animelist.json" appendpath:@""];
-            if (exists && !refreshlist){
-                [_listview populateList:list type:0];
-                return;
-            }
-            else if (!exists || refreshlist){
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-
-            [manager GET:[NSString stringWithFormat:@"%@/2.1/animelist/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
-            
-            } failure:^(NSURLSessionTask *operation, NSError *error) {
-                NSLog(@"%@", error.userInfo);
-            }];
-            }
-            break;
-        case 1:
-            exists = [Utility checkifFileExists:@"mangalist.json" appendPath:@""];
-            list = [Utility loadJSON:@"mangalist.json" appendpath:@""];
-            if (exists && !refreshlist){
-                [_listview populateList:list type:1];
-                return;
-            }
-            else if (!exists || refreshlist){
+    if ([Keychain checkaccount]){
+        id list;
+        bool refreshlist = refresh.boolValue;
+        bool exists = false;
+        switch (type) {
+            case 0:
+                exists = [Utility checkifFileExists:@"animelist.json" appendPath:@""];
+                list = [Utility loadJSON:@"animelist.json" appendpath:@""];
+                if (exists && !refreshlist){
+                    [_listview populateList:list type:0];
+                    return;
+                }
+                else if (!exists || refreshlist){
                 AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+
+                [manager GET:[NSString stringWithFormat:@"%@/2.1/animelist/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
                 
-                [manager GET:[NSString stringWithFormat:@"%@/2.1/mangalist/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                    [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
-                    
                 } failure:^(NSURLSessionTask *operation, NSError *error) {
                     NSLog(@"%@", error.userInfo);
                 }];
-            }
-            break;
-        case 2:
-                [_historyview loadHistory:refresh];
+                }
                 break;
-        default:
+            case 1:
+                exists = [Utility checkifFileExists:@"mangalist.json" appendPath:@""];
+                list = [Utility loadJSON:@"mangalist.json" appendpath:@""];
+                if (exists && !refreshlist){
+                    [_listview populateList:list type:1];
+                    return;
+                }
+                else if (!exists || refreshlist){
+                    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+                    
+                    [manager GET:[NSString stringWithFormat:@"%@/2.1/mangalist/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                        [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
+                        
+                    } failure:^(NSURLSessionTask *operation, NSError *error) {
+                        NSLog(@"%@", error.userInfo);
+                    }];
+                }
                 break;
+            case 2:
+                    [_historyview loadHistory:refresh];
+                    break;
+            default:
+                    break;
+        }
     }
 }
 - (void)clearlist{

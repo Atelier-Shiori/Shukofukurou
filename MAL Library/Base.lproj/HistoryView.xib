@@ -19,21 +19,21 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdO-TP-TSe">
-                    <rect key="frame" x="0.0" y="-12" width="538" height="421"/>
+                    <rect key="frame" x="0.0" y="0.0" width="538" height="409"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="60f-EA-jGT">
-                        <rect key="frame" x="0.0" y="0.0" width="538" height="421"/>
+                        <rect key="frame" x="0.0" y="0.0" width="538" height="409"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="historytb" headerView="OIw-jT-MOW" id="Px0-8P-qpk" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="538" height="398"/>
+                                <rect key="frame" x="0.0" y="0.0" width="538" height="386"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn identifier="title" editable="NO" width="329" minWidth="40" maxWidth="1000" id="rxp-sp-1zu">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title and Segment">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -45,9 +45,19 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.title" id="hUy-7H-AEh">
+                                            <binding destination="t75-mm-BQR" name="displayPatternValue1" keyPath="arrangedObjects.title" id="a9A-IM-Cx8">
                                                 <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="t75-mm-BQR" name="displayPatternValue2" keyPath="arrangedObjects.segment_type" previousBinding="a9A-IM-Cx8" id="2iC-5i-AO9">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="t75-mm-BQR" name="displayPatternValue3" keyPath="arrangedObjects.segment" previousBinding="2iC-5i-AO9" id="aEz-Nu-4E9">
+                                                <dictionary key="options">
+                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
                                                 </dictionary>
                                             </binding>
                                         </connections>

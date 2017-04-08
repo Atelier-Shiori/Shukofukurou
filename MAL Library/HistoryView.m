@@ -90,6 +90,16 @@
         NSNumber * idnum = item[@"id"];
         NSString * title = item[@"title"];
         NSString * type = d[@"type"];
+        NSNumber * segment;
+        NSString * segment_type = @"";
+        if (item[@"watched_episodes"]){
+            segment = item[@"watched_episodes"];
+            segment_type = @"Episode";
+        }
+        else {
+            segment = item[@"chapters_read"];
+            segment_type = @"Chapter";
+        }
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSString * strdate = d[@"time_updated"];
@@ -98,7 +108,7 @@
         [dateFormatter setDateFormat:nil];
         [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
         NSString * lastupdated = [dateFormatter stringFromDate:datetime];
-        [history addObject:@{@"id":idnum, @"title":title, @"type":type, @"last_updated":lastupdated}];
+        [history addObject:@{@"id":idnum, @"title":title, @"type":type, @"last_updated":lastupdated, @"segment":segment, @"segment_type":segment_type}];
     }
     return history;
 }

@@ -11,6 +11,7 @@
                 <outlet property="addtitlecontroller" destination="WWH-Kx-8dQ" id="qjM-eG-o1K"/>
                 <outlet property="advancedsearchcontroller" destination="aSh-hJ-Fpb" id="YDJ-Vs-j3N"/>
                 <outlet property="advsearchpopover" destination="o05-dg-F2u" id="8nj-Kh-UcI"/>
+                <outlet property="airingview" destination="GCr-4Z-jYZ" id="9K6-26-NPr"/>
                 <outlet property="editviewcontroller" destination="w9r-Zw-PrM" id="5wH-sy-WVV"/>
                 <outlet property="historyview" destination="ONm-Bf-qTf" id="0B3-IQ-wb2"/>
                 <outlet property="infoview" destination="4iy-i9-GZD" id="oXl-Eu-DXx"/>
@@ -429,6 +430,63 @@
                             <action selector="performmodifytitle:" target="-2" id="eco-nX-xxF"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="3B45B1B9-3088-40F4-B8DC-CD9DC8512EDE" explicitItemIdentifier="airingdayselect" label="Day" paletteLabel="Day" id="hTd-hf-Vqb">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="100" height="28"/>
+                        <size key="maxSize" width="114" height="28"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="kRz-ix-xG0">
+                            <rect key="frame" x="0.0" y="14" width="114" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" title="Monday" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="Pcs-On-Eiq" id="gju-AG-Ih4">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="aZy-8k-Ygy">
+                                    <items>
+                                        <menuItem title="Monday" state="on" id="Pcs-On-Eiq"/>
+                                        <menuItem title="Tuesday" id="oeR-7O-P49"/>
+                                        <menuItem title="Wednesday" id="BIE-6s-zZl"/>
+                                        <menuItem title="Thursday" id="2kr-Hb-pHJ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Friday" id="cOQ-je-X2y">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Saturday" id="DLZ-OP-6WT">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Sunday" id="X1P-Wy-NGa">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="NYk-EC-2qY"/>
+                                        <menuItem title="Other" id="yZq-JL-LMj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="Unknown" id="5Or-Bk-b6b">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                            <connections>
+                                <action selector="changedayfilter:" target="GCr-4Z-jYZ" id="YI5-qq-qcp"/>
+                            </connections>
+                        </popUpButton>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="4AFED81C-6E9D-4153-A8BA-F1FA06E3167F" explicitItemIdentifier="AddTitleAiring" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="1Ql-ns-YSb">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="7u9-GC-NUg">
+                            <rect key="frame" x="6" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fem-g0-HNl">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="showaddpopover:" target="-2" id="kx9-81-I4C"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -438,7 +496,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="76" y="-272"/>
+            <point key="canvasLocation" x="-442" y="-289"/>
         </window>
         <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="K71-hX-Lqz" userLabel="ProgressView">
             <rect key="frame" x="0.0" y="0.0" width="549" height="434"/>
@@ -595,6 +653,13 @@
             </subviews>
             <point key="canvasLocation" x="34" y="1099"/>
         </visualEffectView>
+        <viewController id="GCr-4Z-jYZ" customClass="AiringView">
+            <connections>
+                <outlet property="addtitleitem" destination="1Ql-ns-YSb" id="XfB-FA-nb8"/>
+                <outlet property="day" destination="kRz-ix-xG0" id="aVY-3J-Gii"/>
+                <outlet property="mw" destination="-2" id="9rJ-Z0-zC2"/>
+            </connections>
+        </viewController>
     </objects>
     <resources>
         <image name="Edit" width="32" height="32"/>

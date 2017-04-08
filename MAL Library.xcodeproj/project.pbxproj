@@ -138,6 +138,10 @@
 		91D094C31E983095009454F8 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094C11E983095009454F8 /* HistoryView.xib */; };
 		91D094C41E983098009454F8 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
 		91D094C51E9830A8009454F8 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094C11E983095009454F8 /* HistoryView.xib */; };
+		91D094D01E9876D8009454F8 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
+		91D094D11E9876D8009454F8 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
+		91D094D21E9876D8009454F8 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094CF1E9876D8009454F8 /* AiringView.xib */; };
+		91D094D31E9876D8009454F8 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91D094CF1E9876D8009454F8 /* AiringView.xib */; };
 		91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
 		91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
 		91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
@@ -290,6 +294,9 @@
 		91D094BF1E983095009454F8 /* HistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryView.h; sourceTree = "<group>"; };
 		91D094C01E983095009454F8 /* HistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryView.m; sourceTree = "<group>"; };
 		91D094C11E983095009454F8 /* HistoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryView.xib; sourceTree = "<group>"; };
+		91D094CD1E9876D8009454F8 /* AiringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringView.h; sourceTree = "<group>"; };
+		91D094CE1E9876D8009454F8 /* AiringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringView.m; sourceTree = "<group>"; };
+		91D094CF1E9876D8009454F8 /* AiringView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AiringView.xib; sourceTree = "<group>"; };
 		91D3D8991E89BFEF0046C4CC /* PFAboutWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PFAboutWindowController.h; path = PFAboutWindow/PFAboutWindowController.h; sourceTree = "<group>"; };
 		91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PFAboutWindowController.m; path = PFAboutWindow/PFAboutWindowController.m; sourceTree = "<group>"; };
 		91D3D89E1E89C0E40046C4CC /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
@@ -467,6 +474,9 @@
 				9199BAA41E89836000F6E9FF /* Info.plist */,
 				913A11AB1E8F206A00450B66 /* Info-AppStore.plist */,
 				9168F92D1E89861300CCB5B3 /* Keychain.m */,
+				91D094CD1E9876D8009454F8 /* AiringView.h */,
+				91D094CE1E9876D8009454F8 /* AiringView.m */,
+				91D094CF1E9876D8009454F8 /* AiringView.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -601,6 +611,7 @@
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
 				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
 				913A11911E8F206A00450B66 /* SearchView.xib in Resources */,
+				91D094D31E9876D8009454F8 /* AiringView.xib in Resources */,
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
 				910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */,
@@ -641,6 +652,7 @@
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
+				91D094D21E9876D8009454F8 /* AiringView.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
@@ -708,6 +720,7 @@
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
+				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				913A11791E8F206A00450B66 /* SSKeychain.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
@@ -745,6 +758,7 @@
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
+				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,

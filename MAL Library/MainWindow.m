@@ -21,6 +21,8 @@
 #import "SeasonView.h"
 #import "AdvancedSearch.h"
 #import "HistoryView.h"
+#import "AiringView.h"
+#import "NSTableViewAction.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -38,48 +40,20 @@
 {
     // Register queue
     _privateQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
+    
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
         [image setTemplate:YES];
     }
+    // Generate Source List
+    [self generateSourceList];
     
-    self.sourceListItems = [[NSMutableArray alloc] init];
-    
-    //Library Group
-    PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
-    PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
-    [animelistItem setIcon:[NSImage imageNamed:@"library"]];
-    PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
-    [mangalistItem setIcon:[NSImage imageNamed:@"library"]];
-    PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
-    [historyItem setIcon:[NSImage imageNamed:@"history"]];
-    [libraryItem setChildren:[NSArray arrayWithObjects:animelistItem, mangalistItem, historyItem, nil]];
-    // Search
-    PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
-    PXSourceListItem *searchItem = [PXSourceListItem itemWithTitle:@"Anime" identifier:@"search"];
-    [searchItem setIcon:[NSImage imageNamed:@"anime"]];
-    PXSourceListItem *mangasearchItem = [PXSourceListItem itemWithTitle:@"Manga" identifier:@"mangasearch"];
-    [mangasearchItem setIcon:[NSImage imageNamed:@"manga"]];
-    [searchgroupItem setChildren:[NSArray arrayWithObjects:searchItem, mangasearchItem, nil]];
-    // Discover Group
-    PXSourceListItem *discoverItem = [PXSourceListItem itemWithTitle:@"DISCOVER" identifier:@"discover"];
-    PXSourceListItem *titleinfoItem = [PXSourceListItem itemWithTitle:@"Title Info" identifier:@"titleinfo"];
-    [titleinfoItem setIcon:[NSImage imageNamed:@"animeinfo"]];
-    PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
-    [seasonsItem setIcon:[NSImage imageNamed:@"seasons"]];
-    [discoverItem setChildren:[NSArray arrayWithObjects:titleinfoItem,seasonsItem, nil]];
-   
-   // Populate Source List
-    [self.sourceListItems addObject:libraryItem];
-    [self.sourceListItems addObject:searchgroupItem];
-    [self.sourceListItems addObject:discoverItem];
-    [sourceList reloadData];
-    // Set Resizeing mask
+    // Set Resizing mask
     [_infoview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_listview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_historyview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
@@ -88,7 +62,9 @@
     [_seasonview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_notloggedin.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [_requireslicense setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [_airingview.view setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     self.window.titleVisibility = NSWindowTitleHidden;
+    
     // Fix window size
     NSRect frame = [self.window frame];
     frame.size.height = frame.size.height - 22;
@@ -125,9 +101,48 @@
     }
     
 }
+
+-(void)generateSourceList{
+    self.sourceListItems = [[NSMutableArray alloc] init];
+    
+    //Library Group
+    PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
+    PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
+    [animelistItem setIcon:[NSImage imageNamed:@"library"]];
+    PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
+    [mangalistItem setIcon:[NSImage imageNamed:@"library"]];
+    PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
+    [historyItem setIcon:[NSImage imageNamed:@"history"]];
+    [libraryItem setChildren:[NSArray arrayWithObjects:animelistItem, mangalistItem, historyItem, nil]];
+    // Search
+    PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
+    PXSourceListItem *searchItem = [PXSourceListItem itemWithTitle:@"Anime" identifier:@"search"];
+    [searchItem setIcon:[NSImage imageNamed:@"anime"]];
+    PXSourceListItem *mangasearchItem = [PXSourceListItem itemWithTitle:@"Manga" identifier:@"mangasearch"];
+    [mangasearchItem setIcon:[NSImage imageNamed:@"manga"]];
+    [searchgroupItem setChildren:[NSArray arrayWithObjects:searchItem, mangasearchItem, nil]];
+    // Discover Group
+    PXSourceListItem *discoverItem = [PXSourceListItem itemWithTitle:@"DISCOVER" identifier:@"discover"];
+    PXSourceListItem *titleinfoItem = [PXSourceListItem itemWithTitle:@"Title Info" identifier:@"titleinfo"];
+    [titleinfoItem setIcon:[NSImage imageNamed:@"animeinfo"]];
+    PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
+    [seasonsItem setIcon:[NSImage imageNamed:@"seasons"]];
+    PXSourceListItem *airingItem = [PXSourceListItem itemWithTitle:@"Airing" identifier:@"airing"];
+    [airingItem setIcon:[NSImage imageNamed:@"airing"]];
+    [discoverItem setChildren:[NSArray arrayWithObjects:titleinfoItem,seasonsItem, airingItem, nil]];
+    
+    // Populate Source List
+    [self.sourceListItems addObject:libraryItem];
+    [self.sourceListItems addObject:searchgroupItem];
+    [self.sourceListItems addObject:discoverItem];
+    [sourceList reloadData];
+
+}
+
 - (IBAction)addlicense:(id)sender {
     [_appdel enterDonationKey:sender];
 }
+
 - (IBAction)viewDonation:(id)sender {
     // Show Donation Page
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.ateliershiori.moe/donate/"]];
@@ -295,9 +310,7 @@
     NSPoint origin = NSMakePoint(0, 0);
         if ([identifier isEqualToString:@"animelist"]){
             if ([Keychain checkaccount]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_listview.view];
-                _listview.view.frame = mainviewframe;
-                [_listview.view setFrameOrigin:origin];
+                [self replaceMainViewWithView:_listview.view];
                 [_listview loadList:0];
                 _listview.animelistview.frame = mainviewframe;
                 [_listview.animelistview setFrameOrigin:origin];
@@ -309,9 +322,7 @@
         else if ([identifier isEqualToString:@"mangalist"]){
             if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
                 if ([Keychain checkaccount]){
-                    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_listview.view];
-                    _listview.view.frame = mainviewframe;
-                    [_listview.view setFrameOrigin:origin];
+                    [self replaceMainViewWithView:_listview.view];
                     [_listview loadList:1];
                     _listview.mangalistview.frame = mainviewframe;
                     [_listview.mangalistview setFrameOrigin:origin];
@@ -326,27 +337,21 @@
         }
         else if ([identifier isEqualToString:@"history"]){
             if ([Keychain checkaccount]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_historyview.view];
-                _historyview.view.frame = mainviewframe;
-                [_historyview.view setFrameOrigin:origin];
+                [self replaceMainViewWithView:_historyview.view];
             }
             else{
                 [self loadNotLoggedIn];
             }
         }
         else if ([identifier isEqualToString:@"search"]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_searchview.view];
-                _searchview.view.frame = mainviewframe;
-                [_searchview.view setFrameOrigin:origin];
-                [_searchview loadsearchView:AnimeSearch];
-                _searchview.animesearch.frame = mainviewframe;
-                [_searchview.animesearch setFrameOrigin:origin];
+            [self replaceMainViewWithView:_searchview.view];
+            [_searchview loadsearchView:AnimeSearch];
+            _searchview.animesearch.frame = mainviewframe;
+            [_searchview.animesearch setFrameOrigin:origin];
         }
         else if ([identifier isEqualToString:@"mangasearch"]){
             if ([(NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"] boolValue]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_searchview.view];
-                _searchview.view.frame = mainviewframe;
-                [_searchview.view setFrameOrigin:origin];
+                [self replaceMainViewWithView:_searchview.view];
                 [_searchview loadsearchView:MangaSearch];
                 _searchview.mangasearch.frame = mainviewframe;
                 [_searchview.mangasearch setFrameOrigin:origin];
@@ -359,38 +364,44 @@
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
             if ([_infoview getSelectedId] > 0){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_infoview.view];
-                _infoview.view.frame = mainviewframe;
-                [_infoview.view setFrameOrigin:origin];
+                [self replaceMainViewWithView:_infoview.view];
             }
             else{
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_progressview];
-                _progressview.frame = mainviewframe;
-                [_progressview setFrameOrigin:origin];
+                [self replaceMainViewWithView:_progressview];
             }
         }
         else if ([identifier isEqualToString:@"seasons"]){
-                [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_seasonview.view];
-                _seasonview.view.frame = mainviewframe;
-                [_seasonview.view setFrameOrigin:origin];
+            [self replaceMainViewWithView:_seasonview.view];
+        }
+        else if ([identifier isEqualToString:@"airing"]){
+            [self replaceMainViewWithView:_airingview.view];
+            if ([[[_airingview airingarraycontroller] arrangedObjects] count] == 0){
+                // Load Airing List
+                [_airingview loadAiring:@(false)];
+            }
+        }
+        else{
+            // Fallback
+            [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:2]byExtendingSelection:false];
+            [self loadmainview];
+            return;
         }
     // Save current view
     [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithLong:selectedrow] forKey:@"selectedmainview"];
     [self createToolbar];
 }
-- (void)loadNotLoggedIn{
+- (void)replaceMainViewWithView:(NSView *)view{
     NSRect mainviewframe = _mainview.frame;
     NSPoint origin = NSMakePoint(0, 0);
-    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_notloggedin.view];
-    _notloggedin.view.frame = mainviewframe;
-    [_notloggedin.view setFrameOrigin:origin];
+    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:view];
+    view.frame = mainviewframe;
+    [view setFrameOrigin:origin];
+}
+- (void)loadNotLoggedIn{
+    [self replaceMainViewWithView:_notloggedin.view];
 }
 - (void)loadnotLicensed{
-    NSRect mainviewframe = _mainview.frame;
-    NSPoint origin = NSMakePoint(0, 0);
-    [_mainview replaceSubview:[_mainview.subviews objectAtIndex:0] with:_requireslicense];
-    _requireslicense.frame = mainviewframe;
-    [_requireslicense setFrameOrigin:origin];
+    [self replaceMainViewWithView:_requireslicense];
 }
 - (void)createToolbar{
     NSArray *toolbaritems = [_toolbar items];
@@ -483,6 +494,16 @@
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3+indexoffset];
         [_seasonview populateseasonpopups];
     }
+    else if ([identifier isEqualToString:@"airing"]){
+        if ([Keychain checkaccount]){
+            [_toolbar insertItemWithItemIdentifier:@"AddTitleAiring" atIndex:0+indexoffset];
+        }
+        else {
+            indexoffset = -1;
+        }
+        [_toolbar insertItemWithItemIdentifier:@"airingdayselect" atIndex:1+indexoffset];
+        [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2+indexoffset];
+    }
 }
 #pragma mark -
 #pragma mark Search View
@@ -541,6 +562,9 @@
     }
     else if ([identifier isEqualToString:@"seasons"]){
         [_seasonview performseasonindexretrieval];
+    }
+    else if ([identifier isEqualToString:@"airing"]){
+        [_airingview loadAiring:@(true)];
     }
 }
 - (void)loadlist:(NSNumber *)refresh type:(int)type{
@@ -652,6 +676,11 @@
             NSLog(@"Error: %@", error);
         }];
     }
+    if ([identifier isEqualToString:@"airing"]){
+        NSDictionary *d = [[_airingview.airingarraycontroller selectedObjects] objectAtIndex:0];
+        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:[_airingview.airingtb  selectedRow]] ofView:_airingview.airingtb preferredEdge:0 type:0];
+    }
+
 }
 
 
@@ -660,7 +689,7 @@
     int previd = [_infoview getSelectedId];
     int prevtype = [_infoview getType];
     [_infoview setSelectedId:0];
-     [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+    [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
     [self loadmainview];
     [_noinfoview setHidden:YES];
     [_progressindicator setHidden: NO];

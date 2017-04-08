@@ -22,6 +22,7 @@
 @class InfoView;
 @class AdvancedSearch;
 @class HistoryView;
+@class AiringView;
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
@@ -68,6 +69,10 @@
 
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong, nonatomic) MSWeakTimer * refreshtimer;
+
+// Airing View
+@property (strong) IBOutlet AiringView *airingview;
+
 
 //Public Methods
 - (void)setDelegate:(AppDelegate*) adelegate;

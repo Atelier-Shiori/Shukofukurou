@@ -12,7 +12,6 @@
 
 @interface SeasonView : NSViewController <NSTableViewDelegate>{
     IBOutlet MainWindow * mw;
-    bool selected;
 }
 @property (strong) IBOutlet NSTableView *seasontableview;
 @property (strong) IBOutlet NSArrayController *seasonarraycontroller;

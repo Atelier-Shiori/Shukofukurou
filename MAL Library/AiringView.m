@@ -35,7 +35,8 @@
     bool refreshlist = refresh.boolValue;
     bool exists = [Utility checkifFileExists:@"airing.json" appendPath:@""];
     list = [Utility loadJSON:@"airing.json" appendpath:@""];
-    if (exists && !refreshlist){
+    NSDate * refresheddate = [[NSUserDefaults standardUserDefaults] valueForKey:@"airschdaterefreshed"];
+    if (exists && !refreshlist && [refresheddate timeIntervalSinceNow] > -2592000){
         [self populateAiring:list];
         return;
     }
@@ -44,7 +45,7 @@
         
         [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/schedule",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [self populateAiring:[Utility saveJSON:[self processAiring:responseObject] withFilename:@"airing.json" appendpath:@"" replace:TRUE]];
-            
+            [[NSUserDefaults standardUserDefaults] setValue:[NSDate date] forKey:@"airschdaterefreshed"];
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             NSLog(@"%@", error.userInfo);
         }];

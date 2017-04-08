@@ -22,10 +22,12 @@
     // Set Message type to Warning
     [alert setAlertStyle:NSAlertStyleInformational];
     // Show as Sheet on Preference Window
-    [alert beginSheetModalForWindow:w
-                      modalDelegate:self
-                     didEndSelector:nil
-                        contextInfo:NULL];
+    if (w != nil){
+        [alert beginSheetModalForWindow:w completionHandler:nil];
+    }
+    else {
+        [alert runModal];
+    }
 }
 + (NSString *)urlEncodeString:(NSString *)string{
 	return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(

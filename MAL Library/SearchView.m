@@ -26,7 +26,7 @@
     [super viewDidLoad];
     // Do view setup here.
     [_addtitleitem setEnabled:NO];
-    self.view;
+    [self view];
     // Set Resizing Mask
     _animesearch.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _mangasearch.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;

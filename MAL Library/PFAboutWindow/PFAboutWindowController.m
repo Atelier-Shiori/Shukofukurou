@@ -132,6 +132,10 @@
     self.window.backgroundColor = self.backgroundColor;
 }
 
+- (BOOL)windowShouldClose:(id)sender{
+    return YES;
+}
+
 - (void) showCredits:(id)sender {
 	if (self.windowState!=1) {
 		CGFloat amountToIncreaseHeight = 100;

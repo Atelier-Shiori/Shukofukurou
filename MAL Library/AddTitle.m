@@ -50,7 +50,7 @@
 }
 
 - (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
-    self.view;
+    [self view];
     NSNumber *idnum = d[@"id"];
     if (type == 0){
         if (![mw checkiftitleisonlist:idnum.intValue type:0]){

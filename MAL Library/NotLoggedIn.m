@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    self.view;
+    [self view];
 }
 
 #pragma mark Not Logged in View

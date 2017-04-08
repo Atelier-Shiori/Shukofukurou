@@ -51,7 +51,7 @@
     [super viewDidLoad];
     // Do view setup here.
     [self.view addSubview:_animeeditview];
-    self.view;
+    [self view];
 }
 
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{

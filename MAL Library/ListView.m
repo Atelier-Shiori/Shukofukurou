@@ -27,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here
-    self.view;
+    [self view];
     [self.view addSubview:_animelistview];
     _animelistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _mangalistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;

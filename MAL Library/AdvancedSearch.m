@@ -52,7 +52,7 @@
     // Set dates
     [self resetdate];
     [self setDefaultValues];
-    self.view;
+    [self view];
     [self setSearchType:searchtype];
 
 }

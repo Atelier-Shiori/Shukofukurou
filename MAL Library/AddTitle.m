@@ -85,9 +85,7 @@
             [self.view replaceSubview:(self.view.subviews)[0] with:_popoveraddtitleexistsview];
         }
         if (view.window == nil) {
-            view = mw.sourceList;
-            rect = view.visibleRect;
-            rectedge = NSRectEdgeMaxX;
+            return;
         }
         [_addpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         selectedtype = type;

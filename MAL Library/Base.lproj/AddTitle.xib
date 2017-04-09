@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -9,7 +9,9 @@
             <connections>
                 <outlet property="addchapfield" destination="dOT-nn-7J4" id="YGr-RQ-E5i"/>
                 <outlet property="addchapnumformat" destination="Xru-8X-Ciz" id="PQU-7G-GPp"/>
+                <outlet property="addchapstepper" destination="6Kq-lX-NnL" id="Zkv-7W-3r4"/>
                 <outlet property="addepifield" destination="Mgu-LH-9kb" id="wnF-Lx-0aI"/>
+                <outlet property="addepstepper" destination="DqS-9s-avb" id="Hub-Ec-5Py"/>
                 <outlet property="addfield" destination="SeU-1j-19i" id="K2l-Mq-pfE"/>
                 <outlet property="addmangabtn" destination="woj-Y0-5Md" id="WUo-jW-yZV"/>
                 <outlet property="addmangascorefiled" destination="aJK-2y-2cV" id="M8N-Z7-pSC"/>
@@ -24,6 +26,7 @@
                 <outlet property="addtotalvol" destination="1EZ-Q3-qMk" id="b7L-HM-ftI"/>
                 <outlet property="addvolfield" destination="EaW-U8-rbl" id="eLr-SG-fXg"/>
                 <outlet property="addvolnumformat" destination="fN7-sT-J7M" id="swL-4F-jwN"/>
+                <outlet property="addvolstepper" destination="zTK-wA-845" id="cXN-It-a4w"/>
                 <outlet property="popoveraddtitleexistsview" destination="RsA-E2-DVB" id="QJV-E6-wrl"/>
                 <outlet property="view" destination="4pl-ha-hfb" id="aP6-5P-Dma"/>
             </connections>
@@ -63,7 +66,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mgu-LH-9kb" customClass="NSTextFieldNumber">
+                <textField identifier="ep" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mgu-LH-9kb" customClass="NSTextFieldNumber">
                     <rect key="frame" x="115" y="88" width="50" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Y9o-Oy-I0L">
@@ -72,9 +75,12 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="qzd-sS-Sa4"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1s-Ol-o0e">
-                    <rect key="frame" x="171" y="91" width="23" height="17"/>
+                    <rect key="frame" x="186" y="92" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="yiH-1W-H2S">
                         <font key="font" metaFont="system"/>
@@ -83,7 +89,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QyR-8x-UO5">
-                    <rect key="frame" x="186" y="90" width="37" height="17"/>
+                    <rect key="frame" x="197" y="91" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="egp-cj-REr">
                         <font key="font" metaFont="system"/>
@@ -154,6 +160,15 @@
                     <rect key="frame" x="13" y="133" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </progressIndicator>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DqS-9s-avb">
+                    <rect key="frame" x="166" y="86" width="19" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="999999" id="esx-hF-Hch"/>
+                    <connections>
+                        <action selector="segmentstepclick:" target="-2" id="9t0-hp-ZY8"/>
+                        <outlet property="formatter" destination="d8M-Aq-gfl" id="nZC-5T-brM"/>
+                    </connections>
+                </stepper>
             </subviews>
             <point key="canvasLocation" x="-39" y="509"/>
         </customView>
@@ -170,7 +185,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOT-nn-7J4" customClass="NSTextFieldNumber">
+                <textField identifier="chap" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dOT-nn-7J4" customClass="NSTextFieldNumber">
                     <rect key="frame" x="115" y="94" width="50" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="RtC-u4-iFk">
@@ -179,9 +194,12 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="Pai-dJ-Z2y"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zLS-f5-9OA">
-                    <rect key="frame" x="171" y="97" width="23" height="17"/>
+                    <rect key="frame" x="183" y="98" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="h1u-QH-rCy">
                         <font key="font" metaFont="system"/>
@@ -190,7 +208,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4pc-9A-d7M">
-                    <rect key="frame" x="186" y="96" width="37" height="17"/>
+                    <rect key="frame" x="198" y="97" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="3ia-Zz-VRD">
                         <font key="font" metaFont="system"/>
@@ -207,7 +225,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EaW-U8-rbl" customClass="NSTextFieldNumber">
+                <textField identifier="vol" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EaW-U8-rbl" customClass="NSTextFieldNumber">
                     <rect key="frame" x="115" y="68" width="50" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="S2l-HX-nOT">
@@ -216,9 +234,12 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="V6c-Pe-iOC"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v84-q8-ec6">
-                    <rect key="frame" x="171" y="71" width="23" height="17"/>
+                    <rect key="frame" x="183" y="72" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="Llk-M5-K2g">
                         <font key="font" metaFont="system"/>
@@ -227,7 +248,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1EZ-Q3-qMk">
-                    <rect key="frame" x="186" y="70" width="37" height="17"/>
+                    <rect key="frame" x="198" y="71" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="oLw-Rk-ef6">
                         <font key="font" metaFont="system"/>
@@ -298,6 +319,22 @@
                     <rect key="frame" x="13" y="133" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </progressIndicator>
+                <stepper identifier="chapterstepper" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Kq-lX-NnL">
+                    <rect key="frame" x="165" y="92" width="19" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="YhD-9R-g8g"/>
+                    <connections>
+                        <action selector="segmentstepclick:" target="-2" id="7iS-E1-T10"/>
+                    </connections>
+                </stepper>
+                <stepper identifier="volumestepper" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zTK-wA-845">
+                    <rect key="frame" x="165" y="65" width="19" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="Lc9-of-LrB"/>
+                    <connections>
+                        <action selector="segmentstepclick:" target="-2" id="Iv6-Rh-Ruo"/>
+                    </connections>
+                </stepper>
             </subviews>
             <point key="canvasLocation" x="-5" y="262"/>
         </customView>

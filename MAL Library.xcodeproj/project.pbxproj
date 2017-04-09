@@ -246,7 +246,6 @@
 		91999D0F1E8C88280026D3E9 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		91999D101E8C88280026D3E9 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
 		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9199BA991E89836000F6E9FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9199BA9D1E89836000F6E9FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9199BA9F1E89836000F6E9FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9199BAA21E89836000F6E9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -471,7 +470,6 @@
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
-				9199BA991E89836000F6E9FF /* AppDelegate.h */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";

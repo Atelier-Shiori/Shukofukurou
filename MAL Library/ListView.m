@@ -47,8 +47,12 @@
 }
 
 - (void)populateList:(id)object type:(int)type{
+    NSNumber *selectedAnimeID = nil;
     if (type == 0){
         // Populates list
+        if (_animelisttb.selectedRow >= 0) {
+            selectedAnimeID = _animelistarraycontroller.selectedObjects[0][@"id"];
+        }
         NSMutableArray *a = [_animelistarraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];
         NSDictionary *data = object;
@@ -56,11 +60,24 @@
         [_animelistarraycontroller addObjects:list];
         [self populatefiltercounts:list type:type];
         [_animelisttb reloadData];
-        [_animelisttb deselectAll:self];
+        if (selectedAnimeID != nil) {
+            for (NSUInteger index = 0; index < a.count; index++) {
+                if ([_animelistarraycontroller mutableArrayValueForKey:@"content"][index][@"id"] == selectedAnimeID) {
+                    [_animelistarraycontroller setSelectionIndex:index];
+                    break;
+                }
+            }
+        }
+        else {
+            [_animelisttb deselectAll:self];
+        }
         [self performfilter:type];
     }
     else {
         // Populates list
+        if (_mangalisttb.selectedRow >= 0) {
+            selectedAnimeID = _mangalistarraycontroller.selectedObjects[0][@"id"];
+        }
         NSMutableArray *a = [_mangalistarraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];
         NSDictionary *data = object;
@@ -68,7 +85,17 @@
         [_mangalistarraycontroller addObjects:list];
         [self populatefiltercounts:list type:type];
         [_mangalisttb reloadData];
-        [_mangalisttb deselectAll:self];
+        if (selectedAnimeID != nil) {
+            for (NSUInteger index = 0; index < a.count; index++) {
+                if ([_mangalistarraycontroller mutableArrayValueForKey:@"content"][index][@"id"] == selectedAnimeID) {
+                    [_mangalistarraycontroller setSelectionIndex:index];
+                    break;
+                }
+            }
+        }
+        else {
+            [_mangalisttb deselectAll:self];
+        }
         [self performfilter:type];
     }
     [self setToolbarButtonState];

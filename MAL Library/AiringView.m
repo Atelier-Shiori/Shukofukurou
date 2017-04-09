@@ -54,12 +54,26 @@
 }
 - (void)populateAiring:(id)airing{
     // Populates history
+    NSNumber *selectedAnimeID = nil;
+    if (_airingtb.selectedRow >= 0) {
+        selectedAnimeID = _airingarraycontroller.selectedObjects[0][@"id"];
+    }
     NSMutableArray *a = [_airingarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_airingarraycontroller addObjects:airing];
     [self filterTitles];
     [_airingtb reloadData];
-    [_airingtb deselectAll:self];
+    if (selectedAnimeID != nil) {
+        for (NSUInteger index = 0; index < a.count; index++) {
+            if ([_airingarraycontroller mutableArrayValueForKey:@"content"][index][@"id"] == selectedAnimeID) {
+                [_airingarraycontroller setSelectionIndex:index];
+                break;
+            }
+        }
+    }
+    else {
+        [_airingtb deselectAll:self];
+    }
 }
 - (void)clearHistory{
     NSMutableArray *a = _airingarraycontroller.content;

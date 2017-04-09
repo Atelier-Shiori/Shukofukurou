@@ -26,7 +26,7 @@
 
 @interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
     IBOutlet NSWindow *w;
-    IBOutlet PXSourceList *sourceList;
+    
     int selectededitid;
     bool selectedaired;
     bool selectedaircompleted;
@@ -35,6 +35,7 @@
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSTextField *loggedinuser;
+@property (strong) IBOutlet PXSourceList *sourceList;
 
 @property (nonatomic, assign, getter=getDelegate) AppDelegate *appdel;
 //Anime List View

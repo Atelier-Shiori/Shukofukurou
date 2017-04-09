@@ -84,6 +84,9 @@
         else {
             [self.view replaceSubview:(self.view.subviews)[0] with:_popoveraddtitleexistsview];
         }
+        if (view.window == nil) {
+            return;
+        }
         [_addpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         selectedtype = type;
     }

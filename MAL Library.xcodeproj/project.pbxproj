@@ -33,7 +33,6 @@
 		913A11721E8F206A00450B66 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
 		913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */; };
 		913A11741E8F206A00450B66 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92D1E89861300CCB5B3 /* Keychain.m */; };
-		913A11751E8F206A00450B66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 918822701E8C916400C7FEF1 /* AppDelegate.m */; };
 		913A11761E8F206A00450B66 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
 		913A11771E8F206A00450B66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
 		913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */; };
@@ -91,11 +90,12 @@
 		9168F9301E8991C800CCB5B3 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB031E8984F600F6E9FF /* MASPreferences.framework */; };
 		9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		917259A61E9A9D1900F09D1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 917259A51E9A9D1900F09D1D /* AppDelegate.m */; };
+		917259A71E9A9D1900F09D1D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 917259A51E9A9D1900F09D1D /* AppDelegate.m */; };
 		917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
 		917897EB1E89F19900C155DF /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897ED1E89F19900C155DF /* DonationWindow.xib */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
-		918822711E8C916400C7FEF1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 918822701E8C916400C7FEF1 /* AppDelegate.m */; };
 		918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D361E89FF8B0037898E /* Fabric.framework */; };
 		918C0D391E89FF920037898E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D381E89FF920037898E /* Crashlytics.framework */; };
 		91999D001E8C73300026D3E9 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
@@ -228,12 +228,12 @@
 		9168F92D1E89861300CCB5B3 /* Keychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Keychain.m; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
+		917259A51E9A9D1900F09D1D /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		917897E61E89E6AD00C155DF /* DonationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationWindowController.h; sourceTree = "<group>"; };
 		917897E71E89E6AD00C155DF /* DonationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationWindowController.m; sourceTree = "<group>"; };
 		917897EC1E89F19900C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationWindow.xib; sourceTree = "<group>"; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		9188226E1E8C90A700C7FEF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InfoView.xib; sourceTree = "<group>"; };
-		918822701E8C916400C7FEF1 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		918C0D361E89FF8B0037898E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		918C0D381E89FF920037898E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		918C0D401E8A00ED0037898E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -402,7 +402,7 @@
 				91D094CE1E9876D8009454F8 /* AiringView.m */,
 				91B378B51E989C7C000061E6 /* AiringView.xib */,
 				9199BAAA1E89842400F6E9FF /* AppDelegate.h */,
-				9199BA9A1E89836000F6E9FF /* AppDelegate.m */,
+				917259A51E9A9D1900F09D1D /* AppDelegate.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				917897ED1E89F19900C155DF /* DonationWindow.xib */,
@@ -714,9 +714,9 @@
 				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
 				913A11741E8F206A00450B66 /* Keychain.m in Sources */,
-				913A11751E8F206A00450B66 /* AppDelegate.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
+				917259A71E9A9D1900F09D1D /* AppDelegate.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
@@ -735,6 +735,7 @@
 				9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */,
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
 				91D094C21E983095009454F8 /* HistoryView.m in Sources */,
+				917259A61E9A9D1900F09D1D /* AppDelegate.m in Sources */,
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
@@ -752,7 +753,6 @@
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				9168F92E1E89861300CCB5B3 /* Keychain.m in Sources */,
-				918822711E8C916400C7FEF1 /* AppDelegate.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,

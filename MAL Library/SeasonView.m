@@ -60,12 +60,25 @@
     if (_seasonyrpicker.itemArray.count > 0){
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/seasondata/"]){
             NSMutableArray *sarray = [_seasonarraycontroller mutableArrayValueForKey:@"content"];
+            NSString *selectedAnimeID = nil;
+            if (_seasontableview.selectedRow >= 0) {
+                selectedAnimeID = _seasonarraycontroller.selectedObjects[0][@"id"][@"id"];
+            }
             [sarray removeAllObjects];
             NSDictionary *d =  [Utility loadJSON:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/seasondata/"];
             NSArray *a = d[@"anime"];
+            a = [a sortedArrayUsingDescriptors:_seasonarraycontroller.sortDescriptors];
             [_seasonarraycontroller addObjects:a];
             [_seasontableview reloadData];
             [_seasontableview deselectAll:self];
+            if (selectedAnimeID != nil) {
+                for (NSUInteger index = 0; index < a.count; index++) {
+                    if ([a[index][@"id"][@"id"] isEqualToString:selectedAnimeID]) {
+                        [_seasonarraycontroller setSelectionIndex:index];
+                        break;
+                    }
+                }
+            }
         }
         else {
             [self performseasondataretrieval:year forSeason:season loaddata:true];

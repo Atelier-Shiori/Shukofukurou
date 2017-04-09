@@ -619,18 +619,17 @@
 }
 - (void)clearlist{
     //Clears List
-    NSMutableArray * a = (_listview.animelistarraycontroller).content;
+    NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [Utility deleteFile:@"animelist.json" appendpath:@""];
     [_listview.animelisttb reloadData];
     [_listview.animelisttb deselectAll:self];
-     a = (_listview.mangalistarraycontroller).content;
+     a = [_listview.mangalistarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [Utility deleteFile:@"mangalist.json" appendpath:@""];
     [_listview.mangalisttb reloadData];
     [_listview.mangalisttb deselectAll:self];
     [_historyview clearHistory];
-    
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {

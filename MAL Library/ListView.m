@@ -56,8 +56,15 @@
         NSMutableArray *a = [_animelistarraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];
         NSDictionary *data = object;
-        NSArray *list=data[@"anime"];
-        [_animelistarraycontroller addObjects:list];
+        NSArray *list;
+        if (data[@"anime"]){
+            list = data[@"anime"];
+            [_animelistarraycontroller addObjects:list];
+        }
+        else {
+            [_animelisttb reloadData];
+            return;
+        }
         [self populatefiltercounts:list type:type];
         [_animelisttb reloadData];
         if (selectedAnimeID != nil) {
@@ -81,8 +88,15 @@
         NSMutableArray *a = [_mangalistarraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];
         NSDictionary *data = object;
-        NSArray *list = data[@"manga"];
-        [_mangalistarraycontroller addObjects:list];
+        NSArray *list;
+        if (data[@"manga"]){
+            list = data[@"manga"];
+            [_mangalistarraycontroller addObjects:list];
+        }
+        else {
+            [_mangalisttb reloadData];
+            return;
+        }
         [self populatefiltercounts:list type:type];
         [_mangalisttb reloadData];
         if (selectedAnimeID != nil) {

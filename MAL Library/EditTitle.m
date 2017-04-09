@@ -18,7 +18,7 @@
 @property (strong) IBOutlet NSTextFieldNumber *minipopoverepfield;
 @property (strong) IBOutlet NSTextField *minipopovertotalep;
 @property (strong) IBOutlet NSPopUpButton *minipopoverstatus;
-@property (strong) IBOutlet NSTextField *minipopoverscore;
+@property (strong) IBOutlet NSPopUpButton *minipopoverscore;
 @property (strong) IBOutlet NSTextField *minipopoverstatustext;
 @property (strong) IBOutlet NSProgressIndicator *minipopoverindicator;
 @property (strong) IBOutlet NSButton *minipopovereditbtn;
@@ -34,7 +34,7 @@
 @property (strong) IBOutlet NSTextField *mangapopovertotalvol;
 @property (strong) IBOutlet NSNumberFormatter *mangaeditpopovervolnumformat;
 @property (strong) IBOutlet NSPopUpButton *mangapopoverstatus;
-@property (strong) IBOutlet NSTextField *mangapopoverscore;
+@property (strong) IBOutlet NSPopUpButton *mangapopoverscore;
 @property (strong) IBOutlet NSTextField *mangapopoverstatustext;
 @property (strong) IBOutlet NSProgressIndicator *mangapopoverindicator;
 @property (strong) IBOutlet NSButton *mangapopovereditbtn;
@@ -78,7 +78,7 @@
         _minipopovereditepstep.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
         _minipopovertotalep.intValue = ((NSNumber *)d[@"episodes"]).intValue;
         [_minipopoverstatus selectItemWithTitle:d[@"watched_status"]];
-        _minipopoverscore.floatValue = ((NSNumber *)d[@"score"]).floatValue;
+        [_minipopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
         _minipopoverstatustext.stringValue = @"";
         if (((NSNumber *)d[@"episodes"]).intValue > 0){
             _minieditpopovernumformat.maximum = d[@"episodes"];
@@ -124,7 +124,7 @@
             [_mangaeditpopovervolnumformat setMaximum:nil];
         }
         [_mangapopoverstatus selectItemWithTitle:d[@"read_status"]];
-        _mangapopoverscore.floatValue = ((NSNumber *)d[@"score"]).floatValue;
+        [_mangapopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
         _mangapopoverstatustext.stringValue = @"";
         selectededitid = ((NSNumber *)d[@"id"]).intValue;
         [_minieditpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
@@ -160,7 +160,7 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_minipopoverstatus.title, @"score":@(_minipopoverscore.intValue), @"episodes":@(_minipopoverepfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_minipopoverstatus.title, @"score":@(_minipopoverscore.selectedTag), @"episodes":@(_minipopoverepfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:selectedtype];
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
@@ -199,7 +199,7 @@
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_mangapopoverstatus.title, @"score":@(_mangapopoverscore.intValue), @"chapters":@(_mangapopoverchapfield.intValue),@"volumes":@(_mangapopovervolfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_mangapopoverstatus.title, @"score":@(_mangapopoverscore.selectedTag), @"chapters":@(_mangapopoverchapfield.intValue),@"volumes":@(_mangapopovervolfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:selectedtype];
             [mw loadlist:@(true) type:2];
             [_mangapopovereditbtn setEnabled:true];

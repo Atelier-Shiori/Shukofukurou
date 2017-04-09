@@ -14,11 +14,11 @@
                 <outlet property="addepstepper" destination="DqS-9s-avb" id="Hub-Ec-5Py"/>
                 <outlet property="addfield" destination="SeU-1j-19i" id="K2l-Mq-pfE"/>
                 <outlet property="addmangabtn" destination="woj-Y0-5Md" id="WUo-jW-yZV"/>
-                <outlet property="addmangascorefiled" destination="aJK-2y-2cV" id="M8N-Z7-pSC"/>
+                <outlet property="addmangascorefiled" destination="VYB-ER-TwN" id="vfn-d0-6O2"/>
                 <outlet property="addmangastatusfield" destination="rIc-Tv-6zg" id="ZCo-Xs-I1d"/>
                 <outlet property="addmangaview" destination="SJd-oo-DjL" id="fDF-gA-ihc"/>
                 <outlet property="addnumformat" destination="d8M-Aq-gfl" id="STF-ga-HBf"/>
-                <outlet property="addscorefiled" destination="sZP-0a-yaq" id="i7o-EQ-FOY"/>
+                <outlet property="addscorefiled" destination="gfA-oX-Ofz" id="1HJ-wQ-1eq"/>
                 <outlet property="addstatusfield" destination="WEN-zK-ias" id="aas-Gx-ihD"/>
                 <outlet property="addtitleview" destination="VVg-vX-ygP" id="gB1-ah-N8z"/>
                 <outlet property="addtotalchap" destination="4pc-9A-d7M" id="KOi-pu-nZs"/>
@@ -133,18 +133,6 @@
                         <outlet property="menu" destination="cLL-YI-iRM" id="CGh-pr-Myw"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sZP-0a-yaq">
-                    <rect key="frame" x="113" y="34" width="52" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="XJc-aQ-bEe">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="wda-7G-Cr9" customClass="NSNumberFormatterNumberOnly">
-                            <real key="maximum" value="10"/>
-                        </numberFormatter>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SeU-1j-19i">
                     <rect key="frame" x="184" y="123" width="81" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -169,6 +157,24 @@
                         <outlet property="formatter" destination="d8M-Aq-gfl" id="nZC-5T-brM"/>
                     </connections>
                 </stepper>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYB-ER-TwN">
+                    <rect key="frame" x="111" y="31" width="143" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lD1-XJ-Rfk" id="cIC-lf-c2c">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="mem-m6-5eR">
+                            <items>
+                                <menuItem title="0 - No Score" state="on" id="lD1-XJ-Rfk"/>
+                                <menuItem title="Item 2" id="aIT-ss-Vke"/>
+                                <menuItem title="Item 3" id="Te1-nQ-sEG"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <outlet property="menu" destination="0Mf-t3-S7F" id="TPi-Bk-rYs"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <point key="canvasLocation" x="-39" y="509"/>
         </customView>
@@ -266,7 +272,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DsY-IA-BzQ">
-                    <rect key="frame" x="30" y="20" width="79" height="17"/>
+                    <rect key="frame" x="30" y="21" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Score:" id="ASy-At-oNa">
                         <font key="font" metaFont="system"/>
@@ -292,18 +298,6 @@
                         <outlet property="menu" destination="1xc-0M-APb" id="sO7-HZ-cxj"/>
                     </connections>
                 </popUpButton>
-                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aJK-2y-2cV">
-                    <rect key="frame" x="113" y="17" width="52" height="22"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Pxl-5B-zuR">
-                        <numberFormatter key="formatter" formatterBehavior="custom10_4" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" id="YpN-nO-wqB" customClass="NSNumberFormatterNumberOnly">
-                            <real key="maximum" value="10"/>
-                        </numberFormatter>
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="woj-Y0-5Md">
                     <rect key="frame" x="184" y="123" width="81" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -335,6 +329,24 @@
                         <action selector="segmentstepclick:" target="-2" id="Iv6-Rh-Ruo"/>
                     </connections>
                 </stepper>
+                <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfA-oX-Ofz">
+                    <rect key="frame" x="111" y="15" width="143" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="e2s-2I-hr0" id="KXg-Rc-Rxp">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="menu"/>
+                        <menu key="menu" title="OtherViews" id="ZVp-jX-IRQ">
+                            <items>
+                                <menuItem title="0 - No Score" state="on" id="e2s-2I-hr0"/>
+                                <menuItem title="Item 2" id="M0E-Uc-lXN"/>
+                                <menuItem title="Item 3" id="eLy-bE-GsC"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                    <connections>
+                        <outlet property="menu" destination="0Mf-t3-S7F" id="qj7-de-PPH"/>
+                    </connections>
+                </popUpButton>
             </subviews>
             <point key="canvasLocation" x="-5" y="262"/>
         </customView>
@@ -372,6 +384,44 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem title="plan to read" id="LHJ-eT-HQM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+        <menu title="Score" id="0Mf-t3-S7F" userLabel="Score Menu">
+            <items>
+                <menuItem title="0 - No Score" id="eh5-0S-hZy">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="ixw-iL-nFb"/>
+                <menuItem title="10 - Masterpiece" tag="10" id="Qg2-aX-5Pn">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="9 - Great" tag="9" id="xbC-qG-Qxt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="8 - Very Good" tag="8" id="zgf-4r-Mtl">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="7 - Good" tag="7" id="Fbj-cn-2hN">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="6 - Fine" tag="6" id="H93-yz-NlS">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="5 - Average" tag="5" id="34P-ha-SvM">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="4 - Bad" tag="4" id="Lag-XU-J7D">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="3 - Very Bad" tag="3" id="JOS-PB-lqr">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="2 - Horrible" tag="2" id="JkF-OR-oXy">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="1 - Unwatchable" tag="1" id="SfQ-aG-EtT">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>

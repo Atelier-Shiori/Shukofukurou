@@ -18,7 +18,7 @@
 @property (strong) IBOutlet NSTextField *addepifield;
 @property (strong) IBOutlet NSNumberFormatter *addnumformat;
 @property (strong) IBOutlet NSTextField *addtotalepisodes;
-@property (strong) IBOutlet NSTextField *addscorefiled;
+@property (strong) IBOutlet NSPopUpButton *addscorefiled;
 @property (strong) IBOutlet NSPopUpButton *addstatusfield;
 @property (strong) IBOutlet NSButton *addfield;
 @property (strong) IBOutlet NSStepper *addepstepper;
@@ -31,7 +31,7 @@
 @property (strong) IBOutlet NSNumberFormatter *addvolnumformat;
 @property (strong) IBOutlet NSTextField *addtotalchap;
 @property (strong) IBOutlet NSTextField *addtotalvol;
-@property (strong) IBOutlet NSTextField *addmangascorefiled;
+@property (strong) IBOutlet NSPopUpButton *addmangascorefiled;
 @property (strong) IBOutlet NSPopUpButton *addmangastatusfield;
 @property (strong) IBOutlet NSButton *addmangabtn;
 @property (strong) IBOutlet NSStepper *addchapstepper;
@@ -66,13 +66,13 @@
                 [_addnumformat setMaximum:nil];
             }
             NSString *airingstatus = d[@"status"];
-            if ([airingstatus isEqualToString:@"finished airing"]){
+            if ([airingstatus isEqualToString:@"finished airing"] || d[@"end_date"]){
                 selectedaircompleted = true;
             }
             else{
                 selectedaircompleted = false;
             }
-            if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]){
+            if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"] || d[@"start_date"]){
                 selectedaired = true;
             }
             else{
@@ -82,7 +82,7 @@
             _addepstepper.intValue = 0;
             _addtotalepisodes.intValue = ((NSNumber *)d[@"episodes"]).intValue;
             [_addstatusfield selectItemWithTitle:@"watching"];
-            _addscorefiled.intValue = 0;
+            [_addscorefiled selectItemWithTag:0];
             selectededitid = ((NSNumber *)d[@"id"]).intValue;
         }
         else {
@@ -137,7 +137,7 @@
             _addvolstepper.intValue = 0;
             _addtotalvol.intValue = ((NSNumber *)d[@"volumes"]).intValue;
             [_addmangastatusfield selectItemWithTitle:@"reading"];
-            _addmangascorefiled.intValue = 0;
+            [_addmangascorefiled  selectItemWithTag:0];
             selectededitid = ((NSNumber *)d[@"id"]).intValue;
         }
         else {
@@ -173,7 +173,7 @@
             _addepifield.intValue = _addtotalepisodes.intValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.intValue), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.selectedTag), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:0];
             [mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
@@ -204,7 +204,7 @@
             _addvolfield.intValue = _addtotalvol.intValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.intValue), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.selectedTag), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:1];
             [mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];

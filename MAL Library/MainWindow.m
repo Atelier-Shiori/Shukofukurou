@@ -81,10 +81,10 @@
     // Set Mainview
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"]){
         NSNumber *selected = (NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"selectedmainview"];
-        [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex: selected.unsignedIntegerValue]byExtendingSelection:false];
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex: selected.unsignedIntegerValue]byExtendingSelection:false];
     }
     else{
-         [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
+         [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
     }
     // Load Touchbar
     if (NSClassFromString(@"NSTouchBar") != nil) {
@@ -135,7 +135,7 @@
     [self.sourceListItems addObject:libraryItem];
     [self.sourceListItems addObject:searchgroupItem];
     [self.sourceListItems addObject:discoverItem];
-    [sourceList reloadData];
+    [_sourceList reloadData];
 
 }
 
@@ -155,8 +155,8 @@
 
 - (IBAction)sharetitle:(id)sender {
     NSDictionary * d;
-    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
-    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     int type = 0;
     if ([identifier isEqualToString:@"animelist"]){
         d = (_listview.animelistarraycontroller).selectedObjects[0];
@@ -304,9 +304,9 @@
 - (void)loadmainview{
     NSRect mainviewframe = _mainview.frame;
     [_mainview addSubview:[NSView new]];
-    long selectedrow = sourceList.selectedRow;
-    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
-    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    long selectedrow = _sourceList.selectedRow;
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     NSPoint origin = NSMakePoint(0, 0);
         if ([identifier isEqualToString:@"animelist"]){
             if ([Keychain checkaccount]){
@@ -382,7 +382,7 @@
         }
         else{
             // Fallback
-            [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:2]byExtendingSelection:false];
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:2]byExtendingSelection:false];
             [self loadmainview];
             return;
         }
@@ -409,8 +409,8 @@
     for (int i = 0; i < toolbaritems.count; i++){
         [_toolbar removeItemAtIndex:0];
     }
-    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
-    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     int indexoffset = 0;
     
     if ([identifier isEqualToString:@"animelist"]){
@@ -536,8 +536,8 @@
 
 - (IBAction)showadvancedpopover:(id)sender {
     NSButton * btn = (NSButton *)sender;
-    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
-    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"search"]){
         [_advancedsearchcontroller setSearchType:0];
     }
@@ -549,8 +549,8 @@
 }
 #pragma mark Anime List
 - (IBAction)refreshlist:(id)sender {
-    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
-    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"animelist"]){
         [self loadlist:@(true) type:0];
     }
@@ -634,8 +634,8 @@
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {
-    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
-    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"animelist"]){
            NSDictionary *d = (_listview.animelistarraycontroller).selectedObjects[0];
         [_editviewcontroller showEditPopover:d showRelativeToRec:[_listview.animelisttb frameOfCellAtColumn:0 row:(_listview.animelisttb).selectedRow] ofView:_listview.animelisttb preferredEdge:0 type:0];
@@ -652,8 +652,8 @@
 #pragma mark Add Title
 
 - (IBAction)showaddpopover:(id)sender {
-    NSIndexSet *selectedIndexes = sourceList.selectedRowIndexes;
-    NSString *identifier = [[sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"search"]){
         NSDictionary *d = (_searchview.searcharraycontroller).selectedObjects[0];
         [_addtitlecontroller showAddPopover:d showRelativeToRec:[_searchview.searchtb frameOfCellAtColumn:0 row:(_searchview.searchtb).selectedRow] ofView:_searchview.searchtb preferredEdge:0 type:AnimeSearch];
@@ -688,7 +688,7 @@
     int previd = _infoview.selectedid;
     int prevtype = _infoview.type;
     _infoview.selectedid = 0;
-    [sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+    [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
     [self loadmainview];
     [_noinfoview setHidden:YES];
     [_progressindicator setHidden: NO];

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,6 +13,8 @@
                 <outlet property="mangaeditview" destination="z80-JN-AgD" id="JIc-LL-2bD"/>
                 <outlet property="mangapopoverchapfield" destination="fyo-hZ-5iq" id="1ZU-3G-jle"/>
                 <outlet property="mangapopovereditbtn" destination="vEg-dI-wG3" id="vZI-y3-eXy"/>
+                <outlet property="mangapopovereditchapstep" destination="U5k-8N-Zee" id="izo-97-PME"/>
+                <outlet property="mangapopovereditvolstep" destination="IOv-MR-htU" id="Boz-fq-0EZ"/>
                 <outlet property="mangapopoverindicator" destination="CAN-5p-U7b" id="cXA-Nt-Jma"/>
                 <outlet property="mangapopoverscore" destination="hN2-7y-dI2" id="YGK-jF-y0q"/>
                 <outlet property="mangapopoverstatus" destination="wPQ-xB-3CM" id="TZg-81-NCP"/>
@@ -22,6 +24,7 @@
                 <outlet property="mangapopovervolfield" destination="CbC-1i-nUF" id="Xks-Cs-dTw"/>
                 <outlet property="minieditpopovernumformat" destination="fWX-nH-UsN" id="7k2-tO-6gy"/>
                 <outlet property="minipopovereditbtn" destination="PJc-Aj-zA6" id="Om9-EO-cdp"/>
+                <outlet property="minipopovereditepstep" destination="ACO-pd-hRX" id="aGC-YX-jyW"/>
                 <outlet property="minipopoverepfield" destination="xsn-em-iq2" id="wqt-Ff-FlF"/>
                 <outlet property="minipopoverindicator" destination="CAN-5p-U7b" id="aty-YT-D8a"/>
                 <outlet property="minipopoverscore" destination="QN2-0i-Esj" id="Om9-Ti-IST"/>
@@ -55,9 +58,12 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="xnS-YO-dxp"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CAM-SY-Fav">
-                    <rect key="frame" x="161" y="95" width="23" height="17"/>
+                    <rect key="frame" x="174" y="96" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="Cso-qf-aUj">
                         <font key="font" metaFont="system"/>
@@ -66,7 +72,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ge-CC-Fo5">
-                    <rect key="frame" x="176" y="94" width="37" height="17"/>
+                    <rect key="frame" x="185" y="95" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="n0X-B8-0kB">
                         <font key="font" metaFont="system"/>
@@ -92,9 +98,12 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="QrM-5m-kEt"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rbl-nQ-XNE">
-                    <rect key="frame" x="161" y="69" width="23" height="17"/>
+                    <rect key="frame" x="174" y="70" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="Xms-IV-lW6">
                         <font key="font" metaFont="system"/>
@@ -103,7 +112,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sa7-Xd-frU">
-                    <rect key="frame" x="176" y="68" width="37" height="17"/>
+                    <rect key="frame" x="185" y="69" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="koq-ce-QCt">
                         <font key="font" metaFont="system"/>
@@ -184,6 +193,22 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <stepper identifier="chapstepper" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U5k-8N-Zee">
+                    <rect key="frame" x="156" y="90" width="19" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="oP6-AW-YBb"/>
+                    <connections>
+                        <action selector="segmentstepclick:" target="-2" id="ncS-ko-tte"/>
+                    </connections>
+                </stepper>
+                <stepper identifier="volstepper" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IOv-MR-htU">
+                    <rect key="frame" x="156" y="65" width="19" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="63z-8t-6gc"/>
+                    <connections>
+                        <action selector="segmentstepclick:" target="-2" id="lJB-fF-Igi"/>
+                    </connections>
+                </stepper>
             </subviews>
             <point key="canvasLocation" x="-242" y="1380"/>
         </customView>
@@ -209,9 +234,12 @@
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
+                    <connections>
+                        <outlet property="delegate" destination="-2" id="wKg-Ki-Jqh"/>
+                    </connections>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQh-xb-XPn">
-                    <rect key="frame" x="161" y="91" width="23" height="17"/>
+                    <rect key="frame" x="179" y="92" width="23" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="/" id="bmK-zP-mKb">
                         <font key="font" metaFont="system"/>
@@ -220,7 +248,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mqk-vb-oed">
-                    <rect key="frame" x="176" y="90" width="37" height="17"/>
+                    <rect key="frame" x="188" y="91" width="37" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="0" id="Qob-2p-0lB">
                         <font key="font" metaFont="system"/>
@@ -229,7 +257,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AfX-jb-vxx">
-                    <rect key="frame" x="20" y="63" width="79" height="17"/>
+                    <rect key="frame" x="20" y="64" width="79" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Status:" id="Sup-iX-iei">
                         <font key="font" metaFont="system"/>
@@ -247,7 +275,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuE-mr-8w6">
-                    <rect key="frame" x="101" y="57" width="143" height="26"/>
+                    <rect key="frame" x="101" y="58" width="143" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="Watching" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="zZ9-9r-4ao" id="4Te-ok-qDI">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -301,6 +329,14 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACO-pd-hRX">
+                    <rect key="frame" x="157" y="86" width="19" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stepperCell key="cell" continuous="YES" alignment="left" maxValue="100" id="Qau-7u-X4K"/>
+                    <connections>
+                        <action selector="segmentstepclick:" target="-2" id="lDd-Qx-KW0"/>
+                    </connections>
+                </stepper>
             </subviews>
             <point key="canvasLocation" x="-241.5" y="1139"/>
         </customView>

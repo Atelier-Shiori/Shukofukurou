@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 @class  MainWindow;
-@interface EditTitle : NSViewController{
+@interface EditTitle : NSViewController <NSTextFieldDelegate>{
     IBOutlet MainWindow *mw;
     int selectededitid;
     int selectedtype;

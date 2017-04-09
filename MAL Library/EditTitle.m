@@ -23,6 +23,7 @@
 @property (strong) IBOutlet NSProgressIndicator *minipopoverindicator;
 @property (strong) IBOutlet NSButton *minipopovereditbtn;
 @property (strong) IBOutlet NSNumberFormatter *minieditpopovernumformat;
+@property (strong) IBOutlet NSStepper *minipopovereditepstep;
 
 // Manga
 @property (strong) IBOutlet NSView *mangaeditview;
@@ -37,6 +38,8 @@
 @property (strong) IBOutlet NSTextField *mangapopoverstatustext;
 @property (strong) IBOutlet NSProgressIndicator *mangapopoverindicator;
 @property (strong) IBOutlet NSButton *mangapopovereditbtn;
+@property (strong) IBOutlet NSStepper *mangapopovereditchapstep;
+@property (strong) IBOutlet NSStepper *mangapopovereditvolstep;
 
 @end
 
@@ -72,6 +75,7 @@
             selectedaired = false;
         }
         _minipopoverepfield.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
+        _minipopovereditepstep.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
         _minipopovertotalep.intValue = ((NSNumber *)d[@"episodes"]).intValue;
         [_minipopoverstatus selectItemWithTitle:d[@"watched_status"]];
         _minipopoverscore.floatValue = ((NSNumber *)d[@"score"]).floatValue;
@@ -102,6 +106,7 @@
             selectedpublished = false;
         }
         _mangapopoverchapfield.intValue = ((NSNumber *)d[@"chapters_read"]).intValue;
+        _mangapopovereditchapstep.intValue = ((NSNumber *)d[@"chapters_read"]).intValue;
         _mangapopovertotalchap.intValue = ((NSNumber *)d[@"chapters"]).intValue;
         if (((NSNumber *)d[@"chapters"]).intValue > 0){
             _mangaeditpopoverchapnumformat.maximum = d[@"chapters"];
@@ -110,6 +115,7 @@
             [_mangaeditpopoverchapnumformat setMaximum:nil];
         }
         _mangapopovervolfield.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
+        _mangapopovereditvolstep.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovertotalvol.intValue = ((NSNumber *)d[@"volumes"]).intValue;
         if (((NSNumber *)d[@"volumes"]).intValue > 0){
             _mangaeditpopovervolnumformat.maximum = d[@"volumes"];
@@ -207,6 +213,65 @@
             NSLog(@"%@", error);
             _mangapopoverstatustext.stringValue = @"Error";
         }];
+    }
+}
+
+- (IBAction)segmentstepclick:(id)sender {
+    int segment = 0;
+    int totalsegment = 0;
+    NSStepper * stepper = (NSStepper *)sender;
+    if (selectedtype == 0){
+        if ([_minipopoverepfield.stringValue length] > 0) {
+            segment = [_minipopoverepfield.stringValue intValue];
+        }
+        totalsegment = [_minipopovertotalep.stringValue intValue];
+        segment = stepper.intValue;
+        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0){
+            _minipopoverepfield.stringValue = [NSString stringWithFormat:@"%i",segment];
+        }
+    }
+    else {
+        NSString * segmenttype;
+        if ([stepper.identifier isEqualToString:@"chapstepper"]) {
+            segmenttype = @"chapters";
+            if ([_mangapopoverchapfield.stringValue length] > 0) {
+                segment = [_mangapopoverchapfield.stringValue intValue];
+            }
+            totalsegment = [_mangapopovertotalchap.stringValue intValue];
+        }
+        else {
+            // Volumes
+            segmenttype = @"volumes";
+            if ([_mangapopovervolfield.stringValue length] > 0) {
+                segment = [_mangapopovervolfield.stringValue intValue];
+            }
+            totalsegment = [_mangapopovertotalvol.stringValue intValue];
+        }
+        
+        segment = stepper.intValue;
+        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0){
+            if ([segmenttype isEqualToString:@"chapters"]){
+                _mangapopoverchapfield.stringValue = [NSString stringWithFormat:@"%i",segment];
+            }
+            else {
+                _mangapopovervolfield.stringValue = [NSString stringWithFormat:@"%i",segment];
+            }
+        }
+    }
+}
+
+- (void)controlTextDidChange:(NSNotification *)aNotification {
+    if ([[aNotification name] isEqualToString:@"NSControlTextDidChangeNotification"]) {
+        
+        if ( [aNotification object] == _minipopoverepfield ) {
+            _minipopovereditepstep.intValue = _minipopoverepfield.intValue;
+        }
+        else if ( [aNotification object] == _mangapopoverchapfield ) {
+            _mangapopovereditchapstep.intValue = _mangapopoverchapfield.intValue;
+        }
+        else if ( [aNotification object] == _mangapopovervolfield ) {
+            _mangapopovereditvolstep.intValue = _mangapopovervolfield.intValue;
+        }
     }
 }
 

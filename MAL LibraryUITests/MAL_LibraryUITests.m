@@ -35,9 +35,6 @@
 - (void)testExample {
     // Use recording to get started writing UI tests.
 
-    
-    
-    
 }
 
 @end

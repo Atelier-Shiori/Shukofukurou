@@ -119,7 +119,7 @@
             else {
                 [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                     selecteditem = responseObject;
-                    [self checkStatus:selecteditem[@"status"] type:0];
+                    [self checkStatus:selecteditem[@"status"] type:1];
                 } failure:^(NSURLSessionTask *operation, NSError *error) {
                     NSLog(@"Error: %@", error);
                 }];

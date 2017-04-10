@@ -74,6 +74,9 @@
                     break;
                 }
             }
+            if (a.count == 0){
+                [_animelisttb deselectAll:self];
+            }
         }
         else {
             [_animelisttb deselectAll:self];
@@ -105,6 +108,9 @@
                     [_mangalistarraycontroller setSelectionIndex:index];
                     break;
                 }
+            }
+            if (a.count == 0){
+                [_mangalisttb deselectAll:self];
             }
         }
         else {
@@ -191,76 +197,80 @@
     }
 }
 - (IBAction)filterperform:(id)sender {
-    NSButton *btn = (NSButton *)sender;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (((NSNumber *)[defaults valueForKey:@"filtersastabs"]).boolValue){
-        if (currentlist == 0){
-            if (_watchingfilter != btn){
-                [defaults setValue:@(0) forKey:@"watchingfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"watchingfilter"];
-            }
-            if (_completedfilter != btn){
-                [defaults setValue:@(0) forKey:@"completedfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"completedfilter"];
-            }
-            if (_droppedfilter != btn){
-                [defaults setValue:@(0) forKey:@"droppedfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"droppedfilter"];
-            }
-            if (_onholdfilter != btn){
-                [defaults setValue:@(0) forKey:@"onholdfilter"];
-            }
-            else{
-                [defaults setValue:@(1) forKey:@"onholdfilter"];
-            }
-            if (_plantowatchfilter != btn){
-                [defaults setValue:@(0) forKey:@"plantowatchfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"plantowatchfilter"];
-            }
-        }
-        else {
-            if (_readingfilter != btn){
-                [defaults setValue:@(0) forKey:@"readingfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"readingfilter"];
-            }
-            if (_mangacompletedfilter != btn){
-                [defaults setValue:@(0) forKey:@"mcompletedfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"mcompletedfilter"];
-            }
-            if (_mangadroppedfilter != btn){
-                [defaults setValue:@(0) forKey:@"mdroppedfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"mdroppedfilter"];
-            }
-            if (_mangaonholdfilter != btn){
-                [defaults setValue:@(0) forKey:@"monholdfilter"];
-            }
-            else{
-                [defaults setValue:@(1) forKey:@"monholdfilter"];
-            }
-            if (_plantoreadfilter != btn){
-                [defaults setValue:@(0) forKey:@"plantoreadfilter"];
-            }
-            else {
-                [defaults setValue:@(1) forKey:@"plantoreadfilter"];
-            }
-        }
+    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"filtersastabs"]).boolValue && [sender isKindOfClass:[NSButton class]]){
+        [self filterStatusAsTabs:(NSButton *)sender];
     }
     [self performfilter:currentlist];
 }
+
+- (void)filterStatusAsTabs:(NSButton *)btn{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (currentlist == 0){
+        if (_watchingfilter != btn){
+            [defaults setValue:@(0) forKey:@"watchingfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"watchingfilter"];
+        }
+        if (_completedfilter != btn){
+            [defaults setValue:@(0) forKey:@"completedfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"completedfilter"];
+        }
+        if (_droppedfilter != btn){
+            [defaults setValue:@(0) forKey:@"droppedfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"droppedfilter"];
+        }
+        if (_onholdfilter != btn){
+            [defaults setValue:@(0) forKey:@"onholdfilter"];
+        }
+        else{
+            [defaults setValue:@(1) forKey:@"onholdfilter"];
+        }
+        if (_plantowatchfilter != btn){
+            [defaults setValue:@(0) forKey:@"plantowatchfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"plantowatchfilter"];
+        }
+    }
+    else {
+        if (_readingfilter != btn){
+            [defaults setValue:@(0) forKey:@"readingfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"readingfilter"];
+        }
+        if (_mangacompletedfilter != btn){
+            [defaults setValue:@(0) forKey:@"mcompletedfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"mcompletedfilter"];
+        }
+        if (_mangadroppedfilter != btn){
+            [defaults setValue:@(0) forKey:@"mdroppedfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"mdroppedfilter"];
+        }
+        if (_mangaonholdfilter != btn){
+            [defaults setValue:@(0) forKey:@"monholdfilter"];
+        }
+        else{
+            [defaults setValue:@(1) forKey:@"monholdfilter"];
+        }
+        if (_plantoreadfilter != btn){
+            [defaults setValue:@(0) forKey:@"plantoreadfilter"];
+        }
+        else {
+            [defaults setValue:@(1) forKey:@"plantoreadfilter"];
+        }
+    }
+}
+
 - (void)performfilter:(int)type{
     // This method generates a predicate rule to use as a filter
     NSMutableArray *predicateformat = [NSMutableArray new];
@@ -273,6 +283,7 @@
     }
     NSArray *filterstatus = [self obtainfilterstatus:type];
     if (type == 0){
+        
         for (int i=0; i < filterstatus.count; i++){
             NSDictionary *d = filterstatus[i];
             if (filterstatus.count == 1){
@@ -403,8 +414,9 @@
     // Generates an array of selected filters
     NSMutableArray *a = [NSMutableArray new];
     NSMutableArray *final = [NSMutableArray new];
+    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     if (type == 0){
-        [a addObject:@{@"watching":@(_watchingfilter.state)}];
+        [a addObject:@{@"watching":@(_watchingfilter.intValue)}];
         [a addObject:@{@"completed":@(_completedfilter.state)}];
         [a addObject:@{@"on-hold":@(_onholdfilter.state)}];
         [a addObject:@{@"dropped":@(_droppedfilter.state)}];

@@ -148,6 +148,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2D60A1191E9B24CE0034C3AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 913A115F1E8F206A00450B66;
+			remoteInfo = "MAL Library (AppStore)";
+		};
 		2D63731D1E9B0FCD00E82C74 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
@@ -552,6 +559,7 @@
 			);
 			dependencies = (
 				2D63731E1E9B0FCD00E82C74 /* PBXTargetDependency */,
+				2D60A11A1E9B24CE0034C3AA /* PBXTargetDependency */,
 			);
 			name = "MAL LibraryUITests";
 			productName = "MAL LibraryUITests";
@@ -610,7 +618,7 @@
 					2D6373171E9B0FCD00E82C74 = {
 						CreatedOnToolsVersion = 8.3;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 9199BA951E89836000F6E9FF;
+						TestTargetID = 913A115F1E8F206A00450B66;
 					};
 					913A115F1E8F206A00450B66 = {
 						DevelopmentTeam = 9HDZTER525;
@@ -833,6 +841,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2D60A11A1E9B24CE0034C3AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 913A115F1E8F206A00450B66 /* MAL Library (AppStore) */;
+			targetProxy = 2D60A1191E9B24CE0034C3AA /* PBXContainerItemProxy */;
+		};
 		2D63731E1E9B0FCD00E82C74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 9199BA951E89836000F6E9FF /* MAL Library */;
@@ -1010,7 +1023,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-LibraryUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_TARGET_NAME = "MAL Library";
+				TEST_TARGET_NAME = "MAL Library (AppStore)";
 			};
 			name = Debug;
 		};
@@ -1027,7 +1040,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-LibraryUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				TEST_TARGET_NAME = "MAL Library";
+				TEST_TARGET_NAME = "MAL Library (AppStore)";
 			};
 			name = Release;
 		};
@@ -1286,6 +1299,7 @@
 				2D6373201E9B0FCD00E82C74 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */ = {
 			isa = XCConfigurationList;

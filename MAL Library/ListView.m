@@ -13,7 +13,9 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface ListView ()
-
+// Filter Save
+@property (strong) NSString * animelisttitlefilterstring;
+@property (strong) NSString * mangalisttitlefilterstring;
 @end
 
 @implementation ListView
@@ -31,15 +33,21 @@
     [self.view addSubview:_animelistview];
     _animelistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _mangalistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _animelisttitlefilterstring = @"";
+    _mangalisttitlefilterstring = @"";
 }
 
 - (void)loadList:(int)list{
     if (list == 0){
+        _mangalisttitlefilterstring = _animelistfilter.stringValue;
+        _animelistfilter.stringValue = _animelisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_animelistview];
         currentlist = list;
         [self setToolbarButtonState];
     }
     else {
+        _animelisttitlefilterstring = _animelistfilter.stringValue;
+        _animelistfilter.stringValue = _mangalisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_mangalistview];
         currentlist = list;
         [self setToolbarButtonState];
@@ -414,7 +422,6 @@
     // Generates an array of selected filters
     NSMutableArray *a = [NSMutableArray new];
     NSMutableArray *final = [NSMutableArray new];
-    NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
     if (type == 0){
         [a addObject:@{@"watching":@(_watchingfilter.intValue)}];
         [a addObject:@{@"completed":@(_completedfilter.state)}];

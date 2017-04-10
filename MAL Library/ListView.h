@@ -12,6 +12,7 @@
     IBOutlet MainWindow *mw;
     int currentlist;
 }
+
 // Anime List View
 @property (strong) IBOutlet NSArrayController *animelistarraycontroller;
 @property (strong) IBOutlet NSTableView *animelisttb;

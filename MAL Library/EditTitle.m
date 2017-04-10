@@ -153,7 +153,10 @@
         }
         if (_minipopoverepfield.intValue == _minipopovertotalep.intValue && _minipopovertotalep.intValue != 0 && selectedaircompleted && selectedaired){
             [_minipopoverstatus selectItemWithTitle:@"completed"];
-            _minipopoverepfield.intValue = _minipopovertotalep.intValue;
+            _minipopoverepfield.stringValue = _minipopovertotalep.stringValue;
+        }
+        if([_minipopoverstatus.title isEqual:@"completed"] && _minipopovertotalep.intValue != 0 && _minipopoverepfield.intValue != _minipopovertotalep.intValue && selectedaircompleted){
+            _minipopoverepfield.stringValue = _minipopovertotalep.stringValue;
         }
         _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [_minipopoverindicator startAnimation:nil];
@@ -177,7 +180,7 @@
     else {
         [_mangapopovereditbtn setEnabled:false];
         _mangapopoverstatustext.stringValue = @"";
-        if(![_mangapopoverstatus isEqual:@"completed"] && _mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopovertotalvol.intValue == _mangapopovertotalvol.intValue && selectedfinished){
+        if(![_mangapopoverstatus.title isEqual:@"completed"] && _mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopovertotalvol.intValue == _mangapopovertotalvol.intValue && selectedfinished){
             [_mangapopoverstatus selectItemWithTitle:@"completed"];
         }
         if(!selectedpublished && (![_mangapopoverstatus.title isEqual:@"plan to read"] ||_mangapopoverchapfield.intValue > 0 || _mangapopovertotalvol.intValue > 0)){
@@ -190,8 +193,12 @@
         }
         if (((_mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue == _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && selectedfinished && selectedpublished){
             [_mangapopoverstatus selectItemWithTitle:@"completed"];
-            _mangapopoverchapfield.intValue = _mangapopovertotalchap.intValue;
-            _mangapopovertotalvol.intValue = _mangapopovertotalvol.intValue;
+            _mangapopoverchapfield.stringValue = _mangapopovertotalchap.stringValue;
+            _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
+        }
+        if([_mangapopoverstatus.title isEqual:@"completed"] && ((_mangapopoverchapfield.intValue != _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue != _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && selectedfinished){
+            _mangapopoverchapfield.stringValue = _mangapopovertotalchap.stringValue;
+            _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
         }
 
         _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;

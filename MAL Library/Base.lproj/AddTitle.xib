@@ -14,11 +14,11 @@
                 <outlet property="addepstepper" destination="DqS-9s-avb" id="Hub-Ec-5Py"/>
                 <outlet property="addfield" destination="SeU-1j-19i" id="K2l-Mq-pfE"/>
                 <outlet property="addmangabtn" destination="woj-Y0-5Md" id="WUo-jW-yZV"/>
-                <outlet property="addmangascorefiled" destination="VYB-ER-TwN" id="vfn-d0-6O2"/>
+                <outlet property="addmangascorefiled" destination="gfA-oX-Ofz" id="kHA-6i-40V"/>
                 <outlet property="addmangastatusfield" destination="rIc-Tv-6zg" id="ZCo-Xs-I1d"/>
                 <outlet property="addmangaview" destination="SJd-oo-DjL" id="fDF-gA-ihc"/>
                 <outlet property="addnumformat" destination="d8M-Aq-gfl" id="STF-ga-HBf"/>
-                <outlet property="addscorefiled" destination="gfA-oX-Ofz" id="1HJ-wQ-1eq"/>
+                <outlet property="addscorefiled" destination="VYB-ER-TwN" id="W1b-u8-iSY"/>
                 <outlet property="addstatusfield" destination="WEN-zK-ias" id="aas-Gx-ihD"/>
                 <outlet property="addtitleview" destination="VVg-vX-ygP" id="gB1-ah-N8z"/>
                 <outlet property="addtotalchap" destination="4pc-9A-d7M" id="KOi-pu-nZs"/>
@@ -160,12 +160,12 @@
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VYB-ER-TwN">
                     <rect key="frame" x="111" y="31" width="143" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lD1-XJ-Rfk" id="cIC-lf-c2c">
+                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lD1-XJ-Rfk" id="cIC-lf-c2c">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="mem-m6-5eR">
                             <items>
-                                <menuItem title="0 - No Score" state="on" id="lD1-XJ-Rfk"/>
+                                <menuItem title="0 - No Score" id="lD1-XJ-Rfk"/>
                                 <menuItem title="Item 2" id="aIT-ss-Vke"/>
                                 <menuItem title="Item 3" id="Te1-nQ-sEG"/>
                             </items>
@@ -332,12 +332,12 @@
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gfA-oX-Ofz">
                     <rect key="frame" x="111" y="15" width="143" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="e2s-2I-hr0" id="KXg-Rc-Rxp">
+                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="e2s-2I-hr0" id="KXg-Rc-Rxp">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="ZVp-jX-IRQ">
                             <items>
-                                <menuItem title="0 - No Score" state="on" id="e2s-2I-hr0"/>
+                                <menuItem title="0 - No Score" id="e2s-2I-hr0"/>
                                 <menuItem title="Item 2" id="M0E-Uc-lXN"/>
                                 <menuItem title="Item 3" id="eLy-bE-GsC"/>
                             </items>

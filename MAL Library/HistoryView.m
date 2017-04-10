@@ -102,9 +102,15 @@
         }
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
         dateFormatter.dateFormat = @"yyyy-MM-dd";
-        NSString *strdate = d[@"time_updated"];
-        strdate = [strdate substringWithRange:NSMakeRange(0, 10)];
-        NSDate *datetime = [dateFormatter dateFromString:strdate];
+        NSDate *datetime;
+        if (d[@"time_updated"]){
+            NSString *strdate = d[@"time_updated"];
+            strdate = [strdate substringWithRange:NSMakeRange(0, 10)];
+            datetime = [dateFormatter dateFromString:strdate];
+        }
+        else {
+            datetime = [NSDate date]; // Just updated, set now date.
+        }
         [dateFormatter setDateFormat:nil];
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
         NSString *lastupdated = [dateFormatter stringFromDate:datetime];

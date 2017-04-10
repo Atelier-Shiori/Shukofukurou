@@ -199,12 +199,12 @@
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cf0-NQ-he5">
                     <rect key="frame" x="102" y="13" width="143" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="89k-2Y-w6K" id="f0e-XP-xwN">
+                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="89k-2Y-w6K" id="f0e-XP-xwN">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="Yf8-AW-y7c">
                             <items>
-                                <menuItem title="0 - No Score" state="on" id="89k-2Y-w6K"/>
+                                <menuItem title="0 - No Score" id="89k-2Y-w6K"/>
                                 <menuItem title="Item 2" id="NNh-oF-cRS"/>
                                 <menuItem title="Item 3" id="hTe-Ta-zSD"/>
                             </items>
@@ -332,12 +332,12 @@
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0i1-Bo-hKf">
                     <rect key="frame" x="101" y="31" width="143" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="neD-sw-qZl" id="5Lo-L0-K0V">
+                    <popUpButtonCell key="cell" type="push" title="0 - No Score" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="neD-sw-qZl" id="5Lo-L0-K0V">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="menu"/>
                         <menu key="menu" title="OtherViews" id="zfN-Jq-w3F">
                             <items>
-                                <menuItem title="0 - No Score" state="on" id="neD-sw-qZl"/>
+                                <menuItem title="0 - No Score" id="neD-sw-qZl"/>
                                 <menuItem title="Item 2" id="DOF-oo-6rT"/>
                                 <menuItem title="Item 3" id="Oer-Ka-OSu"/>
                             </items>

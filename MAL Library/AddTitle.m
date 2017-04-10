@@ -82,7 +82,7 @@
             _addepstepper.intValue = 0;
             _addtotalepisodes.intValue = ((NSNumber *)d[@"episodes"]).intValue;
             [_addstatusfield selectItemWithTitle:@"watching"];
-            [_addscorefiled selectItemWithTag:0];
+            [_addscorefiled selectItemAtIndex:0];
             selectededitid = ((NSNumber *)d[@"id"]).intValue;
         }
         else {
@@ -137,7 +137,7 @@
             _addvolstepper.intValue = 0;
             _addtotalvol.intValue = ((NSNumber *)d[@"volumes"]).intValue;
             [_addmangastatusfield selectItemWithTitle:@"reading"];
-            [_addmangascorefiled  selectItemWithTag:0];
+            [_addmangascorefiled  selectItemAtIndex:0];
             selectededitid = ((NSNumber *)d[@"id"]).intValue;
         }
         else {
@@ -159,7 +159,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     if (selectedtype == 0){
         [_addfield setEnabled:false];
-        if(![_addstatusfield isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && selectedaircompleted){
+        if(![_addstatusfield.title isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && selectedaircompleted){
             [_addstatusfield selectItemWithTitle:@"completed"];
         }
         if(!selectedaired && (![_addstatusfield.title isEqual:@"plan to watch"] ||_addepifield.intValue > 0)){
@@ -170,10 +170,13 @@
         }
         if (_addepifield.intValue == _addtotalepisodes.intValue && _addtotalepisodes.intValue != 0 && selectedaircompleted && selectedaired){
             [_addstatusfield selectItemWithTitle:@"completed"];
-            _addepifield.intValue = _addtotalepisodes.intValue;
+            _addepifield.stringValue = _addtotalepisodes.stringValue;
+        }
+        if([_addstatusfield.title isEqual:@"completed"] && _addtotalepisodes.intValue != 0 && _addepifield.intValue != _addtotalepisodes.intValue && selectedaircompleted){
+            _addepifield.stringValue = _addtotalepisodes.stringValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.selectedTag), @"episodes_watched":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.selectedTag), @"episodes":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [mw loadlist:@(true) type:0];
             [mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
@@ -189,7 +192,7 @@
     }
     else {
         [_addmangabtn setEnabled:false];
-        if(![_addstatusfield isEqual:@"completed"] && _addchapfield.intValue == _addtotalchap.intValue && _addvolfield.intValue == _addtotalvol.intValue && selectedfinished){
+        if(![_addstatusfield.title isEqual:@"completed"] && _addchapfield.intValue == _addtotalchap.intValue && _addvolfield.intValue == _addtotalvol.intValue && selectedfinished){
             [_addstatusfield selectItemWithTitle:@"completed"];
         }
         if(!selectedpublished && (![_addstatusfield.title isEqual:@"plan to read"] ||_addchapfield.intValue > 0 || _addvolfield.intValue > 0)){
@@ -200,8 +203,12 @@
         }
         if (((_addchapfield.intValue == _addtotalchap.intValue && _addchapfield.intValue != 0) || (_addvolfield.intValue == _addtotalvol.intValue && _addtotalvol.intValue != 0)) && selectedfinished && selectedpublished){
             [_addmangastatusfield selectItemWithTitle:@"completed"];
-            _addchapfield.intValue = _addtotalchap.intValue;
-            _addvolfield.intValue = _addtotalvol.intValue;
+            _addchapfield.stringValue = _addtotalchap.stringValue;
+            _addvolfield.stringValue = _addtotalvol.stringValue;
+        }
+        if([_addstatusfield.title isEqual:@"completed"] && ((_addchapfield.intValue != _addtotalchap.intValue && _addchapfield.intValue != 0)|| (_addvolfield.intValue != _addtotalvol.intValue && _addtotalvol.intValue != 0)) && selectedfinished){
+            _addchapfield.stringValue = _addtotalchap.stringValue;
+            _addvolfield.stringValue = _addtotalvol.stringValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.selectedTag), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {

@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "MainWindow.h"
 #import "Utility.h"
+#import "Keychain.h"
 
 @interface SearchView ()
 
@@ -57,6 +58,9 @@
 - (IBAction)performsearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        if ([Keychain checkaccount]) {
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        }
         NSString *url = @"";
         if (currentsearch == AnimeSearch){
             url = [NSString stringWithFormat:@"%@/2.1/anime/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]];

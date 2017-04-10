@@ -10,6 +10,7 @@
 #import "MainWindow.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Keychain.h"
+#import "Utility.h"
 
 @interface AddTitle ()
 @property (strong) IBOutlet NSView *popoveraddtitleexistsview;
@@ -55,6 +56,7 @@
 - (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
     [self view];
     NSNumber *idnum = d[@"id"];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     if (type == 0){
         if (![mw checkiftitleisonlist:idnum.intValue type:0]){
             [self.view replaceSubview:(self.view.subviews)[0] with:_addtitleview];
@@ -65,18 +67,19 @@
             else {
                 [_addnumformat setMaximum:nil];
             }
-            NSString *airingstatus = d[@"status"];
-            if ([airingstatus isEqualToString:@"finished airing"] || d[@"end_date"]){
-                selectedaircompleted = true;
+            if (d[@"status"]){
+                [self checkStatus:d[@"status"] type:type];
             }
-            else{
-                selectedaircompleted = false;
+            else if (d[@"start_date"]||d[@"end_date"]){
+                [self checkStatus:[Utility statusFromDateRange:d[@"start_date"] toDate:d[@"end_date"]] type:type];
             }
-            if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"] || d[@"start_date"]){
-                selectedaired = true;
-            }
-            else{
-                selectedaired = false;
+            else {
+                [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    NSDictionary * d = responseObject;
+                    [self checkStatus:d[@"status"] type: 0];
+                } failure:^(NSURLSessionTask *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                }];
             }
             _addepifield.intValue = 0;
             _addepstepper.intValue = 0;
@@ -110,26 +113,17 @@
             else {
                 [_addvolnumformat setMaximum:nil];
             }
-            AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-            [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                selecteditem = responseObject;
-                NSString *publishtatus = selecteditem[@"status"];
-                if ([publishtatus isEqualToString:@"finished"]){
-                    selectedfinished = true;
-                }
-                else{
-                    selectedfinished = false;
-                }
-                if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]){
-                    selectedpublished = true;
-                }
-                else{
-                    selectedpublished = false;
-                }
-
-            } failure:^(NSURLSessionTask *operation, NSError *error) {
-                NSLog(@"Error: %@", error);
-            }];
+            if (selecteditem[@"status"]){
+                [self checkStatus:selecteditem[@"status"] type:1];
+            }
+            else {
+                [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    selecteditem = responseObject;
+                    [self checkStatus:selecteditem[@"status"] type:0];
+                } failure:^(NSURLSessionTask *operation, NSError *error) {
+                    NSLog(@"Error: %@", error);
+                }];
+            }
             _addchapfield.intValue = 0;
             _addchapstepper.intValue = 0;
             _addtotalchap.intValue = ((NSNumber *)d[@"chapters"]).intValue;
@@ -147,6 +141,38 @@
         selectedtype = type;
     }
     
+}
+
+- (void)checkStatus:(NSString *)status type:(int)type{
+    if (type == 0){
+         if ([status isEqualToString:@"finished airing"]){
+             selectedaircompleted = true;
+         }
+         else{
+             selectedaircompleted = false;
+         }
+         if ([status isEqualToString:@"finished airing"]||[status isEqualToString:@"currently airing"]){
+             selectedaired = true;
+         }
+         else{
+             selectedaired = false;
+         }
+    }
+    else {
+        if ([status isEqualToString:@"finished"]){
+            selectedfinished = true;
+        }
+        else{
+            selectedfinished = false;
+        }
+        if ([status isEqualToString:@"finished"]||[status isEqualToString:@"publishing"]){
+            selectedpublished = true;
+        }
+        else{
+            selectedpublished = false;
+        }
+
+    }
 }
 
 - (IBAction)PerformAddTitle:(id)sender {

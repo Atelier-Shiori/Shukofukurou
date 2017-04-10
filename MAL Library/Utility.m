@@ -29,6 +29,7 @@
         [alert runModal];
     }
 }
+
 + (NSString *)urlEncodeString:(NSString *)string{
 	return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                                                                                   NULL,
@@ -37,6 +38,7 @@
                                                                                                   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                                                                                   kCFStringEncodingUTF8 ));
 }
+
 + (NSString *)retrieveApplicationSupportDirectory:(NSString*)append{
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSError *error;
@@ -54,6 +56,7 @@
     }
     return dir;
 }
+
 + (id)saveJSON:(id) object withFilename:(NSString*) filename appendpath:(NSString*)appendpath replace:(bool)replace{
     //Save as json object
     NSError *error;
@@ -79,6 +82,7 @@
     }
     return nil;
 }
+
 + (id)loadJSON:(NSString *)filename appendpath:(NSString*)appendpath{
     NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
@@ -90,6 +94,7 @@
     }
     return nil;
 }
+
 + (bool)deleteFile:(NSString *)filename appendpath:(NSString*)appendpath{
     NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
@@ -103,6 +108,7 @@
     }
     return false;
 }
+
 + (NSString *)appendstringwithArray:(NSArray *) a{
     NSMutableString *string = [NSMutableString new];
     for (int i=0; i < a.count; i++){
@@ -118,6 +124,7 @@
     }
     return (NSString *)string;
 }
+
 + (bool)checkifFileExists:(NSString *)filename appendPath:(NSString *) appendpath{
     NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
@@ -127,6 +134,7 @@
     }
     return false;
 }
+
 + (NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
     NSString *path = [Utility retrieveApplicationSupportDirectory:append];
     NSFileManager *filemanager = [NSFileManager defaultManager];
@@ -135,6 +143,7 @@
     }
     return [Utility retrieveimageandsave:filename withAppendPath:append fromURL:url];
 }
+
 + (NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
     NSImage *img = [[NSImage alloc] initWithContentsOfURL:url];
     CGImageRef cgref = [img CGImageForProposedRect:NULL context:nil hints:nil];
@@ -146,6 +155,44 @@
     [imgdata writeToFile: [NSString stringWithFormat:@"%@/%@",path, filename] atomically:TRUE];
     return [Utility loadImage:filename withAppendPath:append fromURL:url];
 }
+
++ (NSString *)statusFromDateRange:(NSString *)start toDate:(NSString *)end{
+    bool startedairing = false;
+    bool finishedairing = false;
+    NSDate * datenow = [NSDate date];
+    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+    dateformat.dateFormat = @"yyyy-MM-dd";
+    if (start.length == 7 && start) {
+        start = [NSString stringWithFormat:@"%@-01",start];
+    }
+    if (start){
+        NSDate * startdate = [dateformat dateFromString:start];
+        if ([datenow compare:startdate] == NSOrderedDescending || [datenow compare:startdate] == NSOrderedSame){
+            startedairing = true;
+        }
+    }
+    if (end.length > 7 && end) {
+        end = [NSString stringWithFormat:@"%@-01",end];
+    }
+    if (end){
+        NSDate * enddate = [dateformat dateFromString:end];
+        if ([datenow compare:enddate] == NSOrderedDescending || [datenow compare:enddate] == NSOrderedSame){
+            finishedairing = true;
+        }
+    }
+    // Generate Status String
+    if (!startedairing && !finishedairing){
+        return @"not yet aired";
+    }
+    else if (startedairing && !finishedairing){
+        return @"currently airing";
+    }
+    else if (startedairing && finishedairing){
+        return @"finished airing";
+    }
+    return @"";
+}
+
 + (void)donateCheck:(AppDelegate*)delegate{
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] == nil){
         [Utility setReminderDate];

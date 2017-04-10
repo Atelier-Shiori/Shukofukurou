@@ -35,10 +35,11 @@
 }
 
 - (void)testExample {
-    // Use recording to get started writing UI tests.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
-    // Use recording to get started writing UI tests.
+    // Specifiy the full exact title here to test
+    NSString * animetitle = @"Love Live! Sunshine!!";
+    NSString * mangatitle = @"Sword Art Online";
     
+    // Do not modify anything below.
     XCUIElementQuery *windowsQuery = [[XCUIApplication alloc] init].windows;
     XCUIElement *animeListStaticText = windowsQuery.outlines.staticTexts[@"Anime List"];
     [animeListStaticText click];
@@ -53,21 +54,15 @@
     [automatictablecolumnidentifier0Outline typeKey:XCUIKeyboardKeyDownArrow modifierFlags:XCUIKeyModifierNone];
     [windowsQuery.outlines.staticTexts[@"Anime"] click];
     
-    XCUIElementQuery *toolbarsQuery = windowsQuery.toolbars;
-    XCUIElement *titleSearchSearchField = toolbarsQuery.searchFields[@"Title Search"];
+    XCUIElementQuery *toolbarsQuery2 = [[XCUIApplication alloc] init].toolbars;
+    XCUIElement *titleSearchSearchField = toolbarsQuery2.searchFields[@"Title Search"];
     [titleSearchSearchField click];
     
     XCUIElement *cell = [[[windowsQuery.outlines childrenMatchingType:XCUIElementTypeOutlineRow] elementBoundByIndex:0] childrenMatchingType:XCUIElementTypeCell].element;
-    [cell typeText:@""];
-    [cell typeKey:XCUIKeyboardKeyDelete modifierFlags:XCUIKeyModifierNone];
-    [cell typeKey:XCUIKeyboardKeyDelete modifierFlags:XCUIKeyModifierNone];
-    [cell typeKey:XCUIKeyboardKeyDelete modifierFlags:XCUIKeyModifierNone];
-    [cell typeKey:XCUIKeyboardKeyDelete modifierFlags:XCUIKeyModifierNone];
-    [cell typeKey:XCUIKeyboardKeyDelete modifierFlags:XCUIKeyModifierNone];
-    [cell typeText:@"ive sunsine"];
+    [cell typeText:animetitle];
     [[[[[windowsQuery.tables[@"animesearch"] childrenMatchingType:XCUIElementTypeTableRow] elementBoundByIndex:0] childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0] click];
     
-    XCUIElement *addTitleButton = toolbarsQuery.buttons[@"Add Title"];
+    XCUIElement *addTitleButton = toolbarsQuery2.buttons[@"Add Title"];
     [addTitleButton click];
     
     XCUIElementQuery *popoversQuery = windowsQuery.tables[@"animesearch"].popovers;
@@ -81,64 +76,76 @@
     [[[popoversQuery childrenMatchingType:XCUIElementTypePopUpButton] elementBoundByIndex:1] click];
     [windowsQuery.tables[@"animesearch"].popovers.menuItems[@"8 - Very Good"] click];
     [popoversQuery.buttons[@"Add"] click];
+    [NSThread sleepForTimeInterval:5];
+    
     [animeListStaticText click];
     [windowsQuery.checkBoxes[@"Watching"] click];
-    XCUIElementQuery *tablesQuery = windowsQuery.tables;
-    [[[[tablesQuery.tableRows containingType:XCUIElementTypeStaticText identifier:@"3/13"] childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0] click];
     
-    XCUIElement *editTitleButton = toolbarsQuery.buttons[@"Edit Title"];
-    [editTitleButton click];
+    XCUIElement *filterSearchField = toolbarsQuery2.searchFields[@"Filter"];
+    [filterSearchField click];
+    [cell typeText:animetitle];
+    
+    XCUIElementQuery *tablesQuery = windowsQuery.tables;
+    XCUIElement *textField = [[tablesQuery.tableRows childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0];
+    [textField click];
+    
+    XCUIElementQuery *toolbarsQuery = toolbarsQuery2;
+    [toolbarsQuery.buttons[@"Edit Title"] click];
     
     XCUIElementQuery *popoversQuery2 = windowsQuery.tables.popovers;
     [[[popoversQuery2 childrenMatchingType:XCUIElementTypePopUpButton] elementBoundByIndex:0] click];
     [windowsQuery.tables.popovers.menuItems[@"completed"] click];
+    [popoversQuery2.buttons[@"Edit"] click];
+    [NSThread sleepForTimeInterval:5];
     
-    XCUIElement *editButton = popoversQuery2.buttons[@"Edit"];
-    [editButton click];
     [windowsQuery.checkBoxes[@"Completed"] click];
-    [[[[[tablesQuery childrenMatchingType:XCUIElementTypeTableRow] elementBoundByIndex:2] childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0] click];
+    [textField click];
     
     XCUIElement *deleteTitleButton = toolbarsQuery.buttons[@"Delete Title"];
     [deleteTitleButton click];
     
     XCUIElement *yesButton = windowsQuery.sheets[@"alert"].buttons[@"Yes"];
     [yesButton click];
+    [NSThread sleepForTimeInterval:5];
+    
+    
     [windowsQuery.outlines.staticTexts[@"Manga"] click];
-    [titleSearchSearchField.buttons[@"Search"] click];
-    [cell typeText:@"loveless"];
+    [titleSearchSearchField click];
+    [cell typeText:mangatitle];
     [[[[[tablesQuery childrenMatchingType:XCUIElementTypeTableRow] elementBoundByIndex:0] childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0] click];
     [addTitleButton click];
     
-    XCUIElement *chapterstepperStepper = popoversQuery2.steppers[@"chapterstepper"];
-    XCUIElement *incrementArrow2 = [chapterstepperStepper childrenMatchingType:XCUIElementTypeIncrementArrow].element;
+    XCUIElement *incrementArrow2 = [popoversQuery2.steppers[@"chapterstepper"] childrenMatchingType:XCUIElementTypeIncrementArrow].element;
     [incrementArrow2 click];
     [incrementArrow2 click];
     [incrementArrow2 click];
-    [[chapterstepperStepper childrenMatchingType:XCUIElementTypeDecrementArrow].element click];
+    [incrementArrow2 click];
+    [[[popoversQuery2 childrenMatchingType:XCUIElementTypePopUpButton] elementBoundByIndex:1] click];
+    [windowsQuery.tables.popovers.menuItems[@"7 - Good"] click];
     [popoversQuery2.buttons[@"Add"] click];
+    [NSThread sleepForTimeInterval:5];
+    
     [windowsQuery.outlines.staticTexts[@"Manga List"] click];
     [windowsQuery.checkBoxes[@"Reading"] click];
-    [[[[tablesQuery.tableRows containingType:XCUIElementTypeStaticText identifier:@"2/0"] childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0] click];
-    [editTitleButton click];
-    [[popoversQuery2.steppers[@"chapstepper"] childrenMatchingType:XCUIElementTypeIncrementArrow].element click];
-    [editButton click];
+    [filterSearchField click];
+    [cell typeText:mangatitle];
+    [textField click];
     [deleteTitleButton click];
     [yesButton click];
+    [NSThread sleepForTimeInterval:5];
+    
     [windowsQuery.outlines.staticTexts[@"Seasons"] click];
+    [toolbarsQuery2.popUpButtons[@"Year"] click];
+    [toolbarsQuery2.menuItems[@"2016"] click];
+    [toolbarsQuery2.popUpButtons[@"Season"] click];
+    [toolbarsQuery2.menuItems[@"spring"] click];
     
-    XCUIElement *seasonPopUpButton = toolbarsQuery.popUpButtons[@"Season"];
-    [seasonPopUpButton click];
+    XCUIElement *titleButton = windowsQuery.tables.buttons[@"Title"];
+    [titleButton click];
+    [titleButton click];
+    [[[[[tablesQuery childrenMatchingType:XCUIElementTypeTableRow] elementBoundByIndex:3] childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0] doubleClick];
+    [NSThread sleepForTimeInterval:10];
     
-    XCUIElement *springMenuItem = toolbarsQuery.menuItems[@"spring"];
-    [springMenuItem click];
-    [toolbarsQuery.popUpButtons[@"Year"] click];
-    [toolbarsQuery.menuItems[@"2016"] click];
-    [seasonPopUpButton click];
-    [springMenuItem click];
-    [[[[[tablesQuery childrenMatchingType:XCUIElementTypeTableRow] elementBoundByIndex:16] childrenMatchingType:XCUIElementTypeTextField] elementBoundByIndex:0] doubleClick];
-    [[windowsQuery.toolbars containingType:XCUIElementTypeButton identifier:@"Add Title"].element click];
-    [windowsQuery.buttons[XCUIIdentifierCloseWindow] click];
-
 }
 
 @end

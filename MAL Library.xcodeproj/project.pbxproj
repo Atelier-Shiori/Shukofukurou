@@ -1283,6 +1283,7 @@
 				2D60A1281E9B322B0034C3AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */ = {
 			isa = XCConfigurationList;

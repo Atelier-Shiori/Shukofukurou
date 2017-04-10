@@ -11,6 +11,7 @@
 #import "EditTitle.h"
 #import "Keychain.h"
 #import <AFNetworking/AFNetworking.h>
+#import "Utility.h"
 
 @interface ListView ()
 // Filter Save
@@ -81,6 +82,9 @@
                     [_animelistarraycontroller setSelectionIndex:index];
                     break;
                 }
+                else if (index == a.count - 1){
+                    [_animelisttb deselectAll:self];
+                }
             }
             if (a.count == 0){
                 [_animelisttb deselectAll:self];
@@ -116,6 +120,9 @@
                     [_mangalistarraycontroller setSelectionIndex:index];
                     break;
                 }
+                else if (index == a.count - 1){
+                    [_mangalisttb deselectAll:self];
+                }
             }
             if (a.count == 0){
                 [_mangalisttb deselectAll:self];
@@ -130,6 +137,12 @@
 }
 - (void)populatefiltercounts:(NSArray *)a type:(int)type{
     // Generates item counts for each status filter
+    NSArray *arg = [[NSProcessInfo processInfo] arguments];
+    if (arg.count > 1){
+        if ([(NSString *)[arg objectAtIndex:[arg count]-1] isEqualToString:@"testing"]){
+            return;
+        }
+    }
     NSArray *filtered;
     if (type == 0){
         NSNumber *watching;

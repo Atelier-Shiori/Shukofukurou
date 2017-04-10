@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D63731B1E9B0FCD00E82C74 /* MAL_LibraryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D63731A1E9B0FCD00E82C74 /* MAL_LibraryUITests.m */; };
+		2D60A1221E9B322B0034C3AA /* MAL_LibraryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */; };
 		2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
@@ -148,19 +148,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2D60A1191E9B24CE0034C3AA /* PBXContainerItemProxy */ = {
+		2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "MAL Library (AppStore)";
-		};
-		2D63731D1E9B0FCD00E82C74 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9199BA951E89836000F6E9FF;
-			remoteInfo = "MAL Library";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -215,9 +208,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2D6373181E9B0FCD00E82C74 /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D63731A1E9B0FCD00E82C74 /* MAL_LibraryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_LibraryUITests.m; sourceTree = "<group>"; };
-		2D63731C1E9B0FCD00E82C74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_LibraryUITests.m; sourceTree = "<group>"; };
+		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
@@ -323,7 +316,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2D6373151E9B0FCD00E82C74 /* Frameworks */ = {
+		2D60A11C1E9B322A0034C3AA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,11 +366,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D6373191E9B0FCD00E82C74 /* MAL LibraryUITests */ = {
+		2D60A1201E9B322A0034C3AA /* MAL LibraryUITests */ = {
 			isa = PBXGroup;
 			children = (
-				2D63731A1E9B0FCD00E82C74 /* MAL_LibraryUITests.m */,
-				2D63731C1E9B0FCD00E82C74 /* Info.plist */,
+				2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */,
+				2D60A1231E9B322B0034C3AA /* Info.plist */,
 			);
 			path = "MAL LibraryUITests";
 			sourceTree = "<group>";
@@ -405,7 +398,7 @@
 			isa = PBXGroup;
 			children = (
 				9199BA981E89836000F6E9FF /* MAL Library */,
-				2D6373191E9B0FCD00E82C74 /* MAL LibraryUITests */,
+				2D60A1201E9B322A0034C3AA /* MAL LibraryUITests */,
 				918C0D3F1E8A00ED0037898E /* Frameworks */,
 				9199BA971E89836000F6E9FF /* Products */,
 			);
@@ -416,7 +409,7 @@
 			children = (
 				9199BA961E89836000F6E9FF /* MAL Library.app */,
 				913A11AA1E8F206A00450B66 /* MAL Library.app */,
-				2D6373181E9B0FCD00E82C74 /* MAL LibraryUITests.xctest */,
+				2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -547,23 +540,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D6373171E9B0FCD00E82C74 /* MAL LibraryUITests */ = {
+		2D60A11E1E9B322A0034C3AA /* MAL LibraryUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D6373211E9B0FCD00E82C74 /* Build configuration list for PBXNativeTarget "MAL LibraryUITests" */;
+			buildConfigurationList = 2D60A1261E9B322B0034C3AA /* Build configuration list for PBXNativeTarget "MAL LibraryUITests" */;
 			buildPhases = (
-				2D6373141E9B0FCD00E82C74 /* Sources */,
-				2D6373151E9B0FCD00E82C74 /* Frameworks */,
-				2D6373161E9B0FCD00E82C74 /* Resources */,
+				2D60A11B1E9B322A0034C3AA /* Sources */,
+				2D60A11C1E9B322A0034C3AA /* Frameworks */,
+				2D60A11D1E9B322A0034C3AA /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				2D63731E1E9B0FCD00E82C74 /* PBXTargetDependency */,
-				2D60A11A1E9B24CE0034C3AA /* PBXTargetDependency */,
+				2D60A1251E9B322B0034C3AA /* PBXTargetDependency */,
 			);
 			name = "MAL LibraryUITests";
 			productName = "MAL LibraryUITests";
-			productReference = 2D6373181E9B0FCD00E82C74 /* MAL LibraryUITests.xctest */;
+			productReference = 2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		913A115F1E8F206A00450B66 /* MAL Library (AppStore) */ = {
@@ -615,8 +607,9 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Atelier Shiori";
 				TargetAttributes = {
-					2D6373171E9B0FCD00E82C74 = {
+					2D60A11E1E9B322A0034C3AA = {
 						CreatedOnToolsVersion = 8.3;
+						DevelopmentTeam = 9HDZTER525;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 913A115F1E8F206A00450B66;
 					};
@@ -653,13 +646,13 @@
 			targets = (
 				9199BA951E89836000F6E9FF /* MAL Library */,
 				913A115F1E8F206A00450B66 /* MAL Library (AppStore) */,
-				2D6373171E9B0FCD00E82C74 /* MAL LibraryUITests */,
+				2D60A11E1E9B322A0034C3AA /* MAL LibraryUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2D6373161E9B0FCD00E82C74 /* Resources */ = {
+		2D60A11D1E9B322A0034C3AA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -755,11 +748,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2D6373141E9B0FCD00E82C74 /* Sources */ = {
+		2D60A11B1E9B322A0034C3AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D63731B1E9B0FCD00E82C74 /* MAL_LibraryUITests.m in Sources */,
+				2D60A1221E9B322B0034C3AA /* MAL_LibraryUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,15 +834,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2D60A11A1E9B24CE0034C3AA /* PBXTargetDependency */ = {
+		2D60A1251E9B322B0034C3AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* MAL Library (AppStore) */;
-			targetProxy = 2D60A1191E9B24CE0034C3AA /* PBXContainerItemProxy */;
-		};
-		2D63731E1E9B0FCD00E82C74 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9199BA951E89836000F6E9FF /* MAL Library */;
-			targetProxy = 2D63731D1E9B0FCD00E82C74 /* PBXContainerItemProxy */;
+			targetProxy = 2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1010,36 +998,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		2D63731F1E9B0FCD00E82C74 /* Debug */ = {
+		2D60A1271E9B322B0034C3AA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "MAL LibraryUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-LibraryUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_TARGET_NAME = "MAL Library (AppStore)";
 			};
 			name = Debug;
 		};
-		2D6373201E9B0FCD00E82C74 /* Release */ = {
+		2D60A1281E9B322B0034C3AA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9HDZTER525;
 				INFOPLIST_FILE = "MAL LibraryUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-LibraryUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_TARGET_NAME = "MAL Library (AppStore)";
 			};
 			name = Release;
@@ -1292,14 +1276,13 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D6373211E9B0FCD00E82C74 /* Build configuration list for PBXNativeTarget "MAL LibraryUITests" */ = {
+		2D60A1261E9B322B0034C3AA /* Build configuration list for PBXNativeTarget "MAL LibraryUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2D63731F1E9B0FCD00E82C74 /* Debug */,
-				2D6373201E9B0FCD00E82C74 /* Release */,
+				2D60A1271E9B322B0034C3AA /* Debug */,
+				2D60A1281E9B322B0034C3AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */ = {
 			isa = XCConfigurationList;

@@ -26,6 +26,7 @@
     [super tearDown];
 }
 
+
 - (void)testAnimeListLoading {
     // This class will test retrevial of the Anime List and Manga List
     //Expectation
@@ -155,7 +156,7 @@
         
     }];
 }
-- (void)testTitleAdd{
+- (void)testAnimeTitleAdd{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *searchterm = @"Love Live! Sunshine!!";
     [MyAnimeList searchTitle:searchterm withType:MALAnime completion:^(id responseObject){
@@ -211,7 +212,7 @@
         
     }];
 }
-- (void)testTitleModify{
+- (void)testAnimeTitleModify{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *title = @"Love Live! Sunshine!!";
     [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
@@ -267,7 +268,7 @@
         
     }];
 }
-- (void)testTitleRemove{
+- (void)testAnimeTitleRemove{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Deletion"];
     __block NSString *title = @"Love Live! Sunshine!!";
     [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
@@ -319,8 +320,173 @@
         }
         
     }];
-
+}
+- (void)testMangaTitleAdd{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
+    __block NSString *searchterm = @"Loveless";
+    [MyAnimeList searchTitle:searchterm withType:MALManga completion:^(id responseObject){
+        NSArray * a = responseObject;
+        bool match = false;
+        __block NSNumber * titleid;
+        for (NSDictionary *d in a){
+            NSString * title = d[@"title"];
+            if ([title isEqualToString:searchterm]){
+                match = true;
+                titleid = d[@"id"];
+                break;
+            }
+        }
+        if (match){
+            NSLog(@"Title %@ found. Adding title", searchterm);
+            [MyAnimeList addMangaTitleToList:titleid.intValue withChapter:10 withVolume:1 withStatus:@"reading" withScore:0 completion:^(id responseObject){
+                [MyAnimeList retrieveTitleInfo:titleid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
+                    NSNumber *readchapters = responseObject[@"chapters_read"];
+                    NSNumber *readvolumes = responseObject[@"volumes_read"];
+                    NSString *readstatus = responseObject[@"read_status"];
+                    NSNumber *score = responseObject[@"score"];
+                    if (readchapters.intValue == 10 && readvolumes.intValue == 1 && [readstatus isEqualToString:@"reading"] && score.intValue == 0){
+                        XCTAssert(YES, @"Update successful");
+                        NSLog(@"Title added to list successfully");
+                    }
+                    else {
+                        XCTAssert(NO, @"Update failed, values do not match");
+                    }
+                    [expectation fulfill];
+                }error:^(NSError *error){
+                    XCTFail(@"Title information retrieval failed with error: %@", error);
+                    [expectation fulfill];
+                }];
+            }error:^(NSError *error){
+                XCTFail(@"Title add failed with error: %@", error);
+                [expectation fulfill];
+            }];
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on search results");
+            [expectation fulfill];
+        }
+    }error:^(NSError *error){
+        XCTFail(@"Search Result retrieval failed with error: %@", error);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:90 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+- (void)testMangaTitleModify{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
+    __block NSString *title = @"Loveless";
+    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
+        NSArray * a = responseData[@"manga"];
+        __block NSNumber *listid;
+        bool match = false;
+        for (NSDictionary *d in a){
+            listid = d[@"id"];
+            NSString *entrytitle = d[@"title"];
+            if ([entrytitle isEqualToString:title]){
+                match = true;
+                break;
+            }
+        }
+        if (match){
+            [MyAnimeList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:7 completion:^(id responseObject){
+                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
+                    NSNumber *readchapters = responseObject[@"chapters_read"];
+                    NSNumber *readvolumes = responseObject[@"volumes_read"];
+                    NSString *readstatus = responseObject[@"read_status"];
+                    NSNumber *score = responseObject[@"score"];
+                    if (readchapters.intValue == 20 && readvolumes.intValue == 2 && [readstatus isEqualToString:@"dropped"] && score.intValue == 7){
+                        XCTAssert(YES, @"Update successful");
+                        NSLog(@"Title update was successful.");
+                    }
+                    else {
+                        XCTAssert(NO, @"Update failed, values do not match");
+                    }
+                    [expectation fulfill];
+                }error:^(NSError *error){
+                    XCTFail(@"Title information retrieval failed with error: %@", error);
+                    [expectation fulfill];
+                }];
+            }error:^(NSError *error){
+                XCTFail(@"Update failed with error: %@", error);
+                [expectation fulfill];
+            }];
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on user's list");
+            [expectation fulfill];
+        }
+    }error:^(NSError *error){
+        XCTFail(@"Title check failed with error: %@", error);
+        [expectation fulfill];
+    }];
     
+    [self waitForExpectationsWithTimeout:90 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+- (void)testMangaTitleRemove{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Deletion"];
+    __block NSString *title = @"Loveless";
+    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
+        NSArray * a = responseData[@"manga"];
+        __block NSNumber *listid;
+        bool match = false;
+        for (NSDictionary *d in a){
+            listid = d[@"id"];
+            NSString *entrytitle = d[@"title"];
+            if ([entrytitle isEqualToString:title]){
+                match = true;
+                break;
+            }
+        }
+        if (match){
+            [MyAnimeList removeTitleFromList:listid.intValue withType:MALManga completion:^(id responseData){
+                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
+                    if (!responseObject[@"chapters_read"]){
+                        XCTAssert(YES, @"Title removal successful");
+                        NSLog(@"Title removed from list successfully");
+                    }
+                    else {
+                        XCTAssert(NO, @"Title removal failed.");
+                    }
+                    [expectation fulfill];
+                }error:^(NSError *error){
+                    XCTFail(@"Title information retrieval failed with error: %@", error);
+                    [expectation fulfill];
+                }];
+            }error:^(NSError *error){
+                XCTFail(@"Title removal failed with error: %@", error);
+                [expectation fulfill];
+            }];
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on user's list");
+            [expectation fulfill];
+        }
+    }error:^(NSError *error){
+        XCTFail(@"Title check failed with error: %@", error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:90 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
 }
 - (int)checkListTotals:(NSArray *)a type:(int)type{
     NSArray *filtered;

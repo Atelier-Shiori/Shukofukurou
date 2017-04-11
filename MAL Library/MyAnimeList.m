@@ -13,7 +13,7 @@
 
 @implementation MyAnimeList
 #pragma mark MyAnimeList Functions
-+(void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString * URL = @"";
     if (type == MALAnime){
@@ -31,7 +31,7 @@
     }];
 
 }
-+(void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     if ([Keychain checkaccount]) {
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
@@ -54,7 +54,7 @@
     
 }
 
-+(void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"";
     if (type == MALAnime){
@@ -74,7 +74,7 @@
     }];
 }
 
-+(void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     [manager GET:[NSString stringWithFormat:@"%@/2.1/history/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], username] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -85,7 +85,7 @@
     }];
 }
 
-+(void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -97,7 +97,7 @@
 
 }
 
-+(void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -108,7 +108,7 @@
     }];
 }
 
-+(void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -119,7 +119,7 @@
     }];
 }
 
-+(void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
@@ -130,7 +130,7 @@
     }];
 }
 
-+(void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
++ (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler Error: (void (^)(NSError * error)) errorHandler{
     NSString *deleteURL;
     if (type == MALAnime){
         deleteURL = [NSString stringWithFormat:@"%@/2.1/animelist/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], titleid];
@@ -152,7 +152,7 @@
 }
 #pragma mark -
 #pragma mark Private Methods
-+(id)processHistory:(id)object{
++ (id)processHistory:(id)object{
     NSArray *a = object;
     NSMutableArray *history = [NSMutableArray new];
     for (NSDictionary *d in a){

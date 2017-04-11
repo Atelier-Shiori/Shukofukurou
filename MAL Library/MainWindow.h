@@ -45,7 +45,7 @@
 //Search View
 @property (strong) IBOutlet SearchView *searchview;
 @property (strong) IBOutlet NSPopover *advsearchpopover;
-    @property (strong) IBOutlet AdvancedSearch *advancedsearchcontroller;
+@property (strong) IBOutlet AdvancedSearch *advancedsearchcontroller;
 // Info View
 @property (strong) IBOutlet NSVisualEffectView *progressview;
 @property (strong) IBOutlet NSProgressIndicator *progressindicator;

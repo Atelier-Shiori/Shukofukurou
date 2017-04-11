@@ -7,6 +7,7 @@
 //
 
 #import "MainWindow.h"
+#import "MyAnimeList.h"
 #import "AppDelegate.h"
 #import "Utility.h"
 #import "NSTextFieldNumber.h"
@@ -581,14 +582,11 @@
                     return;
                 }
                 else if (!exists || refreshlist){
-                AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-
-                [manager GET:[NSString stringWithFormat:@"%@/2.1/animelist/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                    [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
-                
-                } failure:^(NSURLSessionTask *operation, NSError *error) {
-                    NSLog(@"%@", error.userInfo);
-                }];
+                    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseObject){
+                        [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
+                    }Error:^(NSError *error){
+                        NSLog(@"%@", error.userInfo);
+                    }];
                 }
                 break;
             case 1:
@@ -599,12 +597,9 @@
                     return;
                 }
                 else if (!exists || refreshlist){
-                    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-                    
-                    [manager GET:[NSString stringWithFormat:@"%@/2.1/mangalist/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], [Keychain getusername]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
-                        
-                    } failure:^(NSURLSessionTask *operation, NSError *error) {
+                    }Error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
                     }];
                 }
@@ -667,11 +662,9 @@
     else if ([identifier isEqualToString:@"seasons"]){
         NSDictionary *d = (_seasonview.seasonarraycontroller).selectedObjects[0];
         d = d[@"id"];
-        NSNumber * idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [MyAnimeList retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime completion:^(id responseObject){
             [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
+        }Error:^(NSError *error){
             NSLog(@"Error: %@", error);
         }];
     }
@@ -692,21 +685,12 @@
     [_noinfoview setHidden:YES];
     [_progressindicator setHidden: NO];
     [_progressindicator startAnimation:nil];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *url = @"";
-    if (type == AnimeType){
-        url = [NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue];
-        
-    }
-    else {
-        url = [NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue];
-    }
-    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [MyAnimeList retrieveTitleInfo:idnum.intValue withType:type completion:^(id responseObject){
         _infoview.selectedid = idnum.intValue;
         _infoview.type = type;
         [_progressindicator stopAnimation:nil];
         [_infoview populateAnimeInfoView:responseObject];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
+    }Error:^(NSError *error){
         NSLog(@"Error: %@", error);
         [_progressindicator stopAnimation:nil];
         _infoview.selectedid = previd;

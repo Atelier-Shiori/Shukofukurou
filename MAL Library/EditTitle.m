@@ -9,8 +9,7 @@
 #import "EditTitle.h"
 #import "NSTextFieldNumber.h"
 #import "MainWindow.h"
-#import <AFNetworking/AFNetworking.h>
-#import "Keychain.h"
+#import "MyAnimeList.h"
 
 @interface EditTitle ()
 // Anime
@@ -160,16 +159,13 @@
         }
         _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [_minipopoverindicator startAnimation:nil];
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_minipopoverstatus.title, @"score":@(_minipopoverscore.selectedTag), @"episodes":@(_minipopoverepfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
+        [MyAnimeList updateAnimeTitleOnList:selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag completion:^(id responseobject){
             [mw loadlist:@(true) type:selectedtype];
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_minipopoverindicator stopAnimation:nil];
             [_minieditpopover close];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
+        }Error:^(NSError * error){
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_minipopoverindicator stopAnimation:nil];
@@ -203,17 +199,14 @@
 
         _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [_mangapopoverindicator startAnimation:nil];
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(selectededitid)] parameters:@{ @"status":_mangapopoverstatus.title, @"score":@(_mangapopoverscore.selectedTag), @"chapters":@(_mangapopoverchapfield.intValue),@"volumes":@(_mangapopovervolfield.intValue)} success:^(NSURLSessionTask *task, id responseObject) {
+        [MyAnimeList updateMangaTitleOnList:selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag completion:^(id responseobject){
             [mw loadlist:@(true) type:selectedtype];
             [mw loadlist:@(true) type:2];
             [_mangapopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_mangapopoverindicator stopAnimation:nil];
             [_minieditpopover close];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
+        }Error:^(NSError * error){
             [_mangapopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_mangapopoverindicator stopAnimation:nil];

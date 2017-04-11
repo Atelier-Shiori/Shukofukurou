@@ -8,8 +8,7 @@
 
 #import "AddTitle.h"
 #import "MainWindow.h"
-#import <AFNetworking/AFNetworking.h>
-#import "Keychain.h"
+#import "MyAnimeList.h"
 #import "Utility.h"
 
 @interface AddTitle ()
@@ -56,7 +55,6 @@
 - (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
     [self view];
     NSNumber *idnum = d[@"id"];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     if (type == 0){
         if (![mw checkiftitleisonlist:idnum.intValue type:0]){
             [self.view replaceSubview:(self.view.subviews)[0] with:_addtitleview];
@@ -74,10 +72,10 @@
                 [self checkStatus:[Utility statusFromDateRange:d[@"start_date"] toDate:d[@"end_date"]] type:type];
             }
             else {
-                [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALAnime completion:^(id responseObject){
                     NSDictionary * d = responseObject;
                     [self checkStatus:d[@"status"] type: 0];
-                } failure:^(NSURLSessionTask *operation, NSError *error) {
+                }Error:^(NSError *error){
                     NSLog(@"Error: %@", error);
                 }];
             }
@@ -117,10 +115,10 @@
                 [self checkStatus:selecteditem[@"status"] type:1];
             }
             else {
-                [manager GET:[NSString stringWithFormat:@"%@/2.1/manga/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],idnum.intValue] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                    selecteditem = responseObject;
-                    [self checkStatus:selecteditem[@"status"] type:1];
-                } failure:^(NSURLSessionTask *operation, NSError *error) {
+                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALManga completion:^(id responseObject){
+                    NSDictionary * d = responseObject;
+                    [self checkStatus:d[@"status"] type: MALManga];
+                }Error:^(NSError *error){
                     NSLog(@"Error: %@", error);
                 }];
             }
@@ -180,9 +178,6 @@
 }
 
 - (void)addtitletolist{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     if (selectedtype == 0){
         [_addfield setEnabled:false];
         if(![_addstatusfield.title isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && selectedaircompleted){
@@ -202,13 +197,13 @@
             _addepifield.stringValue = _addtotalepisodes.stringValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(selectededitid), @"status":_addstatusfield.title, @"score":@(_addscorefiled.selectedTag), @"episodes":@(_addepifield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [MyAnimeList addAnimeTitleToList:selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:(int)_addscorefiled.selectedTag completion:^(id responseObject){
             [mw loadlist:@(true) type:0];
             [mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
+        }Error:^(NSError * error){
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
@@ -237,18 +232,19 @@
             _addvolfield.stringValue = _addtotalvol.stringValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(selectededitid), @"status":_addmangastatusfield.title, @"score":@(_addmangascorefiled.selectedTag), @"chapters":@(_addchapfield.intValue), @"volumes":@(_addvolfield.intValue)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [MyAnimeList addMangaTitleToList:selectededitid withChapter:_addchapfield.intValue withVolume:@(_addvolfield.intValue) withStatus:_addmangastatusfield.title withScore:(int)_addmangascorefiled.selectedTag completion:^(id responseData){
             [mw loadlist:@(true) type:1];
             [mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
+        }Error:^(NSError * error){
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addmangabtn setEnabled:true];
+
         }];
     }
 }

@@ -10,7 +10,7 @@
 #import "MainWindow.h"
 #import "EditTitle.h"
 #import "Keychain.h"
-#import <AFNetworking/AFNetworking.h>
+#import "MyAnimeList.h"
 #import "Utility.h"
 
 @interface ListView ()
@@ -466,26 +466,19 @@
 - (void)deletetitle{
     NSDictionary *d;
     NSNumber *selid;
-    NSString *deleteURL;
     if (currentlist == 0){
         d = _animelistarraycontroller.selectedObjects[0];
         selid = d[@"id"];
-        deleteURL = [NSString stringWithFormat:@"%@/2.1/animelist/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], selid.intValue];
     }
     else {
         d = _mangalistarraycontroller.selectedObjects[0];
         selid = d[@"id"];
-        deleteURL = [NSString stringWithFormat:@"%@/2.1/mangalist/manga/%i", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], selid.intValue];
     }
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [AFHTTPResponseSerializer new];
-    [manager DELETE:deleteURL parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [MyAnimeList removeTitleFromList:selid.intValue withType:currentlist completion:^(id responseobject){
         [mw loadlist:@(true) type:currentlist];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
+    }Error:^(NSError *error){
         NSLog(@"%@",error);
     }];
-
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {

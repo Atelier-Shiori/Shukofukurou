@@ -7,10 +7,8 @@
 //
 
 #import "SearchView.h"
-#import <AFNetworking/AFNetworking.h>
 #import "MainWindow.h"
-#import "Utility.h"
-#import "Keychain.h"
+#import "MyAnimeList.h"
 
 @interface SearchView ()
 
@@ -57,20 +55,9 @@
 
 - (IBAction)performsearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        if ([Keychain checkaccount]) {
-            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        }
-        NSString *url = @"";
-        if (currentsearch == AnimeSearch){
-            url = [NSString stringWithFormat:@"%@/2.1/anime/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]];
-        }
-        else {
-            url = [NSString stringWithFormat:@"%@/2.1/manga/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:_searchtitlefield.stringValue]];
-        }
-        [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [MyAnimeList searchTitle:_searchtitlefield.stringValue withType:currentsearch completion:^(id responseObject){
             [mw populatesearchtb:responseObject type:currentsearch];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
+        }Error:^(NSError *error){
             NSLog(@"Error: %@", error);
         }];
     }

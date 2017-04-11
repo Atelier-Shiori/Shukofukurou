@@ -72,7 +72,7 @@
                 [self checkStatus:[Utility statusFromDateRange:d[@"start_date"] toDate:d[@"end_date"]] type:type];
             }
             else {
-                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALAnime completion:^(id responseObject){
+                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
                     NSDictionary * d = responseObject;
                     [self checkStatus:d[@"status"] type: 0];
                 }error:^(NSError *error){
@@ -115,7 +115,7 @@
                 [self checkStatus:selecteditem[@"status"] type:1];
             }
             else {
-                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALManga completion:^(id responseObject){
+                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALManga useAccount:NO completion:^(id responseObject){
                     NSDictionary * d = responseObject;
                     [self checkStatus:d[@"status"] type: MALManga];
                 }error:^(NSError *error){

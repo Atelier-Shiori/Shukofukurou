@@ -1,0 +1,410 @@
+//
+//  MAL_Library_Unit_Tests.m
+//  MAL Library Unit Tests
+//
+//  Created by 天々座理世 on 2017/04/11.
+//  Copyright © 2017年 Atelier Shiori. All rights reserved.
+//
+
+#import <XCTest/XCTest.h>
+#import "MyAnimeList.h"
+#import "Keychain.h"
+
+@interface MAL_Library_Unit_Tests : XCTestCase
+
+@end
+
+@implementation MAL_Library_Unit_Tests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)testAnimeListLoading {
+    // This class will test retrevial of the Anime List and Manga List
+    //Expectation
+    XCTestExpectation *expectation = [self expectationWithDescription:@"List Loading"];
+    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id response){
+        NSArray *animelist = response[@"anime"];
+        int animetotal = [self checkListTotals:animelist type:0];
+        if (animetotal == animelist.count){
+            XCTAssert(YES, @"List totals matched");
+        }
+        else {
+            XCTAssert(NO, @"Failed: Calculated totals do not match.");
+        }
+        [expectation fulfill];
+    }error:^(NSError *error){
+        if (error){
+            XCTFail(@"List retrieval failed with error: %@", error);
+            [expectation fulfill];
+        }
+    }];
+    [self waitForExpectationsWithTimeout:30 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+    
+}
+
+- (void)testMangaListLoading{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"List Loading"];
+    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id response){
+        NSArray *mangalist = response[@"manga"];
+        
+        int mangatotal = [self checkListTotals:mangalist type:1];
+        if (mangatotal == mangalist.count){
+            XCTAssert(YES, @"List totals matched");
+        }
+        else {
+            XCTAssert(NO, @"Failed: Calculated totals do not match.");
+        }
+        [expectation fulfill];
+    }error:^(NSError *error){
+        if (error){
+            XCTFail(@"List retrieval failed with error: %@", error);
+        }
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:30 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+
+- (void)testAnimeSearch{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Search"];
+    __block NSString *searchterm = @"Love Live! Sunshine!!";
+    [MyAnimeList searchTitle:searchterm withType:MALAnime completion:^(id responseObject){
+        NSArray *a = responseObject;
+        bool match = false;
+        for (NSDictionary *d in a){
+            NSString *title = d[@"title"];
+            if ([title isEqualToString:searchterm]){
+                match = true;
+                break;
+            }
+        }
+        if (match){
+            NSLog(@"Title %@ found", searchterm);
+            XCTAssert(YES, @"Title found on search results");
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on search results");
+        }
+        [expectation fulfill];
+    }error:^(NSError *error){
+        XCTFail(@"Search Result retrieval failed with error: %@", error);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:30 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+
+- (void)testMangaSearch{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Search"];
+    __block NSString *searchterm = @"Kiniro Mosaic";
+    [MyAnimeList searchTitle:searchterm withType:MALManga completion:^(id responseObject){
+        NSArray *a = responseObject;
+        bool match = false;
+        for (NSDictionary *d in a){
+            NSString *title = d[@"title"];
+            if ([title isEqualToString:searchterm]){
+                match = true;
+                break;
+            }
+        }
+        if (match){
+            NSLog(@"Title %@ found", searchterm);
+            XCTAssert(YES, @"Title found on search results");
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on search results");
+        }
+        [expectation fulfill];
+    }error:^(NSError *error){
+        XCTFail(@"Search Result retrieval failed with error: %@", error);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:30 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+- (void)testTitleAdd{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
+    __block NSString *searchterm = @"Love Live! Sunshine!!";
+    [MyAnimeList searchTitle:searchterm withType:MALAnime completion:^(id responseObject){
+        NSArray * a = responseObject;
+        bool match = false;
+        __block NSNumber * titleid;
+        for (NSDictionary *d in a){
+            NSString * title = d[@"title"];
+            if ([title isEqualToString:searchterm]){
+                match = true;
+                titleid = d[@"id"];
+                break;
+            }
+        }
+        if (match){
+            NSLog(@"Title %@ found. Adding title", searchterm);
+            [MyAnimeList addAnimeTitleToList:titleid.intValue withEpisode:1 withStatus:@"watching" withScore:0 completion:^(id responseObject){
+                [MyAnimeList retrieveTitleInfo:titleid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
+                    NSNumber *watchedepisodes = responseObject[@"watched_episodes"];
+                    NSString *watchedstatus = responseObject[@"watched_status"];
+                    NSNumber *score = responseObject[@"score"];
+                    if (watchedepisodes.intValue == 1 && [watchedstatus isEqualToString:@"watching"] && score.intValue == 0){
+                        XCTAssert(YES, @"Update successful");
+                        NSLog(@"Title added to list successfully");
+                    }
+                    else {
+                        XCTAssert(NO, @"Update failed, values do not match");
+                    }
+                    [expectation fulfill];
+                }error:^(NSError *error){
+                    XCTFail(@"Title information retrieval failed with error: %@", error);
+                    [expectation fulfill];
+                }];
+            }error:^(NSError *error){
+                XCTFail(@"Title add failed with error: %@", error);
+                [expectation fulfill];
+            }];
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on search results");
+            [expectation fulfill];
+        }
+    }error:^(NSError *error){
+        XCTFail(@"Search Result retrieval failed with error: %@", error);
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:90 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+- (void)testTitleModify{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
+    __block NSString *title = @"Love Live! Sunshine!!";
+    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
+        NSArray * a = responseData[@"anime"];
+        __block NSNumber *listid;
+        bool match = false;
+        for (NSDictionary *d in a){
+            listid = d[@"id"];
+            NSString *entrytitle = d[@"title"];
+            if ([entrytitle isEqualToString:title]){
+                match = true;
+                break;
+            }
+        }
+        if (match){
+            [MyAnimeList updateAnimeTitleOnList:listid.intValue withEpisode:13 withStatus:@"completed" withScore:8 completion:^(id responseObject){
+                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
+                    NSNumber *watchedepisodes = responseObject[@"watched_episodes"];
+                    NSString *watchedstatus = responseObject[@"watched_status"];
+                    NSNumber *score = responseObject[@"score"];
+                    if (watchedepisodes.intValue == 13 && [watchedstatus isEqualToString:@"completed"] && score.intValue == 8){
+                        XCTAssert(YES, @"Update successful");
+                        NSLog(@"Title update was successful");
+                    }
+                    else {
+                        XCTAssert(NO, @"Update failed, values do not match");
+                    }
+                    [expectation fulfill];
+                }error:^(NSError *error){
+                    XCTFail(@"Title information retrieval failed with error: %@", error);
+                    [expectation fulfill];
+                }];
+            }error:^(NSError *error){
+                XCTFail(@"Update failed with error: %@", error);
+                [expectation fulfill];
+            }];
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on user's list");
+            [expectation fulfill];
+        }
+    }error:^(NSError *error){
+        XCTFail(@"Title check failed with error: %@", error);
+        [expectation fulfill];
+    }];
+
+    [self waitForExpectationsWithTimeout:90 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
+- (void)testTitleRemove{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Deletion"];
+    __block NSString *title = @"Love Live! Sunshine!!";
+    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
+        NSArray * a = responseData[@"anime"];
+        __block NSNumber *listid;
+        bool match = false;
+        for (NSDictionary *d in a){
+            listid = d[@"id"];
+            NSString *entrytitle = d[@"title"];
+            if ([entrytitle isEqualToString:title]){
+                match = true;
+                break;
+            }
+        }
+        if (match){
+            [MyAnimeList removeTitleFromList:listid.intValue withType:MALAnime completion:^(id responseData){
+                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
+                    if (!responseObject[@"watched_episodes"]){
+                        XCTAssert(YES, @"Title removal successful");
+                        NSLog(@"Title removed from list successfully");
+                    }
+                    else {
+                        XCTAssert(NO, @"Title removal failed.");
+                    }
+                    [expectation fulfill];
+                }error:^(NSError *error){
+                    XCTFail(@"Title information retrieval failed with error: %@", error);
+                    [expectation fulfill];
+                }];
+            }error:^(NSError *error){
+                XCTFail(@"Title removal failed with error: %@", error);
+                [expectation fulfill];
+            }];
+        }
+        else {
+            XCTAssert(NO, @"Title could not be found on user's list");
+            [expectation fulfill];
+        }
+    }error:^(NSError *error){
+        XCTFail(@"Title check failed with error: %@", error);
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:90 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+
+    
+}
+- (int)checkListTotals:(NSArray *)a type:(int)type{
+    NSArray *filtered;
+    if (type == 0){
+        NSNumber *watching;
+        NSNumber *completed;
+        NSNumber *onhold;
+        NSNumber *dropped;
+        NSNumber *plantowatch;
+        for (int i = 0; i < 5; i++){
+            switch(i){
+                case 0:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"watching"]];
+                    watching = @(filtered.count);
+                    break;
+                case 1:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"completed"]];
+                    completed = @(filtered.count);
+                    break;
+                case 2:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"on-hold"]];
+                    onhold = @(filtered.count);
+                    break;
+                case 3:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"dropped"]];
+                    dropped = @(filtered.count);
+                    break;
+                case 4:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"plan to watch"]];
+                    plantowatch = @(filtered.count);
+                    break;
+            }
+        }
+        NSLog(@"List Statistics - Anime");
+        NSLog(@"Watching (%i)",watching.intValue);
+        NSLog(@"Completed (%i)",completed.intValue);
+        NSLog(@"On Hold (%i)",onhold.intValue);
+        NSLog(@"Dropped (%i)",dropped.intValue);
+        NSLog(@"Plan to watch (%i)",plantowatch.intValue);
+        int total = watching.intValue + completed.intValue + onhold.intValue + dropped.intValue + plantowatch.intValue;
+        return total;
+    }
+    else {
+        NSNumber *reading;
+        NSNumber *completed;
+        NSNumber *onhold;
+        NSNumber *dropped;
+        NSNumber *plantoread;
+        for (int i = 0; i < 5; i++){
+            switch(i){
+                case 0:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"reading"]];
+                    reading = @(filtered.count);
+                    break;
+                case 1:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"completed"]];
+                    completed = @(filtered.count);
+                    break;
+                case 2:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"on-hold"]];
+                    onhold = @(filtered.count);
+                    break;
+                case 3:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"dropped"]];
+                    dropped = @(filtered.count);
+                    break;
+                case 4:
+                    filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"plan to read"]];
+                    plantoread = @(filtered.count);
+                    break;
+            }
+        }
+        NSLog(@"List Statistics - Manga");
+        NSLog(@"Reading (%i)",reading.intValue);
+        NSLog(@"Completed (%i)",completed.intValue);
+        NSLog(@"On Hold (%i)",onhold.intValue);
+        NSLog(@"Dropped (%i)",dropped.intValue);
+        NSLog(@"Plan to read (%i)",plantoread.intValue);
+        int total = reading.intValue + completed.intValue + onhold.intValue + dropped.intValue + plantoread.intValue;
+        return total;
+    }
+    return 0;
+}
+
+
+
+@end

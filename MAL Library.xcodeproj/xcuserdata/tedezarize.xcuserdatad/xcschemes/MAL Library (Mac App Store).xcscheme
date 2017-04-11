@@ -7,7 +7,7 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "NO"
+            buildForTesting = "YES"
             buildForRunning = "NO"
             buildForProfiling = "NO"
             buildForArchiving = "NO"
@@ -43,7 +43,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D60A11E1E9B322A0034C3AA"
@@ -51,6 +51,24 @@
                BlueprintName = "MAL LibraryUITests"
                ReferencedContainer = "container:MAL Library.xcodeproj">
             </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "913A627A1E9D7AF40023E6A1"
+               BuildableName = "MAL Library Unit Tests.xctest"
+               BlueprintName = "MAL Library Unit Tests"
+               ReferencedContainer = "container:MAL Library.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "MAL_Library_Unit_Tests/testPerformanceExample">
+               </Test>
+               <Test
+                  Identifier = "MAL_Library_Unit_Tests/testSearch">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

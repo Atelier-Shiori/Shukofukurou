@@ -662,7 +662,7 @@
     else if ([identifier isEqualToString:@"seasons"]){
         NSDictionary *d = (_seasonview.seasonarraycontroller).selectedObjects[0];
         d = d[@"id"];
-        [MyAnimeList retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime completion:^(id responseObject){
+        [MyAnimeList retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
             [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);
@@ -685,7 +685,7 @@
     [_noinfoview setHidden:YES];
     [_progressindicator setHidden: NO];
     [_progressindicator startAnimation:nil];
-    [MyAnimeList retrieveTitleInfo:idnum.intValue withType:type completion:^(id responseObject){
+    [MyAnimeList retrieveTitleInfo:idnum.intValue withType:type useAccount:NO completion:^(id responseObject){
         _infoview.selectedid = idnum.intValue;
         _infoview.type = type;
         [_progressindicator stopAnimation:nil];

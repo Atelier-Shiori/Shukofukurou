@@ -77,6 +77,7 @@
 		913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */; };
+		913A627E1E9D7AF40023E6A1 /* MAL_Library_Unit_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 913A627D1E9D7AF40023E6A1 /* MAL_Library_Unit_Tests.m */; };
 		915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
 		915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
 		915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
@@ -157,6 +158,13 @@
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "MAL Library (AppStore)";
 		};
+		913A62801E9D7AF40023E6A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 913A115F1E8F206A00450B66;
+			remoteInfo = "MAL Library (AppStore)";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -221,6 +229,9 @@
 		913A11AA1E8F206A00450B66 /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A11AB1E8F206A00450B66 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "MAL Library/Info-AppStore.plist"; sourceTree = SOURCE_ROOT; };
 		913A11AD1E8F212600450B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-AppStore.xib"; sourceTree = "<group>"; };
+		913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL Library Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		913A627D1E9D7AF40023E6A1 /* MAL_Library_Unit_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_Library_Unit_Tests.m; sourceTree = "<group>"; };
+		913A627F1E9D7AF40023E6A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
 		915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearch.m; sourceTree = "<group>"; };
 		915E8C461E8C1AEC005A49A4 /* AddTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTitle.h; sourceTree = "<group>"; };
@@ -346,6 +357,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		913A62781E9D7AF40023E6A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9199BA931E89836000F6E9FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,6 +397,15 @@
 			path = "MAL LibraryUITests";
 			sourceTree = "<group>";
 		};
+		913A627C1E9D7AF40023E6A1 /* MAL Library Unit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				913A627D1E9D7AF40023E6A1 /* MAL_Library_Unit_Tests.m */,
+				913A627F1E9D7AF40023E6A1 /* Info.plist */,
+			);
+			path = "MAL Library Unit Tests";
+			sourceTree = "<group>";
+		};
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +430,7 @@
 			children = (
 				9199BA981E89836000F6E9FF /* MAL Library */,
 				2D60A1201E9B322A0034C3AA /* MAL LibraryUITests */,
+				913A627C1E9D7AF40023E6A1 /* MAL Library Unit Tests */,
 				918C0D3F1E8A00ED0037898E /* Frameworks */,
 				9199BA971E89836000F6E9FF /* Products */,
 			);
@@ -414,6 +442,7 @@
 				9199BA961E89836000F6E9FF /* MAL Library.app */,
 				913A11AA1E8F206A00450B66 /* MAL Library.app */,
 				2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */,
+				913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -584,6 +613,24 @@
 			productReference = 913A11AA1E8F206A00450B66 /* MAL Library.app */;
 			productType = "com.apple.product-type.application";
 		};
+		913A627A1E9D7AF40023E6A1 /* MAL Library Unit Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 913A62821E9D7AF40023E6A1 /* Build configuration list for PBXNativeTarget "MAL Library Unit Tests" */;
+			buildPhases = (
+				913A62771E9D7AF40023E6A1 /* Sources */,
+				913A62781E9D7AF40023E6A1 /* Frameworks */,
+				913A62791E9D7AF40023E6A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				913A62811E9D7AF40023E6A1 /* PBXTargetDependency */,
+			);
+			name = "MAL Library Unit Tests";
+			productName = "MAL Library Unit Tests";
+			productReference = 913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9199BA951E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library" */;
@@ -630,6 +677,12 @@
 							};
 						};
 					};
+					913A627A1E9D7AF40023E6A1 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 9HDZTER525;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 913A115F1E8F206A00450B66;
+					};
 					9199BA951E89836000F6E9FF = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 9HDZTER525;
@@ -653,6 +706,7 @@
 				9199BA951E89836000F6E9FF /* MAL Library */,
 				913A115F1E8F206A00450B66 /* MAL Library (AppStore) */,
 				2D60A11E1E9B322A0034C3AA /* MAL LibraryUITests */,
+				913A627A1E9D7AF40023E6A1 /* MAL Library Unit Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -690,6 +744,13 @@
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		913A62791E9D7AF40023E6A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -800,6 +861,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		913A62771E9D7AF40023E6A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				913A627E1E9D7AF40023E6A1 /* MAL_Library_Unit_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9199BA921E89836000F6E9FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -846,6 +915,11 @@
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* MAL Library (AppStore) */;
 			targetProxy = 2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */;
+		};
+		913A62811E9D7AF40023E6A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 913A115F1E8F206A00450B66 /* MAL Library (AppStore) */;
+			targetProxy = 913A62801E9D7AF40023E6A1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1116,6 +1190,38 @@
 			};
 			name = Release;
 		};
+		913A62831E9D7AF40023E6A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = "MAL Library Unit Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Unit-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAL Library.app/Contents/MacOS/MAL Library";
+			};
+			name = Debug;
+		};
+		913A62841E9D7AF40023E6A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				INFOPLIST_FILE = "MAL Library Unit Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Unit-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAL Library.app/Contents/MacOS/MAL Library";
+			};
+			name = Release;
+		};
 		9199BAA51E89836000F6E9FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1301,6 +1407,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		913A62821E9D7AF40023E6A1 /* Build configuration list for PBXNativeTarget "MAL Library Unit Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				913A62831E9D7AF40023E6A1 /* Debug */,
+				913A62841E9D7AF40023E6A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "MAL Library" */ = {
 			isa = XCConfigurationList;

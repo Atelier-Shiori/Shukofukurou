@@ -75,7 +75,7 @@
                 [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALAnime completion:^(id responseObject){
                     NSDictionary * d = responseObject;
                     [self checkStatus:d[@"status"] type: 0];
-                }Error:^(NSError *error){
+                }error:^(NSError *error){
                     NSLog(@"Error: %@", error);
                 }];
             }
@@ -118,7 +118,7 @@
                 [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALManga completion:^(id responseObject){
                     NSDictionary * d = responseObject;
                     [self checkStatus:d[@"status"] type: MALManga];
-                }Error:^(NSError *error){
+                }error:^(NSError *error){
                     NSLog(@"Error: %@", error);
                 }];
             }
@@ -203,7 +203,7 @@
             [_addfield setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
-        }Error:^(NSError * error){
+        }error:^(NSError * error){
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
@@ -238,7 +238,7 @@
             [_addmangabtn setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
-        }Error:^(NSError * error){
+        }error:^(NSError * error){
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);

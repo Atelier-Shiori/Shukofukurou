@@ -57,7 +57,7 @@
     if ((_searchtitlefield.stringValue).length > 0){
         [MyAnimeList searchTitle:_searchtitlefield.stringValue withType:currentsearch completion:^(id responseObject){
             [mw populatesearchtb:responseObject type:currentsearch];
-        }Error:^(NSError *error){
+        }error:^(NSError *error){
             NSLog(@"Error: %@", error);
         }];
     }

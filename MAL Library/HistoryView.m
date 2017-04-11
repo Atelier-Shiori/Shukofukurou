@@ -35,7 +35,7 @@
     else if (!exists || refreshlist){
         [MyAnimeList retriveUpdateHistory:[Keychain getusername] completion:^(id response){
             [self populateHistory:[Utility saveJSON:response withFilename:@"history.json" appendpath:@"" replace:TRUE]];
-        } Error:^(NSError *error){
+        }error:^(NSError *error){
             NSLog(@"%@", error.userInfo);
         }];
     }

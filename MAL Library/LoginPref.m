@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "MainWindow.H"
 #import "Utility.h"
-#import <AFNetworking/AFNetworking.h>
+#import "MyAnimeList.h"
 
 @implementation LoginPref
 @synthesize loginpanel;
@@ -100,10 +100,7 @@
 }
 - (void)login:(NSString *)username password:(NSString *)password{
     [savebut setEnabled:NO];
-    //Set Login URL
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [[NSString stringWithFormat:@"%@:%@", username, password] base64Encoding]] forHTTPHeaderField:@"Authorization"];
-    [manager GET:[NSString stringWithFormat:@"%@/1/account/verify_credentials",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [MyAnimeList verifyAccountWithUsername:username password:password completion:^(id responseObject){
         //Login successful
         [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:self.view.window];
         // Store account in login keychain
@@ -118,7 +115,7 @@
         [mw loadlist:@(1) type:2];
         [mw loadmainview];
         [mw refreshloginlabel];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
+    }error:^(NSError *error){
         NSLog(@"%@",error);
         if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
             //Login Failed, show error message
@@ -131,7 +128,9 @@
             [savebut setEnabled: YES];
             savebut.keyEquivalent = @"\r";
         }
+
     }];
+
 
 }
 - (IBAction)registermal:(id)sender

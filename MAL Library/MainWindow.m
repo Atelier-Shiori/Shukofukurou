@@ -584,7 +584,7 @@
                 else if (!exists || refreshlist){
                     [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
-                    }Error:^(NSError *error){
+                    }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
                     }];
                 }
@@ -599,7 +599,7 @@
                 else if (!exists || refreshlist){
                     [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
-                    }Error:^(NSError *error){
+                    }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
                     }];
                 }
@@ -664,7 +664,7 @@
         d = d[@"id"];
         [MyAnimeList retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime completion:^(id responseObject){
             [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
-        }Error:^(NSError *error){
+        }error:^(NSError *error){
             NSLog(@"Error: %@", error);
         }];
     }
@@ -690,7 +690,7 @@
         _infoview.type = type;
         [_progressindicator stopAnimation:nil];
         [_infoview populateAnimeInfoView:responseObject];
-    }Error:^(NSError *error){
+    }error:^(NSError *error){
         NSLog(@"Error: %@", error);
         [_progressindicator stopAnimation:nil];
         _infoview.selectedid = previd;

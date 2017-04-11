@@ -476,7 +476,7 @@
     }
     [MyAnimeList removeTitleFromList:selid.intValue withType:currentlist completion:^(id responseobject){
         [mw loadlist:@(true) type:currentlist];
-    }Error:^(NSError *error){
+    }error:^(NSError *error){
         NSLog(@"%@",error);
     }];
 }

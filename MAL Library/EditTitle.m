@@ -165,7 +165,7 @@
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_minipopoverindicator stopAnimation:nil];
             [_minieditpopover close];
-        }Error:^(NSError * error){
+        }error:^(NSError * error){
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_minipopoverindicator stopAnimation:nil];
@@ -206,7 +206,7 @@
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_mangapopoverindicator stopAnimation:nil];
             [_minieditpopover close];
-        }Error:^(NSError * error){
+        }error:^(NSError * error){
             [_mangapopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_mangapopoverindicator stopAnimation:nil];

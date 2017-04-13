@@ -27,6 +27,7 @@
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
+@property (strong) IBOutlet NSSplitView *splitview;
 @end
 
 @implementation MainWindow
@@ -68,7 +69,12 @@
     
     // Fix window size
     NSRect frame = (self.window).frame;
-    frame.size.height = frame.size.height - 22;
+    if (floor(NSAppKitVersionNumber) < NSAppKitVersionNumber10_12){
+        frame.size.height = frame.size.height - 44;
+    }
+    else{
+        frame.size.height = frame.size.height - 22;
+    }
     [self.window setFrame:frame display:NO];
     [self setAppearance];
     
@@ -88,9 +94,9 @@
          [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
     }
     // Load Touchbar
-    if (NSClassFromString(@"NSTouchBar") != nil) {
-        [[NSBundle mainBundle] loadNibNamed:@"MainWindow_Touch_Bar" owner:self topLevelObjects:nil];
-    }
+    //if (NSClassFromString(@"NSTouchBar") != nil) {
+    //    [[NSBundle mainBundle] loadNibNamed:@"MainWindow_Touch_Bar" owner:self topLevelObjects:nil];
+    //}
     
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
     [self loadlist:shouldrefresh type:0];
@@ -187,6 +193,7 @@
     // Show Share Box
     [sharePicker showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMinYEdge];
 }
+
 - (void)startTimer{
     _refreshtimer =  [MSWeakTimer scheduledTimerWithTimeInterval:900
                                                           target:self
@@ -195,9 +202,11 @@
                                                          repeats:YES
                                                    dispatchQueue:_privateQueue];
 }
+
 - (void)stopTimer{
     [_refreshtimer invalidate];
 }
+
 - (void)fireTimer{
     if ([Keychain checkaccount]){
         [self loadlist:@(true) type:0];
@@ -209,16 +218,18 @@
 - (void)windowWillClose:(NSNotification *)notification{
     [[NSApplication sharedApplication] terminate:0];
 }
+
 - (void)setAppearance{
     NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
     NSString *appearancename;
     if ([appearence isEqualToString:@"Light"]){
         appearancename = NSAppearanceNameVibrantLight;
+        w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
     }
     else{
         appearancename = NSAppearanceNameVibrantDark;
+        w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     }
-    w.appearance = [NSAppearance appearanceNamed:appearancename];
     _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
     _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
@@ -229,6 +240,7 @@
     _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     [w setFrame:w.frame display:false];
 }
+
 - (void)refreshloginlabel{
     if ([Keychain checkaccount]){
         _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@",[Keychain getusername]];
@@ -237,6 +249,7 @@
         _loggedinuser.stringValue = @"Not logged in.";
     }
 }
+
 #pragma mark -
 #pragma mark Source List Data Source Methods
 - (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
@@ -298,6 +311,43 @@
     [self loadmainview];
 }
 
+#pragma mark -
+#pragma mark SplitView Delegate
+
+- (void) splitView:(NSSplitView*) splitView resizeSubviewsWithOldSize:(NSSize) oldSize
+{
+    if (splitView == _splitview)
+    {
+        CGFloat dividerPos = NSWidth([[[splitView subviews] objectAtIndex:0] frame]);
+        CGFloat width = NSWidth([splitView frame]);
+        
+        if (dividerPos < 0)
+            dividerPos = 0;
+        if (width - dividerPos < 562 + [splitView dividerThickness])
+            dividerPos = width - (562 + [splitView dividerThickness]);
+        
+        [splitView adjustSubviews];
+        [splitView setPosition:dividerPos ofDividerAtIndex:0];
+        [w setFrame:w.frame display:false];
+    }
+}
+
+- (CGFloat) splitView:(NSSplitView*) splitView constrainSplitPosition:(CGFloat) proposedPosition ofSubviewAt:(NSInteger) dividerIndex
+{
+    if (splitView == _splitview)
+    {
+        CGFloat width = NSWidth([splitView frame]);
+        
+        if (ABS(200 - proposedPosition) <= 8)
+            proposedPosition = 200;
+        if (proposedPosition < 0)
+            proposedPosition = 0;
+        if (width - proposedPosition < 562 + [splitView dividerThickness])
+            proposedPosition = width - (562 + [splitView dividerThickness]);
+    }
+    
+    return proposedPosition;
+}
 
 
 #pragma mark -

@@ -24,7 +24,7 @@
 @class HistoryView;
 @class AiringView;
 
-@interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate>{
+@interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>{
     IBOutlet NSWindow *w;
     
     int selectededitid;

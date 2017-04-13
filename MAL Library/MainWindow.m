@@ -328,7 +328,6 @@
         
         [splitView adjustSubviews];
         [splitView setPosition:dividerPos ofDividerAtIndex:0];
-        [w setFrame:w.frame display:false];
     }
 }
 
@@ -349,6 +348,9 @@
     return proposedPosition;
 }
 
+- (void)splitViewDidResizeSubviews:(NSNotification *)notification{
+    [w setFrame:w.frame display:false];
+}
 
 #pragma mark -
 #pragma mark Main View Control

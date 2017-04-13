@@ -113,6 +113,10 @@
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
     _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
+    // Fix scrolling
+    [_infoviewdetailstextview scrollToBeginningOfDocument:self];
+    [_infoviewsynopsistextview scrollToBeginningOfDocument:self];
+    [_infoviewbackgroundtextview scrollToBeginningOfDocument:self];
     [mw loadmainview];
     _selectedinfo = d;
 }

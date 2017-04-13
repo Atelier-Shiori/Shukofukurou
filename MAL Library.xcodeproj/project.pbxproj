@@ -1415,6 +1415,7 @@
 				913A62841E9D7AF40023E6A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "MAL Library" */ = {
 			isa = XCConfigurationList;

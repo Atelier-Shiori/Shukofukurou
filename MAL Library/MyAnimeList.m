@@ -56,6 +56,41 @@
     
 }
 
++ (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
+    NSMutableDictionary *d = [NSMutableDictionary new];
+    [d setValue:searchterm forKey:@"keyword"];
+    [d setValue:@(minscore) forKey:@"score"];
+    [d setValue:@(exclude) forKey:@"genre_type"];
+    [d setValue:genres forKey:@"genres"];
+    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
+    dateformat.dateFormat = @"YYYY-MM-DD";
+    if (startDate){
+        [d setValue:startDate forKey:@"start_date"];
+    }
+    if (endDate){
+        [d setValue:endDate forKey:@"end_date"];
+    }
+    [d setValue:@(status) forKey:@"status"];
+    [d setValue:@(rating) forKey:@"rating"];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *URL;
+    if (type == MALAnime){
+        URL = [NSString stringWithFormat:@"%@/2.1/anime/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
+    }
+    else if (type == MALManga){
+        URL = [NSString stringWithFormat:@"%@/2.1/manga/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
+    }
+    else {
+        return;
+    }
+    [manager GET:URL parameters:d progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+}
+
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type useAccount:(bool)useAccount completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"";

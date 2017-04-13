@@ -253,10 +253,10 @@
     int totalsegment = 0;
     NSStepper * stepper = (NSStepper *)sender;
     if (selectedtype == 0){
-        if ([_addepifield.stringValue length] > 0) {
-            segment = [_addepifield.stringValue intValue];
+        if ((_addepifield.stringValue).length > 0) {
+            segment = (_addepifield.stringValue).intValue;
         }
-        totalsegment = [_addtotalepisodes.stringValue intValue];
+        totalsegment = (_addtotalepisodes.stringValue).intValue;
         segment = stepper.intValue;
         if ((segment <= totalsegment || totalsegment == 0) && segment >= 0){
             _addepifield.stringValue = [NSString stringWithFormat:@"%i",segment];
@@ -266,18 +266,18 @@
         NSString * segmenttype;
         if ([stepper.identifier isEqualToString:@"chapterstepper"]) {
             segmenttype = @"chapters";
-            if ([_addchapfield.stringValue length] > 0) {
-                segment = [_addchapfield.stringValue intValue];
+            if ((_addchapfield.stringValue).length > 0) {
+                segment = (_addchapfield.stringValue).intValue;
             }
-            totalsegment = [_addtotalchap.stringValue intValue];
+            totalsegment = (_addtotalchap.stringValue).intValue;
         }
         else {
             // Volumes
             segmenttype = @"volumes";
-            if ([_addvolfield.stringValue length] > 0) {
-                segment = [_addvolfield.stringValue intValue];
+            if ((_addvolfield.stringValue).length > 0) {
+                segment = (_addvolfield.stringValue).intValue;
             }
-            totalsegment = [_addtotalvol.stringValue intValue];
+            totalsegment = (_addtotalvol.stringValue).intValue;
         }
         
         segment = stepper.intValue;
@@ -293,15 +293,15 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification {
-    if ([[aNotification name] isEqualToString:@"NSControlTextDidChangeNotification"]) {
+    if ([aNotification.name isEqualToString:@"NSControlTextDidChangeNotification"]) {
         
-        if ( [aNotification object] == _addepifield ) {
+        if ( aNotification.object == _addepifield ) {
             _addepstepper.intValue = _addepifield.intValue;
         }
-        else if ( [aNotification object] == _addchapfield ) {
+        else if ( aNotification.object == _addchapfield ) {
             _addchapstepper.intValue = _addchapfield.intValue;
         }
-        else if ( [aNotification object] == _addvolfield ) {
+        else if ( aNotification.object == _addvolfield ) {
             _addvolstepper.intValue = _addvolfield.intValue;
         }
     }

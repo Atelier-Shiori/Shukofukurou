@@ -221,10 +221,10 @@
     int totalsegment = 0;
     NSStepper * stepper = (NSStepper *)sender;
     if (selectedtype == 0){
-        if ([_minipopoverepfield.stringValue length] > 0) {
-            segment = [_minipopoverepfield.stringValue intValue];
+        if ((_minipopoverepfield.stringValue).length > 0) {
+            segment = (_minipopoverepfield.stringValue).intValue;
         }
-        totalsegment = [_minipopovertotalep.stringValue intValue];
+        totalsegment = (_minipopovertotalep.stringValue).intValue;
         segment = stepper.intValue;
         if ((segment <= totalsegment || totalsegment == 0) && segment >= 0){
             _minipopoverepfield.stringValue = [NSString stringWithFormat:@"%i",segment];
@@ -234,18 +234,18 @@
         NSString * segmenttype;
         if ([stepper.identifier isEqualToString:@"chapstepper"]) {
             segmenttype = @"chapters";
-            if ([_mangapopoverchapfield.stringValue length] > 0) {
-                segment = [_mangapopoverchapfield.stringValue intValue];
+            if ((_mangapopoverchapfield.stringValue).length > 0) {
+                segment = (_mangapopoverchapfield.stringValue).intValue;
             }
-            totalsegment = [_mangapopovertotalchap.stringValue intValue];
+            totalsegment = (_mangapopovertotalchap.stringValue).intValue;
         }
         else {
             // Volumes
             segmenttype = @"volumes";
-            if ([_mangapopovervolfield.stringValue length] > 0) {
-                segment = [_mangapopovervolfield.stringValue intValue];
+            if ((_mangapopovervolfield.stringValue).length > 0) {
+                segment = (_mangapopovervolfield.stringValue).intValue;
             }
-            totalsegment = [_mangapopovertotalvol.stringValue intValue];
+            totalsegment = (_mangapopovertotalvol.stringValue).intValue;
         }
         
         segment = stepper.intValue;
@@ -261,15 +261,15 @@
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification {
-    if ([[aNotification name] isEqualToString:@"NSControlTextDidChangeNotification"]) {
+    if ([aNotification.name isEqualToString:@"NSControlTextDidChangeNotification"]) {
         
-        if ( [aNotification object] == _minipopoverepfield ) {
+        if ( aNotification.object == _minipopoverepfield ) {
             _minipopovereditepstep.intValue = _minipopoverepfield.intValue;
         }
-        else if ( [aNotification object] == _mangapopoverchapfield ) {
+        else if ( aNotification.object == _mangapopoverchapfield ) {
             _mangapopovereditchapstep.intValue = _mangapopoverchapfield.intValue;
         }
-        else if ( [aNotification object] == _mangapopovervolfield ) {
+        else if ( aNotification.object == _mangapopovervolfield ) {
             _mangapopovereditvolstep.intValue = _mangapopovervolfield.intValue;
         }
     }

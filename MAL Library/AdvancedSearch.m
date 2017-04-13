@@ -9,7 +9,7 @@
 #import "AdvancedSearch.h"
 #import "NSTextFieldNumber.h"
 #import "MainWindow.h"
-#import <AFNetworking/AFNetworking.h>
+#import "MyAnimeList.h"
 #import "Utility.h"
 
 
@@ -95,39 +95,25 @@
     __block NSButton *btn = sender;
     popover.behavior = NSPopoverBehaviorApplicationDefined;
     [btn setEnabled:NO];
-    NSMutableDictionary *d = [NSMutableDictionary new];
-    [d setValue:_searchfield.stringValue forKey:@"keyword"];
-    [d setValue:_minscore.stringValue forKey:@"score"];
-    [d setValue:@(_exclude.state) forKey:@"genre_type"];
+    NSDate *startDate = nil;
+    NSDate *endDate = nil;
+    NSString *genreslist = @"";
     if (((NSArray *)_genretokenfield.objectValue).count > 0){
-        [d setValue:[(NSArray *)_genretokenfield.objectValue componentsJoinedByString:@","] forKey:@"genres"];
+        genreslist = [(NSArray *)_genretokenfield.objectValue componentsJoinedByString:@","];
     }
-    NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
-    dateformat.dateFormat = @"YYYY-MM-DD";
     if (_usestartdate.state == 1){
-        [d setValue:[dateformat stringFromDate:_startdate.dateValue] forKey:@"start_date"];
+        startDate = _startdate.dateValue;
     }
     if (_useenddate.state == 1){
-        [d setValue:[dateformat stringFromDate:_enddate.dateValue] forKey:@"end_date"];
+        endDate = _enddate.dateValue;
     }
-    [d setValue:@(_airstatus.selectedTag) forKey:@"status"];
-    [d setValue:@(_rating.selectedTag) forKey:@"rating"];
-
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *URL;
-    if (searchtype == 0){
-        URL = [NSString stringWithFormat:@"%@/2.1/anime/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
-    }
-    else {
-        URL = [NSString stringWithFormat:@"%@/2.1/manga/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
-    }
-    [manager GET:URL parameters:d progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [MyAnimeList advsearchTitle:_searchfield.stringValue withType:searchtype withGenres:genreslist excludeGenres:_exclude.state startDate:startDate endDate:endDate minScore:_minscore.intValue rating:(int)_rating.selectedTag withStatus:(int)_airstatus.selectedTag completion:^(id responseObject){
         [mw populatesearchtb:responseObject type:searchtype];
         [btn setEnabled:YES];
         popover.behavior = NSPopoverBehaviorTransient;
         [popover close];
         [self saveSearchValuesForType:searchtype];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
+    }error:^(NSError *error){
         NSLog(@"Error: %@", error);
         [mw clearsearchtb];
         [btn setEnabled:YES];

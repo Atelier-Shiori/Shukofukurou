@@ -137,9 +137,9 @@
 }
 - (void)populatefiltercounts:(NSArray *)a type:(int)type{
     // Generates item counts for each status filter
-    NSArray *arg = [[NSProcessInfo processInfo] arguments];
+    NSArray *arg = [NSProcessInfo processInfo].arguments;
     if (arg.count > 1){
-        if ([(NSString *)[arg objectAtIndex:[arg count]-1] isEqualToString:@"testing"]){
+        if ([(NSString *)arg[arg.count-1] isEqualToString:@"testing"]){
             return;
         }
     }

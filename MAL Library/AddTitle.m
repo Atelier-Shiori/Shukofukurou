@@ -232,7 +232,7 @@
             _addvolfield.stringValue = _addtotalvol.stringValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [MyAnimeList addMangaTitleToList:selectededitid withChapter:_addchapfield.intValue withVolume:@(_addvolfield.intValue) withStatus:_addmangastatusfield.title withScore:(int)_addmangascorefiled.selectedTag completion:^(id responseData){
+        [MyAnimeList addMangaTitleToList:selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:(int)_addmangascorefiled.selectedTag completion:^(id responseData){
             [mw loadlist:@(true) type:1];
             [mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];

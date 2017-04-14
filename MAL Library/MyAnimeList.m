@@ -18,10 +18,10 @@
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString * URL = @"";
-    if (type == MALAnime){
+    if (type == MALAnime) {
         URL = [NSString stringWithFormat:@"%@/2.1/animelist/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], username];
     }
-    else if (type == MALManga){
+    else if (type == MALManga) {
         URL = [NSString stringWithFormat:@"%@/2.1/mangalist/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], username];
     }
     
@@ -50,7 +50,7 @@
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     }
     NSString *url = @"";
-    if (type == MALAnime){
+    if (type == MALAnime) {
         url = [NSString stringWithFormat:@"%@/2.1/anime/search?q=%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],[Utility urlEncodeString:searchterm]];
     }
     else if (type == MALManga) {
@@ -75,10 +75,10 @@
     [d setValue:genres forKey:@"genres"];
     NSDateFormatter *dateformat = [[NSDateFormatter alloc] init];
     dateformat.dateFormat = @"YYYY-MM-DD";
-    if (startDate){
+    if (startDate) {
         [d setValue:startDate forKey:@"start_date"];
     }
-    if (endDate){
+    if (endDate) {
         [d setValue:endDate forKey:@"end_date"];
     }
     [d setValue:@(status) forKey:@"status"];
@@ -86,10 +86,10 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *URL;
-    if (type == MALAnime){
+    if (type == MALAnime) {
         URL = [NSString stringWithFormat:@"%@/2.1/anime/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
     }
-    else if (type == MALManga){
+    else if (type == MALManga) {
         URL = [NSString stringWithFormat:@"%@/2.1/manga/browse",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]];
     }
     else {
@@ -105,7 +105,7 @@
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type useAccount:(bool)useAccount completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = @"";
-    if (type == MALAnime){
+    if (type == MALAnime) {
         url = [NSString stringWithFormat:@"%@/2.1/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],titleid];
         
     }
@@ -115,7 +115,7 @@
     else {
         return;
     }
-    if (useAccount){
+    if (useAccount) {
         url = [NSString stringWithFormat:@"%@?mine=1",url];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
     }
@@ -198,10 +198,10 @@
 
 + (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     NSString *deleteURL;
-    if (type == MALAnime){
+    if (type == MALAnime) {
         deleteURL = [NSString stringWithFormat:@"%@/2.1/animelist/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], titleid];
     }
-    else if (type == MALManga){
+    else if (type == MALManga) {
         deleteURL = [NSString stringWithFormat:@"%@/2.1/mangalist/manga/%i", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], titleid];
     }
     else {
@@ -221,14 +221,14 @@
 + (id)processHistory:(id)object{
     NSArray *a = object;
     NSMutableArray *history = [NSMutableArray new];
-    for (NSDictionary *d in a){
+    for (NSDictionary *d in a) {
         NSDictionary *item = d[@"item"];
         NSNumber *idnum = item[@"id"];
         NSString *title = item[@"title"];
         NSString *type = d[@"type"];
         NSNumber *segment;
         NSString *segment_type = @"";
-        if (item[@"watched_episodes"]){
+        if (item[@"watched_episodes"]) {
             segment = item[@"watched_episodes"];
             segment_type = @"Episode";
         }
@@ -239,7 +239,7 @@
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
         dateFormatter.dateFormat = @"yyyy-MM-dd";
         NSDate *datetime;
-        if (d[@"time_updated"]){
+        if (d[@"time_updated"]) {
             NSString *strdate = d[@"time_updated"];
             strdate = [strdate substringWithRange:NSMakeRange(0, 10)];
             datetime = [dateFormatter dateFromString:strdate];

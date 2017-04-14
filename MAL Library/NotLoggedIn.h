@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 @class MainWindow;
-@interface NotLoggedIn : NSViewController{
-    IBOutlet MainWindow *mw;
-}
+@interface NotLoggedIn : NSViewController
+@property (strong) IBOutlet MainWindow *mw;
 
 @end

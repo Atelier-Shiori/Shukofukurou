@@ -8,16 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 @class  MainWindow;
-@interface EditTitle : NSViewController <NSTextFieldDelegate>{
-    IBOutlet MainWindow *mw;
-    int selectededitid;
-    int selectedtype;
-    bool selectedaired;
-    bool selectedaircompleted;
-    bool selectedfinished;
-    bool selectedpublished;
-    NSDictionary *selecteditem;
-}
+@interface EditTitle : NSViewController <NSTextFieldDelegate>
+@property (strong) IBOutlet MainWindow *mw;
+@property int selectededitid;
+@property int selectedtype;
+@property bool selectedaired;
+@property bool selectedaircompleted;
+@property bool selectedfinished;
+@property bool selectedpublished;
+@property (strong) NSDictionary *selecteditem;
 @property (strong) IBOutlet NSPopover *minieditpopover;
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type;
 @end

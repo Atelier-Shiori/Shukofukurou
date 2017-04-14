@@ -10,9 +10,8 @@
 
 @class MainWindow;
 
-@interface SeasonView : NSViewController <NSTableViewDelegate>{
-    IBOutlet MainWindow *mw;
-}
+@interface SeasonView : NSViewController <NSTableViewDelegate>
+@property (strong) IBOutlet MainWindow *mw;
 @property (strong) IBOutlet NSTableView *seasontableview;
 @property (strong) IBOutlet NSArrayController *seasonarraycontroller;
 @property (strong) IBOutlet NSToolbarItem *addtitleitem;

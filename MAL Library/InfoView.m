@@ -117,7 +117,7 @@
     [_infoviewdetailstextview scrollToBeginningOfDocument:self];
     [_infoviewsynopsistextview scrollToBeginningOfDocument:self];
     [_infoviewbackgroundtextview scrollToBeginningOfDocument:self];
-    [mw loadmainview];
+    [_mw loadmainview];
     _selectedinfo = d;
 }
 - (void)populateMangaInfoView:(id)object{
@@ -195,7 +195,7 @@
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
     _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
-    [mw loadmainview];
+    [_mw loadmainview];
     _selectedinfo = d;
 }
 

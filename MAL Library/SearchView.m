@@ -31,22 +31,22 @@
     _mangasearch.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     // Add Placeholder Subview
     [self.view addSubview:_animesearch];
-    AnimeSearchTerm = @"";
-    MangaSearchTerm = @"";
+    _AnimeSearchTerm = @"";
+    _MangaSearchTerm = @"";
 }
 - (void)loadsearchView:(int)type{
     switch (type){
         case AnimeSearch:
-            MangaSearchTerm = _searchtitlefield.stringValue;
-            _searchtitlefield.stringValue = AnimeSearchTerm;
-            currentsearch = type;
+            _MangaSearchTerm = _searchtitlefield.stringValue;
+            _searchtitlefield.stringValue = _AnimeSearchTerm;
+            _currentsearch = type;
             [self.view replaceSubview:(self.view).subviews[0] with:_animesearch];
             [self setToolbarButtonStatus];
             break;
         case MangaSearch:
-            AnimeSearchTerm = _searchtitlefield.stringValue;
-            _searchtitlefield.stringValue = MangaSearchTerm;
-            currentsearch = type;
+            _AnimeSearchTerm = _searchtitlefield.stringValue;
+            _searchtitlefield.stringValue = _MangaSearchTerm;
+            _currentsearch = type;
             [self.view replaceSubview:(self.view).subviews[0] with:_mangasearch];
             [self setToolbarButtonStatus];
             break;
@@ -55,8 +55,8 @@
 
 - (IBAction)performsearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
-        [MyAnimeList searchTitle:_searchtitlefield.stringValue withType:currentsearch completion:^(id responseObject){
-            [mw populatesearchtb:responseObject type:currentsearch];
+        [MyAnimeList searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject){
+            [_mw populatesearchtb:responseObject type:_currentsearch];
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);
         }];
@@ -67,12 +67,12 @@
 }
 
 - (IBAction)searchtbdoubleclick:(id)sender {
-    if (currentsearch == AnimeSearch){
+    if (_currentsearch == AnimeSearch){
         if (_searchtb.selectedRow >=0){
             if (_searchtb.selectedRow >-1){
                 NSDictionary *d = _searcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
-                [mw loadinfo:idnum type:AnimeSearch];
+                [_mw loadinfo:idnum type:AnimeSearch];
             }
         }
     }
@@ -81,7 +81,7 @@
             if (_mangasearchtb.selectedRow >-1){
                 NSDictionary *d = _mangasearcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
-                [mw loadinfo:idnum type:MangaSearch];
+                [_mw loadinfo:idnum type:MangaSearch];
             }
         }
     }
@@ -91,7 +91,7 @@
     [self setToolbarButtonStatus];
 }
 - (void)setToolbarButtonStatus{
-    if (currentsearch == AnimeSearch){
+    if (_currentsearch == AnimeSearch){
         if (_searcharraycontroller.selectedObjects.count > 0){
             [_addtitleitem setEnabled:YES];
         }
@@ -99,7 +99,7 @@
             [_addtitleitem setEnabled:NO];
         }
     }
-    else if (currentsearch == MangaSearch){
+    else if (_currentsearch == MangaSearch){
         if (_mangasearcharraycontroller.selectedObjects.count > 0){
             [_addtitleitem setEnabled:YES];
         }
@@ -109,7 +109,7 @@
     }
 }
 - (void)clearsearchtb{
-    if (currentsearch == AnimeSearch){
+    if (_currentsearch == AnimeSearch){
         [[_searcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
         [_searchtb reloadData];
         [_searchtb deselectAll:self];

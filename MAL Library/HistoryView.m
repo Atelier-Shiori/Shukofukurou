@@ -28,11 +28,11 @@
     bool refreshlist = refresh.boolValue;
     bool exists = [Utility checkifFileExists:@"history.json" appendPath:@""];
     list = [Utility loadJSON:@"history.json" appendpath:@""];
-    if (exists && !refreshlist){
+    if (exists && !refreshlist) {
         [self populateHistory:list];
         return;
     }
-    else if (!exists || refreshlist){
+    else if (!exists || refreshlist) {
         [MyAnimeList retriveUpdateHistory:[Keychain getusername] completion:^(id response){
             [self populateHistory:[Utility saveJSON:response withFilename:@"history.json" appendpath:@"" replace:TRUE]];
         }error:^(NSError *error){
@@ -41,12 +41,12 @@
     }
 
 }
-- (void)populateHistory:(id)history{
+- (void)populateHistory:(id)history {
     // Populates history
     NSMutableArray *a = [_historyarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_historyarraycontroller addObjects:history];
-    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
+    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
         _historyarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"type == [cd] %@", @"anime"];
     }
     else {
@@ -63,13 +63,13 @@
     [self.historytb deselectAll:self];
 }
 - (IBAction)historydoubleclick:(id)sender {
-    if (_historytb.selectedRow >=0){
-        if (_historytb.selectedRow >-1){
+    if (_historytb.selectedRow >=0) {
+        if (_historytb.selectedRow >-1) {
             NSDictionary *d = _historyarraycontroller.selectedObjects[0];
             NSNumber *idnum = d[@"id"];
             NSString *type = d[@"type"];
             int typenum = 0;
-            if ([type isEqualToString:@"anime"]){
+            if ([type isEqualToString:@"anime"]) {
                 typenum = 0;
             }
             else {

@@ -13,16 +13,16 @@
 @implementation Keychain
 NSString *const kserviceName = @"MAL Library";
 
-+ (BOOL)checkaccount{
-    if ([Keychain getusername]){
++ (BOOL)checkaccount {
+    if ([Keychain getusername]) {
         return true;
     }
     return false;
 }
-+ (NSString *)getusername{
++ (NSString *)getusername {
     // This method checks for any accounts that Hachidori can use
     NSArray *accounts = [SSKeychain accountsForService:kserviceName];
-    if (accounts > 0){
+    if (accounts > 0) {
         //retrieve first valid account
         for (NSDictionary *account in accounts){
             return (NSString *)account[@"acct"];
@@ -30,18 +30,18 @@ NSString *const kserviceName = @"MAL Library";
     }
     return nil;
 }
-+ (BOOL)storeaccount:(NSString *)uname password:(NSString *)password{
++ (BOOL)storeaccount:(NSString *)uname password:(NSString *)password {
     //Clear Account Information in the plist file if it hasn't been done already
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"Base64Token"];
     [defaults setObject:@"" forKey:@"Username"];
     return [SSKeychain setPassword:password forService:kserviceName account:uname];
 }
-+ (BOOL)removeaccount{
++ (BOOL)removeaccount {
     bool success = [SSKeychain deletePasswordForService:kserviceName account:[Keychain getusername]];
     return success;
 }
-+ (NSString *)getBase64{
++ (NSString *)getBase64 {
     return [[NSString stringWithFormat:@"%@:%@", [self getusername], [SSKeychain passwordForService:kserviceName account:[self getusername]]] base64Encoding];
 }
 

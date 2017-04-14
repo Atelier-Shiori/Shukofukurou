@@ -21,8 +21,7 @@
 
 @implementation ListView
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [super initWithNibName:@"ListView" bundle:nil];
 }
 
@@ -38,8 +37,8 @@
     _mangalisttitlefilterstring = @"";
 }
 
-- (void)loadList:(int)list{
-    if (list == 0){
+- (void)loadList:(int)list {
+    if (list == 0) {
         _mangalisttitlefilterstring = _animelistfilter.stringValue;
         _animelistfilter.stringValue = _animelisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_animelistview];
@@ -55,9 +54,9 @@
     }
 }
 
-- (void)populateList:(id)object type:(int)type{
+- (void)populateList:(id)object type:(int)type {
     NSNumber *selectedAnimeID = nil;
-    if (type == 0){
+    if (type == 0) {
         // Populates list
         if (_animelisttb.selectedRow >= 0) {
             selectedAnimeID = _animelistarraycontroller.selectedObjects[0][@"id"];
@@ -66,7 +65,7 @@
         [a removeAllObjects];
         NSDictionary *data = object;
         NSArray *list;
-        if (data[@"anime"]){
+        if (data[@"anime"]) {
             list = data[@"anime"];
             [_animelistarraycontroller addObjects:list];
         }
@@ -82,11 +81,11 @@
                     [_animelistarraycontroller setSelectionIndex:index];
                     break;
                 }
-                else if (index == a.count - 1){
+                else if (index == a.count - 1) {
                     [_animelisttb deselectAll:self];
                 }
             }
-            if (a.count == 0){
+            if (a.count == 0) {
                 [_animelisttb deselectAll:self];
             }
         }
@@ -104,7 +103,7 @@
         [a removeAllObjects];
         NSDictionary *data = object;
         NSArray *list;
-        if (data[@"manga"]){
+        if (data[@"manga"]) {
             list = data[@"manga"];
             [_mangalistarraycontroller addObjects:list];
         }
@@ -120,11 +119,11 @@
                     [_mangalistarraycontroller setSelectionIndex:index];
                     break;
                 }
-                else if (index == a.count - 1){
+                else if (index == a.count - 1) {
                     [_mangalisttb deselectAll:self];
                 }
             }
-            if (a.count == 0){
+            if (a.count == 0) {
                 [_mangalisttb deselectAll:self];
             }
         }
@@ -138,20 +137,20 @@
 - (void)populatefiltercounts:(NSArray *)a type:(int)type{
     // Generates item counts for each status filter
     NSArray *arg = [NSProcessInfo processInfo].arguments;
-    if (arg.count > 1){
-        if ([(NSString *)arg[arg.count-1] isEqualToString:@"testing"]){
+    if (arg.count > 1) {
+        if ([(NSString *)arg[arg.count-1] isEqualToString:@"testing"]) {
             return;
         }
     }
     NSArray *filtered;
-    if (type == 0){
+    if (type == 0) {
         NSNumber *watching;
         NSNumber *completed;
         NSNumber *onhold;
         NSNumber *dropped;
         NSNumber *plantowatch;
-        for (int i = 0; i < 5; i++){
-            switch(i){
+        for (int i = 0; i < 5; i++) {
+            switch(i) {
                 case 0:
                     filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"watching"]];
                     watching = @(filtered.count);
@@ -186,8 +185,8 @@
         NSNumber *onhold;
         NSNumber *dropped;
         NSNumber *plantoread;
-        for (int i = 0; i < 5; i++){
-            switch(i){
+        for (int i = 0; i < 5; i++) {
+            switch(i) {
                 case 0:
                     filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"reading"]];
                     reading = @(filtered.count);
@@ -218,7 +217,7 @@
     }
 }
 - (IBAction)filterperform:(id)sender {
-    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"filtersastabs"]).boolValue && [sender isKindOfClass:[NSButton class]]){
+    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"filtersastabs"]).boolValue && [sender isKindOfClass:[NSButton class]]) {
         [self filterStatusAsTabs:(NSButton *)sender];
     }
     [self performfilter:currentlist];
@@ -226,32 +225,32 @@
 
 - (void)filterStatusAsTabs:(NSButton *)btn{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (currentlist == 0){
-        if (_watchingfilter != btn){
+    if (currentlist == 0) {
+        if (_watchingfilter != btn) {
             [defaults setValue:@(0) forKey:@"watchingfilter"];
         }
         else {
             [defaults setValue:@(1) forKey:@"watchingfilter"];
         }
-        if (_completedfilter != btn){
+        if (_completedfilter != btn) {
             [defaults setValue:@(0) forKey:@"completedfilter"];
         }
         else {
             [defaults setValue:@(1) forKey:@"completedfilter"];
         }
-        if (_droppedfilter != btn){
+        if (_droppedfilter != btn) {
             [defaults setValue:@(0) forKey:@"droppedfilter"];
         }
         else {
             [defaults setValue:@(1) forKey:@"droppedfilter"];
         }
-        if (_onholdfilter != btn){
+        if (_onholdfilter != btn) {
             [defaults setValue:@(0) forKey:@"onholdfilter"];
         }
-        else{
+        else {
             [defaults setValue:@(1) forKey:@"onholdfilter"];
         }
-        if (_plantowatchfilter != btn){
+        if (_plantowatchfilter != btn) {
             [defaults setValue:@(0) forKey:@"plantowatchfilter"];
         }
         else {
@@ -259,31 +258,31 @@
         }
     }
     else {
-        if (_readingfilter != btn){
+        if (_readingfilter != btn) {
             [defaults setValue:@(0) forKey:@"readingfilter"];
         }
         else {
             [defaults setValue:@(1) forKey:@"readingfilter"];
         }
-        if (_mangacompletedfilter != btn){
+        if (_mangacompletedfilter != btn) {
             [defaults setValue:@(0) forKey:@"mcompletedfilter"];
         }
         else {
             [defaults setValue:@(1) forKey:@"mcompletedfilter"];
         }
-        if (_mangadroppedfilter != btn){
+        if (_mangadroppedfilter != btn) {
             [defaults setValue:@(0) forKey:@"mdroppedfilter"];
         }
         else {
             [defaults setValue:@(1) forKey:@"mdroppedfilter"];
         }
-        if (_mangaonholdfilter != btn){
+        if (_mangaonholdfilter != btn) {
             [defaults setValue:@(0) forKey:@"monholdfilter"];
         }
-        else{
+        else {
             [defaults setValue:@(1) forKey:@"monholdfilter"];
         }
-        if (_plantoreadfilter != btn){
+        if (_plantoreadfilter != btn) {
             [defaults setValue:@(0) forKey:@"plantoreadfilter"];
         }
         else {
@@ -292,76 +291,76 @@
     }
 }
 
-- (void)performfilter:(int)type{
+- (void)performfilter:(int)type {
     // This method generates a predicate rule to use as a filter
     NSMutableArray *predicateformat = [NSMutableArray new];
     NSMutableArray *predicateobjects = [NSMutableArray new];
     bool titlefilterused = false;
-    if (_animelistfilter.stringValue.length > 0){
+    if (_animelistfilter.stringValue.length > 0) {
         [predicateformat addObject: @"(title CONTAINS [cd] %@)"];
         [predicateobjects addObject: _animelistfilter.stringValue];
         titlefilterused = true;
     }
     NSArray *filterstatus = [self obtainfilterstatus:type];
-    if (type == 0){
+    if (type == 0) {
         
-        for (int i=0; i < filterstatus.count; i++){
+        for (int i=0; i < filterstatus.count; i++) {
             NSDictionary *d = filterstatus[i];
-            if (filterstatus.count == 1){
+            if (filterstatus.count == 1) {
                 [predicateformat addObject:@"(watched_status ==[cd] %@)"];
                 
             }
-            else if (i == filterstatus.count-1){
+            else if (i == filterstatus.count-1) {
                 [predicateformat addObject:@"watched_status ==[cd] %@)"];
             }
-            else if (i == 0){
+            else if (i == 0) {
                 [predicateformat addObject:@"(watched_status ==[cd] %@ OR "];
             }
-            else{
+            else {
                 [predicateformat addObject:@"watched_status ==[cd] %@ OR "];
             }
             [predicateobjects addObject:d.allKeys[0]];
         }
     }
     else {
-        for (int i=0; i < filterstatus.count; i++){
+        for (int i=0; i < filterstatus.count; i++) {
             NSDictionary *d = filterstatus[i];
-            if (filterstatus.count == 1){
+            if (filterstatus.count == 1) {
                 [predicateformat addObject:@"(read_status ==[cd] %@)"];
                 
             }
-            else if (i == filterstatus.count-1){
+            else if (i == filterstatus.count-1) {
                 [predicateformat addObject:@"read_status ==[cd] %@)"];
             }
-            else if (i == 0){
+            else if (i == 0) {
                 [predicateformat addObject:@"(read_status ==[cd] %@ OR "];
             }
-            else{
+            else {
                 [predicateformat addObject:@"read_status ==[cd] %@ OR "];
             }
             [predicateobjects addObject:d.allKeys[0]];
         }
     }
-    if (predicateformat.count ==0 || filterstatus.count == 0){
+    if (predicateformat.count ==0 || filterstatus.count == 0) {
         // Empty filter predicate
-        if (type == 0){
+        if (type == 0) {
             _animelistarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"watched_status == %@",@""];
         }
         else {
             _mangalistarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"read_status == %@",@""];
         }
     }
-    else{
+    else {
         // Build Predicate rules
         NSMutableString *predicaterule = [NSMutableString new];
-        for (int i=0; i < predicateformat.count; i++){
+        for (int i=0; i < predicateformat.count; i++) {
             NSString *format = predicateformat[i];
-            if (titlefilterused && i==0){
+            if (titlefilterused && i==0) {
                 if (predicateformat.count == 1) {
                     [predicaterule appendString:format];
                     continue;
                 }
-                else{
+                else {
                     [predicaterule appendFormat:@"%@ AND ", format];
                     continue;
                 }
@@ -369,7 +368,7 @@
             [predicaterule appendString:format];
         }
         NSPredicate *predicate = [NSPredicate predicateWithFormat:predicaterule argumentArray:predicateobjects];
-        if (type == 0){
+        if (type == 0) {
             _animelistarraycontroller.filterPredicate = predicate;
         }
         else {
@@ -379,31 +378,31 @@
 }
 
 - (IBAction)animelistdoubleclick:(id)sender {
-    if (currentlist == 0){
-        if (_animelisttb.selectedRow >=0){
-            if (_animelisttb.selectedRow >-1){
+    if (currentlist == 0) {
+        if (_animelisttb.selectedRow >=0) {
+            if (_animelisttb.selectedRow >-1) {
                 NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
                 NSDictionary *d = _animelistarraycontroller.selectedObjects[0];
-                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]){
+                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]) {
                     NSNumber *idnum = d[@"id"];
                     [mw loadinfo:idnum type:0];
                 }
-                else if([action isEqualToString:@"Modify Title"]){
+                else if([action isEqualToString:@"Modify Title"]) {
                     [mw.editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:_animelisttb.selectedRow] ofView:_animelisttb preferredEdge:0 type:currentlist];
                 }
             }
         }
     }
     else {
-        if (_mangalisttb.selectedRow >=0){
-            if (_mangalisttb.selectedRow >-1){
+        if (_mangalisttb.selectedRow >=0) {
+            if (_mangalisttb.selectedRow >-1) {
                 NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
                 NSDictionary *d = _mangalistarraycontroller.selectedObjects[0];
-                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]){
+                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]) {
                     NSNumber *idnum = d[@"id"];
                     [mw loadinfo:idnum type:currentlist];
                 }
-                else if([action isEqualToString:@"Modify Title"]){
+                else if([action isEqualToString:@"Modify Title"]) {
                     [mw.editviewcontroller showEditPopover:d showRelativeToRec:[_mangalisttb frameOfCellAtColumn:0 row:_mangalisttb.selectedRow] ofView:_mangalisttb preferredEdge:0 type:currentlist];
                 }
             }
@@ -414,7 +413,7 @@
 - (IBAction)deletetitle:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init] ;
     NSDictionary *d;
-    if (currentlist == 0){
+    if (currentlist == 0) {
         d = _animelistarraycontroller.selectedObjects[0];
     }
     else {
@@ -431,19 +430,19 @@
         }
     }];
 }
-- (NSArray *)obtainfilterstatus:(int)type{
+- (NSArray *)obtainfilterstatus:(int)type {
     // Generates an array of selected filters
     NSMutableArray *a = [NSMutableArray new];
     NSMutableArray *final = [NSMutableArray new];
-    if (type == 0){
+    if (type == 0) {
         [a addObject:@{@"watching":@(_watchingfilter.intValue)}];
         [a addObject:@{@"completed":@(_completedfilter.state)}];
         [a addObject:@{@"on-hold":@(_onholdfilter.state)}];
         [a addObject:@{@"dropped":@(_droppedfilter.state)}];
         [a addObject:@{@"plan to watch":@(_plantowatchfilter.state)}];
-        for (NSDictionary *d in a){
+        for (NSDictionary *d in a) {
             NSNumber *add = d[d.allKeys[0]];
-            if (add.boolValue){
+            if (add.boolValue) {
                 [final addObject:d];
             }
         }
@@ -454,19 +453,19 @@
         [a addObject:@{@"on-hold":@(_mangaonholdfilter.state)}];
         [a addObject:@{@"dropped":@(_mangadroppedfilter.state)}];
         [a addObject:@{@"plan to read":@(_plantoreadfilter.state)}];
-        for (NSDictionary *d in a){
+        for (NSDictionary *d in a) {
             NSNumber *add = d[d.allKeys[0]];
-            if (add.boolValue){
+            if (add.boolValue) {
                 [final addObject:d];
             }
         }
     }
     return final;
 }
-- (void)deletetitle{
+- (void)deletetitle {
     NSDictionary *d;
     NSNumber *selid;
-    if (currentlist == 0){
+    if (currentlist == 0) {
         d = _animelistarraycontroller.selectedObjects[0];
         selid = d[@"id"];
     }
@@ -474,9 +473,9 @@
         d = _mangalistarraycontroller.selectedObjects[0];
         selid = d[@"id"];
     }
-    [MyAnimeList removeTitleFromList:selid.intValue withType:currentlist completion:^(id responseobject){
+    [MyAnimeList removeTitleFromList:selid.intValue withType:currentlist completion:^(id responseobject) {
         [mw loadlist:@(true) type:currentlist];
-    }error:^(NSError *error){
+    }error:^(NSError *error) {
         NSLog(@"%@",error);
     }];
 }
@@ -485,8 +484,8 @@
     [self setToolbarButtonState];
 }
 - (void)setToolbarButtonState{
-    if (currentlist == 0){
-        if (_animelistarraycontroller.selectedObjects.count > 0){
+    if (currentlist == 0) {
+        if (_animelistarraycontroller.selectedObjects.count > 0) {
             [_edittitleitem setEnabled:YES];
             [_deletetitleitem setEnabled:YES];
             [_shareitem setEnabled:YES];
@@ -498,7 +497,7 @@
         }
     }
     else {
-        if (_mangalistarraycontroller.selectedObjects.count > 0){
+        if (_mangalistarraycontroller.selectedObjects.count > 0) {
             [_edittitleitem setEnabled:YES];
             [_deletetitleitem setEnabled:YES];
             [_shareitem setEnabled:YES];

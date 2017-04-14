@@ -10,8 +10,7 @@
 
 @implementation NSString (Base64Category)
 
-- (NSString *)base64Encoding
-{
+- (NSString *)base64Encoding {
     // Use native methods
     NSData *plainData = [self dataUsingEncoding:NSUTF8StringEncoding];
     NSString *base64String;

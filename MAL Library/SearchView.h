@@ -9,16 +9,16 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindow;
-@interface SearchView : NSViewController <NSTableViewDelegate> {
-    IBOutlet MainWindow *mw;
-    int currentsearch;
-    NSString *AnimeSearchTerm;
-    NSString *MangaSearchTerm;
-}
+@interface SearchView : NSViewController <NSTableViewDelegate>
 typedef NS_ENUM(unsigned int, SearchType) {
     AnimeSearch = 0,
     MangaSearch = 1
 };
+@property (strong) IBOutlet MainWindow *mw;
+@property int currentsearch;
+@property (strong) NSString *AnimeSearchTerm;
+@property (strong) NSString *MangaSearchTerm;
+
 @property (strong) IBOutlet NSSearchField *searchtitlefield;
 
 // Anime Search

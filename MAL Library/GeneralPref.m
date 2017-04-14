@@ -37,19 +37,19 @@
     return NSLocalizedString(@"General", @"Toolbar item name for the General preference pane");
 }
 - (IBAction)changeappearence:(id)sender {
-    [mainwindowcontroller setAppearance];
+    [_mainwindowcontroller setAppearance];
 }
 - (void)setMainWindowController:(MainWindow*)mw{
-    mainwindowcontroller = mw;
+    _mainwindowcontroller = mw;
 }
 
 - (IBAction)performtoggletimer:(id)sender {
     NSNumber *autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
-        [mainwindowcontroller startTimer];
+        [_mainwindowcontroller startTimer];
     }
     else{
-        [mainwindowcontroller stopTimer];
+        [_mainwindowcontroller stopTimer];
     }
 }
 

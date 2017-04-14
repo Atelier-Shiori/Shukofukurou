@@ -18,8 +18,7 @@
 
 @implementation AdvancedPref
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [super initWithNibName:@"AdvancedPref" bundle:nil];
 }
 - (void)viewDidLoad {
@@ -30,29 +29,26 @@
 #pragma mark -
 #pragma mark MASPreferencesViewController
 
-- (NSString *)identifier
-{
+- (NSString *)identifier {
     return @"AdvancedPref";
 }
 
-- (NSImage *)toolbarItemImage
-{
+- (NSImage *)toolbarItemImage {
     return [NSImage imageNamed:NSImageNameAdvanced];
 }
 
-- (NSString *)toolbarItemLabel
-{
+- (NSString *)toolbarItemLabel {
     return NSLocalizedString(@"Advanced", @"Toolbar item name for the Advanced preference pane");
 }
 #pragma mark
--(IBAction)resetMALAPI:(id)sender{
+-(IBAction)resetMALAPI:(id)sender {
     //Reset Unofficial MAL API URL
     _fieldmalapi.stringValue = @"https://malapi.ateliershiori.moe";
     // Set MAL API URL in settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults] ;
     [defaults setObject:_fieldmalapi.stringValue forKey:@"MALAPIURL"];
 }
--(IBAction)testMALAPI:(id)sender{
+-(IBAction)testMALAPI:(id)sender {
     [_testapibtn setEnabled:NO];
     //Load API URL
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

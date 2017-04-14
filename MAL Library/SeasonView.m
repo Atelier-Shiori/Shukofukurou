@@ -18,8 +18,7 @@
 
 @implementation SeasonView
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [super initWithNibName:@"SeasonView" bundle:nil];
 }
 
@@ -36,7 +35,7 @@
             NSDictionary *d = _seasonarraycontroller.selectedObjects[0];
             d = d[@"id"];
             NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
-            [mw loadinfo:idnum type:0];
+            [_mw loadinfo:idnum type:0];
         }
     }
 }

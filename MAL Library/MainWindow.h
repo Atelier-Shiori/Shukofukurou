@@ -24,14 +24,9 @@
 @class HistoryView;
 @class AiringView;
 
-@interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>{
-    IBOutlet NSWindow *w;
-    
-    int selectededitid;
-    bool selectedaired;
-    bool selectedaircompleted;
-    NSDictionary *selecteditem;
-}
+@interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
+@property (strong)IBOutlet NSWindow *w;
+@property (strong)NSDictionary *selecteditem;
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSTextField *loggedinuser;

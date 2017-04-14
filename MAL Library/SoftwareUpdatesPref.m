@@ -18,18 +18,15 @@
 #pragma mark -
 #pragma mark MASPreferencesViewController
 
-- (NSString *)identifier
-{
+- (NSString *)identifier {
     return @"SoftwareUpdatesPreferences";
 }
 
-- (NSImage *)toolbarItemImage
-{
+- (NSImage *)toolbarItemImage {
     return [NSImage imageNamed:@"updates"];
 }
 
-- (NSString *)toolbarItemLabel
-{
+- (NSString *)toolbarItemLabel {
     return NSLocalizedString(@"Software Updates", @"Toolbar item name for the Software Updatespreference pane");
 }
 @end

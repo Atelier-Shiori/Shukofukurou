@@ -29,14 +29,14 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 - (IBAction)validate:(id)sender{
-    if (name.stringValue.length > 0 && key.stringValue.length>0){
+    if (_name.stringValue.length > 0 && _key.stringValue.length>0){
         __block NSButton *btn = sender;
         [btn setEnabled:NO];
         // Check donation key
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.requestSerializer = [AFJSONRequestSerializer serializer];
         manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":name.stringValue, @"key":key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":_name.stringValue, @"key":_key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [btn setEnabled:YES];
             NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
             int valid = ((NSNumber *)d[@"valid"]).intValue;
@@ -44,8 +44,8 @@
                 // Valid Key
                 [Utility showsheetmessage:@"Registered" explaination:@"Thank you for donating. The donation reminder will no longer appear and access to weekly builds is now unlocked." window:nil];
                 // Add to the preferences
-                [[NSUserDefaults standardUserDefaults] setObject:name.stringValue forKey:@"donor"];
-                [[NSUserDefaults standardUserDefaults] setObject:key.stringValue forKey:@"donatekey"];
+                [[NSUserDefaults standardUserDefaults] setObject:_name.stringValue forKey:@"donor"];
+                [[NSUserDefaults standardUserDefaults] setObject:_key.stringValue forKey:@"donatekey"];
                 [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
                 // Refresh Mainview
                 AppDelegate *del = (AppDelegate *)[NSApplication sharedApplication].delegate;

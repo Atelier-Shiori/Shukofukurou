@@ -11,13 +11,11 @@
 #import "MSWeakTimer.h"
 #import "MainWindow.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>{
-    MainWindow *mainwindowcontroller;
-    NSWindowController *_preferencesWindowController;
-}
+@interface AppDelegate : NSObject <NSApplicationDelegate>
+@property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
+@property (strong) NSWindowController *_preferencesWindowController;
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
-- (MainWindow *)getMainWindowController;
 - (IBAction)showpreferences:(id)sender;
 - (void)showloginpref;
 - (IBAction)enterDonationKey:(id)sender;

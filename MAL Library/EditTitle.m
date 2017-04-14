@@ -44,8 +44,7 @@
 
 @implementation EditTitle
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [super initWithNibName:@"EditTitle" bundle:nil];
 }
 
@@ -57,21 +56,21 @@
 }
 
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
-    selecteditem = d;
-    if (type == 0){
+    _selecteditem = d;
+    if (type == 0) {
         [self.view replaceSubview:(self.view.subviews)[0] with:_animeeditview];
         NSString *airingstatus = d[@"status"];
-        if ([airingstatus isEqualToString:@"finished airing"]){
-            selectedaircompleted = true;
+        if ([airingstatus isEqualToString:@"finished airing"]) {
+            _selectedaircompleted = true;
         }
-        else{
-            selectedaircompleted = false;
+        else {
+            _selectedaircompleted = false;
         }
-        if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]){
-            selectedaired = true;
+        if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]) {
+            _selectedaired = true;
         }
-        else{
-            selectedaired = false;
+        else {
+            _selectedaired = false;
         }
         _minipopoverepfield.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
         _minipopovereditepstep.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
@@ -79,35 +78,35 @@
         [_minipopoverstatus selectItemWithTitle:d[@"watched_status"]];
         [_minipopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
         _minipopoverstatustext.stringValue = @"";
-        if (((NSNumber *)d[@"episodes"]).intValue > 0){
+        if (((NSNumber *)d[@"episodes"]).intValue > 0) {
             _minieditpopovernumformat.maximum = d[@"episodes"];
         }
         else {
             [_minieditpopovernumformat setMaximum:nil];
         }
-        selectededitid = ((NSNumber *)d[@"id"]).intValue;
+        _selectededitid = ((NSNumber *)d[@"id"]).intValue;
         [_minieditpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
-        selectedtype = type;
+        _selectedtype = type;
     }
-    else{
+    else {
         [self.view replaceSubview:(self.view.subviews)[0] with:_mangaeditview];
-        NSString *publishtatus = selecteditem[@"status"];
-        if ([publishtatus isEqualToString:@"finished"]){
-            selectedfinished = true;
+        NSString *publishtatus = _selecteditem[@"status"];
+        if ([publishtatus isEqualToString:@"finished"]) {
+            _selectedfinished = true;
         }
-        else{
-            selectedfinished = false;
+        else {
+            _selectedfinished = false;
         }
-        if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]){
-            selectedpublished = true;
+        if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]) {
+            _selectedpublished = true;
         }
-        else{
-            selectedpublished = false;
+        else {
+            _selectedpublished = false;
         }
         _mangapopoverchapfield.intValue = ((NSNumber *)d[@"chapters_read"]).intValue;
         _mangapopovereditchapstep.intValue = ((NSNumber *)d[@"chapters_read"]).intValue;
         _mangapopovertotalchap.intValue = ((NSNumber *)d[@"chapters"]).intValue;
-        if (((NSNumber *)d[@"chapters"]).intValue > 0){
+        if (((NSNumber *)d[@"chapters"]).intValue > 0) {
             _mangaeditpopoverchapnumformat.maximum = d[@"chapters"];
         }
         else {
@@ -116,7 +115,7 @@
         _mangapopovervolfield.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovereditvolstep.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovertotalvol.intValue = ((NSNumber *)d[@"volumes"]).intValue;
-        if (((NSNumber *)d[@"volumes"]).intValue > 0){
+        if (((NSNumber *)d[@"volumes"]).intValue > 0) {
             _mangaeditpopovervolnumformat.maximum = d[@"volumes"];
         }
         else {
@@ -125,9 +124,9 @@
         [_mangapopoverstatus selectItemWithTitle:d[@"read_status"]];
         [_mangapopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
         _mangapopoverstatustext.stringValue = @"";
-        selectededitid = ((NSNumber *)d[@"id"]).intValue;
+        _selectededitid = ((NSNumber *)d[@"id"]).intValue;
         [_minieditpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
-        selectedtype = type;
+        _selectedtype = type;
     }
 }
 
@@ -135,14 +134,14 @@
     [self performupdate];
 }
 
-- (void)performupdate{
-    if (selectedtype == 0){
+- (void)performupdate {
+    if (_selectedtype == 0) {
         [_minipopovereditbtn setEnabled:false];
         _minipopoverstatustext.stringValue = @"";
-        if(![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue && selectedaircompleted){
+        if(![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue && _selectedaircompleted) {
             [_minipopoverstatus selectItemWithTitle:@"completed"];
         }
-        if(!selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)){
+        if(!_selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)) {
             // Invalid input, mark it as such
             [_minipopovereditbtn setEnabled:true];
             _minipopoverstatustext.stringValue = @"Invalid update.";
@@ -150,22 +149,23 @@
             [_minipopoverindicator stopAnimation:nil];
             return;
         }
-        if (_minipopoverepfield.intValue == _minipopovertotalep.intValue && _minipopovertotalep.intValue != 0 && selectedaircompleted && selectedaired){
+        if (_minipopoverepfield.intValue == _minipopovertotalep.intValue && _minipopovertotalep.intValue != 0 && _selectedaircompleted && _selectedaired) {
             [_minipopoverstatus selectItemWithTitle:@"completed"];
             _minipopoverepfield.stringValue = _minipopovertotalep.stringValue;
         }
-        if([_minipopoverstatus.title isEqual:@"completed"] && _minipopovertotalep.intValue != 0 && _minipopoverepfield.intValue != _minipopovertotalep.intValue && selectedaircompleted){
+        if([_minipopoverstatus.title isEqual:@"completed"] && _minipopovertotalep.intValue != 0 && _minipopoverepfield.intValue != _minipopovertotalep.intValue && _selectedaircompleted) {
             _minipopoverepfield.stringValue = _minipopovertotalep.stringValue;
         }
         _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [_minipopoverindicator startAnimation:nil];
-        [MyAnimeList updateAnimeTitleOnList:selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag completion:^(id responseobject){
-            [mw loadlist:@(true) type:selectedtype];
+        [MyAnimeList updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag completion:^(id responseobject) {
+            [_mw loadlist:@(true) type:_selectedtype];
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_minipopoverindicator stopAnimation:nil];
             [_minieditpopover close];
-        }error:^(NSError * error){
+        }
+            error:^(NSError * error) {
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_minipopoverindicator stopAnimation:nil];
@@ -176,10 +176,10 @@
     else {
         [_mangapopovereditbtn setEnabled:false];
         _mangapopoverstatustext.stringValue = @"";
-        if(![_mangapopoverstatus.title isEqual:@"completed"] && _mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopovertotalvol.intValue == _mangapopovertotalvol.intValue && selectedfinished){
+        if(![_mangapopoverstatus.title isEqual:@"completed"] && _mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopovertotalvol.intValue == _mangapopovertotalvol.intValue && _selectedfinished) {
             [_mangapopoverstatus selectItemWithTitle:@"completed"];
         }
-        if(!selectedpublished && (![_mangapopoverstatus.title isEqual:@"plan to read"] ||_mangapopoverchapfield.intValue > 0 || _mangapopovertotalvol.intValue > 0)){
+        if(!_selectedpublished && (![_mangapopoverstatus.title isEqual:@"plan to read"] ||_mangapopoverchapfield.intValue > 0 || _mangapopovertotalvol.intValue > 0)) {
             // Invalid input, mark it as such
             [_mangapopovereditbtn setEnabled:true];
             _mangapopoverstatustext.stringValue = @"Invalid update.";
@@ -187,26 +187,26 @@
             [_mangapopoverindicator stopAnimation:nil];
             return;
         }
-        if (((_mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue == _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && selectedfinished && selectedpublished){
+        if (((_mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue == _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && _selectedfinished && _selectedpublished) {
             [_mangapopoverstatus selectItemWithTitle:@"completed"];
             _mangapopoverchapfield.stringValue = _mangapopovertotalchap.stringValue;
             _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
         }
-        if([_mangapopoverstatus.title isEqual:@"completed"] && ((_mangapopoverchapfield.intValue != _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue != _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && selectedfinished){
+        if([_mangapopoverstatus.title isEqual:@"completed"] && ((_mangapopoverchapfield.intValue != _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue != _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && _selectedfinished) {
             _mangapopoverchapfield.stringValue = _mangapopovertotalchap.stringValue;
             _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
         }
 
         _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [_mangapopoverindicator startAnimation:nil];
-        [MyAnimeList updateMangaTitleOnList:selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag completion:^(id responseobject){
-            [mw loadlist:@(true) type:selectedtype];
-            [mw loadlist:@(true) type:2];
+        [MyAnimeList updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag completion:^(id responseobject) {
+            [_mw loadlist:@(true) type:_selectedtype];
+            [_mw loadlist:@(true) type:2];
             [_mangapopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_mangapopoverindicator stopAnimation:nil];
             [_minieditpopover close];
-        }error:^(NSError * error){
+        }error:^(NSError * error) {
             [_mangapopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
             [_mangapopoverindicator stopAnimation:nil];
@@ -220,13 +220,13 @@
     int segment = 0;
     int totalsegment = 0;
     NSStepper * stepper = (NSStepper *)sender;
-    if (selectedtype == 0){
+    if (_selectedtype == 0) {
         if ((_minipopoverepfield.stringValue).length > 0) {
             segment = (_minipopoverepfield.stringValue).intValue;
         }
         totalsegment = (_minipopovertotalep.stringValue).intValue;
         segment = stepper.intValue;
-        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0){
+        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0) {
             _minipopoverepfield.stringValue = [NSString stringWithFormat:@"%i",segment];
         }
     }
@@ -249,8 +249,8 @@
         }
         
         segment = stepper.intValue;
-        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0){
-            if ([segmenttype isEqualToString:@"chapters"]){
+        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0) {
+            if ([segmenttype isEqualToString:@"chapters"]) {
                 _mangapopoverchapfield.stringValue = [NSString stringWithFormat:@"%i",segment];
             }
             else {

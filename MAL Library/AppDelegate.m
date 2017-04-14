@@ -23,7 +23,7 @@
 @end
 
 @implementation AppDelegate
-+ (void)initialize{
++ (void)initialize {
     
     //Create a Dictionary
     NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
@@ -60,9 +60,9 @@
     [Utility donateCheck:self];
     #endif
     // Load main window
-    mainwindowcontroller = [MainWindow new];
-    [mainwindowcontroller setDelegate:self];
-    [mainwindowcontroller.window makeKeyAndOrderFront:self];
+    _mainwindowcontroller = [MainWindow new];
+    [_mainwindowcontroller setDelegate:self];
+    [_mainwindowcontroller.window makeKeyAndOrderFront:self];
     [self showloginnotice];
     [Fabric with:@[[Crashlytics class]]];
     [[NSAppleEventManager sharedAppleEventManager]
@@ -76,15 +76,12 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
-- (MainWindow *)getMainWindowController{
-    return mainwindowcontroller;
-}
-- (NSWindowController *)preferencesWindowController
-{
-    if (_preferencesWindowController == nil)
+
+- (NSWindowController *)preferencesWindowController {
+    if (__preferencesWindowController == nil)
     {
         GeneralPref *genview =[[GeneralPref alloc] init];
-        [genview setMainWindowController:mainwindowcontroller];
+        [genview setMainWindowController:_mainwindowcontroller];
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
         NSViewController *advancedviewController = [AdvancedPref new];
         #if defined(AppStore)
@@ -93,9 +90,9 @@
         NSViewController *suViewController = [[SoftwareUpdatesPref alloc] init];
         NSArray *controllers = @[genview,loginViewController,suViewController,advancedviewController];
         #endif
-        _preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
+        __preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }
-    return _preferencesWindowController;
+    return __preferencesWindowController;
 }
 
 - (IBAction)showpreferences:(id)sender {
@@ -111,7 +108,7 @@
         [alert setInformativeText:NSLocalizedString(@"Before you can use this program, you need to add an account. Do you want to open Preferences to authenticate an account now? \r\rNote that there is limited functionality if you don't add an account.",nil)];
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
-        [alert beginSheetModalForWindow:mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
             // Show Preference Window and go to Login Preference Pane
             [self showloginpref];
@@ -126,14 +123,14 @@
 }
 
 - (IBAction)enterDonationKey:(id)sender {
-    if (!_donationwincontroller){
+    if (!_donationwincontroller) {
         _donationwincontroller = [DonationWindowController new];
     }
     [_donationwincontroller.window makeKeyAndOrderFront:nil];
 }
 
 - (IBAction)showaboutwindow:(id)sender{
-    if (!_aboutWindowController){
+    if (!_aboutWindowController) {
         _aboutWindowController = [PFAboutWindowController new];
     }
     (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://malupdaterosx.ateliershiori.moe/mallibrary/"];
@@ -143,7 +140,7 @@
     #if defined(AppStore)
     [copyrightstr appendString:@"Mac App Store version."];
     #else
-    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue){
+    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
         [copyrightstr appendFormat:@"This copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
     }
     else {
@@ -164,21 +161,20 @@
 }
 
 - (void)handleURLEvent:(NSAppleEventDescriptor*)event
-        withReplyEvent:(NSAppleEventDescriptor*)replyEvent
-{
+        withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
     NSString* url = [event paramDescriptorForKeyword:keyDirectObject].stringValue;
     NSLog(@"%@", url);
     url = [url stringByReplacingOccurrencesOfString:@"mallibrary://" withString:@""];
-    if ([url containsString:@"anime/"]){
+    if ([url containsString:@"anime/"]) {
         // Loads Anime Information with specified id.
         url = [url stringByReplacingOccurrencesOfString:@"anime/" withString:@""];
-        [mainwindowcontroller loadinfo:@(url.intValue) type:0];
+        [_mainwindowcontroller loadinfo:@(url.intValue) type:0];
     }
-    if ([url containsString:@"manga/"]){
-        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue){
+    if ([url containsString:@"manga/"]) {
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
             // Loads Manga Information with specified id.
             url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
-            [mainwindowcontroller loadinfo:@(url.intValue) type:0];
+            [_mainwindowcontroller loadinfo:@(url.intValue) type:0];
         }
     }
 }

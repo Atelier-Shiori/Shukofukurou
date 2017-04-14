@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 @class MainWindow;
 @class NSTextFieldNumber;
-@interface AdvancedSearch : NSViewController{
-    IBOutlet MainWindow *mw;
-    IBOutlet NSPopover *popover;
-}
+@interface AdvancedSearch : NSViewController
+@property (strong) IBOutlet MainWindow *mw;
+@property (strong) IBOutlet NSPopover *popover;
 @property (strong) IBOutlet NSTokenField *genretokenfield;
 @property (strong) IBOutlet NSButton *exclude;
 @property (strong) IBOutlet NSDatePicker *startdate;

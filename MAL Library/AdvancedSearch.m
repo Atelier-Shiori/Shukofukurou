@@ -41,8 +41,7 @@
 @end
 
 @implementation AdvancedSearch
-- (instancetype)init
-{
+- (instancetype)init {
     return [super initWithNibName:@"AdvancedSearch" bundle:nil];
 }
 
@@ -56,7 +55,7 @@
     [self setSearchType:searchtype];
 
 }
-- (void)setSearchType:(int)type{
+- (void)setSearchType:(int)type {
     [self saveSearchValuesForType:searchtype];
     if (type == 0){
         _airstatus.menu = _animestatusmenu;
@@ -93,7 +92,7 @@
 }
 - (IBAction)performadvancedsearch:(id)sender {
     __block NSButton *btn = sender;
-    popover.behavior = NSPopoverBehaviorApplicationDefined;
+    _popover.behavior = NSPopoverBehaviorApplicationDefined;
     [btn setEnabled:NO];
     NSDate *startDate = nil;
     NSDate *endDate = nil;
@@ -108,17 +107,17 @@
         endDate = _enddate.dateValue;
     }
     [MyAnimeList advsearchTitle:_searchfield.stringValue withType:searchtype withGenres:genreslist excludeGenres:_exclude.state startDate:startDate endDate:endDate minScore:_minscore.intValue rating:(int)_rating.selectedTag withStatus:(int)_airstatus.selectedTag completion:^(id responseObject){
-        [mw populatesearchtb:responseObject type:searchtype];
+        [_mw populatesearchtb:responseObject type:searchtype];
         [btn setEnabled:YES];
-        popover.behavior = NSPopoverBehaviorTransient;
-        [popover close];
+        _popover.behavior = NSPopoverBehaviorTransient;
+        [_popover close];
         [self saveSearchValuesForType:searchtype];
     }error:^(NSError *error){
         NSLog(@"Error: %@", error);
-        [mw clearsearchtb];
+        [_mw clearsearchtb];
         [btn setEnabled:YES];
-        popover.behavior = NSPopoverBehaviorTransient;
-        [popover close];
+        _popover.behavior = NSPopoverBehaviorTransient;
+        [_popover close];
         [self saveSearchValuesForType:searchtype];
     }];
 }
@@ -147,14 +146,14 @@
     [self resetdate];
     [_airstatus selectItemAtIndex:0];
     [_rating selectItemAtIndex:0];
-    [mw clearsearchtb];
+    [_mw clearsearchtb];
 }
 - (void)resetdate{
     _startdate.dateValue = [[NSDate alloc] initWithTimeIntervalSinceNow:-315360000]; // Last 10 years from today's date
     _enddate.dateValue = [NSDate date];
 }
-- (void)saveSearchValuesForType:(int)type{
-    if (type == 0){
+- (void)saveSearchValuesForType:(int)type {
+    if (type == 0) {
         _animekeyword = _searchfield.stringValue;
         _animegenre = _genretokenfield.stringValue;
         _animeexclude = _exclude.state;
@@ -179,7 +178,7 @@
         _mangarating = _rating.indexOfSelectedItem;
     }
 }
-- (void)setDefaultValues{
+- (void)setDefaultValues {
     _animekeyword = _searchfield.stringValue;
     _animegenre = _genretokenfield.stringValue;
     _animeexclude = _exclude.state;

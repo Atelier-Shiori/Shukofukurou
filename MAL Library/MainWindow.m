@@ -224,11 +224,11 @@
     NSString *appearancename;
     if ([appearence isEqualToString:@"Light"]){
         appearancename = NSAppearanceNameVibrantLight;
-        w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        _w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
     }
     else{
         appearancename = NSAppearanceNameVibrantDark;
-        w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+        _w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     }
     _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
     _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
@@ -238,7 +238,7 @@
     _advsearchpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
-    [w setFrame:w.frame display:false];
+    [_w setFrame:_w.frame display:false];
 }
 
 - (void)refreshloginlabel{
@@ -349,7 +349,7 @@
 }
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification{
-    [w setFrame:w.frame display:false];
+    [_w setFrame:_w.frame display:false];
 }
 
 #pragma mark -

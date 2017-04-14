@@ -9,9 +9,8 @@
 #import <Cocoa/Cocoa.h>
 #import <MASPreferences/MASPreferences.h>
 @class MainWindow;
-@interface GeneralPref : NSViewController <MASPreferencesViewController>{
-    MainWindow *mainwindowcontroller;
-}
+@interface GeneralPref : NSViewController <MASPreferencesViewController>
+@property (strong) MainWindow *mainwindowcontroller;
 - (IBAction)changeappearence:(id)sender;
 - (void)setMainWindowController:(MainWindow*)mw;
 - (IBAction)performtoggletimer:(id)sender;

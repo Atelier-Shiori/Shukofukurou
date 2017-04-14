@@ -9,15 +9,14 @@
 #import "TypeNumtoStringType.h"
 
 @implementation TypeNumtoStringType : NSValueTransformer
-+ (Class)transformedValueClass
-{
++ (Class)transformedValueClass {
     return [NSString class];
 }
 
-- (id)transformedValue:(id)value{
+- (id)transformedValue:(id)value {
     if (value == nil) return nil;
     
-    if ([value respondsToSelector:@selector(integerValue)]){
+    if ([value respondsToSelector:@selector(integerValue)]) {
         int status = [value intValue];
         switch (status){
             case 1:

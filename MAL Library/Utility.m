@@ -22,7 +22,7 @@
     // Set Message type to Warning
     alert.alertStyle = NSAlertStyleInformational;
     // Show as Sheet on Preference Window
-    if (w != nil){
+    if (w != nil) {
         [alert beginSheetModalForWindow:w completionHandler:nil];
     }
     else {
@@ -46,10 +46,10 @@
     append = [NSString stringWithFormat:@"%@/%@", bundlename, append];
     NSURL *path = [filemanager URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:true error:&error];
     NSString *dir = [NSString stringWithFormat:@"%@/%@",path.path,append];
-    if (![filemanager fileExistsAtPath:dir isDirectory:nil]){
+    if (![filemanager fileExistsAtPath:dir isDirectory:nil]) {
         NSError *ferror;
         bool success = [filemanager createDirectoryAtPath:dir withIntermediateDirectories:true attributes:nil error:&ferror];
-        if (success && ferror == nil){
+        if (success && ferror == nil) {
             return dir;
         }
         return @"";
@@ -62,20 +62,20 @@
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&error];
     if (!jsonData) {}
-    else{
+    else {
         NSString *JSONString = [[NSString alloc] initWithBytes:jsonData.bytes length:jsonData.length encoding:NSUTF8StringEncoding];
         NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
         NSFileManager *filemanger = [NSFileManager defaultManager];
         NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
-        if (![filemanger fileExistsAtPath:fullfilenamewithpath] || replace){
+        if (![filemanger fileExistsAtPath:fullfilenamewithpath] || replace) {
             NSURL *url = [[NSURL alloc] initFileURLWithPath:fullfilenamewithpath];
             [JSONString writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&error];
-            if (!error){
+            if (!error) {
                 JSONString = [NSString stringWithContentsOfFile:fullfilenamewithpath encoding:NSUTF8StringEncoding error:&error];
                 return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
             }
         }
-        else{
+        else {
             JSONString = [NSString stringWithContentsOfFile:fullfilenamewithpath encoding:NSUTF8StringEncoding error:&error];
             return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
         }
@@ -87,7 +87,7 @@
     NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
-    if ([filemanager fileExistsAtPath:fullfilenamewithpath]){
+    if ([filemanager fileExistsAtPath:fullfilenamewithpath]) {
         NSError *error;
         NSString *JSONString = [NSString stringWithContentsOfFile:fullfilenamewithpath encoding:NSUTF8StringEncoding error:&error];
         return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
@@ -99,10 +99,10 @@
     NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
-    if ([filemanager fileExistsAtPath:fullfilenamewithpath]){
+    if ([filemanager fileExistsAtPath:fullfilenamewithpath]) {
         NSError *error;
         [filemanager removeItemAtPath:fullfilenamewithpath error:&error];
-        if (!error){
+        if (!error) {
             return true;
         }
     }
@@ -111,14 +111,14 @@
 
 + (NSString *)appendstringwithArray:(NSArray *) a{
     NSMutableString *string = [NSMutableString new];
-    for (int i=0; i < a.count; i++){
-        if (i == a.count-1 && i != 0){
+    for (int i=0; i < a.count; i++) {
+        if (i == a.count-1 && i != 0) {
             [string appendString:[NSString stringWithFormat:@"and %@",(NSString *)a[i]]];
         }
-        else if (a.count == 1){
+        else if (a.count == 1) {
             [string appendString:[NSString stringWithFormat:@"%@",(NSString *)a[i]]];
         }
-        else{
+        else {
             [string appendString:[NSString stringWithFormat:@"%@, ",(NSString *)a[i]]];
         }
     }
@@ -129,7 +129,7 @@
     NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
-    if ([filemanager fileExistsAtPath:fullfilenamewithpath]){
+    if ([filemanager fileExistsAtPath:fullfilenamewithpath]) {
             return true;
     }
     return false;
@@ -138,7 +138,7 @@
 + (NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url{
     NSString *path = [Utility retrieveApplicationSupportDirectory:append];
     NSFileManager *filemanager = [NSFileManager defaultManager];
-    if ([filemanager fileExistsAtPath:[NSString stringWithFormat:@"%@/%@",path, filename]]){
+    if ([filemanager fileExistsAtPath:[NSString stringWithFormat:@"%@/%@",path, filename]]) {
         return [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@/%@",path, filename]];
     }
     return [Utility retrieveimageandsave:filename withAppendPath:append fromURL:url];
@@ -165,40 +165,40 @@
     if (start.length == 7 && start) {
         start = [NSString stringWithFormat:@"%@-01",start];
     }
-    if (start){
+    if (start) {
         NSDate * startdate = [dateformat dateFromString:start];
-        if ([datenow compare:startdate] == NSOrderedDescending || [datenow compare:startdate] == NSOrderedSame){
+        if ([datenow compare:startdate] == NSOrderedDescending || [datenow compare:startdate] == NSOrderedSame) {
             startedairing = true;
         }
     }
     if (end.length > 7 && end) {
         end = [NSString stringWithFormat:@"%@-01",end];
     }
-    if (end){
+    if (end) {
         NSDate * enddate = [dateformat dateFromString:end];
-        if ([datenow compare:enddate] == NSOrderedDescending || [datenow compare:enddate] == NSOrderedSame){
+        if ([datenow compare:enddate] == NSOrderedDescending || [datenow compare:enddate] == NSOrderedSame) {
             finishedairing = true;
         }
     }
     // Generate Status String
-    if (!startedairing && !finishedairing){
+    if (!startedairing && !finishedairing) {
         return @"not yet aired";
     }
-    else if (startedairing && !finishedairing){
+    else if (startedairing && !finishedairing) {
         return @"currently airing";
     }
-    else if (startedairing && finishedairing){
+    else if (startedairing && finishedairing) {
         return @"finished airing";
     }
     return @"";
 }
 
 + (void)donateCheck:(AppDelegate*)delegate{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] == nil){
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] == nil) {
         [Utility setReminderDate];
     }
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
-        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue){
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
             // Check donation key
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -210,7 +210,7 @@
                     //Reset check
                     [Utility setReminderDate];
                 }
-                else if (valid == 0){
+                else if (valid == 0) {
                     //Invalid Key
                     [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. MAL Library will now quit." window:nil];
                     [Utility showDonateReminder:delegate];
@@ -221,7 +221,7 @@
             } failure:^(NSURLSessionTask *operation, NSError *error) {
             }];
         }
-        else{
+        else {
             [Utility showDonateReminder:delegate];
         }
     }
@@ -248,7 +248,7 @@
         [delegate enterDonationKey:nil];
         [Utility setReminderDate];
     }
-    else{
+    else {
         // Surpress message for 2 weeks.
         [Utility setReminderDate];
     }

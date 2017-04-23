@@ -125,6 +125,26 @@
         errorHandler(error);
     }];
 }
++ (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSString *url = @"";
+    if (type == MALAnime) {
+        url = [NSString stringWithFormat:@"%@/2.1/anime/reviews/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],titleid];
+        
+    }
+    else if (type == MALManga) {
+        url = [NSString stringWithFormat:@"%@/2.1/manga/reviews/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],titleid];
+    }
+    else {
+        return;
+    }
+    [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+
+}
 
 + (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];

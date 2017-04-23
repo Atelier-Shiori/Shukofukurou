@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <PXSourceList/PXSourceList.h>
 #import <AFNetworking/AFNetworking.h>
+#import "ReviewWindow.h"
 
 @class AppDelegate;
 @class NSTextFieldNumber;
@@ -31,6 +32,7 @@
 @property (strong) IBOutlet NSToolbar *toolbar;
 @property (strong) IBOutlet NSTextField *loggedinuser;
 @property (strong) IBOutlet PXSourceList *sourceList;
+@property (strong) ReviewWindow *reviewwindow;
 
 @property (nonatomic, assign, getter=getDelegate) AppDelegate *appdel;
 //Anime List View

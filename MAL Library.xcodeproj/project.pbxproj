@@ -141,6 +141,14 @@
 		91B378B61E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91B378B71E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
+		91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
+		91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
+		91C060171EAD2CEB0099E433 /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C0601A1EAD2CEB0099E433 /* ReviewWindow.xib */; };
+		91C060181EAD2CEB0099E433 /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C0601A1EAD2CEB0099E433 /* ReviewWindow.xib */; };
+		91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C0601C1EAD309C0099E433 /* ReviewView.m */; };
+		91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C0601C1EAD309C0099E433 /* ReviewView.m */; };
+		91C060201EAD309C0099E433 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C0601D1EAD309C0099E433 /* ReviewView.xib */; };
+		91C060211EAD309C0099E433 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91C0601D1EAD309C0099E433 /* ReviewView.xib */; };
 		91D094C21E983095009454F8 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
 		91D094C41E983098009454F8 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
 		91D094D01E9876D8009454F8 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
@@ -318,6 +326,12 @@
 		91AECE5A1E89922A00824C2D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
 		91B378B41E989C7C000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringView.xib; sourceTree = "<group>"; };
 		91B378B81E989C83000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HistoryView.xib; sourceTree = "<group>"; };
+		91C060101EAD2CDC0099E433 /* ReviewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewWindow.h; path = ../ReviewWindow.h; sourceTree = "<group>"; };
+		91C060111EAD2CDC0099E433 /* ReviewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewWindow.m; path = ../ReviewWindow.m; sourceTree = "<group>"; };
+		91C060191EAD2CEB0099E433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewWindow.xib; sourceTree = "<group>"; };
+		91C0601B1EAD309C0099E433 /* ReviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewView.h; sourceTree = "<group>"; };
+		91C0601C1EAD309C0099E433 /* ReviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewView.m; sourceTree = "<group>"; };
+		91C0601D1EAD309C0099E433 /* ReviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewView.xib; sourceTree = "<group>"; };
 		91D094BF1E983095009454F8 /* HistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryView.h; sourceTree = "<group>"; };
 		91D094C01E983095009454F8 /* HistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryView.m; sourceTree = "<group>"; };
 		91D094CD1E9876D8009454F8 /* AiringView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringView.h; sourceTree = "<group>"; };
@@ -450,6 +464,12 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				91C060101EAD2CDC0099E433 /* ReviewWindow.h */,
+				91C060111EAD2CDC0099E433 /* ReviewWindow.m */,
+				91C0601A1EAD2CEB0099E433 /* ReviewWindow.xib */,
+				91C0601B1EAD309C0099E433 /* ReviewView.h */,
+				91C0601C1EAD309C0099E433 /* ReviewView.m */,
+				91C0601D1EAD309C0099E433 /* ReviewView.xib */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -724,6 +744,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */,
+				91C060211EAD309C0099E433 /* ReviewView.xib in Resources */,
 				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
 				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
@@ -732,6 +753,7 @@
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
 				910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */,
+				91C060181EAD2CEB0099E433 /* ReviewWindow.xib in Resources */,
 				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
@@ -770,6 +792,8 @@
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
+				91C060201EAD309C0099E433 /* ReviewView.xib in Resources */,
+				91C060171EAD2CEB0099E433 /* ReviewWindow.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
@@ -844,8 +868,10 @@
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
 				2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */,
+				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
 				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
+				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
 				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
@@ -890,6 +916,7 @@
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
+				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */,
 				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
@@ -902,6 +929,7 @@
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
+				91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
@@ -1075,6 +1103,15 @@
 				91B378B81E989C83000061E6 /* Base */,
 			);
 			name = HistoryView.xib;
+			sourceTree = "<group>";
+		};
+		91C0601A1EAD2CEB0099E433 /* ReviewWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91C060191EAD2CEB0099E433 /* Base */,
+			);
+			name = ReviewWindow.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

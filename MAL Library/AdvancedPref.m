@@ -21,6 +21,7 @@
 - (instancetype)init {
     return [super initWithNibName:@"AdvancedPref" bundle:nil];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.

@@ -34,7 +34,7 @@
 
 - (instancetype)init{
     self = [super initWithWindowNibName:@"MainWindow"];
-    if(!self)
+    if (!self)
         return nil;
     return self;
 }
@@ -46,7 +46,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -323,8 +323,8 @@
         
         if (dividerPos < 0)
             dividerPos = 0;
-        if (width - dividerPos < 562 + [splitView dividerThickness])
-            dividerPos = width - (562 + [splitView dividerThickness]);
+        if (width - dividerPos < 568 + [splitView dividerThickness])
+            dividerPos = width - (568 + [splitView dividerThickness]);
         
         [splitView adjustSubviews];
         [splitView setPosition:dividerPos ofDividerAtIndex:0];
@@ -337,12 +337,12 @@
     {
         CGFloat width = NSWidth([splitView frame]);
         
-        if (ABS(200 - proposedPosition) <= 8)
-            proposedPosition = 200;
+        if (ABS(137 - proposedPosition) <= 8)
+            proposedPosition = 137;
         if (proposedPosition < 0)
             proposedPosition = 0;
-        if (width - proposedPosition < 562 + [splitView dividerThickness])
-            proposedPosition = width - (562 + [splitView dividerThickness]);
+        if (width - proposedPosition < 568 + [splitView dividerThickness])
+            proposedPosition = width - (568 + [splitView dividerThickness]);
     }
     
     return proposedPosition;
@@ -532,7 +532,8 @@
                 indexoffset = -1;
             }
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:3+indexoffset];
         }
     }
     else if ([identifier isEqualToString:@"seasons"]){

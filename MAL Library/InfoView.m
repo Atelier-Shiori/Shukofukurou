@@ -10,6 +10,7 @@
 #import "MainWindow.h"
 #import "Utility.h"
 #import "NSString+HTMLtoNSAttributedString.h"
+#import "ReviewView.h"
 
 @interface InfoView ()
 @property (strong) IBOutlet NSTextField *infoviewtitle;
@@ -114,11 +115,17 @@
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
     _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
     // Fix scrolling
+    if (!_selectedinfo){
+        [self fixtextviewscrollposition];
+    }
+    [self fixtextviewscrollposition];
+    [_mw loadmainview];
+    _selectedinfo = d;
+}
+- (void)fixtextviewscrollposition{
     [_infoviewdetailstextview scrollToBeginningOfDocument:self];
     [_infoviewsynopsistextview scrollToBeginningOfDocument:self];
     [_infoviewbackgroundtextview scrollToBeginningOfDocument:self];
-    [_mw loadmainview];
-    _selectedinfo = d;
 }
 - (void)populateMangaInfoView:(id)object{
     NSDictionary *d = object;
@@ -207,5 +214,11 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%i",_selectedid]]];
     }
 }
-
+- (IBAction)viewreviews:(id)sender {
+    if (!_mw.reviewwindow){
+        _mw.reviewwindow = [ReviewWindow new];
+    }
+    [_mw.reviewwindow loadReview:_selectedid type:_type title:_infoviewtitle.stringValue];
+    [_mw.reviewwindow.window makeKeyAndOrderFront:self];
+}
 @end

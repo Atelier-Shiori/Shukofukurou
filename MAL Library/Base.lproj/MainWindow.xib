@@ -524,6 +524,21 @@
                             <action selector="showaddpopover:" target="-2" id="kx9-81-I4C"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="ABDE0F85-CF79-494D-8F24-B41A9AD5BB9A" explicitItemIdentifier="viewreviews" label="View Reviews" paletteLabel="View Reviews" toolTip="View Reviews" image="reviews" id="b6y-uB-2VD">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="FwH-Do-1LO">
+                            <rect key="frame" x="16" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="reviews" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ATW-lp-8wC">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="viewreviews:" target="4iy-i9-GZD" id="m9d-5V-N19"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -706,5 +721,6 @@
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="delete" width="32" height="32"/>
+        <image name="reviews" width="32" height="32"/>
     </resources>
 </document>

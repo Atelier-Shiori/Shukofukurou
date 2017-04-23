@@ -49,7 +49,7 @@
     [_reviewtext.textStorage setAttributedString: [(NSString *)review[@"review"] convertHTMLtoAttStr]];
     [_reviewtext scrollToBeginningOfDocument:self];
     [_reviewtext scrollToBeginningOfDocument:self];
-    _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];
+    _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@.jpg",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];
 }
 
 - (IBAction)viewreviewerprofile:(id)sender {

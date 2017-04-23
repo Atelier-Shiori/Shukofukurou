@@ -203,7 +203,7 @@
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
             manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-            [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"key"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
                 int valid = ((NSNumber *)d[@"valid"]).intValue;
                 if (valid == 1) {

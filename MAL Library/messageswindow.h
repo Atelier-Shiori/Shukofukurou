@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface messageswindow : NSWindowController <NSTableViewDelegate, NSSplitViewDelegate>
-
+- (void)cleartableview;
 @end

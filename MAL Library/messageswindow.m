@@ -121,7 +121,7 @@
         [self retrieveMessage:selectedid.intValue];
     }
     else {
-        _selectedid = 0;
+        _selectedid = -1;
         [self toggleprogresswheel:NO];
         if ([[_messagearraycontroller mutableArrayValueForKey:@"content"] count] > 0) {
             _selectmessagelabel.stringValue = @"Please select a message.";

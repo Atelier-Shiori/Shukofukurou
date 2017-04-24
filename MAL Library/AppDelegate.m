@@ -208,8 +208,9 @@
     if ([Utility checkifFileExists:@"messages.json" appendPath:@""]) {
         [Utility deleteFile:@"messages.json" appendpath:@""];
     }
-    if (!_messageswindow){
+    if (_messageswindow){
         [_messageswindow.window close];
+        [_messageswindow cleartableview];
     }
 }
 @end

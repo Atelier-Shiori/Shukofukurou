@@ -141,6 +141,18 @@
                             <outlet property="delegate" destination="-2" id="1dw-yk-Ybt"/>
                         </connections>
                     </splitView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fgt-aq-Lpv">
+                        <rect key="frame" x="670" y="1" width="86" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="recessed" title="Add License" bezelStyle="recessed" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2q5-3i-eeW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addlicense:" target="-2" id="9Fh-fM-4Pm"/>
+                            <binding destination="Ir5-qs-3Ul" name="hidden" keyPath="values.donated" id="jbA-Ju-GSz"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="191EA55C-1513-41C2-B1C2-65590776C303" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="xDY-Qo-nJR">
@@ -265,6 +277,7 @@
         </visualEffectView>
         <viewController id="voV-5U-5sN" customClass="messageview"/>
         <arrayController id="I18-ba-edw"/>
+        <userDefaultsController representsSharedInstance="YES" id="Ir5-qs-3Ul"/>
     </objects>
     <resources>
         <image name="NSRefreshTemplate" width="11" height="15"/>

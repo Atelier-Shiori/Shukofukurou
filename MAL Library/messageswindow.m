@@ -11,6 +11,7 @@
 #import "NSTableViewAction.h"
 #import "Utility.h"
 #import "messageview.h"
+#import "AppDelegate.h"
 
 @interface messageswindow ()
 @property (strong) IBOutlet NSSplitView *splitview;
@@ -216,5 +217,10 @@
 }
 
 - (IBAction)performfilter:(id)sender {
+}
+
+- (IBAction)addlicense:(id)sender {
+    AppDelegate *appdel = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    [appdel enterDonationKey:sender];
 }
 @end

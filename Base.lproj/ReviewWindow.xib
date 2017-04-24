@@ -165,6 +165,18 @@
                             <outlet property="delegate" destination="-2" id="b8Q-5S-QeG"/>
                         </connections>
                     </splitView>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtz-j5-pX2">
+                        <rect key="frame" x="672" y="1" width="86" height="19"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="recessed" title="Add License" bezelStyle="recessed" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="JZq-QC-3O3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addlicense:" target="-2" id="6Vs-fc-pxb"/>
+                            <binding destination="9mf-Pt-2RF" name="hidden" keyPath="values.donated" id="OyI-0u-gsF"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <contentBorderThickness minY="22"/>
@@ -173,5 +185,6 @@
             </connections>
             <point key="canvasLocation" x="291" y="-377"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="9mf-Pt-2RF"/>
     </objects>
 </document>

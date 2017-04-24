@@ -10,6 +10,7 @@
 #import "MyAnimeList.h"
 #import "NSTableViewAction.h"
 #import "ReviewView.h"
+#import "AppDelegate.h"
 
 @interface ReviewWindow ()
 @property (strong) IBOutlet NSArrayController *reviewarraycontroller;
@@ -165,6 +166,9 @@
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification{
     [self.window setFrame:self.window.frame display:false];
 }
-
+- (IBAction)addlicense:(id)sender {
+    AppDelegate *appdel = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+    [appdel enterDonationKey:sender];
+}
 
 @end

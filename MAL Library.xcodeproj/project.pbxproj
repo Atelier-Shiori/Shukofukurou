@@ -334,8 +334,8 @@
 		91AECE5A1E89922A00824C2D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
 		91B378B41E989C7C000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringView.xib; sourceTree = "<group>"; };
 		91B378B81E989C83000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HistoryView.xib; sourceTree = "<group>"; };
-		91C060101EAD2CDC0099E433 /* ReviewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ReviewWindow.h; path = ../ReviewWindow.h; sourceTree = "<group>"; };
-		91C060111EAD2CDC0099E433 /* ReviewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReviewWindow.m; path = ../ReviewWindow.m; sourceTree = "<group>"; };
+		91C060101EAD2CDC0099E433 /* ReviewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewWindow.h; sourceTree = "<group>"; };
+		91C060111EAD2CDC0099E433 /* ReviewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewWindow.m; sourceTree = "<group>"; };
 		91C060191EAD2CEB0099E433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewWindow.xib; sourceTree = "<group>"; };
 		91C0601B1EAD309C0099E433 /* ReviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewView.h; sourceTree = "<group>"; };
 		91C0601C1EAD309C0099E433 /* ReviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewView.m; sourceTree = "<group>"; };

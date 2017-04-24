@@ -11,11 +11,16 @@
 #import "Utility.h"
 #import "NSString+HTMLtoNSAttributedString.h"
 #import "ReviewView.h"
+#import "RecommendedTitleView.h"
 
 @interface InfoView ()
 @property (strong) IBOutlet NSTextField *infoviewtitle;
 @property (strong) IBOutlet NSTextField *infoviewalttitles;
 @property (strong) IBOutlet NSImageView *infoviewposterimage;
+@property (strong) IBOutlet NSPopover *othertitlepopover;
+@property (strong) IBOutlet RecommendedTitleView *otherpopoverviewcontroller;
+@property (strong) IBOutlet NSButton *recommendedtitlebutton;
+@property (strong) IBOutlet NSButton *sourcematerialbutton;
 @end
 
 @implementation InfoView
@@ -119,10 +124,38 @@
         [self fixtextviewscrollposition];
     }
     [self fixtextviewscrollposition];
+    // Show buttons?
+    [self showbuttons:d];
     [_mw loadmainview];
     _selectedinfo = d;
 }
-- (void)fixtextviewscrollposition{
+
+- (void)showbuttons:(NSDictionary *)d {
+    if (d[@"recommendations"]){
+        if ([(NSArray *)d[@"recommendations"] count] > 0){
+            _recommendedtitlebutton.hidden = NO;
+        }
+        else {
+            _recommendedtitlebutton.hidden = YES;
+        }
+    }
+    else {
+        _recommendedtitlebutton.hidden = YES;
+    }
+    if (d[@"manga_adaptations"]){
+        if ([(NSArray *)d[@"manga_adaptations"] count] > 0){
+            _sourcematerialbutton.hidden = NO;
+        }
+        else {
+            _sourcematerialbutton.hidden = YES;
+        }
+    }
+    else {
+        _sourcematerialbutton.hidden = YES;
+    }
+}
+
+- (void)fixtextviewscrollposition {
     [_infoviewdetailstextview scrollToBeginningOfDocument:self];
     [_infoviewsynopsistextview scrollToBeginningOfDocument:self];
     [_infoviewbackgroundtextview scrollToBeginningOfDocument:self];
@@ -202,6 +235,8 @@
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
     _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
+    // Show buttons?
+    [self showbuttons:d];
     [_mw loadmainview];
     _selectedinfo = d;
 }
@@ -220,5 +255,21 @@
     }
     [_mw.reviewwindow loadReview:_selectedid type:_type title:_infoviewtitle.stringValue];
     [_mw.reviewwindow.window makeKeyAndOrderFront:self];
+}
+- (IBAction)showrecommendedtitlepopover:(id)sender {
+    if (_otherpopoverviewcontroller.selectedid == 0){
+        [_otherpopoverviewcontroller viewDidLoad];
+    }
+    _otherpopoverviewcontroller.popovertitle.stringValue = @"Recommended Titles";
+    [_otherpopoverviewcontroller loadTitles:_selectedinfo[@"recommendations"] selectedid:_selectedid type:_type];
+    [_othertitlepopover showRelativeToRect:_recommendedtitlebutton.bounds ofView:_recommendedtitlebutton preferredEdge:NSMaxYEdge];
+}
+- (IBAction)showadaptationspopover:(id)sender {
+    if (_otherpopoverviewcontroller.selectedid == 0){
+        [_otherpopoverviewcontroller viewDidLoad];
+    }
+    _otherpopoverviewcontroller.popovertitle.stringValue = @"Manga Adaptations";
+    [_otherpopoverviewcontroller loadTitles:_selectedinfo[@"manga_adaptations"] selectedid:_selectedid type:1];
+    [_othertitlepopover showRelativeToRect:_sourcematerialbutton.bounds ofView:_sourcematerialbutton preferredEdge:NSMaxYEdge];
 }
 @end

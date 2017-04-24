@@ -13,6 +13,10 @@
                 <outlet property="infoviewposterimage" destination="qPq-GO-OMw" id="9eB-2h-8LE"/>
                 <outlet property="infoviewsynopsistextview" destination="8FO-Uz-7hT" id="RRC-8S-yS5"/>
                 <outlet property="infoviewtitle" destination="lvW-FF-lYT" id="Xns-9K-L2Z"/>
+                <outlet property="otherpopoverviewcontroller" destination="ApP-RB-RnN" id="ltK-MX-AO9"/>
+                <outlet property="othertitlepopover" destination="5H7-SL-XOC" id="FhQ-yu-655"/>
+                <outlet property="recommendedtitlebutton" destination="XRL-x8-3ss" id="qMw-yJ-pbG"/>
+                <outlet property="sourcematerialbutton" destination="Eiq-GX-sEZ" id="M8n-Gp-tl1"/>
                 <outlet property="view" destination="Zfc-hH-9i3" id="2W2-xW-b8W"/>
             </connections>
         </customObject>
@@ -202,8 +206,40 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XRL-x8-3ss">
+                    <rect key="frame" x="13" y="149" width="169" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Recommended Titles" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nAZ-w8-OXe">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showrecommendedtitlepopover:" target="-2" id="a8v-An-xoD"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-GX-sEZ">
+                    <rect key="frame" x="14" y="118" width="169" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Adaptations" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O4W-Kh-9SM">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showadaptationspopover:" target="-2" id="9Y3-yq-bEw"/>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="317" y="1813"/>
+            <point key="canvasLocation" x="316.5" y="1813"/>
         </visualEffectView>
+        <viewController nibName="RecommendedTitleView" id="ApP-RB-RnN" userLabel="Popover View Controller" customClass="RecommendedTitleView">
+            <connections>
+                <outlet property="popover" destination="5H7-SL-XOC" id="wtU-QM-JIA"/>
+            </connections>
+        </viewController>
+        <popover appearance="aqua" behavior="t" id="5H7-SL-XOC">
+            <connections>
+                <outlet property="contentViewController" destination="ApP-RB-RnN" id="u51-0d-GYG"/>
+            </connections>
+        </popover>
     </objects>
 </document>

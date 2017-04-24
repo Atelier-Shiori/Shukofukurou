@@ -1,7 +1,7 @@
 # MAL Library
 ![screenshot](https://malupdaterosx.ateliershiori.moe/assets/mallibrary.png)
 
-MAL Library an open sourced and mostly native MyAnimeList library manager, a complete rewrite of MAL Client OSX written in Objective-C.
+MAL Library an open sourced and native MyAnimeList library manager, a complete rewrite of MAL Client OSX written in Objective-C.
 
 Requires latest SDK (10.12), XCode 8 or later. The C#/Xamarin version is deprecated, but still aviliable in the c-sharp-old branch.
 

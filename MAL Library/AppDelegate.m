@@ -178,4 +178,38 @@
         }
     }
 }
+
+- (IBAction)showmessagewindow:(id)sender {
+    if ([Keychain checkaccount]) {
+        if (!_messageswindow){
+            _messageswindow = [messageswindow new];
+        }
+        [_messageswindow.window makeKeyAndOrderFront:self];
+    }
+    else {
+        [self showloginnotice];
+    }
+}
+
+- (void)clearMessages {
+    // Clears user messages
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *path = [Utility retrieveApplicationSupportDirectory:@"Messages"];
+    NSDirectoryEnumerator *en = [fm enumeratorAtPath:path];
+    NSError *error = nil;
+    bool success;
+    NSString *file;
+    while (file = [en nextObject]){
+        success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@/%@",path,file] error:&error];
+        if (!success && error){
+            NSLog(@"%@", error);
+        }
+    }
+    if ([Utility checkifFileExists:@"messages.json" appendPath:@""]) {
+        [Utility deleteFile:@"messages.json" appendpath:@""];
+    }
+    if (!_messageswindow){
+        [_messageswindow.window close];
+    }
+}
 @end

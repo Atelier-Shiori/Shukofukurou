@@ -168,6 +168,7 @@
             _fieldpassword.stringValue = @"";
             [_mw loadmainview];
             [_mw refreshloginlabel];
+            [_appdelegate clearMessages];
         }
     }];
 }

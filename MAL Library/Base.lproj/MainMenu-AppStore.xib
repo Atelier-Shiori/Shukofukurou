@@ -301,6 +301,19 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="MyAnimeList" id="5he-IT-8Ge">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="MyAnimeList" id="pvD-sQ-h6q">
+                        <items>
+                            <menuItem title="View Messages" id="60c-At-yy4">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="showmessagewindow:" target="Voe-Tx-rLC" id="OAp-c5-Sqc"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="View" id="H8h-7b-M4v">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="View" id="HyV-fh-RgO">

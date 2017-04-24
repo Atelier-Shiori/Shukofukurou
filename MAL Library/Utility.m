@@ -194,10 +194,10 @@
 }
 
 + (void)donateCheck:(AppDelegate*)delegate{
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] == nil) {
-        [Utility setReminderDate];
+    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
+        [Utility showDonateReminder:delegate];
     }
-    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
+    else if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
             // Check donation key
             AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -221,9 +221,6 @@
             } failure:^(NSURLSessionTask *operation, NSError *error) {
             }];
         }
-        else {
-            [Utility showDonateReminder:delegate];
-        }
     }
 }
 + (void)showDonateReminder:(AppDelegate*)delegate{
@@ -231,9 +228,9 @@
     NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:@"Donate"];
     [alert addButtonWithTitle:@"Enter Key"];
-    [alert addButtonWithTitle:@"Remind Me Later"];
+    [alert addButtonWithTitle:@"Not Yet"];
     alert.messageText = @"Please Support MAL Library";
-    alert.informativeText = @"We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program. \r\rIf you find this program helpful, please consider making a donation. You will recieve a key to remove this message and enable additional features.";
+    alert.informativeText = @"We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program. \r\rIf you find this program helpful, please consider making a donation. You will recieve a key to remove this message that will appear when you launch the program.";
     [alert setShowsSuppressionButton:NO];
     // Set Message type to Warning
     alert.alertStyle = NSInformationalAlertStyle;
@@ -241,16 +238,10 @@
     if (choice == NSAlertFirstButtonReturn) {
         // Open Donation Page
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.ateliershiori.moe/donate/"]];
-        [Utility setReminderDate];
     }
     else if (choice == NSAlertSecondButtonReturn) {
         // Show Add Donation Key dialog.
         [delegate enterDonationKey:nil];
-        [Utility setReminderDate];
-    }
-    else {
-        // Surpress message for 2 weeks.
-        [Utility setReminderDate];
     }
 }
 

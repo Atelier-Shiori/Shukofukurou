@@ -42,14 +42,14 @@
         _mangalisttitlefilterstring = _animelistfilter.stringValue;
         _animelistfilter.stringValue = _animelisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_animelistview];
-        currentlist = list;
+        _currentlist = list;
         [self setToolbarButtonState];
     }
     else {
         _animelisttitlefilterstring = _animelistfilter.stringValue;
         _animelistfilter.stringValue = _mangalisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_mangalistview];
-        currentlist = list;
+        _currentlist = list;
         [self setToolbarButtonState];
     }
 }
@@ -220,12 +220,12 @@
     if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"filtersastabs"]).boolValue && [sender isKindOfClass:[NSButton class]]) {
         [self filterStatusAsTabs:(NSButton *)sender];
     }
-    [self performfilter:currentlist];
+    [self performfilter:_currentlist];
 }
 
 - (void)filterStatusAsTabs:(NSButton *)btn{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (currentlist == 0) {
+    if (_currentlist == 0) {
         if (_watchingfilter != btn) {
             [defaults setValue:@(0) forKey:@"watchingfilter"];
         }
@@ -378,17 +378,17 @@
 }
 
 - (IBAction)animelistdoubleclick:(id)sender {
-    if (currentlist == 0) {
+    if (_currentlist == 0) {
         if (_animelisttb.selectedRow >=0) {
             if (_animelisttb.selectedRow >-1) {
                 NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
                 NSDictionary *d = _animelistarraycontroller.selectedObjects[0];
                 if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]) {
                     NSNumber *idnum = d[@"id"];
-                    [mw loadinfo:idnum type:0];
+                    [_mw loadinfo:idnum type:0];
                 }
                 else if([action isEqualToString:@"Modify Title"]) {
-                    [mw.editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:_animelisttb.selectedRow] ofView:_animelisttb preferredEdge:0 type:currentlist];
+                    [_mw.editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:_animelisttb.selectedRow] ofView:_animelisttb preferredEdge:0 type:_currentlist];
                 }
             }
         }
@@ -400,10 +400,10 @@
                 NSDictionary *d = _mangalistarraycontroller.selectedObjects[0];
                 if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]) {
                     NSNumber *idnum = d[@"id"];
-                    [mw loadinfo:idnum type:currentlist];
+                    [_mw loadinfo:idnum type:_currentlist];
                 }
                 else if([action isEqualToString:@"Modify Title"]) {
-                    [mw.editviewcontroller showEditPopover:d showRelativeToRec:[_mangalisttb frameOfCellAtColumn:0 row:_mangalisttb.selectedRow] ofView:_mangalisttb preferredEdge:0 type:currentlist];
+                    [_mw.editviewcontroller showEditPopover:d showRelativeToRec:[_mangalisttb frameOfCellAtColumn:0 row:_mangalisttb.selectedRow] ofView:_mangalisttb preferredEdge:0 type: _currentlist];
                 }
             }
         }
@@ -413,7 +413,7 @@
 - (IBAction)deletetitle:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init] ;
     NSDictionary *d;
-    if (currentlist == 0) {
+    if (_currentlist == 0) {
         d = _animelistarraycontroller.selectedObjects[0];
     }
     else {
@@ -424,7 +424,7 @@
     alert.messageText = [NSString stringWithFormat:@"Are you sure you want to delete %@ from your list?", d[@"title"]];
     alert.informativeText = @"Once you delete this title, this cannot be undone.";
     alert.alertStyle = NSAlertStyleWarning;
-    [alert beginSheetModalForWindow:mw.window completionHandler:^(NSModalResponse returnCode) {
+    [alert beginSheetModalForWindow:_mw.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
             [self deletetitle];
         }
@@ -465,7 +465,7 @@
 - (void)deletetitle {
     NSDictionary *d;
     NSNumber *selid;
-    if (currentlist == 0) {
+    if (_currentlist == 0) {
         d = _animelistarraycontroller.selectedObjects[0];
         selid = d[@"id"];
     }
@@ -473,8 +473,8 @@
         d = _mangalistarraycontroller.selectedObjects[0];
         selid = d[@"id"];
     }
-    [MyAnimeList removeTitleFromList:selid.intValue withType:currentlist completion:^(id responseobject) {
-        [mw loadlist:@(true) type:currentlist];
+    [MyAnimeList removeTitleFromList:selid.intValue withType:_currentlist completion:^(id responseobject) {
+        [_mw loadlist:@(true) type:_currentlist];
     }error:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -484,7 +484,7 @@
     [self setToolbarButtonState];
 }
 - (void)setToolbarButtonState{
-    if (currentlist == 0) {
+    if (_currentlist == 0) {
         if (_animelistarraycontroller.selectedObjects.count > 0) {
             [_edittitleitem setEnabled:YES];
             [_deletetitleitem setEnabled:YES];

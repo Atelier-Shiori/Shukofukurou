@@ -156,6 +156,14 @@
 		91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
 		91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
 		91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
+		91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
+		91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
+		91DAFC5F1EAE6C9F0037A6F2 /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91DAFC5C1EAE6C9F0037A6F2 /* messageswindow.xib */; };
+		91DAFC601EAE6C9F0037A6F2 /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91DAFC5C1EAE6C9F0037A6F2 /* messageswindow.xib */; };
+		91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		91DAFC661EAE6FA20037A6F2 /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91DAFC631EAE6FA20037A6F2 /* messageview.xib */; };
+		91DAFC671EAE6FA20037A6F2 /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91DAFC631EAE6FA20037A6F2 /* messageview.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -342,6 +350,12 @@
 		91D3D8A21E89C1850046C4CC /* EULA.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = EULA.rtf; sourceTree = "<group>"; };
 		91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TypeNumtoStringType.h; sourceTree = "<group>"; };
 		91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TypeNumtoStringType.m; sourceTree = "<group>"; };
+		91DAFC5A1EAE6C9F0037A6F2 /* messageswindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messageswindow.h; sourceTree = "<group>"; };
+		91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageswindow.m; sourceTree = "<group>"; };
+		91DAFC5C1EAE6C9F0037A6F2 /* messageswindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = messageswindow.xib; sourceTree = "<group>"; };
+		91DAFC611EAE6FA20037A6F2 /* messageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messageview.h; sourceTree = "<group>"; };
+		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
+		91DAFC631EAE6FA20037A6F2 /* messageview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = messageview.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,12 +478,6 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				91C060101EAD2CDC0099E433 /* ReviewWindow.h */,
-				91C060111EAD2CDC0099E433 /* ReviewWindow.m */,
-				91C0601A1EAD2CEB0099E433 /* ReviewWindow.xib */,
-				91C0601B1EAD309C0099E433 /* ReviewView.h */,
-				91C0601C1EAD309C0099E433 /* ReviewView.m */,
-				91C0601D1EAD309C0099E433 /* ReviewView.xib */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -520,6 +528,12 @@
 				9199BABA1E89842400F6E9FF /* MainWindow.m */,
 				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
 				916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */,
+				91DAFC5A1EAE6C9F0037A6F2 /* messageswindow.h */,
+				91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */,
+				91DAFC5C1EAE6C9F0037A6F2 /* messageswindow.xib */,
+				91DAFC611EAE6FA20037A6F2 /* messageview.h */,
+				91DAFC621EAE6FA20037A6F2 /* messageview.m */,
+				91DAFC631EAE6FA20037A6F2 /* messageview.xib */,
 				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
 				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
 				9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */,
@@ -539,6 +553,12 @@
 				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
 				91999D0E1E8C87F10026D3E9 /* Resources */,
+				91C0601B1EAD309C0099E433 /* ReviewView.h */,
+				91C0601C1EAD309C0099E433 /* ReviewView.m */,
+				91C0601D1EAD309C0099E433 /* ReviewView.xib */,
+				91C060101EAD2CDC0099E433 /* ReviewWindow.h */,
+				91C060111EAD2CDC0099E433 /* ReviewWindow.m */,
+				91C0601A1EAD2CEB0099E433 /* ReviewWindow.xib */,
 				91999CFD1E8C73300026D3E9 /* SearchView.h */,
 				91999CFE1E8C73300026D3E9 /* SearchView.m */,
 				91999D041E8C7DFE0026D3E9 /* SearchView.xib */,
@@ -746,6 +766,7 @@
 				913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */,
 				91C060211EAD309C0099E433 /* ReviewView.xib in Resources */,
 				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
+				91DAFC601EAE6C9F0037A6F2 /* messageswindow.xib in Resources */,
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
 				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
 				913A11911E8F206A00450B66 /* SearchView.xib in Resources */,
@@ -757,6 +778,7 @@
 				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
+				91DAFC671EAE6FA20037A6F2 /* messageview.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
@@ -780,9 +802,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91DAFC661EAE6FA20037A6F2 /* messageview.xib in Resources */,
 				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
+				91DAFC5F1EAE6C9F0037A6F2 /* messageswindow.xib in Resources */,
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
@@ -852,6 +876,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */,
+				91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 				91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */,
 				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
@@ -868,6 +893,7 @@
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
 				2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */,
+				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
 				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
@@ -919,6 +945,7 @@
 				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */,
 				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
+				91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */,
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
 				9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
@@ -933,6 +960,7 @@
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
+				91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

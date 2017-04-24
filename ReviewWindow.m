@@ -15,11 +15,13 @@
 @property (strong) IBOutlet NSArrayController *reviewarraycontroller;
 @property (strong) IBOutlet NSTableViewAction *reviewtb;
 @property (strong) IBOutlet NSVisualEffectView *selectreviewview;
+@property (strong) IBOutlet NSTextField *selectreviewlabel;
 @property (strong) IBOutlet ReviewView *reviewview;
 @property (strong) IBOutlet NSView *reviewcontent;
 @property int selectedid;
 @property int selectedtype;
 @property (strong) IBOutlet NSSplitView *splitview;
+@property (strong) IBOutlet NSProgressIndicator *progresswheel;
 
 @end
 
@@ -44,31 +46,59 @@
 }
 
 - (void)loadReview:(int)idnum type:(int)type title:(NSString *)title {
+    if (_selectedid == idnum && type == _selectedtype){
+        return;
+    }
+    [self cleartableview];
+    [self toggleprogresswheel:YES];
     [MyAnimeList retrieveReviewsForTitle:idnum withType:type completion:^(id responsedata) {
         _selectedid = idnum;
         _selectedtype = type;
         self.window.title = [NSString stringWithFormat:@"Reviews - %@", title];
         [self populateReviews:responsedata];
+        [self toggleprogresswheel:NO];
     } error:^(NSError *error) {
+        [self toggleprogresswheel:NO];
         NSAlert *alert = [[NSAlert alloc] init];
         [alert setMessageText:NSLocalizedString(@"Couldn't Load Reviews",nil)];
         [alert setInformativeText:NSLocalizedString(@"Make sure you are connected to the internet and try again.",nil)];
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
         [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-            if ([[_reviewarraycontroller mutableArrayValueForKey:@"content"] count] == 0) {
                 [self.window close];
-            }
         }];
     }];
 }
 
-- (void)populateReviews:(id)data{
+- (void)toggleprogresswheel:(bool)state{
+    if (state) {
+        _selectreviewlabel.stringValue = @"Loading Reviews...";
+        [_progresswheel startAnimation:nil];
+        _progresswheel.hidden = false;
+    }
+    else {
+        [_progresswheel stopAnimation:nil];
+        _progresswheel.hidden = true;
+    }
+}
+- (void)cleartableview{
     NSMutableArray *a = [_reviewarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
+    [_reviewtb reloadData];
+    [_reviewtb deselectAll:self];
+    self.window.title = @"Reviews";
+}
+
+- (void)populateReviews:(id)data{
     [_reviewarraycontroller addObjects:data];
     [_reviewtb reloadData];
     [_reviewtb deselectAll:self];
+    if ([[_reviewarraycontroller mutableArrayValueForKey:@"content"] count] > 0) {
+        _selectreviewlabel.stringValue = @"Please select a review.";
+    }
+    else {
+        _selectreviewlabel.stringValue = @"No reviews.";
+    }
 }
 
 - (IBAction)viewreview:(id)sender {

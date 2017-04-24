@@ -8,10 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 @class MainWindow;
-@interface ListView : NSViewController <NSTableViewDelegate>{
-    IBOutlet MainWindow *mw;
-    int currentlist;
-}
+@interface ListView : NSViewController <NSTableViewDelegate>
+
+@property (strong) IBOutlet MainWindow *mw;
+@property int currentlist;
 
 // Anime List View
 @property (strong) IBOutlet NSArrayController *animelistarraycontroller;

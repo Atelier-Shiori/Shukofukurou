@@ -69,6 +69,26 @@
     else{
         [genres appendString:@"None"];
     }
+    NSString *producers = nil;
+    if (d[@"producers"]){
+        producers = [Utility appendstringwithArray:(NSArray *)d[@"producers"]];
+    }
+    NSMutableString *openingthemes = nil;
+    if (d[@"opening_theme"]) {
+        openingthemes = [NSMutableString new];
+        [openingthemes appendString:@"\nOpening Themes:\n"];
+        for (NSString *theme in (NSArray *)d[@"opening_theme"]){
+            [openingthemes appendFormat:@"%@\n",theme];
+        }
+    }
+    NSMutableString *endingthemes = nil;
+    if (d[@"ending_theme"]) {
+        endingthemes = [NSMutableString new];
+        [endingthemes appendString:@"\nEnding Themes:\n"];
+        for (NSString *theme in (NSArray *)d[@"ending_theme"]){
+            [endingthemes appendFormat:@"%@\n",theme];
+        }
+    }
     if (d[@"background"] != nil){
         background = [(NSString *)d[@"background"] convertHTMLtoAttStr];
     }
@@ -102,6 +122,9 @@
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
+    if (producers){
+        [details appendString:[NSString stringWithFormat:@"Producers: %@\n", producers]];
+    }
     if (d[@"classification"] != nil){
         [details appendString:[NSString stringWithFormat:@"Classification: %@\n", d[@"classification"]]];
     }
@@ -110,6 +133,12 @@
     }
     [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
     [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
+    if (openingthemes) {
+        [details appendString:openingthemes];
+    }
+    if (endingthemes) {
+        [details appendString:endingthemes];
+    }
     NSString *synopsis = d[@"synopsis"];
     _infoviewdetailstextview.string = details;
     [_infoviewsynopsistextview.textStorage setAttributedString:[synopsis convertHTMLtoAttStr]];
@@ -159,6 +188,7 @@
     [_infoviewsynopsistextview scrollToBeginningOfDocument:self];
     [_infoviewbackgroundtextview scrollToBeginningOfDocument:self];
 }
+
 - (void)populateMangaInfoView:(id)object{
     NSDictionary *d = object;
     NSMutableString *titles = [NSMutableString new];
@@ -248,6 +278,7 @@
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%i",_selectedid]]];
     }
 }
+
 - (IBAction)viewreviews:(id)sender {
     if (!_mw.reviewwindow){
         _mw.reviewwindow = [ReviewWindow new];
@@ -255,6 +286,7 @@
     [_mw.reviewwindow loadReview:_selectedid type:_type title:_infoviewtitle.stringValue];
     [_mw.reviewwindow.window makeKeyAndOrderFront:self];
 }
+
 - (IBAction)showrecommendedtitlepopover:(id)sender {
     if (_otherpopoverviewcontroller.selectedid == 0){
         [_otherpopoverviewcontroller viewDidLoad];
@@ -263,6 +295,7 @@
     [_otherpopoverviewcontroller loadTitles:_selectedinfo[@"recommendations"] selectedid:_selectedid type:_type];
     [_othertitlepopover showRelativeToRect:_recommendedtitlebutton.bounds ofView:_recommendedtitlebutton preferredEdge:NSMaxYEdge];
 }
+
 - (IBAction)showadaptationspopover:(id)sender {
     if (_otherpopoverviewcontroller.selectedid == 0){
         [_otherpopoverviewcontroller viewDidLoad];

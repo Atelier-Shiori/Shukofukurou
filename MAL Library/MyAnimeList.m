@@ -288,7 +288,9 @@
         }
         [dateFormatter setDateFormat:nil];
         dateFormatter.dateStyle = NSDateFormatterMediumStyle;
-        NSString *lastupdated = [dateFormatter stringFromDate:datetime];
+        NSString *lastupdated = [NSDateFormatter localizedStringFromDate:datetime
+                                                               dateStyle: NSDateFormatterShortStyle
+                                                               timeStyle: NSDateFormatterNoStyle];
         [history addObject:@{@"id":idnum, @"title":title, @"type":type, @"last_updated":lastupdated, @"segment":segment, @"segment_type":segment_type}];
     }
     return history;

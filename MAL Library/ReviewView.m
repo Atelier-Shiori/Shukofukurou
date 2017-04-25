@@ -30,7 +30,7 @@
 - (void)loadReview:(NSDictionary *)review type:(int)type {
     _reviewerusername.stringValue = review[@"username"];
     _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@", review[@"rating"]];
-    _reviewdatelabel.stringValue = [NSString stringWithFormat:@"Reviewed on %@", review[@"date"]];
+    _reviewdatelabel.stringValue = [NSString stringWithFormat:@"Reviewed on %@", [Utility stringDatetoLocalizedDateString:(NSString *)review[@"date"]]];
     if (type == 0) {
          _episodeswatched.stringValue = [NSString stringWithFormat:@"Episodes watched: %@", review[@"watched_episodes"]];
     }

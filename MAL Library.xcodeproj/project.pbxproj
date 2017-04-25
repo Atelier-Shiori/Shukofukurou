@@ -150,6 +150,8 @@
 		91B378B31E989C7C000061E6 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
 		91B378B61E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91B378B71E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
+		91B3A8A01EB0097C0066CEB1 /* StringDatetoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */; };
+		91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */; };
 		91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
 		91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
 		91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
@@ -347,6 +349,8 @@
 		91AECE5A1E89922A00824C2D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
 		91B378B41E989C7C000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringView.xib; sourceTree = "<group>"; };
 		91B378B81E989C83000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HistoryView.xib; sourceTree = "<group>"; };
+		91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringDatetoDate.h; sourceTree = "<group>"; };
+		91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringDatetoDate.m; sourceTree = "<group>"; };
 		91C060101EAD2CDC0099E433 /* ReviewWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewWindow.h; sourceTree = "<group>"; };
 		91C060111EAD2CDC0099E433 /* ReviewWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewWindow.m; sourceTree = "<group>"; };
 		91C060191EAD2CEB0099E433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewWindow.xib; sourceTree = "<group>"; };
@@ -456,6 +460,7 @@
 		91999D0E1E8C87F10026D3E9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				91C0601B1EAD309C0099E433 /* ReviewView.h */,
 				9199BAAF1E89842400F6E9FF /* Credits.rtf */,
 				9199BAB01E89842400F6E9FF /* dsa_pub.pem */,
 				91D3D8A21E89C1850046C4CC /* EULA.rtf */,
@@ -497,6 +502,8 @@
 				910589E91E981E1A00501B9A /* AdvancedPref.m */,
 				910589F21E981E2400501B9A /* AdvancedPref.xib */,
 				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
+				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
+				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
 				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
 				91D094CD1E9876D8009454F8 /* AiringView.h */,
@@ -569,7 +576,6 @@
 				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
 				91999D0E1E8C87F10026D3E9 /* Resources */,
-				91C0601B1EAD309C0099E433 /* ReviewView.h */,
 				91C0601C1EAD309C0099E433 /* ReviewView.m */,
 				91C0601D1EAD309C0099E433 /* ReviewView.xib */,
 				91C060101EAD2CDC0099E433 /* ReviewWindow.h */,
@@ -916,6 +922,7 @@
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
 				91822A571EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
+				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
@@ -956,6 +963,7 @@
 				91999D081E8C81580026D3E9 /* SeasonView.m in Sources */,
 				9199BAD61E89842400F6E9FF /* LoginPref.m in Sources */,
 				91999D001E8C73300026D3E9 /* SearchView.m in Sources */,
+				91B3A8A01EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,

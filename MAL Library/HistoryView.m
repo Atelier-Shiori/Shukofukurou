@@ -46,12 +46,6 @@
     NSMutableArray *a = [_historyarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_historyarraycontroller addObjects:history];
-    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
-        _historyarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"type == [cd] %@", @"anime"];
-    }
-    else {
-        [_historyarraycontroller setFilterPredicate:nil];
-    }
     [_historytb reloadData];
     [_historytb deselectAll:self];
 }

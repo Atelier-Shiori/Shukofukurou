@@ -27,4 +27,6 @@
 + (void)checkandclearimagecache;
 + (void)setCacheClearDate;
 + (void)clearImageCache;
++ (NSDate *)stringDatetoDate:(NSString *)stringdate;
++ (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
 @end

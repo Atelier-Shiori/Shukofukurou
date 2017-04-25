@@ -286,4 +286,16 @@
     }
 }
 
++ (NSDate *)stringDatetoDate:(NSString *)stringdate {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    return [dateFormatter dateFromString:stringdate];
+}
+
++ (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate {
+    return [NSDateFormatter localizedStringFromDate:[Utility stringDatetoDate:stringdate]
+                                                             dateStyle: NSDateFormatterShortStyle
+                                                             timeStyle: NSDateFormatterNoStyle];
+}
+
 @end

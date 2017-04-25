@@ -9,5 +9,18 @@
 #import "StringDatetoDate.h"
 
 @implementation StringDatetoDate
++ (Class)transformedValueClass {
+    return [NSDate class];
+}
 
+- (id)transformedValue:(id)value {
+    if (value == nil) return nil;
+
+    if ([[value className] isEqualToString:@"__NSCFString"]) {
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+        return [dateFormatter dateFromString:value];
+    }
+    return nil;
+}
 @end

@@ -19,6 +19,7 @@ typedef NS_ENUM(unsigned int, InfoType) {
 @property (getter=getSelectedId, setter=setSelectedId:) int selectedid;
 @property (getter=getSelectedInfo, readonly) NSDictionary *selectedinfo;
 @property (getter=getType, setter=setType:) int type;
+@property (strong) IBOutlet NSPopover *othertitlepopover;
 
 @property (strong) IBOutlet NSTextView *infoviewbackgroundtextview;
 @property (strong) IBOutlet NSTextView *infoviewdetailstextview;

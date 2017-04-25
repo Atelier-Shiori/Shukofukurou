@@ -17,7 +17,6 @@
 @property (strong) IBOutlet NSTextField *infoviewtitle;
 @property (strong) IBOutlet NSTextField *infoviewalttitles;
 @property (strong) IBOutlet NSImageView *infoviewposterimage;
-@property (strong) IBOutlet NSPopover *othertitlepopover;
 @property (strong) IBOutlet RecommendedTitleView *otherpopoverviewcontroller;
 @property (strong) IBOutlet NSButton *recommendedtitlebutton;
 @property (strong) IBOutlet NSButton *sourcematerialbutton;

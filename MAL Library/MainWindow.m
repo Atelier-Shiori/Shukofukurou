@@ -238,6 +238,7 @@
     _advsearchpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+    _infoview.othertitlepopover.appearance = [NSAppearance appearanceNamed:appearancename];
     [_w setFrame:_w.frame display:false];
 }
 

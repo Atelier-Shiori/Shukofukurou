@@ -245,11 +245,45 @@
     }
 }
 
-+ (void)setReminderDate{
++ (void)setReminderDate {
     //Sets Reminder Date
     NSDate *now = [NSDate date];
     NSDate *reminderdate = [now dateByAddingTimeInterval:60*60*24*14];
     [[NSUserDefaults standardUserDefaults] setObject:reminderdate forKey:@"donatereminderdate"];
+}
+
++ (void)checkandclearimagecache {
+    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"imagecacheexpire"]) {
+        if ([(NSDate *)[[NSUserDefaults standardUserDefaults] valueForKey:@"imagecacheexpire"] timeIntervalSinceNow] < 0) {
+            [Utility clearImageCache];
+        }
+    }
+    else {
+        [Utility setCacheClearDate];
+    }
+}
+
++ (void)setCacheClearDate {
+    //Sets Reminder Date
+    NSDate *now = [NSDate date];
+    NSDate *reminderdate = [now dateByAddingTimeInterval:60*60*24*14];
+    [[NSUserDefaults standardUserDefaults] setObject:reminderdate forKey:@"imagecacheexpire"];
+}
+
++ (void)clearImageCache {
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSString *path = [Utility retrieveApplicationSupportDirectory:@"imgcache"];
+    NSDirectoryEnumerator *en = [fm enumeratorAtPath:path];
+    NSError *error = nil;
+    bool success;
+    NSString *file;
+    while (file = [en nextObject]) {
+        success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@/%@",path,file] error:&error];
+        if (!success && error) {
+            NSLog(@"%@", error);
+        }
+        [Utility setCacheClearDate];
+    }
 }
 
 @end

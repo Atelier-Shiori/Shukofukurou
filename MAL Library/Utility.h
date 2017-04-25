@@ -24,4 +24,7 @@
 + (NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url;
 + (NSString *)statusFromDateRange:(NSString *)start toDate:(NSString *)end;
 + (void)donateCheck:(AppDelegate*)delegate;
++ (void)checkandclearimagecache;
++ (void)setCacheClearDate;
++ (void)clearImageCache;
 @end

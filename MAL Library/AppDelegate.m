@@ -50,6 +50,8 @@
     
 }
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [Fabric with:@[[Crashlytics class]]];
+    [Utility checkandclearimagecache];
     // Ask to move application
     #if defined(AppStore)
     #else
@@ -64,7 +66,6 @@
     [_mainwindowcontroller setDelegate:self];
     [_mainwindowcontroller.window makeKeyAndOrderFront:self];
     [self showloginnotice];
-    [Fabric with:@[[Crashlytics class]]];
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
      andSelector:@selector(handleURLEvent:withReplyEvent:)

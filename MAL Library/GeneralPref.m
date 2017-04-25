@@ -63,18 +63,7 @@
     alert.alertStyle = NSAlertStyleInformational;
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
-            NSFileManager *fm = [NSFileManager defaultManager];
-            NSString *path = [Utility retrieveApplicationSupportDirectory:@"imgcache"];
-            NSDirectoryEnumerator *en = [fm enumeratorAtPath:path];
-            NSError *error = nil;
-            bool success;
-            NSString *file;
-            while (file = [en nextObject]){
-                success = [fm removeItemAtPath:[NSString stringWithFormat:@"%@/%@",path,file] error:&error];
-                if (!success && error){
-                    NSLog(@"%@", error);
-                }
-            }
+            [Utility clearImageCache];
         }
     }];
 }

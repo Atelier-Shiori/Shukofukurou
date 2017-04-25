@@ -25,7 +25,7 @@
 @class HistoryView;
 @class AiringView;
 
-@interface MainWindow : NSWindowController < PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
+@interface MainWindow : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
 @property (strong)IBOutlet NSWindow *w;
 @property (strong)NSDictionary *selecteditem;
 @property (strong) IBOutlet NSView *mainview;

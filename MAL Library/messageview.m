@@ -38,11 +38,27 @@
     NSString *messagestr;
     if (message[@"message"]){
         messagestr = [NSString stringWithFormat:@"<html><head><meta charset=\"UTF-8\"><style> body { font-family: -apple-system; }</style></head><body>%@</body></html>",message[@"message"]];
+        messagestr = [messagestr stringByReplacingOccurrencesOfString:@" target=\"_blank\" rel=\"nofollow\"" withString:@""];
     }
     else {
-        messagestr = @"";
+        messagestr = @"(Message has no content or Message API broken)";
     }
     [[_messagewebview mainFrame] loadHTMLString:messagestr baseURL:[[NSBundle mainBundle] bundleURL]];
+}
+
+- (void)webView:(WebView *)webView
+decidePolicyForNavigationAction:(NSDictionary *)actionInformation
+        request:(NSURLRequest *)request
+          frame:(WebFrame *)frame
+decisionListener:(id <WebPolicyDecisionListener>)listener
+{
+    if ([actionInformation objectForKey:WebActionElementKey]) {
+        [listener ignore];
+        [[NSWorkspace sharedWorkspace] openURL:[request URL]];
+    }
+    else {
+        [listener use];
+    }
 }
 
 @end

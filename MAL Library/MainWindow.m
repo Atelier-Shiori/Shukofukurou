@@ -69,7 +69,7 @@
     
     // Fix window size
     NSRect frame = (self.window).frame;
-    if (floor(NSAppKitVersionNumber) < NSAppKitVersionNumber10_12){
+    if (floor(NSAppKitVersionNumber) <= NSAppKitVersionNumber10_11){
         frame.size.height = frame.size.height - 44;
     }
     else{

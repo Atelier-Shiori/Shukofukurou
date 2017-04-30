@@ -44,6 +44,7 @@
         messagestr = @"(Message has no content or Message API broken)";
     }
     [[_messagewebview mainFrame] loadHTMLString:messagestr baseURL:[[NSBundle mainBundle] bundleURL]];
+    _selectedmessage = message;
 }
 
 - (void)webView:(WebView *)webView

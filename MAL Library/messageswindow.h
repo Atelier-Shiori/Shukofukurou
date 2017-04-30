@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class messagecomposer;
+
 @interface messageswindow : NSWindowController <NSTableViewDelegate, NSSplitViewDelegate>
+@property (strong) messagecomposer *messagecomposerw;
 - (void)cleartableview;
 @end

@@ -7,11 +7,13 @@
 //
 
 #import "messageswindow.h"
+#import "messagecomposer.h"
 #import "MyAnimeList.h"
 #import "NSTableViewAction.h"
 #import "Utility.h"
 #import "messageview.h"
 #import "AppDelegate.h"
+#import "NSString+HTMLtoNSAttributedString.h"
 
 @interface messageswindow ()
 @property (strong) IBOutlet NSSplitView *splitview;
@@ -46,6 +48,18 @@
     _selectmessageview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _messageview.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     [self loadmessagelist:1 refresh:false];
+}
+
+- (messagecomposer *)messagecomposerController {
+    if (!_messagecomposerw)
+    {
+        _messagecomposerw = [messagecomposer new];
+        __weak __typeof__(self) weakSelf = self;
+        _messagecomposerw.completionblock = ^(){
+            [weakSelf loadmessagelist:1 refresh:true];
+        };
+    }
+    return _messagecomposerw;
 }
 
 - (void)loadmessagelist:(int)idnum refresh:(bool)refresh  {
@@ -204,6 +218,11 @@
     [self.window setFrame:self.window.frame display:false];
 }
 - (IBAction)createmessage:(id)sender {
+    if (!_messagecomposerw) {
+        _messagecomposerw = [self messagecomposerController];
+    }
+    [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil];
+    [_messagecomposerw.window makeKeyAndOrderFront:self];
 }
 
 - (IBAction)refreshmessagelist:(id)sender {
@@ -211,6 +230,12 @@
 }
 
 - (IBAction)reply:(id)sender {
+    NSDictionary *d = _messageview.selectedmessage;
+    if (!_messagecomposerw) {
+        _messagecomposerw = [self messagecomposerController];
+    }
+    [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[(NSString *)d[@"message"] convertHTMLtoAttStr]];
+    [_messagecomposerw.window makeKeyAndOrderFront:self];
 }
 
 - (IBAction)deletemessage:(id)sender {

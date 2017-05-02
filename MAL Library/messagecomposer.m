@@ -7,6 +7,7 @@
 //
 
 #import "messagecomposer.h"
+#import "HTMLtoBBCode.h"
 
 @interface messagecomposer ()
 @property (strong) IBOutlet NSTextField *reciplicant;
@@ -46,6 +47,7 @@
     NSData *htmlData = [_messagetext.attributedString dataFromRange:NSMakeRange(0, _messagetext.attributedString.length) documentAttributes:documentAttributes error:NULL];
     NSString *htmlString = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
     NSLog(@"%@",htmlString);
+    NSLog(@"%@",[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString]);
 }
 
 @end

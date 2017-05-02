@@ -48,18 +48,22 @@
     _selectmessageview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _messageview.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     [self loadmessagelist:1 refresh:false];
+    if (!_messagecomposerw) {
+        _messagecomposerw = [self messagecomposerController];
+    }
 }
 
 - (messagecomposer *)messagecomposerController {
+    messagecomposer *mc;
     if (!_messagecomposerw)
     {
-        _messagecomposerw = [messagecomposer new];
+        mc = [messagecomposer new];
         __weak __typeof__(self) weakSelf = self;
-        _messagecomposerw.completionblock = ^(){
+        mc.completionblock = ^(){
             [weakSelf loadmessagelist:1 refresh:true];
         };
     }
-    return _messagecomposerw;
+    return mc;
 }
 
 - (void)loadmessagelist:(int)idnum refresh:(bool)refresh  {
@@ -218,9 +222,6 @@
     [self.window setFrame:self.window.frame display:false];
 }
 - (IBAction)createmessage:(id)sender {
-    if (!_messagecomposerw) {
-        _messagecomposerw = [self messagecomposerController];
-    }
     [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil];
     [_messagecomposerw.window makeKeyAndOrderFront:self];
 }
@@ -231,10 +232,7 @@
 
 - (IBAction)reply:(id)sender {
     NSDictionary *d = _messageview.selectedmessage;
-    if (!_messagecomposerw) {
-        _messagecomposerw = [self messagecomposerController];
-    }
-    [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[(NSString *)d[@"message"] convertHTMLtoAttStr]];
+    [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[[NSString stringWithFormat:@"[quote]%@[/quote]",(NSString *)d[@"message"]] convertHTMLtoAttStr]];
     [_messagecomposerw.window makeKeyAndOrderFront:self];
 }
 

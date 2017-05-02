@@ -12,10 +12,25 @@
 		2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
 		2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
+		2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
+		2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
 		2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
 		2DAA9FC41EB6524A00F562BD /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC11EB6524A00F562BD /* messagecomposer.xib */; };
 		2DAA9FC51EB6524A00F562BD /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC11EB6524A00F562BD /* messagecomposer.xib */; };
+		2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		2DB59D141EB7D4B700FDC36E /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2DB59D151EB7D4BE00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		2DB59D161EB7D4BE00FDC36E /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */; };
+		2DC28DCC1EB8DF64005B7B77 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */; };
+		2DC28DCD1EB8DF64005B7B77 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC81EB8DF64005B7B77 /* ESCssTokenizer.m */; };
+		2DC28DCE1EB8DF64005B7B77 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC81EB8DF64005B7B77 /* ESCssTokenizer.m */; };
+		2DC28DCF1EB8DF64005B7B77 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */; };
+		2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */; };
+		2DC28DD21EB8F183005B7B77 /* test.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DC28DD11EB8F183005B7B77 /* test.html */; };
 		910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
@@ -202,6 +217,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2DB59D161EB7D4BE00FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				913A11A11E8F206A00450B66 /* AFNetworking.framework in Embed Frameworks */,
 				913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */,
 				913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */,
@@ -238,6 +254,7 @@
 				9199BAFF1E89847D00F6E9FF /* AFNetworking.framework in Embed Frameworks */,
 				91AECE591E89921200824C2D /* PXSourceList.framework in Embed Frameworks */,
 				9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */,
+				2DB59D141EB7D4B700FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -251,9 +268,18 @@
 		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2DA42F1D1EB79B200006FB9F /* HTMLtoBBCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLtoBBCode.h; path = ../HTMLtoBBCode.h; sourceTree = "<group>"; };
+		2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLtoBBCode.m; path = ../HTMLtoBBCode.m; sourceTree = "<group>"; };
 		2DAA9FBF1EB6524A00F562BD /* messagecomposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messagecomposer.h; sourceTree = "<group>"; };
 		2DAA9FC01EB6524A00F562BD /* messagecomposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messagecomposer.m; sourceTree = "<group>"; };
 		2DAA9FC11EB6524A00F562BD /* messagecomposer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = messagecomposer.xib; sourceTree = "<group>"; };
+		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
+		2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
+		2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
+		2DC28DC81EB8DF64005B7B77 /* ESCssTokenizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokenizer.m; sourceTree = "<group>"; };
+		2DC28DC91EB8DF64005B7B77 /* ESCssTokens.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssTokens.h; sourceTree = "<group>"; };
+		2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokens.m; sourceTree = "<group>"; };
+		2DC28DD11EB8F183005B7B77 /* test.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test.html; sourceTree = "<group>"; };
 		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
@@ -396,11 +422,13 @@
 				913A117F1E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
 				913A11801E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
 				913A11821E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
+				2DB59D151EB7D4BE00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A11831E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				913A11841E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
 				913A11851E8F206A00450B66 /* Crashlytics.framework in Frameworks */,
 				913A11861E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
 				913A11871E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
+				2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A11881E8F206A00450B66 /* Fabric.framework in Frameworks */,
 				913A118A1E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
 				913A118B1E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
@@ -418,9 +446,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */,
 				9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */,
 				9199BAFE1E89847D00F6E9FF /* AFNetworking.framework in Frameworks */,
+				2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */,
 				9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */,
 				9199BAF51E89844C00F6E9FF /* MASPreferences.framework in Frameworks */,
@@ -450,6 +480,7 @@
 		913A627C1E9D7AF40023E6A1 /* MAL Library Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
+				2DC28DD11EB8F183005B7B77 /* test.html */,
 				913A627D1E9D7AF40023E6A1 /* MAL_Library_Unit_Tests.m */,
 				913A627F1E9D7AF40023E6A1 /* Info.plist */,
 			);
@@ -459,6 +490,7 @@
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */,
 				918C0D401E8A00ED0037898E /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -501,6 +533,8 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				2DA42F1D1EB79B200006FB9F /* HTMLtoBBCode.h */,
+				2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -609,6 +643,11 @@
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
+				2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */,
+				2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */,
+				2DC28DC81EB8DF64005B7B77 /* ESCssTokenizer.m */,
+				2DC28DC91EB8DF64005B7B77 /* ESCssTokens.h */,
+				2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -829,6 +868,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DC28DD21EB8F183005B7B77 /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -924,13 +964,16 @@
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				913A11681E8F206A00450B66 /* LoginPref.m in Sources */,
+				2DC28DCC1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
 				913A11691E8F206A00450B66 /* SearchView.m in Sources */,
+				2DC28DCE1EB8DF64005B7B77 /* ESCssTokenizer.m in Sources */,
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
 				2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */,
+				2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */,
 				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
@@ -945,6 +988,7 @@
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
+				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				913A11791E8F206A00450B66 /* SSKeychain.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
@@ -967,12 +1011,15 @@
 			files = (
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
+				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
 				917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */,
 				9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */,
+				2DC28DCF1EB8DF64005B7B77 /* ESCssTokens.m in Sources */,
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
 				91D094C21E983095009454F8 /* HistoryView.m in Sources */,
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
+				2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
 				91999D081E8C81580026D3E9 /* SeasonView.m in Sources */,
 				9199BAD61E89842400F6E9FF /* LoginPref.m in Sources */,
@@ -994,6 +1041,7 @@
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,
+				2DC28DCD1EB8DF64005B7B77 /* ESCssTokenizer.m in Sources */,
 				91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
@@ -1273,6 +1321,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
@@ -1310,6 +1360,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -1471,6 +1523,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
@@ -1507,6 +1561,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",

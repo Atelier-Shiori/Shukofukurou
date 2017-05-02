@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "MyAnimeList.h"
 #import "Keychain.h"
+#import "HTMLtoBBCode.h"
 
 @interface MAL_Library_Unit_Tests : XCTestCase
 
@@ -571,6 +572,17 @@
     return 0;
 }
 
+- (void)testHTMLtoBBCode {
+    NSString *HTMLText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"test" ofType: @"html"] encoding:NSUTF8StringEncoding error:nil];
+    NSString *BBCodeFile = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"correctoutput" ofType: @"txt"] encoding:NSUTF8StringEncoding error:nil];
+    NSString *BBCodeOutput = [HTMLtoBBCode convertHTMLStringtoBBCode:HTMLText];
+    if (![BBCodeOutput isEqualToString:BBCodeFile]) {
+        XCTAssert(NO, @"BBCode output does not match the correct output text file");
+    }
+    else {
+        XCTAssert(YES, @"No errors.");
+    }
+}
 
 
 @end

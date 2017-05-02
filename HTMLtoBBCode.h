@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface HTMLtoBBCode : NSObject
-
++ (NSString *)convertHTMLStringtoBBCode:(NSString *)text;
 @end

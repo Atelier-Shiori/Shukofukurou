@@ -573,11 +573,11 @@
 }
 
 - (void)testHTMLtoBBCode {
-    NSString *HTMLText = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"test" ofType: @"html"] encoding:NSUTF8StringEncoding error:nil];
-    NSString *BBCodeFile = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource: @"correctoutput" ofType: @"txt"] encoding:NSUTF8StringEncoding error:nil];
-    NSString *BBCodeOutput = [HTMLtoBBCode convertHTMLStringtoBBCode:HTMLText];
-    if (![BBCodeOutput isEqualToString:BBCodeFile]) {
-        XCTAssert(NO, @"BBCode output does not match the correct output text file");
+    NSString * TestHTML = @"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n<html>\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<meta http-equiv=\"Content-Style-Type\" content=\"text/css\">\n<title></title>\n<meta name=\"Generator\" content=\"Cocoa HTML Writer\">\n<meta name=\"CocoaVersion\" content=\"1504.82\">\n<style type=\"text/css\">\np.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}\np.p2 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: center; font: 12.0px Helvetica}\np.p3 {margin: 0.0px 0.0px 0.0px 0.0px; text-align: right; font: 12.0px Helvetica}\nspan.s1 {text-decoration: underline}\n</style>\n</head>\n<body>\n<p class=\"p1\">test <b>test <i>test </i></b><span class=\"s1\"><b><i>test</i></b></span></p>\n<p class=\"p2\">centered text</p>\n<p class=\"p3\">right text</p>\n<p class=\"p3\"><a href=\"http://www.chikorita157.com/\">Home</a></p>\n</body>\n</html>";
+    NSString *ExpectedBBCodeOutput = @"test [b]test [i]test [/i][/b][u][b][i]test[/i][/b][/u]\n[center]centered text[/center]\n[right]right text[/right]\n[right][url=http://www.chikorita157.com/]Home[/url][/right]\n";
+    NSString *BBCodeOutput = [HTMLtoBBCode convertHTMLStringtoBBCode:TestHTML];
+    if (![BBCodeOutput isEqualToString:ExpectedBBCodeOutput]) {
+        XCTAssert(NO, @"BBCode output does not match the correct string output.");
     }
     else {
         XCTAssert(YES, @"No errors.");

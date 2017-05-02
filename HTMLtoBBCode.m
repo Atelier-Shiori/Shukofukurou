@@ -78,7 +78,7 @@
     // URL
     html = [html stringByReplacingOccurrencesOfString:@"<a href=\"" withString:@"[url="];
     html = [html stringByReplacingOccurrencesOfString:@"</a>" withString:@"[/url]"];
-    html = [html stringByReplacingOccurrencesOfString:@">" withString:@"]"];
+    html = [html stringByReplacingOccurrencesOfString:@"\">" withString:@"]"];
     return html;
 }
 - (NSDictionary *)csstoStyleDictionary:(NSString *)html {
@@ -158,19 +158,26 @@
                 [beforetags appendFormat:@"[%@]",formatinfo[@"align"]];
                 [endtags insertString:[NSString stringWithFormat:@"[/%@]",formatinfo[@"align"]] atIndex:0];
             }
-            NSString *paragraphtext = [self getParagraph:html paragraph:[key stringByReplacingOccurrencesOfString:@"p." withString:@""]];
-            NSString *parsedstring = [NSString stringWithFormat:@"%@%@%@",beforetags,paragraphtext,endtags];
-            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"<p class=\"%@\">%@</p>",[key stringByReplacingOccurrencesOfString:@"p." withString:@""],paragraphtext] withString:parsedstring];
-            
+            OnigRegexp *regex = [OnigRegexp compile:[NSString stringWithFormat:@"<p class=\"%@\">",[key stringByReplacingOccurrencesOfString:@"p." withString:@""]] ignorecase:YES multiline:YES extended:NO];
+            OnigResult *match;
+            while ((match = [regex search:html])) {
+                NSString *paragraphtext = [self getParagraph:html paragraph:[key stringByReplacingOccurrencesOfString:@"p." withString:@""]];
+                NSString *parsedstring = [NSString stringWithFormat:@"%@%@%@",beforetags,paragraphtext,endtags];
+                html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"<p class=\"%@\">%@</p>",[key stringByReplacingOccurrencesOfString:@"p." withString:@""],paragraphtext] withString:parsedstring];
+            }
         }
         else if ([[OnigRegexp compile:@"span.s\\d+"] match:key]) {
             if (formatinfo[@"textdecoration"]) {
                 [beforetags appendString:@"[u]"];
                 [endtags appendString:@"[/u]"];
             }
-            NSString *spantext = [self getSpan:html span:[key stringByReplacingOccurrencesOfString:@"span." withString:@""]];
-            NSString *parsedstring = [NSString stringWithFormat:@"%@%@%@",beforetags,spantext,endtags];
-            html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"<span class=\"%@\">%@</span>",[key stringByReplacingOccurrencesOfString:@"span." withString:@""],spantext] withString:parsedstring];
+            OnigRegexp *regex = [OnigRegexp compile:[NSString stringWithFormat:@"<span class=\"%@\">",[key stringByReplacingOccurrencesOfString:@"span." withString:@""]] ignorecase:YES multiline:YES extended:NO];
+            OnigResult *match;
+            while ((match = [regex search:html])) {
+                NSString *spantext = [self getSpan:html span:[key stringByReplacingOccurrencesOfString:@"span." withString:@""]];
+                NSString *parsedstring = [NSString stringWithFormat:@"%@%@%@",beforetags,spantext,endtags];
+                html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"<span class=\"%@\">%@</span>",[key stringByReplacingOccurrencesOfString:@"span." withString:@""],spantext] withString:parsedstring];
+            }
         }
     }
     return html;

@@ -272,8 +272,8 @@
 		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2DA42F1D1EB79B200006FB9F /* HTMLtoBBCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTMLtoBBCode.h; path = ../HTMLtoBBCode.h; sourceTree = "<group>"; };
-		2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HTMLtoBBCode.m; path = ../HTMLtoBBCode.m; sourceTree = "<group>"; };
+		2DA42F1D1EB79B200006FB9F /* HTMLtoBBCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLtoBBCode.h; sourceTree = "<group>"; };
+		2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLtoBBCode.m; sourceTree = "<group>"; };
 		2DAA9FBF1EB6524A00F562BD /* messagecomposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messagecomposer.h; sourceTree = "<group>"; };
 		2DAA9FC01EB6524A00F562BD /* messagecomposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messagecomposer.m; sourceTree = "<group>"; };
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };

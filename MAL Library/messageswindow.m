@@ -55,14 +55,11 @@
 
 - (messagecomposer *)messagecomposerController {
     messagecomposer *mc;
-    if (!_messagecomposerw)
-    {
-        mc = [messagecomposer new];
-        __weak __typeof__(self) weakSelf = self;
-        mc.completionblock = ^(){
-            [weakSelf loadmessagelist:1 refresh:true];
-        };
-    }
+    mc = [messagecomposer new];
+    __weak __typeof__(self) weakSelf = self;
+    mc.completionblock = ^(){
+        [weakSelf loadmessagelist:1 refresh:true];
+    };
     return mc;
 }
 
@@ -110,6 +107,7 @@
     else {
         [_progresswheel stopAnimation:nil];
         _progresswheel.hidden = true;
+        [self setselectmessagetitle];
     }
 }
 
@@ -125,6 +123,10 @@
     [_messagearraycontroller addObjects:data];
     [_messagetb reloadData];
     [_messagetb deselectAll:self];
+    [self setselectmessagetitle];
+}
+
+- (void)setselectmessagetitle{
     if ([[_messagearraycontroller mutableArrayValueForKey:@"content"] count] > 0) {
         _selectmessagelabel.stringValue = @"Please select a message.";
     }
@@ -222,8 +224,8 @@
     [self.window setFrame:self.window.frame display:false];
 }
 - (IBAction)createmessage:(id)sender {
-    [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil];
     [_messagecomposerw.window makeKeyAndOrderFront:self];
+    [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil];
 }
 
 - (IBAction)refreshmessagelist:(id)sender {
@@ -231,12 +233,33 @@
 }
 
 - (IBAction)reply:(id)sender {
+    [_messagecomposerw.window makeKeyAndOrderFront:self];
     NSDictionary *d = _messageview.selectedmessage;
     [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[[NSString stringWithFormat:@"[quote]%@[/quote]",(NSString *)d[@"message"]] convertHTMLtoAttStr]];
-    [_messagecomposerw.window makeKeyAndOrderFront:self];
 }
 
 - (IBAction)deletemessage:(id)sender {
+    NSAlert *alert = [[NSAlert alloc] init] ;
+    [alert addButtonWithTitle:@"Yes"];
+    [alert addButtonWithTitle:@"No"];
+    alert.messageText = @"Do you want to delete this message?";
+    alert.informativeText = @"Once done, this action cannot be undone.";
+    alert.alertStyle = NSAlertStyleWarning;
+    [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+            [self performDeleteMessage:_selectedid];
+        }
+    }];
+}
+- (void)performDeleteMessage:(int)messageid {
+    [MyAnimeList deletemessage:messageid completionHandler:^(id responseObject){
+        if ([Utility checkifFileExists:[NSString stringWithFormat:@"message-%i.json",messageid] appendPath:@"Messages"]){
+            [Utility deleteFile:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages"];
+        }
+    } error:^(NSError *error){
+        [Utility showsheetmessage:@"Cannot delete message." explaination:@"Plese try again." window:self.window];
+    }];
+
 }
 
 - (IBAction)performfilter:(id)sender {

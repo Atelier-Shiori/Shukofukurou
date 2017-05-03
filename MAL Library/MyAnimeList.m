@@ -255,6 +255,16 @@
         errorHandler(error);
     }];
 }
++ (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+    [manager DELETE:[NSString stringWithFormat:@"%@/2.1/messages/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], messageid] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+
+}
 #pragma mark -
 #pragma mark Private Methods
 + (id)processHistory:(id)object{

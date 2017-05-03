@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface messagecomposer : NSWindowController
+@interface messagecomposer : NSWindowController <NSTextFieldDelegate, NSTextDelegate, NSWindowDelegate>
 @property (nonatomic, copy, nullable) void (^completionblock)();
 - (void)setMessage:(NSString *)reciplicant withSubject:(NSString *)subject withMessage:(NSAttributedString *)message;
 @end

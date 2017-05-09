@@ -93,6 +93,7 @@
             }
         }
     }error:^(NSError *error){
+        NSLog(@"%@",error);
         [self toggleprogresswheel:NO];
     }];
 
@@ -171,7 +172,8 @@
             [self retrieveMessage:messageid];
             _selectedid = messageid;
         }error:^(NSError *error){
-                [self toggleprogresswheel:false];
+            NSLog(@"%@",error);
+            [self toggleprogresswheel:false];
             _selectmessagelabel.stringValue = @"Couldn't load message.";
             [_messagecontent replaceSubview:_messagecontent.subviews[0] with:_selectmessageview];
             _selectmessageview.frame = _messagecontent.frame;

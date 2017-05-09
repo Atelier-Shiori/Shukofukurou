@@ -99,7 +99,7 @@
 - (IBAction)showpreferences:(id)sender {
         [self.preferencesWindowController showWindow:nil];
 }
-- (void)showloginnotice{
+- (void)showloginnotice {
     if (![Keychain checkaccount]) {
         // First time prompt
         NSAlert *alert = [[NSAlert alloc] init] ;

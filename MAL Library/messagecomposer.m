@@ -9,6 +9,8 @@
 #import "messagecomposer.h"
 #import "HTMLtoBBCode.h"
 #import "AppDelegate.h"
+#import "MyAnimeList.h"
+#import "Utility.h"
 
 @interface messagecomposer ()
 @property (strong) IBOutlet NSTextField *reciplicant;
@@ -57,12 +59,18 @@
     NSDictionary *documentAttributes = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     NSData *htmlData = [_messagetext.attributedString dataFromRange:NSMakeRange(0, _messagetext.attributedString.length) documentAttributes:documentAttributes error:NULL];
     NSString *htmlString = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
-    NSLog(@"%@",htmlString);
-    NSLog(@"%@",[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString]);
+    [MyAnimeList sendmessage:_reciplicant.stringValue withSubject:_subjectfield.stringValue withMessage:[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString] completionHandler:^(id responseObject){
+        self.window.documentEdited = NO;
+        _completionblock();
+        [self.window close];
+    }error:^(NSError *error){
+        NSLog(@"%@",error);
+        [Utility showsheetmessage:@"Can't send message." explaination:@"Make sure you have the proper cedentials or specified a valid username to send the message to and try again." window:self.window];
+    }];
 }
 
 - (void)setSendBtnState {
-    if (_reciplicant.stringValue.length > 0) {
+    if (_reciplicant.stringValue.length > 0 && (_subjectfield.stringValue.length > 0 || _messagetext.string.length > 0)) {
         _sendbtn.enabled = true;
     }
     else {

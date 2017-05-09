@@ -19,6 +19,7 @@
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
 - (IBAction)showpreferences:(id)sender;
+- (void)showloginnotice;
 - (void)showloginpref;
 - (IBAction)enterDonationKey:(id)sender;
 - (void)clearMessages;

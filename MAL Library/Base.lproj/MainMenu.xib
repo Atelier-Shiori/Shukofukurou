@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -13,6 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="Qdg-2P-lTs" customClass="ListImporterExporter"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="MAL Library" id="1Xt-HY-uBw">
@@ -316,6 +317,26 @@
                                 <connections>
                                     <action selector="showmessagewindow:" target="Voe-Tx-rLC" id="IJy-8e-aIf"/>
                                 </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="ozi-PC-8zr"/>
+                            <menuItem title="Export List" id="6yC-xo-9wk">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Export List" id="pA4-hy-YwK">
+                                    <items>
+                                        <menuItem title="Export Anime List…" id="QYw-hI-yCc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportAnimeList:" target="Qdg-2P-lTs" id="Xmy-ZI-xfX"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export Manga List…" id="YKV-a6-tzZ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportMangaList:" target="Qdg-2P-lTs" id="dEo-BJ-vZX"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
                             </menuItem>
                         </items>
                     </menu>

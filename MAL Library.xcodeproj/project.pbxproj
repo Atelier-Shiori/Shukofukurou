@@ -12,8 +12,8 @@
 		2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
 		2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
 		2D60A1221E9B322B0034C3AA /* MAL_LibraryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */; };
-		2D86F18B1EC21D4B00650E34 /* ListImporterExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListImporterExporter.m */; };
-		2D86F18C1EC21D4B00650E34 /* ListImporterExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListImporterExporter.m */; };
+		2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
+		2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
 		2D86F18F1EC21E6D00650E34 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18E1EC21E6D00650E34 /* XMLDictionary.m */; };
 		2D86F1901EC21E6D00650E34 /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18E1EC21E6D00650E34 /* XMLDictionary.m */; };
 		2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
@@ -271,8 +271,8 @@
 		2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_LibraryUITests.m; sourceTree = "<group>"; };
 		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2D86F1891EC21D4B00650E34 /* ListImporterExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListImporterExporter.h; sourceTree = "<group>"; };
-		2D86F18A1EC21D4B00650E34 /* ListImporterExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListImporterExporter.m; sourceTree = "<group>"; };
+		2D86F1891EC21D4B00650E34 /* ListExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListExporter.h; sourceTree = "<group>"; };
+		2D86F18A1EC21D4B00650E34 /* ListExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListExporter.m; sourceTree = "<group>"; };
 		2D86F18D1EC21E6D00650E34 /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		2D86F18E1EC21E6D00650E34 /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -655,8 +655,8 @@
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
-				2D86F1891EC21D4B00650E34 /* ListImporterExporter.h */,
-				2D86F18A1EC21D4B00650E34 /* ListImporterExporter.m */,
+				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
+				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -967,7 +967,7 @@
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
 				91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				91D094C41E983098009454F8 /* HistoryView.m in Sources */,
-				2D86F18C1EC21D4B00650E34 /* ListImporterExporter.m in Sources */,
+				2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */,
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
@@ -1044,7 +1044,7 @@
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
 				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */,
-				2D86F18B1EC21D4B00650E34 /* ListImporterExporter.m in Sources */,
+				2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */,
 				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
 				91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */,
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,

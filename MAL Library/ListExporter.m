@@ -1,18 +1,17 @@
 //
-//  ListImporterExporter.m
+//  ListExporter.m
 //  MAL Library
 //
 //  Created by 桐間紗路 on 2017/05/09.
-//  Copyright © 2017 Atelier Shiori. All rights reserved.
+//  Copyright © 2017 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
 //
 
-#import "ListImporterExporter.h"
-#import "XMLDictionary.h"
+#import "ListExporter.h"
 #import "Utility.h"
 #import "AppDelegate.h"
 #import "Keychain.h"
 
-@implementation ListImporterExporter
+@implementation ListExporter
 - (IBAction)exportAnimeList:(id)sender {
     // Export Anime List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
@@ -53,7 +52,7 @@
     }
 }
 - (IBAction)exportMangaList:(id)sender {
-    // Export Anime List to MyAnimeList XML Format
+    // Export Manga List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
     if ([Utility checkifFileExists:@"mangalist.json" appendPath:@""]){
         NSSavePanel * sp = [NSSavePanel savePanel];
@@ -71,7 +70,7 @@
             NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
             NSDictionary *animelist = [Utility loadJSON:@"mangalist.json" appendpath:@""];
             NSArray *list = animelist[@"manga"];
-            // Generate XML from Anime List
+            // Generate XML from Manga List
             for (NSDictionary *d in list) {
                 [XMLArray addObject:@{@"manga_mangadb_id":d[@"id"], @"manga_title":d[@"title"], @"manga_volumes":d[@"volumes"], @"manga_chapters":d[@"chapters"], @"my_read_volumes":d[@"volumes_read"],@"my_read_chapters":d[@"chapters_read"], @"my_score":d[@"score"], @"my_status":d[@"read_status"], @"my_tags":[d[@"personal_tags"] componentsJoinedByString:@","], @"update_on_import":@(0)}];
             }
@@ -131,7 +130,7 @@
     [output appendString:headerstring];
     [output appendString:@"\n\n\t<myinfo>"];
     [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
-    [output appendFormat:@"%@<user_export_type>1</user_export_type>",tabformatting];
+    [output appendFormat:@"%@<user_export_type>2</user_export_type>",tabformatting];
     [output appendString:@"\n\t</myinfo>"];
     for (NSDictionary *d in a) {
         [output appendString:mangapretag];

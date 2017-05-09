@@ -32,7 +32,7 @@
             NSArray *list = animelist[@"anime"];
             // Generate XML from Anime List
             for (NSDictionary *d in list) {
-                [XMLArray addObject:@{@"series_animedb_id":d[@"id"], @"series_title":d[@"title"],@"series_type":d[@"type"], @"my_watched_episodes":d[@"watched_episodes"], @"my_score":d[@"score"], @"my_status":d[@"watched_status"], @"my_tags":[d[@"personal_tags"] componentsJoinedByString:@","], @"update_on_import":@(0)}];
+                [XMLArray addObject:@{@"series_animedb_id":d[@"id"], @"series_title":d[@"title"],@"series_type":d[@"type"], @"series_episodes":d[@"episodes"], @"my_watched_episodes":d[@"watched_episodes"], @"my_score":d[@"score"], @"my_status":d[@"watched_status"], @"my_tags":[d[@"personal_tags"] componentsJoinedByString:@","], @"update_on_import":@(0)}];
             }
             //Write XML to file
             BOOL wresult = [[self generateAnimeListXML:XMLArray] writeToURL:url
@@ -67,6 +67,7 @@
         [output appendFormat:@"%@<series_animedb_id>%@</series_animedb_id>",tabformatting,d[@"series_animedb_id"]];
         [output appendFormat:@"%@<series_title><![CDATA[%@]]></series_title>",tabformatting,d[@"series_title"]];
         [output appendFormat:@"%@<series_type>%@</series_type>",tabformatting,d[@"series_type"]];
+        [output appendFormat:@"%@<series_episodes>%@</series_episodes>",tabformatting,d[@"series_episodes"]];
         [output appendFormat:@"%@<my_watched_episodes>%@</my_watched_episodes>",tabformatting,d[@"my_watched_episodes"]];
         [output appendFormat:@"%@<my_score>%@</my_score",tabformatting,d[@"my_score"]];
         [output appendFormat:@"%@<my_status>%@</my_status>",tabformatting,d[@"my_status"]];

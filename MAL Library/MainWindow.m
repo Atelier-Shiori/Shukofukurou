@@ -374,14 +374,19 @@
             }
         }
         else if ([identifier isEqualToString:@"mangalist"]){
-            if ([Keychain checkaccount]){
-                [self replaceMainViewWithView:_listview.view];
-                [_listview loadList:1];
-                _listview.mangalistview.frame = mainviewframe;
-                [_listview.mangalistview setFrameOrigin:origin];
+            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
+                if ([Keychain checkaccount]){
+                    [self replaceMainViewWithView:_listview.view];
+                    [_listview loadList:1];
+                    _listview.mangalistview.frame = mainviewframe;
+                    [_listview.mangalistview setFrameOrigin:origin];
+                }
+                else {
+                     [self loadNotLoggedIn];
+                }
             }
             else {
-                 [self loadNotLoggedIn];
+                [self loadnotLicensed];
             }
         }
         else if ([identifier isEqualToString:@"history"]){
@@ -399,10 +404,15 @@
             [_searchview.animesearch setFrameOrigin:origin];
         }
         else if ([identifier isEqualToString:@"mangasearch"]){
-            [self replaceMainViewWithView:_searchview.view];
-            [_searchview loadsearchView:MangaSearch];
-            _searchview.mangasearch.frame = mainviewframe;
-            [_searchview.mangasearch setFrameOrigin:origin];
+            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
+                [self replaceMainViewWithView:_searchview.view];
+                [_searchview loadsearchView:MangaSearch];
+                _searchview.mangasearch.frame = mainviewframe;
+                [_searchview.mangasearch setFrameOrigin:origin];
+            }
+            else {
+                [self loadnotLicensed];
+            }
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
             if (_infoview.selectedid > 0){
@@ -466,13 +476,15 @@
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
-        if ([Keychain checkaccount]){
-            [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
-            [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
-            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
-            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:3];
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:4];
-            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
+            if ([Keychain checkaccount]){
+                [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
+                [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
+                [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
+                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:3];
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:4];
+                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
+            }
         }
     }
     else if ([identifier isEqualToString:@"history"]){
@@ -493,15 +505,17 @@
         [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
     }
     else if ([identifier isEqualToString:@"mangasearch"]){
-        if ([Keychain checkaccount]){
-            [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
+            if ([Keychain checkaccount]){
+                [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
+            }
+            else {
+                indexoffset = -1;
+            }
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
         }
-        else {
-            indexoffset = -1;
-        }
-        [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
-        [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
-        [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         if (_infoview.selectedid > 0){

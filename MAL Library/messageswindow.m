@@ -227,7 +227,7 @@
 }
 - (IBAction)createmessage:(id)sender {
     [_messagecomposerw.window makeKeyAndOrderFront:self];
-    [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil];
+    [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil withThreadID:1];
 }
 
 - (IBAction)refreshmessagelist:(id)sender {
@@ -237,7 +237,7 @@
 - (IBAction)reply:(id)sender {
     [_messagecomposerw.window makeKeyAndOrderFront:self];
     NSDictionary *d = _messageview.selectedmessage;
-    [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[[NSString stringWithFormat:@"[quote]%@[/quote]",(NSString *)d[@"message"]] convertHTMLtoAttStr]];
+    [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[[NSString stringWithFormat:@"[quote]%@[/quote]",(NSString *)d[@"message"]] convertHTMLtoAttStr] withThreadID:((NSNumber *)d[@"id"]).intValue];
 }
 
 - (IBAction)deletemessage:(id)sender {

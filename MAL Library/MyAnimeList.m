@@ -259,10 +259,10 @@
     }];
 }
 
-+ (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    [manager POST:[NSString stringWithFormat:@"%@/2.1/messages",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"username":username, @"subject":subject, @"message":message} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager POST:[NSString stringWithFormat:@"%@/2.1/messages",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"username":username, @"subject":subject, @"message":message, @"id":@(threadid)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);

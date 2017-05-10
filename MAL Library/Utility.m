@@ -230,7 +230,7 @@
     [alert addButtonWithTitle:@"Enter Key"];
     [alert addButtonWithTitle:@"Not Yet"];
     alert.messageText = @"Please Support MAL Library";
-    alert.informativeText = @"We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program. \r\rIf you find this program helpful, please consider making a donation. You will recieve a key to remove this message that will appear when you launch the program.";
+    alert.informativeText = @"We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program. \r\rIf you find this program helpful, please consider making a donation. You will recieve a key to remove this message that will appear when you launch the program and unlock additional features like Manga support.";
     [alert setShowsSuppressionButton:NO];
     // Set Message type to Warning
     alert.alertStyle = NSInformationalAlertStyle;

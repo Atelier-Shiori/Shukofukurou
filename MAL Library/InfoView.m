@@ -170,13 +170,19 @@
     else {
         _recommendedtitlebutton.hidden = YES;
     }
-    if (d[@"manga_adaptations"]){
-        if ([(NSArray *)d[@"manga_adaptations"] count] > 0){
-            _sourcematerialbutton.hidden = NO;
+    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
+        if (d[@"manga_adaptations"]){
+            if ([(NSArray *)d[@"manga_adaptations"] count] > 0){
+                _sourcematerialbutton.hidden = NO;
+            }
+            else {
+                _sourcematerialbutton.hidden = YES;
+            }
         }
         else {
             _sourcematerialbutton.hidden = YES;
         }
+        
     }
     else {
         _sourcematerialbutton.hidden = YES;

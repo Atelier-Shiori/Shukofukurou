@@ -16,8 +16,8 @@
 @property (strong) IBOutlet NSTextField *reciplicant;
 @property (strong) IBOutlet NSTextField *subjectfield;
 @property (strong) IBOutlet NSTextView *messagetext;
-@property (weak) IBOutlet NSButton *sendbtn;
-
+@property (strong) IBOutlet NSButton *sendbtn;
+@property int threadid;
 @end
 
 @implementation messagecomposer
@@ -42,7 +42,7 @@
     return YES;
 }
 
-- (void)setMessage:(NSString *)reciplicant withSubject:(NSString *)subject withMessage:(NSAttributedString *)message {
+- (void)setMessage:(NSString *)reciplicant withSubject:(NSString *)subject withMessage:(NSAttributedString *)message withThreadID:(int)tid {
     _reciplicant.stringValue = reciplicant;
     _subjectfield.stringValue = subject;
     if (message) {
@@ -51,6 +51,7 @@
     else {
         _messagetext.string = @"";
     }
+    _threadid = tid;
     [self setSendBtnState];
     self.window.documentEdited = NO;
 }
@@ -59,7 +60,7 @@
     NSDictionary *documentAttributes = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     NSData *htmlData = [_messagetext.attributedString dataFromRange:NSMakeRange(0, _messagetext.attributedString.length) documentAttributes:documentAttributes error:NULL];
     NSString *htmlString = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
-    [MyAnimeList sendmessage:_reciplicant.stringValue withSubject:_subjectfield.stringValue withMessage:[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString] completionHandler:^(id responseObject){
+    [MyAnimeList sendmessage:_reciplicant.stringValue withSubject:_subjectfield.stringValue withMessage:[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString] withthreadID:_threadid completionHandler:^(id responseObject){
         self.window.documentEdited = NO;
         _completionblock();
         [self.window close];

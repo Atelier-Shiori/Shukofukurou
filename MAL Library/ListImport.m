@@ -29,6 +29,8 @@
 @property (strong) IBOutlet NSTextField *progresspercentage;
 @property (strong) NSString *listtype;
 @property (strong) KitsuImportPrompt *importprompt;
+@property (strong) IBOutlet NSWindow *failedw;
+@property (strong) IBOutlet NSTableView *failedtb;
 @end
 
 @implementation ListImport
@@ -64,7 +66,16 @@
     if (_progress == _listimport.count) {
         [NSApp endSheet:self.window returnCode:0];
         [self.window close];
-        [Utility showsheetmessage:@"Import Completed." explaination:[NSString stringWithFormat:@"%i entries have been imported",_progress] window:[_del getMainWindowController].window];
+        if ([(NSArray *)_failedarraycontroller.content count] > 0) {
+            [_failedtb reloadData];
+            [NSApp beginSheet:_failedw
+               modalForWindow:[_del getMainWindowController].window modalDelegate:self
+               didEndSelector:nil
+                  contextInfo:nil];
+        }
+        else {
+            [Utility showsheetmessage:@"Import Completed." explaination:[NSString stringWithFormat:@"%i entries have been imported",_imported] window:[_del getMainWindowController].window];
+        }
         [[_del getMainWindowController] loadlist:@(true) type:MALAnime];
         [[_del getMainWindowController] loadlist:@(true) type:MALManga];
         [[_del getMainWindowController] loadlist:@(true) type:2];
@@ -221,6 +232,7 @@
         [self startKitsuImport:_importprompt.kitsuusernamefield.stringValue];
     }
     else {
+        [_importprompt.window close];
         _importprompt = nil;
     }
 }
@@ -261,7 +273,7 @@
 }
 - (void)performKitsuImport {
     NSDictionary *entry = _listimport[_progress];
-    if (entry[@"relationships"][@"anime"][@"data"][@"id"]) {
+    if (entry[@"relationships"][@"anime"][@"data"] != [NSNull null]) {
         NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"relationships"][@"anime"][@"id"]).intValue];
         if (!malid) {
             [self retrieveMALID:entry[@"relationships"][@"anime"][@"data"][@"id"] completionHandler:^(int amalid) {
@@ -325,7 +337,59 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
-#pragma mark - 
+#pragma mark Failed Window
+- (IBAction)closefailedwindow:(id)sender {
+    [self clearfailedlist];
+    [NSApp endSheet:self.failedw returnCode:0];
+    [_failedw close];
+}
+
+- (IBAction)savefailedlist:(id)sender {
+    // Save the json file containing titles
+    NSSavePanel * sp = [NSSavePanel savePanel];
+    sp.title = @"Save Failed Import Titles";
+    sp.allowedFileTypes = @[@"json", @"Javascript Object Notation File"];
+    sp.nameFieldStringValue = @"failed.json";
+    [sp beginWithCompletionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelCancelButton) {
+            return;
+        }
+        NSURL *url = [sp URL];
+        //Create JSON string from array controller
+        NSError *error;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:_failedarraycontroller.content
+                                                           options:0
+                                                             error:&error];
+        if (!jsonData) {
+            return;
+        } else {
+            NSString *JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+            
+            
+            //write JSON to file
+            BOOL wresult = [JSONString writeToURL:url
+                                       atomically:YES
+                                         encoding:NSUTF8StringEncoding
+                                            error:&error];
+            if (! wresult) {
+                NSLog(@"Export Failed: %@", error);
+            }
+            
+            [self clearfailedlist];
+            [NSApp endSheet:self.failedw returnCode:0];
+            [_failedw close];
+        }
+    }];
+
+}
+- (void)clearfailedlist {
+    NSMutableArray * a = [_failedarraycontroller mutableArrayValueForKey:@"content"];
+    [a removeAllObjects];
+    [_failedtb reloadData];
+    [_failedtb deselectAll:self];
+}
+
+#pragma mark -
 #pragma mark Helpers
 
 - (bool)checkiftitleisonlist:(int)idnum{

@@ -7,7 +7,9 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ListImport">
             <connections>
-                <outlet property="failedarraycontroller" destination="IWj-jy-sEq" id="i6t-gE-0eI"/>
+                <outlet property="failedarraycontroller" destination="dgJ-QE-Aq1" id="jO1-Lb-RVu"/>
+                <outlet property="failedtb" destination="sbR-DO-XDx" id="GJV-j6-UgP"/>
+                <outlet property="failedw" destination="g09-ik-gey" id="xRZ-4U-vYg"/>
                 <outlet property="progressbar" destination="XV4-wU-dg8" id="hos-ZZ-ze3"/>
                 <outlet property="progresspercentage" destination="fs9-Gb-tXc" id="mR8-3e-ijD"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -89,11 +91,11 @@
                         <rect key="frame" x="78" y="43" width="382" height="162"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <clipView key="contentView" ambiguous="YES" id="9h6-YA-YH4">
-                            <rect key="frame" x="1" y="0.0" width="380" height="161"/>
+                            <rect key="frame" x="1" y="1" width="380" height="160"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="kAv-BB-lpu" id="sbR-DO-XDx">
-                                    <rect key="frame" x="0.0" y="0.0" width="380" height="138"/>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" id="sbR-DO-XDx">
+                                    <rect key="frame" x="0.0" y="0.0" width="380" height="160"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -112,7 +114,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <connections>
-                                                <binding destination="IWj-jy-sEq" name="enabled" keyPath="arrangedObjects.title" id="L0E-H6-tVu"/>
+                                                <binding destination="dgJ-QE-Aq1" name="value" keyPath="arrangedObjects.title" id="RPs-vJ-Ku5"/>
                                             </connections>
                                         </tableColumn>
                                     </tableColumns>
@@ -123,14 +125,10 @@
                             <rect key="frame" x="-7" y="8" width="0.0" height="15"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="dIe-KR-CqR">
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="dIe-KR-CqR">
                             <rect key="frame" x="-14" y="16" width="15" height="0.0"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
-                        <tableHeaderView key="headerView" id="kAv-BB-lpu">
-                            <rect key="frame" x="0.0" y="0.0" width="380" height="23"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                        </tableHeaderView>
                     </scrollView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IDt-ee-yN8">
                         <rect key="frame" x="391" y="7" width="75" height="32"/>
@@ -142,6 +140,9 @@
 DQ
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="closefailedwindow:" target="-2" id="D7J-tD-MVh"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PxR-Tt-xgC">
                         <rect key="frame" x="220" y="7" width="172" height="32"/>
@@ -150,12 +151,22 @@ DQ
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="savefailedlist:" target="-2" id="CBd-y5-HUU"/>
+                        </connections>
                     </button>
                 </subviews>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="ixT-Xw-qpW"/>
+            </connections>
             <point key="canvasLocation" x="-30" y="374"/>
         </window>
-        <arrayController id="IWj-jy-sEq"/>
+        <arrayController objectClassName="NSDictionary" editable="NO" id="dgJ-QE-Aq1">
+            <declaredKeys>
+                <string>allValues</string>
+            </declaredKeys>
+        </arrayController>
     </objects>
     <resources>
         <image name="NSCaution" width="32" height="32"/>

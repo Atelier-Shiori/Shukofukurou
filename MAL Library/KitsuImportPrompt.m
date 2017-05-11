@@ -37,6 +37,5 @@
 
 - (IBAction)cancelkitsuimport:(id)sender {
     [NSApp endSheet:self.window returnCode:0];
-    [self.window close];
 }
 @end

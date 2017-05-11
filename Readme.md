@@ -41,6 +41,7 @@ All the frameworks are included. Just build! Here are the frameworks that are us
 * MASPreferences.framework
 * AFNetworking.framework
 * PXSourceList.framework
+* CocoaOniguruma.framework
 
 Licenses for these frameworks and related classes can be seen [here](https://github.com/Atelier-Shiori/mallibrary/wiki/Credits).
 

@@ -132,9 +132,15 @@
                            _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
                        }
                        else if (d[@"manga"]) {
+                           if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
                            _importlisttype = MALManga;
                            _listimport = d[@"manga"];
                            _existinglist = [Utility loadJSON:@"mangalist.json" appendpath:@""][@"manga"];
+                           }
+                           else {
+                               [Utility showsheetmessage:@"Unable to import list." explaination:@"Manga import requires a donation key." window:[_del getMainWindowController].window];
+                               return;
+                           }
                        }
                        if (![_listimport isKindOfClass:[NSArray class]]){
                            // Import only contains one object, put it in an array.

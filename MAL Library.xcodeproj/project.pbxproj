@@ -20,14 +20,14 @@
 		2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
 		2D8BF8AB1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */; };
 		2D8BF8AC1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */; };
-		2D8BF8AD1EC4D6DC0068856A /* KitsuImportPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AA1EC4D6DC0068856A /* KitsuImportPrompt.xib */; };
-		2D8BF8AE1EC4D6DC0068856A /* KitsuImportPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AA1EC4D6DC0068856A /* KitsuImportPrompt.xib */; };
 		2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
 		2D8BF8B21EC4ED800068856A /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
+		2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8B61EC4EED30068856A /* ListImport.xib */; };
+		2D8BF8B41EC4EED30068856A /* ListImport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8B61EC4EED30068856A /* ListImport.xib */; };
+		2D8BF8B71EC4EED80068856A /* KitsuImportPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8BA1EC4EED80068856A /* KitsuImportPrompt.xib */; };
+		2D8BF8B81EC4EED80068856A /* KitsuImportPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8BA1EC4EED80068856A /* KitsuImportPrompt.xib */; };
 		2D94612E1EC38CC8004E171B /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
 		2D94612F1EC38CC8004E171B /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
-		2D9461301EC38CC8004E171B /* ListImport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D94612D1EC38CC8004E171B /* ListImport.xib */; };
-		2D9461311EC38CC8004E171B /* ListImport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D94612D1EC38CC8004E171B /* ListImport.xib */; };
 		2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
@@ -285,11 +285,11 @@
 		2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KitsuImportPrompt.h; sourceTree = "<group>"; };
 		2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KitsuImportPrompt.m; sourceTree = "<group>"; };
-		2D8BF8AA1EC4D6DC0068856A /* KitsuImportPrompt.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KitsuImportPrompt.xib; sourceTree = "<group>"; };
 		2D8BF8B01EC4ED800068856A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewWindow.xib; sourceTree = "<group>"; };
+		2D8BF8B51EC4EED30068856A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListImport.xib; sourceTree = "<group>"; };
+		2D8BF8B91EC4EED80068856A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/KitsuImportPrompt.xib; sourceTree = "<group>"; };
 		2D94612B1EC38CC8004E171B /* ListImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListImport.h; sourceTree = "<group>"; };
 		2D94612C1EC38CC8004E171B /* ListImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListImport.m; sourceTree = "<group>"; };
-		2D94612D1EC38CC8004E171B /* ListImport.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListImport.xib; sourceTree = "<group>"; };
 		2DA42F1D1EB79B200006FB9F /* HTMLtoBBCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLtoBBCode.h; sourceTree = "<group>"; };
 		2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLtoBBCode.m; sourceTree = "<group>"; };
 		2DAA9FBF1EB6524A00F562BD /* messagecomposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messagecomposer.h; sourceTree = "<group>"; };
@@ -558,8 +558,8 @@
 				2D94612C1EC38CC8004E171B /* ListImport.m */,
 				2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */,
 				2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */,
-				2D8BF8AA1EC4D6DC0068856A /* KitsuImportPrompt.xib */,
-				2D94612D1EC38CC8004E171B /* ListImport.xib */,
+				2D8BF8BA1EC4EED80068856A /* KitsuImportPrompt.xib */,
+				2D8BF8B61EC4EED30068856A /* ListImport.xib */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -874,7 +874,7 @@
 				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
 				913A11911E8F206A00450B66 /* SearchView.xib in Resources */,
 				91B378B31E989C7C000061E6 /* AiringView.xib in Resources */,
-				2D9461311EC38CC8004E171B /* ListImport.xib in Resources */,
+				2D8BF8B41EC4EED30068856A /* ListImport.xib in Resources */,
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
 				910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */,
@@ -886,7 +886,7 @@
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
-				2D8BF8AE1EC4D6DC0068856A /* KitsuImportPrompt.xib in Resources */,
+				2D8BF8B81EC4EED80068856A /* KitsuImportPrompt.xib in Resources */,
 				913A119C1E8F206A00450B66 /* PFAboutWindow.xib in Resources */,
 				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
@@ -921,8 +921,8 @@
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
 				2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */,
-				2D9461301EC38CC8004E171B /* ListImport.xib in Resources */,
-				2D8BF8AD1EC4D6DC0068856A /* KitsuImportPrompt.xib in Resources */,
+				2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */,
+				2D8BF8B71EC4EED80068856A /* KitsuImportPrompt.xib in Resources */,
 				91822A601EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
@@ -1134,6 +1134,22 @@
 				2D8BF8B01EC4ED800068856A /* Base */,
 			);
 			name = ReviewWindow.xib;
+			sourceTree = "<group>";
+		};
+		2D8BF8B61EC4EED30068856A /* ListImport.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D8BF8B51EC4EED30068856A /* Base */,
+			);
+			name = ListImport.xib;
+			sourceTree = "<group>";
+		};
+		2D8BF8BA1EC4EED80068856A /* KitsuImportPrompt.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D8BF8B91EC4EED80068856A /* Base */,
+			);
+			name = KitsuImportPrompt.xib;
 			sourceTree = "<group>";
 		};
 		910589F21E981E2400501B9A /* AdvancedPref.xib */ = {

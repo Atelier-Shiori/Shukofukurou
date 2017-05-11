@@ -10,5 +10,6 @@
 @class AppDelegate;
 @interface ListImport : NSWindowController
 @property (strong) IBOutlet AppDelegate *del;
-- (IBAction) importMALList:(id)sender;
+- (IBAction)importMALList:(id)sender;
+- (IBAction)importKitsu:(id)sender;
 @end

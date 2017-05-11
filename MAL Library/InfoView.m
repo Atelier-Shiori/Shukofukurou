@@ -170,7 +170,7 @@
     else {
         _recommendedtitlebutton.hidden = YES;
     }
-    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
+    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
         if (d[@"manga_adaptations"]){
             if ([(NSArray *)d[@"manga_adaptations"] count] > 0){
                 _sourcematerialbutton.hidden = NO;

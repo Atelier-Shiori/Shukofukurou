@@ -334,7 +334,7 @@
                                                 <action selector="importMALList:" target="aOt-b9-3aH" id="pBQ-eN-D1f"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Import AniDB XML…" id="M5M-GA-vx7">
+                                        <menuItem title="Import AniDB JSON…" id="M5M-GA-vx7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="1nP-ke-h83"/>
@@ -343,6 +343,7 @@
                                         <menuItem title="Import from Kitsu…" id="Yfh-DT-TKI">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
+                                                <action selector="importKitsu:" target="aOt-b9-3aH" id="EY5-ui-ybI"/>
                                                 <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="Y6z-eT-uDa"/>
                                             </connections>
                                         </menuItem>

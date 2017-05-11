@@ -12,6 +12,11 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+        <customObject id="aOt-b9-3aH" customClass="ListImport">
+            <connections>
+                <outlet property="del" destination="Voe-Tx-rLC" id="VK9-E7-EMa"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="Qdg-2P-lTs" customClass="ListExporter"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
@@ -319,6 +324,31 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="ozi-PC-8zr"/>
+                            <menuItem title="Import List" id="caY-fc-yzq">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Import List" id="tJx-Us-9sL">
+                                    <items>
+                                        <menuItem title="Import MyAnimeList XML…" id="gUl-EC-jJk">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="importMALList:" target="aOt-b9-3aH" id="pBQ-eN-D1f"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Import AniDB XML…" id="M5M-GA-vx7">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="1nP-ke-h83"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Import from Kitsu…" id="Yfh-DT-TKI">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="Y6z-eT-uDa"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Export List" id="6yC-xo-9wk">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Export List" id="pA4-hy-YwK">

@@ -110,7 +110,7 @@
         [output appendFormat:@"%@<series_type>%@</series_type>",tabformatting,d[@"series_type"]];
         [output appendFormat:@"%@<series_episodes>%@</series_episodes>",tabformatting,d[@"series_episodes"]];
         [output appendFormat:@"%@<my_watched_episodes>%@</my_watched_episodes>",tabformatting,d[@"my_watched_episodes"]];
-        [output appendFormat:@"%@<my_score>%@</my_score",tabformatting,d[@"my_score"]];
+        [output appendFormat:@"%@<my_score>%@</my_score>",tabformatting,d[@"my_score"]];
         [output appendFormat:@"%@<my_status>%@</my_status>",tabformatting,d[@"my_status"]];
         [output appendFormat:@"%@<my_tags><![CDATA[%@]]></my_tags>",tabformatting,d[@"my_tags"]];
         [output appendFormat:@"%@<update_on_import>%@</update_on_import>",tabformatting,d[@"update_on_import"]];
@@ -140,7 +140,7 @@
         [output appendFormat:@"%@<manga_chapters>%@</manga_chapters>",tabformatting,d[@"manga_chapters"]];
         [output appendFormat:@"%@<my_read_volumes>%@</my_read_volumes>",tabformatting,d[@"my_read_volumes"]];
         [output appendFormat:@"%@<my_read_chapters>%@</my_read_chapters>",tabformatting,d[@"my_read_chapters"]];
-        [output appendFormat:@"%@<my_score>%@</my_score",tabformatting,d[@"my_score"]];
+        [output appendFormat:@"%@<my_score>%@</my_score>",tabformatting,d[@"my_score"]];
         [output appendFormat:@"%@<my_status>%@</my_status>",tabformatting,d[@"my_status"]];
         [output appendFormat:@"%@<my_tags><![CDATA[%@]]></my_tags>",tabformatting,d[@"my_tags"]];
         [output appendFormat:@"%@<update_on_import>%@</update_on_import>",tabformatting,d[@"update_on_import"]];

@@ -68,6 +68,10 @@
              _listimport = d[@"manga"];
              _existinglist = [Utility loadJSON:@"mangalist.json" appendpath:@""][@"manga"];
          }
+         if (![_listimport isKindOfClass:[NSArray class]]){
+             // Import only contains one object, put it in an array.
+             _listimport = [NSArray arrayWithObject:_listimport];
+         }
          _replaceexisting = (((NSButton*)op.accessoryView).state == NSOnState);
          _progress = 0;
          _imported = 0;
@@ -88,7 +92,7 @@
         [self importAnimeMALEntry];
     }
     else {
-        
+        [self importMangaMALEntry];
     }
 }
 
@@ -116,6 +120,33 @@
         }
     }
 }
+
+- (void)importMangaMALEntry {
+    if (_listimport.count > 0) {
+        NSDictionary *d = _listimport[_progress];
+        if ([self checkiftitleisonlist:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue]) {
+            if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
+                [MyAnimeList updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:(NSString *)d[@"my_status"][@"text"] withScore:((NSString *)d[@"my_score"][@"text"]).intValue completion:^(id responseObject){
+                    [self incrementProgress:nil];
+                }error:^(NSError *error){
+                    [self incrementProgress:d];
+                }];
+            }
+            else {
+                [self incrementProgress:nil];
+            }
+        }
+        else {
+            [MyAnimeList addMangaTitleToList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:(NSString *)d[@"my_status"][@"text"] withScore:((NSString *)d[@"my_score"][@"text"]).intValue completion:^(id responseObject){
+                [self incrementProgress:nil];
+            }error:^(NSError *error){
+                [self incrementProgress:d];
+            }];
+        }
+    }
+}
+
+
 - (void)incrementProgress:( NSDictionary * _Nullable )d {
     _progress++;
     _progressbar.maxValue = _listimport.count;

@@ -363,6 +363,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportMangaList:" target="Qdg-2P-lTs" id="dEo-BJ-vZX"/>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="ED6-wV-nET"/>
                                             </connections>
                                         </menuItem>
                                     </items>

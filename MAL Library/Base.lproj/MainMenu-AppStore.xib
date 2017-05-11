@@ -357,6 +357,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportMangaList:" target="O22-er-S4a" id="PTQ-h1-aRN"/>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="5gF-ah-naE"/>
                                             </connections>
                                         </menuItem>
                                     </items>

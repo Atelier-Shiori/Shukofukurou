@@ -9,5 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface KitsuImportPrompt : NSWindowController
-
+@property (strong) IBOutlet NSTextField *kitsuusernamefield;
+@property (strong) IBOutlet NSButton *kitsureplaceexisting;
 @end

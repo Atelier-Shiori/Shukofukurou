@@ -40,7 +40,7 @@
         return;
     }
     else if (!exists || refreshlist) {
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        AFHTTPSessionManager *manager = [Utility manager];
         
         [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/schedule",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [self populateAiring:[Utility saveJSON:[self processAiring:responseObject] withFilename:@"airing.json" appendpath:@"" replace:TRUE]];

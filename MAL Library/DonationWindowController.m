@@ -33,9 +33,9 @@
         __block NSButton *btn = sender;
         [btn setEnabled:NO];
         // Check donation key
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        AFHTTPSessionManager *manager = [Utility manager];
+        manager.requestSerializer = [Utility jsonrequestserializer];
+        manager.responseSerializer = [Utility httpresponseserializer];
         [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":_name.stringValue, @"key":_key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [btn setEnabled:YES];
             NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];

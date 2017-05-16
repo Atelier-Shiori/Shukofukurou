@@ -49,6 +49,7 @@
      registerDefaults:defaultValues];
     
 }
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [Fabric with:@[[Crashlytics class]]];
     [Utility checkandclearimagecache];
@@ -214,4 +215,6 @@
         [_messageswindow cleartableview];
     }
 }
+
+
 @end

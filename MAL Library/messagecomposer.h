@@ -10,5 +10,5 @@
 
 @interface messagecomposer : NSWindowController <NSTextFieldDelegate, NSTextDelegate, NSWindowDelegate>
 @property (nonatomic, copy, nullable) void (^completionblock)();
-- (void)setMessage:(NSString *)reciplicant withSubject:(NSString *)subject withMessage:(NSAttributedString *)message withThreadID:(int)tid;
+- (void)setMessage:(NSString *)reciplicant withSubject:(NSString * _Nullable)subject withMessage:(NSAttributedString * _Nullable)message withThreadID:(int)tid;
 @end

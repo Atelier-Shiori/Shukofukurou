@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
+@class AFHTTPSessionManager;
+@class AFHTTPRequestSerializer;
+@class AFJSONRequestSerializer;
+@class AFJSONResponseSerializer;
+@class AFHTTPResponseSerializer;
 @class AppDelegate;
 @interface Utility : NSObject
 + (void)showsheetmessage:(NSString *)message
@@ -29,4 +34,9 @@
 + (void)clearImageCache;
 + (NSDate *)stringDatetoDate:(NSString *)stringdate;
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
++ (AFHTTPSessionManager*)manager;
++ (AFJSONRequestSerializer *)jsonrequestserializer;
++ (AFHTTPRequestSerializer *)httprequestserializer;
++ (AFJSONResponseSerializer *) jsonresponseserializer;
++ (AFHTTPResponseSerializer *) httpresponseserializer;
 @end

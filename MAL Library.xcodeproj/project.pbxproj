@@ -552,14 +552,6 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
-				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
-				2D94612B1EC38CC8004E171B /* ListImport.h */,
-				2D94612C1EC38CC8004E171B /* ListImport.m */,
-				2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */,
-				2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */,
-				2D8BF8BA1EC4EED80068856A /* KitsuImportPrompt.xib */,
-				2D8BF8B61EC4EED30068856A /* ListImport.xib */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -604,6 +596,14 @@
 				9188226F1E8C90A700C7FEF1 /* InfoView.xib */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
+				2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */,
+				2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */,
+				2D8BF8BA1EC4EED80068856A /* KitsuImportPrompt.xib */,
+				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
+				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
+				2D94612B1EC38CC8004E171B /* ListImport.h */,
+				2D94612C1EC38CC8004E171B /* ListImport.m */,
+				2D8BF8B61EC4EED30068856A /* ListImport.xib */,
 				916502BA1E8C576B00565D30 /* ListView.h */,
 				916502BB1E8C576B00565D30 /* ListView.m */,
 				916502C61E8C65A500565D30 /* ListView.xib */,
@@ -675,8 +675,8 @@
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
-				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
-				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
+				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
+				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";

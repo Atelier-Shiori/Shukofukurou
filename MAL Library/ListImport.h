@@ -11,5 +11,6 @@
 @interface ListImport : NSWindowController
 @property (strong) IBOutlet AppDelegate *del;
 - (IBAction)importMALList:(id)sender;
+- (IBAction)importAniDBList:(id)sender;
 - (IBAction)importKitsu:(id)sender;
 @end

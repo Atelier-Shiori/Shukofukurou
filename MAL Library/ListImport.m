@@ -13,10 +13,11 @@
 #import "MyAnimeList.h"
 #import "Utility.h"
 #import "KitsuImportPrompt.h"
+#import "Keychain.h"
 
 @interface ListImport ()
 @property (strong) NSArray *listimport;
-@property (strong) NSMutableArray *kitsumalidmapping;
+@property (strong) NSMutableArray *otheridmalidmapping;
 @property (strong) NSMutableArray *tmplist;
 @property (strong) NSMutableArray *metadata;
 @property (strong) NSArray *existinglist;
@@ -83,10 +84,10 @@
         _listimport = nil;
         _existinglist = nil;
         _listtype = nil;
-        if (_kitsumalidmapping) {
+        if (_otheridmalidmapping) {
             // Save mappings and clear kitsu mapping array.
-            [Utility saveJSON:_kitsumalidmapping withFilename:@"KitsuMALMappings.json" appendpath:@"" replace:true];
-            _kitsumalidmapping = nil;
+            [Utility saveJSON:_otheridmalidmapping withFilename:@"KitsuMALMappings.json" appendpath:@"" replace:true];
+            _otheridmalidmapping = nil;
         }
         _importprompt = nil;
         _metadata = nil;
@@ -95,8 +96,11 @@
         if ([_listtype isEqualToString:@"myanimelist"]) {
             [self performtMALListImport];
         }
-        else if([_listtype isEqualToString:@"kitsu"]) {
+        else if ([_listtype isEqualToString:@"kitsu"]) {
             [self performKitsuImport];
+        }
+        else if ([_listtype isEqualToString:@"anidb"]) {
+            [self performAniDBListImport];
         }
     }
 }
@@ -125,6 +129,9 @@
                        NSError *error = nil;
                        
                        NSDictionary *d = [XMLReader dictionaryForXMLString:str options:XMLReaderOptionsProcessNamespaces error:&error];
+                       if (!d[@"myanimelist"]) {
+                            [Utility showsheetmessage:@"Invalid list." explaination:@"This is not a MyAnimeList XML formatted list. Please select a valid XML file and try again." window:[_del getMainWindowController].window];
+                       }
                        d = d[@"myanimelist"];
                        if (d[@"anime"]) {
                            _importlisttype = MALAnime;
@@ -216,7 +223,127 @@
     }
 }
 
-
+#pragma mark Anidb Import
+- (IBAction)importAniDBList:(id)sender {
+    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
+        NSOpenPanel * op = [NSOpenPanel openPanel];
+        op.allowedFileTypes = @[@"XML", @"Extended Markup File file"];
+        op.message = @"Please select the exported AniDB XML List file to import.";
+        NSButton *button = [[NSButton alloc] init];
+        [button setButtonType:NSSwitchButton];
+        button.title = NSLocalizedString(@"Replace entries if exist", @"");
+        [button sizeToFit];
+        op.accessoryView = button;
+        [op beginSheetModalForWindow:[_del getMainWindowController].window
+                   completionHandler:^(NSInteger result) {
+                       if (result == NSFileHandlingPanelCancelButton) {
+                           return;
+                       }
+                       [op close];
+                       NSURL *Url = op.URL;
+                       // read the file
+                       NSString * str = [NSString stringWithContentsOfURL:Url
+                                                                 encoding:NSUTF8StringEncoding
+                                                                     error:NULL];
+                        _replaceexisting = (((NSButton*)op.accessoryView).state == NSOnState);
+                       NSError *error = nil;
+                    NSDictionary *d = [XMLReader dictionaryForXMLString:str options:XMLReaderOptionsProcessNamespaces error:&error];
+                       if (d[@"mylist"]) {
+                           if (d[@"mylist"][@"anime"]) {
+                               _listimport = d[@"mylist"][@"anime"];
+                               if (![_listimport isKindOfClass:[NSArray class]]){
+                                   // Import only contains one object, put it in an array.
+                                   _listimport = [NSArray arrayWithObject:_listimport];
+                               }
+                               _listtype = @"anidb";
+                               _importlisttype = MALAnime;
+                               _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
+                               if (!_otheridmalidmapping) {
+                                   _otheridmalidmapping = [NSMutableArray new];
+                               }
+                               if ([Utility checkifFileExists:@"AniDBMALMappings.json" appendPath:@""]) {
+                                   [_otheridmalidmapping addObjectsFromArray:[Utility loadJSON:@"AniDBMALMapping.json" appendpath:@""]];
+                               }
+                               [self importsetup];
+                               [self performAniDBListImport];
+                           }
+                       }
+                       else {
+                           [Utility showsheetmessage:@"Invalid list." explaination:@"This is not a AniDB XML formatted list. Please select a valid XML file and try again." window:[_del getMainWindowController].window];
+                       }
+                   }];
+    }
+    else {
+        [_del showloginnotice];
+    }
+    
+}
+- (void)performAniDBListImport {
+    NSDictionary *entry = _listimport[_progress];
+    NSString *type = entry[@"type_name"][@"text"];
+    type = [type stringByReplacingOccurrencesOfString:@" Series" withString:@""];
+    if ([type isEqualToString:@"Web"]) {
+        type = @"ONA";
+    }
+    if ([type isEqualToString:@"TV Special"]) {
+        type = @"Special";
+    }
+    if ([type isEqualToString:@"Music Video"]) {
+        type = @"Music";
+    }
+    NSNumber *malid = [self checkifmappingexists:((NSString *)entry[@"animenfoid"][@"text"]).intValue];
+    if (!malid) {
+        [self retrieveMALIDwithTitle:entry[@"name"][@"text"] withType:type completionHandler:^(int themalid){
+            if (themalid > 0) {
+                [_otheridmalidmapping addObject:@{@"anidb_id":entry[@"animenfoid"][@"text"], @"mal_id":@(themalid)}];
+                [self performMALUpdatefromAniDBEntry:entry withMALID:themalid];
+            }
+            else {
+                [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
+            }
+        }error:^(NSError *error){
+            [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
+        }];
+    }
+    else {
+        
+    }
+}
+- (void)performMALUpdatefromAniDBEntry:(NSDictionary *)entry withMALID:(int)malid {
+    NSString *status;
+    int watchedeps = 0;
+    if (entry[@"my_watchedeps"][@"text"]) {
+        watchedeps = ((NSNumber *)entry[@"my_watchedeps"][@"text"]).intValue;
+    }
+    if (watchedeps == ((NSString *)entry[@"eps"][@"text"]).intValue) {
+        status = @"completed";
+    }
+    else if (watchedeps == 0) {
+        status = @"plan to watch";
+    }
+    else {
+        status = @"watching";
+    }
+    if ([self checkiftitleisonlist:malid]) {
+        if (_replaceexisting) {
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 completion:^(id responseObject){
+                [self incrementProgress:nil withTitle:nil];
+            }error:^(id error){
+                [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
+            }];
+        }
+        else {
+            [self incrementProgress:nil withTitle:nil];
+        }
+    }
+    else {
+        [MyAnimeList addAnimeTitleToList:malid withEpisode:watchedeps withStatus:status withScore:0 completion:^(id responseObject){
+            [self incrementProgress:nil withTitle:nil];
+        }error:^(id error){
+            [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
+        }];
+    }
+}
 
 #pragma mark Kitsu Import
 - (IBAction)importKitsu:(id)sender {
@@ -256,11 +383,11 @@
                 _importlisttype = MALAnime;
                 _replaceexisting = (_importprompt.kitsureplaceexisting.state == NSOnState);
                 _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
-                if (!_kitsumalidmapping) {
-                    _kitsumalidmapping = [NSMutableArray new];
+                if (!_otheridmalidmapping) {
+                    _otheridmalidmapping = [NSMutableArray new];
                 }
                 if ([Utility checkifFileExists:@"KitsuMALMappings.json" appendPath:@""]) {
-                    [_kitsumalidmapping addObjectsFromArray:[Utility loadJSON:@"KitsuMALMappings.json" appendpath:@""]];
+                    [_otheridmalidmapping addObjectsFromArray:[Utility loadJSON:@"KitsuMALMappings.json" appendpath:@""]];
                 }
                 [self importsetup];
                 [self performKitsuImport];
@@ -283,7 +410,7 @@
         NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"relationships"][@"anime"][@"id"]).intValue];
         if (!malid) {
             [self retrieveMALID:entry[@"relationships"][@"anime"][@"data"][@"id"] completionHandler:^(int amalid) {
-                [_kitsumalidmapping addObject:@{@"kitsu_id":entry[@"relationships"][@"anime"][@"data"][@"id"], @"mal_id":@(amalid)}];
+                [_otheridmalidmapping addObject:@{@"kitsu_id":entry[@"relationships"][@"anime"][@"data"][@"id"], @"mal_id":@(amalid)}];
                 [self performMALUpdateFromKitsuEntry:entry withMALID:amalid];
             }error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
@@ -405,13 +532,19 @@
     }
     return false;
 }
-     
+
 - (NSNumber*)checkifmappingexists:(int)idnum{
- NSArray *list = [_kitsumalidmapping filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kitsu_id == %i", idnum]];
- if (list.count > 0) {
-     return list[0][@"mal_id"];
- }
- return nil;
+    NSArray *list;
+    if ([_listtype isEqualToString:@"kitsu"]) {
+        list = [_otheridmalidmapping filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kitsu_id == %i", idnum]];
+    }
+    else if ([_listtype isEqualToString:@"anidb"]) {
+        list = [_otheridmalidmapping filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"anidb_id == %i", idnum]];
+    }
+    if (list.count > 0) {
+        return list[0][@"mal_id"];
+    }
+    return nil;
 }
 
 - (NSString *)retrieveTitlefromKitsuID:(int)kitsuid {
@@ -423,7 +556,7 @@
 }
 
 - (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [Utility manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/vnd.api+json"];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@",[Utility urlEncodeString:username]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         completionHandler(responseObject);
@@ -433,7 +566,7 @@
 }
 
 - (void)retrieveKitsuLibrary:(int)userID atPage:(int)pagenum completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [Utility manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/vnd.api+json"];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%i&include=anime&page[limit]=500&page[offset]=%i",userID, pagenum] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"]){
@@ -462,7 +595,7 @@
 }
 
 - (void)retrieveMALID:(NSNumber *)kitsuid completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [Utility manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/vnd.api+json"];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime/%@/mappings", kitsuid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSArray * mappings = responseObject[@"data"];
@@ -518,4 +651,62 @@
     }
     return 0;
 }
+
+- (void)retrieveMALIDwithTitle:(NSString *)searchterm withType:(NSString *)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility manager];
+    manager.responseSerializer = [Utility httpresponseserializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+    [manager GET:[NSString stringWithFormat:@"https://myanimelist.net/api/anime/search.xml?q=%@", [Utility urlEncodeString:searchterm]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSArray *searchdata = [self MALSearchXMLToAtarashiiDataFormat:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
+        for (NSDictionary *d in searchdata) {
+            if (![(NSString *)d[@"type"] isEqualToString:type]) {
+                continue;
+            }
+            if ([(NSString *)d[@"title"] caseInsensitiveCompare:searchterm] == NSOrderedSame) {
+                completionHandler(((NSNumber *)d[@"id"]).intValue);
+                return;
+            }
+            for (NSString *title in d[@"synonyms"]) {
+                if ([title caseInsensitiveCompare:searchterm] == NSOrderedSame) {
+                    completionHandler(((NSNumber *)d[@"id"]).intValue);
+                    return;
+                }
+            }
+        }
+        completionHandler(0);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+}
+    
+- (NSArray *)MALSearchXMLToAtarashiiDataFormat:(NSString *)xml {
+    NSError *error = nil;
+    NSDictionary *d = [XMLReader dictionaryForXMLString:xml options:XMLReaderOptionsProcessNamespaces error:&error];
+    NSArray *searchresults;
+    if (d[@"anime"]) {
+        searchresults = d[@"anime"][@"entry"];
+        if (![searchresults isKindOfClass:[NSArray class]]) {
+            // Import only contains one object, put it in an array.
+            searchresults = [NSArray arrayWithObject:searchresults];
+        }
+    }
+    else {
+        return @[];
+    }
+    NSMutableArray *output = [NSMutableArray new];
+    for (NSDictionary *d in searchresults) {
+        NSMutableArray *synonyms = [NSMutableArray new];
+        NSString *englishtitle = @"";
+        if (d[@"english"][@"text"]) {
+            [synonyms addObject:d[@"english"][@"text"]];
+            englishtitle = d[@"english"][@"text"];
+        }
+        if (d[@"synonyms"][@"text"]) {
+            [synonyms addObjectsFromArray:[((NSString *)d[@"synonyms"][@"text"]) componentsSeparatedByString:@";"]];
+        }
+        [output addObject:@{@"id":@(((NSString *)d[@"id"][@"text"]).intValue), @"episodes":@(((NSString *)d[@"episodes"][@"text"]).intValue), @"score":@(((NSString *)d[@"score"][@"text"]).floatValue), @"status":d[@"status"][@"text"], @"start_date":[NSString stringWithFormat:@"%@",d[@"start_date"][@"text"]], @"end_date":[NSString stringWithFormat:@"%@",d[@"end_date"][@"text"]], @"synonyms": synonyms, @"synopsis":[NSString stringWithFormat:@"%@",d[@"synopsis"][@"text"]], @"type":d[@"type"][@"text"], @"title":d[@"title"][@"text"], @"english_title":englishtitle}];
+    }
+    return output;
+}
+
 @end

@@ -53,7 +53,7 @@
     [_testapibtn setEnabled:NO];
     //Load API URL
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    AFHTTPSessionManager *manager = [Utility manager];
     [manager GET:[NSString stringWithFormat:@"%@/1/animelist/chikorita157", [defaults objectForKey:@"MALAPIURL"]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [Utility showsheetmessage:@"API Test Successful" explaination:@"MAL API is functional." window: self.view.window];
         [_testapibtn setEnabled:YES];

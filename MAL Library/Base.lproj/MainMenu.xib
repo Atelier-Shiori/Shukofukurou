@@ -334,9 +334,10 @@
                                                 <action selector="importMALList:" target="aOt-b9-3aH" id="pBQ-eN-D1f"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Import AniDB JSON…" id="M5M-GA-vx7">
+                                        <menuItem title="Import AniDB XML…" id="M5M-GA-vx7">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
+                                                <action selector="importAniDBList:" target="aOt-b9-3aH" id="ZiK-48-aM2"/>
                                                 <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="1nP-ke-h83"/>
                                             </connections>
                                         </menuItem>

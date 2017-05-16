@@ -42,7 +42,7 @@
     return YES;
 }
 
-- (void)setMessage:(NSString *)reciplicant withSubject:(NSString *)subject withMessage:(NSAttributedString *)message withThreadID:(int)tid {
+- (void)setMessage:(NSString *)reciplicant withSubject:(NSString * _Nullable)subject withMessage:(NSAttributedString * _Nullable)message withThreadID:(int)tid {
     _reciplicant.stringValue = reciplicant;
     _subjectfield.stringValue = subject;
     if (message) {

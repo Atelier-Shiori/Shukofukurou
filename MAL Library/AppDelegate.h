@@ -16,6 +16,7 @@
 @property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
 @property (strong) NSWindowController *_preferencesWindowController;
 @property (strong) messageswindow *messageswindow;
+
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
 - (IBAction)showpreferences:(id)sender;

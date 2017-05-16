@@ -131,6 +131,7 @@
                        NSDictionary *d = [XMLReader dictionaryForXMLString:str options:XMLReaderOptionsProcessNamespaces error:&error];
                        if (!d[@"myanimelist"]) {
                             [Utility showsheetmessage:@"Invalid list." explaination:@"This is not a MyAnimeList XML formatted list. Please select a valid XML file and try again." window:[_del getMainWindowController].window];
+                           return;
                        }
                        d = d[@"myanimelist"];
                        if (d[@"anime"]) {

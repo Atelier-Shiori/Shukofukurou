@@ -65,5 +65,9 @@
 	<string>https://updates.ateliershiori.moe/mallibrary/profileInfo.php</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>MALLibraryHelp.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>moe.ateliershiori.MALLibraryHelp.help</string>
 </dict>
 </plist>

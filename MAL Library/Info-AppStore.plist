@@ -59,5 +59,9 @@
 	<string>MainMenu-AppStore</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>MALLibraryHelp.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>moe.ateliershiori.MALLibraryHelp.help</string>
 </dict>
 </plist>

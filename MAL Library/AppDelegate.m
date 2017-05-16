@@ -157,10 +157,6 @@
     [self.aboutWindowController showWindow:nil];
     
 }
-- (IBAction)getHelp:(id)sender{
-    //Show Help
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/MALLibrary/wiki/Getting-Started"]];
-}
 
 - (void)handleURLEvent:(NSAppleEventDescriptor*)event
         withReplyEvent:(NSAppleEventDescriptor*)replyEvent {

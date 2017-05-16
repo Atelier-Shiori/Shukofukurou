@@ -680,7 +680,7 @@
                         <items>
                             <menuItem title="MAL Library Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
-                                    <action selector="getHelp:" target="Voe-Tx-rLC" id="SkE-Rv-mXu"/>
+                                    <action selector="showHelp:" target="-2" id="n19-Ag-gTx"/>
                                 </connections>
                             </menuItem>
                         </items>

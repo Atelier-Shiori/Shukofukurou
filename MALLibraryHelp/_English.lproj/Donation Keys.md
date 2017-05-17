@@ -3,7 +3,7 @@ title: Donation Keys
 description: About Donation Keys
 
 ---
-While MAL Library is free and open source software, hosting the Atarashii-API and maintaining the Apple Developer Program costs money. This is why the donation reminder dialog will show up at launch. 
+While MAL Library is free and open source software, hosting the Atarashii-API and maintaining the Apple Developer Program costs money. This is why the donation reminder dialog will show up at launch. This only applies if you didn't download MAL Library from the Mac App Store.
 
 These features require a donation key or an App Store version:
 * Managing Manga lists and viewing information of Manga titles
@@ -24,4 +24,9 @@ You can also purchase MAL Library from the App Store. You can use this to remove
 
 [![macappstore](https://malupdaterosx.ateliershiori.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
 
+## Registering MAL Updater OS X with an App Store copy of MAL library
+
+It's possible to register MAL Updater OS X if you purchased MAL Library from the App Store. Click on the MAL Updater OS X icon > Enter Donation Key. You will see a button "Register with MAL Library App Store Version." Click that and MAL Updater OS X should register instantly.
+
+## Notice
 If you are developing a fork, please set up your own Atarashii-API server. The default API server is only for official copies of MAL Library, MAL Updater OS X and Hachidori.

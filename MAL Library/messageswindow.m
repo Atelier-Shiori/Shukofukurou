@@ -163,6 +163,7 @@
     }
     if ([Utility checkifFileExists:[NSString stringWithFormat:@"message-%i.json",messageid] appendPath:@"Messages"]){
         [self populateviewcontent:[Utility loadJSON:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages"]];
+        _selectedid = messageid;
     }
     else {
         [self toggleprogresswheel:true];
@@ -178,6 +179,7 @@
             [_messagecontent replaceSubview:_messagecontent.subviews[0] with:_selectmessageview];
             _selectmessageview.frame = _messagecontent.frame;
             [_selectmessageview setFrameOrigin:NSMakePoint(0, 0)];
+            _selectedid = messageid;
         }];
     }
 }
@@ -227,7 +229,7 @@
 }
 - (IBAction)createmessage:(id)sender {
     [_messagecomposerw.window makeKeyAndOrderFront:self];
-    [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil withThreadID:1];
+    [_messagecomposerw setMessage:@"" withSubject:@"" withMessage:nil withThreadID:0];
 }
 
 - (IBAction)refreshmessagelist:(id)sender {
@@ -259,6 +261,7 @@
             [Utility deleteFile:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages"];
         }
     } error:^(NSError *error){
+        NSLog(@"%@",error);
         [Utility showsheetmessage:@"Cannot delete message." explaination:@"Plese try again." window:self.window];
     }];
 

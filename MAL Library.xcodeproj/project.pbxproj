@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
 		2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
@@ -29,7 +30,6 @@
 		2D94612E1EC38CC8004E171B /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
 		2D94612F1EC38CC8004E171B /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
 		2D96A5231ECBB65A00942B28 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
-		2D96A5241ECBB66100942B28 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
 		2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
@@ -207,6 +207,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2D185EBC1ECCB04D00E1A594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
+			remoteInfo = MALLibraryHelp;
+		};
+		2D185EBE1ECCB05200E1A594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
+			remoteInfo = MALLibraryHelp;
+		};
 		2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
@@ -789,6 +803,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2D185EBD1ECCB04D00E1A594 /* PBXTargetDependency */,
 			);
 			name = "MAL Library (AppStore)";
 			productName = "MAL Library";
@@ -827,6 +842,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2D185EBF1ECCB05200E1A594 /* PBXTargetDependency */,
 			);
 			name = "MAL Library";
 			productName = "MAL Library";
@@ -962,7 +978,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D96A5241ECBB66100942B28 /* MALLibraryHelp.help in Resources */,
+				2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */,
 				91822A5C1EAEAC77005E33DB /* messageview.xib in Resources */,
 				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
@@ -1170,6 +1186,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2D185EBD1ECCB04D00E1A594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D96A5161ECBA8B800942B28 /* MALLibraryHelp */;
+			targetProxy = 2D185EBC1ECCB04D00E1A594 /* PBXContainerItemProxy */;
+		};
+		2D185EBF1ECCB05200E1A594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D96A5161ECBA8B800942B28 /* MALLibraryHelp */;
+			targetProxy = 2D185EBE1ECCB05200E1A594 /* PBXContainerItemProxy */;
+		};
 		2D60A1251E9B322B0034C3AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* MAL Library (AppStore) */;
@@ -1769,6 +1795,7 @@
 				2D96A51C1ECBA8B800942B28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */ = {
 			isa = XCConfigurationList;

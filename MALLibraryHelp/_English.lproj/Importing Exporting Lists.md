@@ -23,7 +23,7 @@ Score|Y|N|Y
 
 * Only completed, plan to watch and watching status. The XML does not contain state/watch status information nor score.
 
-## How to Export List from Other Sites and Import them
+## How to export lists from other sites and import them
 
 ### MyAnimeList
 1. In the library view on MyAnimeList, click "Export" option.

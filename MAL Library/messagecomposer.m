@@ -42,9 +42,19 @@
     return YES;
 }
 
-- (void)setMessage:(NSString *)reciplicant withSubject:(NSString * _Nullable)subject withMessage:(NSAttributedString * _Nullable)message withThreadID:(int)tid {
-    _reciplicant.stringValue = reciplicant;
-    _subjectfield.stringValue = subject;
+- (void)setMessage:(NSString *_Nullable)reciplicant withSubject:(NSString * _Nullable)subject withMessage:(NSAttributedString * _Nullable)message withThreadID:(int)tid {
+    if (reciplicant) {
+        _reciplicant.stringValue = reciplicant;
+    }
+    else {
+        _reciplicant.stringValue = @"";
+    }
+    if (subject) {
+        _subjectfield.stringValue = subject;
+    }
+    else {
+        _subjectfield.stringValue = @"";
+    }
     if (message) {
         [_messagetext.textStorage setAttributedString:message];
     }
@@ -66,7 +76,7 @@
         [self.window close];
     }error:^(NSError *error){
         NSLog(@"%@",error);
-        [Utility showsheetmessage:@"Can't send message." explaination:@"Make sure you have the proper cedentials or specified a valid username to send the message to and try again." window:self.window];
+        [Utility showsheetmessage:@"Couldn't send message." explaination:@"Make sure you have the proper cedentials or specified a valid username to send the message to and try again." window:self.window];
     }];
 }
 

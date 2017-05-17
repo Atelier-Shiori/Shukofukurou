@@ -9,7 +9,7 @@
 #import "LoginPref.h"
 #import "Base64Category.h"
 #import "AppDelegate.h"
-#import "MainWindow.H"
+#import "MainWindow.h"
 #import "Utility.h"
 #import "MyAnimeList.h"
 

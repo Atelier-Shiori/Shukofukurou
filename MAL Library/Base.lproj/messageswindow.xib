@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="messageswindow">
@@ -158,28 +159,11 @@
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="baD-PF-uAD"/>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="tju-iH-IBl"/>
-                    <toolbarItem implicitItemIdentifier="10422CB5-737A-4BD3-9BA8-E1916092810A" explicitItemIdentifier="filter" label="Search" paletteLabel="Search" id="0O3-PJ-oj5">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="150" height="22"/>
-                        <size key="maxSize" width="150" height="22"/>
-                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="fCq-La-ETY">
-                            <rect key="frame" x="0.0" y="14" width="150" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Search" usesSingleLineMode="YES" bezelStyle="round" id="svg-3U-6wP">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </searchFieldCell>
-                            <connections>
-                                <action selector="performfilter:" target="-2" id="gYO-2B-uXA"/>
-                            </connections>
-                        </searchField>
-                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="4DC8F3DD-57BD-4D99-B7A5-6BEF0D55BF1F" explicitItemIdentifier="AddTitleInfo" label="New Message" paletteLabel="New Message" toolTip="New Message" image="reviews" id="gxh-UU-SJm">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="TbX-hv-3Yy">
-                            <rect key="frame" x="17" y="14" width="37" height="25"/>
+                            <rect key="frame" x="22" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="reviews" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tj9-mk-nzc">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -194,7 +178,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="2ED-Ml-UoY">
-                            <rect key="frame" x="22" y="14" width="37" height="25"/>
+                            <rect key="frame" x="27" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="delete" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wtj-Fp-emD">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -210,7 +194,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="eEU-hf-fOu">
-                            <rect key="frame" x="3" y="14" width="37" height="25"/>
+                            <rect key="frame" x="6" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WPt-ft-PK9">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -245,7 +229,6 @@
                     <toolbarItem reference="oK6-X6-xHM"/>
                     <toolbarItem reference="ktl-Xt-wwW"/>
                     <toolbarItem reference="tju-iH-IBl"/>
-                    <toolbarItem reference="0O3-PJ-oj5"/>
                 </defaultToolbarItems>
             </toolbar>
             <contentBorderThickness minY="22"/>

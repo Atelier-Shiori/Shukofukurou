@@ -20,6 +20,7 @@ To recieve a donation key for use with MAL Updater OS X, send an email with proo
 You can also donate cryptocurrencies to these addresses (You will get a donation key as long the amount is equilivant to $5 USD or more). Put your name and email in the notes in the transaction:
 * Bitcoin - 1ELQEQXi1MNwSmv2mwWUGt6RbSNVgHqBUA
 * Ethereum - 7DDfd7443d3D4A7ec76e25d481E68BE43533b509
+* ZCash - t1WR1Q6ioNdqdWscyrx2v4iFH7GdQwmDQdt
 
 ## How to Compile
 

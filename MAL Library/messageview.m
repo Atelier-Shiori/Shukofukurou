@@ -61,5 +61,8 @@ decisionListener:(id <WebPolicyDecisionListener>)listener
         [listener use];
     }
 }
+- (IBAction)viewsenderprofile:(id)sender {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_selectedmessage[@"username"]]]];
+}
 
 @end

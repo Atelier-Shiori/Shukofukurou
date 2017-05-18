@@ -53,5 +53,6 @@
 }
 
 - (IBAction)viewreviewerprofile:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_reviewerusername.stringValue]]];
 }
 @end

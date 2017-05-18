@@ -239,7 +239,7 @@
 - (IBAction)reply:(id)sender {
     [_messagecomposerw.window makeKeyAndOrderFront:self];
     NSDictionary *d = _messageview.selectedmessage;
-    [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[[NSString stringWithFormat:@"[quote]%@[/quote]",(NSString *)d[@"message"]] convertHTMLtoAttStr] withThreadID:((NSNumber *)d[@"id"]).intValue];
+    [_messagecomposerw setMessage:d[@"username"] withSubject:[NSString stringWithFormat:@"RE:%@", d[@"subject"]] withMessage:[[NSString stringWithFormat:@"[quote]%@[/quote]",(NSString *)d[@"message"]] convertHTMLtoAttStr] withThreadID:((NSNumber *)d[@"thread_id"]).intValue];
 }
 
 - (IBAction)deletemessage:(id)sender {
@@ -251,12 +251,12 @@
     alert.alertStyle = NSAlertStyleWarning;
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
-            [self performDeleteMessage:_selectedid];
+            [self performDeleteMessage:_messageview.selectedmessageid withActionID:((NSNumber *)_messageview.selectedmessage[@"action_id"]).intValue];
         }
     }];
 }
-- (void)performDeleteMessage:(int)messageid {
-    [MyAnimeList deletemessage:messageid completionHandler:^(id responseObject){
+- (void)performDeleteMessage:(int)messageid withActionID:(int)actionid {
+    [MyAnimeList deletemessage:actionid completionHandler:^(id responseObject){
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"message-%i.json",messageid] appendPath:@"Messages"]){
             [Utility deleteFile:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages"];
         }

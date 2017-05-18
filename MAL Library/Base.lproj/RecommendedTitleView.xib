@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,7 +41,11 @@
                                         </tableHeaderCell>
                                         <imageCell key="dataCell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="2mV-px-h3h"/>
                                         <connections>
-                                            <binding destination="aFM-4d-7Ul" name="valueURL" keyPath="arrangedObjects.image_url" id="caD-UZ-CkQ"/>
+                                            <binding destination="aFM-4d-7Ul" name="value" keyPath="arrangedObjects.image_url" id="UNw-T6-M5B">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">imagecachetransformer</string>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn editable="NO" width="223" minWidth="40" maxWidth="1000" id="j6k-uv-9HQ">

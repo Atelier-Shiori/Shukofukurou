@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
+		2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
 		2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
 		2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
@@ -290,6 +292,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imagecachetransformer.h; sourceTree = "<group>"; };
+		2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagecachetransformer.m; sourceTree = "<group>"; };
 		2D20C4F01EB8FF6000B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messagecomposer.xib; sourceTree = "<group>"; };
 		2D20C4F41EB8FF7600B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewView.xib; sourceTree = "<group>"; };
 		2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -716,6 +720,8 @@
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */,
+				2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1114,6 +1120,7 @@
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				913A11791E8F206A00450B66 /* SSKeychain.m in Sources */,
+				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
@@ -1135,6 +1142,7 @@
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
+				2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */,
 				9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */,
 				2DC28DCF1EB8DF64005B7B77 /* ESCssTokens.m in Sources */,

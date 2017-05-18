@@ -101,7 +101,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"anime-%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"episodes"] == nil){
@@ -238,7 +238,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"manga-%@.jpg",d[@"id"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"chapters"] == nil){

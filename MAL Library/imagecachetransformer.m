@@ -7,7 +7,21 @@
 //
 
 #import "imagecachetransformer.h"
+#import "Utility.h"
 
 @implementation imagecachetransformer
++ (Class)transformedValueClass {
+    return [NSImage class];
+}
+
+- (id)transformedValue:(id)value {
+    if (value == nil) return nil;
+    
+    if ([value respondsToSelector:@selector(stringByReplacingOccurrencesOfString:withString:)]) {
+        NSString *url = value;
+        return [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[url stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:url]];
+    }
+    return nil;
+}
 
 @end

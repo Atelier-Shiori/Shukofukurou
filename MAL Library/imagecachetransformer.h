@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface imagecachetransformer : NSValueTransformer
-
++ (Class)transformedValueClass;
+- (id)transformedValue:(id)value;
 @end

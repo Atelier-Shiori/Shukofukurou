@@ -67,15 +67,18 @@
 }
 
 - (IBAction)sendmessage:(id)sender {
+    _sendbtn.enabled = NO;
     NSDictionary *documentAttributes = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     NSData *htmlData = [_messagetext.attributedString dataFromRange:NSMakeRange(0, _messagetext.attributedString.length) documentAttributes:documentAttributes error:NULL];
     NSString *htmlString = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
     [MyAnimeList sendmessage:_reciplicant.stringValue withSubject:_subjectfield.stringValue withMessage:[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString] withthreadID:_threadid completionHandler:^(id responseObject){
         self.window.documentEdited = NO;
+        _sendbtn.enabled = YES;
         _completionblock();
         [self.window close];
     }error:^(NSError *error){
         NSLog(@"%@",error);
+        _sendbtn.enabled = YES;
         [Utility showsheetmessage:@"Couldn't send message." explaination:@"Make sure you have the proper cedentials or specified a valid username to send the message to and try again." window:self.window];
     }];
 }

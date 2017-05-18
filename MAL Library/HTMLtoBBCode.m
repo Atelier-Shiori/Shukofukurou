@@ -45,6 +45,10 @@
     while ((match = [regex search:bodytext])) {
         bodytext = [bodytext replaceByRegexp:regex with:@""];
     }
+    regex = [OnigRegexp compile:@"<span class=\"s\\d+\">" ignorecase:YES multiline:YES extended:NO];
+    while ((match = [regex search:bodytext])) {
+        bodytext = [bodytext replaceByRegexp:regex with:@""];
+    }
     regex = [OnigRegexp compile:@"</p>" ignorecase:YES multiline:YES extended:NO];
     while ((match = [regex search:bodytext])) {
         bodytext = [bodytext replaceByRegexp:regex with:@""];
@@ -101,9 +105,31 @@
             regex = [OnigRegexp compile:@"span.s\\d+"];
             if ([regex match:s]) {
                 NSDictionary *d = cssparsed[s];
+                NSNumber *fontsize = nil;
+                if (d[@"font"]) {
+                    regex = [OnigRegexp compile:@".*px" options:OnigOptionIgnorecase];
+                    OnigResult *match = [regex search:d[@"font"]];
+                    // Get font size
+                    NSString *tmpstr = match.strings[0];
+                    regex = [OnigRegexp compile:@"\\d+.\\d+px"];
+                    match = [regex search:tmpstr];
+                    tmpstr = [match stringAt:0];
+                    tmpstr = [tmpstr replaceByRegexp:[OnigRegexp compile:@".\\d+px"] with:@""];
+                    fontsize = @(tmpstr.intValue);
+                }
                 if (d[@"text-decoration"]) {
                     if ([(NSString *)d[@"text-decoration"] isEqualToString:@"underline"]){
-                        [styles setObject:@{@"textdecoration":@"underline"} forKey:s];
+                        if (fontsize) {
+                            if (fontsize.intValue != 12) {
+                                [styles setObject:@{@"fontsize":fontsize,@"textdecoration":@"underline"} forKey:s];
+                            }
+                            else {
+                                [styles setObject:@{@"textdecoration":@"underline"} forKey:s];
+                            }
+                        }
+                        else {
+                            [styles setObject:@{@"textdecoration":@"underline"} forKey:s];
+                        }
                     }
                 }
             }
@@ -170,6 +196,10 @@
             if (formatinfo[@"textdecoration"]) {
                 [beforetags appendString:@"[u]"];
                 [endtags appendString:@"[/u]"];
+            }
+            if (formatinfo[@"fontsize"]) {
+                [beforetags appendFormat:@"[size=%@]",formatinfo[@"fontsize"]];
+                [endtags insertString:@"[/size]" atIndex:0];
             }
             OnigRegexp *regex = [OnigRegexp compile:[NSString stringWithFormat:@"<span class=\"%@\">",[key stringByReplacingOccurrencesOfString:@"span." withString:@""]] ignorecase:YES multiline:YES extended:NO];
             OnigResult *match;

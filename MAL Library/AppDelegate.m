@@ -224,7 +224,7 @@
         [_messageswindow.window close];
         [_messageswindow cleartableview];
     }
-    if (!_liststatswindow){
+    if (_liststatswindow){
         [_liststatswindow.window close];
     }
 }

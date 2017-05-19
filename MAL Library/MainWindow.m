@@ -631,11 +631,13 @@
                 list = [Utility loadJSON:@"animelist.json" appendpath:@""];
                 if (exists && !refreshlist){
                     [_listview populateList:list type:0];
+                    [self refreshStatistics];
                     return;
                 }
                 else if (!exists || refreshlist){
                     [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
+                        [self refreshStatistics];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
                     }];
@@ -646,11 +648,13 @@
                 list = [Utility loadJSON:@"mangalist.json" appendpath:@""];
                 if (exists && !refreshlist){
                     [_listview populateList:list type:1];
+                    [self refreshStatistics];
                     return;
                 }
                 else if (!exists || refreshlist){
                     [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
+                        [self refreshStatistics];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
                     }];
@@ -662,6 +666,12 @@
             default:
                     break;
         }
+    }
+}
+- (void)refreshStatistics {
+    ListStatistics *ls = _appdel.liststatswindow;
+    if (ls){
+        [ls populateValues];
     }
 }
 - (void)clearlist{

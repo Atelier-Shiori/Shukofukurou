@@ -11,11 +11,13 @@
 #import "MSWeakTimer.h"
 #import "MainWindow.h"
 #import "messageswindow.h"
+#import "ListStatistics.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
 @property (strong) NSWindowController *_preferencesWindowController;
 @property (strong) messageswindow *messageswindow;
+@property (strong) ListStatistics *liststatswindow;
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;

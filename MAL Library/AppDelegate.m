@@ -189,6 +189,20 @@
     }
 }
 
+- (IBAction)viewListStats:(id)sender {
+    if ([Keychain checkaccount]) {
+        if (!_liststatswindow){
+            _liststatswindow = [ListStatistics new];
+        }
+        [_liststatswindow.window makeKeyAndOrderFront:self];
+        [_liststatswindow populateValues];
+    }
+    else {
+        [self showloginnotice];
+    }
+}
+
+
 - (void)clearMessages {
     // Clears user messages
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -209,6 +223,9 @@
     if (_messageswindow){
         [_messageswindow.window close];
         [_messageswindow cleartableview];
+    }
+    if (!_liststatswindow){
+        [_liststatswindow.window close];
     }
 }
 

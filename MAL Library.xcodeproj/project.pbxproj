@@ -14,6 +14,14 @@
 		2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
 		2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
+		2D371E741ECF8AF500F47138 /* ListStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E721ECF8AF500F47138 /* ListStatistics.m */; };
+		2D371E751ECF8AF500F47138 /* ListStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E721ECF8AF500F47138 /* ListStatistics.m */; };
+		2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E791ECF8B4F00F47138 /* ratingchartview.m */; };
+		2D371E7C1ECF8B4F00F47138 /* ratingchartview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E791ECF8B4F00F47138 /* ratingchartview.m */; };
+		2D371E7F1ECFA3E400F47138 /* ListStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E821ECFA3E400F47138 /* ListStatistics.xib */; };
+		2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E821ECFA3E400F47138 /* ListStatistics.xib */; };
+		2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
+		2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
 		2D60A1221E9B322B0034C3AA /* MAL_LibraryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */; };
 		2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
 		2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
@@ -296,6 +304,12 @@
 		2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagecachetransformer.m; sourceTree = "<group>"; };
 		2D20C4F01EB8FF6000B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messagecomposer.xib; sourceTree = "<group>"; };
 		2D20C4F41EB8FF7600B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewView.xib; sourceTree = "<group>"; };
+		2D371E711ECF8AF500F47138 /* ListStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListStatistics.h; sourceTree = "<group>"; };
+		2D371E721ECF8AF500F47138 /* ListStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListStatistics.m; sourceTree = "<group>"; };
+		2D371E781ECF8B4F00F47138 /* ratingchartview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ratingchartview.h; sourceTree = "<group>"; };
+		2D371E791ECF8B4F00F47138 /* ratingchartview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ratingchartview.m; sourceTree = "<group>"; };
+		2D371E811ECFA3E400F47138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListStatistics.xib; sourceTree = "<group>"; };
+		2D371E851ECFA3E700F47138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ratingchartview.xib; sourceTree = "<group>"; };
 		2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_LibraryUITests.m; sourceTree = "<group>"; };
 		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -722,6 +736,12 @@
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 				2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */,
 				2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */,
+				2D371E711ECF8AF500F47138 /* ListStatistics.h */,
+				2D371E721ECF8AF500F47138 /* ListStatistics.m */,
+				2D371E821ECFA3E400F47138 /* ListStatistics.xib */,
+				2D371E781ECF8B4F00F47138 /* ratingchartview.h */,
+				2D371E791ECF8B4F00F47138 /* ratingchartview.m */,
+				2D371E861ECFA3E700F47138 /* ratingchartview.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -962,11 +982,13 @@
 				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
+				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
 				2D8BF8B81EC4EED80068856A /* KitsuImportPrompt.xib in Resources */,
 				913A119C1E8F206A00450B66 /* PFAboutWindow.xib in Resources */,
 				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
+				2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
@@ -994,6 +1016,7 @@
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
 				91999D021E8C7DFE0026D3E9 /* SearchView.xib in Resources */,
+				2D371E7F1ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				917897EB1E89F19900C155DF /* DonationWindow.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
@@ -1004,6 +1027,7 @@
 				2D8BF8B71EC4EED80068856A /* KitsuImportPrompt.xib in Resources */,
 				91822A601EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
+				2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */,
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */,
@@ -1080,6 +1104,7 @@
 				2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */,
 				91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 				91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */,
+				2D371E751ECF8AF500F47138 /* ListStatistics.m in Sources */,
 				2D94612F1EC38CC8004E171B /* ListImport.m in Sources */,
 				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
@@ -1105,6 +1130,7 @@
 				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
+				2D371E7C1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				91822A571EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
 				2D8BF8AC1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */,
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
@@ -1155,6 +1181,7 @@
 				2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */,
 				91999D081E8C81580026D3E9 /* SeasonView.m in Sources */,
 				9199BAD61E89842400F6E9FF /* LoginPref.m in Sources */,
+				2D371E741ECF8AF500F47138 /* ListStatistics.m in Sources */,
 				91999D001E8C73300026D3E9 /* SearchView.m in Sources */,
 				91B3A8A01EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
@@ -1184,6 +1211,7 @@
 				91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				2D8BF8AB1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */,
+				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
@@ -1231,6 +1259,22 @@
 				2D20C4F41EB8FF7600B241B9 /* Base */,
 			);
 			name = ReviewView.xib;
+			sourceTree = "<group>";
+		};
+		2D371E821ECFA3E400F47138 /* ListStatistics.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D371E811ECFA3E400F47138 /* Base */,
+			);
+			name = ListStatistics.xib;
+			sourceTree = "<group>";
+		};
+		2D371E861ECFA3E700F47138 /* ratingchartview.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D371E851ECFA3E700F47138 /* Base */,
+			);
+			name = ratingchartview.xib;
 			sourceTree = "<group>";
 		};
 		2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */ = {

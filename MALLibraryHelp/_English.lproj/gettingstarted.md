@@ -1,6 +1,7 @@
 ---
 title: Getting Started
 description: Getting Started with MAL Library
+keyword: overview
 order: -.INF
 ---
 

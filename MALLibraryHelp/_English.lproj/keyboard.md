@@ -1,6 +1,7 @@
 ---
 title: Keyboard Shortcuts
 description: Quickly accomplish many tasks using keyboard and other shortcuts.
+keyword: keyboard shortcuts
 order: .INF
 ---
 ## General

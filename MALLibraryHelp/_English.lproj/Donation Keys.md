@@ -1,7 +1,7 @@
 ---
 title: Donation Keys
 description: About Donation Keys
-
+keywords: donation key, donation
 ---
 While MAL Library is free and open source software, hosting the Atarashii-API and maintaining the Apple Developer Program costs money. This is why the donation reminder dialog will show up at launch. This only applies if you didn't download MAL Library from the Mac App Store.
 

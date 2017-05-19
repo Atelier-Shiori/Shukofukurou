@@ -1,6 +1,7 @@
 ---
 title: License Agreement
 description: Show the license for MAL Library
+keywords: eula
 order: .INF
 ---
 MAL Library is open sourced and is licensed under the New BSD License.

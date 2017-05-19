@@ -1,6 +1,7 @@
 ---
 title: Importing and Exporting Lists
 description: About the Import and Export features in MAL Library.
+keywords: importing, kitsu, exporting, backip lists, syncing lists, anidb
 ---
 In MAL Library 2.1, you can import lists from other services.
 

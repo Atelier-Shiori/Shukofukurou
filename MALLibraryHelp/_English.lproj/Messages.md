@@ -1,6 +1,7 @@
 ---
 title: Messages
-description: Show help for Messages functionality0
+description: Show help for Messages functionality.
+keywords: messages, private messages, reading messages, composing messages
 ---
 ![](messages.jpg)
 

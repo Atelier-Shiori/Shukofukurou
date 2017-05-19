@@ -1,6 +1,7 @@
 ---
 title: Preferences
 description: About Preferences.
+keywords: settings, preferences, software updates, login, account login, general settings, api settings, advanced settings
 ---
 The Preferences window allows you to change various settings
 

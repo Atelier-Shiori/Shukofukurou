@@ -115,7 +115,7 @@
                     match = [regex search:tmpstr];
                     tmpstr = [match stringAt:0];
                     tmpstr = [tmpstr replaceByRegexp:[OnigRegexp compile:@".\\d+px"] with:@""];
-                    fontsize = @(tmpstr.intValue);
+                    fontsize = @(tmpstr.floatValue/12*100);
                 }
                 if (d[@"text-decoration"]) {
                     if ([(NSString *)d[@"text-decoration"] isEqualToString:@"underline"]){
@@ -149,7 +149,7 @@
     match = [regex search:tmpstr];
     tmpstr = [match stringAt:0];
     tmpstr = [tmpstr replaceByRegexp:[OnigRegexp compile:@".\\d+px"] with:@""];
-    fontsize = @(tmpstr.intValue);
+    fontsize = @(tmpstr.floatValue/12*100);
     // Get alignment
     regex = [OnigRegexp compile:@"(center|right)" options:OnigOptionIgnorecase];
     if (css[@"text-align"]) {
@@ -177,7 +177,7 @@
         NSMutableString * endtags = [[NSMutableString alloc] initWithString:@""];
         if ([[OnigRegexp compile:@"p.p\\d+"] match:key]) {
             if (formatinfo[@"fontsize"]) {
-                [beforetags appendFormat:@"[size=%@]",formatinfo[@"fontsize"]];
+                [beforetags appendFormat:@"[size=%i]",((NSNumber *)formatinfo[@"fontsize"]).intValue];
                 [endtags appendString:@"[/size]"];
             }
             if (formatinfo[@"align"]) {
@@ -198,7 +198,7 @@
                 [endtags appendString:@"[/u]"];
             }
             if (formatinfo[@"fontsize"]) {
-                [beforetags appendFormat:@"[size=%@]",formatinfo[@"fontsize"]];
+                [beforetags appendFormat:@"[size=%i]",((NSNumber *)formatinfo[@"fontsize"]).intValue];
                 [endtags insertString:@"[/size]" atIndex:0];
             }
             OnigRegexp *regex = [OnigRegexp compile:[NSString stringWithFormat:@"<span class=\"%@\">",[key stringByReplacingOccurrencesOfString:@"span." withString:@""]] ignorecase:YES multiline:YES extended:NO];

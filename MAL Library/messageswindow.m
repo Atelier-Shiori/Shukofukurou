@@ -47,7 +47,7 @@
     [_selectmessageview setFrameOrigin:NSMakePoint(0, 0)];
     _selectmessageview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _messageview.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
-    [self loadmessagelist:1 refresh:false];
+    [self loadmessagelist:1 refresh:true];
     if (!_messagecomposerw) {
         _messagecomposerw = [self messagecomposerController];
     }
@@ -94,6 +94,7 @@
         }
     }error:^(NSError *error){
         NSLog(@"%@",error);
+        [self cleartableview];
         [self toggleprogresswheel:NO];
     }];
 
@@ -251,7 +252,7 @@
     alert.alertStyle = NSAlertStyleWarning;
     [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
-            [self performDeleteMessage:_messageview.selectedmessageid withActionID:((NSNumber *)_messageview.selectedmessage[@"action_id"]).intValue];
+            [self performDeleteMessage:((NSNumber *)_messageview.selectedmessage[@"id"]).intValue withActionID:((NSNumber *)_messageview.selectedmessage[@"action_id"]).intValue];
         }
     }];
 }
@@ -260,6 +261,7 @@
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"message-%i.json",messageid] appendPath:@"Messages"]){
             [Utility deleteFile:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages"];
         }
+        [self loadmessagelist:1 refresh:YES];
     } error:^(NSError *error){
         NSLog(@"%@",error);
         [Utility showsheetmessage:@"Cannot delete message." explaination:@"Plese try again." window:self.window];

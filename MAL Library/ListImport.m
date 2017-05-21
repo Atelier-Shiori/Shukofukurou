@@ -83,12 +83,18 @@
         // Cleanup
         _listimport = nil;
         _existinglist = nil;
-        _listtype = nil;
         if (_otheridmalidmapping) {
-            // Save mappings and clear kitsu mapping array.
-            [Utility saveJSON:_otheridmalidmapping withFilename:@"KitsuMALMappings.json" appendpath:@"" replace:true];
+            if ([_listtype isEqualToString:@"kitsu"]) {
+                // Save mappings and clear kitsu mapping array.
+                [Utility saveJSON:_otheridmalidmapping withFilename:@"KitsuMALMappings.json" appendpath:@"" replace:true];
+            }
+            else if ([_listtype isEqualToString:@"anidb"]) {
+                // Save mappings and clear kitsu mapping array.
+                [Utility saveJSON:_otheridmalidmapping withFilename:@"AniDBMALMappings.json" appendpath:@"" replace:true];
+            }
             _otheridmalidmapping = nil;
         }
+        _listtype = nil;
         _importprompt = nil;
         _metadata = nil;
     }
@@ -307,7 +313,7 @@
         }];
     }
     else {
-        
+       [self performMALUpdatefromAniDBEntry:entry withMALID:malid.intValue];
     }
 }
 - (void)performMALUpdatefromAniDBEntry:(NSDictionary *)entry withMALID:(int)malid {
@@ -316,7 +322,7 @@
     if (entry[@"my_watchedeps"][@"text"]) {
         watchedeps = ((NSNumber *)entry[@"my_watchedeps"][@"text"]).intValue;
     }
-    if (watchedeps == ((NSString *)entry[@"eps"][@"text"]).intValue) {
+    if (watchedeps == ((NSString *)entry[@"eps"][@"text"]).intValue || entry[@"complete"]) {
         status = @"completed";
     }
     else if (watchedeps == 0) {

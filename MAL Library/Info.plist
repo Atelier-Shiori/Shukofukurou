@@ -6,6 +6,10 @@
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleHelpBookFolder</key>
+	<string>MALLibraryHelp.help</string>
+	<key>CFBundleHelpBookName</key>
+	<string>moe.ateliershiori.MALLibraryHelp.help</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
@@ -32,7 +36,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>20170423</string>
+	<string>20170520</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -65,9 +69,5 @@
 	<string>https://updates.ateliershiori.moe/mallibrary/profileInfo.php</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
-	<key>CFBundleHelpBookFolder</key>
-	<string>MALLibraryHelp.help</string>
-	<key>CFBundleHelpBookName</key>
-	<string>moe.ateliershiori.MALLibraryHelp.help</string>
 </dict>
 </plist>

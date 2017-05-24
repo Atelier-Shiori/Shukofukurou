@@ -30,4 +30,4 @@ Allows you to login or log out of your account. Credentials are saved in the log
 
 ## Advanced
 ![](advanced.jpg)
-* API Settings - Allows you to specify an MAL API server to use. 
+* API Settings - Allows you to specify a MAL API server to use. 

@@ -124,7 +124,7 @@
             _savebut.keyEquivalent = @"\r";
         }
         else{
-            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account since you are not connected to the internet" explaination:@"Check your internet connection and try again." window:self.view.window];
+            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account" explaination:[error.userInfo valueForKey:@"NSLocalizedDescription"] window:self.view.window];
             [_savebut setEnabled: YES];
             _savebut.keyEquivalent = @"\r";
         }

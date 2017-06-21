@@ -9,6 +9,8 @@
 #import "GeneralPref.h"
 #import "MainWindow.h"
 #import "Utility.h"
+#import "StreamDataRetriever.h"
+
 @interface GeneralPref ()
 
 @end
@@ -66,5 +68,8 @@
             [Utility clearImageCache];
         }
     }];
+}
+- (IBAction)refreshstreamdata:(id)sender {
+    [StreamDataRetriever performrestrieveStreamData];
 }
 @end

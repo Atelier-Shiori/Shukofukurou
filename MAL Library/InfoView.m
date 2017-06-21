@@ -12,6 +12,7 @@
 #import "NSString+HTMLtoNSAttributedString.h"
 #import "ReviewView.h"
 #import "RecommendedTitleView.h"
+#import "StreamPopup.h"
 
 @interface InfoView ()
 @property (strong) IBOutlet NSTextField *infoviewtitle;
@@ -20,6 +21,9 @@
 @property (strong) IBOutlet RecommendedTitleView *otherpopoverviewcontroller;
 @property (strong) IBOutlet NSButton *recommendedtitlebutton;
 @property (strong) IBOutlet NSButton *sourcematerialbutton;
+@property (strong) IBOutlet StreamPopup *steampopupviewcontroller;
+@property (strong) IBOutlet NSPopover *streampopover;
+@property (strong) IBOutlet NSButton *streambutton;
 @end
 
 @implementation InfoView
@@ -32,6 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    if (!_steampopupviewcontroller.isViewLoaded) {
+        [_steampopupviewcontroller loadView];
+    }
 }
 - (void)populateAnimeInfoView:(id)object{
     NSDictionary *d = object;
@@ -59,6 +66,22 @@
         for (NSString *stitle in syn){
             [othertitles addObject:stitle];
         }
+    }
+    // Stream Check
+    if (![_steampopupviewcontroller checkifdataexists:_infoviewtitle.stringValue]){
+        bool found = false;
+        for (NSString *t in othertitles) {
+            if ((found = [_steampopupviewcontroller checkifdataexists:t])){
+                _streambutton.hidden = false;
+                break;
+            }
+        }
+        if (!found) {
+            _streambutton.hidden = true;
+        }
+    }
+    else {
+        _streambutton.hidden = false;
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
     _infoviewalttitles.stringValue = titles;
@@ -309,5 +332,9 @@
     _otherpopoverviewcontroller.popovertitle.stringValue = @"Manga Adaptations";
     [_otherpopoverviewcontroller loadTitles:_selectedinfo[@"manga_adaptations"] selectedid:_selectedid type:1];
     [_othertitlepopover showRelativeToRect:_sourcematerialbutton.bounds ofView:_sourcematerialbutton preferredEdge:NSMaxYEdge];
+}
+
+- (IBAction)viewstreams:(id)sender {
+    [_streampopover showRelativeToRect:_streambutton.bounds ofView:_streambutton preferredEdge:NSMaxYEdge];
 }
 @end

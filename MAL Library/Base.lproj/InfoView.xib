@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16G16b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,6 +17,9 @@
                 <outlet property="othertitlepopover" destination="5H7-SL-XOC" id="FhQ-yu-655"/>
                 <outlet property="recommendedtitlebutton" destination="XRL-x8-3ss" id="qMw-yJ-pbG"/>
                 <outlet property="sourcematerialbutton" destination="Eiq-GX-sEZ" id="M8n-Gp-tl1"/>
+                <outlet property="steampopupviewcontroller" destination="aHu-zv-cNN" id="2yN-v3-ENp"/>
+                <outlet property="streambutton" destination="xFn-74-hEP" id="xea-Hb-Aaq"/>
+                <outlet property="streampopover" destination="Kzw-VN-dNd" id="8nA-Tp-dtG"/>
                 <outlet property="view" destination="Zfc-hH-9i3" id="2W2-xW-b8W"/>
             </connections>
         </customObject>
@@ -228,6 +231,17 @@
                         <action selector="showadaptationspopover:" target="-2" id="9Y3-yq-bEw"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xFn-74-hEP">
+                    <rect key="frame" x="14" y="85" width="168" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Sites to Watch Title" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="T7S-36-sef">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="viewstreams:" target="-2" id="Ln3-Bm-cKR"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="316.5" y="1813"/>
         </visualEffectView>
@@ -239,6 +253,16 @@
         <popover appearance="aqua" behavior="t" id="5H7-SL-XOC">
             <connections>
                 <outlet property="contentViewController" destination="ApP-RB-RnN" id="u51-0d-GYG"/>
+            </connections>
+        </popover>
+        <viewController title="StreamPopup" nibName="StreamPopup" id="aHu-zv-cNN" userLabel="Popover View Controller" customClass="StreamPopup">
+            <connections>
+                <outlet property="popover" destination="Kzw-VN-dNd" id="Htc-gq-cL1"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="Kzw-VN-dNd">
+            <connections>
+                <outlet property="contentViewController" destination="aHu-zv-cNN" id="QV9-PM-AFX"/>
             </connections>
         </popover>
     </objects>

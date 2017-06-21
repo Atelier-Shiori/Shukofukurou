@@ -44,6 +44,14 @@
 		2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
 		2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
+		2DAB19DF1EF9D16800420182 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
+		2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
+		2DAB19E11EF9D16800420182 /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB19DE1EF9D16800420182 /* StreamPopup.xib */; };
+		2DAB19E21EF9D16800420182 /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB19DE1EF9D16800420182 /* StreamPopup.xib */; };
+		2DAB19E51EF9ED9400420182 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
+		2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
+		2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
+		2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
 		2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
@@ -332,6 +340,13 @@
 		2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLtoBBCode.m; sourceTree = "<group>"; };
 		2DAA9FBF1EB6524A00F562BD /* messagecomposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messagecomposer.h; sourceTree = "<group>"; };
 		2DAA9FC01EB6524A00F562BD /* messagecomposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messagecomposer.m; sourceTree = "<group>"; };
+		2DAB19DC1EF9D16800420182 /* StreamPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamPopup.h; sourceTree = "<group>"; };
+		2DAB19DD1EF9D16800420182 /* StreamPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamPopup.m; sourceTree = "<group>"; };
+		2DAB19DE1EF9D16800420182 /* StreamPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamPopup.xib; sourceTree = "<group>"; };
+		2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
+		2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
+		2DAB19E71EF9F2C400420182 /* siteimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = siteimage.h; sourceTree = "<group>"; };
+		2DAB19E81EF9F2C400420182 /* siteimage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = siteimage.m; sourceTree = "<group>"; };
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
 		2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
 		2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
@@ -641,6 +656,8 @@
 				9199BAB11E89842400F6E9FF /* GeneralPref.h */,
 				9199BAB21E89842400F6E9FF /* GeneralPref.m */,
 				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
+				2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */,
+				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
 				91D094BF1E983095009454F8 /* HistoryView.h */,
 				91D094C01E983095009454F8 /* HistoryView.m */,
 				91B378B91E989C83000061E6 /* HistoryView.xib */,
@@ -738,10 +755,15 @@
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
 				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
+				2DAB19E71EF9F2C400420182 /* siteimage.h */,
+				2DAB19E81EF9F2C400420182 /* siteimage.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				2DAB19DC1EF9D16800420182 /* StreamPopup.h */,
+				2DAB19DD1EF9D16800420182 /* StreamPopup.m */,
+				2DAB19DE1EF9D16800420182 /* StreamPopup.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -991,6 +1013,7 @@
 				2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
+				2DAB19E21EF9D16800420182 /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1032,6 +1055,7 @@
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
+				2DAB19E11EF9D16800420182 /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
@@ -1129,11 +1153,13 @@
 				2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */,
 				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
+				2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
 				2D371E7C1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				91822A571EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
 				2D8BF8AC1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */,
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
+				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
 				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
@@ -1149,6 +1175,7 @@
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
+				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1209,13 +1236,16 @@
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
 				91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */,
+				2DAB19DF1EF9D16800420182 /* StreamPopup.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				2D8BF8AB1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
+				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
 				91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
+				2DAB19E51EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

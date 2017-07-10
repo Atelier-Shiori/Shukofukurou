@@ -1,18 +1,20 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D0664777F262EBE14804CA1239AA6E17352712BB+++A5C9EAC",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D0664777F262EBE14804CA1239AA6E17352712BB+++70F64A8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "D0664777F262EBE14804CA1239AA6E17352712BB+++40106D1" : 9223372036854775807,
+    "D0664777F262EBE14804CA1239AA6E17352712BB+++A5C9EAC" : 9223372036854775807,
     "D0664777F262EBE14804CA1239AA6E17352712BB+++F033D14" : 9223372036854775807,
-    "D0664777F262EBE14804CA1239AA6E17352712BB+++A5C9EAC" : 9223372036854775807
+    "D0664777F262EBE14804CA1239AA6E17352712BB+++70F64A8" : 9223372036854775807
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "144CA9FC-91C1-4FF5-B0BE-E41DEEC9C346",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "D0664777F262EBE14804CA1239AA6E17352712BB+++40106D1" : "..\/..\/..\/Volumes\/MacStorage\/MALLibrary",
+    "D0664777F262EBE14804CA1239AA6E17352712BB+++A5C9EAC" : "MALLibrary\/",
     "D0664777F262EBE14804CA1239AA6E17352712BB+++F033D14" : "..\/..\/..\/Volumes\/MacStorage\/MALLibrary",
-    "D0664777F262EBE14804CA1239AA6E17352712BB+++A5C9EAC" : "MALLibrary\/"
+    "D0664777F262EBE14804CA1239AA6E17352712BB+++70F64A8" : "MAL-Library-fix\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "MAL Library",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -22,6 +24,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/swoolcock\/MALLibrary.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D0664777F262EBE14804CA1239AA6E17352712BB+++40106D1"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Atelier-Shiori\/MAL-Library.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D0664777F262EBE14804CA1239AA6E17352712BB+++70F64A8"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Atelier-Shiori\/MALLibrary.git",

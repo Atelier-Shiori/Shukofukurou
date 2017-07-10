@@ -64,6 +64,8 @@
 		910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
 		9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
 		9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		911D63B31F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 911D63B21F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m */; };
+		911D63B41F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 911D63B21F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m */; };
 		913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
 		913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		913A11621E8F206A00450B66 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
@@ -343,6 +345,8 @@
 		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
+		911D63B11F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+Synchronous.h"; sourceTree = "<group>"; };
+		911D63B21F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+Synchronous.m"; sourceTree = "<group>"; };
 		913A11AA1E8F206A00450B66 /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A11AB1E8F206A00450B66 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "MAL Library/Info-AppStore.plist"; sourceTree = SOURCE_ROOT; };
 		913A11AD1E8F212600450B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-AppStore.xib"; sourceTree = "<group>"; };
@@ -685,6 +689,8 @@
 				91DAFC5A1EAE6C9F0037A6F2 /* messageswindow.h */,
 				91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */,
 				91822A5B1EAEAC70005E33DB /* messageswindow.xib */,
+				911D63B11F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.h */,
+				911D63B21F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m */,
 				91DAFC611EAE6FA20037A6F2 /* messageview.h */,
 				91DAFC621EAE6FA20037A6F2 /* messageview.m */,
 				91822A5F1EAEAC77005E33DB /* messageview.xib */,
@@ -1146,6 +1152,7 @@
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				913A11791E8F206A00450B66 /* SSKeychain.m in Sources */,
+				911D63B41F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
@@ -1186,6 +1193,7 @@
 				91B3A8A01EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
+				911D63B31F12F969009B2D6D /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,

@@ -14,10 +14,20 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MALLibraryHelp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>2D60A11E1E9B322A0034C3AA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D96A5161ECBA8B800942B28</key>
 		<dict>
 			<key>primary</key>
 			<true/>

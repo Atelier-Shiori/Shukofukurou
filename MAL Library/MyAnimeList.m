@@ -11,6 +11,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
 #import "Base64Category.h"
+#import "AFHTTPSessionManager+Synchronous.h"
 
 @implementation MyAnimeList
 #pragma mark MyAnimeList Functions
@@ -47,7 +48,13 @@
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [Utility manager];
     if ([Keychain checkaccount]) {
+        if ([self verifyAccount]) {
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        }
+        else {
+            errorHandler(nil);
+            return;
+        }
     }
     NSString *url = @"";
     if (type == MALAnime) {
@@ -116,8 +123,14 @@
         return;
     }
     if (useAccount) {
-        url = [NSString stringWithFormat:@"%@?mine=1",url];
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        if ([self verifyAccount]) {
+            url = [NSString stringWithFormat:@"%@?mine=1",url];
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        }
+        else {
+            errorHandler(nil);
+            return;
+        }
     }
     [manager GET:url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         completionHandler(responseObject);
@@ -161,129 +174,210 @@
 
 + (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [Utility manager];
+    manager.responseSerializer = [Utility httpresponseserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [[NSString stringWithFormat:@"%@:%@", username, password] base64Encoding]] forHTTPHeaderField:@"Authorization"];
-    [manager GET:[NSString stringWithFormat:@"%@/1/account/verify_credentials",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:@"https://myanimelist.net/api/account/verify_credentials.xml" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);
     }];
+}
+
++ (bool)verifyAccount {
+    // Check if the credentialsvalid flag is not set to false/NO
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"credentialsvalid"]) {
+        return false;
+    }
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"] timeIntervalSinceNow] < 0) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        manager.responseSerializer = [Utility httpresponseserializer];
+        manager.completionQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        // Check for errors
+        NSError *error = nil;
+        NSData *result = [manager syncGET:@"https://myanimelist.net/api/account/verify_credentials.xml"
+                               parameters:nil
+                                     task:NULL
+                                    error:&error];
+        manager.completionQueue = nil;
+        if (!error && result) {
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*24] forKey:@"credentialscheckdate"];
+            NSLog(@"User credentials valid.");
+            return true;
+        }
+        else if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"credentialsvalid"];
+            NSLog(@"ERROR: User credentials are invalid. Aborting...");
+            return false;
+        }
+        else {
+            NSLog(@"Unable to check user credentials. Trying again later.");
+            return false;
+        }
+    }
+    return true;
 }
 
 #pragma mark List Management
 
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [Utility httpresponseserializer];
-    [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(titleid), @"status":status, @"score":@(score), @"episodes":@(episode)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        manager.responseSerializer = [Utility httpresponseserializer];
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/animelist/anime", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"anime_id":@(titleid), @"status":status, @"score":@(score), @"episodes":@(episode)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
+    }
+    else {
+        errorHandler(nil);
+    }
 
 }
 
 + (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [Utility httpresponseserializer];
-    [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(titleid), @"status":status, @"score":@(score), @"chapters":@(chapter), @"volumes":@(volume)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        manager.responseSerializer = [Utility httpresponseserializer];
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/mangalist/manga", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"manga_id":@(titleid), @"status":status, @"score":@(score), @"chapters":@(chapter), @"volumes":@(volume)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
+    }
+    else {
+        errorHandler(nil);
+    }
 }
 
 + (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [Utility httpresponseserializer];
-    [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"episodes":@(episode)} success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        completionHandler(error);
-    }];
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        manager.responseSerializer = [Utility httpresponseserializer];
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"episodes":@(episode)} success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            completionHandler(error);
+        }];
+    }
+    else {
+        errorHandler(nil);
+    }
 }
 
 + (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [Utility httpresponseserializer];
-    [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume)} success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        manager.responseSerializer = [Utility httpresponseserializer];
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume)} success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
+    }
+    else {
+        errorHandler(nil);
+    }
 }
 
 + (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
-    NSString *deleteURL;
-    if (type == MALAnime) {
-        deleteURL = [NSString stringWithFormat:@"%@/2.1/animelist/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], titleid];
-    }
-    else if (type == MALManga) {
-        deleteURL = [NSString stringWithFormat:@"%@/2.1/mangalist/manga/%i", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], titleid];
+    if ([self verifyAccount]) {
+        NSString *deleteURL;
+        if (type == MALAnime) {
+            deleteURL = [NSString stringWithFormat:@"%@/2.1/animelist/anime/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], titleid];
+        }
+        else if (type == MALManga) {
+            deleteURL = [NSString stringWithFormat:@"%@/2.1/mangalist/manga/%i", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], titleid];
+        }
+        else {
+            return;
+        }
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        manager.responseSerializer = [AFHTTPResponseSerializer new];
+        [manager DELETE:deleteURL parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
     }
     else {
-        return;
+        errorHandler(nil);
     }
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    manager.responseSerializer = [AFHTTPResponseSerializer new];
-    [manager DELETE:deleteURL parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
 }
 
 #pragma mark Messages
 
 + (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    [manager GET:[NSString stringWithFormat:@"%@/2.1/messages",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"page":@(page)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        [manager GET:[NSString stringWithFormat:@"%@/2.1/messages",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:@{@"page":@(page)} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
+    }
+    else {
+        errorHandler(nil);
+    }
 }
 
 + (void)retrievemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    [manager GET:[NSString stringWithFormat:@"%@/2.1/messages/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], messageid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        [manager GET:[NSString stringWithFormat:@"%@/2.1/messages/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], messageid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
+    }
+    else {
+        errorHandler(nil);
+    }
 }
 
 + (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility manager];
-    NSDictionary *pram;
-    if (threadid == 0) {
-        pram = @{@"username":username, @"subject":subject, @"message":message};
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        NSDictionary *pram;
+        if (threadid == 0) {
+            pram = @{@"username":username, @"subject":subject, @"message":message};
+        }
+        else {
+            pram = @{@"username":username, @"subject":subject, @"message":message, @"id":@(threadid)};
+        }
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        [manager POST:[NSString stringWithFormat:@"%@/2.1/messages",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:pram progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
     }
     else {
-        pram = @{@"username":username, @"subject":subject, @"message":message, @"id":@(threadid)};
+        errorHandler(nil);
     }
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    [manager POST:[NSString stringWithFormat:@"%@/2.1/messages",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:pram progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
 }
 
 + (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility manager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    [manager DELETE:[NSString stringWithFormat:@"%@/2.1/messages/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], messageid] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
+    if ([self verifyAccount]) {
+        AFHTTPSessionManager *manager = [Utility manager];
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+        [manager DELETE:[NSString stringWithFormat:@"%@/2.1/messages/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], messageid] parameters:nil success:^(NSURLSessionTask *task, id responseObject) {
+            completionHandler(responseObject);
+        } failure:^(NSURLSessionTask *operation, NSError *error) {
+            errorHandler(error);
+        }];
+    }
+    else {
+        errorHandler(nil);
+    }
 }
 
 

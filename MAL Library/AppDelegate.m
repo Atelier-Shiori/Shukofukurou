@@ -117,6 +117,13 @@
         }
             }];
     }
+    else {
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"]){
+            // Check credentials now if user has an account and these values are not set
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
+        }
+    }
 
 }
 - (void)showloginpref{

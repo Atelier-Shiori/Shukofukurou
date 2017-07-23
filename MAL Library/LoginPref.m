@@ -105,6 +105,8 @@
         [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:self.view.window];
         // Store account in login keychain
         [Keychain storeaccount:_fieldusername.stringValue password:_fieldpassword.stringValue];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*24] forKey:@"credentialscheckdate"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
         [_clearbut setEnabled: YES];
         _loggedinuser.stringValue = username;
         [_loggedinview setHidden:NO];

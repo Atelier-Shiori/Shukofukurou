@@ -15,7 +15,6 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "Utility.h"
-#import "StreamDataRetriever.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -44,7 +43,6 @@
     defaultValues[@"readingfilter"] = @(1);
     defaultValues[@"malapiurl"] = @"https://malapi.ateliershiori.moe";
     defaultValues[@"filtersastabs"] = @(1);
-    defaultValues[@"stream_region"] = @(0);
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
@@ -74,7 +72,6 @@
      andSelector:@selector(handleURLEvent:withReplyEvent:)
      forEventClass:kInternetEventClass
      andEventID:kAEGetURL];
-    [StreamDataRetriever retrieveStreamData];
 }
 
 
@@ -119,6 +116,13 @@
             [self showloginpref];
         }
             }];
+    }
+    else {
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"]){
+            // Check credentials now if user has an account and these values are not set
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
+        }
     }
 
 }

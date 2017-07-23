@@ -22,6 +22,8 @@
 		2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E821ECFA3E400F47138 /* ListStatistics.xib */; };
 		2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
 		2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
+		2D42FA971F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
+		2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
 		2D60A1221E9B322B0034C3AA /* MAL_LibraryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */; };
 		2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
 		2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
@@ -318,6 +320,8 @@
 		2D371E791ECF8B4F00F47138 /* ratingchartview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ratingchartview.m; sourceTree = "<group>"; };
 		2D371E811ECFA3E400F47138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListStatistics.xib; sourceTree = "<group>"; };
 		2D371E851ECFA3E700F47138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ratingchartview.xib; sourceTree = "<group>"; };
+		2D42FA951F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+Synchronous.h"; sourceTree = "<group>"; };
+		2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+Synchronous.m"; sourceTree = "<group>"; };
 		2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_LibraryUITests.m; sourceTree = "<group>"; };
 		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -624,6 +628,8 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				2D42FA951F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.h */,
+				2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -1167,6 +1173,7 @@
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
+				2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
@@ -1220,6 +1227,7 @@
 				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */,
 				2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */,
+				2D42FA971F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
 				91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */,
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,

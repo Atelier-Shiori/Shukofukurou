@@ -24,6 +24,7 @@
 @property (strong) IBOutlet StreamPopup *steampopupviewcontroller;
 @property (strong) IBOutlet NSPopover *streampopover;
 @property (strong) IBOutlet NSButton *streambutton;
+@property bool buttonmoved;
 @end
 
 @implementation InfoView
@@ -38,8 +39,7 @@
     // Do view setup here.
     if (!_steampopupviewcontroller.isViewLoaded) {
         [_steampopupviewcontroller loadView];
-    }
-}
+    }}
 - (void)populateAnimeInfoView:(id)object{
     NSDictionary *d = object;
     NSMutableString *titles = [NSMutableString new];
@@ -178,6 +178,7 @@
     // Show buttons?
     [self showbuttons:d];
     [_mw loadmainview];
+    [self setButtonPositions];
     _selectedinfo = d;
 }
 
@@ -296,6 +297,7 @@
     // Show buttons?
     [self showbuttons:d];
     [_mw loadmainview];
+    [self setButtonPositions];
     _selectedinfo = d;
 }
 
@@ -336,5 +338,44 @@
 
 - (IBAction)viewstreams:(id)sender {
     [_streampopover showRelativeToRect:_streambutton.bounds ofView:_streambutton preferredEdge:NSMaxYEdge];
+}
+
+- (void)setButtonPositions {
+    // Sets the position of the recommended titles, source material and sites to watch title buttons
+    NSMutableArray *buttonarray = [NSMutableArray new];
+    for (int i = 0; i < 3; i++) {
+        NSButton *btn;
+        switch (i){
+            case 0:
+                btn = _recommendedtitlebutton;
+                break;
+            case 1:
+                btn = _sourcematerialbutton;
+                break;
+            case 2:
+                btn = _streambutton;
+                break;
+        }
+        if (!btn.hidden) {
+            [buttonarray addObject:btn];
+        }
+    }
+    for (int i = 0; i < buttonarray.count; i++) {
+        NSButton *btn = [buttonarray objectAtIndex:i];
+        CGPoint btnorigin = btn.frame.origin;
+        switch (i) {
+            case 0:
+                [btn setFrameOrigin:NSMakePoint(btnorigin.x, 109)];
+                break;
+            case 1:
+                [btn setFrameOrigin:NSMakePoint(btnorigin.x, 78)];
+                break;
+            case 2:
+                [btn setFrameOrigin:NSMakePoint(btnorigin.x, 45)];
+                break;
+            default:
+                break;
+        }
+    }
 }
 @end

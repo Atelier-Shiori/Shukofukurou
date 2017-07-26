@@ -7,20 +7,12 @@ Requires latest SDK (10.12), XCode 8 or later. The C#/Xamarin version is depreca
 
 ## Supporting this Project
 
-Like this program and want to support the development of this program? [Become our Patreon](http://www.patreon.com/ateliershiori) or [Donate](https://malupdaterosx.ateliershiori.moe/donate/). By donating more than $5 or becoming a patron, you will recieve a donation key to remove the reminder message that will appear on every launch.
+Like this program and want to support the development of this program? Purchase a [license](https://malupdaterosx.ateliershiori.moe/donate/). You will recieve a donation key to remove the reminder message that will appear on every launch.
 
 You can also support the project by buying the full version from the Mac App Store. All future updates are free.
 
 
 [![macappstore](https://malupdaterosx.ateliershiori.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
-
-
-To recieve a donation key for use with MAL Updater OS X, send an email with proof of purchase to ateliershiori at chikorita157 dot com.
-
-You can also donate cryptocurrencies to these addresses (You will get a donation key as long the amount is equilivant to $5 USD or more). Put your name and email in the notes in the transaction:
-* Bitcoin - 1ELQEQXi1MNwSmv2mwWUGt6RbSNVgHqBUA
-* Ethereum - 7DDfd7443d3D4A7ec76e25d481E68BE43533b509
-* ZCash - t1WR1Q6ioNdqdWscyrx2v4iFH7GdQwmDQdt
 
 ## How to Compile
 

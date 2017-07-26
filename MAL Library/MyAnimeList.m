@@ -49,7 +49,7 @@
     AFHTTPSessionManager *manager = [Utility manager];
     if ([Keychain checkaccount]) {
         if ([self verifyAccount]) {
-        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         }
         else {
             errorHandler(nil);

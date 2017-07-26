@@ -154,17 +154,17 @@
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     if (_airingarraycontroller.selectedObjects.count > 0) {
-        [_addtitleitem setEnabled:YES];
+        _addtitleitem.enabled = YES;
     }
     else {
-        [_addtitleitem setEnabled:NO];
+        _addtitleitem.enabled = NO;
     }
 }
 
 - (void)autoselectday {
-    NSDateComponents *component = [[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
-    
-    switch ([component weekday]) {
+    // Auto selects day popup based on the computer's date.
+    NSDateComponents *component = [NSCalendar.currentCalendar components:NSCalendarUnitWeekday fromDate:NSDate.date];
+    switch (component.weekday) {
         case 1:
             //Sunday
             [_day selectItemWithTitle:@"Sunday"];

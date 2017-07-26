@@ -545,7 +545,9 @@
         [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1+indexoffset];
         [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2+indexoffset];
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3+indexoffset];
-        [_seasonview populateseasonpopups];
+        if (((NSArray *)_seasonview.seasonarraycontroller.content).count == 0) {
+            [_seasonview populateseasonpopups];
+        }
     }
     else if ([identifier isEqualToString:@"airing"]){
         if ([Keychain checkaccount]){

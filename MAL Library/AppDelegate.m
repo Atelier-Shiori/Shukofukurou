@@ -15,6 +15,7 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "Utility.h"
+#import "StreamDataRetriever.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -43,6 +44,7 @@
     defaultValues[@"readingfilter"] = @(1);
     defaultValues[@"malapiurl"] = @"https://malapi.ateliershiori.moe";
     defaultValues[@"filtersastabs"] = @(1);
+    defaultValues[@"stream_region"] = @(0);
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
@@ -72,6 +74,7 @@
      andSelector:@selector(handleURLEvent:withReplyEvent:)
      forEventClass:kInternetEventClass
      andEventID:kAEGetURL];
+    [StreamDataRetriever retrieveStreamData];
 }
 
 

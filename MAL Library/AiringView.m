@@ -27,6 +27,8 @@
     [super viewDidLoad];
     // Do view setup here.
     [_addtitleitem setEnabled:NO];
+    [self autoselectday];
+    [self filterTitles];
 }
 
 - (void)loadAiring:(NSNumber *)refresh {
@@ -149,6 +151,7 @@
     }
     return airing;
 }
+
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     if (_airingarraycontroller.selectedObjects.count > 0) {
         [_addtitleitem setEnabled:YES];
@@ -158,4 +161,40 @@
     }
 }
 
+- (void)autoselectday {
+    NSDateComponents *component = [[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+    
+    switch ([component weekday]) {
+        case 1:
+            //Sunday
+            [_day selectItemWithTitle:@"Sunday"];
+            break;
+        case 2:
+            //Monday
+            [_day selectItemWithTitle:@"Monday"];
+            break;
+        case 3:
+            //Tuesday
+            [_day selectItemWithTitle:@"Tuesday"];
+            break;
+        case 4:
+            //Wednesday
+            [_day selectItemWithTitle:@"Wednesday"];
+            break;
+        case 5:
+            //Thursday
+            [_day selectItemWithTitle:@"Thursday"];
+            break;
+        case 6:
+            //Friday
+            [_day selectItemWithTitle:@"Friday"];
+            break;
+        case 7:
+            //Saturday
+            [_day selectItemWithTitle:@"Saturday"];
+            break;
+        default:
+            break;
+    }
+}
 @end

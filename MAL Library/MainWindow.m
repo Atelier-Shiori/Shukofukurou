@@ -746,8 +746,8 @@
     _infoview.selectedid = 0;
     [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
     [self loadmainview];
-    [_noinfoview setHidden:YES];
-    [_progressindicator setHidden: NO];
+    _noinfoview.hidden = YES;
+    _progressindicator.hidden = NO;
     [_progressindicator startAnimation:nil];
     [MyAnimeList retrieveTitleInfo:idnum.intValue withType:type useAccount:NO completion:^(id responseObject){
         _infoview.selectedid = idnum.intValue;
@@ -759,8 +759,10 @@
         [_progressindicator stopAnimation:nil];
         _infoview.selectedid = previd;
         _infoview.type = prevtype;
-        if (_infoview.selectedid == 0)
-            [_noinfoview setHidden:NO];
+        if (_infoview.selectedid == 0) {
+            _noinfoview.hidden = NO;
+            _progressindicator.hidden = YES;
+        }
         [self loadmainview];
     }];
 }

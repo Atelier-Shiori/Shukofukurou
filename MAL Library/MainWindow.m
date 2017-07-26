@@ -533,6 +533,9 @@
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:3+indexoffset];
+            if (_infoview.type == MALAnime) {
+                [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:4+indexoffset];
+            }
         }
     }
     else if ([identifier isEqualToString:@"seasons"]){

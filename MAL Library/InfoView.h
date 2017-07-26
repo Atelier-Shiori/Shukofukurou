@@ -28,4 +28,5 @@ typedef NS_ENUM(unsigned int, InfoType) {
 - (void)populateMangaInfoView:(id)object;
 - (IBAction)viewonmal:(id)sender;
 - (IBAction)viewreviews:(id)sender;
+- (IBAction)openpeoplebrowser:(id)sender;
 @end

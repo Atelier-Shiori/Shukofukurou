@@ -13,6 +13,7 @@
 #import "ReviewView.h"
 #import "RecommendedTitleView.h"
 #import "StreamPopup.h"
+#import "CharactersBrowser.h"
 
 @interface InfoView ()
 @property (strong) IBOutlet NSTextField *infoviewtitle;
@@ -24,6 +25,7 @@
 @property (strong) IBOutlet StreamPopup *steampopupviewcontroller;
 @property (strong) IBOutlet NSPopover *streampopover;
 @property (strong) IBOutlet NSButton *streambutton;
+@property (strong) CharactersBrowser *cbrowser;
 @property bool buttonmoved;
 @end
 
@@ -377,5 +379,14 @@
                 break;
         }
     }
+}
+
+- (IBAction)openpeoplebrowser:(id)sender {
+    if (!_cbrowser) {
+        _cbrowser = [CharactersBrowser new];
+    }
+    [_cbrowser.window makeKeyAndOrderFront:self];
+    _cbrowser.window.title = [NSString stringWithFormat:@"People Browser - %@",_infoviewtitle.stringValue];
+    [_cbrowser retrievestafflist:self.selectedid];
 }
 @end

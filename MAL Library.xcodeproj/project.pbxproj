@@ -31,6 +31,10 @@
 		2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
 		2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
+		2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
+		2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
+		2D8A47B51F290E2200FC2B35 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */; };
+		2D8A47B61F290E2200FC2B35 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */; };
 		2D8BF8AB1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */; };
 		2D8BF8AC1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */; };
 		2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
@@ -329,6 +333,9 @@
 		2D86F18A1EC21D4B00650E34 /* ListExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListExporter.m; sourceTree = "<group>"; };
 		2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharactersBrowser.h; sourceTree = "<group>"; };
+		2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharactersBrowser.m; sourceTree = "<group>"; };
+		2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharactersBrowser.xib; sourceTree = "<group>"; };
 		2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KitsuImportPrompt.h; sourceTree = "<group>"; };
 		2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KitsuImportPrompt.m; sourceTree = "<group>"; };
 		2D8BF8B01EC4ED800068856A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewWindow.xib; sourceTree = "<group>"; };
@@ -674,6 +681,9 @@
 				91999D0F1E8C88280026D3E9 /* InfoView.h */,
 				91999D101E8C88280026D3E9 /* InfoView.m */,
 				9188226F1E8C90A700C7FEF1 /* InfoView.xib */,
+				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
+				2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */,
+				2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */,
@@ -1008,6 +1018,7 @@
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
+				2D8A47B61F290E2200FC2B35 /* CharactersBrowser.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
@@ -1038,6 +1049,7 @@
 				2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */,
 				91822A5C1EAEAC77005E33DB /* messageview.xib in Resources */,
 				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
+				2D8A47B51F290E2200FC2B35 /* CharactersBrowser.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
 				91822A581EAEAC70005E33DB /* messageswindow.xib in Resources */,
@@ -1144,6 +1156,7 @@
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
+				2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */,
 				913A11681E8F206A00450B66 /* LoginPref.m in Sources */,
@@ -1249,6 +1262,7 @@
 				2D8BF8AB1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
+				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
 				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,

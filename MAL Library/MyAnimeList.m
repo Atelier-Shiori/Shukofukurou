@@ -51,10 +51,6 @@
         if ([self verifyAccount]) {
             [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         }
-        else {
-            errorHandler(nil);
-            return;
-        }
     }
     NSString *url = @"";
     if (type == MALAnime) {

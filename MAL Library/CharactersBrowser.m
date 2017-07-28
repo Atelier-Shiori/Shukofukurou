@@ -7,11 +7,19 @@
 //
 
 #import "CharactersBrowser.h"
+#import "CharacterView.h"
 #import "MyAnimeList.h"
+#import <CocoaOniguruma/OnigRegexp.h>
+#import <CocoaOniguruma/OnigRegexpUtility.h>
 
 @interface CharactersBrowser ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
+@property (strong) NSDictionary *castdict;
 @property (strong) IBOutlet NSSplitView *splitview;
+@property (strong) IBOutlet NSVisualEffectView *noselectionview;
+@property (weak) IBOutlet NSProgressIndicator *progresswheel;
+@property (strong) CharacterView *characterviewcontroller;
+@property (strong) IBOutlet NSView *mainview;
 @end
 
 @implementation CharactersBrowser
@@ -27,6 +35,12 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    [_mainview addSubview:[NSView new]];
+    _characterviewcontroller = [CharacterView new];
+    // Set Resizing masks
+    _noselectionview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _characterviewcontroller.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    [self setDefaultView];
 }
 
 #pragma mark -
@@ -86,7 +100,7 @@
 
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
-    
+    [self loadPerson];
 }
 
 #pragma mark -
@@ -136,6 +150,7 @@
 }
 
 -(void)generateSourceList:(NSDictionary *)d {
+    // Generates source list
     self.sourceListItems = [[NSMutableArray alloc] init];
     PXSourceListItem *characterItem = [PXSourceListItem itemWithTitle:@"CHARACTERS" identifier:@"characters"];
     PXSourceListItem *staffItem = [PXSourceListItem itemWithTitle:@"STAFF" identifier:@"staff"];
@@ -143,7 +158,7 @@
         NSArray *characters = d[@"Characters"];
         NSMutableArray *charactergroupitems = [NSMutableArray new];
         for (NSDictionary * character in characters) {
-            PXSourceListItem *characterI = [PXSourceListItem itemWithTitle:character[@"name"] identifier:character[@"id"]];
+            PXSourceListItem *characterI = [PXSourceListItem itemWithTitle:character[@"name"] identifier:[NSString stringWithFormat:@"character-%@",character[@"id"]]];
             characterI.icon = [NSImage imageNamed:@"person"];
             [charactergroupitems addObject:characterI];
         }
@@ -153,7 +168,7 @@
         NSArray *staff = d[@"Staff"];
         NSMutableArray *staffgroupitems = [NSMutableArray new];
         for (NSDictionary * member in staff) {
-            PXSourceListItem *memberI = [PXSourceListItem itemWithTitle:member[@"name"] identifier:member[@"id"]];
+            PXSourceListItem *memberI = [PXSourceListItem itemWithTitle:member[@"name"] identifier:[NSString stringWithFormat:@"staff-%@",member[@"id"]]];
             memberI.icon = [NSImage imageNamed:@"person"];
             [staffgroupitems addObject:memberI];
         }
@@ -163,11 +178,49 @@
     [self.sourceListItems addObject:characterItem];
     [self.sourceListItems addObject:staffItem];
     [_sourceList reloadData];
+    _castdict = d;
+    [self setDefaultView];
 }
 
 
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification{
     [self.window setFrame:self.window.frame display:false];
+}
+
+- (void)loadPerson {
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *tmpstring = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    OnigRegexp *regex = [OnigRegexp compile:@"(character|staff)-"];
+    NSString *type = [regex search:tmpstring].strings[0];
+    int idnum = [tmpstring stringByReplacingOccurrencesOfString:type withString:@""].intValue;
+    type = [type stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    if ([type isEqualToString:@"character"]) {
+        NSDictionary *charinfo = [self retrievecharacterinformation:idnum];
+        [_characterviewcontroller populateCharacterInfo:charinfo withTitle:_selectedtitle];
+        [self replaceMainViewSubViewWithView:_characterviewcontroller.view];
+    }
+}
+
+- (void)setDefaultView {
+    [self replaceMainViewSubViewWithView:_noselectionview];
+}
+
+- (void)replaceMainViewSubViewWithView:(NSView *)view {
+    NSRect mainviewframe = _mainview.frame;
+    NSPoint origin = NSMakePoint(0, 0);
+    [_mainview replaceSubview:(_mainview.subviews)[0] with:view];
+    view.frame = mainviewframe;
+    [view setFrameOrigin:origin];
+}
+
+- (NSDictionary *)retrievecharacterinformation:(int)idnum {
+    NSArray *characters = _castdict[@"Characters"];
+    for (NSDictionary *d in characters) {
+        if (((NSNumber *)d[@"id"]).intValue == idnum) {
+            return d;
+        }
+    }
+    return nil;
 }
 
 @end

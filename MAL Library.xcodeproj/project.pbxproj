@@ -35,6 +35,10 @@
 		2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
 		2D8A47B51F290E2200FC2B35 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */; };
 		2D8A47B61F290E2200FC2B35 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */; };
+		2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
+		2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
+		2D8A47BC1F292D1800FC2B35 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B91F292D1800FC2B35 /* CharacterView.xib */; };
+		2D8A47BD1F292D1800FC2B35 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B91F292D1800FC2B35 /* CharacterView.xib */; };
 		2D8BF8AB1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */; };
 		2D8BF8AC1EC4D6DC0068856A /* KitsuImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */; };
 		2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
@@ -336,6 +340,9 @@
 		2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharactersBrowser.h; sourceTree = "<group>"; };
 		2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharactersBrowser.m; sourceTree = "<group>"; };
 		2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharactersBrowser.xib; sourceTree = "<group>"; };
+		2D8A47B71F292D1800FC2B35 /* CharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterView.h; sourceTree = "<group>"; };
+		2D8A47B81F292D1800FC2B35 /* CharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterView.m; sourceTree = "<group>"; };
+		2D8A47B91F292D1800FC2B35 /* CharacterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterView.xib; sourceTree = "<group>"; };
 		2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KitsuImportPrompt.h; sourceTree = "<group>"; };
 		2D8BF8A91EC4D6DC0068856A /* KitsuImportPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KitsuImportPrompt.m; sourceTree = "<group>"; };
 		2D8BF8B01EC4ED800068856A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewWindow.xib; sourceTree = "<group>"; };
@@ -654,6 +661,12 @@
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
+				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
+				2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */,
+				2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */,
+				2D8A47B71F292D1800FC2B35 /* CharacterView.h */,
+				2D8A47B81F292D1800FC2B35 /* CharacterView.m */,
+				2D8A47B91F292D1800FC2B35 /* CharacterView.xib */,
 				917897ED1E89F19900C155DF /* DonationWindow.xib */,
 				917897E61E89E6AD00C155DF /* DonationWindowController.h */,
 				917897E71E89E6AD00C155DF /* DonationWindowController.m */,
@@ -681,9 +694,6 @@
 				91999D0F1E8C88280026D3E9 /* InfoView.h */,
 				91999D101E8C88280026D3E9 /* InfoView.m */,
 				9188226F1E8C90A700C7FEF1 /* InfoView.xib */,
-				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
-				2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */,
-				2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				2D8BF8A81EC4D6DC0068856A /* KitsuImportPrompt.h */,
@@ -1019,6 +1029,7 @@
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
 				2D8A47B61F290E2200FC2B35 /* CharactersBrowser.xib in Resources */,
+				2D8A47BD1F292D1800FC2B35 /* CharacterView.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
@@ -1076,6 +1087,7 @@
 				2DAB19E11EF9D16800420182 /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
+				2D8A47BC1F292D1800FC2B35 /* CharacterView.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
@@ -1184,6 +1196,7 @@
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
 				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
+				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
@@ -1215,6 +1228,7 @@
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
+				2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */,
 				9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */,

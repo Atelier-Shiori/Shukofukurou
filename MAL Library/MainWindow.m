@@ -42,7 +42,8 @@
 {
     // Register queue
     _privateQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
-    
+    // Add blank subview to mainview
+    [_mainview addSubview:[NSView new]];
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
@@ -357,7 +358,6 @@
 #pragma mark Main View Control
 - (void)loadmainview{
     NSRect mainviewframe = _mainview.frame;
-    [_mainview addSubview:[NSView new]];
     long selectedrow = _sourceList.selectedRow;
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
@@ -532,9 +532,12 @@
             }
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:3+indexoffset];
             if (_infoview.type == MALAnime) {
-                [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:4+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
+            }
+            else {
+                [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
             }
         }
     }

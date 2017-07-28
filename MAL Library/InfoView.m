@@ -387,6 +387,7 @@
     }
     [_cbrowser.window makeKeyAndOrderFront:self];
     _cbrowser.window.title = [NSString stringWithFormat:@"People Browser - %@",_infoviewtitle.stringValue];
+    _cbrowser.selectedtitle = _infoviewtitle.stringValue;
     [_cbrowser retrievestafflist:self.selectedid];
 }
 @end

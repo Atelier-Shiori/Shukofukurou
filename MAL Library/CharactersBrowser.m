@@ -20,6 +20,8 @@
 @property (weak) IBOutlet NSProgressIndicator *progresswheel;
 @property (strong) CharacterView *characterviewcontroller;
 @property (strong) IBOutlet NSView *mainview;
+@property (strong) IBOutlet NSToolbarItem *toolbarviewonmal;
+@property (strong) IBOutlet NSToolbarItem *toolbarshare;
 @end
 
 @implementation CharactersBrowser
@@ -41,6 +43,7 @@
     _noselectionview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _characterviewcontroller.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     [self setDefaultView];
+    [self enabletoolbaritems:NO];
 }
 
 #pragma mark -
@@ -101,6 +104,7 @@
 - (void)sourceListSelectionDidChange:(NSNotification *)notification
 {
     [self loadPerson];
+    [self enabletoolbaritems:YES];
 }
 
 #pragma mark -
@@ -144,6 +148,7 @@
     [MyAnimeList retrieveStaff:idnum completion:^(id responseObject){
         [self generateSourceList:responseObject];
         _selectedtitleid = idnum;
+        [self enabletoolbaritems:NO];
     }error:^(NSError *error){
         
     }];
@@ -222,5 +227,8 @@
     }
     return nil;
 }
-
+- (void)enabletoolbaritems:(bool)enable {
+    _toolbarshare.enabled = enable;
+    _toolbarviewonmal.enabled = enable;
+}
 @end

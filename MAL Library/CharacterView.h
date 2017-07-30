@@ -15,5 +15,11 @@ typedef NS_ENUM(unsigned int, PersonType) {
     PersonCharacter = 0,
     PersonStaff = 1
 };
+typedef NS_ENUM(unsigned int, ArrayType) {
+    actors = 11,
+    voiceactingroles = 12,
+    staffpositions = 13,
+    publishedmanga = 14
+};
 - (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title;
 @end

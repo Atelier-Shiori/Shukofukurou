@@ -348,7 +348,7 @@
     static AFJSONResponseSerializer *jsonresponse = nil;
     dispatch_once(&jonceToken, ^{
         jsonresponse = [AFJSONResponseSerializer serializer];
-        jsonresponse.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
+        jsonresponse.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"application/vnd.api+json", @"text/javascript", @"text/html", @"text/plain", nil];
     });
     return jsonresponse;
 }

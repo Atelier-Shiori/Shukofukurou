@@ -564,7 +564,6 @@
 
 - (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/vnd.api+json"];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@",[Utility urlEncodeString:username]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -574,7 +573,6 @@
 
 - (void)retrieveKitsuLibrary:(int)userID atPage:(int)pagenum completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/vnd.api+json"];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%i&include=anime&page[limit]=500&page[offset]=%i",userID, pagenum] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"]){
             if (!_tmplist){
@@ -603,7 +601,6 @@
 
 - (void)retrieveMALID:(NSNumber *)kitsuid completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/vnd.api+json"];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime/%@/mappings", kitsuid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSArray * mappings = responseObject[@"data"];
         for (NSDictionary *m in mappings) {

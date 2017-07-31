@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="CharactersBrowser">
             <connections>
                 <outlet property="mainview" destination="pB0-ph-hYq" id="mQs-2a-ppZ"/>
+                <outlet property="noselectionheader" destination="HHQ-0f-C2B" id="Vv1-PC-EXz"/>
                 <outlet property="noselectionview" destination="O72-QL-3LZ" id="kw6-pb-3Wp"/>
                 <outlet property="progresswheel" destination="nZC-Z6-VPS" id="mIA-nL-QZ3"/>
                 <outlet property="sourceList" destination="dzQ-tr-5lw" id="5za-6L-pPv"/>

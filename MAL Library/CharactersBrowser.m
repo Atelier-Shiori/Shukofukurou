@@ -22,6 +22,7 @@
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet NSToolbarItem *toolbarviewonmal;
 @property (strong) IBOutlet NSToolbarItem *toolbarshare;
+@property (strong) IBOutlet NSTextField *noselectionheader;
 @end
 
 @implementation CharactersBrowser
@@ -94,9 +95,11 @@
 
 - (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group
 {
-    if([[group identifier] isEqualToString:@"characters"])
+    if ([[group identifier] isEqualToString:@"characters"])
         return YES;
-    else if([[group identifier] isEqualToString:@"staff"])
+    else if ([[group identifier] isEqualToString:@"staff"])
+        return YES;
+    else if ([[group identifier] isEqualToString:@"voiceactors"])
         return YES;
     return NO;
 }
@@ -106,6 +109,7 @@
     [self loadPerson];
     [self enabletoolbaritems:YES];
 }
+
 
 #pragma mark -
 #pragma mark SplitView Delegate
@@ -144,6 +148,45 @@
     return proposedPosition;
 }
 
+- (void)splitViewDidResizeSubviews:(NSNotification *)notification{
+    [self.window setFrame:self.window.frame display:false];
+}
+
+#pragma mark -
+#pragma mark Main View functions
+- (void)setDefaultView {
+    [self replaceMainViewSubViewWithView:_noselectionview];
+}
+
+- (void)replaceMainViewSubViewWithView:(NSView *)view {
+    NSRect mainviewframe = _mainview.frame;
+    NSPoint origin = NSMakePoint(0, 0);
+    [_mainview replaceSubview:(_mainview.subviews)[0] with:view];
+    view.frame = mainviewframe;
+    [view setFrameOrigin:origin];
+}
+
+- (void)enabletoolbaritems:(bool)enable {
+    _toolbarshare.enabled = enable;
+    _toolbarviewonmal.enabled = enable;
+}
+
+- (void)startstopanimation:(bool)enable {
+    if (enable) {
+        _noselectionheader.hidden = true;
+        _progresswheel.hidden = false;
+        [_progresswheel startAnimation:self];
+    }
+    else {
+        _noselectionheader.hidden = false;
+        _progresswheel.hidden = true;
+        [_progresswheel stopAnimation:self];
+    }
+}
+
+#pragma mark -
+#pragma mark Staff Source List
+
 - (void)retrievestafflist:(int)idnum {
     [MyAnimeList retrieveStaff:idnum completion:^(id responseObject){
         [self generateSourceList:responseObject];
@@ -158,6 +201,7 @@
     // Generates source list
     self.sourceListItems = [[NSMutableArray alloc] init];
     PXSourceListItem *characterItem = [PXSourceListItem itemWithTitle:@"CHARACTERS" identifier:@"characters"];
+    PXSourceListItem *voiceactorsItem = [PXSourceListItem itemWithTitle:@"VOICE ACTORS" identifier:@"voiceactors"];
     PXSourceListItem *staffItem = [PXSourceListItem itemWithTitle:@"STAFF" identifier:@"staff"];
     if (d[@"Characters"]) {
         NSArray *characters = d[@"Characters"];
@@ -168,7 +212,18 @@
             [charactergroupitems addObject:characterI];
         }
         characterItem.children = charactergroupitems;
+        NSArray *voiceactors = [self generatevoiceactorlist:d[@"Characters"]];
+        if (voiceactors.count > 0) {
+            NSMutableArray *voiceactorsgroupitems = [NSMutableArray new];
+            for (NSDictionary * voiceactor in voiceactors) {
+                PXSourceListItem *voiceactorI = [PXSourceListItem itemWithTitle:voiceactor[@"name"] identifier:[NSString stringWithFormat:@"staff-%@",voiceactor[@"id"]]];
+                voiceactorI.icon = [NSImage imageNamed:@"person"];
+                [voiceactorsgroupitems addObject:voiceactorI];
+            }
+            voiceactorsItem.children = voiceactorsgroupitems;
+        }
     }
+    
     if (d[@"Staff"]) {
         NSArray *staff = d[@"Staff"];
         NSMutableArray *staffgroupitems = [NSMutableArray new];
@@ -181,16 +236,14 @@
     }
     // Populate Source List
     [self.sourceListItems addObject:characterItem];
+    [self.sourceListItems addObject:voiceactorsItem];
     [self.sourceListItems addObject:staffItem];
     [_sourceList reloadData];
     _castdict = d;
     [self setDefaultView];
 }
 
-
-- (void)splitViewDidResizeSubviews:(NSNotification *)notification{
-    [self.window setFrame:self.window.frame display:false];
-}
+#pragma mark Other Methods
 
 - (void)loadPerson {
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
@@ -204,19 +257,11 @@
         [_characterviewcontroller populateCharacterInfo:charinfo withTitle:_selectedtitle];
         [self replaceMainViewSubViewWithView:_characterviewcontroller.view];
     }
+    else if ([type isEqualToString:@"staff"]) {
+        [self retrievestaffinformation:idnum];
+    }
 }
 
-- (void)setDefaultView {
-    [self replaceMainViewSubViewWithView:_noselectionview];
-}
-
-- (void)replaceMainViewSubViewWithView:(NSView *)view {
-    NSRect mainviewframe = _mainview.frame;
-    NSPoint origin = NSMakePoint(0, 0);
-    [_mainview replaceSubview:(_mainview.subviews)[0] with:view];
-    view.frame = mainviewframe;
-    [view setFrameOrigin:origin];
-}
 
 - (NSDictionary *)retrievecharacterinformation:(int)idnum {
     NSArray *characters = _castdict[@"Characters"];
@@ -227,8 +272,27 @@
     }
     return nil;
 }
-- (void)enabletoolbaritems:(bool)enable {
-    _toolbarshare.enabled = enable;
-    _toolbarviewonmal.enabled = enable;
+
+- (void)retrievestaffinformation:(int)idnum {
+    [self replaceMainViewSubViewWithView:_noselectionview];
+    [self startstopanimation:true];
+    [MyAnimeList retrievePersonDetails:idnum completion:^(id responseObject){
+        [self startstopanimation:false];
+        [_characterviewcontroller populateStaffInformation:responseObject];
+        [self replaceMainViewSubViewWithView:_characterviewcontroller.view];
+    }error:^(NSError *error) {
+        [self startstopanimation:false];
+    }];
 }
+
+- (NSArray *)generatevoiceactorlist:(NSArray *)characterarray {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *d in characterarray) {
+        if (d[@"actors"]) {
+            [tmparray addObjectsFromArray:d[@"actors"]];
+        }
+    }
+    return tmparray;
+}
+
 @end

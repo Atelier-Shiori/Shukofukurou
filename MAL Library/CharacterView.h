@@ -11,6 +11,7 @@
 @interface CharacterView : NSViewController
 @property int selectedid;
 @property int persontype;
+@property (strong) NSString *personhomepage;
 typedef NS_ENUM(unsigned int, PersonType) {
     PersonCharacter = 0,
     PersonStaff = 1
@@ -22,4 +23,5 @@ typedef NS_ENUM(unsigned int, ArrayType) {
     publishedmanga = 14
 };
 - (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title;
+- (void)populateStaffInformation:(NSDictionary *)d;
 @end

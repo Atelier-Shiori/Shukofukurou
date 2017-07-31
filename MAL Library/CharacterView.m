@@ -11,6 +11,7 @@
 #import "MainWindow.h"
 #import "AppDelegate.h"
 #import "NSTableViewAction.h"
+#import "NSString_stripHtml.h"
 
 @interface CharacterView ()
 @property (strong) IBOutlet NSTextField *charactername;
@@ -47,9 +48,49 @@
     [self reloadtableview];
     
 }
+
+- (void)populateStaffInformation:(NSDictionary *)d {
+    NSMutableString *tmpstr = [NSMutableString new];
+    _charactername.stringValue = d[@"name"];
+    _posterimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    /*if (d[@"given_name"] && d[@"family_name"]) {
+        [tmpstr appendFormat:@"%@, %@\n",d[@"family_name"], d[@"given_name"]];
+    }*/
+    if (((NSArray *)d[@"alternate_names"]).count > 0 ) {
+        [tmpstr appendFormat:@"Other Names: %@\n",[Utility appendstringwithArray:d[@"alternate_names"]]];
+    }
+    if (d[@"birthday"]) {
+        [tmpstr appendFormat:@"Birthday: %@\n",d[@"birthday"]];
+    }
+    if (d[@"more_details"]) {
+        [tmpstr appendFormat:@"%@\n",[(NSString *)d[@"more_details"] stripHtml]];
+    }
+    if (d[@"favorited_count"]) {
+        [tmpstr appendFormat:@"Favorited: %@\n",d[@"favorited_count"]];
+    }
+    if (d[@"website_url"]) {
+        _personhomepage = d[@"website_url"];
+    }
+    else {
+        _personhomepage = @"";
+    }
+    _details.string = tmpstr;
+    _selectedid = ((NSNumber *)d[@"id"]).intValue;
+    _persontype = PersonStaff;
+    [self clearArrayController];
+    _tableview_first_heading.stringValue = @"Positions";
+    [self populatetableview:d[@"voice_acting_roles"] type:voiceactingroles];
+    [self populatetableview:d[@"anime_staff_positions"] type:staffpositions];
+    [self populatetableview:d[@"published_manga"] type:publishedmanga];
+    _popupfilter.hidden = NO;
+    [self reloadtableview];
+    [self filtertableview];
+}
+
 - (void)clearArrayController {
     NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
+    _arraycontroller.filterPredicate = nil;
 }
 
 - (void)populatetableview:(NSArray *)arraycontent type:(int)arraytype {
@@ -58,6 +99,25 @@
         switch (arraytype) {
             case actors: {
                 [tmparray addObject:@{@"id":d[@"id"],@"image":d[@"image"],@"title":[NSString stringWithFormat:@"%@\n%@",d[@"name"],d[@"language"]]}];
+                break;
+            }
+            case staffpositions: {
+                [tmparray addObject:@{@"id":d[@"anime"][@"id"],@"image":d[@"anime"][@"image_url"],@"title":[NSString stringWithFormat:@"%@\n%@",d[@"anime"][@"title"],d[@"position"]], @"type":@"Staff Positions"}];
+                break;
+            }
+            case voiceactingroles: {
+                NSString * role;
+                if (((NSNumber *)d[@"main_role"]).boolValue) {
+                    role = @"Main role";
+                }
+                else {
+                    role = @"Supporting role";
+                }
+                [tmparray addObject:@{@"id":d[@"anime"][@"id"],@"image":d[@"image_url"],@"title":[NSString stringWithFormat:@"%@\n%@\n%@",d[@"name"],d[@"anime"][@"title"],role], @"type":@"Voice Acting Roles"}];
+                break;
+            }
+            case publishedmanga: {
+                [tmparray addObject:@{@"id":d[@"manga"][@"id"],@"image":d[@"manga"][@"image_url"],@"title":[NSString stringWithFormat:@"%@\n%@",d[@"manga"][@"title"],d[@"position"]], @"type":@"Published Manga"}];
                 break;
             }
             default: {
@@ -73,5 +133,13 @@
 - (void)reloadtableview {
     [_tb reloadData];
     [_tb deselectAll:self];
+}
+
+- (void)filtertableview {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type ==[cd] %@",_popupfilter.selectedItem.title];
+    _arraycontroller.filterPredicate = predicate;
+}
+- (IBAction)performfilter:(id)sender {
+    [self filtertableview];
 }
 @end

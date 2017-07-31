@@ -532,12 +532,12 @@
             }
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
-            if (_infoview.type == MALAnime) {
+            if (_infoview.type == MALAnime && [[NSUserDefaults standardUserDefaults] boolForKey:@"donated"]) {
                 [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
             }
             else {
-                [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:3+indexoffset];
             }
         }
     }

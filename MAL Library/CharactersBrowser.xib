@@ -204,7 +204,7 @@
                     </textFieldCell>
                 </textField>
                 <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="nZC-Z6-VPS">
-                    <rect key="frame" x="353" y="137" width="32" height="32"/>
+                    <rect key="frame" x="353" y="174" width="32" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </progressIndicator>
             </subviews>

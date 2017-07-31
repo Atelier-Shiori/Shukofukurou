@@ -149,6 +149,9 @@
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="tbdoubleclick:" target="-2" id="wsn-dq-xAS"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <nil key="backgroundColor"/>

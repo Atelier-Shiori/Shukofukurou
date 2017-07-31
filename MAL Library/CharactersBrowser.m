@@ -40,6 +40,7 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [_mainview addSubview:[NSView new]];
     _characterviewcontroller = [CharacterView new];
+    _characterviewcontroller.cb = self;
     // Set Resizing masks
     _noselectionview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _characterviewcontroller.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
@@ -294,5 +295,19 @@
     }
     return tmparray;
 }
-
+- (int)getIndexOfItemWithIdentifier:(NSString *)string {
+    int index = 0;
+    for (PXSourceListItem *item in _sourceListItems) {
+        if (item.children.count > 0) {
+            for (PXSourceListItem *childitem in item.children) {
+                index++;
+                if ([childitem.identifier isEqualToString:string]) {
+                    return index;
+                }
+            }
+        }
+        index++;
+    }
+    return 0;
+}
 @end

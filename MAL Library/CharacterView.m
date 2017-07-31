@@ -7,6 +7,7 @@
 //
 
 #import "CharacterView.h"
+#import "CharactersBrowser.h"
 #import "Utility.h"
 #import "MainWindow.h"
 #import "AppDelegate.h"
@@ -139,7 +140,29 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"type ==[cd] %@",_popupfilter.selectedItem.title];
     _arraycontroller.filterPredicate = predicate;
 }
+
 - (IBAction)performfilter:(id)sender {
     [self filtertableview];
+}
+
+- (IBAction)tbdoubleclick:(id)sender {
+    if (_tb.selectedRow >=0){
+        if (_tb.selectedRow >-1){
+            NSDictionary *d = _arraycontroller.selectedObjects[0];
+            if (_persontype == PersonCharacter) {
+                // View voice actor directly from the list.
+                    [_cb.sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:[_cb getIndexOfItemWithIdentifier:[NSString stringWithFormat:@"staff-%@",d[@"id"]]]]byExtendingSelection:false];
+            }
+            else {
+                if ([(NSString *)d[@"type"] isEqualToString:@"Published Manga"]){
+                    [_mw loadinfo:d[@"id"] type:1];
+                }
+                else {
+                    [_mw loadinfo:d[@"id"] type:0];
+                }
+                [_mw.window makeKeyAndOrderFront:self];
+            }
+        }
+    }
 }
 @end

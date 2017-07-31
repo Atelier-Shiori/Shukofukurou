@@ -8,9 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class CharactersBrowser;
+
 @interface CharacterView : NSViewController
 @property int selectedid;
 @property int persontype;
+@property (weak) CharactersBrowser *cb;
 @property (strong) NSString *personhomepage;
 typedef NS_ENUM(unsigned int, PersonType) {
     PersonCharacter = 0,

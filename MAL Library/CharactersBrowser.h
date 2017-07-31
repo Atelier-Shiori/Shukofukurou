@@ -14,4 +14,5 @@
 @property int selectedtitleid;
 @property (strong) NSString *selectedtitle;
 - (void)retrievestafflist:(int)idnum;
+- (int)getIndexOfItemWithIdentifier:(NSString *)string;
 @end

@@ -16,11 +16,12 @@ The Preferences window allows you to change various settings
 ### General
 * Appearance - Sets the appearance of the main window. Possible options are light or dark.
 * Clear Image Cache - Clears the poster image cache.
+* Stream Region - Sets the stream version for aviliable legal steams for a given title.
 
 ## Login
 ![](login.jpg)
 
-Allows you to login or log out of your account. Credentials are saved in the login Keychain.
+Allows you to login or log out of your account. Credentials are saved in the login Keychain. Credentials are checked every 24 hours to make sure they are valid. If they become invalid, you have to log out and login again.
 
 ## Software Updates (Non-Appstore Version)
 ![](su.jpg)

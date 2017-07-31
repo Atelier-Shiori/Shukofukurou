@@ -75,4 +75,18 @@
     // Show Donation Page
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.ateliershiori.moe/donate/"]];
 }
+
+- (IBAction)purchasedonationlicense:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://softwareateliershiori.onfastspring.com/mal-library-mal-updater-os-x-donation-license"]];
+}
+
+- (IBAction)purchasefromappstore:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+    
+}
+
+- (IBAction)lookupkey:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.ateliershiori.moe/lostkey.php"]];
+}
+
 @end

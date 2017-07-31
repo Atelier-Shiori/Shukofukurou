@@ -317,6 +317,7 @@
     static AFHTTPSessionManager *manager = nil;
     if (manager) {
         [manager.requestSerializer clearAuthorizationHeader];
+        manager.requestSerializer = [Utility httprequestserializer];
         manager.responseSerializer =  [Utility jsonresponseserializer];
     }
     dispatch_once(&onceToken, ^{
@@ -347,7 +348,7 @@
     static AFJSONResponseSerializer *jsonresponse = nil;
     dispatch_once(&jonceToken, ^{
         jsonresponse = [AFJSONResponseSerializer serializer];
-        jsonresponse.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", nil];
+        jsonresponse.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/plain", nil];
     });
     return jsonresponse;
 }

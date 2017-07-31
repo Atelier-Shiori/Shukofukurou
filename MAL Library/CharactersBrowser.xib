@@ -165,6 +165,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="vieonmal:" target="-2" id="Jj3-TA-fGN"/>
+                        </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A310A546-76AD-41D3-872B-36D199F860DD" explicitItemIdentifier="Share" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="wjh-o9-YDc">
                         <size key="minSize" width="8" height="25"/>
@@ -177,6 +180,9 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                         </button>
+                        <connections>
+                            <action selector="share:" target="-2" id="N3i-Li-V3e"/>
+                        </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>

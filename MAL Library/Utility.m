@@ -9,6 +9,8 @@
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
 #import "AppDelegate.h"
+#import <CocoaOniguruma/OnigRegexp.h>
+#import <CocoaOniguruma/OnigRegexpUtility.h>
 
 @implementation Utility
 + (void)showsheetmessage:(NSString *)message
@@ -191,6 +193,19 @@
         return @"finished airing";
     }
     return @"";
+}
+
++ (NSString *)convertNameFormat:(NSString *)string {
+    // Swaps the family name and given name position
+    // e.g. Doe, John -> John Doe
+    if ([[OnigRegexp compile:@".*,"] match:string]) {
+        NSString *familyname = [[OnigRegexp compile:@".*,"] search:string].strings[0];
+        NSString *givenname = [string stringByReplacingOccurrencesOfString:familyname withString:@""];
+        givenname = [givenname stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        familyname = [familyname stringByReplacingOccurrencesOfString:@"," withString:@""];
+        return [NSString stringWithFormat:@"%@ %@", givenname, familyname];
+    }
+    return string;
 }
 
 + (void)donateCheck:(AppDelegate*)delegate{

@@ -11,6 +11,7 @@
 #import "MyAnimeList.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
+#import "Utility.h"
 
 @interface CharactersBrowser ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -263,6 +264,31 @@
     }
 }
 
+- (IBAction)vieonmal:(id)sender {
+    if (_characterviewcontroller.persontype == PersonCharacter) {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i",_characterviewcontroller.selectedid]]];
+    }
+    else {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/people/%i",_characterviewcontroller.selectedid]]];
+    }
+}
+
+- (IBAction)share:(id)sender {
+    //Generate Items to Share
+    NSArray *shareItems;
+    if (_characterviewcontroller.persontype == PersonCharacter) {
+        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i", _characterviewcontroller.selectedid]]];
+    }
+    else {
+        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/people/%i", _characterviewcontroller.selectedid]]];
+    }
+    //Get Share Picker
+    NSSharingServicePicker *sharePicker = [[NSSharingServicePicker alloc] initWithItems:shareItems];
+    sharePicker.delegate = nil;
+    NSButton * btn = (NSButton *)sender;
+    // Show Share Box
+    [sharePicker showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMinYEdge];
+}
 
 - (NSDictionary *)retrievecharacterinformation:(int)idnum {
     NSArray *characters = _castdict[@"Characters"];

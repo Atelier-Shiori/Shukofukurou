@@ -28,6 +28,7 @@
 + (NSImage *)loadImage:(NSString *)filename withAppendPath:(NSString *)append fromURL:(NSURL *)url;
 + (NSImage *)retrieveimageandsave:(NSString *) filename withAppendPath:(NSString *)append fromURL:(NSURL *)url;
 + (NSString *)statusFromDateRange:(NSString *)start toDate:(NSString *)end;
++ (NSString *)convertNameFormat:(NSString *)string;
 + (void)donateCheck:(AppDelegate*)delegate;
 + (void)checkandclearimagecache;
 + (void)setCacheClearDate;

@@ -11,6 +11,7 @@
 @class CharactersBrowser;
 
 @interface CharacterView : NSViewController
+@property (strong) IBOutlet NSTextField *charactername;
 @property int selectedid;
 @property int persontype;
 @property (weak) CharactersBrowser *cb;

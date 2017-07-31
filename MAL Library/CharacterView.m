@@ -14,8 +14,8 @@
 #import "NSTableViewAction.h"
 #import "NSString_stripHtml.h"
 
+
 @interface CharacterView ()
-@property (strong) IBOutlet NSTextField *charactername;
 @property (strong) IBOutlet NSTextView *details;
 @property (strong) IBOutlet NSTextField *tableview_first_heading;
 @property (strong) IBOutlet NSBox *tableview_first_line;
@@ -24,6 +24,8 @@
 @property (strong) IBOutlet NSPopUpButton *popupfilter;
 @property (strong) IBOutlet NSArrayController *arraycontroller;
 @property (strong) IBOutlet NSTableViewAction *tb;
+@property (strong) IBOutlet NSButton *viewonwikipedia;
+@property (strong) IBOutlet NSButton *viewhomepage;
 @end
 
 @implementation CharacterView
@@ -46,6 +48,8 @@
         [self populatetableview:d[@"actors"] type:actors];
     }
     _popupfilter.hidden = YES;
+    _viewhomepage.hidden = YES;
+    _viewonwikipedia.hidden = YES;
     [self reloadtableview];
     
 }
@@ -71,9 +75,11 @@
     }
     if (d[@"website_url"]) {
         _personhomepage = d[@"website_url"];
+        _viewhomepage.hidden = NO;
     }
     else {
         _personhomepage = @"";
+        _viewhomepage.hidden = YES;
     }
     _details.string = tmpstr;
     _selectedid = ((NSNumber *)d[@"id"]).intValue;
@@ -84,6 +90,7 @@
     [self populatetableview:d[@"anime_staff_positions"] type:staffpositions];
     [self populatetableview:d[@"published_manga"] type:publishedmanga];
     _popupfilter.hidden = NO;
+    _viewonwikipedia.hidden = NO;
     [self reloadtableview];
     [self filtertableview];
 }
@@ -164,5 +171,12 @@
             }
         }
     }
+}
+- (IBAction)viewonwikipedia:(id)sender {
+    // Views person profile on Wikipedia
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://en.wikipedia.org/w/index.php?search=%@",[Utility urlEncodeString:[Utility convertNameFormat:_charactername.stringValue]]]]];
+}
+- (IBAction)openhomepage:(id)sender {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:_personhomepage]];
 }
 @end

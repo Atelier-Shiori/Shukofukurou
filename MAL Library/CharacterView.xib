@@ -16,6 +16,8 @@
                 <outlet property="tableview_first_line" destination="n5b-Ah-jZU" id="uCS-c4-Qdn"/>
                 <outlet property="tb" destination="S9V-rM-reZ" id="mgq-UH-CBF"/>
                 <outlet property="view" destination="c1d-mY-W0f" id="NNd-qq-LSW"/>
+                <outlet property="viewhomepage" destination="IY7-t8-WQH" id="9X3-rp-SR4"/>
+                <outlet property="viewonwikipedia" destination="WRz-ow-Gbl" id="MR6-Zx-VAf"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -191,6 +193,28 @@
                         <action selector="performfilter:" target="-2" id="Pfq-hu-xJy"/>
                     </connections>
                 </popUpButton>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRz-ow-Gbl">
+                    <rect key="frame" x="8" y="86" width="197" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="View on Wikipedia" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VE7-wR-h8F">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="viewonwikipedia:" target="-2" id="dsQ-MR-wqg"/>
+                    </connections>
+                </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IY7-t8-WQH">
+                    <rect key="frame" x="8" y="53" width="197" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="View Homepage" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4jx-my-ZQc">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="openhomepage:" target="-2" id="fq8-fE-8ih"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="316.5" y="1785.5"/>
         </visualEffectView>

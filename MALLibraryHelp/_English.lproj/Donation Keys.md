@@ -11,6 +11,7 @@ These features require a donation key or an App Store version:
 * Importing of lists from Kitsu and AniDB (XML)
 * Importing and Exporting of Manga lists.
 * Viewing source material information in Anime Information view
+* Viewing cast information of an anime title.
 
 The donation key requires online activation to work and MAL Library will check the validity of the key when it's on the internet at launch. The donation key is encrypted and when it's checked, it will be decrypted and checked against a database.
 

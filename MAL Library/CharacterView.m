@@ -26,6 +26,9 @@
 @property (strong) IBOutlet NSTableViewAction *tb;
 @property (strong) IBOutlet NSButton *viewonwikipedia;
 @property (strong) IBOutlet NSButton *viewhomepage;
+@property (strong) IBOutlet NSMenuItem *filtervoiceactingroles;
+@property (strong) IBOutlet NSMenuItem *filterstaffpositions;
+@property (strong) IBOutlet NSMenuItem *filterpublishedmanga;
 @end
 
 @implementation CharacterView
@@ -92,6 +95,7 @@
     _popupfilter.hidden = NO;
     _viewonwikipedia.hidden = NO;
     [self reloadtableview];
+    [_popupfilter selectItemAtIndex:[self getNonHiddenFilterIndex]];
     [self filtertableview];
 }
 
@@ -135,6 +139,43 @@
     }
     if (tmparray.count > 0) {
         [_arraycontroller addObjects:tmparray];
+        [self addremovefilter:arraytype hide:false];
+    }
+    else {
+        [self addremovefilter:arraytype hide:true];
+    }
+}
+
+- (void)addremovefilter:(int)type hide:(bool)hide {
+    switch (type) {
+        case actors: {
+            break;
+        }
+        case staffpositions: {
+            _filterstaffpositions.hidden = hide;
+            break;
+        }
+        case voiceactingroles: {
+            _filtervoiceactingroles.hidden = hide;
+        }
+        case publishedmanga: {
+            _filterpublishedmanga.hidden = hide;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+- (int)getNonHiddenFilterIndex {
+    if (!_filtervoiceactingroles.hidden) {
+        return 0;
+    }
+    else if (!_filterstaffpositions.hidden) {
+        return 1;
+    }
+    else {
+        return 2;
     }
 }
 

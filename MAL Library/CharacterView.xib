@@ -10,6 +10,9 @@
                 <outlet property="arraycontroller" destination="xEx-XU-f3O" id="xSS-WT-aqJ"/>
                 <outlet property="charactername" destination="aRD-zy-myb" id="6hH-CB-QdY"/>
                 <outlet property="details" destination="CTX-KG-sxJ" id="v6r-du-udH"/>
+                <outlet property="filterpublishedmanga" destination="gQg-PW-uvg" id="xvU-8t-9qC"/>
+                <outlet property="filterstaffpositions" destination="eHf-tF-jv8" id="G8m-5X-Fw4"/>
+                <outlet property="filtervoiceactingroles" destination="MUR-to-f6M" id="GfI-Ge-H86"/>
                 <outlet property="popupfilter" destination="hku-1t-nJn" id="2jm-0Y-s8W"/>
                 <outlet property="posterimage" destination="eW7-5D-4qV" id="ZGx-No-Lfb"/>
                 <outlet property="tableview_first_heading" destination="jJW-QB-hhW" id="aqW-HW-VCg"/>

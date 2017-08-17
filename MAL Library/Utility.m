@@ -217,9 +217,9 @@
             // Check donation key
             AFHTTPSessionManager *manager = [Utility manager];
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
-            manager.responseSerializer = [Utility httpresponseserializer];
+            //manager.responseSerializer = [Utility httpresponseserializer];
             [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+                NSDictionary *d = responseObject;
                 int valid = ((NSNumber *)d[@"valid"]).intValue;
                 if (valid == 1) {
                     //Reset check
@@ -230,12 +230,16 @@
                     [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. MAL Library will now quit." window:nil];
                     [Utility showDonateReminder:delegate];
                     [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
+                    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
                     [[NSApplication sharedApplication] terminate:nil];
                 }
 
             } failure:^(NSURLSessionTask *operation, NSError *error) {
             }];
         }
+    }
+    else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue && ![[NSUserDefaults standardUserDefaults] valueForKey:@"donatereminderdate"]) {
+        [Utility setReminderDate];
     }
 }
 + (void)showDonateReminder:(AppDelegate*)delegate{
@@ -263,7 +267,7 @@
 + (void)setReminderDate {
     //Sets Reminder Date
     NSDate *now = [NSDate date];
-    NSDate *reminderdate = [now dateByAddingTimeInterval:60*60*24*14];
+    NSDate *reminderdate = [now dateByAddingTimeInterval:60*60*24];
     [[NSUserDefaults standardUserDefaults] setObject:reminderdate forKey:@"donatereminderdate"];
 }
 

@@ -35,10 +35,10 @@
         // Check donation key
         AFHTTPSessionManager *manager = [Utility manager];
         manager.requestSerializer = [Utility jsonrequestserializer];
-        manager.responseSerializer = [Utility httpresponseserializer];
+        //manager.responseSerializer = [Utility httpresponseserializer];
         [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":_name.stringValue, @"key":_key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [btn setEnabled:YES];
-            NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+            NSDictionary *d = responseObject;
             int valid = ((NSNumber *)d[@"valid"]).intValue;
             if (valid == 1) {
                 // Valid Key
@@ -47,6 +47,7 @@
                 [[NSUserDefaults standardUserDefaults] setObject:_name.stringValue forKey:@"donor"];
                 [[NSUserDefaults standardUserDefaults] setObject:_key.stringValue forKey:@"donatekey"];
                 [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
+                [Utility setReminderDate];
                 // Refresh Mainview
                 AppDelegate *del = (AppDelegate *)[NSApplication sharedApplication].delegate;
                 [[del getMainWindowController] loadmainview];

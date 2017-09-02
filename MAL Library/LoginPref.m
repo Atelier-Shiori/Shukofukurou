@@ -126,7 +126,11 @@
             _savebut.keyEquivalent = @"\r";
         }
         else{
-            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account" explaination:[error.userInfo valueForKey:@"NSLocalizedDescription"] window:self.view.window];
+            NSString *errormessage = @"Error Unkown.";
+            if ([error.userInfo valueForKey:@"NSLocalizedDescription"]) {
+                errormessage = [error.userInfo valueForKey:@"NSLocalizedDescription"];
+            }
+            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account" explaination:errormessage window:self.view.window];
             [_savebut setEnabled: YES];
             _savebut.keyEquivalent = @"\r";
         }

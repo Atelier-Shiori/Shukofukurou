@@ -345,7 +345,7 @@
                                         <menuItem title="Import from AniList…" id="6SO-xG-9tj">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
-                                                <action selector="importKitsu:" target="mhI-ho-EeA" id="oPf-8V-7E9"/>
+                                                <action selector="importAnilist:" target="mhI-ho-EeA" id="g9j-Iu-nP8"/>
                                                 <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="cn4-sy-hh3"/>
                                             </connections>
                                         </menuItem>

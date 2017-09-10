@@ -113,7 +113,7 @@
 }
     
 + (AFOAuthCredential *)getFirstAccessToken{
-    return [AFOAuthCredential retrieveCredentialWithIdentifier:@"Hachidori"];
+    return [AFOAuthCredential retrieveCredentialWithIdentifier:@"MAL Library - AniList Token"];
 }
     
 + (void)retrievetoken:(void (^)(bool success)) completionHandler {
@@ -170,7 +170,7 @@
 }
 + (void)retrieveUserIDFromUsername:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility manager];
-    [manager GET:@"https://anilist.co/api/user" parameters:@{@"access_token":[self getFirstAccessToken].accessToken} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%@", username] parameters:@{@"access_token":[self getFirstAccessToken].accessToken} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSDictionary * d = responseObject;
         if (d[@"id"] != [NSNull null]){
             completionHandler(((NSNumber *)d[@"id"]).intValue);

@@ -89,6 +89,10 @@
                 // Save mappings and clear kitsu mapping array.
                 [Utility saveJSON:_otheridmalidmapping withFilename:@"KitsuMALMappings.json" appendpath:@"" replace:true];
             }
+            else if ([_listtype isEqualToString:@"anilist"]) {
+                // Save mappings and clear kitsu mapping array.
+                [Utility saveJSON:_otheridmalidmapping withFilename:@"AniListMALMappings.json" appendpath:@"" replace:true];
+            }
             else if ([_listtype isEqualToString:@"anidb"]) {
                 // Save mappings and clear kitsu mapping array.
                 [Utility saveJSON:_otheridmalidmapping withFilename:@"AniDBMALMappings.json" appendpath:@"" replace:true];
@@ -704,6 +708,8 @@
         if ([Utility checkifFileExists:@"AniListMALMappings.json" appendPath:@""]) {
             [_otheridmalidmapping addObjectsFromArray:[Utility loadJSON:@"AniListMALMappings.json" appendpath:@""]];
         }
+        [self importsetup];
+        [self performAnilistImport];
     } error:^(NSError *error){
         NSLog(@"%@",error);
         [Utility showsheetmessage:@"Unable to retrieve AniList library." explaination:@"Make sure you entered a valid user name and try again." window:[_del getMainWindowController].window];
@@ -714,14 +720,19 @@
     NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"id"]).intValue];
     if (!malid) {
         [self retrieveMALIDwithTitle:entry[@"title_romaji"] withType:MALAnime completionHandler:^(int amalid) {
-            [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
-            [self performMALUpdateFromKitsuEntry:entry withMALID:amalid];
+            if (amalid > 0) {
+                [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
+                [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
+            }
+            else {
+                [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
+            }
         }error:^(NSError *error) {
             [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
         }];
     }
     else {
-        [self performMALUpdateFromKitsuEntry:entry withMALID:malid.intValue];
+        [self performMALUpdateFromAnilistEntry:entry withMALID:malid.intValue];
     }
 }
 - (void)performMALUpdateFromAnilistEntry:(NSDictionary *)entry withMALID:(int)malid{

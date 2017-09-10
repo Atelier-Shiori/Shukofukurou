@@ -9,6 +9,7 @@ Here are the formats that MAL Library supports:
 * MyAnimeList XML Format (generated from the website or export done in MAL Library)
 * AniDB XML (full) Lists.(1)
 * Kitsu (Anime only for now).(1)
+* AniList (Anime only for now).(1)
 
 (1) These import options requires a donation key or an App Store version.
 
@@ -16,11 +17,11 @@ If there are titles that could not be imported, it will show them after the impo
 
 ## Import Compatibility
 
-**Fields** |**MyAnimeList XML**|**AniDB XML**|**Kitsu**
-:-----:|:-----:|:-----:|:-----:
-Watched Episodes|Y|Y|Y
-Watched Status|Y|-*|Y
-Score|Y|N|Y
+**Fields** |**MyAnimeList XML**|**AniDB XML**|**Kitsu**|**AniList**
+:-----:|:-----:|:-----:|:-----:|:-----:
+Watched Episodes|Y|Y|Y|Y
+Watched Status|Y|-*|Y|Y
+Score|Y|N|Y|Y
 
 (*) Only completed, plan to watch and watching status. The XML does not contain state/watch status information nor score.
 
@@ -44,11 +45,11 @@ This option requires a donation key entered or an App Store version.
 Note: To overwrite entries, click "Options" and check "Replace entries if exist"
 6. Click open to start the import. If there is any titles that couldn't be imported, it will show a list.
 
-### Kitsu
+### Kitsu and AniList
 This option requires a donation key entered or an App Store version.
-1. In MAL Library, click on MyAnimeList > Import List > Import from Kitsu from the menubar.
+1. In MAL Library, click on MyAnimeList > Import List > Import from Kitsu or Import from AniList from the menubar.
 2. Specify your username that you want to import your library from.
-Note: To overwrite entries, check "Replace existing entriest"
+Note: To overwrite entries, check "Replace existing entries"
 6. Click import to start the import. If there is any titles that couldn't be imported, it will show a list.
 
 ## Export

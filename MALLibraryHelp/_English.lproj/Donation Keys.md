@@ -8,7 +8,7 @@ While MAL Library is free and open source software, hosting the Atarashii-API an
 These features require a donation key or an App Store version:
 * Managing Manga lists and viewing information of Manga titles
 * List Statistics
-* Importing of lists from Kitsu and AniDB (XML)
+* Importing of lists from Kitsu, AniList and AniDB (XML)
 * Importing and Exporting of Manga lists.
 * Viewing source material information in Anime Information view
 * Viewing cast information of an anime title.

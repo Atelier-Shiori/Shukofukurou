@@ -1,5 +1,5 @@
 // AFNetworking.h
-// Copyright (c) 2011–2015 Alamofire Software Foundation (http://alamofire.org/)
+// Copyright (c) 2011–2016 Alamofire Software Foundation ( http://alamofire.org/ )
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,9 @@ FOUNDATION_EXPORT const unsigned char AFNetworkingVersionString[];
 #import <AFNetworking/AFURLRequestSerialization.h>
 #import <AFNetworking/AFURLResponseSerialization.h>
 #import <AFNetworking/AFSecurityPolicy.h>
-
+#import <AFNetworking/AFOAuthCredential.h>
+#import <AFNetworking/AFHTTPRequestSerializer+OAuth2.h>
+#import <AFNetworking/AFOAuth2Manager.h>
 #if !TARGET_OS_WATCH
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #endif

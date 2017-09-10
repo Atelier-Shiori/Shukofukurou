@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
 		2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
+		2D0A64581F5B22A00001C906 /* AniListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A64571F5B22A00001C906 /* AniListImport.m */; };
+		2D0A64591F5B22A00001C906 /* AniListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A64571F5B22A00001C906 /* AniListImport.m */; };
 		2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
 		2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
@@ -78,6 +80,8 @@
 		2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */; };
 		2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
 		2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
+		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
+		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
@@ -322,6 +326,8 @@
 /* Begin PBXFileReference section */
 		2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imagecachetransformer.h; sourceTree = "<group>"; };
 		2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagecachetransformer.m; sourceTree = "<group>"; };
+		2D0A64561F5B22A00001C906 /* AniListImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListImport.h; sourceTree = "<group>"; };
+		2D0A64571F5B22A00001C906 /* AniListImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListImport.m; sourceTree = "<group>"; };
 		2D20C4F01EB8FF6000B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messagecomposer.xib; sourceTree = "<group>"; };
 		2D20C4F41EB8FF7600B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewView.xib; sourceTree = "<group>"; };
 		2D371E711ECF8AF500F47138 /* ListStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListStatistics.h; sourceTree = "<group>"; };
@@ -377,6 +383,8 @@
 		2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokens.m; sourceTree = "<group>"; };
 		2DC64B661EC3D661005A8BCE /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
+		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
@@ -731,6 +739,10 @@
 				2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */,
 				91DAFC5A1EAE6C9F0037A6F2 /* messageswindow.h */,
 				91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */,
+				2D0A64561F5B22A00001C906 /* AniListImport.h */,
+				2D0A64571F5B22A00001C906 /* AniListImport.m */,
+				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
+				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
 				91822A5B1EAEAC70005E33DB /* messageswindow.xib */,
 				91DAFC611EAE6FA20037A6F2 /* messageview.h */,
 				91DAFC621EAE6FA20037A6F2 /* messageview.m */,
@@ -1175,6 +1187,7 @@
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
 				2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
+				2D0A64591F5B22A00001C906 /* AniListImport.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */,
 				913A11681E8F206A00450B66 /* LoginPref.m in Sources */,
@@ -1207,6 +1220,7 @@
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
+				59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
@@ -1233,6 +1247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
+				2D0A64581F5B22A00001C906 /* AniListImport.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
 				2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */,
@@ -1267,6 +1282,7 @@
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
 				91822A561EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
 				9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
+				59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,

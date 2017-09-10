@@ -92,7 +92,9 @@
     if ([filemanager fileExistsAtPath:fullfilenamewithpath]) {
         NSError *error;
         NSString *JSONString = [NSString stringWithContentsOfFile:fullfilenamewithpath encoding:NSUTF8StringEncoding error:&error];
-        return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+        if (!error) {
+            return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+        }
     }
     return nil;
 }

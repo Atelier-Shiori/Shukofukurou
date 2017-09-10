@@ -11,5 +11,5 @@
 #import <AFNetworking/AFOAuth2Manager.h>
 
 @interface AniListImport : NSObject
-
++ (void)retrievelist:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 @end

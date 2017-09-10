@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12120" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -340,6 +340,13 @@
                                             <connections>
                                                 <action selector="importKitsu:" target="mhI-ho-EeA" id="0Fn-E6-y8d"/>
                                                 <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="vz3-QT-xPc"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Import from AniList…" id="6SO-xG-9tj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="importKitsu:" target="mhI-ho-EeA" id="oPf-8V-7E9"/>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="cn4-sy-hh3"/>
                                             </connections>
                                         </menuItem>
                                     </items>

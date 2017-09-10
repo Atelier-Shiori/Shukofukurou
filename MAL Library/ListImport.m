@@ -12,7 +12,8 @@
 #import "MainWindow.h"
 #import "MyAnimeList.h"
 #import "Utility.h"
-#import "KitsuImportPrompt.h"
+#import "ImportPrompt.h"
+#import "AniListImport.h"
 #import "Keychain.h"
 
 @interface ListImport ()
@@ -29,7 +30,7 @@
 @property (strong) IBOutlet NSProgressIndicator *progressbar;
 @property (strong) IBOutlet NSTextField *progresspercentage;
 @property (strong) NSString *listtype;
-@property (strong) KitsuImportPrompt *importprompt;
+@property (strong) ImportPrompt *importprompt;
 @property (strong) IBOutlet NSWindow *failedw;
 @property (strong) IBOutlet NSTableView *failedtb;
 @end
@@ -107,6 +108,9 @@
         }
         else if ([_listtype isEqualToString:@"anidb"]) {
             [self performAniDBListImport];
+        }
+        else if ([_listtype isEqualToString:@"anilist"]) {
+            [self performAnilistImport];
         }
     }
 }
@@ -356,12 +360,13 @@
 - (IBAction)importKitsu:(id)sender {
     if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
         if (!_importprompt){
-            _importprompt = [KitsuImportPrompt new];
+            _importprompt = [ImportPrompt new];
         }
         [NSApp beginSheet:_importprompt.window
        modalForWindow:[_del getMainWindowController].window modalDelegate:self
        didEndSelector:@selector(KitsuPromptEnd:returnCode:contextInfo:)
           contextInfo:(void *)nil];
+        [_importprompt setImportType:ImportKitsu];
     }
     else {
         [_del showloginnotice];
@@ -369,7 +374,7 @@
 }
 - (void)KitsuPromptEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
     if (returnCode == 1) {
-        [self startKitsuImport:_importprompt.kitsuusernamefield.stringValue];
+        [self startKitsuImport:_importprompt.usernamefield.stringValue];
     }
     else {
         [_importprompt.window close];
@@ -388,7 +393,7 @@
                 _tmplist = nil;
                 _listtype = @"kitsu";
                 _importlisttype = MALAnime;
-                _replaceexisting = (_importprompt.kitsureplaceexisting.state == NSOnState);
+                _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
                 _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
                 if (!_otheridmalidmapping) {
                     _otheridmalidmapping = [NSMutableArray new];
@@ -548,6 +553,9 @@
     else if ([_listtype isEqualToString:@"anidb"]) {
         list = [_otheridmalidmapping filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"anidb_id == %i", idnum]];
     }
+    else if ([_listtype isEqualToString:@"anilist"]) {
+        list = [_otheridmalidmapping filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"anilist_id == %i", idnum]];
+    }
     if (list.count > 0) {
         return list[0][@"mal_id"];
     }
@@ -655,6 +663,98 @@
     }
     return 0;
 }
+    
+#pragma mark AniList
+- (IBAction)importAnilist:(id)sender {
+    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
+        if (!_importprompt){
+            _importprompt = [ImportPrompt new];
+        }
+        [NSApp beginSheet:_importprompt.window
+           modalForWindow:[_del getMainWindowController].window modalDelegate:self
+           didEndSelector:@selector(AnilistPromptEnd:returnCode:contextInfo:)
+              contextInfo:(void *)nil];
+        [_importprompt setImportType:ImportAniList];
+    }
+    else {
+        [_del showloginnotice];
+    }
+}
+- (void)AnilistPromptEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == 1) {
+        [self startAnilist:_importprompt.usernamefield.stringValue];
+    }
+    else {
+        [_importprompt.window close];
+        _importprompt = nil;
+    }
+}
+    
+    
+- (void)startAnilist:(NSString *)username {
+    [AniListImport retrievelist:username completion:^(id responseobject){
+        _listimport = responseobject[@"list"];
+        _listtype = @"anilist";
+        _importlisttype = MALAnime;
+        _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
+        _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
+        if (!_otheridmalidmapping) {
+            _otheridmalidmapping = [NSMutableArray new];
+        }
+        if ([Utility checkifFileExists:@"AniListMALMappings.json" appendPath:@""]) {
+            [_otheridmalidmapping addObjectsFromArray:[Utility loadJSON:@"AniListMALMappings.json" appendpath:@""]];
+        }
+    } error:^(NSError *error){
+        NSLog(@"%@",error);
+        [Utility showsheetmessage:@"Unable to retrieve AniList library." explaination:@"Make sure you entered a valid user name and try again." window:[_del getMainWindowController].window];
+    }];
+}
+- (void)performAnilistImport {
+    NSDictionary *entry = _listimport[_progress];
+    NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"id"]).intValue];
+    if (!malid) {
+        [self retrieveMALIDwithTitle:entry[@"title_romaji"] withType:MALAnime completionHandler:^(int amalid) {
+            [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
+            [self performMALUpdateFromKitsuEntry:entry withMALID:amalid];
+        }error:^(NSError *error) {
+            [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+        }];
+    }
+    else {
+        [self performMALUpdateFromKitsuEntry:entry withMALID:malid.intValue];
+    }
+}
+- (void)performMALUpdateFromAnilistEntry:(NSDictionary *)entry withMALID:(int)malid{
+    int score = 0;
+    NSString *status = entry[@"status"];
+    if ([status isEqualToString:@"on-hold"]) {
+        status = @"onhold";
+    }
+    if (entry[@"score"]) {
+        score = ((NSNumber *)entry[@"score"]).intValue;
+    }
+    if ([self checkiftitleisonlist:malid]) {
+        if (_replaceexisting) {
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+                [self incrementProgress:nil withTitle:nil];
+            }error:^(id error){
+                [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+            }];
+        }
+        else {
+            [self incrementProgress:nil withTitle:nil];
+        }
+    }
+    else {
+        [MyAnimeList addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+            [self incrementProgress:nil withTitle:nil];
+        }error:^(id error){
+            [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+        }];
+    }
+}
+
+#pragma mark Helpers
 
 - (void)retrieveMALIDwithTitle:(NSString *)searchterm withType:(NSString *)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility manager];

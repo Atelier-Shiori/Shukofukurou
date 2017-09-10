@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1611" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="KitsuImportPrompt">
+        <customObject id="-2" userLabel="File's Owner" customClass="ImportPrompt">
             <connections>
-                <outlet property="kitsureplaceexisting" destination="3cB-5a-OzQ" id="cjX-Rg-2DD"/>
-                <outlet property="kitsuusernamefield" destination="8aK-bz-EGM" id="W9B-BB-zGQ"/>
+                <outlet property="promptext" destination="3Z5-vh-8fX" id="PHr-eC-xgE"/>
+                <outlet property="replaceexisting" destination="3cB-5a-OzQ" id="ljT-Ob-9ud"/>
+                <outlet property="usernamefield" destination="8aK-bz-EGM" id="Dzn-3e-3w7"/>
                 <outlet property="window" destination="UMi-6W-mCV" id="kj1-Ot-gmD"/>
             </connections>
         </customObject>
@@ -23,16 +24,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="407" height="124"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Z5-vh-8fX">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Z5-vh-8fX">
                         <rect key="frame" x="18" y="95" width="353" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please enter a Kitsu username to import." id="n5x-N8-bSQ">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please enter a username to import." id="n5x-N8-bSQ">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xef-uu-42P">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xef-uu-42P">
                         <rect key="frame" x="18" y="70" width="113" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Username:" id="HgO-JL-Iry">
@@ -41,7 +42,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aK-bz-EGM">
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8aK-bz-EGM">
                         <rect key="frame" x="137" y="67" width="250" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="3dP-cI-v6F">
@@ -64,7 +65,7 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="performkitsuimport:" target="-2" id="W6t-mn-rxp"/>
+                            <action selector="performimport:" target="-2" id="XQK-tZ-qcy"/>
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="une-xh-IWB">
@@ -78,7 +79,7 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="cancelkitsuimport:" target="-2" id="065-SQ-yHb"/>
+                            <action selector="cancelimport:" target="-2" id="Ge9-FO-53F"/>
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3cB-5a-OzQ">
@@ -97,7 +98,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="bfP-5f-bpi"/>
             </connections>
-            <point key="canvasLocation" x="-7.5" y="546"/>
+            <point key="canvasLocation" x="179" y="312"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="NlK-iO-SgD"/>
     </objects>

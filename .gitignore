@@ -70,3 +70,4 @@ iOSInjectionProject/
 
 # End of https://www.gitignore.io/api/objective-c
 MALLibraryHelp/.sass-cache/*/*.scssc
+MAL Library/ClientConstants.m

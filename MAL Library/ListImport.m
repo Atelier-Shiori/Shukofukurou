@@ -445,7 +445,7 @@
     NSDictionary *attributes = entry[@"attributes"];
     NSString *status = attributes[@"status"];
     if ([status isEqualToString:@"on_hold"]) {
-        status = @"onhold";
+        status = @"on-hold";
     }
     else if ([status isEqualToString:@"planned"]) {
         status = @"plan to watch";
@@ -725,7 +725,17 @@
                 [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
             }
             else {
-                [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
+                [self retrieveMALIDwithTitle:entry[@"title_english"] withType:entry[@"type"] completionHandler:^(int amalid) {
+                    if (amalid > 0) {
+                        [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
+                        [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
+                    }
+                    else {
+                        [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+                    }
+                }error:^(NSError *error) {
+                    [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+                }];
             }
         }error:^(NSError *error) {
             [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
@@ -737,9 +747,12 @@
 }
 - (void)performMALUpdateFromAnilistEntry:(NSDictionary *)entry withMALID:(int)malid{
     int score = 0;
-    NSString *status = entry[@"status"];
-    if ([status isEqualToString:@"on-hold"]) {
-        status = @"onhold";
+    NSString *status = entry[@"watched_status"];
+    if ([status isEqualToString:@"on_hold"]) {
+        status = @"on-hold";
+    }
+    else if ([status isEqualToString:@"plan_to_watch"]) {
+        status = @"plan to watch";
     }
     if (entry[@"score"]) {
         score = ((NSNumber *)entry[@"score"]).intValue;

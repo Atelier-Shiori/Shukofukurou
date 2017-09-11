@@ -65,21 +65,27 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&error];
     if (!jsonData) {}
     else {
-        NSString *JSONString = [[NSString alloc] initWithBytes:jsonData.bytes length:jsonData.length encoding:NSUTF8StringEncoding];
-        NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
-        NSFileManager *filemanger = [NSFileManager defaultManager];
-        NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
-        if (![filemanger fileExistsAtPath:fullfilenamewithpath] || replace) {
-            NSURL *url = [[NSURL alloc] initFileURLWithPath:fullfilenamewithpath];
-            [JSONString writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&error];
-            if (!error) {
+        @try {
+            NSString *JSONString = [[NSString alloc] initWithBytes:jsonData.bytes length:jsonData.length encoding:NSUTF8StringEncoding];
+            NSString *path = [Utility retrieveApplicationSupportDirectory:appendpath];
+            NSFileManager *filemanger = [NSFileManager defaultManager];
+            NSString *fullfilenamewithpath = [NSString stringWithFormat:@"%@/%@",path,filename];
+            if (![filemanger fileExistsAtPath:fullfilenamewithpath] || replace) {
+                NSURL *url = [[NSURL alloc] initFileURLWithPath:fullfilenamewithpath];
+                [JSONString writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:&error];
+                if (!error) {
+                    JSONString = [NSString stringWithContentsOfFile:fullfilenamewithpath encoding:NSUTF8StringEncoding error:&error];
+                    return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+                }
+            }
+            else {
                 JSONString = [NSString stringWithContentsOfFile:fullfilenamewithpath encoding:NSUTF8StringEncoding error:&error];
                 return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
             }
         }
-        else {
-            JSONString = [NSString stringWithContentsOfFile:fullfilenamewithpath encoding:NSUTF8StringEncoding error:&error];
-            return [NSJSONSerialization JSONObjectWithData:[JSONString dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+        @catch (NSError *error) {
+            NSLog(@"Unable to write JSON:%@", error);
+            return object;
         }
     }
     return nil;

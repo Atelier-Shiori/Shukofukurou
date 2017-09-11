@@ -731,14 +731,14 @@
                         [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
                     }
                     else {
-                        [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+                        [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
                     }
                 }error:^(NSError *error) {
-                    [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+                    [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
                 }];
             }
         }error:^(NSError *error) {
-            [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+            [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
         }];
     }
     else {

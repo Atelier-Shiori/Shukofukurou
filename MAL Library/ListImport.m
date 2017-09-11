@@ -719,7 +719,7 @@
     NSDictionary *entry = _listimport[_progress];
     NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"id"]).intValue];
     if (!malid) {
-        [self retrieveMALIDwithTitle:entry[@"title_romaji"] withType:MALAnime completionHandler:^(int amalid) {
+        [self retrieveMALIDwithTitle:entry[@"title_romaji"] withType:entry[@"type"] completionHandler:^(int amalid) {
             if (amalid > 0) {
                 [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
                 [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
@@ -771,7 +771,8 @@
     AFHTTPSessionManager *manager = [Utility manager];
     manager.responseSerializer = [Utility httpresponseserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-    [manager GET:[NSString stringWithFormat:@"https://myanimelist.net/api/anime/search.xml?q=%@", [Utility urlEncodeString:searchterm]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    NSString *searchurl = [NSString stringWithFormat:@"https://myanimelist.net/api/anime/search.xml?q=%@", [Utility urlEncodeString:searchterm]];
+    [manager GET:searchurl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSArray *searchdata = [self MALSearchXMLToAtarashiiDataFormat:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
         for (NSDictionary *d in searchdata) {
             if (![(NSString *)d[@"type"] isEqualToString:type]) {

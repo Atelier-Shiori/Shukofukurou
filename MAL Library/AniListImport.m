@@ -118,7 +118,10 @@
     
 + (void)retrievetoken:(void (^)(bool success)) completionHandler {
     AFOAuthCredential *cred = [self getFirstAccessToken];
-    if (!cred) {
+    if (!cred||cred.expired) {
+        if (cred.expired) {
+            [AFOAuthCredential deleteCredentialWithIdentifier:@"MAL Library - AniList Token"];
+        }
         NSURL *baseURL = [NSURL URLWithString:@"https://anilist.co/api/"];
         AFOAuth2Manager *OAuth2Manager =
         [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
@@ -136,37 +139,10 @@
         }];
     }
     else {
-        if (cred.expired) {
-            [self refreshtoken:^(bool success) {
-                completionHandler(success);
-            }];
-        }
-        else {
-            completionHandler(true);
-        }
+        completionHandler(true);
     }
     
     
-}
-    
-+ (void)refreshtoken:(void (^)(bool success)) completionHandler{
-    AFOAuthCredential *cred =
-    [self getFirstAccessToken];
-    AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:[NSURL URLWithString:@"https://anilist.co/api/"]
-                                                                     clientID:kclient
-                                                                       secret:ksecretkey];
-    [OAuth2Manager setUseHTTPBasicAuthentication:NO];
-    [OAuth2Manager authenticateUsingOAuthWithURLString:@"https://anilist.co/api/auth/access_token"
-                                            parameters:@{@"grant_type":@"refresh_token", @"refresh_token":cred.refreshToken} success:^(AFOAuthCredential *credential) {
-                                                NSLog(@"Token refreshed");
-                                                [AFOAuthCredential storeCredential:credential
-                                                                    withIdentifier:@"MAL Library - AniList Token"];
-                                                completionHandler(true);
-                                            }
-                                               failure:^(NSError *error) {
-                                                   NSLog(@"Token cannot be refreshed: %@", error);
-                                                   completionHandler(false);
-                                               }];
 }
 + (void)retrieveUserIDFromUsername:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility manager];

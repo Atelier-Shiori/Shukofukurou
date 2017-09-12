@@ -483,31 +483,56 @@
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
     [self setToolbarButtonState];
 }
+
 - (void)setToolbarButtonState{
     if (_currentlist == 0) {
         if (_animelistarraycontroller.selectedObjects.count > 0) {
-            [_edittitleitem setEnabled:YES];
-            [_deletetitleitem setEnabled:YES];
-            [_shareitem setEnabled:YES];
+            _edittitleitem.enabled = YES;
+            _deletetitleitem.enabled = YES;
+            _shareitem.enabled = YES;
+            _titleinfoitem.enabled = YES;
         }
         else {
-            [_edittitleitem setEnabled:NO];
-            [_deletetitleitem setEnabled:NO];
-            [_shareitem setEnabled:NO];
+            _edittitleitem.enabled = NO;
+            _deletetitleitem.enabled = NO;
+            _shareitem.enabled = NO;
+            _titleinfoitem.enabled = NO;
         }
     }
     else {
         if (_mangalistarraycontroller.selectedObjects.count > 0) {
-            [_edittitleitem setEnabled:YES];
-            [_deletetitleitem setEnabled:YES];
-            [_shareitem setEnabled:YES];
+            _edittitleitem.enabled = YES;
+            _deletetitleitem.enabled = YES;
+            _shareitem.enabled = YES;
+            _titleinfoitem.enabled = YES;
         }
         else {
-            [_edittitleitem setEnabled:NO];
-            [_deletetitleitem setEnabled:NO];
-            [_shareitem setEnabled:NO];
+            _edittitleitem.enabled = NO;
+            _deletetitleitem.enabled = NO;
+            _shareitem.enabled = NO;
+            _titleinfoitem.enabled = NO;
         }
     }
 }
 
+
+-(IBAction)viewtitleinfo:(id)sender {
+    NSDictionary *d;
+    NSNumber *idnum = @(0);
+    if (_currentlist == 0) {
+        if (_animelisttb.selectedRow >=0) {
+            if (_animelisttb.selectedRow >-1) {
+                d = _animelistarraycontroller.selectedObjects[0];
+                idnum = d[@"id"];
+            }
+        }
+    }
+    else {
+        if (_mangalisttb.selectedRow >=0) {
+                d = _mangalistarraycontroller.selectedObjects[0];
+                idnum = d[@"id"];
+        }
+    }
+    [_mw loadinfo:idnum type:_currentlist];
+}
 @end

@@ -40,6 +40,7 @@
 @property (strong) IBOutlet NSToolbarItem *edittitleitem;
 @property (strong) IBOutlet NSToolbarItem *deletetitleitem;
 @property (strong) IBOutlet NSToolbarItem *shareitem;
+@property (strong) IBOutlet NSToolbarItem *titleinfoitem;
 
 - (void)loadList:(int)list;
 - (IBAction)deletetitle:(id)sender;

@@ -470,9 +470,10 @@
             [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
             [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
             [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
-            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:3];
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:4];
-            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
+            [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:4];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:5];
+            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:6];
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
@@ -481,9 +482,10 @@
                 [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
                 [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
                 [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
-                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:3];
-                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:4];
-                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:5];
+                [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:3];
+                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:4];
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:5];
+                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:6];
             }
         }
     }

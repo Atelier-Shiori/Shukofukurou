@@ -61,9 +61,10 @@
 
 + (id)saveJSON:(id) object withFilename:(NSString*) filename appendpath:(NSString*)appendpath replace:(bool)replace{
     //Save as json object
+    NSError *error;
+    NSData *jsonData;
     @try {
-        NSError *error;
-        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&error];
+        jsonData = [NSJSONSerialization dataWithJSONObject:object options:0 error:&error];
         if (!jsonData) {}
         else {
                 NSString *JSONString = [[NSString alloc] initWithBytes:jsonData.bytes length:jsonData.length encoding:NSUTF8StringEncoding];
@@ -84,8 +85,8 @@
                 }
             }
     }
-    @catch (NSError *error) {
-        NSLog(@"Unable to write JSON:%@", error);
+    @catch (NSException *ex) {
+        NSLog(@"Unable to write JSON: %@", ex.reason);
         return object;
     }
     return nil;

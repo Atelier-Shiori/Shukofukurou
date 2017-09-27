@@ -65,11 +65,19 @@
         [a removeAllObjects];
         NSDictionary *data = object;
         NSArray *list;
-        if (data[@"anime"]) {
-            list = data[@"anime"];
-            [_animelistarraycontroller addObjects:list];
+        @try {
+            if (data[@"anime"]) {
+                list = data[@"anime"];
+                [_animelistarraycontroller addObjects:list];
+            }
+            else {
+                [_animelisttb reloadData];
+                return;
+            }
         }
-        else {
+        @catch (NSException *e) {
+            NSLog(@"Cannot populate data: %@",e);
+            NSLog(@"Copy this output and file a bug report: %@", data);
             [_animelisttb reloadData];
             return;
         }
@@ -103,12 +111,20 @@
         [a removeAllObjects];
         NSDictionary *data = object;
         NSArray *list;
-        if (data[@"manga"]) {
-            list = data[@"manga"];
-            [_mangalistarraycontroller addObjects:list];
+        @try {
+            if (data[@"manga"]) {
+                list = data[@"manga"];
+                [_mangalistarraycontroller addObjects:list];
+            }
+            else {
+                [_mangalisttb reloadData];
+                return;
+            }
         }
-        else {
-            [_mangalisttb reloadData];
+        @catch (NSException *e) {
+            NSLog(@"Cannot populate data: %@",e);
+            NSLog(@"Copy this output and file a bug report: %@", data);
+            [_animelisttb reloadData];
             return;
         }
         [self populatefiltercounts:list type:type];

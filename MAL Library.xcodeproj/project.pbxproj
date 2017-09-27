@@ -597,6 +597,17 @@
 			path = MALLibraryHelp;
 			sourceTree = "<group>";
 		};
+		2DFCE45D1F7B419900878045 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				9199BAF21E89844C00F6E9FF /* MASPreferences.framework */,
+				9199BB011E8984E300F6E9FF /* PXSourceList.framework */,
+				9199BB031E8984F600F6E9FF /* MASPreferences.framework */,
+				9199BAF31E89844C00F6E9FF /* PXSourceList.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		913A627C1E9D7AF40023E6A1 /* MAL Library Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +647,7 @@
 				2D96A5181ECBA8B800942B28 /* MALLibraryHelp */,
 				918C0D3F1E8A00ED0037898E /* Frameworks */,
 				9199BA971E89836000F6E9FF /* Products */,
+				2DFCE45D1F7B419900878045 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -952,14 +964,12 @@
 				TargetAttributes = {
 					2D60A11E1E9B322A0034C3AA = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 9HDZTER525;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = 913A115F1E8F206A00450B66;
 					};
 					2D96A5161ECBA8B800942B28 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 9HDZTER525;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					913A115F1E8F206A00450B66 = {
 						DevelopmentTeam = 9HDZTER525;
@@ -974,7 +984,6 @@
 					};
 					913A627A1E9D7AF40023E6A1 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9HDZTER525;
 						ProvisioningStyle = Manual;
 						TestTargetID = 913A115F1E8F206A00450B66;
 					};
@@ -1575,13 +1584,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9HDZTER525;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MAL LibraryUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-LibraryUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_TARGET_NAME = "MAL Library (AppStore)";
 			};
 			name = Debug;
@@ -1590,13 +1601,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9HDZTER525;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MAL LibraryUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-LibraryUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TEST_TARGET_NAME = "MAL Library (AppStore)";
 			};
 			name = Release;
@@ -1605,13 +1618,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9HDZTER525;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MALLibraryHelp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.MALLibraryHelp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = help;
 			};
@@ -1621,13 +1636,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9HDZTER525;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = MALLibraryHelp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.MALLibraryHelp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = help;
 			};
@@ -1723,7 +1740,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9HDZTER525;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MAL Library Unit Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -1739,7 +1756,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 9HDZTER525;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "MAL Library Unit Tests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

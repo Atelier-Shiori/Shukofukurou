@@ -18,7 +18,7 @@
         if (success) {
             [self retrieveUserIDFromUsername:username completion:^(int userid){
                 // Retrieve List
-                AFHTTPSessionManager *manager = [Utility manager];
+                AFHTTPSessionManager *manager = [Utility jsonmanager];
                 
                 [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%i/animelist/", userid] parameters:@{@"access_token":[self getFirstAccessToken].accessToken} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                     completionHandler([self processAnimeList:responseObject]);
@@ -145,7 +145,7 @@
     
 }
 + (void)retrieveUserIDFromUsername:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility manager];
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%@", username] parameters:@{@"access_token":[self getFirstAccessToken].accessToken} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSDictionary * d = responseObject;
         if (d[@"id"] != [NSNull null]){

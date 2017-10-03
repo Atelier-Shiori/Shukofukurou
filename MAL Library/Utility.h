@@ -36,9 +36,8 @@
 + (void)clearImageCache;
 + (NSDate *)stringDatetoDate:(NSString *)stringdate;
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
-+ (AFHTTPSessionManager*)manager;
++ (AFHTTPSessionManager*)jsonmanager;
++ (AFHTTPSessionManager*)httpmanager;
 + (AFJSONRequestSerializer *)jsonrequestserializer;
 + (AFHTTPRequestSerializer *)httprequestserializer;
-+ (AFJSONResponseSerializer *) jsonresponseserializer;
-+ (AFHTTPResponseSerializer *) httpresponseserializer;
 @end

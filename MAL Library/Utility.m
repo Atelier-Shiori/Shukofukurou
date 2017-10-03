@@ -224,7 +224,7 @@
     else if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
             // Check donation key
-            AFHTTPSessionManager *manager = [Utility manager];
+            AFHTTPSessionManager *manager = [Utility jsonmanager];
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
             //manager.responseSerializer = [Utility httpresponseserializer];
             [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
@@ -325,20 +325,35 @@
                                                              dateStyle: NSDateFormatterShortStyle
                                                              timeStyle: NSDateFormatterNoStyle];
 }
-+ (AFHTTPSessionManager*) manager {
-    static dispatch_once_t onceToken;
-    static AFHTTPSessionManager *manager = nil;
-    if (manager) {
-        [manager.requestSerializer clearAuthorizationHeader];
-        manager.requestSerializer = [Utility httprequestserializer];
-        manager.responseSerializer =  [Utility jsonresponseserializer];
++ (AFHTTPSessionManager*) jsonmanager {
+    static dispatch_once_t jonceToken;
+    static AFHTTPSessionManager *jmanager = nil;
+    if (jmanager) {
+        [jmanager.requestSerializer clearAuthorizationHeader];
+        jmanager.requestSerializer = [Utility httprequestserializer];
+        jmanager.responseSerializer =  [Utility jsonresponseserializer];
     }
-    dispatch_once(&onceToken, ^{
-        manager = [AFHTTPSessionManager manager];
-        manager.requestSerializer = [Utility httprequestserializer];
-        manager.responseSerializer =  [Utility jsonresponseserializer];
+    dispatch_once(&jonceToken, ^{
+        jmanager = [AFHTTPSessionManager manager];
+        jmanager.requestSerializer = [Utility httprequestserializer];
+        jmanager.responseSerializer =  [Utility jsonresponseserializer];
     });
-    return manager;
+    return jmanager;
+}
++ (AFHTTPSessionManager*) httpmanager {
+    static dispatch_once_t hmonceToken;
+    static AFHTTPSessionManager *hmanager = nil;
+    if (hmanager) {
+        [hmanager.requestSerializer clearAuthorizationHeader];
+        hmanager.requestSerializer = [Utility httprequestserializer];
+        hmanager.responseSerializer =  [Utility httpresponseserializer];
+    }
+    dispatch_once(&hmonceToken, ^{
+        hmanager = [AFHTTPSessionManager manager];
+        hmanager.requestSerializer = [Utility httprequestserializer];
+        hmanager.responseSerializer =  [Utility httpresponseserializer];
+    });
+    return hmanager;
 }
 + (AFJSONRequestSerializer *)jsonrequestserializer {
     static dispatch_once_t jronceToken;

@@ -40,7 +40,7 @@
     }
     // Note: Stream Data provided by Because.moe
     // PHP script passthrough is needed to retrieve the data securely
-    AFHTTPSessionManager *manager = [Utility manager];
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager GET:[NSString stringWithFormat:@"https://malupdaterosx.ateliershiori.moe/streamdata.php?region=%@",region] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [Utility saveJSON:responseObject withFilename:@"streamdata.json" appendpath:@"" replace:true];
         [[NSUserDefaults standardUserDefaults] setValue:[NSDate dateWithTimeIntervalSinceNow:15*24*50*50] forKey:@"stream_data_refresh_date"];

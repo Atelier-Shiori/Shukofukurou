@@ -584,5 +584,55 @@
     }
 }
 
+- (void)testAccountVerification {
+    // Tests account verification check
+    // Set Date
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
+    // Test
+    if ([MyAnimeList verifyAccount]) {
+        // Set Date
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
+        if ([MyAnimeList verifyAccount]) {
+            XCTAssert(YES, @"No errors.");
+        }
+        else {
+            XCTAssert(NO, @"Login failed.");
+        }
+    }
+    else {
+        XCTAssert(NO, @"Login failed.");
+    }
+}
+
+- (void)testretrieveHistory {
+    // Test History
+    if (![Keychain checkaccount]) {
+        XCTAssert(NO, @"No account.");
+        return;
+    }
+    XCTestExpectation *expectation = [self expectationWithDescription:@"History"];
+    [MyAnimeList retriveUpdateHistory:[Keychain getusername] completion:^(id responseobject){
+        if ([responseobject isKindOfClass:[NSArray class]]) {
+            NSLog(@"History object count: %li", [(NSArray *)responseobject count]);
+            XCTAssert(YES, @"No errors.");
+            [expectation fulfill];
+        }
+        else {
+            XCTAssert(NO, @"Response object is not an NSArray class.");
+            [expectation fulfill];
+        }
+    } error:^(NSError *error){
+        XCTAssert(NO, @"Can't retrieve history.");
+        [expectation fulfill];
+    }];
+    [self waitForExpectationsWithTimeout:90 handler:^(NSError *error) {
+        
+        if(error)
+        {
+            XCTFail(@"Expectation Failed with error: %@", error);
+        }
+        
+    }];
+}
 
 @end

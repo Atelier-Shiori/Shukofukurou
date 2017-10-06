@@ -7,10 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class MainWindow;
 @interface ListView : NSViewController <NSTableViewDelegate>
 
-@property (strong) IBOutlet MainWindow *mw;
 @property int currentlist;
 
 // Anime List View
@@ -36,14 +34,11 @@
 @property (strong) IBOutlet NSButton *plantoreadfilter;
 @property (strong) IBOutlet NSView *mangalistview;
 
-// Toolbar Items
-@property (strong) IBOutlet NSToolbarItem *edittitleitem;
-@property (strong) IBOutlet NSToolbarItem *deletetitleitem;
-@property (strong) IBOutlet NSToolbarItem *shareitem;
-@property (strong) IBOutlet NSToolbarItem *titleinfoitem;
+// Filter Save
+@property (strong) NSString * animelisttitlefilterstring;
+@property (strong) NSString * mangalisttitlefilterstring;
 
 - (void)loadList:(int)list;
-- (IBAction)deletetitle:(id)sender;
 - (IBAction)filterperform:(id)sender;
 - (void)populateList:(id)object type:(int)type;
 @end

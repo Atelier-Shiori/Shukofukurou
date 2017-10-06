@@ -16,7 +16,7 @@
 @class MSWeakTimer;
 @class AddTitle;
 @class EditTitle;
-@class ListView;
+@class MyListView;
 @class NotLoggedIn;
 @class SearchView;
 @class SeasonView;
@@ -36,7 +36,7 @@
 
 @property (nonatomic, assign, getter=getDelegate) AppDelegate *appdel;
 //Anime List View
-@property (strong) IBOutlet ListView *listview;
+@property (strong) IBOutlet MyListView *listview;
 // Not Logged In View
 @property (strong) IBOutlet NotLoggedIn *notloggedin;
 //Search View

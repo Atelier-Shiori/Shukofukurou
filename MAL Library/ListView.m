@@ -8,15 +8,13 @@
 
 #import "ListView.h"
 #import "MainWindow.h"
-#import "EditTitle.h"
+#import "AppDelegate.h"
 #import "Keychain.h"
 #import "MyAnimeList.h"
 #import "Utility.h"
 
 @interface ListView ()
-// Filter Save
-@property (strong) NSString * animelisttitlefilterstring;
-@property (strong) NSString * mangalisttitlefilterstring;
+
 @end
 
 @implementation ListView
@@ -25,6 +23,9 @@
     return [super initWithNibName:@"ListView" bundle:nil];
 }
 
+- (MainWindow *)_mw {
+    return [(AppDelegate *)[NSApplication sharedApplication].delegate getMainWindowController];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,14 +44,12 @@
         _animelistfilter.stringValue = _animelisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_animelistview];
         _currentlist = list;
-        [self setToolbarButtonState];
     }
     else {
         _animelisttitlefilterstring = _animelistfilter.stringValue;
         _animelistfilter.stringValue = _mangalisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_mangalistview];
         _currentlist = list;
-        [self setToolbarButtonState];
     }
 }
 
@@ -148,7 +147,6 @@
         }
         [self performfilter:type];
     }
-    [self setToolbarButtonState];
 }
 - (void)populatefiltercounts:(NSArray *)a type:(int)type{
     // Generates item counts for each status filter
@@ -397,55 +395,23 @@
     if (_currentlist == 0) {
         if (_animelisttb.selectedRow >=0) {
             if (_animelisttb.selectedRow >-1) {
-                NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
                 NSDictionary *d = _animelistarraycontroller.selectedObjects[0];
-                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]) {
-                    NSNumber *idnum = d[@"id"];
-                    [_mw loadinfo:idnum type:0];
-                }
-                else if([action isEqualToString:@"Modify Title"]) {
-                    [_mw.editviewcontroller showEditPopover:d showRelativeToRec:[_animelisttb frameOfCellAtColumn:0 row:_animelisttb.selectedRow] ofView:_animelisttb preferredEdge:0 type:_currentlist];
-                }
+                NSNumber *idnum = d[@"id"];
+                [[self _mw] loadinfo:idnum type:0];
             }
         }
     }
     else {
         if (_mangalisttb.selectedRow >=0) {
             if (_mangalisttb.selectedRow >-1) {
-                NSString *action = [[NSUserDefaults standardUserDefaults] valueForKey: @"listdoubleclickaction"];
                 NSDictionary *d = _mangalistarraycontroller.selectedObjects[0];
-                if ([action isEqualToString:@"View Info"]||[action isEqualToString:@"View Anime Info"]) {
-                    NSNumber *idnum = d[@"id"];
-                    [_mw loadinfo:idnum type:_currentlist];
-                }
-                else if([action isEqualToString:@"Modify Title"]) {
-                    [_mw.editviewcontroller showEditPopover:d showRelativeToRec:[_mangalisttb frameOfCellAtColumn:0 row:_mangalisttb.selectedRow] ofView:_mangalisttb preferredEdge:0 type: _currentlist];
-                }
+                NSNumber *idnum = d[@"id"];
+                [[self _mw] loadinfo:idnum type:_currentlist];
             }
         }
     }
 }
 
-- (IBAction)deletetitle:(id)sender {
-    NSAlert *alert = [[NSAlert alloc] init] ;
-    NSDictionary *d;
-    if (_currentlist == 0) {
-        d = _animelistarraycontroller.selectedObjects[0];
-    }
-    else {
-        d = _mangalistarraycontroller.selectedObjects[0];
-    }
-    [alert addButtonWithTitle:@"Yes"];
-    [alert addButtonWithTitle:@"No"];
-    alert.messageText = [NSString stringWithFormat:@"Are you sure you want to delete %@ from your list?", d[@"title"]];
-    alert.informativeText = @"Once you delete this title, this cannot be undone.";
-    alert.alertStyle = NSAlertStyleWarning;
-    [alert beginSheetModalForWindow:_mw.window completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode== NSAlertFirstButtonReturn) {
-            [self deletetitle];
-        }
-    }];
-}
 - (NSArray *)obtainfilterstatus:(int)type {
     // Generates an array of selected filters
     NSMutableArray *a = [NSMutableArray new];
@@ -478,59 +444,10 @@
     }
     return final;
 }
-- (void)deletetitle {
-    NSDictionary *d;
-    NSNumber *selid;
-    if (_currentlist == 0) {
-        d = _animelistarraycontroller.selectedObjects[0];
-        selid = d[@"id"];
-    }
-    else {
-        d = _mangalistarraycontroller.selectedObjects[0];
-        selid = d[@"id"];
-    }
-    [MyAnimeList removeTitleFromList:selid.intValue withType:_currentlist completion:^(id responseobject) {
-        [_mw loadlist:@(true) type:_currentlist];
-    }error:^(NSError *error) {
-        NSLog(@"%@",error);
-    }];
-}
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {
-    [self setToolbarButtonState];
+  
 }
-
-- (void)setToolbarButtonState{
-    if (_currentlist == 0) {
-        if (_animelistarraycontroller.selectedObjects.count > 0) {
-            _edittitleitem.enabled = YES;
-            _deletetitleitem.enabled = YES;
-            _shareitem.enabled = YES;
-            _titleinfoitem.enabled = YES;
-        }
-        else {
-            _edittitleitem.enabled = NO;
-            _deletetitleitem.enabled = NO;
-            _shareitem.enabled = NO;
-            _titleinfoitem.enabled = NO;
-        }
-    }
-    else {
-        if (_mangalistarraycontroller.selectedObjects.count > 0) {
-            _edittitleitem.enabled = YES;
-            _deletetitleitem.enabled = YES;
-            _shareitem.enabled = YES;
-            _titleinfoitem.enabled = YES;
-        }
-        else {
-            _edittitleitem.enabled = NO;
-            _deletetitleitem.enabled = NO;
-            _shareitem.enabled = NO;
-            _titleinfoitem.enabled = NO;
-        }
-    }
-}
-
 
 -(IBAction)viewtitleinfo:(id)sender {
     NSDictionary *d;
@@ -549,6 +466,6 @@
                 idnum = d[@"id"];
         }
     }
-    [_mw loadinfo:idnum type:_currentlist];
+    [[self _mw] loadinfo:idnum type:_currentlist];
 }
 @end

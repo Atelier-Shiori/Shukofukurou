@@ -15,7 +15,7 @@
 #import "Keychain.h"
 #import "AddTitle.h"
 #import "EditTitle.h"
-#import "ListView.h"
+#import "MyListView.h"
 #import "NotLoggedIn.h"
 #import "SearchView.h"
 #import "InfoView.h"

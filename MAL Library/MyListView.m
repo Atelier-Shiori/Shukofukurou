@@ -103,10 +103,22 @@
     NSAlert *alert = [[NSAlert alloc] init] ;
     NSDictionary *d;
     if (self.currentlist == 0) {
-        d = self.animelistarraycontroller.selectedObjects[0];
+        if (self.animelistarraycontroller.selectedObjects.count > 0) {
+            d = self.animelistarraycontroller.selectedObjects[0];
+        }
+        else {
+            NSLog(@"Invalid Selection, aborting delete.");
+            return;
+        }
     }
     else {
-        d = self.mangalistarraycontroller.selectedObjects[0];
+        if (self.mangalistarraycontroller.selectedObjects.count > 0) {
+            d = self.mangalistarraycontroller.selectedObjects[0];
+        }
+        else {
+            NSLog(@"Invalid Selection, aborting delete.");
+            return;
+        }
     }
     [alert addButtonWithTitle:@"Yes"];
     [alert addButtonWithTitle:@"No"];
@@ -124,17 +136,31 @@
     NSDictionary *d;
     NSNumber *selid;
     if (self.currentlist == 0) {
-        d = self.animelistarraycontroller.selectedObjects[0];
-        selid = d[@"id"];
+        if (self.animelistarraycontroller.selectedObjects.count > 0) {
+            d = self.animelistarraycontroller.selectedObjects[0];
+            selid = d[@"id"];
+        }
+        else {
+            NSLog(@"Invalid Selection, aborting delete.");
+            return;
+        }
     }
     else {
-        d = self.mangalistarraycontroller.selectedObjects[0];
-        selid = d[@"id"];
+        if (self.mangalistarraycontroller.selectedObjects.count > 0) {
+            d = self.mangalistarraycontroller.selectedObjects[0];
+            selid = d[@"id"];
+        }
+        else {
+            NSLog(@"Invalid Selection, aborting delete.");
+            return;
+        }
     }
+    _deletetitleitem.enabled = NO;
     [MyAnimeList removeTitleFromList:selid.intValue withType:self.currentlist completion:^(id responseobject) {
         [_mw loadlist:@(true) type:self.currentlist];
     }error:^(NSError *error) {
         NSLog(@"%@",error);
+        _deletetitleitem.enabled = YES;
     }];
 }
 

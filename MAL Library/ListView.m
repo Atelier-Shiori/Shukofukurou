@@ -241,53 +241,57 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (_currentlist == 0) {
         if (_watchingfilter != btn) {
-            [defaults setValue:@(0) forKey:@"watchingfilter"];
+            _watchingfilter.state = 0;
         }
         else {
-            [defaults setValue:@(1) forKey:@"watchingfilter"];
+            _watchingfilter.state = 1;
         }
         if (_completedfilter != btn) {
-            [defaults setValue:@(0) forKey:@"completedfilter"];
+            _completedfilter.state = 0;
         }
         else {
-            [defaults setValue:@(1) forKey:@"completedfilter"];
+            _completedfilter.state = 1;
         }
         if (_droppedfilter != btn) {
-            [defaults setValue:@(0) forKey:@"droppedfilter"];
+            _droppedfilter.state = 0;
         }
         else {
-            [defaults setValue:@(1) forKey:@"droppedfilter"];
+            _droppedfilter.state = 1;
         }
         if (_onholdfilter != btn) {
-            [defaults setValue:@(0) forKey:@"onholdfilter"];
+            _onholdfilter.state = 0;
         }
         else {
-            [defaults setValue:@(1) forKey:@"onholdfilter"];
+            _onholdfilter.state = 1;
         }
         if (_plantowatchfilter != btn) {
-            [defaults setValue:@(0) forKey:@"plantowatchfilter"];
+            _plantowatchfilter.state = 1;
         }
         else {
-            [defaults setValue:@(1) forKey:@"plantowatchfilter"];
+            _plantowatchfilter.state = 0;
         }
     }
     else {
         if (_readingfilter != btn) {
-            [defaults setValue:@(0) forKey:@"readingfilter"];
+            _readingfilter.state = 0;
         }
         else {
-            [defaults setValue:@(1) forKey:@"readingfilter"];
+            _readingfilter.state = 1;
         }
         if (_mangacompletedfilter != btn) {
+            _mangacompletedfilter.state = 0;
             [defaults setValue:@(0) forKey:@"mcompletedfilter"];
         }
         else {
+            _mangacompletedfilter.state = 1;
             [defaults setValue:@(1) forKey:@"mcompletedfilter"];
         }
         if (_mangadroppedfilter != btn) {
+            _mangadroppedfilter.state = 0;
             [defaults setValue:@(0) forKey:@"mdroppedfilter"];
         }
         else {
+            _mangadroppedfilter.state = 1;
             [defaults setValue:@(1) forKey:@"mdroppedfilter"];
         }
         if (_mangaonholdfilter != btn) {
@@ -449,7 +453,7 @@
   
 }
 
--(IBAction)viewtitleinfo:(id)sender {
+- (IBAction)viewtitleinfo:(id)sender {
     NSDictionary *d;
     NSNumber *idnum = @(0);
     if (_currentlist == 0) {
@@ -467,5 +471,18 @@
         }
     }
     [[self _mw] loadinfo:idnum type:_currentlist];
+}
+
+- (void)removeAllFilterBindings {
+    [_watchingfilter unbind:@"value"];
+    [_completedfilter unbind:@"value"];
+    [_droppedfilter unbind:@"value"];
+    [_onholdfilter unbind:@"value"];
+    [_plantowatchfilter unbind:@"value"];
+    [_readingfilter unbind:@"value"];
+    [_mangacompletedfilter unbind:@"value"];
+    [_mangadroppedfilter unbind:@"value"];
+    [_mangaonholdfilter unbind:@"value"];
+    [_plantoreadfilter unbind:@"value"];
 }
 @end

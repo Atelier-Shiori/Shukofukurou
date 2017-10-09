@@ -58,6 +58,14 @@
 		2D96A5231ECBB65A00942B28 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
 		2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
+		2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863E81F895F9B00D2876A /* ProfileWindowController.m */; };
+		2DA863EB1F895F9B00D2876A /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863E81F895F9B00D2876A /* ProfileWindowController.m */; };
+		2DA863EC1F895F9B00D2876A /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */; };
+		2DA863ED1F895F9B00D2876A /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */; };
+		2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
+		2DA863F21F89B2F300D2876A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
+		2DA863F31F89B2F300D2876A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863F01F89B2F300D2876A /* ProfileViewController.xib */; };
+		2DA863F41F89B2F300D2876A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863F01F89B2F300D2876A /* ProfileViewController.xib */; };
 		2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
 		2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
 		2DAB19DF1EF9D16800420182 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
@@ -366,6 +374,12 @@
 		2D96A51F1ECBA95200942B28 /* _config.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _config.yml; sourceTree = "<group>"; };
 		2DA42F1D1EB79B200006FB9F /* HTMLtoBBCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLtoBBCode.h; sourceTree = "<group>"; };
 		2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLtoBBCode.m; sourceTree = "<group>"; };
+		2DA863E71F895F9B00D2876A /* ProfileWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileWindowController.h; sourceTree = "<group>"; };
+		2DA863E81F895F9B00D2876A /* ProfileWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileWindowController.m; sourceTree = "<group>"; };
+		2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileWindowController.xib; sourceTree = "<group>"; };
+		2DA863EE1F89B2F300D2876A /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		2DA863EF1F89B2F300D2876A /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		2DA863F01F89B2F300D2876A /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		2DAA9FBF1EB6524A00F562BD /* messagecomposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messagecomposer.h; sourceTree = "<group>"; };
 		2DAA9FC01EB6524A00F562BD /* messagecomposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messagecomposer.m; sourceTree = "<group>"; };
 		2DAB19DC1EF9D16800420182 /* StreamPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamPopup.h; sourceTree = "<group>"; };
@@ -721,6 +735,12 @@
 				2D371E821ECFA3E400F47138 /* ListStatistics.xib */,
 				916502BA1E8C576B00565D30 /* ListView.h */,
 				916502BB1E8C576B00565D30 /* ListView.m */,
+				2DA863E71F895F9B00D2876A /* ProfileWindowController.h */,
+				2DA863E81F895F9B00D2876A /* ProfileWindowController.m */,
+				2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */,
+				2DA863EE1F89B2F300D2876A /* ProfileViewController.h */,
+				2DA863EF1F89B2F300D2876A /* ProfileViewController.m */,
+				2DA863F01F89B2F300D2876A /* ProfileViewController.xib */,
 				2D7877741F87E44000AD40F1 /* MyListView.h */,
 				2D7877751F87E44000AD40F1 /* MyListView.m */,
 				916502C61E8C65A500565D30 /* ListView.xib */,
@@ -1026,6 +1046,7 @@
 				913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */,
 				2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B21EC4ED800068856A /* ReviewWindow.xib in Resources */,
+				2DA863ED1F895F9B00D2876A /* ProfileWindowController.xib in Resources */,
 				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
 				91822A591EAEAC70005E33DB /* messageswindow.xib in Resources */,
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
@@ -1045,6 +1066,7 @@
 				2D8A47BD1F292D1800FC2B35 /* CharacterView.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
+				2DA863F41F89B2F300D2876A /* ProfileViewController.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
@@ -1086,7 +1108,9 @@
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
+				2DA863EC1F895F9B00D2876A /* ProfileWindowController.xib in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
+				2DA863F31F89B2F300D2876A /* ProfileViewController.xib in Resources */,
 				2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */,
 				2D8BF8B71EC4EED80068856A /* ImportPrompt.xib in Resources */,
@@ -1185,6 +1209,7 @@
 				2D0A64591F5B22A00001C906 /* AniListImport.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */,
+				2DA863F21F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				913A11681E8F206A00450B66 /* LoginPref.m in Sources */,
 				2DC28DCC1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
 				2D7877771F87E44000AD40F1 /* MyListView.m in Sources */,
@@ -1200,6 +1225,7 @@
 				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				2D6ECA351F2E9B20003C455E /* NSString_stripHtml.m in Sources */,
+				2DA863EB1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
 				2D371E7C1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
@@ -1288,6 +1314,7 @@
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
+				2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
 				91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */,
@@ -1297,6 +1324,7 @@
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
+				2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
 				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,

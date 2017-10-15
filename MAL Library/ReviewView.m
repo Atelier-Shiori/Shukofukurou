@@ -9,6 +9,8 @@
 #import "ReviewView.h"
 #import "NSString+HTMLtoNSAttributedString.h"
 #import "Utility.h"
+#import "AppDelegate.h"
+#import "ProfileWindowController.h"
 
 @interface ReviewView ()
 
@@ -53,6 +55,8 @@
 }
 
 - (IBAction)viewreviewerprofile:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_reviewerusername.stringValue]]];
+    ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
+    [pwc.window makeKeyAndOrderFront:self];
+    [pwc loadProfileWithUsername:_reviewerusername.stringValue];
 }
 @end

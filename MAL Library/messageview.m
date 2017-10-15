@@ -10,6 +10,8 @@
 #import <WebKit/WebKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "MyAnimeList.h"
+#import "AppDelegate.h"
+#import "ProfileWindowController.h"
 
 @interface messageview ()
 @property (strong) IBOutlet NSTextField *fromlabel;
@@ -62,7 +64,9 @@ decisionListener:(id <WebPolicyDecisionListener>)listener
     }
 }
 - (IBAction)viewsenderprofile:(id)sender {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_selectedmessage[@"username"]]]];
+    ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
+    [pwc.window makeKeyAndOrderFront:self];
+    [pwc loadProfileWithUsername:_selectedmessage[@"username"]];
 }
 
 @end

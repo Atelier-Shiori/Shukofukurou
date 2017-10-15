@@ -290,6 +290,13 @@
     }
 }
 
+- (void)loadProfileWithUsername:(NSString *)username {
+    [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
+    [self loadMainView];
+    _searchfield.stringValue = username;
+    [self profilesearch:nil];
+}
+
 - (void)loadprofile:(NSString *)username {
     [self setLoadingView:true];
     [self loadMainView];
@@ -343,7 +350,6 @@
 }
 
 - (IBAction)share:(id)sender {
-    NSDictionary * d;
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     

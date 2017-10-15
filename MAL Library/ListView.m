@@ -238,7 +238,6 @@
 }
 
 - (void)filterStatusAsTabs:(NSButton *)btn{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (_currentlist == 0) {
         if (_watchingfilter != btn) {
             _watchingfilter.state = 0;

@@ -29,4 +29,5 @@
 - (void)showloginpref;
 - (IBAction)enterDonationKey:(id)sender;
 - (void)clearMessages;
+- (ProfileWindowController *)getProfileWindow;
 @end

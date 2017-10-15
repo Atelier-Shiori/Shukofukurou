@@ -25,6 +25,8 @@
 @end
 
 @implementation AppDelegate
+@synthesize pwc;
+
 + (void)initialize {
     
     //Create a Dictionary
@@ -241,9 +243,15 @@
 }
 
 - (IBAction)viewProfileWindow:(id)sender {
-    if (!_pwc) {
-        _pwc = [ProfileWindowController new];
+    if (!pwc) {
+        pwc = [ProfileWindowController new];
     }
-    [_pwc.window makeKeyAndOrderFront:self];
+    [pwc.window makeKeyAndOrderFront:self];
+}
+- (ProfileWindowController *)getProfileWindow {
+    if (!pwc) {
+        pwc = [ProfileWindowController new];
+    }
+    return pwc;
 }
 @end

@@ -343,6 +343,27 @@
 }
 
 - (IBAction)share:(id)sender {
+    NSDictionary * d;
+    NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
+    NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+    
+    //Generate Items to Share
+    NSArray *shareItems;
+    if ([identifier isEqualToString:@"profile"]){
+        shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@", _searchfield.stringValue]]];
+    }
+    if ([identifier isEqualToString:@"animelist"]){
+        shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@", _searchfield.stringValue]]];
+    }
+    else if ([identifier isEqualToString:@"mangalist"]){
+        shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@", _searchfield.stringValue]]];
+    }
+    //Get Share Picker
+    NSSharingServicePicker *sharePicker = [[NSSharingServicePicker alloc] initWithItems:shareItems];
+    sharePicker.delegate = nil;
+    NSButton * btn = (NSButton *)sender;
+    // Show Share Box
+    [sharePicker showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMinYEdge];
 }
 
 

@@ -13,11 +13,14 @@
 #import "messageswindow.h"
 #import "ListStatistics.h"
 
+@class ProfileWindowController;
+
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
 @property (strong) NSWindowController *_preferencesWindowController;
 @property (strong) messageswindow *messageswindow;
 @property (strong) ListStatistics *liststatswindow;
+@property (strong) ProfileWindowController *pwc;
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;

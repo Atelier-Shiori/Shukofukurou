@@ -442,23 +442,23 @@
     [[NSUserDefaults standardUserDefaults] setValue:@(selectedrow) forKey:@"selectedmainview"];
     [self createToolbar];
 }
-- (void)replaceMainViewWithView:(NSView *)view{
+- (void)replaceMainViewWithView:(NSView *)view {
     NSRect mainviewframe = _mainview.frame;
     NSPoint origin = NSMakePoint(0, 0);
     [_mainview replaceSubview:(_mainview.subviews)[0] with:view];
     view.frame = mainviewframe;
     [view setFrameOrigin:origin];
 }
-- (void)loadNotLoggedIn{
+- (void)loadNotLoggedIn {
     [self replaceMainViewWithView:_notloggedin.view];
 }
-- (void)loadnotLicensed{
+- (void)loadnotLicensed {
     [self replaceMainViewWithView:_requireslicense];
 }
 - (void)createToolbar{
     NSArray *toolbaritems = _toolbar.items;
     // Remove Toolbar Items
-    for (int i = 0; i < toolbaritems.count; i++){
+    for (int i = 0; i < toolbaritems.count; i++) {
         [_toolbar removeItemAtIndex:0];
     }
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;

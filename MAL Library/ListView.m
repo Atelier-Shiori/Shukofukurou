@@ -265,10 +265,10 @@
             _onholdfilter.state = 1;
         }
         if (_plantowatchfilter != btn) {
-            _plantowatchfilter.state = 1;
+            _plantowatchfilter.state = 0;
         }
         else {
-            _plantowatchfilter.state = 0;
+            _plantowatchfilter.state = 1;
         }
     }
     else {
@@ -402,6 +402,7 @@
                 NSDictionary *d = _animelistarraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
                 [[self _mw] loadinfo:idnum type:0];
+                [[self _mw].window makeKeyAndOrderFront:self];
             }
         }
     }
@@ -411,6 +412,7 @@
                 NSDictionary *d = _mangalistarraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
                 [[self _mw] loadinfo:idnum type:_currentlist];
+                [[self _mw].window makeKeyAndOrderFront:self];
             }
         }
     }
@@ -484,5 +486,15 @@
     [_mangadroppedfilter unbind:@"value"];
     [_mangaonholdfilter unbind:@"value"];
     [_plantoreadfilter unbind:@"value"];
+    _watchingfilter.state = 1;
+    _completedfilter.state = 0;
+    _droppedfilter.state = 0;
+    _onholdfilter.state = 0;
+    _plantoreadfilter.state = 0;
+    _readingfilter.state = 1;
+    _mangacompletedfilter.state = 0;
+    _mangadroppedfilter.state = 0;
+    _mangaonholdfilter.state = 0;
+    _plantoreadfilter.state = 0;
 }
 @end

@@ -42,6 +42,10 @@
     return YES;
 }
 
+- (void)setToUsername:(NSString *_Nonnull)tousername {
+    _reciplicant.stringValue = tousername;
+}
+
 - (void)setMessage:(NSString *_Nullable)reciplicant withSubject:(NSString * _Nullable)subject withMessage:(NSAttributedString * _Nullable)message withThreadID:(int)tid {
     if (reciplicant) {
         _reciplicant.stringValue = reciplicant;

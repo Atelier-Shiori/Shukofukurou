@@ -41,7 +41,9 @@
     // Do view setup here.
     if (!_steampopupviewcontroller.isViewLoaded) {
         [_steampopupviewcontroller loadView];
-    }}
+    }
+}
+
 - (void)populateAnimeInfoView:(id)object{
     NSDictionary *d = object;
     NSMutableString *titles = [NSMutableString new];

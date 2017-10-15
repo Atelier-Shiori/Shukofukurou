@@ -9,5 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ProfileViewController : NSViewController
-
+@property (strong) IBOutlet NSTextField *usernamelabel;
+@property (strong) IBOutlet NSTextView *profiledetails;
+@property (strong) IBOutlet NSButton *homepagebtn;
+@property (strong) IBOutlet NSImageView *profileimage;
+- (void)loadprofilewithUsername:(NSString *)username completion:(void (^)(bool))completion;
 @end

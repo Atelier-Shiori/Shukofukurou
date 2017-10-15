@@ -41,4 +41,5 @@
 - (void)loadList:(int)list;
 - (IBAction)filterperform:(id)sender;
 - (void)populateList:(id)object type:(int)type;
+- (void)removeAllFilterBindings;
 @end

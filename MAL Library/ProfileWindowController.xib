@@ -8,6 +8,15 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ProfileWindowController">
             <connections>
+                <outlet property="listview" destination="GQW-dO-KcG" id="4aX-IU-8nW"/>
+                <outlet property="mainview" destination="Avc-HO-aZl" id="LdO-Rf-N3B"/>
+                <outlet property="noprofileview" destination="dBy-Ld-SNJ" id="njA-Id-kIz"/>
+                <outlet property="noselectionview" destination="bZm-Bf-eg1" id="1i2-GK-UAH"/>
+                <outlet property="profilevc" destination="zHN-Wg-WZf" id="0Vl-2A-NJx"/>
+                <outlet property="progresswheel" destination="R7D-0X-L3o" id="NTt-Id-Nkc"/>
+                <outlet property="searchfield" destination="OYH-Zt-VCq" id="muE-gR-0hN"/>
+                <outlet property="sourceList" destination="9WH-yE-oIa" id="KNN-gC-QVV"/>
+                <outlet property="splitview" destination="tPF-Kq-VRo" id="7T0-Tu-o82"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -110,6 +119,10 @@
                                                     </prototypeCellViews>
                                                 </tableColumn>
                                             </tableColumns>
+                                            <connections>
+                                                <outlet property="dataSource" destination="-2" id="0uR-tX-nPQ"/>
+                                                <outlet property="delegate" destination="-2" id="9zV-Xt-icL"/>
+                                            </connections>
                                         </outlineView>
                                     </subviews>
                                     <nil key="backgroundColor"/>
@@ -132,6 +145,9 @@
                             <real value="250"/>
                             <real value="250"/>
                         </holdingPriorities>
+                        <connections>
+                            <outlet property="delegate" destination="-2" id="Bv1-K8-S1A"/>
+                        </connections>
                     </splitView>
                 </subviews>
             </view>
@@ -150,6 +166,9 @@
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="profilesearch:" target="-2" id="DFK-Hx-3G0"/>
+                                </connections>
                             </searchFieldCell>
                         </searchField>
                     </toolbarItem>
@@ -199,6 +218,8 @@
                 </progressIndicator>
             </subviews>
         </visualEffectView>
+        <viewController id="zHN-Wg-WZf" customClass="ProfileViewController"/>
+        <viewController id="GQW-dO-KcG" customClass="ListView"/>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

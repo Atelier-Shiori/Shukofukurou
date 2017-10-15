@@ -16,6 +16,7 @@
 #import <Crashlytics/Crashlytics.h>
 #import "Utility.h"
 #import "StreamDataRetriever.h"
+#import "ProfileWindowController.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -239,5 +240,10 @@
     }
 }
 
-
+- (IBAction)viewProfileWindow:(id)sender {
+    if (!_pwc) {
+        _pwc = [ProfileWindowController new];
+    }
+    [_pwc.window makeKeyAndOrderFront:self];
+}
 @end

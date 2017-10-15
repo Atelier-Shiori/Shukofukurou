@@ -138,6 +138,8 @@
     if (_selectedtype == 0) {
         [_minipopovereditbtn setEnabled:false];
         _minipopoverstatustext.stringValue = @"";
+        _minipopoverindicator.hidden = false;
+        [_minipopoverindicator startAnimation:self];
         if(![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue && _selectedaircompleted) {
             [_minipopoverstatus selectItemWithTitle:@"completed"];
         }
@@ -146,6 +148,7 @@
             [_minipopovereditbtn setEnabled:true];
             _minipopoverstatustext.stringValue = @"Invalid update.";
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
+            _minipopoverindicator.hidden = true;
             [_minipopoverindicator stopAnimation:nil];
             return;
         }
@@ -162,12 +165,14 @@
             [_mw loadlist:@(true) type:_selectedtype];
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
+            _minipopoverindicator.hidden = true;
             [_minipopoverindicator stopAnimation:nil];
             [_minieditpopover close];
         }
             error:^(NSError * error) {
             [_minipopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
+            _minipopoverindicator.hidden = true;
             [_minipopoverindicator stopAnimation:nil];
             NSLog(@"%@", error);
             _minipopoverstatustext.stringValue = @"Error";
@@ -176,6 +181,8 @@
     else {
         [_mangapopovereditbtn setEnabled:false];
         _mangapopoverstatustext.stringValue = @"";
+        _mangapopoverindicator.hidden = false;
+        [_mangapopoverindicator startAnimation:self];
         if(![_mangapopoverstatus.title isEqual:@"completed"] && _mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopovertotalvol.intValue == _mangapopovertotalvol.intValue && _selectedfinished) {
             [_mangapopoverstatus selectItemWithTitle:@"completed"];
         }
@@ -184,6 +191,7 @@
             [_mangapopovereditbtn setEnabled:true];
             _mangapopoverstatustext.stringValue = @"Invalid update.";
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
+            _mangapopoverindicator.hidden = true;
             [_mangapopoverindicator stopAnimation:nil];
             return;
         }
@@ -204,11 +212,13 @@
             [_mw loadlist:@(true) type:2];
             [_mangapopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
+            _mangapopoverindicator.hidden = true;
             [_mangapopoverindicator stopAnimation:nil];
             [_minieditpopover close];
         }error:^(NSError * error) {
             [_mangapopovereditbtn setEnabled:true];
             _minieditpopover.behavior = NSPopoverBehaviorTransient;
+            _mangapopoverindicator.hidden = true;
             [_mangapopoverindicator stopAnimation:nil];
             NSLog(@"%@", error);
             _mangapopoverstatustext.stringValue = @"Error";

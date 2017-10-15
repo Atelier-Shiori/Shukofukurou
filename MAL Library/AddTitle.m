@@ -22,6 +22,7 @@
 @property (strong) IBOutlet NSPopUpButton *addstatusfield;
 @property (strong) IBOutlet NSButton *addfield;
 @property (strong) IBOutlet NSStepper *addepstepper;
+@property (strong) IBOutlet NSProgressIndicator *mangaprogresswheel;
 
 // Manga
 @property (strong) IBOutlet NSView *addmangaview;
@@ -36,6 +37,7 @@
 @property (strong) IBOutlet NSButton *addmangabtn;
 @property (strong) IBOutlet NSStepper *addchapstepper;
 @property (strong) IBOutlet NSStepper *addvolstepper;
+@property (strong) IBOutlet NSProgressIndicator *animeprogresswheel;
 
 @end
 
@@ -178,6 +180,8 @@
 
 - (void)addtitletolist {
     if (_selectedtype == 0) {
+        _animeprogresswheel.hidden = false;
+        [_animeprogresswheel startAnimation:self];
         [_addfield setEnabled:false];
         if(![_addstatusfield.title isEqual:@"completed"] && _addepifield.intValue == _addtotalepisodes.intValue && _selectedaircompleted) {
             [_addstatusfield selectItemWithTitle:@"completed"];
@@ -186,6 +190,8 @@
             // Invalid input, mark it as such
             [_addfield setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
+            [_animeprogresswheel stopAnimation:self];
+            _animeprogresswheel.hidden = true;
             return;
         }
         if (_addepifield.intValue == _addtotalepisodes.intValue && _addtotalepisodes.intValue != 0 && _selectedaircompleted && _selectedaired) {
@@ -202,16 +208,22 @@
             [_addfield setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
+            [_animeprogresswheel stopAnimation:self];
+            _animeprogresswheel.hidden = true;
         }error:^(NSError * error) {
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addfield setEnabled:true];
+            [_animeprogresswheel stopAnimation:self];
+            _animeprogresswheel.hidden = true;
         }];
     }
     else {
         [_addmangabtn setEnabled:false];
+        _mangaprogresswheel.hidden = false;
+        [_mangaprogresswheel startAnimation:self];
         if(![_addstatusfield.title isEqual:@"completed"] && _addchapfield.intValue == _addtotalchap.intValue && _addvolfield.intValue == _addtotalvol.intValue && _selectedfinished) {
             [_addstatusfield selectItemWithTitle:@"completed"];
         }
@@ -219,6 +231,8 @@
             // Invalid input, mark it as such
             [_addmangabtn setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
+            _mangaprogresswheel.hidden = true;
+            [_mangaprogresswheel stopAnimation:self];
             return;
         }
         if (((_addchapfield.intValue == _addtotalchap.intValue && _addchapfield.intValue != 0) || (_addvolfield.intValue == _addtotalvol.intValue && _addtotalvol.intValue != 0)) && _selectedfinished && _selectedpublished) {
@@ -237,12 +251,16 @@
             [_addmangabtn setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
+            _mangaprogresswheel.hidden = true;
+            [_mangaprogresswheel stopAnimation:self];
         }error:^(NSError * error) {
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
             NSLog(@"%@",[[NSString alloc] initWithData:errordata encoding:NSUTF8StringEncoding]);
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addmangabtn setEnabled:true];
+            _mangaprogresswheel.hidden = true;
+            [_mangaprogresswheel stopAnimation:self];
 
         }];
     }

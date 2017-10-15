@@ -217,13 +217,13 @@
 
 - (void)setLoadingView:(bool)loading {
     if (loading) {
-        _noprofileview.hidden = false;
-        _progresswheel.hidden = true;
+        _noprofileview.hidden = true;
+        _progresswheel.hidden = false;
         [_progresswheel startAnimation:self];
     }
     else {
-        _noprofileview.hidden = true;
-        _progresswheel.hidden = false;
+        _noprofileview.hidden = false;
+        _progresswheel.hidden = true;
         [_progresswheel stopAnimation:self];
     }
 }
@@ -276,6 +276,9 @@
             } error:^(NSError *error) {
                 [self setLoadingView:false];
             }];
+        }
+        else {
+             [self setLoadingView:false];
         }
     }];
 }

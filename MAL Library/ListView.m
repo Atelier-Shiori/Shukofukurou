@@ -280,31 +280,27 @@
         }
         if (_mangacompletedfilter != btn) {
             _mangacompletedfilter.state = 0;
-            [defaults setValue:@(0) forKey:@"mcompletedfilter"];
         }
         else {
             _mangacompletedfilter.state = 1;
-            [defaults setValue:@(1) forKey:@"mcompletedfilter"];
         }
         if (_mangadroppedfilter != btn) {
             _mangadroppedfilter.state = 0;
-            [defaults setValue:@(0) forKey:@"mdroppedfilter"];
         }
         else {
             _mangadroppedfilter.state = 1;
-            [defaults setValue:@(1) forKey:@"mdroppedfilter"];
         }
         if (_mangaonholdfilter != btn) {
-            [defaults setValue:@(0) forKey:@"monholdfilter"];
+            _mangaonholdfilter.state = 0;
         }
         else {
-            [defaults setValue:@(1) forKey:@"monholdfilter"];
+            _mangaonholdfilter.state = 1;
         }
         if (_plantoreadfilter != btn) {
-            [defaults setValue:@(0) forKey:@"plantoreadfilter"];
+            _plantoreadfilter.state = 0;
         }
         else {
-            [defaults setValue:@(1) forKey:@"plantoreadfilter"];
+            _plantoreadfilter.state = 1;
         }
     }
 }

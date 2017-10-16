@@ -107,6 +107,7 @@
         NSString *seasonname = season[@"season"];
         [_seasonpicker addItemWithTitle:seasonname];
     }
+    [_seasonpicker selectItemAtIndex:_seasonpicker.itemArray.count-1];
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
 }
 - (void)performseasonindexretrieval{

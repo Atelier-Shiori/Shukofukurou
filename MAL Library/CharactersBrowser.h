@@ -15,4 +15,5 @@
 @property (strong) NSString *selectedtitle;
 - (void)retrievestafflist:(int)idnum;
 - (int)getIndexOfItemWithIdentifier:(NSString *)string;
+- (void)setAppearance;
 @end

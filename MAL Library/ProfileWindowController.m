@@ -33,6 +33,7 @@
     [_listview removeAllFilterBindings];
     [_profilevc view];
     [self loadMainView];
+    [self setAppearance];
 }
 
 - (instancetype)init {
@@ -372,5 +373,21 @@
     [sharePicker showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMinYEdge];
 }
 
-
+- (void)setAppearance {
+    NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
+    NSString *appearancename;
+    if ([appearence isEqualToString:@"Light"]){
+        appearancename = NSAppearanceNameVibrantLight;
+        self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+    }
+    else{
+        appearancename = NSAppearanceNameVibrantDark;
+        self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    }
+    _noselectionview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _profilevc.view.appearance = [NSAppearance appearanceNamed:appearancename];;
+    _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
+    _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
+    [self.window setFrame:self.window.frame display:false];
+}
 @end

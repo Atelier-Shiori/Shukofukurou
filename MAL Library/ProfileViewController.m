@@ -8,11 +8,12 @@
 
 #import "ProfileViewController.h"
 #import "MyAnimeList.h"
+#import "AppDelegate.h"
+#import "messageswindow.h"
 #import "messagecomposer.h"
 
 @interface ProfileViewController ()
 @property (strong) NSString *homepageurl;
-@property (strong) messagecomposer *mc;
 @end
 
 @implementation ProfileViewController
@@ -72,13 +73,12 @@
         _homepagebtn.hidden = true;
     }
     _profiledetails.string = details;
+    _profiledetails.textColor = NSColor.controlTextColor;
 }
 - (IBAction)sendprivatemessage:(id)sender {
-    if (!_mc) {
-        _mc = [messagecomposer new];
-    }
-    [_mc.window makeKeyAndOrderFront:self];
-    [_mc setToUsername:_usernamelabel.stringValue];
+    messagecomposer *mc = [[(AppDelegate *)NSApplication.sharedApplication.delegate getMessagesWindow] getMessageComposerWindow];
+    [mc.window makeKeyAndOrderFront:self];
+    [mc setToUsername:_usernamelabel.stringValue];
 }
 - (IBAction)viewuserhomepage:(id)sender {
     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:_homepageurl]];

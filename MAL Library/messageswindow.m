@@ -47,10 +47,16 @@
     [_selectmessageview setFrameOrigin:NSMakePoint(0, 0)];
     _selectmessageview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _messageview.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
-    [self loadmessagelist:1 refresh:true];
     if (!_messagecomposerw) {
         _messagecomposerw = [self messagecomposerController];
     }
+}
+
+- (messagecomposer *)getMessageComposerWindow {
+    if (!_messagecomposerw) {
+        _messagecomposerw = [self messagecomposerController];
+    }
+    return _messagecomposerw;
 }
 
 - (messagecomposer *)messagecomposerController {
@@ -58,12 +64,17 @@
     mc = [messagecomposer new];
     __weak __typeof__(self) weakSelf = self;
     mc.completionblock = ^(){
-        [weakSelf loadmessagelist:1 refresh:true];
+        [weakSelf loadmessagelist:1 refresh:true inital:false];
     };
     return mc;
 }
 
-- (void)loadmessagelist:(int)idnum refresh:(bool)refresh  {
+- (void)loadmessagelist:(int)idnum refresh:(bool)refresh inital:(bool)inital {
+    if (inital) {
+        if (((NSArray *)_messagearraycontroller.content).count > 0) {
+            return;
+        }
+    }
     if (!refresh && [Utility checkifFileExists:@"messages.json" appendPath:@""]) {
         [self populatemessagelist:[Utility loadJSON:@"messages.json" appendpath:@""]];
     }
@@ -234,7 +245,7 @@
 }
 
 - (IBAction)refreshmessagelist:(id)sender {
-    [self loadmessagelist:1 refresh:YES];
+    [self loadmessagelist:1 refresh:YES inital:NO];
 }
 
 - (IBAction)reply:(id)sender {
@@ -261,7 +272,7 @@
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"message-%i.json",messageid] appendPath:@"Messages"]){
             [Utility deleteFile:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages"];
         }
-        [self loadmessagelist:1 refresh:YES];
+        [self loadmessagelist:1 refresh:YES inital:NO];
     } error:^(NSError *error){
         NSLog(@"%@",error);
         [Utility showsheetmessage:@"Cannot delete message." explaination:@"Plese try again." window:self.window];

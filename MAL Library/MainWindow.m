@@ -47,7 +47,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -110,25 +110,35 @@
     
 }
 
--(void)generateSourceList{
+- (void)generateSourceList {
     self.sourceListItems = [[NSMutableArray alloc] init];
     
     //Library Group
     PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
     PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
     animelistItem.icon = [NSImage imageNamed:@"library"];
-    PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
-    mangalistItem.icon = [NSImage imageNamed:@"library"];
     PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
     historyItem.icon = [NSImage imageNamed:@"history"];
-    libraryItem.children = @[animelistItem, mangalistItem, historyItem];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+        PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
+        mangalistItem.icon = [NSImage imageNamed:@"library"];
+        libraryItem.children = @[animelistItem, mangalistItem, historyItem];
+    }
+    else {
+        libraryItem.children = @[animelistItem, historyItem];
+    }
     // Search
     PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
     PXSourceListItem *searchItem = [PXSourceListItem itemWithTitle:@"Anime" identifier:@"search"];
     searchItem.icon = [NSImage imageNamed:@"anime"];
-    PXSourceListItem *mangasearchItem = [PXSourceListItem itemWithTitle:@"Manga" identifier:@"mangasearch"];
-    mangasearchItem.icon = [NSImage imageNamed:@"manga"];
-    searchgroupItem.children = @[searchItem, mangasearchItem];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+        PXSourceListItem *mangasearchItem = [PXSourceListItem itemWithTitle:@"Manga" identifier:@"mangasearch"];
+        mangasearchItem.icon = [NSImage imageNamed:@"manga"];
+        searchgroupItem.children = @[searchItem, mangasearchItem];
+    }
+    else {
+        searchgroupItem.children = @[searchItem];
+    }
     // Discover Group
     PXSourceListItem *discoverItem = [PXSourceListItem itemWithTitle:@"DISCOVER" identifier:@"discover"];
     PXSourceListItem *titleinfoItem = [PXSourceListItem itemWithTitle:@"Title Info" identifier:@"titleinfo"];
@@ -220,7 +230,7 @@
     [[NSApplication sharedApplication] terminate:0];
 }
 
-- (void)setAppearance{
+- (void)setAppearance {
     NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
     NSString *appearancename;
     if ([appearence isEqualToString:@"Light"]){
@@ -233,6 +243,7 @@
     }
     _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
     _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
+    [_infoview.cbrowser setAppearance];
     _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
@@ -752,7 +763,12 @@
     int previd = _infoview.selectedid;
     int prevtype = _infoview.type;
     _infoview.selectedid = 0;
-    [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+    }
+    else {
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+    }
     [self loadmainview];
     _noinfoview.hidden = YES;
     _progressindicator.hidden = NO;

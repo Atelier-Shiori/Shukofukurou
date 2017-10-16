@@ -196,6 +196,7 @@
             _messageswindow = [messageswindow new];
         }
         [_messageswindow.window makeKeyAndOrderFront:self];
+        [_messageswindow loadmessagelist:1 refresh:false inital:true];
     }
     else {
         [self showloginnotice];
@@ -248,10 +249,17 @@
     }
     [pwc.window makeKeyAndOrderFront:self];
 }
+
 - (ProfileWindowController *)getProfileWindow {
     if (!pwc) {
         pwc = [ProfileWindowController new];
     }
     return pwc;
+}
+- (messageswindow *)getMessagesWindow {
+    if (!_messageswindow){
+        _messageswindow = [messageswindow new];
+    }
+    return _messageswindow;
 }
 @end

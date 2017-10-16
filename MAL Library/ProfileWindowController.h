@@ -12,5 +12,6 @@
 @interface ProfileWindowController : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet PXSourceList *sourceList;
+- (void)setAppearance;
 - (void)loadProfileWithUsername:(NSString *)username;
 @end

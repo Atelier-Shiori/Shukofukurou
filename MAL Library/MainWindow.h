@@ -77,6 +77,7 @@
 - (IBAction)sharetitle:(id)sender;
 - (void)loadmainview;
 - (void)setAppearance;
+- (void)generateSourceList;
 - (void)startTimer;
 - (void)stopTimer;
 - (void)fireTimer;

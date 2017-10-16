@@ -50,6 +50,8 @@
                 [Utility setReminderDate];
                 // Refresh Mainview
                 AppDelegate *del = (AppDelegate *)[NSApplication sharedApplication].delegate;
+                [[del getMainWindowController] generateSourceList];
+                [[del getMainWindowController].sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
                 [[del getMainWindowController] loadmainview];
                 //Close Window
                 [self.window orderOut:self];

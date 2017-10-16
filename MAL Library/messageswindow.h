@@ -12,5 +12,7 @@
 
 @interface messageswindow : NSWindowController <NSTableViewDelegate, NSSplitViewDelegate>
 @property (strong) messagecomposer *messagecomposerw;
+- (messagecomposer *)getMessageComposerWindow;
+- (void)loadmessagelist:(int)idnum refresh:(bool)refresh inital:(bool)inital;
 - (void)cleartableview;
 @end

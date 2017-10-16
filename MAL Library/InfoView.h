@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CharactersBrowser.h"
 
 @class MainWindow;
 
@@ -24,6 +25,9 @@ typedef NS_ENUM(unsigned int, InfoType) {
 @property (strong) IBOutlet NSTextView *infoviewbackgroundtextview;
 @property (strong) IBOutlet NSTextView *infoviewdetailstextview;
 @property (strong) IBOutlet NSTextView *infoviewsynopsistextview;
+
+@property (strong) CharactersBrowser *cbrowser;
+
 - (void)populateAnimeInfoView:(id)object;
 - (void)populateMangaInfoView:(id)object;
 - (IBAction)viewonmal:(id)sender;

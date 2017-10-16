@@ -55,8 +55,13 @@
 }
 
 - (IBAction)viewreviewerprofile:(id)sender {
-    ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
-    [pwc.window makeKeyAndOrderFront:self];
-    [pwc loadProfileWithUsername:_reviewerusername.stringValue];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+        ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
+        [pwc.window makeKeyAndOrderFront:self];
+        [pwc loadProfileWithUsername:_reviewerusername.stringValue];
+    }
+    else {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_reviewerusername.stringValue]]];
+    }
 }
 @end

@@ -7,7 +7,9 @@
 //
 
 #import "GeneralPref.h"
+#import "AppDelegate.h"
 #import "MainWindow.h"
+#import "ProfileWindowController.h"
 #import "Utility.h"
 #import "StreamDataRetriever.h"
 
@@ -40,6 +42,8 @@
 }
 - (IBAction)changeappearence:(id)sender {
     [_mainwindowcontroller setAppearance];
+    AppDelegate *del = (AppDelegate *)NSApplication.sharedApplication.delegate;
+    [[del getProfileWindow] setAppearance];
 }
 - (void)setMainWindowController:(MainWindow*)mw{
     _mainwindowcontroller = mw;

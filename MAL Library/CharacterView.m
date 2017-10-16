@@ -43,6 +43,7 @@
     _charactername.stringValue = d[@"name"];
     _posterimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image"]]]];
     _details.string = [NSString stringWithFormat:@"%@ character from %@. View more details on MyAnimeList.", d[@"role"], title];
+    _details.textColor = NSColor.controlTextColor;
     _selectedid = ((NSNumber *)d[@"id"]).intValue;
     _persontype = PersonCharacter;
     [self clearArrayController];
@@ -85,6 +86,7 @@
         _viewhomepage.hidden = YES;
     }
     _details.string = tmpstr;
+    _details.textColor = NSColor.controlTextColor;
     _selectedid = ((NSNumber *)d[@"id"]).intValue;
     _persontype = PersonStaff;
     [self clearArrayController];

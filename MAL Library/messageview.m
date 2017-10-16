@@ -64,9 +64,14 @@ decisionListener:(id <WebPolicyDecisionListener>)listener
     }
 }
 - (IBAction)viewsenderprofile:(id)sender {
-    ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
-    [pwc.window makeKeyAndOrderFront:self];
-    [pwc loadProfileWithUsername:_selectedmessage[@"username"]];
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+        ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
+        [pwc.window makeKeyAndOrderFront:self];
+        [pwc loadProfileWithUsername:_selectedmessage[@"username"]];
+    }
+    else {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_selectedmessage[@"username"]]]];
+    }
 }
 
 @end

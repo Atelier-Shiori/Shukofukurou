@@ -7,18 +7,26 @@ var eventHandler = function(event) {
     	var active_url = tab.url
     	if (active_url) {
 			var urlcheck = /(myanimelist.net)/
-			if (active_url.search(urlcheck)>0){
+			if (active_url.search(urlcheck) > 0){
 				var animepagecheck = /(myanimelist.net\/anime\/\d+)/
 				var mangapagecheck = /(myanimelist.net\/manga\/\d+)/
-				if (active_url.search(animepagecheck) > 0){
+				var profilepagecheck = /(myanimelist.net\/profile\/.*)/
+				if (active_url.search(animepagecheck) > 0) {
 					var matchurl = active_url.match(animepagecheck)
 					var firstmatch = matchurl[1]
 					var replacestring = /(myanimelist.net\/)/
 					var url = "mallibrary://" + firstmatch.replace(replacestring,"")
 					tab.url = url
 				}
-				if (active_url.search(mangapagecheck) > 0){
+				if (active_url.search(mangapagecheck) > 0) {
 					var matchurl = active_url.match(mangapagecheck)
+					var firstmatch = matchurl[1]
+					var replacestring = /(myanimelist.net\/)/
+					var url = "mallibrary://" + firstmatch.replace(replacestring,"")
+					tab.url = url
+				}
+				if (active_url.search(profilepagecheck) > 0) {
+					var matchurl = active_url.match(profilepagecheck)
 					var firstmatch = matchurl[1]
 					var replacestring = /(myanimelist.net\/)/
 					var url = "mallibrary://" + firstmatch.replace(replacestring,"")

@@ -181,13 +181,24 @@
         url = [url stringByReplacingOccurrencesOfString:@"anime/" withString:@""];
         [_mainwindowcontroller loadinfo:@(url.intValue) type:0];
     }
-    if ([url containsString:@"manga/"]) {
+    else if ([url containsString:@"manga/"]) {
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
             // Loads Manga Information with specified id.
             url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
             [_mainwindowcontroller loadinfo:@(url.intValue) type:0];
         }
     }
+    else if ([url containsString:@"profile/"]) {
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
+            // Loads Manga Information with specified id.
+            url = [url stringByReplacingOccurrencesOfString:@"profile/" withString:@""];
+            if ([self getProfileWindow]) {
+                [pwc.window makeKeyAndOrderFront:self];
+                [pwc loadProfileWithUsername:url];
+            }
+        }
+    }
+    
 }
 
 - (IBAction)showmessagewindow:(id)sender {

@@ -9,5 +9,7 @@
 #import "HistoryView.h"
 
 @interface OtherHistoryView : HistoryView
-
+- (void)loadHistory:(NSString *)username;
+- (void)clearHistory;
+- (IBAction)historydoubleclick:(id)sender;
 @end

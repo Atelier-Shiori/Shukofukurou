@@ -9,6 +9,7 @@
 #import "ProfileWindowController.h"
 #import "ListView.h"
 #import "ProfileViewController.h"
+#import "OtherHistoryView.h"
 #import "MyAnimeList.h"
 
 @interface ProfileWindowController ()
@@ -16,6 +17,8 @@
 @property (strong) IBOutlet NSVisualEffectView *noselectionview;
 @property (strong) IBOutlet NSView *noprofileview;
 @property (strong) IBOutlet ListView *listview;
+@property (strong) IBOutlet OtherHistoryView *ohistoryvc;
+
 @property (strong) IBOutlet ProfileViewController *profilevc;
 @property (weak) IBOutlet NSProgressIndicator *progresswheel;
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -51,6 +54,7 @@
     // Set Resizing mask
     (_listview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_noselectionview).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _ohistoryvc.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     self.window.titleVisibility = NSWindowTitleHidden;
     
     // Fix window size
@@ -169,8 +173,8 @@
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     NSPoint origin = NSMakePoint(0, 0);
-    if ([identifier isEqualToString:@"profile"]){
-        if (_loadedprofile){
+    if ([identifier isEqualToString:@"profile"]) {
+        if (_loadedprofile) {
             [self replaceMainViewWithView:_profilevc.view];
             _profilevc.view.frame = mainviewframe;
             [_profilevc.view setFrameOrigin:origin];
@@ -179,8 +183,8 @@
             [self loadnoprofileview];
         }
     }
-    else if ([identifier isEqualToString:@"animelist"]){
-        if (_loadedprofile){
+    else if ([identifier isEqualToString:@"animelist"]) {
+        if (_loadedprofile) {
             [self replaceMainViewWithView:_listview.view];
             [_listview loadList:0];
             _listview.animelistview.frame = mainviewframe;
@@ -190,8 +194,8 @@
             [self loadnoprofileview];
         }
     }
-    else if ([identifier isEqualToString:@"mangalist"]){
-        if (_loadedprofile){
+    else if ([identifier isEqualToString:@"mangalist"]) {
+        if (_loadedprofile) {
             [self replaceMainViewWithView:_listview.view];
             [_listview loadList:1];
             _listview.mangalistview.frame = mainviewframe;
@@ -199,6 +203,16 @@
         }
         else {
              [self loadnoprofileview];
+        }
+    }
+    else if ([identifier isEqualToString:@"history"]) {
+        if (_loadedprofile) {
+            [self replaceMainViewWithView:_ohistoryvc.view];
+            _ohistoryvc.view.frame = mainviewframe;
+            [_ohistoryvc.view setFrameOrigin:origin];
+        }
+        else {
+            [self loadnoprofileview];
         }
     }
     [self loadtoolbar];
@@ -272,7 +286,9 @@
     animelistItem.icon = [NSImage imageNamed:@"library"];
     PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
     mangalistItem.icon = [NSImage imageNamed:@"library"];
-    profilegroupItem.children = @[profileItem, animelistItem, mangalistItem];
+    PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
+    historyItem.icon = [NSImage imageNamed:@"history"];
+    profilegroupItem.children = @[profileItem, animelistItem, mangalistItem, historyItem];
 
     // Populate Source List
     [self.sourceListItems addObject:profilegroupItem];
@@ -306,6 +322,7 @@
         if (success) {
             [MyAnimeList retrieveList:username listType:MALAnime completion:^(id responseObject) {
                 [_listview populateList:responseObject type:MALAnime];
+                [_ohistoryvc loadHistory:username];
                 [MyAnimeList retrieveList:username listType:MALManga completion:^(id responseObject){
                     [_listview populateList:responseObject type:MALManga];
                     _loadedprofile = true;
@@ -341,10 +358,8 @@
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
-        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
-            if (_loadedprofile){
-                [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@",_searchfield.stringValue]]];
-            }
+        if (_loadedprofile){
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@",_searchfield.stringValue]]];
         }
         
     }
@@ -386,6 +401,7 @@
     }
     _noselectionview.appearance = [NSAppearance appearanceNamed:appearancename];
     _profilevc.view.appearance = [NSAppearance appearanceNamed:appearancename];;
+    _ohistoryvc.view.appearance = [NSAppearance appearanceNamed:appearancename];;
     _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
     [self.window setFrame:self.window.frame display:false];

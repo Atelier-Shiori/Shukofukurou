@@ -11,6 +11,8 @@
 		2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
 		2D0A64581F5B22A00001C906 /* AniListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A64571F5B22A00001C906 /* AniListImport.m */; };
 		2D0A64591F5B22A00001C906 /* AniListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A64571F5B22A00001C906 /* AniListImport.m */; };
+		2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
+		2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
 		2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
 		2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
@@ -334,6 +336,8 @@
 		2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagecachetransformer.m; sourceTree = "<group>"; };
 		2D0A64561F5B22A00001C906 /* AniListImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListImport.h; sourceTree = "<group>"; };
 		2D0A64571F5B22A00001C906 /* AniListImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListImport.m; sourceTree = "<group>"; };
+		2D159FCE1F96507800734250 /* OtherHistoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherHistoryView.h; sourceTree = "<group>"; };
+		2D159FCF1F96507800734250 /* OtherHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherHistoryView.m; sourceTree = "<group>"; };
 		2D20C4F01EB8FF6000B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messagecomposer.xib; sourceTree = "<group>"; };
 		2D20C4F41EB8FF7600B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewView.xib; sourceTree = "<group>"; };
 		2D371E711ECF8AF500F47138 /* ListStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListStatistics.h; sourceTree = "<group>"; };
@@ -826,6 +830,8 @@
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
+				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1246,6 +1252,7 @@
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
+				2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				913A11791E8F206A00450B66 /* SSKeychain.m in Sources */,
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
@@ -1328,6 +1335,7 @@
 				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
 				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,
+				2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
 				91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 				2DAB19E51EF9ED9400420182 /* StreamDataRetriever.m in Sources */,

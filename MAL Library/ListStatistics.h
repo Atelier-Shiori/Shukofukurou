@@ -9,5 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ListStatistics : NSWindowController
--(void)populateValues;
+- (void)populateValues;
+- (void)populateValues:(id)list type:(int)type;
 @end

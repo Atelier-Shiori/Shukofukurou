@@ -11,6 +11,7 @@
 #import "ProfileViewController.h"
 #import "OtherHistoryView.h"
 #import "MyAnimeList.h"
+#import "ListStatistics.h"
 
 @interface ProfileWindowController ()
 @property (strong) IBOutlet NSSplitView *splitview;
@@ -18,6 +19,7 @@
 @property (strong) IBOutlet NSView *noprofileview;
 @property (strong) IBOutlet ListView *listview;
 @property (strong) IBOutlet OtherHistoryView *ohistoryvc;
+@property (strong) ListStatistics *liststats;
 
 @property (strong) IBOutlet ProfileViewController *profilevc;
 @property (weak) IBOutlet NSProgressIndicator *progresswheel;
@@ -35,6 +37,8 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     [_listview removeAllFilterBindings];
     [_profilevc view];
+    _liststats = [ListStatistics new];
+    [_liststats window];
     [self loadMainView];
     [self setAppearance];
 }
@@ -256,21 +260,23 @@
     if ([identifier isEqualToString:@"profile"]){
         if (_loadedprofile){
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:0];
-            [_toolbar insertItemWithItemIdentifier:@"share" atIndex:1];
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"           atIndex:2];
-            [_toolbar insertItemWithItemIdentifier:@"usersearch" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"stats" atIndex:1];
+            [_toolbar insertItemWithItemIdentifier:@"share" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"usersearch" atIndex:4];
         }
         else {
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"           atIndex:0];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:0];
             [_toolbar insertItemWithItemIdentifier:@"usersearch" atIndex:1];
         }
     }
     else if ([identifier isEqualToString:@"animelist"] || [identifier isEqualToString:@"mangalist"]){
         if (_loadedprofile){
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:0];
-            [_toolbar insertItemWithItemIdentifier:@"share" atIndex:1];
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"           atIndex:2];
-            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"stats" atIndex:1];
+            [_toolbar insertItemWithItemIdentifier:@"share" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:4];
         }
     }
 }
@@ -300,6 +306,7 @@
 - (IBAction)profilesearch:(id)sender {
     if (_searchfield.stringValue.length == 0) {
         _loadedprofile = false;
+        [_liststats.window close];
         [self loadMainView];
     }
     else {
@@ -318,13 +325,17 @@
     [self setLoadingView:true];
     [self loadMainView];
     _loadedprofile = false;
+    [_liststats.window close];
     [_profilevc loadprofilewithUsername:username completion:^(bool success){
         if (success) {
             [MyAnimeList retrieveList:username listType:MALAnime completion:^(id responseObject) {
                 [_listview populateList:responseObject type:MALAnime];
                 [_ohistoryvc loadHistory:username];
+                [_liststats populateValues:responseObject type:1];
                 [MyAnimeList retrieveList:username listType:MALManga completion:^(id responseObject){
                     [_listview populateList:responseObject type:MALManga];
+                    [_liststats populateValues:responseObject type:2];
+                    _liststats.window.title = [NSString stringWithFormat:@"List Statistics - %@", username];
                     _loadedprofile = true;
                     [self loadMainView];
                     [self setLoadingView:false];
@@ -405,5 +416,9 @@
     _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
     [self.window setFrame:self.window.frame display:false];
+}
+
+- (IBAction)viewliststats:(id)sender {
+    [_liststats.window makeKeyAndOrderFront:self];
 }
 @end

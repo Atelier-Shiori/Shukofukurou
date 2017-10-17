@@ -73,6 +73,21 @@
     }
 }
 
+- (void)populateValues:(id)list type:(int)type {
+    if (type == 1) {
+        [_ratingstats populateView:list[@"anime"]];
+        [self populatestatuscounts:list[@"anime"] type:0];
+        [self populateTotalEps:list[@"anime"]];
+        _dayspentanime.stringValue = list[@"statistics"][@"days"];
+    }
+    else if (type == 2) {
+        [_mangastats populateView:list[@"manga"]];
+        [self populatestatuscounts:list[@"manga"] type:1];
+        [self populateTotalVolandChaps:list[@"manga"]];
+        _daysspentonmanga.stringValue = list[@"statistics"][@"days"];
+    }
+}
+
 - (void)populatestatuscounts:(NSArray *)a type:(int)type{
     NSArray *filtered;
     if (type == 0) {

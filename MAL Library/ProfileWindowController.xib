@@ -207,7 +207,7 @@
                             <action selector="viewonmyanimelist:" target="-2" id="Vra-Lw-Nrr"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="9BF0CD4D-5D5A-4EE4-BBD3-39B3759DA215" explicitItemIdentifier="share" label="Share" paletteLabel="Share" toolTip="View on MyAnimeList" image="NSShareTemplate" id="rw3-Sn-FGb">
+                    <toolbarItem implicitItemIdentifier="9BF0CD4D-5D5A-4EE4-BBD3-39B3759DA215" explicitItemIdentifier="share" label="Share" paletteLabel="Share" toolTip="Share" image="NSShareTemplate" id="rw3-Sn-FGb">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="zfK-T0-CI7">
@@ -220,6 +220,24 @@
                         </button>
                         <connections>
                             <action selector="share:" target="-2" id="02z-PU-70k"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="D4A5379B-BA39-41E9-A605-099983F525AD" explicitItemIdentifier="stats" label="List Statistics" paletteLabel="List Statistics" toolTip="List Statistics" image="stats" id="KNb-C7-vKd">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="Yes-AU-kCf">
+                            <rect key="frame" x="15" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="stats" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mAX-UO-Hp6">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="viewliststats:" target="-2" id="lXA-9l-eKk"/>
+                            </connections>
+                        </button>
+                        <connections>
+                            <action selector="viewonmyanimelist:" target="-2" id="vIV-TH-sxk"/>
                         </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
@@ -277,5 +295,6 @@
         <image name="Info" width="32" height="32"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="stats" width="32" height="32"/>
     </resources>
 </document>

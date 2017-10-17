@@ -65,7 +65,7 @@
     [details appendFormat:@"Blog Posts: %@\n", responseobject[@"details"][@"blog_posts"]];
     [details appendFormat:@"Clubs Joined: %@\n", responseobject[@"details"][@"clubs"]];
     [details appendFormat:@"Comments: %@\n", responseobject[@"details"][@"comments"]];
-    if (responseobject[@"details"][@"website"]) {
+    if (responseobject[@"details"][@"website"] && ![(NSString *)responseobject[@"details"][@"website"] containsString:@"myanimelist.net/rss.php"]) {
         _homepageurl = responseobject[@"details"][@"website"];
         _homepagebtn.hidden = false;
     }

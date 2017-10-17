@@ -18,7 +18,7 @@ The donation key requires online activation to work and MAL Library will check t
 
 ![](donation.png)
 
-You can obtain a donation key by [donating](http://malupdaterosx.ateliershiori.moe/donate/) a minimum of 5 dollars via PayPal or supporting us on Patreon. You may use the key on many Macs you want, but you may not share it. If you are caught sharing it, the key will be revoked. The key will be sent to you within 24 hours after the transaction is cleared. The donation keys for MAL Updater OS X is valid for MAL Library.
+You can obtain a donation key by [donating](https://softwareateliershiori.onfastspring.com/mal-library-mal-updater-os-x-donation-license) a minimum of 5 dollars. You may use the key on many Macs you want, but you may not share it. If you are caught sharing it, the key will be revoked. The key will be sent to you within 24 hours after the transaction is cleared. The donation keys for MAL Updater OS X is valid for MAL Library.
 
 If you lost your key, you can retrieve it [here](http://malupdaterosx.ateliershiori.moe/lostkey.php).
 
@@ -31,4 +31,4 @@ You can also purchase MAL Library from the App Store. You can use this to remove
 It's possible to register MAL Updater OS X if you purchased MAL Library from the App Store. Click on the MAL Updater OS X icon > Enter Donation Key. You will see a button "Register with MAL Library App Store Version." Click that and MAL Updater OS X should register instantly.
 
 ## Notice
-If you are developing a fork, please set up your own Atarashii-API server. The default API server is only for official copies of MAL Library, MAL Updater OS X and Hachidori.
+If you are developing a fork, please set up your own Atarashii-API server. The default API server is only for official copies of MAL Library, MAL Updater OS X and Hachidori. By doing so, you are pirating the software and violating the terms of service.

@@ -5,7 +5,7 @@ keywords: terms of service
 ---
 This is the terms of service when using the default API server. For the software license, see the License topic in the help file.
 
-**Limits on Usage** You may use the Unofficial MAL API server (malapi.ateliershiori.moe) at no cost with official builds of MAL Updater OS X and MAL Library without restrictions. You may not use this API server if you self-compiled versions. If you are caught using the official API server on an unofficial copy, it's considered piracy and a cease and desist will be sent.
+**Limits on Usage** You may use the Unofficial MAL API server (malapi.ateliershiori.moe) at no cost with official builds of MAL Updater OS X and MAL Library without restrictions. You may not use this API server if you use self-compiled versions. If you are caught using the official API server on an unofficial copy, it's considered piracy and a cease and desist will be sent.
 
 You can check the code signature using the terminal (codesign -dv --verbose=4 /Applications/MAL\ Library.app). The authority must match the following: Developer ID Application: James Moy (9HDZTER525) or Apple Mac OS Application Signing (from the Mac App Store)
 

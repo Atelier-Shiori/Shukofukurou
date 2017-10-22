@@ -341,13 +341,16 @@
                     [self setLoadingView:false];
                 } error:^(NSError *error) {
                     [self setLoadingView:false];
+                    [self showerrormessage:error.localizedFailureReason];
                 }];
             } error:^(NSError *error) {
                 [self setLoadingView:false];
+                [self showerrormessage:error.localizedFailureReason];
             }];
         }
         else {
-             [self setLoadingView:false];
+            [self setLoadingView:false];
+            [self showerrormessage:[NSString stringWithFormat:@"Cannot load profile %@. Check the username and try again",username]];
         }
     }];
 }
@@ -421,4 +424,14 @@
 - (IBAction)viewliststats:(id)sender {
     [_liststats.window makeKeyAndOrderFront:self];
 }
+
+- (void)showerrormessage:(NSString *)errormessage {
+    NSAlert *a = [NSAlert new];
+    a.messageText = @"An error has occurred while loading a profile.";
+    a.informativeText = errormessage;
+    a.alertStyle = NSAlertStyleCritical;
+    [a beginSheetModalForWindow:self.window completionHandler:nil];
+    
+}
+
 @end

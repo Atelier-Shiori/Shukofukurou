@@ -213,6 +213,12 @@
     else {
         _sourcematerialbutton.hidden = YES;
     }
+    if (self.type == 0 ) {
+        _streambutton.hidden = NO;
+    }
+    else {
+        _streambutton.hidden = YES;
+    }
 }
 
 - (void)fixtextviewscrollposition {
@@ -273,7 +279,7 @@
         }
     }
     else {
-        [details appendString:[NSString stringWithFormat:@"Episodes: %i \n", ((NSNumber *)d[@"chapters"]).intValue]];
+        [details appendString:[NSString stringWithFormat:@"Chapters: %i \n", ((NSNumber *)d[@"chapters"]).intValue]];
     }
     if (d[@"volumes"] == nil){
         [details appendString:@"Volumes: Unknown\n"];

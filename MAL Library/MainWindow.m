@@ -777,7 +777,12 @@
         _infoview.selectedid = idnum.intValue;
         _infoview.type = type;
         [_progressindicator stopAnimation:nil];
-        [_infoview populateAnimeInfoView:responseObject];
+        if (type == MALAnime) {
+            [_infoview populateAnimeInfoView:responseObject];
+        }
+        else {
+            [_infoview populateMangaInfoView:responseObject];
+        }
     }error:^(NSError *error){
         NSLog(@"Error: %@", error);
         [_progressindicator stopAnimation:nil];

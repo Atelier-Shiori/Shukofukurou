@@ -63,8 +63,6 @@
     [details appendFormat:@"Join Date: %@\n", responseobject[@"details"][@"join_date"]];
     [details appendFormat:@"Access Rank: %@\n\n", responseobject[@"details"][@"access_rank"]];
     [details appendString:@"Member Statistics:\n"];
-    [details appendFormat:@"Anime List Views: %@\n", responseobject[@"details"][@"anime_list_views"]];
-    [details appendFormat:@"Manga List Views: %@\n", responseobject[@"details"][@"manga_list_views"]];
     [details appendFormat:@"Forum Posts: %@\n", responseobject[@"details"][@"forum_posts"]];
     [details appendFormat:@"Reviews: %@\n", responseobject[@"details"][@"reviews"]];
     [details appendFormat:@"Recommendations: %@\n", responseobject[@"details"][@"recommendations"]];

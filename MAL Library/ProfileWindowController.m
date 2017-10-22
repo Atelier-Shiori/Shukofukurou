@@ -322,9 +322,9 @@
 }
 
 - (void)loadprofile:(NSString *)username {
+    _loadedprofile = false;
     [self setLoadingView:true];
     [self loadMainView];
-    _loadedprofile = false;
     [_liststats.window close];
     [_profilevc loadprofilewithUsername:username completion:^(bool success){
         if (success) {

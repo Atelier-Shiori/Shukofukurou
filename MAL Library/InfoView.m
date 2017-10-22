@@ -95,11 +95,11 @@
         [genres appendString:@"None"];
     }
     NSString *producers = nil;
-    if (d[@"producers"]){
+    if (((NSArray *)d[@"producers"]).count > 0){
         producers = [Utility appendstringwithArray:(NSArray *)d[@"producers"]];
     }
     NSMutableString *openingthemes = nil;
-    if (d[@"opening_theme"]) {
+    if (((NSArray *)d[@"opening_theme"]).count > 0) {
         openingthemes = [NSMutableString new];
         [openingthemes appendString:@"\nOpening Themes:\n"];
         for (NSString *theme in (NSArray *)d[@"opening_theme"]){
@@ -107,7 +107,7 @@
         }
     }
     NSMutableString *endingthemes = nil;
-    if (d[@"ending_theme"]) {
+    if (((NSArray *)d[@"ending_theme"]).count > 0) {
         endingthemes = [NSMutableString new];
         [endingthemes appendString:@"\nEnding Themes:\n"];
         for (NSString *theme in (NSArray *)d[@"ending_theme"]){

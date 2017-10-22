@@ -12,6 +12,7 @@
 #import "messageswindow.h"
 #import "messagecomposer.h"
 #import "Keychain.h"
+#import "Utility.h"
 
 @interface ProfileViewController ()
 @property (strong) NSString *homepageurl;
@@ -42,7 +43,12 @@
 }
 - (void)populateProfile:(id)responseobject withUsername:(NSString *)username {
     _usernamelabel.stringValue = [username lowercaseString];
-    _profileimage.image = [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:responseobject[@"avatar_url"]]];
+    if (responseobject[@"avatar_url"]) {
+        _profileimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[responseobject[@"avatar_url"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""]stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",responseobject[@"avatar_url"]]]];
+    }
+    else {
+        _profileimage.image = [NSImage new];
+    }
     NSMutableString *details = [NSMutableString new];
     [details appendString:@"General Details:\n"];
     if (responseobject[@"details"][@"gender"]) {

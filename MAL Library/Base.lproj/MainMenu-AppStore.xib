@@ -704,6 +704,13 @@
                                     <action selector="showHelp:" target="-2" id="cwu-46-9MU"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="H2o-4B-JYE"/>
+                            <menuItem title="Report Bugs or Issues…" id="QmJ-Uk-Upv">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reportbugs:" target="Voe-Tx-rLC" id="V1C-YQ-JRz"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

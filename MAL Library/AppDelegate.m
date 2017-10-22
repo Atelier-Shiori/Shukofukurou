@@ -273,4 +273,7 @@
     }
     return _messageswindow;
 }
+- (IBAction)reportbugs:(id)sender {
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/MAL-Library/issues"]];
+}
 @end

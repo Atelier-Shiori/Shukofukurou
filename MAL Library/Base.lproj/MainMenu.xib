@@ -730,6 +730,13 @@
                                     <action selector="showHelp:" target="-2" id="n19-Ag-gTx"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="GNP-QT-139"/>
+                            <menuItem title="Report Bugs or Issues…" id="Dio-r3-z8v">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reportbugs:" target="Voe-Tx-rLC" id="JRy-ho-SMG"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

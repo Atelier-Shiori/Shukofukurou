@@ -28,6 +28,16 @@
 		2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
 		2D42FA971F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
 		2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
+		2D4E01071FA3B1A10053A82B /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */; };
+		2D4E01081FA3B1A10053A82B /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */; };
+		2D4E010B1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */; };
+		2D4E010C1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */; };
+		2D4E010F1FA3B1C10053A82B /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */; };
+		2D4E01101FA3B1C10053A82B /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */; };
+		2D4E01131FA3B1C90053A82B /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01161FA3B1C90053A82B /* CharacterView.xib */; };
+		2D4E01141FA3B1C90053A82B /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01161FA3B1C90053A82B /* CharacterView.xib */; };
+		2D4E01171FA3B1D50053A82B /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */; };
+		2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */; };
 		2D60A1221E9B322B0034C3AA /* MAL_LibraryUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */; };
 		2D6ECA341F2E9B20003C455E /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */; };
 		2D6ECA351F2E9B20003C455E /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */; };
@@ -41,12 +51,8 @@
 		2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
 		2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
 		2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
-		2D8A47B51F290E2200FC2B35 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */; };
-		2D8A47B61F290E2200FC2B35 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */; };
 		2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
 		2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
-		2D8A47BC1F292D1800FC2B35 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B91F292D1800FC2B35 /* CharacterView.xib */; };
-		2D8A47BD1F292D1800FC2B35 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8A47B91F292D1800FC2B35 /* CharacterView.xib */; };
 		2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */; };
 		2D8BF8AC1EC4D6DC0068856A /* ImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */; };
 		2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
@@ -62,18 +68,12 @@
 		2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863E81F895F9B00D2876A /* ProfileWindowController.m */; };
 		2DA863EB1F895F9B00D2876A /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863E81F895F9B00D2876A /* ProfileWindowController.m */; };
-		2DA863EC1F895F9B00D2876A /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */; };
-		2DA863ED1F895F9B00D2876A /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */; };
 		2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
 		2DA863F21F89B2F300D2876A /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
-		2DA863F31F89B2F300D2876A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863F01F89B2F300D2876A /* ProfileViewController.xib */; };
-		2DA863F41F89B2F300D2876A /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DA863F01F89B2F300D2876A /* ProfileViewController.xib */; };
 		2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
 		2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
 		2DAB19DF1EF9D16800420182 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
 		2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
-		2DAB19E11EF9D16800420182 /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB19DE1EF9D16800420182 /* StreamPopup.xib */; };
-		2DAB19E21EF9D16800420182 /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAB19DE1EF9D16800420182 /* StreamPopup.xib */; };
 		2DAB19E51EF9ED9400420182 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
 		2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
 		2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
@@ -348,6 +348,11 @@
 		2D371E851ECFA3E700F47138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ratingchartview.xib; sourceTree = "<group>"; };
 		2D42FA951F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+Synchronous.h"; sourceTree = "<group>"; };
 		2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+Synchronous.m"; sourceTree = "<group>"; };
+		2D4E01091FA3B1A10053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfileViewController.xib; sourceTree = "<group>"; };
+		2D4E010D1FA3B1A70053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfileWindowController.xib; sourceTree = "<group>"; };
+		2D4E01111FA3B1C10053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharactersBrowser.xib; sourceTree = "<group>"; };
+		2D4E01151FA3B1C90053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharacterView.xib; sourceTree = "<group>"; };
+		2D4E01191FA3B1D50053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StreamPopup.xib; sourceTree = "<group>"; };
 		2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_LibraryUITests.m; sourceTree = "<group>"; };
 		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -361,10 +366,8 @@
 		2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharactersBrowser.h; sourceTree = "<group>"; };
 		2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharactersBrowser.m; sourceTree = "<group>"; };
-		2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharactersBrowser.xib; sourceTree = "<group>"; };
 		2D8A47B71F292D1800FC2B35 /* CharacterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterView.h; sourceTree = "<group>"; };
 		2D8A47B81F292D1800FC2B35 /* CharacterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterView.m; sourceTree = "<group>"; };
-		2D8A47B91F292D1800FC2B35 /* CharacterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterView.xib; sourceTree = "<group>"; };
 		2D8BF8A81EC4D6DC0068856A /* ImportPrompt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImportPrompt.h; sourceTree = "<group>"; };
 		2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImportPrompt.m; sourceTree = "<group>"; };
 		2D8BF8B01EC4ED800068856A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewWindow.xib; sourceTree = "<group>"; };
@@ -380,15 +383,12 @@
 		2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLtoBBCode.m; sourceTree = "<group>"; };
 		2DA863E71F895F9B00D2876A /* ProfileWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileWindowController.h; sourceTree = "<group>"; };
 		2DA863E81F895F9B00D2876A /* ProfileWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileWindowController.m; sourceTree = "<group>"; };
-		2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileWindowController.xib; sourceTree = "<group>"; };
 		2DA863EE1F89B2F300D2876A /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		2DA863EF1F89B2F300D2876A /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		2DA863F01F89B2F300D2876A /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		2DAA9FBF1EB6524A00F562BD /* messagecomposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messagecomposer.h; sourceTree = "<group>"; };
 		2DAA9FC01EB6524A00F562BD /* messagecomposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messagecomposer.m; sourceTree = "<group>"; };
 		2DAB19DC1EF9D16800420182 /* StreamPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamPopup.h; sourceTree = "<group>"; };
 		2DAB19DD1EF9D16800420182 /* StreamPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamPopup.m; sourceTree = "<group>"; };
-		2DAB19DE1EF9D16800420182 /* StreamPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StreamPopup.xib; sourceTree = "<group>"; };
 		2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamDataRetriever.h; sourceTree = "<group>"; };
 		2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
 		2DAB19E71EF9F2C400420182 /* siteimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = siteimage.h; sourceTree = "<group>"; };
@@ -691,10 +691,10 @@
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
 				2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */,
-				2D8A47B21F290E2200FC2B35 /* CharactersBrowser.xib */,
+				2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */,
 				2D8A47B71F292D1800FC2B35 /* CharacterView.h */,
 				2D8A47B81F292D1800FC2B35 /* CharacterView.m */,
-				2D8A47B91F292D1800FC2B35 /* CharacterView.xib */,
+				2D4E01161FA3B1C90053A82B /* CharacterView.xib */,
 				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
 				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
 				917897ED1E89F19900C155DF /* DonationWindow.xib */,
@@ -780,15 +780,17 @@
 				91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */,
 				9199BAC11E89842400F6E9FF /* NSTextFieldNumber.h */,
 				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
+				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
+				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
 				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
 				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
 				2DA863EE1F89B2F300D2876A /* ProfileViewController.h */,
 				2DA863EF1F89B2F300D2876A /* ProfileViewController.m */,
-				2DA863F01F89B2F300D2876A /* ProfileViewController.xib */,
+				2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */,
 				2DA863E71F895F9B00D2876A /* ProfileWindowController.h */,
 				2DA863E81F895F9B00D2876A /* ProfileWindowController.m */,
-				2DA863E91F895F9B00D2876A /* ProfileWindowController.xib */,
+				2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */,
 				2D371E781ECF8B4F00F47138 /* ratingchartview.h */,
 				2D371E791ECF8B4F00F47138 /* ratingchartview.m */,
 				2D371E861ECFA3E700F47138 /* ratingchartview.xib */,
@@ -820,7 +822,7 @@
 				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
 				2DAB19DC1EF9D16800420182 /* StreamPopup.h */,
 				2DAB19DD1EF9D16800420182 /* StreamPopup.m */,
-				2DAB19DE1EF9D16800420182 /* StreamPopup.xib */,
+				2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */,
 				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
 				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
@@ -830,8 +832,6 @@
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
-				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
-				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1052,7 +1052,7 @@
 				913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */,
 				2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B21EC4ED800068856A /* ReviewWindow.xib in Resources */,
-				2DA863ED1F895F9B00D2876A /* ProfileWindowController.xib in Resources */,
+				2D4E010C1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
 				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
 				91822A591EAEAC70005E33DB /* messageswindow.xib in Resources */,
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
@@ -1068,11 +1068,11 @@
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
-				2D8A47B61F290E2200FC2B35 /* CharactersBrowser.xib in Resources */,
-				2D8A47BD1F292D1800FC2B35 /* CharacterView.xib in Resources */,
+				2D4E01101FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
+				2D4E01141FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
-				2DA863F41F89B2F300D2876A /* ProfileViewController.xib in Resources */,
+				2D4E01081FA3B1A10053A82B /* ProfileViewController.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
@@ -1082,7 +1082,7 @@
 				2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
-				2DAB19E21EF9D16800420182 /* StreamPopup.xib in Resources */,
+				2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1101,7 +1101,7 @@
 				2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */,
 				91822A5C1EAEAC77005E33DB /* messageview.xib in Resources */,
 				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
-				2D8A47B51F290E2200FC2B35 /* CharactersBrowser.xib in Resources */,
+				2D4E010F1FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
 				91822A581EAEAC70005E33DB /* messageswindow.xib in Resources */,
@@ -1114,9 +1114,9 @@
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
-				2DA863EC1F895F9B00D2876A /* ProfileWindowController.xib in Resources */,
+				2D4E010B1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
-				2DA863F31F89B2F300D2876A /* ProfileViewController.xib in Resources */,
+				2D4E01071FA3B1A10053A82B /* ProfileViewController.xib in Resources */,
 				2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */,
 				2D8BF8B71EC4EED80068856A /* ImportPrompt.xib in Resources */,
@@ -1127,10 +1127,10 @@
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
-				2DAB19E11EF9D16800420182 /* StreamPopup.xib in Resources */,
+				2D4E01171FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
-				2D8A47BC1F292D1800FC2B35 /* CharacterView.xib in Resources */,
+				2D4E01131FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
@@ -1398,6 +1398,46 @@
 				2D371E851ECFA3E700F47138 /* Base */,
 			);
 			name = ratingchartview.xib;
+			sourceTree = "<group>";
+		};
+		2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D4E01091FA3B1A10053A82B /* Base */,
+			);
+			name = ProfileViewController.xib;
+			sourceTree = "<group>";
+		};
+		2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D4E010D1FA3B1A70053A82B /* Base */,
+			);
+			name = ProfileWindowController.xib;
+			sourceTree = "<group>";
+		};
+		2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D4E01111FA3B1C10053A82B /* Base */,
+			);
+			name = CharactersBrowser.xib;
+			sourceTree = "<group>";
+		};
+		2D4E01161FA3B1C90053A82B /* CharacterView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D4E01151FA3B1C90053A82B /* Base */,
+			);
+			name = CharacterView.xib;
+			sourceTree = "<group>";
+		};
+		2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2D4E01191FA3B1D50053A82B /* Base */,
+			);
+			name = StreamPopup.xib;
 			sourceTree = "<group>";
 		};
 		2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */ = {

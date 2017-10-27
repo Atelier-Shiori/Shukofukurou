@@ -202,6 +202,10 @@
             NSLog(@"ERROR: User credentials are invalid. Aborting...");
             return false;
         }
+        else if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {
+            NSLog(@"Too many failed attempts. Try again later.");
+            return false;
+        }
         else {
             NSLog(@"Unable to check user credentials. Trying again later.");
             return false;

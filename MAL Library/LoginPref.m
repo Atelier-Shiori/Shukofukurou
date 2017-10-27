@@ -88,13 +88,8 @@
 			}
 			else {
                 [_savebut setEnabled:NO];
-                dispatch_queue_t queue = dispatch_get_global_queue(
-                                                                   DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-                
-                dispatch_async(queue, ^{
-                    [self login:_fieldusername.stringValue password:_fieldpassword.stringValue];
-                });
-                }
+                [self login:_fieldusername.stringValue password:_fieldpassword.stringValue];
+            }
 		}
 	}
 }
@@ -119,9 +114,16 @@
         [_mw refreshloginlabel];
     }error:^(NSError *error) {
         NSLog(@"%@",error);
-        if([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]){
+        if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
             //Login Failed, show error message
             [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account since you don't have the correct username and/or password." explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
+            [_savebut setEnabled: YES];
+            _savebut.keyEquivalent = @"\r";
+        }
+        else if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {
+            // Too many login attempts
+            //Login Failed, show error message
+            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account since there is too many login attempts." explaination:@"Check your username and password and try logging in again after several hours." window:self.view.window];
             [_savebut setEnabled: YES];
             _savebut.keyEquivalent = @"\r";
         }
@@ -134,13 +136,9 @@
             [_savebut setEnabled: YES];
             _savebut.keyEquivalent = @"\r";
         }
-
     }];
-
-
 }
-- (IBAction)registermal:(id)sender
-{
+- (IBAction)registermal:(id)sender {
 	//Show MAL Registration Page
 	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://myanimelist.net/register.php"]];
 }

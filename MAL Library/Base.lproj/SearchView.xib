@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -119,7 +120,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Bjd-sz-s1c">
-                        <rect key="frame" x="-15" y="16" width="15" height="0.0"/>
+                        <rect key="frame" x="-15" y="15" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="TpQ-tp-8r6">
@@ -148,7 +149,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="mangatitlecol" editable="NO" width="400" minWidth="40" maxWidth="1000" id="flB-rc-Al4">
+                                    <tableColumn identifier="mangatitlecol" editable="NO" width="321" minWidth="40" maxWidth="1000" id="flB-rc-Al4">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -208,6 +209,22 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
+                                    <tableColumn identifier="" width="76" minWidth="10" maxWidth="3.4028234663852886e+38" id="aKd-9b-04H">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="kZM-vT-qMs">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="6oV-sT-NIM" name="value" keyPath="arrangedObjects.type" id="6dY-1A-BKe"/>
+                                        </connections>
+                                    </tableColumn>
                                 </tableColumns>
                                 <connections>
                                     <action trigger="doubleAction" selector="searchtbdoubleclick:" target="-2" id="I9V-gn-K8H"/>
@@ -217,11 +234,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="t2i-rH-3za">
-                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
+                        <rect key="frame" x="0.0" y="383" width="563" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="0Bl-Jg-4DO">
-                        <rect key="frame" x="-15" y="16" width="15" height="0.0"/>
+                        <rect key="frame" x="-15" y="15" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="zM1-Wj-Oxs">
@@ -230,7 +247,7 @@
                     </tableHeaderView>
                 </scrollView>
             </subviews>
-            <point key="canvasLocation" x="96" y="752"/>
+            <point key="canvasLocation" x="388" y="785"/>
         </customView>
         <customView id="lCZ-jy-8qy">
             <rect key="frame" x="0.0" y="0.0" width="563" height="398"/>

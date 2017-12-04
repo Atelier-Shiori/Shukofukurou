@@ -257,11 +257,11 @@
     }
 }
 
-+ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"episodes":@(episode)} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags} success:^(NSURLSessionTask *task, id responseObject) {
             completionHandler(responseObject);
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             completionHandler(error);
@@ -272,11 +272,11 @@
     }
 }
 
-+ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume)} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags} success:^(NSURLSessionTask *task, id responseObject) {
             completionHandler(responseObject);
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             errorHandler(error);

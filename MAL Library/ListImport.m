@@ -3,7 +3,7 @@
 //  MAL Library
 //
 //  Created by 桐間紗路 on 2017/05/10.
-//  Copyright © 2017 Atelier Shiori. All rights reserved.
+//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved.
 //
 
 #import "ListImport.h"
@@ -193,7 +193,7 @@
         NSDictionary *d = _listimport[_progress];
         if ([self checkiftitleisonlist:((NSString *)d[@"series_animedb_id"][@"text"]).intValue]) {
             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                [MyAnimeList updateAnimeTitleOnList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:(NSString *)d[@"my_status"][@"text"] withScore:[(NSString *)d[@"my_score"][@"text"] intValue]  completion:^(id responseobject){
+                [MyAnimeList updateAnimeTitleOnList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue] withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseobject) {
                     [self incrementProgress:nil withTitle:nil];
                 }error:^(NSError *error){
                     [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
@@ -204,8 +204,18 @@
             }
         }
         else {
-            [MyAnimeList addAnimeTitleToList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:(NSString *)d[@"my_status"][@"text"] withScore:[(NSString *)d[@"my_score"][@"text"] intValue]  completion:^(id responseobject){
-                [self incrementProgress:nil withTitle:nil];
+            [MyAnimeList addAnimeTitleToList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue]  completion:^(id responseobject){
+                if (d[@"my_tags"][@"text"]) {
+                    // Set Tags by updating the entry
+                    [MyAnimeList updateAnimeTitleOnList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue] withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseobject) {
+                        [self incrementProgress:nil withTitle:nil];
+                    }error:^(NSError *error){
+                        [self incrementProgress:nil withTitle:nil];
+                    }];
+                }
+                else {
+                    [self incrementProgress:nil withTitle:nil];
+                }
             }error:^(NSError *error){
                 [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
             }];
@@ -218,7 +228,7 @@
         NSDictionary *d = _listimport[_progress];
         if ([self checkiftitleisonlist:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue]) {
             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                [MyAnimeList updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:(NSString *)d[@"my_status"][@"text"] withScore:((NSString *)d[@"my_score"][@"text"]).intValue completion:^(id responseObject){
+                [MyAnimeList updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseObject){
                     [self incrementProgress:nil withTitle:nil];
                 }error:^(NSError *error){
                     [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
@@ -229,8 +239,18 @@
             }
         }
         else {
-            [MyAnimeList addMangaTitleToList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:(NSString *)d[@"my_status"][@"text"] withScore:((NSString *)d[@"my_score"][@"text"]).intValue completion:^(id responseObject){
-                [self incrementProgress:nil withTitle:nil];
+            [MyAnimeList addMangaTitleToList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue completion:^(id responseObject){
+                if (d[@"my_tags"][@"text"]) {
+                    // Set Tags by updating the entry
+                    [MyAnimeList updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseObject){
+                        [self incrementProgress:nil withTitle:nil];
+                    }error:^(NSError *error){
+                        [self incrementProgress:nil withTitle:nil];
+                    }];
+                }
+                else {
+                    [self incrementProgress:nil withTitle:nil];
+                }
             }error:^(NSError *error){
                 [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
             }];
@@ -341,7 +361,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -459,7 +479,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
@@ -759,7 +779,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"title_romanji"]];

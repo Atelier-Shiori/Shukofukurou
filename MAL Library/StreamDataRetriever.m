@@ -3,7 +3,7 @@
 //  MAL Library
 //
 //  Created by 桐間紗路 on 2017/06/20.
-//  Copyright © 2017 Atelier Shiori. All rights reserved.
+//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved.
 //
 
 #import "StreamDataRetriever.h"
@@ -41,7 +41,7 @@
     // Note: Stream Data provided by Because.moe
     // PHP script passthrough is needed to retrieve the data securely
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:[NSString stringWithFormat:@"https://malupdaterosx.ateliershiori.moe/streamdata.php?region=%@",region] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://malupdaterosx.moe/streamdata.php?region=%@",region] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         [Utility saveJSON:responseObject withFilename:@"streamdata.json" appendpath:@"" replace:true];
         [[NSUserDefaults standardUserDefaults] setValue:[NSDate dateWithTimeIntervalSinceNow:15*24*50*50] forKey:@"stream_data_refresh_date"];
     } failure:^(NSURLSessionTask *operation, NSError *error) {

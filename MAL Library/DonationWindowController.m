@@ -36,7 +36,7 @@
         AFHTTPSessionManager *manager = [Utility jsonmanager];
         manager.requestSerializer = [Utility jsonrequestserializer];
         //manager.responseSerializer = [Utility httpresponseserializer];
-        [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":_name.stringValue, @"key":_key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager POST:@"https://updates.malupdaterosx.moe/keycheck/check.php" parameters:@{@"name":_name.stringValue, @"key":_key.stringValue} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             [btn setEnabled:YES];
             NSDictionary *d = responseObject;
             int valid = ((NSNumber *)d[@"valid"]).intValue;
@@ -76,7 +76,7 @@
 
 - (IBAction)donate:(id)sender{
     // Show Donation Page
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.ateliershiori.moe/donate/"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.malupdaterosx.moe/donate/"]];
 }
 
 - (IBAction)purchasedonationlicense:(id)sender {
@@ -89,7 +89,7 @@
 }
 
 - (IBAction)lookupkey:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.ateliershiori.moe/lostkey.php"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.malupdaterosx.moe/lostkey.php"]];
 }
 
 @end

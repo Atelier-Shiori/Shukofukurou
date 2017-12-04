@@ -11,7 +11,6 @@ The Preferences window allows you to change various settings
 * Double Click Action - Specifies the action when an item is double clicked in the library view. The possible actions are Do Nothing, View Info and Modify Title.
 * Refresh List on start - MAL Library will refresh your list when MAL Library is launched.
 * Refresh List Automatically - This allows MAL Library to refresh your list periodically.
-* Use Status Filters as Tabs - The filters will act like tabs and only view titles with the selected status filter.
 
 ### General
 * Appearance - Sets the appearance of the main window. Possible options are light or dark.

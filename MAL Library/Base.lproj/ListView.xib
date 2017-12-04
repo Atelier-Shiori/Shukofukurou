@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,17 +39,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="eGM-Vy-iY0">
-                        <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="QGW-Oe-htQ" id="etv-3f-0Uh" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
+                                <rect key="frame" x="0.0" y="0.0" width="564" height="252"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="title" editable="NO" width="230" minWidth="40" maxWidth="1000" id="DNa-6J-sgF">
+                                    <tableColumn identifier="title" editable="NO" width="323" minWidth="40" maxWidth="1000" id="DNa-6J-sgF">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -148,26 +149,6 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="watchstatus" editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="dSg-tj-7bc">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Status">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Gf9-RI-KYr">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.watched_status" id="Ub0-b1-37j">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
                                 </tableColumns>
                                 <connections>
                                     <action trigger="doubleAction" selector="animelistdoubleclick:" target="-2" id="G1z-4A-yaL"/>
@@ -176,7 +157,7 @@
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
                         <rect key="frame" x="0.0" y="260" width="564" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -185,7 +166,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="QGW-Oe-htQ">
-                        <rect key="frame" x="0.0" y="0.0" width="565" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -283,7 +264,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="JM6-04-Bb0">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
@@ -398,7 +379,7 @@
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="readstatus" editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="YFY-cm-gEc">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Status">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -410,7 +391,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.read_status" id="HIt-VU-JIn">
+                                            <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.type" id="8D8-CV-xfb">
                                                 <dictionary key="options">
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
@@ -426,7 +407,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="L75-cp-VFK">
-                        <rect key="frame" x="-8" y="23" width="0.0" height="15"/>
+                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ejw-DP-Ces">

@@ -3,7 +3,7 @@
 //  MAL Library
 //
 //  Created by 天々座理世 on 2017/04/07.
-//  Copyright © 2017 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "AdvancedPref.h"
@@ -44,7 +44,7 @@
 #pragma mark
 -(IBAction)resetMALAPI:(id)sender {
     //Reset Unofficial MAL API URL
-    _fieldmalapi.stringValue = @"https://malapi.ateliershiori.moe";
+    _fieldmalapi.stringValue = @"https://malapi.malupdaterosx.moe";
     // Set MAL API URL in settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults] ;
     [defaults setObject:_fieldmalapi.stringValue forKey:@"MALAPIURL"];

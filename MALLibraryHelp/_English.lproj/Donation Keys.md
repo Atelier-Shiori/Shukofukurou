@@ -20,11 +20,11 @@ The donation key requires online activation to work and MAL Library will check t
 
 You can obtain a donation key by [donating](https://softwareateliershiori.onfastspring.com/mal-library-mal-updater-os-x-donation-license) a minimum of 5 dollars. You may use the key on many Macs you want, but you may not share it. If you are caught sharing it, the key will be revoked. The key will be sent to you within 24 hours after the transaction is cleared. The donation keys for MAL Updater OS X is valid for MAL Library.
 
-If you lost your key, you can retrieve it [here](http://malupdaterosx.ateliershiori.moe/lostkey.php).
+If you lost your key, you can retrieve it [here](http://malupdaterosx.moe/lostkey.php).
 
 You can also purchase MAL Library from the App Store. You can use this to remove donation reminders in MAL Updater OS X.
 
-[![macappstore](https://malupdaterosx.ateliershiori.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
+[![macappstore](https://malupdaterosx.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
 
 ## Registering MAL Updater OS X with an App Store copy of MAL library
 

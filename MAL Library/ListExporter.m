@@ -3,7 +3,7 @@
 //  MAL Library
 //
 //  Created by 桐間紗路 on 2017/05/09.
-//  Copyright © 2017 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "ListExporter.h"
@@ -92,7 +92,7 @@
 }
 
 - (NSString *)generateAnimeListXML:(NSArray *)a {
-    NSString *headerstring = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<!--\n\tCreated by MAL Library\n\tProgrammed by Atelier Shiori (James Moy) \n\tNote that not all values are exposed by the API and not all fields will be exported.\n\t--> \n\n\t<myanimelist>";
+    NSString *headerstring = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<!--\n\tCreated by MAL Library\n\tProgrammed by Atelier Shiori Software (James Moy), a division of Moy IT Solutions \n\tNote that not all values are exposed by the API and not all fields will be exported.\n\t--> \n\n\t<myanimelist>";
     NSString *footerstring = @"\n\n\t</myanimelist>";
     NSString *animepretag = @"\n\n\t\t<anime>";
     NSString *animeendtag = @"\n\t\t</anime>";

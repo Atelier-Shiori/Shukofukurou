@@ -3,7 +3,7 @@
 //  MAL Updater OS X
 //
 //  Created by Tail Red on 1/31/15.
-//  Copyright © 2017 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "Utility.h"
@@ -227,7 +227,7 @@
             AFHTTPSessionManager *manager = [Utility jsonmanager];
             manager.requestSerializer = [AFJSONRequestSerializer serializer];
             //manager.responseSerializer = [Utility httpresponseserializer];
-            [manager POST:@"https://updates.ateliershiori.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+            [manager POST:@"https://updates.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                 NSDictionary *d = responseObject;
                 int valid = ((NSNumber *)d[@"valid"]).intValue;
                 if (valid == 1) {
@@ -265,7 +265,7 @@
     long choice = [alert runModal];
     if (choice == NSAlertFirstButtonReturn) {
         // Open Donation Page
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.ateliershiori.moe/donate/"]];
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.moe/donate/"]];
     }
     else if (choice == NSAlertSecondButtonReturn) {
         // Show Add Donation Key dialog.

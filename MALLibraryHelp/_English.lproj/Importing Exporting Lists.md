@@ -1,7 +1,7 @@
 ---
 title: Importing and Exporting Lists
 description: About the Import and Export features in MAL Library.
-keywords: importing, kitsu, exporting, backip lists, syncing lists, anidb
+keywords: importing, kitsu, exporting, backup lists, syncing lists, anidb
 ---
 In MAL Library 2.1, you can import lists from other services.
 
@@ -22,6 +22,7 @@ If there are titles that could not be imported, it will show them after the impo
 Watched Episodes|Y|Y|Y|Y
 Watched Status|Y|-*|Y|Y
 Score|Y|N|Y|Y
+Tags|Y|N|N|N
 
 (*) Only completed, plan to watch and watching status. The XML does not contain state/watch status information nor score.
 
@@ -53,4 +54,4 @@ Note: To overwrite entries, check "Replace existing entries"
 6. Click import to start the import. If there is any titles that couldn't be imported, it will show a list.
 
 ## Export
-You can export your list to MyAnimeList XML compatible format. Note that some information that is not exposed by the API will get exported. However, your progress, status, personal tags and scores will get exported.
+You can export your list to MyAnimeList XML compatible format. Note that some information that is not exposed by the API **will not** exported. However, your progress, status, personal tags and scores will be exported.

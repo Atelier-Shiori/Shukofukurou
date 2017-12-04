@@ -3,7 +3,7 @@
 //  MAL Updater OS X
 //
 //  Created by Tail Red on 1/31/15.
-//  Copyright © 2017 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import <Foundation/Foundation.h>

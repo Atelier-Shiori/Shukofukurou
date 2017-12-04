@@ -3,7 +3,7 @@
 //  MAL Library
 //
 //  Created by 桐間紗路 on 2017/02/28.
-//  Copyright © 2017 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "AppDelegate.h"
@@ -45,8 +45,7 @@
     #endif
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"readingfilter"] = @(1);
-    defaultValues[@"malapiurl"] = @"https://malapi.ateliershiori.moe";
-    defaultValues[@"filtersastabs"] = @(1);
+    defaultValues[@"malapiurl"] = @"https://malapi.malupdaterosx.moe";
     defaultValues[@"stream_region"] = @(0);
     
     //Register Dictionary
@@ -148,7 +147,7 @@
     if (!_aboutWindowController) {
         _aboutWindowController = [PFAboutWindowController new];
     }
-    (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://malupdaterosx.ateliershiori.moe/mallibrary/"];
+    (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://malupdaterosx.moe/mallibrary/"];
     NSMutableString *copyrightstr = [NSMutableString new];
     NSDictionary *bundleDict = [NSBundle mainBundle].infoDictionary;
     [copyrightstr appendFormat:@"%@ \r\r",bundleDict[@"NSHumanReadableCopyright"]];

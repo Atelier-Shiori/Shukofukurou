@@ -229,7 +229,7 @@
             }
         }
         if (match){
-            [MyAnimeList updateAnimeTitleOnList:listid.intValue withEpisode:13 withStatus:@"completed" withScore:8 completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:listid.intValue withEpisode:13 withStatus:@"completed" withScore:8 withTags:@"" completion:^(id responseObject){
                 [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
                     NSNumber *watchedepisodes = responseObject[@"watched_episodes"];
                     NSString *watchedstatus = responseObject[@"watched_status"];
@@ -395,7 +395,7 @@
             }
         }
         if (match){
-            [MyAnimeList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:7 completion:^(id responseObject){
+            [MyAnimeList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:7 withTags:@"" completion:^(id responseObject){
                 [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
                     NSNumber *readchapters = responseObject[@"chapters_read"];
                     NSNumber *readvolumes = responseObject[@"volumes_read"];

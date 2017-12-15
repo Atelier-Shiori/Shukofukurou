@@ -11,8 +11,8 @@
 #import "AppDelegate.h"
 #import "MainWindow.h"
 #import "Utility.h"
-#import "MyAnimeList.h"
-
+//#import "MyAnimeList.h"
+#import "listservice.h"
 @implementation LoginPref
 @synthesize loginpanel;
 
@@ -95,7 +95,7 @@
 }
 - (void)login:(NSString *)username password:(NSString *)password{
     [_savebut setEnabled:NO];
-    [MyAnimeList verifyAccountWithUsername:username password:password completion:^(id responseObject){
+    [listservice verifyAccountWithUsername:username password:password completion:^(id responseObject){
         //Login successful
         [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:self.view.window];
         // Store account in login keychain

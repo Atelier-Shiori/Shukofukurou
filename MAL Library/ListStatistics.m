@@ -7,6 +7,7 @@
 //
 
 #import "ListStatistics.h"
+#import "listservice.h"
 #import "ratingchartview.h"
 #import "Utility.h"
 
@@ -57,15 +58,15 @@
 }
 
 -(void)populateValues {
-    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
-        NSDictionary *anime = [Utility loadJSON:@"animelist.json" appendpath:@""];
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
+        NSDictionary *anime = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""];
         [_ratingstats populateView:anime[@"anime"]];
         [self populatestatuscounts:anime[@"anime"] type:0];
         [self populateTotalEps:anime[@"anime"]];
         _dayspentanime.stringValue = anime[@"statistics"][@"days"];
     }
-    if ([Utility checkifFileExists:@"mangalist.json" appendPath:@""]) {
-        NSDictionary *manga = [Utility loadJSON:@"mangalist.json" appendpath:@""];
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""]) {
+        NSDictionary *manga = [Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""];
         [_mangastats populateView:manga[@"manga"]];
         [self populatestatuscounts:manga[@"manga"] type:1];
         [self populateTotalVolandChaps:manga[@"manga"]];

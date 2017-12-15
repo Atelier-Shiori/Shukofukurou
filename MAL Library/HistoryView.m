@@ -11,8 +11,8 @@
 #import "Keychain.h"
 #import "NSTableViewAction.h"
 #import "MainWindow.h"
-#import "MyAnimeList.h"
-
+//#import "MyAnimeList.h"
+#import "listservice.h"
 @interface HistoryView ()
 
 @end
@@ -26,15 +26,15 @@
 - (void)loadHistory:(NSNumber *)refresh{
     id list;
     bool refreshlist = refresh.boolValue;
-    bool exists = [Utility checkifFileExists:@"history.json" appendPath:@""];
-    list = [Utility loadJSON:@"history.json" appendpath:@""];
+    bool exists = [Utility checkifFileExists:[listservice retrieveHistoryFileName] appendPath:@""];
     if (exists && !refreshlist) {
+        list = [Utility loadJSON:[listservice retrieveHistoryFileName] appendpath:@""];
         [self populateHistory:list];
         return;
     }
     else if (!exists || refreshlist) {
-        [MyAnimeList retriveUpdateHistory:[Keychain getusername] completion:^(id response){
-            [self populateHistory:[Utility saveJSON:response withFilename:@"history.json" appendpath:@"" replace:TRUE]];
+        [listservice retriveUpdateHistory:[Keychain getusername] completion:^(id response){
+            [self populateHistory:[Utility saveJSON:response withFilename:[listservice retrieveHistoryFileName] appendpath:@"" replace:TRUE]];
         }error:^(NSError *error){
             NSLog(@"%@", error.userInfo);
         }];
@@ -58,7 +58,7 @@
 - (void)clearHistory{
     NSMutableArray *a = _historyarraycontroller.content;
     [a removeAllObjects];
-    [Utility deleteFile:@"history.json" appendpath:@""];
+    [Utility deleteFile:[listservice retrieveHistoryFileName] appendpath:@""];
     [self.historytb reloadData];
     [self.historytb deselectAll:self];
 }

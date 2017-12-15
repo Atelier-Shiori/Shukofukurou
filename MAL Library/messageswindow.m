@@ -8,7 +8,8 @@
 
 #import "messageswindow.h"
 #import "messagecomposer.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "NSTableViewAction.h"
 #import "Utility.h"
 #import "messageview.h"
@@ -87,7 +88,7 @@
 }
 
 - (void)generatemessagelist{
-    [MyAnimeList retrievemessagelist:_tmppage completionHandler:^(id responseobject){
+    [listservice retrievemessagelist:_tmppage completionHandler:^(id responseobject){
         if (responseobject[@"list"]){
             NSArray * messages = responseobject[@"list"];
             [_tmplist addObjectsFromArray:messages];
@@ -179,7 +180,7 @@
     }
     else {
         [self toggleprogresswheel:true];
-        [MyAnimeList retrievemessage:messageid completionHandler:^(id responseObject){
+        [listservice retrievemessage:messageid completionHandler:^(id responseObject){
             [self toggleprogresswheel:false];
             [Utility saveJSON:responseObject withFilename:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages" replace:YES];
             [self retrieveMessage:messageid];
@@ -268,7 +269,7 @@
     }];
 }
 - (void)performDeleteMessage:(int)messageid withActionID:(int)actionid {
-    [MyAnimeList deletemessage:actionid completionHandler:^(id responseObject){
+    [listservice deletemessage:actionid completionHandler:^(id responseObject){
         if ([Utility checkifFileExists:[NSString stringWithFormat:@"message-%i.json",messageid] appendPath:@"Messages"]){
             [Utility deleteFile:[NSString stringWithFormat:@"message-%i.json",messageid] appendpath:@"Messages"];
         }

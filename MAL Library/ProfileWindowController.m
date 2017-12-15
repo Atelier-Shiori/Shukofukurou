@@ -10,7 +10,8 @@
 #import "ListView.h"
 #import "ProfileViewController.h"
 #import "OtherHistoryView.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "ListStatistics.h"
 
 @interface ProfileWindowController ()
@@ -328,11 +329,11 @@
     [_liststats.window close];
     [_profilevc loadprofilewithUsername:username completion:^(bool success){
         if (success) {
-            [MyAnimeList retrieveList:username listType:MALAnime completion:^(id responseObject) {
+            [listservice retrieveList:username listType:MALAnime completion:^(id responseObject) {
                 [_listview populateList:responseObject type:MALAnime];
                 [_ohistoryvc loadHistory:username];
                 [_liststats populateValues:responseObject type:1];
-                [MyAnimeList retrieveList:username listType:MALManga completion:^(id responseObject){
+                [listservice retrieveList:username listType:MALManga completion:^(id responseObject){
                     [_listview populateList:responseObject type:MALManga];
                     [_liststats populateValues:responseObject type:2];
                     _liststats.window.title = [NSString stringWithFormat:@"List Statistics - %@", username];

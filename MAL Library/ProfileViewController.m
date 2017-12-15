@@ -7,7 +7,8 @@
 //
 
 #import "ProfileViewController.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "AppDelegate.h"
 #import "messageswindow.h"
 #import "messagecomposer.h"
@@ -30,7 +31,7 @@
 }
 
 - (void)loadprofilewithUsername:(NSString *)username completion:(void (^)(bool))completion {
-    [MyAnimeList retrieveProfile:username completion:^(id responseObject) {
+    [listservice retrieveProfile:username completion:^(id responseObject) {
         [self populateProfile:responseObject withUsername:username];
         if ([_usernamelabel.stringValue isEqualToString:@"Username"]) {
             [self populateProfile:responseObject withUsername:username];

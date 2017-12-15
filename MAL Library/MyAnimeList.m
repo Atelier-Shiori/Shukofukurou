@@ -6,7 +6,8 @@
 //  Copyright © 2017年 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
 //
 
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "Keychain.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
@@ -157,7 +158,7 @@
 + (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager GET:[NSString stringWithFormat:@"%@/2.1/history/%@",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], username] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler([MyAnimeList processHistory:responseObject]);
+        completionHandler([self processHistory:responseObject]);
         
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);

@@ -7,7 +7,8 @@
 //
 
 #import "MainWindow.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "AppDelegate.h"
 #import "Utility.h"
 #import "NSTextFieldNumber.h"
@@ -648,16 +649,16 @@
         bool exists = false;
         switch (type) {
             case 0:
-                exists = [Utility checkifFileExists:@"animelist.json" appendPath:@""];
-                list = [Utility loadJSON:@"animelist.json" appendpath:@""];
+                exists = [Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""];
                 if (exists && !refreshlist){
+                    list = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""];
                     [_listview populateList:list type:0];
                     [self refreshStatistics];
                     return;
                 }
                 else if (!exists || refreshlist){
-                    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseObject){
-                        [_listview populateList:[Utility saveJSON:responseObject withFilename:@"animelist.json" appendpath:@"" replace:TRUE] type:0];
+                    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseObject){
+                        [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:0] appendpath:@"" replace:TRUE] type:0];
                         [self refreshStatistics];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
@@ -665,16 +666,16 @@
                 }
                 break;
             case 1:
-                exists = [Utility checkifFileExists:@"mangalist.json" appendPath:@""];
-                list = [Utility loadJSON:@"mangalist.json" appendpath:@""];
+                exists = [Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""];
+                list = [Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""];
                 if (exists && !refreshlist){
                     [_listview populateList:list type:1];
                     [self refreshStatistics];
                     return;
                 }
                 else if (!exists || refreshlist){
-                    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseObject){
-                        [_listview populateList:[Utility saveJSON:responseObject withFilename:@"mangalist.json" appendpath:@"" replace:TRUE] type:1];
+                    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseObject){
+                        [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:1] appendpath:@"" replace:TRUE] type:1];
                         [self refreshStatistics];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
@@ -699,12 +700,12 @@
     //Clears List
     NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
-    [Utility deleteFile:@"animelist.json" appendpath:@""];
+    [Utility deleteFile:[listservice retrieveListFileName:0] appendpath:@""];
     [_listview.animelisttb reloadData];
     [_listview.animelisttb deselectAll:self];
      a = [_listview.mangalistarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
-    [Utility deleteFile:@"mangalist.json" appendpath:@""];
+    [Utility deleteFile:[listservice retrieveListFileName:1] appendpath:@""];
     [_listview.mangalisttb reloadData];
     [_listview.mangalisttb deselectAll:self];
     [_historyview clearHistory];
@@ -745,7 +746,7 @@
     else if ([identifier isEqualToString:@"seasons"]){
         NSDictionary *d = (_seasonview.seasonarraycontroller).selectedObjects[0];
         d = d[@"id"];
-        [MyAnimeList retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
+        [listservice retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
             [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);
@@ -773,7 +774,7 @@
     _noinfoview.hidden = YES;
     _progressindicator.hidden = NO;
     [_progressindicator startAnimation:nil];
-    [MyAnimeList retrieveTitleInfo:idnum.intValue withType:type useAccount:NO completion:^(id responseObject){
+    [listservice retrieveTitleInfo:idnum.intValue withType:type useAccount:NO completion:^(id responseObject){
         _infoview.selectedid = idnum.intValue;
         _infoview.type = type;
         [_progressindicator stopAnimation:nil];

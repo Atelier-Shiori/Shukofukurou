@@ -8,7 +8,8 @@
 
 #import "AddTitle.h"
 #import "MainWindow.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "Utility.h"
 
 @interface AddTitle ()
@@ -73,7 +74,7 @@
                 [self checkStatus:[Utility statusFromDateRange:d[@"start_date"] toDate:d[@"end_date"]] type:type];
             }
             else {
-                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALAnime useAccount:NO completion:^(id responseObject) {
+                [listservice retrieveTitleInfo:idnum.intValue withType:MALAnime useAccount:NO completion:^(id responseObject) {
                     NSDictionary * d = responseObject;
                     [self checkStatus:d[@"status"] type: 0];
                 }error:^(NSError *error) {
@@ -116,7 +117,7 @@
                 [self checkStatus:_selecteditem[@"status"] type:1];
             }
             else {
-                [MyAnimeList retrieveTitleInfo:idnum.intValue withType:MALManga useAccount:NO completion:^(id responseObject) {
+                [listservice retrieveTitleInfo:idnum.intValue withType:MALManga useAccount:NO completion:^(id responseObject) {
                     NSDictionary * d = responseObject;
                     [self checkStatus:d[@"status"] type: MALManga];
                 }error:^(NSError *error) {
@@ -202,7 +203,7 @@
             _addepifield.stringValue = _addtotalepisodes.stringValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [MyAnimeList addAnimeTitleToList:_selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:(int)_addscorefiled.selectedTag completion:^(id responseObject) {
+        [listservice addAnimeTitleToList:_selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:(int)_addscorefiled.selectedTag completion:^(id responseObject) {
             [_mw loadlist:@(true) type:0];
             [_mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
@@ -245,7 +246,7 @@
             _addvolfield.stringValue = _addtotalvol.stringValue;
         }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [MyAnimeList addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:(int)_addmangascorefiled.selectedTag completion:^(id responseData) {
+        [listservice addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:(int)_addmangascorefiled.selectedTag completion:^(id responseData) {
             [_mw loadlist:@(true) type:1];
             [_mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];

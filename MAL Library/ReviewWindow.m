@@ -7,7 +7,8 @@
 //
 
 #import "ReviewWindow.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "NSTableViewAction.h"
 #import "ReviewView.h"
 #import "AppDelegate.h"
@@ -52,7 +53,7 @@
     }
     [self cleartableview];
     [self toggleprogresswheel:YES];
-    [MyAnimeList retrieveReviewsForTitle:idnum withType:type completion:^(id responsedata) {
+    [listservice retrieveReviewsForTitle:idnum withType:type completion:^(id responsedata) {
         _selectedid = idnum;
         _selectedtype = type;
         self.window.title = [NSString stringWithFormat:@"Reviews - %@", title];

@@ -9,7 +9,8 @@
 #import "messagecomposer.h"
 #import "HTMLtoBBCode.h"
 #import "AppDelegate.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "Utility.h"
 
 @interface messagecomposer ()
@@ -79,7 +80,7 @@
     NSDictionary *documentAttributes = @{NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType};
     NSData *htmlData = [_messagetext.attributedString dataFromRange:NSMakeRange(0, _messagetext.attributedString.length) documentAttributes:documentAttributes error:NULL];
     NSString *htmlString = [[NSString alloc] initWithData:htmlData encoding:NSUTF8StringEncoding];
-    [MyAnimeList sendmessage:_reciplicant.stringValue withSubject:_subjectfield.stringValue withMessage:[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString] withthreadID:_threadid completionHandler:^(id responseObject){
+    [listservice sendmessage:_reciplicant.stringValue withSubject:_subjectfield.stringValue withMessage:[HTMLtoBBCode convertHTMLStringtoBBCode:htmlString] withthreadID:_threadid completionHandler:^(id responseObject){
         self.window.documentEdited = NO;
         _sendbtn.enabled = YES;
         self.reciplicant.enabled = YES;

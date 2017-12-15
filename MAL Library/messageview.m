@@ -9,7 +9,8 @@
 #import "messageview.h"
 #import <WebKit/WebKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "AppDelegate.h"
 #import "ProfileWindowController.h"
 

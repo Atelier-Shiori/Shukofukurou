@@ -9,8 +9,8 @@
 #import "EditTitle.h"
 #import "NSTextFieldNumber.h"
 #import "MainWindow.h"
-#import "MyAnimeList.h"
-
+//#import "MyAnimeList.h"
+#import "listservice.h"
 @interface EditTitle ()
 // Anime
 @property (strong) IBOutlet NSView *animeeditview;
@@ -177,7 +177,7 @@
     }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [MyAnimeList updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
+    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [_minipopovereditbtn setEnabled:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
@@ -227,7 +227,7 @@
     }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_mangapopoverindicator startAnimation:nil];
-    [MyAnimeList updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
+    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
         [_mangapopovereditbtn setEnabled:true];

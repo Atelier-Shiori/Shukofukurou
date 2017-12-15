@@ -43,6 +43,8 @@
 		2D6ECA351F2E9B20003C455E /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */; };
 		2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
 		2D71422D1FE2E32C001FA9E9 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
+		2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
+		2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
 		2D7877761F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D7877771F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
@@ -362,6 +364,8 @@
 		2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		2D71422A1FE2E32C001FA9E9 /* listservice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = listservice.h; sourceTree = "<group>"; };
 		2D71422B1FE2E32C001FA9E9 /* listservice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = listservice.m; sourceTree = "<group>"; };
+		2D71422E1FE31DFB001FA9E9 /* Kitsu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kitsu.h; sourceTree = "<group>"; };
+		2D71422F1FE31DFB001FA9E9 /* Kitsu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kitsu.m; sourceTree = "<group>"; };
 		2D7877741F87E44000AD40F1 /* MyListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListView.h; sourceTree = "<group>"; };
 		2D7877751F87E44000AD40F1 /* MyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListView.m; sourceTree = "<group>"; };
 		2D86F1891EC21D4B00650E34 /* ListExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListExporter.h; sourceTree = "<group>"; };
@@ -727,8 +731,8 @@
 				2D0A64571F5B22A00001C906 /* AniListImport.m */,
 				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
-				2D71422A1FE2E32C001FA9E9 /* listservice.h */,
-				2D71422B1FE2E32C001FA9E9 /* listservice.m */,
+				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
+				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
@@ -767,6 +771,8 @@
 				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
 				2D94612B1EC38CC8004E171B /* ListImport.h */,
 				2D94612C1EC38CC8004E171B /* ListImport.m */,
+				2D71422A1FE2E32C001FA9E9 /* listservice.h */,
+				2D71422B1FE2E32C001FA9E9 /* listservice.m */,
 				2D371E711ECF8AF500F47138 /* ListStatistics.h */,
 				2D371E721ECF8AF500F47138 /* ListStatistics.m */,
 				916502BA1E8C576B00565D30 /* ListView.h */,
@@ -1211,6 +1217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */,
 				91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
@@ -1302,6 +1309,7 @@
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
 				91D094C21E983095009454F8 /* HistoryView.m in Sources */,
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
+				2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,

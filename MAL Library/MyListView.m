@@ -7,7 +7,8 @@
 //
 
 #import "MyListView.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "EditTitle.h"
 
 @interface MyListView ()
@@ -156,7 +157,7 @@
         }
     }
     _deletetitleitem.enabled = NO;
-    [MyAnimeList removeTitleFromList:selid.intValue withType:self.currentlist completion:^(id responseobject) {
+    [listservice removeTitleFromList:selid.intValue withType:self.currentlist completion:^(id responseobject) {
         [_mw loadlist:@(true) type:self.currentlist];
     }error:^(NSError *error) {
         NSLog(@"%@",error);

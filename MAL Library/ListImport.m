@@ -10,7 +10,8 @@
 #import "XMLReader.h"
 #import "AppDelegate.h"
 #import "MainWindow.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "Utility.h"
 #import "ImportPrompt.h"
 #import "AniListImport.h"
@@ -120,7 +121,7 @@
 }
 #pragma mark MyAnimeList Import
 - (IBAction)importMALList:(id)sender{
-    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""] && [Utility checkifFileExists:@"mangalist.json" appendPath:@""]) {
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""] && [Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""]) {
         NSOpenPanel * op = [NSOpenPanel openPanel];
         op.allowedFileTypes = @[@"xml", @"Extended Markup Language file"];
         op.message = @"Please select a MAL XML List to import.";
@@ -151,13 +152,13 @@
                        if (d[@"anime"]) {
                            _importlisttype = MALAnime;
                            _listimport = d[@"anime"];
-                           _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
+                           _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
                        }
                        else if (d[@"manga"]) {
                            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
                            _importlisttype = MALManga;
                            _listimport = d[@"manga"];
-                           _existinglist = [Utility loadJSON:@"mangalist.json" appendpath:@""][@"manga"];
+                           _existinglist = [Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""][@"manga"];
                            }
                            else {
                                [Utility showsheetmessage:@"Unable to import list." explaination:@"Manga import requires a donation key." window:[_del getMainWindowController].window];
@@ -193,7 +194,7 @@
         NSDictionary *d = _listimport[_progress];
         if ([self checkiftitleisonlist:((NSString *)d[@"series_animedb_id"][@"text"]).intValue]) {
             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                [MyAnimeList updateAnimeTitleOnList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue] withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseobject) {
+                [listservice updateAnimeTitleOnList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue] withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseobject) {
                     [self incrementProgress:nil withTitle:nil];
                 }error:^(NSError *error){
                     [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
@@ -204,10 +205,10 @@
             }
         }
         else {
-            [MyAnimeList addAnimeTitleToList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue]  completion:^(id responseobject){
+            [listservice addAnimeTitleToList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue]  completion:^(id responseobject){
                 if (d[@"my_tags"][@"text"]) {
                     // Set Tags by updating the entry
-                    [MyAnimeList updateAnimeTitleOnList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue] withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseobject) {
+                    [listservice updateAnimeTitleOnList:[(NSString *)d[@"series_animedb_id"][@"text"] intValue] withEpisode:[(NSString *)d[@"my_watched_episodes"][@"text"] intValue] withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:[(NSString *)d[@"my_score"][@"text"] intValue] withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseobject) {
                         [self incrementProgress:nil withTitle:nil];
                     }error:^(NSError *error){
                         [self incrementProgress:nil withTitle:nil];
@@ -228,7 +229,7 @@
         NSDictionary *d = _listimport[_progress];
         if ([self checkiftitleisonlist:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue]) {
             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                [MyAnimeList updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseObject){
+                [listservice updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseObject){
                     [self incrementProgress:nil withTitle:nil];
                 }error:^(NSError *error){
                     [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
@@ -239,10 +240,10 @@
             }
         }
         else {
-            [MyAnimeList addMangaTitleToList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue completion:^(id responseObject){
+            [listservice addMangaTitleToList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue completion:^(id responseObject){
                 if (d[@"my_tags"][@"text"]) {
                     // Set Tags by updating the entry
-                    [MyAnimeList updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseObject){
+                    [listservice updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseObject){
                         [self incrementProgress:nil withTitle:nil];
                     }error:^(NSError *error){
                         [self incrementProgress:nil withTitle:nil];
@@ -260,7 +261,7 @@
 
 #pragma mark Anidb Import
 - (IBAction)importAniDBList:(id)sender {
-    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
         NSOpenPanel * op = [NSOpenPanel openPanel];
         op.allowedFileTypes = @[@"XML", @"Extended Markup File file"];
         op.message = @"Please select the exported AniDB XML List file to import.";
@@ -292,7 +293,7 @@
                                }
                                _listtype = @"anidb";
                                _importlisttype = MALAnime;
-                               _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
+                               _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
                                if (!_otheridmalidmapping) {
                                    _otheridmalidmapping = [NSMutableArray new];
                                }
@@ -361,7 +362,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -372,7 +373,7 @@
         }
     }
     else {
-        [MyAnimeList addAnimeTitleToList:malid withEpisode:watchedeps withStatus:status withScore:0 completion:^(id responseObject){
+        [listservice addAnimeTitleToList:malid withEpisode:watchedeps withStatus:status withScore:0 completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
             [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -382,7 +383,7 @@
 
 #pragma mark Kitsu Import
 - (IBAction)importKitsu:(id)sender {
-    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
         if (!_importprompt){
             _importprompt = [ImportPrompt new];
         }
@@ -418,7 +419,7 @@
                 _listtype = @"kitsu";
                 _importlisttype = MALAnime;
                 _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-                _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
+                _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
                 if (!_otheridmalidmapping) {
                     _otheridmalidmapping = [NSMutableArray new];
                 }
@@ -479,7 +480,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
@@ -490,7 +491,7 @@
         }
     }
     else {
-        [MyAnimeList addAnimeTitleToList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+        [listservice addAnimeTitleToList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
             [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
@@ -690,7 +691,7 @@
     
 #pragma mark AniList
 - (IBAction)importAnilist:(id)sender {
-    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
         if (!_importprompt){
             _importprompt = [ImportPrompt new];
         }
@@ -721,7 +722,7 @@
         _listtype = @"anilist";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-        _existinglist = [Utility loadJSON:@"animelist.json" appendpath:@""][@"anime"];
+        _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
         if (!_otheridmalidmapping) {
             _otheridmalidmapping = [NSMutableArray new];
         }
@@ -779,7 +780,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
@@ -790,7 +791,7 @@
         }
     }
     else {
-        [MyAnimeList addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+        [listservice addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
             [self incrementProgress:entry withTitle:entry[@"title_romanji"]];

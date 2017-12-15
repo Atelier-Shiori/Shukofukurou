@@ -15,7 +15,7 @@
 - (IBAction)exportAnimeList:(id)sender {
     // Export Anime List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]){
+    if ([Utility checkifFileExists:@"mal-animelist.json" appendPath:@""]){
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Anime List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
@@ -29,7 +29,7 @@
             // Load List
             NSError *error;
             NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
-            NSDictionary *animelist = [Utility loadJSON:@"animelist.json" appendpath:@""];
+            NSDictionary *animelist = [Utility loadJSON:@"mal-animelist.json" appendpath:@""];
             NSArray *list = animelist[@"anime"];
             // Generate XML from Anime List
             for (NSDictionary *d in list) {
@@ -54,7 +54,7 @@
 - (IBAction)exportMangaList:(id)sender {
     // Export Manga List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([Utility checkifFileExists:@"mangalist.json" appendPath:@""]){
+    if ([Utility checkifFileExists:@"mal-mangalist.json" appendPath:@""]){
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Manga List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
@@ -68,7 +68,7 @@
             // Load List
             NSError *error;
             NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
-            NSDictionary *animelist = [Utility loadJSON:@"mangalist.json" appendpath:@""];
+            NSDictionary *animelist = [Utility loadJSON:@"mal-mangalist.json" appendpath:@""];
             NSArray *list = animelist[@"manga"];
             // Generate XML from Manga List
             for (NSDictionary *d in list) {

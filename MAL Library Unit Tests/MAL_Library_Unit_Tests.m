@@ -7,7 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "Keychain.h"
 #import "HTMLtoBBCode.h"
 
@@ -32,7 +33,7 @@
     // This class will test retrevial of the Anime List and Manga List
     //Expectation
     XCTestExpectation *expectation = [self expectationWithDescription:@"List Loading"];
-    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id response){
+    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id response){
         NSArray *animelist = response[@"anime"];
         int animetotal = [self checkListTotals:animelist type:0];
         if (animetotal == animelist.count){
@@ -61,7 +62,7 @@
 
 - (void)testMangaListLoading{
     XCTestExpectation *expectation = [self expectationWithDescription:@"List Loading"];
-    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id response){
+    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id response){
         NSArray *mangalist = response[@"manga"];
         
         int mangatotal = [self checkListTotals:mangalist type:1];
@@ -91,7 +92,7 @@
 - (void)testAnimeSearch{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Search"];
     __block NSString *searchterm = @"Love Live! Sunshine!!";
-    [MyAnimeList searchTitle:searchterm withType:MALAnime completion:^(id responseObject){
+    [listservice searchTitle:searchterm withType:MALAnime completion:^(id responseObject){
         NSArray *a = responseObject;
         bool match = false;
         for (NSDictionary *d in a){
@@ -126,7 +127,7 @@
 - (void)testMangaSearch{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Search"];
     __block NSString *searchterm = @"Kiniro Mosaic";
-    [MyAnimeList searchTitle:searchterm withType:MALManga completion:^(id responseObject){
+    [listservice searchTitle:searchterm withType:MALManga completion:^(id responseObject){
         NSArray *a = responseObject;
         bool match = false;
         for (NSDictionary *d in a){
@@ -160,7 +161,7 @@
 - (void)testAnimeTitleAdd{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *searchterm = @"Love Live! Sunshine!!";
-    [MyAnimeList searchTitle:searchterm withType:MALAnime completion:^(id responseObject){
+    [listservice searchTitle:searchterm withType:MALAnime completion:^(id responseObject){
         NSArray * a = responseObject;
         bool match = false;
         __block NSNumber * titleid;
@@ -174,8 +175,8 @@
         }
         if (match){
             NSLog(@"Title %@ found. Adding title", searchterm);
-            [MyAnimeList addAnimeTitleToList:titleid.intValue withEpisode:1 withStatus:@"watching" withScore:0 completion:^(id responseObject){
-                [MyAnimeList retrieveTitleInfo:titleid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
+            [listservice addAnimeTitleToList:titleid.intValue withEpisode:1 withStatus:@"watching" withScore:0 completion:^(id responseObject){
+                [listservice retrieveTitleInfo:titleid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
                     NSNumber *watchedepisodes = responseObject[@"watched_episodes"];
                     NSString *watchedstatus = responseObject[@"watched_status"];
                     NSNumber *score = responseObject[@"score"];
@@ -216,7 +217,7 @@
 - (void)testAnimeTitleModify{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *title = @"Love Live! Sunshine!!";
-    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
+    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
         NSArray * a = responseData[@"anime"];
         __block NSNumber *listid;
         bool match = false;
@@ -229,8 +230,8 @@
             }
         }
         if (match){
-            [MyAnimeList updateAnimeTitleOnList:listid.intValue withEpisode:13 withStatus:@"completed" withScore:8 withTags:@"" completion:^(id responseObject){
-                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:listid.intValue withEpisode:13 withStatus:@"completed" withScore:8 withTags:@"" completion:^(id responseObject){
+                [listservice retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
                     NSNumber *watchedepisodes = responseObject[@"watched_episodes"];
                     NSString *watchedstatus = responseObject[@"watched_status"];
                     NSNumber *score = responseObject[@"score"];
@@ -272,7 +273,7 @@
 - (void)testAnimeTitleRemove{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Deletion"];
     __block NSString *title = @"Love Live! Sunshine!!";
-    [MyAnimeList retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
+    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
         NSArray * a = responseData[@"anime"];
         __block NSNumber *listid;
         bool match = false;
@@ -285,8 +286,8 @@
             }
         }
         if (match){
-            [MyAnimeList removeTitleFromList:listid.intValue withType:MALAnime completion:^(id responseData){
-                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
+            [listservice removeTitleFromList:listid.intValue withType:MALAnime completion:^(id responseData){
+                [listservice retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
                     if (!responseObject[@"watched_episodes"]){
                         XCTAssert(YES, @"Title removal successful");
                         NSLog(@"Title removed from list successfully");
@@ -325,7 +326,7 @@
 - (void)testMangaTitleAdd{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *searchterm = @"Loveless";
-    [MyAnimeList searchTitle:searchterm withType:MALManga completion:^(id responseObject){
+    [listservice searchTitle:searchterm withType:MALManga completion:^(id responseObject){
         NSArray * a = responseObject;
         bool match = false;
         __block NSNumber * titleid;
@@ -339,8 +340,8 @@
         }
         if (match){
             NSLog(@"Title %@ found. Adding title", searchterm);
-            [MyAnimeList addMangaTitleToList:titleid.intValue withChapter:10 withVolume:1 withStatus:@"reading" withScore:0 completion:^(id responseObject){
-                [MyAnimeList retrieveTitleInfo:titleid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
+            [listservice addMangaTitleToList:titleid.intValue withChapter:10 withVolume:1 withStatus:@"reading" withScore:0 completion:^(id responseObject){
+                [listservice retrieveTitleInfo:titleid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
                     NSNumber *readchapters = responseObject[@"chapters_read"];
                     NSNumber *readvolumes = responseObject[@"volumes_read"];
                     NSString *readstatus = responseObject[@"read_status"];
@@ -382,7 +383,7 @@
 - (void)testMangaTitleModify{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *title = @"Loveless";
-    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
+    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
         NSArray * a = responseData[@"manga"];
         __block NSNumber *listid;
         bool match = false;
@@ -395,8 +396,8 @@
             }
         }
         if (match){
-            [MyAnimeList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:7 withTags:@"" completion:^(id responseObject){
-                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
+            [listservice updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:7 withTags:@"" completion:^(id responseObject){
+                [listservice retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
                     NSNumber *readchapters = responseObject[@"chapters_read"];
                     NSNumber *readvolumes = responseObject[@"volumes_read"];
                     NSString *readstatus = responseObject[@"read_status"];
@@ -439,7 +440,7 @@
 - (void)testMangaTitleRemove{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Deletion"];
     __block NSString *title = @"Loveless";
-    [MyAnimeList retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
+    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
         NSArray * a = responseData[@"manga"];
         __block NSNumber *listid;
         bool match = false;
@@ -452,8 +453,8 @@
             }
         }
         if (match){
-            [MyAnimeList removeTitleFromList:listid.intValue withType:MALManga completion:^(id responseData){
-                [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
+            [listservice removeTitleFromList:listid.intValue withType:MALManga completion:^(id responseData){
+                [listservice retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
                     if (!responseObject[@"chapters_read"]){
                         XCTAssert(YES, @"Title removal successful");
                         NSLog(@"Title removed from list successfully");
@@ -589,10 +590,10 @@
     // Set Date
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
     // Test
-    if ([MyAnimeList verifyAccount]) {
+    if ([listservice verifyAccount]) {
         // Set Date
         [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
-        if ([MyAnimeList verifyAccount]) {
+        if ([listservice verifyAccount]) {
             XCTAssert(YES, @"No errors.");
         }
         else {
@@ -611,7 +612,7 @@
         return;
     }
     XCTestExpectation *expectation = [self expectationWithDescription:@"History"];
-    [MyAnimeList retriveUpdateHistory:[Keychain getusername] completion:^(id responseobject){
+    [listservice retriveUpdateHistory:[Keychain getusername] completion:^(id responseobject){
         if ([responseobject isKindOfClass:[NSArray class]]) {
             NSLog(@"History object count: %li", [(NSArray *)responseobject count]);
             XCTAssert(YES, @"No errors.");

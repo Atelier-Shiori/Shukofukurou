@@ -9,7 +9,8 @@
 #import "OtherHistoryView.h"
 #import "NSTableViewAction.h"
 #import "MainWindow.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "AppDelegate.h"
 
 @interface OtherHistoryView ()
@@ -24,7 +25,7 @@
 }
 - (void)loadHistory:(NSString *)username {
     [self clearHistory];
-    [MyAnimeList retriveUpdateHistory:username completion:^(id response){
+    [listservice retriveUpdateHistory:username completion:^(id response){
         [self populateHistory:response];
     }error:^(NSError *error){
         NSLog(@"%@", error.userInfo);

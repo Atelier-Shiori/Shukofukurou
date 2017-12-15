@@ -47,6 +47,7 @@
     defaultValues[@"readingfilter"] = @(1);
     defaultValues[@"malapiurl"] = @"https://malapi.malupdaterosx.moe";
     defaultValues[@"stream_region"] = @(0);
+    defaultValues[@"currentservice"] = @(1);
     
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]

@@ -9,7 +9,8 @@
 #import "AdvancedSearch.h"
 #import "NSTextFieldNumber.h"
 #import "MainWindow.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "Utility.h"
 
 
@@ -106,7 +107,7 @@
     if (_useenddate.state == 1){
         endDate = _enddate.dateValue;
     }
-    [MyAnimeList advsearchTitle:_searchfield.stringValue withType:searchtype withGenres:genreslist excludeGenres:_exclude.state startDate:startDate endDate:endDate minScore:_minscore.intValue rating:(int)_rating.selectedTag withStatus:(int)_airstatus.selectedTag completion:^(id responseObject){
+    [listservice advsearchTitle:_searchfield.stringValue withType:searchtype withGenres:genreslist excludeGenres:_exclude.state startDate:startDate endDate:endDate minScore:_minscore.intValue rating:(int)_rating.selectedTag withStatus:(int)_airstatus.selectedTag completion:^(id responseObject){
         [_mw populatesearchtb:responseObject type:searchtype];
         [btn setEnabled:YES];
         _popover.behavior = NSPopoverBehaviorTransient;

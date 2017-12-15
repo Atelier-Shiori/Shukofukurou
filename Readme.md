@@ -1,18 +1,18 @@
 # MAL Library
 ![screenshot](https://malupdaterosx.ateliershiori.moe/assets/mallibrary.png)
 
-MAL Library an open sourced and native MyAnimeList library manager, a complete rewrite of MAL Client OSX written in Objective-C.
+MAL Library an open sourced and native MyAnimeList, Kitsu (future), and AniList (future) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
 
-Requires latest SDK (10.12), XCode 8 or later. The C#/Xamarin version is deprecated, but still aviliable in the c-sharp-old branch.
+Requires latest SDK (10.13), XCode 9 or later. The C#/Xamarin version is deprecated, but still aviliable in the c-sharp-old branch.
 
 ## Supporting this Project
 
-Like this program and want to support the development of this program? Purchase a [license](https://malupdaterosx.ateliershiori.moe/donate/). You will recieve a donation key to remove the reminder message that will appear on every launch.
-
-You can also support the project by buying the full version from the Mac App Store. All future updates are free.
+You can also support the project by buying the full version from the Mac App Store for $4.99. All future updates are free.
 
 
-[![macappstore](https://malupdaterosx.ateliershiori.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
+[![macappstore](https://malupdaterosx.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
+
+Note that for 3.0, binaries are only available for paid users and will be a free upgrade for people who download it from the Mac App Store. The source code will be free for all users without support.
 
 ## How to Compile
 

@@ -8,7 +8,8 @@
 
 #import "CharactersBrowser.h"
 #import "CharacterView.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
 #import "Utility.h"
@@ -191,7 +192,7 @@
 #pragma mark Staff Source List
 
 - (void)retrievestafflist:(int)idnum {
-    [MyAnimeList retrieveStaff:idnum completion:^(id responseObject){
+    [listservice retrieveStaff:idnum completion:^(id responseObject){
         [self generateSourceList:responseObject];
         _selectedtitleid = idnum;
         [self enabletoolbaritems:NO];
@@ -304,7 +305,7 @@
 - (void)retrievestaffinformation:(int)idnum {
     [self replaceMainViewSubViewWithView:_noselectionview];
     [self startstopanimation:true];
-    [MyAnimeList retrievePersonDetails:idnum completion:^(id responseObject){
+    [listservice retrievePersonDetails:idnum completion:^(id responseObject){
         [self startstopanimation:false];
         [_characterviewcontroller populateStaffInformation:responseObject];
         [self replaceMainViewSubViewWithView:_characterviewcontroller.view];

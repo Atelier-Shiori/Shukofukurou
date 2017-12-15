@@ -8,7 +8,8 @@
 
 #import "SearchView.h"
 #import "MainWindow.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 
 @interface SearchView ()
 
@@ -55,7 +56,7 @@
 
 - (IBAction)performsearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
-        [MyAnimeList searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject){
+        [listservice searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject){
             [_mw populatesearchtb:responseObject type:_currentsearch];
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);

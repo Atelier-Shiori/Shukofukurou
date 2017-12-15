@@ -10,7 +10,8 @@
 #import "MainWindow.h"
 #import "AppDelegate.h"
 #import "Keychain.h"
-#import "MyAnimeList.h"
+//#import "MyAnimeList.h"
+#import "listservice.h"
 #import "Utility.h"
 
 @interface ListView ()

@@ -1,0 +1,6 @@
+framework module MALLibraryAppMigrate {
+  umbrella header "MALLibraryAppMigrate.h"
+
+  export *
+  module * { export * }
+}

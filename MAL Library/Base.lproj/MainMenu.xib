@@ -314,9 +314,25 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="MyAnimeList" id="dVb-eF-FSz">
+                <menuItem title="Service" id="gvA-y9-4Af">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="MyAnimeList" id="8oo-dc-4uA">
+                    <menu key="submenu" title="Service" id="aod-zG-HhS">
+                        <items>
+                            <menuItem title="MyAnimeList" id="DDy-su-2bd">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Kitsu" id="Xpj-88-rLY">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="AniList" id="MH3-Uw-jgn">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Service Name" id="dVb-eF-FSz">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Service Name" id="8oo-dc-4uA">
                         <items>
                             <menuItem title="View Messages" id="PzU-Ui-J4l">
                                 <modifierMask key="keyEquivalentModifierMask"/>

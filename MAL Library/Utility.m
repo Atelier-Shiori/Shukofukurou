@@ -217,69 +217,6 @@
     return string;
 }
 
-+ (void)donateCheck:(AppDelegate*)delegate{
-    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
-        [Utility showDonateReminder:delegate];
-    }
-    else if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
-        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
-            // Check donation key
-            AFHTTPSessionManager *manager = [Utility jsonmanager];
-            manager.requestSerializer = [AFJSONRequestSerializer serializer];
-            //manager.responseSerializer = [Utility httpresponseserializer];
-            [manager POST:@"https://updates.moe/keycheck/check.php" parameters:@{@"name":[[NSUserDefaults standardUserDefaults] objectForKey:@"donor"], @"key":[[NSUserDefaults standardUserDefaults] objectForKey:@"donatekey"]} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-                NSDictionary *d = responseObject;
-                int valid = ((NSNumber *)d[@"valid"]).intValue;
-                if (valid == 1) {
-                    //Reset check
-                    [Utility setReminderDate];
-                }
-                else if (valid == 0) {
-                    //Invalid Key
-                    [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. MAL Library will now quit." window:nil];
-                    [Utility showDonateReminder:delegate];
-                    [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
-                    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
-                    [[NSApplication sharedApplication] terminate:nil];
-                }
-
-            } failure:^(NSURLSessionTask *operation, NSError *error) {
-            }];
-        }
-    }
-    else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue && ![[NSUserDefaults standardUserDefaults] valueForKey:@"donatereminderdate"]) {
-        [Utility setReminderDate];
-    }
-}
-+ (void)showDonateReminder:(AppDelegate*)delegate{
-    // Shows Donation Reminder
-    NSAlert *alert = [[NSAlert alloc] init] ;
-    [alert addButtonWithTitle:@"Donate"];
-    [alert addButtonWithTitle:@"Enter Key"];
-    [alert addButtonWithTitle:@"Not Yet"];
-    alert.messageText = @"Please Support MAL Library";
-    alert.informativeText = @"We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program. \r\rIf you find this program helpful, please consider making a donation. You will recieve a key to remove this message that will appear when you launch the program and unlock additional features like Manga support.";
-    [alert setShowsSuppressionButton:NO];
-    // Set Message type to Warning
-    alert.alertStyle = NSInformationalAlertStyle;
-    long choice = [alert runModal];
-    if (choice == NSAlertFirstButtonReturn) {
-        // Open Donation Page
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.moe/donate/"]];
-    }
-    else if (choice == NSAlertSecondButtonReturn) {
-        // Show Add Donation Key dialog.
-        [delegate enterDonationKey:nil];
-    }
-}
-
-+ (void)setReminderDate {
-    //Sets Reminder Date
-    NSDate *now = [NSDate date];
-    NSDate *reminderdate = [now dateByAddingTimeInterval:60*60*24];
-    [[NSUserDefaults standardUserDefaults] setObject:reminderdate forKey:@"donatereminderdate"];
-}
-
 + (void)checkandclearimagecache {
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"imagecacheexpire"]) {
         if ([(NSDate *)[[NSUserDefaults standardUserDefaults] valueForKey:@"imagecacheexpire"] timeIntervalSinceNow] < 0) {

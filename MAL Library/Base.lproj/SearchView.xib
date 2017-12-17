@@ -209,7 +209,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="76" minWidth="10" maxWidth="3.4028234663852886e+38" id="aKd-9b-04H">
+                                    <tableColumn identifier="typecol" width="76" minWidth="10" maxWidth="3.4028234663852886e+38" id="aKd-9b-04H">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -234,7 +234,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="t2i-rH-3za">
-                        <rect key="frame" x="0.0" y="383" width="563" height="15"/>
+                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="0Bl-Jg-4DO">

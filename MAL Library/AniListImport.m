@@ -125,12 +125,12 @@
         NSURL *baseURL = [NSURL URLWithString:@"https://anilist.co/api/"];
         AFOAuth2Manager *OAuth2Manager =
         [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
-                                        clientID:kclient
-                                          secret:ksecretkey];
+                                        clientID:kanilistclient
+                                          secret:kanilistsecretkey];
         [OAuth2Manager authenticateUsingOAuthWithURLString:@"auth/access_token" parameters:@{@"grant_type":@"client_credentials"} success:^(AFOAuthCredential *credential) {
             NSLog(@"Token: %@", credential.accessToken);
             [AFOAuthCredential storeCredential:credential
-                                withIdentifier:@"MAL Library - AniList Token"];
+                                withIdentifier:@"MAL Library - AniList Access Token"];
             completionHandler(true);
         }
         failure:^(NSError *error) {

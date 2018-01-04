@@ -45,6 +45,8 @@
 		2D71422D1FE2E32C001FA9E9 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
 		2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
 		2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
+		2D72F9271FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */; };
+		2D72F9281FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */; };
 		2D7877761F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D7877771F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D84041A1FE4A30F003DC279 /* MALLibraryAppMigrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */; };
@@ -52,6 +54,8 @@
 		2D84041C1FE4A403003DC279 /* MALLibraryAppMigrate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
 		2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
+		2D88CA6A1FE815B600AD142E /* servicemenucontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D88CA691FE815B600AD142E /* servicemenucontroller.m */; };
+		2D88CA6B1FE815B600AD142E /* servicemenucontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D88CA691FE815B600AD142E /* servicemenucontroller.m */; };
 		2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
@@ -85,6 +89,16 @@
 		2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
 		2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
 		2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
+		2DB444BB1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
+		2DB444BC1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
+		2DB444BF1FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
+		2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
+		2DB444C41FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
+		2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
+		2DB444C91FE9AA6100BE5534 /* loginviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */; };
+		2DB444CA1FE9AA6100BE5534 /* loginviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */; };
+		2DB444CB1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */; };
+		2DB444CC1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */; };
 		2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
@@ -367,11 +381,15 @@
 		2D71422B1FE2E32C001FA9E9 /* listservice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = listservice.m; sourceTree = "<group>"; };
 		2D71422E1FE31DFB001FA9E9 /* Kitsu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kitsu.h; sourceTree = "<group>"; };
 		2D71422F1FE31DFB001FA9E9 /* Kitsu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kitsu.m; sourceTree = "<group>"; };
+		2D72F9251FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIKitsuStaffFormat.h; sourceTree = "<group>"; };
+		2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIKitsuStaffFormat.m; sourceTree = "<group>"; };
 		2D7877741F87E44000AD40F1 /* MyListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListView.h; sourceTree = "<group>"; };
 		2D7877751F87E44000AD40F1 /* MyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListView.m; sourceTree = "<group>"; };
 		2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MALLibraryAppMigrate.framework; sourceTree = "<group>"; };
 		2D86F1891EC21D4B00650E34 /* ListExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListExporter.h; sourceTree = "<group>"; };
 		2D86F18A1EC21D4B00650E34 /* ListExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListExporter.m; sourceTree = "<group>"; };
+		2D88CA681FE815B600AD142E /* servicemenucontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = servicemenucontroller.h; sourceTree = "<group>"; };
+		2D88CA691FE815B600AD142E /* servicemenucontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = servicemenucontroller.m; sourceTree = "<group>"; };
 		2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharactersBrowser.h; sourceTree = "<group>"; };
@@ -403,6 +421,15 @@
 		2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
 		2DAB19E71EF9F2C400420182 /* siteimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = siteimage.h; sourceTree = "<group>"; };
 		2DAB19E81EF9F2C400420182 /* siteimage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = siteimage.m; sourceTree = "<group>"; };
+		2DB444B91FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatKitsu.h; sourceTree = "<group>"; };
+		2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatKitsu.m; sourceTree = "<group>"; };
+		2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KitsuListRetriever.h; sourceTree = "<group>"; };
+		2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KitsuListRetriever.m; sourceTree = "<group>"; };
+		2DB444C21FE9875F00BE5534 /* AtarashiiDataObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiDataObjects.h; sourceTree = "<group>"; };
+		2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiDataObjects.m; sourceTree = "<group>"; };
+		2DB444C61FE9AA6100BE5534 /* loginviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginviewcontroller.h; sourceTree = "<group>"; };
+		2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginviewcontroller.m; sourceTree = "<group>"; };
+		2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = loginviewcontroller.xib; sourceTree = "<group>"; };
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
 		2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
 		2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
@@ -657,6 +684,19 @@
 			path = MALLibraryHelp;
 			sourceTree = "<group>";
 		};
+		2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */ = {
+			isa = PBXGroup;
+			children = (
+				2DB444B91FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.h */,
+				2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */,
+				2D72F9251FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.h */,
+				2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */,
+				2DB444C21FE9875F00BE5534 /* AtarashiiDataObjects.h */,
+				2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */,
+			);
+			name = AtarashiiDataFormatters;
+			sourceTree = "<group>";
+		};
 		913A627C1E9D7AF40023E6A1 /* MAL Library Unit Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -716,6 +756,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -731,8 +772,6 @@
 				2D0A64571F5B22A00001C906 /* AniListImport.m */,
 				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
-				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
-				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
@@ -765,6 +804,13 @@
 				91999D101E8C88280026D3E9 /* InfoView.m */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
+				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
+				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
+				2DB444C61FE9AA6100BE5534 /* loginviewcontroller.h */,
+				2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */,
+				2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */,
+				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
+				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
 				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
 				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
 				2D94612B1EC38CC8004E171B /* ListImport.h */,
@@ -828,6 +874,8 @@
 				91999CFE1E8C73300026D3E9 /* SearchView.m */,
 				91999D051E8C81580026D3E9 /* SeasonView.h */,
 				91999D061E8C81580026D3E9 /* SeasonView.m */,
+				2D88CA681FE815B600AD142E /* servicemenucontroller.h */,
+				2D88CA691FE815B600AD142E /* servicemenucontroller.m */,
 				2DAB19E71EF9F2C400420182 /* siteimage.h */,
 				2DAB19E81EF9F2C400420182 /* siteimage.m */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
@@ -1100,6 +1148,7 @@
 				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
 				2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
+				2DB444CC1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
@@ -1151,6 +1200,7 @@
 				2D4E01131FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
+				2DB444CB1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */,
 				2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
@@ -1227,6 +1277,7 @@
 				91D094C41E983098009454F8 /* HistoryView.m in Sources */,
 				2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */,
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
+				2D88CA6B1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
 				2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
@@ -1240,12 +1291,15 @@
 				2D7877771F87E44000AD40F1 /* MyListView.m in Sources */,
 				913A11691E8F206A00450B66 /* SearchView.m in Sources */,
 				2DC28DCE1EB8DF64005B7B77 /* ESCssTokenizer.m in Sources */,
+				2DB444BC1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
+				2D72F9281FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
 				2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */,
+				2DB444CA1FE9AA6100BE5534 /* loginviewcontroller.m in Sources */,
 				2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */,
 				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
@@ -1268,6 +1322,7 @@
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */,
+				2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
@@ -1278,6 +1333,7 @@
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
+				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1318,6 +1374,7 @@
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
+				2D72F9271FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
@@ -1339,6 +1396,8 @@
 				91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
+				2DB444C41FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
+				2DB444BB1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
 				2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
@@ -1348,12 +1407,15 @@
 				2D6ECA341F2E9B20003C455E /* NSString_stripHtml.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
+				2DB444BF1FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
+				2DB444C91FE9AA6100BE5534 /* loginviewcontroller.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
 				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,
+				2D88CA6A1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */,
 				2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,

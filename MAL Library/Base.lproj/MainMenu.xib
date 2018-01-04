@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -12,7 +12,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+            <connections>
+                <outlet property="servicemenucontrol" destination="SPk-NX-uMK" id="1AP-bN-KqA"/>
+            </connections>
+        </customObject>
         <customObject id="aOt-b9-3aH" customClass="ListImport">
             <connections>
                 <outlet property="del" destination="Voe-Tx-rLC" id="VK9-E7-EMa"/>
@@ -20,6 +24,14 @@
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="Qdg-2P-lTs" customClass="ListExporter"/>
+        <customObject id="SPk-NX-uMK" customClass="servicemenucontroller">
+            <connections>
+                <outlet property="anilistserviceitem" destination="MH3-Uw-jgn" id="J6u-ye-9ba"/>
+                <outlet property="kitsuserviceitem" destination="Xpj-88-rLY" id="gAN-Bf-pzA"/>
+                <outlet property="malserviceitem" destination="DDy-su-2bd" id="WVk-5c-dK4"/>
+                <outlet property="servicemenu" destination="aod-zG-HhS" id="x37-sp-OAb"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="MAL Library" id="1Xt-HY-uBw">
@@ -320,19 +332,29 @@
                         <items>
                             <menuItem title="MyAnimeList" id="DDy-su-2bd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="SPk-NX-uMK" id="2I7-fN-e0t"/>
+                                </connections>
                             </menuItem>
                             <menuItem title="Kitsu" id="Xpj-88-rLY">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="SPk-NX-uMK" id="3np-Hp-dSu"/>
+                                </connections>
                             </menuItem>
                             <menuItem title="AniList" id="MH3-Uw-jgn">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="SPk-NX-uMK" id="Z4Z-R7-z4R"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Service Name" id="dVb-eF-FSz">
+                <menuItem title="Tools" id="dVb-eF-FSz">
+                    <attributedString key="attributedTitle"/>
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Service Name" id="8oo-dc-4uA">
+                    <menu key="submenu" title="Tools" id="8oo-dc-4uA">
                         <items>
                             <menuItem title="View Messages" id="PzU-Ui-J4l">
                                 <modifierMask key="keyEquivalentModifierMask"/>

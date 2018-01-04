@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface ClientConstants : NSObject
-    FOUNDATION_EXPORT NSString *const ksecretkey;
-    FOUNDATION_EXPORT NSString *const kclient;
+    FOUNDATION_EXPORT NSString *const kKitsuBaseURL;
+    FOUNDATION_EXPORT NSString *const kKitsuAuthURL;
+    FOUNDATION_EXPORT NSString *const kKitsuTokenURL;
+    FOUNDATION_EXPORT NSString *const kKitsusecretkey;
+    FOUNDATION_EXPORT NSString *const kKitsuClient;
+    FOUNDATION_EXPORT NSString *const kanilistsecretkey;
+    FOUNDATION_EXPORT NSString *const kanilistclient;
 @end

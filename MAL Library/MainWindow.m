@@ -158,15 +158,6 @@
 
 }
 
-- (IBAction)addlicense:(id)sender {
-    [_appdel enterDonationKey:sender];
-}
-
-- (IBAction)viewDonation:(id)sender {
-    // Show Donation Page
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.malupdaterosx.moe/donate/"]];
-}
-
 - (void)setDelegate:(AppDelegate*) adelegate{
     _appdel = adelegate;
 }

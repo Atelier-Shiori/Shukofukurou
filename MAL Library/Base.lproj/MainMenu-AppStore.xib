@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -12,7 +12,11 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
+            <connections>
+                <outlet property="servicemenucontrol" destination="NCk-PM-EVr" id="J8r-TZ-Al1"/>
+            </connections>
+        </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="mhI-ho-EeA" customClass="ListImport">
             <connections>
@@ -20,6 +24,14 @@
             </connections>
         </customObject>
         <customObject id="O22-er-S4a" customClass="ListExporter"/>
+        <customObject id="NCk-PM-EVr" customClass="servicemenucontroller">
+            <connections>
+                <outlet property="anilistserviceitem" destination="da9-I1-maM" id="uzX-cw-fUi"/>
+                <outlet property="kitsuserviceitem" destination="sCe-nQ-b6W" id="PON-EA-IAs"/>
+                <outlet property="malserviceitem" destination="frr-T0-hoW" id="CNA-X9-58U"/>
+                <outlet property="servicemenu" destination="CWk-2N-5Ar" id="bSj-WS-vVk"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="MAL Library" id="1Xt-HY-uBw">
@@ -312,21 +324,31 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Service" id="CWk-2N-5Ar">
                         <items>
-                            <menuItem title="MyAnimeList" id="frr-T0-hoW">
+                            <menuItem title="MyAnimeList" tag="1" id="frr-T0-hoW">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="NCk-PM-EVr" id="5fi-oT-QAw"/>
+                                </connections>
                             </menuItem>
-                            <menuItem title="Kitsu" id="sCe-nQ-b6W">
+                            <menuItem title="Kitsu" tag="2" id="sCe-nQ-b6W">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="NCk-PM-EVr" id="zhV-5q-vKY"/>
+                                </connections>
                             </menuItem>
-                            <menuItem title="AniList" id="da9-I1-maM">
+                            <menuItem title="AniList" tag="3" id="da9-I1-maM">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="NCk-PM-EVr" id="LtH-6I-M4b"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Service Name" id="5he-IT-8Ge">
+                <menuItem title="Tools" id="5he-IT-8Ge">
+                    <attributedString key="attributedTitle"/>
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Service Name" id="pvD-sQ-h6q">
+                    <menu key="submenu" title="Tools" autoenablesItems="NO" id="pvD-sQ-h6q">
                         <items>
                             <menuItem title="View Messages" id="60c-At-yy4">
                                 <modifierMask key="keyEquivalentModifierMask"/>

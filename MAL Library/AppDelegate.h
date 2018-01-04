@@ -27,7 +27,6 @@
 - (IBAction)showpreferences:(id)sender;
 - (void)showloginnotice;
 - (void)showloginpref;
-- (IBAction)enterDonationKey:(id)sender;
 - (void)clearMessages;
 - (messageswindow *)getMessagesWindow;
 - (ProfileWindowController *)getProfileWindow;

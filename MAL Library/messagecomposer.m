@@ -134,9 +134,5 @@
     }];
 }
 
-- (IBAction)addlicense:(id)sender {
-    AppDelegate *appdel = (AppDelegate *)[[NSApplication sharedApplication] delegate];
-    [appdel enterDonationKey:sender];
-}
 
 @end

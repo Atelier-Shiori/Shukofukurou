@@ -10,9 +10,16 @@
 
 @implementation ClientConstants
     //
-    // These constants specify the secret and client key
+    // These constants specify the secret and client key for Kitsu
+    // You can obtain them at
+    //
+    NSString *const kKitsusecretkey = @"";
+    NSString *const kKitsuClient = @"";
+
+    //
+    // These constants specify the secret and client key for AniList
     // You can obtain them at https://anilist.co/settings/developer/client/
     //
-    NSString *const ksecretkey = @"";
-    NSString *const kclient =@"";
+    NSString *const kanilistsecretkey = @"";
+    NSString *const kanlistclient =@"";
 @end

@@ -17,10 +17,12 @@
 #import "Utility.h"
 #import "StreamDataRetriever.h"
 #import "ProfileWindowController.h"
+#import "servicemenucontroller.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
+@property (strong) IBOutlet servicemenucontroller* servicemenucontrol;
 @end
 
 @implementation AppDelegate
@@ -77,6 +79,10 @@
      forEventClass:kInternetEventClass
      andEventID:kAEGetURL];
     [StreamDataRetriever retrieveStreamData];
+    [_servicemenucontrol setmenuitemvaluefromdefaults];
+    _servicemenucontrol.actionblock = ^(int selected) {
+        
+    };
 }
 
 

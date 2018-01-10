@@ -175,8 +175,6 @@
 		9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
 		9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
-		917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
-		917897EB1E89F19900C155DF /* DonationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897ED1E89F19900C155DF /* DonationWindow.xib */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
@@ -230,7 +228,6 @@
 		91B378B71E989C83000061E6 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91B3A8A01EB0097C0066CEB1 /* StringDatetoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */; };
 		91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */; };
-		91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 917897E71E89E6AD00C155DF /* DonationWindowController.m */; };
 		91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
 		91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
 		91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C0601C1EAD309C0099E433 /* ReviewView.m */; };
@@ -438,9 +435,6 @@
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
-		917897E61E89E6AD00C155DF /* DonationWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DonationWindowController.h; sourceTree = "<group>"; };
-		917897E71E89E6AD00C155DF /* DonationWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DonationWindowController.m; sourceTree = "<group>"; };
-		917897EC1E89F19900C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationWindow.xib; sourceTree = "<group>"; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		91822A491EAE99E6005E33DB /* RecommendedTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedTitleView.h; sourceTree = "<group>"; };
 		91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendedTitleView.m; sourceTree = "<group>"; };
@@ -599,7 +593,6 @@
 				91B378B51E989C7C000061E6 /* AiringView.xib */,
 				2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */,
 				2D4E01161FA3B1C90053A82B /* CharacterView.xib */,
-				917897ED1E89F19900C155DF /* DonationWindow.xib */,
 				915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */,
 				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
 				91B378B91E989C83000061E6 /* HistoryView.xib */,
@@ -731,8 +724,6 @@
 				2D8A47B81F292D1800FC2B35 /* CharacterView.m */,
 				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
 				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
-				917897E61E89E6AD00C155DF /* DonationWindowController.h */,
-				917897E71E89E6AD00C155DF /* DonationWindowController.m */,
 				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
 				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
 				2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */,
@@ -1118,7 +1109,6 @@
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
 				91999D021E8C7DFE0026D3E9 /* SearchView.xib in Resources */,
 				2D371E7F1ECFA3E400F47138 /* ListStatistics.xib in Resources */,
-				917897EB1E89F19900C155DF /* DonationWindow.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
@@ -1208,7 +1198,6 @@
 				2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */,
 				91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
-				91BBACA31E995EF500EA6627 /* DonationWindowController.m in Sources */,
 				2D371E751ECF8AF500F47138 /* ListStatistics.m in Sources */,
 				2D94612F1EC38CC8004E171B /* ListImport.m in Sources */,
 				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
@@ -1289,7 +1278,6 @@
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
 				2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
-				917897E81E89E6AD00C155DF /* DonationWindowController.m in Sources */,
 				9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */,
 				2DC28DCF1EB8DF64005B7B77 /* ESCssTokens.m in Sources */,
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
@@ -1526,14 +1514,6 @@
 				916502C81E8C65A900565D30 /* Base */,
 			);
 			name = NotLoggedIn.xib;
-			sourceTree = "<group>";
-		};
-		917897ED1E89F19900C155DF /* DonationWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				917897EC1E89F19900C155DF /* Base */,
-			);
-			name = DonationWindow.xib;
 			sourceTree = "<group>";
 		};
 		917897F01E89F19C00C155DF /* PFAboutWindow.xib */ = {

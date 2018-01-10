@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -36,13 +36,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="checkForUpdates:" target="8pF-JQ-aL5" id="tCe-cK-eLT"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Enter Donation Key…" id="WN9-mm-xrF">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="enterDonationKey:" target="Voe-Tx-rLC" id="2b7-rg-c9a"/>
-                                    <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="Hzg-dp-o6L"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
@@ -350,33 +343,18 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importAniDBList:" target="aOt-b9-3aH" id="ZiK-48-aM2"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="twH-fq-EkU">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Import from Kitsu…" id="Yfh-DT-TKI">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importKitsu:" target="aOt-b9-3aH" id="EY5-ui-ybI"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="h1K-MT-Yt4">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Import from AniList…" id="LhM-Wm-9AK">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importAnilist:" target="aOt-b9-3aH" id="miV-NE-FIo"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="hO6-Qj-mu5">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -411,11 +389,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="viewListStats:" target="Voe-Tx-rLC" id="rVU-ua-kBr"/>
-                                    <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="1VO-cE-VZG">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
                                 </connections>
                             </menuItem>
                         </items>
@@ -735,6 +708,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="reportbugs:" target="Voe-Tx-rLC" id="JRy-ho-SMG"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Get MAL Library from App Store" id="ACe-Jn-fZ5">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="getfromAppStore:" target="Voe-Tx-rLC" id="dXS-iu-8L3"/>
                                 </connections>
                             </menuItem>
                         </items>

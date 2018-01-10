@@ -166,9 +166,4 @@
 - (void)splitViewDidResizeSubviews:(NSNotification *)notification{
     [self.window setFrame:self.window.frame display:false];
 }
-- (IBAction)addlicense:(id)sender {
-    AppDelegate *appdel = (AppDelegate *)[[NSApplication sharedApplication] delegate];
-    [appdel enterDonationKey:sender];
-}
-
 @end

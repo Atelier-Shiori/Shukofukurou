@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -34,7 +34,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="526" height="375"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="526" height="375"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -45,16 +45,16 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Anime" identifier="1" id="YIZ-gZ-Gf0">
-                                <view key="view" ambiguous="YES" id="eoa-T7-cta">
-                                    <rect key="frame" x="10" y="33" width="132" height="0.0"/>
+                                <view key="view" id="eoa-T7-cta">
+                                    <rect key="frame" x="10" y="33" width="487" height="321"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="98L-98-whk">
-                                            <rect key="frame" x="4" y="-313" width="264" height="310"/>
+                                            <rect key="frame" x="4" y="8" width="264" height="310"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         </customView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G8i-Id-RI0">
-                                            <rect key="frame" x="274" y="-171" width="163" height="17"/>
+                                            <rect key="frame" x="274" y="150" width="163" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total days spent:" id="Q5H-RD-wNk">
                                                 <font key="font" metaFont="system"/>
@@ -63,7 +63,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-vB-hzG">
-                                            <rect key="frame" x="401" y="-171" width="86" height="17"/>
+                                            <rect key="frame" x="401" y="150" width="86" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="hfL-R3-7hW">
                                                 <font key="font" metaFont="system"/>
@@ -72,7 +72,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZK-89-OYQ">
-                                            <rect key="frame" x="274" y="-146" width="163" height="17"/>
+                                            <rect key="frame" x="274" y="175" width="163" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total Eps watched:" id="CyI-Of-gWD">
                                                 <font key="font" metaFont="system"/>
@@ -81,7 +81,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mfz-LO-da1">
-                                            <rect key="frame" x="401" y="-146" width="86" height="17"/>
+                                            <rect key="frame" x="401" y="175" width="86" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="gta-dD-rx0">
                                                 <font key="font" metaFont="system"/>
@@ -90,7 +90,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YCL-sc-0yz">
-                                            <rect key="frame" x="274" y="-121" width="163" height="17"/>
+                                            <rect key="frame" x="274" y="200" width="163" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Plan to watch:" id="fTs-8E-22S">
                                                 <font key="font" metaFont="system"/>
@@ -99,7 +99,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a8J-IM-7Jk">
-                                            <rect key="frame" x="401" y="-121" width="86" height="17"/>
+                                            <rect key="frame" x="401" y="200" width="86" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="Hi7-Si-fbo">
                                                 <font key="font" metaFont="system"/>
@@ -108,7 +108,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5QT-7p-pg8">
-                                            <rect key="frame" x="274" y="-96" width="163" height="17"/>
+                                            <rect key="frame" x="274" y="225" width="163" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Dropped:" id="7cM-Od-bUG">
                                                 <font key="font" metaFont="system"/>
@@ -117,7 +117,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HxV-LQ-MB5">
-                                            <rect key="frame" x="401" y="-96" width="86" height="17"/>
+                                            <rect key="frame" x="401" y="225" width="86" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="LNJ-8F-SbD">
                                                 <font key="font" metaFont="system"/>
@@ -126,7 +126,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fpN-XW-FR5">
-                                            <rect key="frame" x="274" y="-71" width="163" height="17"/>
+                                            <rect key="frame" x="274" y="250" width="163" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="On-Hold:" id="TmO-gc-h32">
                                                 <font key="font" metaFont="system"/>
@@ -135,7 +135,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qk1-O5-LEc">
-                                            <rect key="frame" x="401" y="-71" width="86" height="17"/>
+                                            <rect key="frame" x="401" y="250" width="86" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="rpv-wc-h66">
                                                 <font key="font" metaFont="system"/>
@@ -144,7 +144,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAp-O6-g4K">
-                                            <rect key="frame" x="274" y="-46" width="163" height="17"/>
+                                            <rect key="frame" x="274" y="275" width="163" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Completed:" id="OWQ-kX-MuY">
                                                 <font key="font" metaFont="system"/>
@@ -153,7 +153,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wKr-Qk-yPU">
-                                            <rect key="frame" x="401" y="-46" width="86" height="17"/>
+                                            <rect key="frame" x="401" y="275" width="86" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="4BH-gq-cmo">
                                                 <font key="font" metaFont="system"/>
@@ -162,7 +162,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9D9-K9-rQj">
-                                            <rect key="frame" x="274" y="-21" width="163" height="17"/>
+                                            <rect key="frame" x="274" y="300" width="163" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Watching" id="CrN-X8-BMQ">
                                                 <font key="font" metaFont="system"/>
@@ -171,7 +171,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dhN-kT-PA9">
-                                            <rect key="frame" x="401" y="-21" width="86" height="17"/>
+                                            <rect key="frame" x="401" y="300" width="86" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="0" id="Jz7-dJ-nEH">
                                                 <font key="font" metaFont="system"/>
@@ -183,13 +183,20 @@
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Manga" identifier="2" id="B8q-kd-NH6">
-                                <view key="view" id="4Sw-Nm-nY4">
+                                <view key="view" ambiguous="YES" id="4Sw-Nm-nY4">
                                     <rect key="frame" x="10" y="33" width="487" height="321"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RYb-Pt-o9w">
                                             <rect key="frame" x="4" y="8" width="264" height="310"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="S00-XV-tEa">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </customView>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iZ3-Ar-d3p">
                                             <rect key="frame" x="274" y="126" width="163" height="17"/>
@@ -199,6 +206,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="W7f-Ma-VmF">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iTz-4e-BIo">
                                             <rect key="frame" x="401" y="126" width="86" height="17"/>
@@ -208,6 +222,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="vvk-Kg-6qE">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uAG-Tb-7mn">
                                             <rect key="frame" x="274" y="151" width="163" height="17"/>
@@ -217,6 +238,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="kP5-BT-pnE">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UWK-Mt-kvX">
                                             <rect key="frame" x="401" y="151" width="86" height="17"/>
@@ -226,6 +254,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="DqQ-Hc-IC6">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="drj-CK-kHd">
                                             <rect key="frame" x="274" y="176" width="163" height="17"/>
@@ -235,6 +270,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="z3e-iZ-5Oc">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yng-PE-lTS">
                                             <rect key="frame" x="401" y="176" width="86" height="17"/>
@@ -244,6 +286,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="jh3-Ex-7St">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qda-Gb-MfW">
                                             <rect key="frame" x="274" y="201" width="163" height="17"/>
@@ -253,6 +302,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="e2Q-BN-gEB">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9sc-zP-Dvq">
                                             <rect key="frame" x="401" y="201" width="86" height="17"/>
@@ -262,6 +318,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="89D-d8-2zZ">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ncg-Fl-TL4">
                                             <rect key="frame" x="274" y="226" width="163" height="17"/>
@@ -271,6 +334,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="qQS-lH-Nmr">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agJ-6c-EEQ">
                                             <rect key="frame" x="401" y="226" width="86" height="17"/>
@@ -280,6 +350,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="dan-zW-bdF">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="prp-fc-oFu">
                                             <rect key="frame" x="274" y="251" width="163" height="17"/>
@@ -289,6 +366,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="5kH-S9-lgX">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kre-Dc-Ecg">
                                             <rect key="frame" x="401" y="251" width="86" height="17"/>
@@ -298,6 +382,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="0sW-0S-QgV">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agJ-O3-kZT">
                                             <rect key="frame" x="274" y="276" width="163" height="17"/>
@@ -307,6 +398,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="Vc2-rQ-3gM">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pkj-vt-hrY">
                                             <rect key="frame" x="401" y="276" width="86" height="17"/>
@@ -316,6 +414,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="XBq-se-GYm">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdo-9E-bw0">
                                             <rect key="frame" x="274" y="301" width="163" height="17"/>
@@ -325,6 +430,13 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="nJw-bf-dre">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
                                         </textField>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWf-98-AiF">
                                             <rect key="frame" x="401" y="301" width="86" height="17"/>
@@ -334,6 +446,25 @@
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="1ad-jp-KOf">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlV-0n-7ja">
+                                            <rect key="frame" x="90" y="153" width="310" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Statistics for Manga Lists not available in the free Version" id="8tI-Sp-neB">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="oyr-i4-S9j" name="hidden" keyPath="values.donated" id="ve0-MI-AcR"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                 </view>
@@ -347,5 +478,6 @@
             </connections>
             <point key="canvasLocation" x="460" y="-136.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="oyr-i4-S9j"/>
     </objects>
 </document>

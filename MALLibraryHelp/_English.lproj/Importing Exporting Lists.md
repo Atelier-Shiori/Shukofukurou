@@ -7,11 +7,9 @@ In MAL Library 2.1, you can import lists from other services.
 
 Here are the formats that MAL Library supports:
 * MyAnimeList XML Format (generated from the website or export done in MAL Library)
-* AniDB XML (full) Lists.(1)
-* Kitsu (Anime only for now).(1)
-* AniList (Anime only for now).(1)
-
-(1) These import options requires a donation key or an App Store version.
+* AniDB XML (full) Lists.
+* Kitsu (Anime only for now).
+* AniList (Anime only for now).
 
 If there are titles that could not be imported, it will show them after the import is complete. You can save the list to a JSON file for inspection.
 

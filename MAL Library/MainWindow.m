@@ -157,9 +157,6 @@
 
 }
 
-- (IBAction)addlicense:(id)sender {
-    [_appdel enterDonationKey:sender];
-}
 
 - (IBAction)viewDonation:(id)sender {
     // Show Donation Page

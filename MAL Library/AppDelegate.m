@@ -11,7 +11,6 @@
 #import "PFMoveApplication.h"
 #import "Keychain.h"
 #import "PFAboutWindowController.h"
-#import "DonationWindowController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "Utility.h"
@@ -21,7 +20,6 @@
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
-@property (strong) DonationWindowController *donationwincontroller;
 @end
 
 @implementation AppDelegate
@@ -136,13 +134,6 @@
     [(MASPreferencesWindowController *)self.preferencesWindowController selectControllerAtIndex:1];
 }
 
-- (IBAction)enterDonationKey:(id)sender {
-    if (!_donationwincontroller) {
-        _donationwincontroller = [DonationWindowController new];
-    }
-    [_donationwincontroller.window makeKeyAndOrderFront:nil];
-}
-
 - (IBAction)showaboutwindow:(id)sender{
     if (!_aboutWindowController) {
         _aboutWindowController = [PFAboutWindowController new];
@@ -158,7 +149,7 @@
         [copyrightstr appendFormat:@"This copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
     }
     else {
-        [copyrightstr appendString:@"UNREGISTERED COPY"];
+        [copyrightstr appendString:@"Free Version."];
     }
     #endif
     (self.aboutWindowController).appCopyright = [[NSAttributedString alloc] initWithString:copyrightstr
@@ -275,4 +266,9 @@
 - (IBAction)reportbugs:(id)sender {
     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/MAL-Library/issues"]];
 }
+
+- (IBAction)getfromAppStore:(id)sender {
+        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+}
+
 @end

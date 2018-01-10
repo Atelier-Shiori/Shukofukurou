@@ -253,23 +253,25 @@
 }
 + (void)showDonateReminder:(AppDelegate*)delegate{
     // Shows Donation Reminder
-    NSAlert *alert = [[NSAlert alloc] init] ;
-    [alert addButtonWithTitle:@"Donate"];
-    [alert addButtonWithTitle:@"Enter Key"];
-    [alert addButtonWithTitle:@"Not Yet"];
-    alert.messageText = @"Please Support MAL Library";
-    alert.informativeText = @"We noticed that you have been using MAL Library for a while. Although MAL Library is free and open source software, it cost us money and time to develop this program. \r\rIf you find this program helpful, please consider making a donation. You will recieve a key to remove this message that will appear when you launch the program and unlock additional features like Manga support.";
-    [alert setShowsSuppressionButton:NO];
-    // Set Message type to Warning
-    alert.alertStyle = NSInformationalAlertStyle;
-    long choice = [alert runModal];
-    if (choice == NSAlertFirstButtonReturn) {
-        // Open Donation Page
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://malupdaterosx.moe/donate/"]];
-    }
-    else if (choice == NSAlertSecondButtonReturn) {
-        // Show Add Donation Key dialog.
-        [delegate enterDonationKey:nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"surpressreminder"]) {
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:@"Open App Store"];
+        [alert addButtonWithTitle:@"Not Yet"];
+        alert.messageText = @"Please Support MAL Library";
+        alert.informativeText = @"We noticed that you have been using MAL Library for a while. MAL Library is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of MAL Library, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.";
+        [alert setShowsSuppressionButton:YES];
+        // Set Message type to Warning
+        alert.alertStyle = NSInformationalAlertStyle;
+        long choice = [alert runModal];
+        if (choice == NSAlertFirstButtonReturn) {
+            // Open App Store Page
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+        }
+        if (alert.suppressionButton.state == NSOnState) {
+            // Suppress this alert from now on
+            [defaults setBool: YES forKey: @"surpressreminder"];
+        }
     }
 }
 

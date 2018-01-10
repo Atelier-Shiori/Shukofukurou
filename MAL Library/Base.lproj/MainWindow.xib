@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -46,7 +46,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="700" height="450"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiY-f1-sHX">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiY-f1-sHX">
                         <rect key="frame" x="5" y="5" width="684" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="0Vv-cm-AKw">
                             <font key="font" metaFont="system"/>
@@ -54,22 +54,6 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pvx-AB-Rmv">
-                        <rect key="frame" x="607" y="3" width="86" height="19"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="86" id="iVO-5e-WHm"/>
-                        </constraints>
-                        <buttonCell key="cell" type="recessed" title="Add License" bezelStyle="recessed" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x5j-N8-f4e">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="smallSystem"/>
-                            <connections>
-                                <action selector="addlicense:" target="-2" id="qLJ-yC-BNb"/>
-                            </connections>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="2F9-Ng-hjJ" name="hidden" keyPath="values.donated" id="zci-RA-3k5"/>
-                        </connections>
-                    </button>
                     <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juR-gi-pJh">
                         <rect key="frame" x="0.0" y="25" width="700" height="425"/>
                         <subviews>
@@ -194,10 +178,7 @@
                     <constraint firstItem="juR-gi-pJh" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="KJQ-45-UaD"/>
                     <constraint firstAttribute="bottom" secondItem="juR-gi-pJh" secondAttribute="bottom" constant="25" id="QVy-NJ-K5G"/>
                     <constraint firstAttribute="trailing" secondItem="juR-gi-pJh" secondAttribute="trailing" id="WgE-gh-DJW"/>
-                    <constraint firstAttribute="trailing" secondItem="Pvx-AB-Rmv" secondAttribute="trailing" constant="7" id="fdX-do-hBR"/>
                     <constraint firstItem="oiY-f1-sHX" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="7" id="k7z-Pe-iTY"/>
-                    <constraint firstItem="Pvx-AB-Rmv" firstAttribute="top" secondItem="oiY-f1-sHX" secondAttribute="top" id="kbr-cT-XBV"/>
-                    <constraint firstItem="Pvx-AB-Rmv" firstAttribute="top" secondItem="juR-gi-pJh" secondAttribute="bottom" constant="3" id="qEZ-vJ-7YU"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="EDAACB0E-5ADE-41EC-AF7C-2FBC4FD0AC21" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="6eG-p3-l2S">

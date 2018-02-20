@@ -49,6 +49,9 @@
             if (success) {
                 [self retrieveKitsuLibrary:userID type:type atPage:pagenum completionHandler:completionHandler error:errorHandler];
             }
+            else {
+                errorHandler(nil);
+            }
         }];
         return;
     }
@@ -71,7 +74,7 @@
                         completionHandler([AtarashiiAPIListFormatKitsu KitsutoAtarashiiAnimeList:self]);
                         break;
                     case 1:
-                        
+                        completionHandler([AtarashiiAPIListFormatKitsu KitsutoAtarashiiMangaList:self]);
                         break;
                     default:
                         errorHandler(nil);

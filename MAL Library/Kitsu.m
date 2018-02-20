@@ -17,7 +17,20 @@
 NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
+    KitsuListRetriever *retriever = [KitsuListRetriever new];
+    [retriever getKitsuidfromUserName:username completionHandler:^(id responseObject) {
+        if ((NSNumber *)responseObject[@"data"][0]) {
+            int userid = ((NSNumber *)responseObject[@"data"][0]).intValue;
+            [retriever retrieveKitsuLibrary:userid type:type atPage:0 completionHandler:^(id responseObject) {
+                completionHandler(responseObject);
+            } error:^(NSError *error) {
+                errorHandler(error);
+            }];
+        }
+        errorHandler(nil);
+    } error:^(NSError *error) {
+        errorHandler(error);
+    }];
 }
 + (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     
@@ -106,7 +119,25 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     
 }
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        <#code#>
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        <#code#>
+    }];
     
 }
 + (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {

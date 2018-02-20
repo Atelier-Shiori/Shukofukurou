@@ -133,12 +133,17 @@
     return false;
 }
 + (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    switch ([self getCurrentServiceID]) {
+    [self verifyAccountWithUsername:username password:password withServiceID:[self getCurrentServiceID] completion:completionHandler error:errorHandler];
+
+}
++ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    switch (serviceid) {
         case 1: {
             [MyAnimeList verifyAccountWithUsername:username password:password completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
+            [Kitsu verifyAccountWithUsername:username password:password completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -315,7 +320,10 @@
     }
 }
 + (NSString *)retrieveListFileName:(int)type {
-    switch ([self getCurrentServiceID]) {
+    return [self retrieveListFileName:type withServiceID:[self getCurrentServiceID]];
+}
++ (NSString *)retrieveListFileName:(int)type withServiceID:(int)serviceid {
+    switch (serviceid) {
         case 1: {
             if (type == 0) {
                 return @"mal-animelist.json";
@@ -347,7 +355,10 @@
     return @"";
 }
 + (id)retrieveHistoryFileName {
-    switch ([self getCurrentServiceID]) {
+    return [self retrieveListFileName:[self getCurrentServiceID]];
+}
++ (id)retrieveHistoryFileName:(int)serviceid {
+    switch (serviceid) {
         case 1: {
             return @"mal-history.json";
             break;

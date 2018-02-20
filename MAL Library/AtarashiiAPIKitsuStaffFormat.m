@@ -5,7 +5,7 @@
 //  Created by 桐間紗路 on 2018/01/04.
 //  Copyright © 2018年 Atelier Shiori. All rights reserved.
 //
-//https://kitsu.io/api/edge/anime/7203/anime-staff?include=person,person.castings
+//https://kitsu.io/api/edge/castings?anime_id=7203?&include=person,person.castings
 
 #import "AtarashiiAPIKitsuStaffFormat.h"
 
@@ -22,12 +22,12 @@
     return self;
 }
 - (NSArray *)generateStaffList {
-    
+    return nil;
 }
 - (NSDictionary *)findPerson:(NSNumber *)personid {
-    
+    return nil;
 }
 - (NSDictionary *)findcasting:(NSNumber *)castingid {
-    
+    return nil;
 }
 @end

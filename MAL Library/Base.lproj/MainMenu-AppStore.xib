@@ -26,7 +26,6 @@
         <customObject id="O22-er-S4a" customClass="ListExporter"/>
         <customObject id="NCk-PM-EVr" customClass="servicemenucontroller">
             <connections>
-                <outlet property="anilistserviceitem" destination="da9-I1-maM" id="uzX-cw-fUi"/>
                 <outlet property="kitsuserviceitem" destination="sCe-nQ-b6W" id="PON-EA-IAs"/>
                 <outlet property="malserviceitem" destination="frr-T0-hoW" id="CNA-X9-58U"/>
                 <outlet property="servicemenu" destination="CWk-2N-5Ar" id="bSj-WS-vVk"/>
@@ -334,12 +333,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="setService:" target="NCk-PM-EVr" id="zhV-5q-vKY"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="AniList" tag="3" id="da9-I1-maM">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="setService:" target="NCk-PM-EVr" id="LtH-6I-M4b"/>
                                 </connections>
                             </menuItem>
                         </items>

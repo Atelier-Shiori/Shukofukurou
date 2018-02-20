@@ -687,19 +687,22 @@
         [ls populateValues];
     }
 }
-- (void)clearlist{
-    //Clears List
-    NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];
-    [a removeAllObjects];
-    [Utility deleteFile:[listservice retrieveListFileName:0] appendpath:@""];
-    [_listview.animelisttb reloadData];
-    [_listview.animelisttb deselectAll:self];
-     a = [_listview.mangalistarraycontroller mutableArrayValueForKey:@"content"];
-    [a removeAllObjects];
-    [Utility deleteFile:[listservice retrieveListFileName:1] appendpath:@""];
-    [_listview.mangalisttb reloadData];
-    [_listview.mangalisttb deselectAll:self];
-    [_historyview clearHistory];
+- (void)clearlist:(int)service {
+    [Utility deleteFile:[listservice retrieveListFileName:0 withServiceID:service] appendpath:@""];
+    [Utility deleteFile:[listservice retrieveListFileName:1 withServiceID:service] appendpath:@""];
+    [_historyview clearHistory:service];
+    if ([listservice getCurrentServiceID] == service) {
+        //Clears List
+        NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];
+        [a removeAllObjects];
+        [_listview.animelisttb reloadData];
+        [_listview.animelisttb deselectAll:self];
+         a = [_listview.mangalistarraycontroller mutableArrayValueForKey:@"content"];
+        [a removeAllObjects];
+        [_listview.mangalisttb reloadData];
+        [_listview.mangalisttb deselectAll:self];
+    }
+
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {

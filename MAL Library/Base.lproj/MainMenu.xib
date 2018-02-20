@@ -26,7 +26,6 @@
         <customObject id="Qdg-2P-lTs" customClass="ListExporter"/>
         <customObject id="SPk-NX-uMK" customClass="servicemenucontroller">
             <connections>
-                <outlet property="anilistserviceitem" destination="MH3-Uw-jgn" id="J6u-ye-9ba"/>
                 <outlet property="kitsuserviceitem" destination="Xpj-88-rLY" id="gAN-Bf-pzA"/>
                 <outlet property="malserviceitem" destination="DDy-su-2bd" id="WVk-5c-dK4"/>
                 <outlet property="servicemenu" destination="aod-zG-HhS" id="x37-sp-OAb"/>
@@ -342,14 +341,14 @@
                                     <action selector="setService:" target="SPk-NX-uMK" id="3np-Hp-dSu"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="AniList" id="MH3-Uw-jgn">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="setService:" target="SPk-NX-uMK" id="Z4Z-R7-z4R"/>
-                                </connections>
-                            </menuItem>
                         </items>
+                        <connections>
+                            <outlet property="delegate" destination="SPk-NX-uMK" id="N1R-Lx-xEJ"/>
+                        </connections>
                     </menu>
+                    <connections>
+                        <action selector="setService:" target="SPk-NX-uMK" id="uYu-cA-gf6"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Tools" id="dVb-eF-FSz">
                     <attributedString key="attributedTitle"/>

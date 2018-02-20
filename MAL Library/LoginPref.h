@@ -15,20 +15,26 @@
 
 @interface LoginPref : NSViewController <MASPreferencesViewController>
 @property (strong) IBOutlet NSImageView *logo;
+@property (strong) AppDelegate* appdelegate;
+@property (strong) MainWindow* mw;
+
 //Login Preferences
 @property (strong) IBOutlet NSTextField *fieldusername;
 @property (strong) IBOutlet NSTextField *fieldpassword;
 @property (strong) IBOutlet NSButton *savebut;
 @property (strong) IBOutlet NSButton *clearbut;
 @property (strong) IBOutlet NSTextField *loggedinuser;
-@property (strong) AppDelegate* appdelegate;
-@property (strong) MainWindow* mw;
 @property (strong) IBOutlet NSView *loginview;
 @property (strong) IBOutlet NSView *loggedinview;
-//Reauthorize Panel
-@property (strong) IBOutlet NSTextField *passwordinput;
-@property (strong) IBOutlet NSImageView *invalidinput;
-@property (weak) IBOutlet NSWindow *loginpanel;
+//Login Preferences Kitsu
+@property (strong) IBOutlet NSTextField *kitsufieldusername;
+@property (strong) IBOutlet NSTextField *kitsufieldpassword;
+@property (strong) IBOutlet NSButton *kitsusavebut;
+@property (strong) IBOutlet NSButton *kitsuclearbut;
+@property (strong) IBOutlet NSTextField *kitsuloggedinuser;
+@property (strong) IBOutlet NSView *kitsuloginview;
+@property (strong) IBOutlet NSView *kitsuloggedinview;
+
 - (id)initwithAppDelegate:(AppDelegate *)adelegate;
 - (IBAction)startlogin:(id)sender;
 - (IBAction)clearlogin:(id)sender;

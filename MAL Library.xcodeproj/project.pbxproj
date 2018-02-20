@@ -95,10 +95,6 @@
 		2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
 		2DB444C41FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
 		2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
-		2DB444C91FE9AA6100BE5534 /* loginviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */; };
-		2DB444CA1FE9AA6100BE5534 /* loginviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */; };
-		2DB444CB1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */; };
-		2DB444CC1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */; };
 		2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
@@ -427,9 +423,6 @@
 		2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KitsuListRetriever.m; sourceTree = "<group>"; };
 		2DB444C21FE9875F00BE5534 /* AtarashiiDataObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiDataObjects.h; sourceTree = "<group>"; };
 		2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiDataObjects.m; sourceTree = "<group>"; };
-		2DB444C61FE9AA6100BE5534 /* loginviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginviewcontroller.h; sourceTree = "<group>"; };
-		2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginviewcontroller.m; sourceTree = "<group>"; };
-		2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = loginviewcontroller.xib; sourceTree = "<group>"; };
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
 		2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESCssParser.h; sourceTree = "<group>"; };
 		2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssParser.m; sourceTree = "<group>"; };
@@ -806,9 +799,6 @@
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
 				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
-				2DB444C61FE9AA6100BE5534 /* loginviewcontroller.h */,
-				2DB444C71FE9AA6100BE5534 /* loginviewcontroller.m */,
-				2DB444C81FE9AA6100BE5534 /* loginviewcontroller.xib */,
 				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
 				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
 				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
@@ -1148,7 +1138,6 @@
 				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
 				2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
-				2DB444CC1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
@@ -1200,7 +1189,6 @@
 				2D4E01131FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
-				2DB444CB1FE9AA6100BE5534 /* loginviewcontroller.xib in Resources */,
 				2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
@@ -1299,7 +1287,6 @@
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
 				2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */,
-				2DB444CA1FE9AA6100BE5534 /* loginviewcontroller.m in Sources */,
 				2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */,
 				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
@@ -1409,7 +1396,6 @@
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				2DB444BF1FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
-				2DB444C91FE9AA6100BE5534 /* loginviewcontroller.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,

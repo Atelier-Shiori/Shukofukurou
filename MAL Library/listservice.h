@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MyAnimeList.h"
+#import "Kitsu.h"
 
 @interface listservice : NSObject
 + (int)getCurrentServiceID;
@@ -20,6 +21,7 @@
 + (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (bool)verifyAccount;
 + (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
@@ -33,5 +35,7 @@
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (NSString *)retrieveListFileName:(int)type;
++ (NSString *)retrieveListFileName:(int)type withServiceID:(int)serviceid;
 + (id)retrieveHistoryFileName;
++ (id)retrieveHistoryFileName:(int)serviceid;
 @end

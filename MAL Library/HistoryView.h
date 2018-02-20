@@ -16,4 +16,5 @@
 - (void)loadHistory:(NSNumber *)refresh;
 - (void)populateHistory:(id)history;
 - (void)clearHistory;
+- (void)clearHistory:(int)serviceid;
 @end

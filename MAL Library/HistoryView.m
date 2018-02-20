@@ -55,12 +55,17 @@
     [_historytb reloadData];
     [_historytb deselectAll:self];
 }
-- (void)clearHistory{
-    NSMutableArray *a = _historyarraycontroller.content;
-    [a removeAllObjects];
-    [Utility deleteFile:[listservice retrieveHistoryFileName] appendpath:@""];
-    [self.historytb reloadData];
-    [self.historytb deselectAll:self];
+- (void)clearHistory {
+    [self clearHistory:[listservice getCurrentServiceID]];
+}
+- (void)clearHistory:(int)serviceid {
+    [Utility deleteFile:[listservice retrieveHistoryFileName:serviceid] appendpath:@""];
+    if ([listservice getCurrentServiceID] == serviceid) {
+        NSMutableArray *a = _historyarraycontroller.content;
+        [a removeAllObjects];
+        [self.historytb reloadData];
+        [self.historytb deselectAll:self];
+    }
 }
 - (IBAction)historydoubleclick:(id)sender {
     if (_historytb.selectedRow >=0) {

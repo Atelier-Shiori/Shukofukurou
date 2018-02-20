@@ -86,7 +86,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
                                                 completion(false);
                                             }];
 }
-+ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(bool success))completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSURL *baseURL = [NSURL URLWithString:kKitsuBaseURL];
     AFOAuth2Manager *OAuth2Manager =
     [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
@@ -96,7 +96,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         [AFOAuthCredential storeCredential:credential
                             withIdentifier:kKeychainIdentifier];
         [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"hachidori-username"];
-        completionHandler(true);
+        completionHandler(@{@"success":@(true)});
     }
     failure:^(NSError *error) {
         errorHandler(error);
@@ -140,8 +140,11 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 }
 
 #pragma mark helpers
-+ (AFOAuthCredential *)getFirstAccount{
++ (AFOAuthCredential *)getFirstAccount {
     return [AFOAuthCredential retrieveCredentialWithIdentifier:kKeychainIdentifier];
+}
++ (bool)removeAccount {
+    return [AFOAuthCredential deleteCredentialWithIdentifier:kKeychainIdentifier];
 }
 
 @end

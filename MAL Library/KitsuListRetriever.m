@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
 #import "AtarashiiAPIListFormatKitsu.h"
+#import "Kitsu.h"
 
 @interface KitsuListRetriever ()
 
@@ -41,6 +42,18 @@
         default:
             errorHandler(nil);
             return;
+    }
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self retrieveKitsuLibrary:userID type:type atPage:pagenum completionHandler:completionHandler error:errorHandler];
+            }
+        }];
+        return;
+    }
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     }
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%i&filter[kind]=%@&include=%@&page[limit]=500&page[offset]=%i",userID, listtype, listtype, pagenum] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"]){

@@ -12,7 +12,6 @@
 @property (strong) NSMutableArray *tmplist;
 @property (strong) NSMutableArray *metadata;
 
-- (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveKitsuLibrary:(int)userID type:(int)type atPage:(int)pagenum completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandle;
 - (NSDictionary *)retrieveMetaDataWithID:(int)titleid;
 @end

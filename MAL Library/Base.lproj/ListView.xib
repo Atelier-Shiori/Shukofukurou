@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -80,7 +80,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="hZg-UC-ATg" name="displayPatternValue2" keyPath="arrangedObjects.episodes" previousBinding="PBr-Cs-oo1" id="dFP-kf-ts1">
                                                 <dictionary key="options">
@@ -103,7 +103,7 @@
                                         <levelIndicatorCell key="dataCell" controlSize="small" state="on" alignment="left" doubleValue="3" maxValue="3" warningValue="3" criticalValue="3" levelIndicatorStyle="continuousCapacity" id="5Gf-eL-YOC">
                                             <font key="font" metaFont="smallSystem"/>
                                         </levelIndicatorCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="hZg-UC-ATg" name="maxValue" keyPath="arrangedObjects.episodes" id="NJn-dh-iRj"/>
                                             <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.watched_episodes" previousBinding="NJn-dh-iRj" id="Kbo-VB-DmZ"/>
@@ -120,7 +120,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.score" id="u4y-CU-mQY">
                                                 <dictionary key="options">
@@ -140,7 +140,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.type" id="7Do-Vs-XWZ">
                                                 <dictionary key="options">
@@ -158,11 +158,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
-                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
+                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="B5h-dx-wLN">
-                        <rect key="frame" x="-15" y="23" width="15" height="0.0"/>
+                        <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="QGW-Oe-htQ">
@@ -263,11 +263,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="JM6-04-Bb0">
-                        <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
+                                <rect key="frame" x="0.0" y="0.0" width="565" height="252"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -407,11 +407,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="L75-cp-VFK">
-                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
+                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ejw-DP-Ces">
-                        <rect key="frame" x="-15" y="23" width="15" height="0.0"/>
+                        <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="0LX-NX-GMd">

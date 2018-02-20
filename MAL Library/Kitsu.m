@@ -18,7 +18,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     KitsuListRetriever *retriever = [KitsuListRetriever new];
-    [retriever getKitsuidfromUserName:username completionHandler:^(id responseObject) {
+    [self getKitsuidfromUserName:username completionHandler:^(id responseObject) {
         if ((NSNumber *)responseObject[@"data"][0]) {
             int userid = ((NSNumber *)responseObject[@"data"][0]).intValue;
             [retriever retrieveKitsuLibrary:userid type:type atPage:0 completionHandler:^(id responseObject) {
@@ -134,9 +134,9 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        <#code#>
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        <#code#>
+        
     }];
     
 }
@@ -177,5 +177,12 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 + (bool)removeAccount {
     return [AFOAuthCredential deleteCredentialWithIdentifier:kKeychainIdentifier];
 }
-
++ (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@",[Utility urlEncodeString:username]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+}
 @end

@@ -87,7 +87,7 @@
 - (void)clearsearchtb;
 - (bool)checkiftitleisonlist:(int)idnum type:(int)type;
 - (void)loadlist:(NSNumber *)refresh type:(int)type;
-- (void)clearlist;
+- (void)clearlist:(int)service;
 - (void)createToolbar;
 
 // Modify Popover

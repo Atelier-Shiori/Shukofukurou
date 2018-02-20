@@ -17,14 +17,6 @@
 @end
 
 @implementation KitsuListRetriever
-- (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@",[Utility urlEncodeString:username]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
-}
 - (void)retrieveKitsuLibrary:(int)userID type:(int)type atPage:(int)pagenum completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (pagenum == 0) {
         _tmplist = [NSMutableArray new];

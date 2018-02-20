@@ -37,4 +37,5 @@ typedef NS_ENUM(unsigned int, KitsuMediaType) {
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (AFOAuthCredential *)getFirstAccount;
 + (bool)removeAccount;
++ (NSString *)serviceidtoservicename:(int)serviceid;
 @end

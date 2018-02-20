@@ -18,9 +18,8 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     KitsuListRetriever *retriever = [KitsuListRetriever new];
-    [self getKitsuidfromUserName:username completionHandler:^(id responseObject) {
-        if ((NSNumber *)responseObject[@"data"][0]) {
-            int userid = ((NSNumber *)responseObject[@"data"][0]).intValue;
+    [self getKitsuidfromUserName:username completionHandler:^(int userid) {
+        if (userid > -1) {
             [retriever retrieveKitsuLibrary:userid type:type atPage:0 completionHandler:^(id responseObject) {
                 completionHandler(responseObject);
             } error:^(NSError *error) {
@@ -110,6 +109,10 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
                             withIdentifier:kKeychainIdentifier];
         [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"hachidori-username"];
         completionHandler(@{@"success":@(true)});
+        [Kitsu getKitsuidfromUserName:username completionHandler:^(int userid) {
+            [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"hachidori-userid"];
+        } error:^(NSError *error) {
+        }];
     }
     failure:^(NSError *error) {
         errorHandler(error);
@@ -132,25 +135,113 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
+
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
+    
+    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        errorHandler(error);
+    }];
+}
++ (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    
+    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuManga], @"attributes" : [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] } } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
     }];
     
 }
-+ (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
 + (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    // Note: Title id is entry id
+    // Note: Tags field is ignored.
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
     
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    
+    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
 }
 + (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    // Note: Title id is entry id
+    // Note: Tags field is ignored.
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    
+    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"attributes" :  [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
     
 }
 + (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    // Note: Title id is entry id
+    // Note; Type field is ignored
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
     
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    [manager DELETE:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
 }
 + (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     
@@ -177,12 +268,41 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 + (bool)removeAccount {
     return [AFOAuthCredential deleteCredentialWithIdentifier:kKeychainIdentifier];
 }
-+ (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (long)getCurrentUserID {
+    return [NSUserDefaults.standardUserDefaults integerForKey:@"hachidori-userid"];
+}
++ (NSDictionary *)generaterelationshipdictionary:(int)titleid withType:(int)mediatype {
+    //Create relationship JSON for a new library entry
+    NSDictionary * userd =  @{@"data" : @{@"id" : @([self getCurrentUserID]), @"type" : @"users"}};
+    NSDictionary * mediad = @{@"data" : @{@"id" : @(titleid), @"type" : mediatype == KitsuAnime ? @"anime" : @"manga"}};
+    return @{@"user" : userd, @"media" : mediad};
+}
++ (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@",[Utility urlEncodeString:username]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
+        if (responseObject[@"data"][0]) {
+            completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);
+        }
+        else {
+            completionHandler(-1);
+        }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);
     }];
+}
++ (NSDictionary *)generateAnimeAttributes:(int)episode withStatus:(NSString *)status withScore:(int)score {
+    NSMutableDictionary * attributes = [NSMutableDictionary new];
+    attributes[@"status"] = status;
+    attributes[@"progress"] = @(episode);
+    attributes[@"ratingTwenty"] = @(score);
+    return attributes;
+}
++ (NSDictionary *)generateMangaAttributes:(int)chapter withVolumes:(int)volume withStatus:(NSString *)status withScore:(int)score {
+    NSMutableDictionary * attributes = [NSMutableDictionary new];
+    attributes[@"status"] = status;
+    attributes[@"progress"] = @(chapter);
+    attributes[@"volumesOwned"] = @(volume);
+    attributes[@"ratingTwenty"] = @(score);
+    return attributes;
 }
 @end

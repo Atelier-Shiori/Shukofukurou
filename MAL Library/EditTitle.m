@@ -87,7 +87,16 @@
         else {
             [_minieditpopovernumformat setMaximum:nil];
         }
-        _selectededitid = ((NSNumber *)d[@"id"]).intValue;
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _selectededitid = ((NSNumber *)d[@"id"]).intValue;
+                break;
+            case 2:
+                _selectededitid = ((NSNumber *)d[@"entryid"]).intValue;
+                break;
+            default:
+                break;
+        }
         [_minieditpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         _selectedtype = type;
     }
@@ -128,7 +137,16 @@
         [_mangapopoverstatus selectItemWithTitle:d[@"read_status"]];
         [_mangapopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
         _mangapopoverstatustext.stringValue = @"";
-        _selectededitid = ((NSNumber *)d[@"id"]).intValue;
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _selectededitid = ((NSNumber *)d[@"id"]).intValue;
+                break;
+            case 2:
+                _selectededitid = ((NSNumber *)d[@"entryid"]).intValue;
+                break;
+            default:
+                break;
+        }
         [_minieditpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         _selectedtype = type;
     }

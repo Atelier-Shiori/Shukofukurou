@@ -139,7 +139,16 @@
     if (self.currentlist == 0) {
         if (self.animelistarraycontroller.selectedObjects.count > 0) {
             d = self.animelistarraycontroller.selectedObjects[0];
-            selid = d[@"id"];
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    selid = d[@"id"];
+                    break;
+                case 2:
+                    selid = d[@"entryid"];
+                    break;
+                default:
+                    break;
+            }
         }
         else {
             NSLog(@"Invalid Selection, aborting delete.");
@@ -149,7 +158,16 @@
     else {
         if (self.mangalistarraycontroller.selectedObjects.count > 0) {
             d = self.mangalistarraycontroller.selectedObjects[0];
-            selid = d[@"id"];
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    selid = d[@"id"];
+                    break;
+                case 2:
+                    selid = d[@"entryid"];
+                    break;
+                default:
+                    break;
+            }
         }
         else {
             NSLog(@"Invalid Selection, aborting delete.");

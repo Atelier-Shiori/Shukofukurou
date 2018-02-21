@@ -56,6 +56,7 @@
             break;
         }
         case 2: {
+            [Kitsu searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {

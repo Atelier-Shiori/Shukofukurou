@@ -521,8 +521,13 @@
             indexoffset = -1;
         }
         [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
-        [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
-        [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
+        if ([listservice getCurrentServiceID] == 1) {
+            [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
+        }
+        else {
+            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2+indexoffset];
+        }
     }
     else if ([identifier isEqualToString:@"mangasearch"]){
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
@@ -533,8 +538,13 @@
                 indexoffset = -1;
             }
             [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
+            if ([listservice getCurrentServiceID] == 1) {
+                [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
+            }
+            else {
+                [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2+indexoffset];
+            }
         }
     }
     else if ([identifier isEqualToString:@"titleinfo"]){

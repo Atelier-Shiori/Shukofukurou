@@ -34,6 +34,7 @@
         self.genres = @[];
         self.manga_adaptations = @[];
         self.prequels = @[];
+        self.sequels = @[];
         self.side_stories = @[];
         self.parent_story = @[];
         self.character_anime = @[];

@@ -169,7 +169,6 @@
         }
     }
     aobject.mappings = mappings;
-    aobject.sequels = @[];
     return aobject.NSDictionaryRepresentation;
 }
 
@@ -228,7 +227,7 @@
         aobject.title = d[@"attributes"][@"canonicalTitle"];
         aobject.episodes = d[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"episodeCount"]).intValue : 0;
         aobject.type = d[@"attributes"][@"subtype"];
-        aobject.image_url = d[@"attributes"][@"medium"] && d[@"attributes"][@"posterimage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterimage"][@"medium"] : @"";
+        aobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
         NSString *tmpstatus = d[@"attributes"][@"status"];
         if ([tmpstatus isEqualToString:@"finished"]) {
             aobject.status = @"finished airing";

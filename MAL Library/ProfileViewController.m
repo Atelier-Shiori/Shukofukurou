@@ -45,7 +45,7 @@
 - (void)populateProfile:(id)responseobject withUsername:(NSString *)username {
     _usernamelabel.stringValue = [username lowercaseString];
     if (responseobject[@"avatar_url"]) {
-        _profileimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[responseobject[@"avatar_url"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""]stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",responseobject[@"avatar_url"]]]];
+        _profileimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[responseobject[@"avatar_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""]stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",responseobject[@"avatar_url"]]]];
     }
     else {
         _profileimage.image = [NSImage new];

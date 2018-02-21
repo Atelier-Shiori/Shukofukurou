@@ -35,7 +35,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     
 }
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility httpmanager];
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
     
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/?filter[text]=%@", type == KitsuAnime ? @"anime" : @"manga", [Utility urlEncodeString:searchterm]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (type == KitsuAnime) {
@@ -52,7 +52,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     
 }
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility httpmanager];
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
 
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/%i?include=categories,mappings", type == KitsuAnime ? @"anime" : @"manga", titleid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (type == KitsuAnime) {
@@ -135,7 +135,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-
+    manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
     [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -158,7 +158,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    
+    manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
     [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuManga], @"attributes" : [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] } } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -184,7 +184,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    
+    manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
     [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -209,7 +209,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    
+    manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
     [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"attributes" :  [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -235,7 +235,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    
+    manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     [manager DELETE:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);

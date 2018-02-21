@@ -13,6 +13,7 @@
 #import "ReviewView.h"
 #import "RecommendedTitleView.h"
 #import "StreamPopup.h"
+#import "listservice.h"
 
 @interface InfoView ()
 @property (strong) IBOutlet NSTextField *infoviewtitle;
@@ -126,7 +127,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"episodes"] == nil){
@@ -270,7 +271,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://myanimelist.cdn-dena.com/images/" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"chapters"] == nil){
@@ -310,12 +311,29 @@
 }
 
 - (IBAction)viewonmal:(id)sender {
-    if (_type == AnimeType){
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%i",_selectedid]]];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (_type == AnimeType){
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%i",_selectedid]]];
+            }
+            else {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%i",_selectedid]]];
+            }
+            break;
+        }
+        case 2: {
+            if (_type == AnimeType){
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/anime/%i",_selectedid]]];
+            }
+            else {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/manga/%i",_selectedid]]];
+            }
+            break;
+        }
+        default:
+            break;
     }
-    else {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%i",_selectedid]]];
-    }
+
 }
 
 - (IBAction)viewreviews:(id)sender {

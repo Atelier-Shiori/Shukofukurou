@@ -69,6 +69,11 @@
     #endif
     [MALLibraryAppStoreMigrate checkPreRelease];
     #endif
+    __weak AppDelegate *weakself = self;
+    _servicemenucontrol.actionblock = ^(int selected) {
+        [weakself refreshUIServiceChange:selected];
+        [weakself.mainwindowcontroller changeservice];
+    };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self refreshUIServiceChange:[listservice getCurrentServiceID]];
     // Load main window
@@ -82,11 +87,6 @@
      forEventClass:kInternetEventClass
      andEventID:kAEGetURL];
     [StreamDataRetriever retrieveStreamData];
-    __weak AppDelegate *weakself = self;
-    _servicemenucontrol.actionblock = ^(int selected) {
-        [weakself refreshUIServiceChange:selected];
-        [weakself.mainwindowcontroller changeservice];
-    };
 }
 
 

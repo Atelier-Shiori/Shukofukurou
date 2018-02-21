@@ -84,6 +84,7 @@
             break;
         }
         case 2: {
+            [Kitsu retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -357,7 +358,7 @@
     return @"";
 }
 + (id)retrieveHistoryFileName {
-    return [self retrieveListFileName:[self getCurrentServiceID]];
+    return [self retrieveHistoryFileName:[self getCurrentServiceID]];
 }
 + (id)retrieveHistoryFileName:(int)serviceid {
     switch (serviceid) {

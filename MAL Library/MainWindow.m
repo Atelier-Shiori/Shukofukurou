@@ -183,11 +183,27 @@
 
     //Generate Items to Share
     NSArray *shareItems;
-    if (type == AnimeType){
-        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%@", d[@"id"]]]];
-    }
-    else {
-        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%@", d[@"id"]]]];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (type == AnimeType){
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%@", d[@"id"]]]];
+            }
+            else {
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/manga/%@", d[@"id"]]]];
+            }
+            break;
+        }
+        case 2: {
+            if (type == AnimeType){
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on Kitsu", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/anime/%@", d[@"id"]]]];
+            }
+            else {
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on Kitsu", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/manga/%@", d[@"id"]]]];
+            }
+            break;
+        }
+        default:
+            break;
     }
     //Get Share Picker
     NSSharingServicePicker *sharePicker = [[NSSharingServicePicker alloc] initWithItems:shareItems];
@@ -713,12 +729,18 @@
     [a removeAllObjects];
     [_listview.mangalisttb reloadData];
     [_listview.mangalisttb deselectAll:self];
+    [_historyview clearHistory];
+    _infoview.selectedid = 0;
+    _noinfoview.hidden = NO;
+    _progressindicator.hidden = YES;
     [self loadmainview];
     [self refreshloginlabel];
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
     [self loadlist:shouldrefresh type:0];
     [self loadlist:shouldrefresh type:1];
-    [self loadlist:shouldrefresh type:2];
+    if ([listservice getCurrentServiceID] == 1) {
+        [self loadlist:shouldrefresh type:2];
+    }
     NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
         [self stopTimer];

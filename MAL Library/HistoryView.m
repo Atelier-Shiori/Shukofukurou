@@ -56,7 +56,10 @@
     [_historytb deselectAll:self];
 }
 - (void)clearHistory {
-    [self clearHistory:[listservice getCurrentServiceID]];
+    NSMutableArray *a = _historyarraycontroller.content;
+    [a removeAllObjects];
+    [self.historytb reloadData];
+    [self.historytb deselectAll:self];
 }
 - (void)clearHistory:(int)serviceid {
     [Utility deleteFile:[listservice retrieveHistoryFileName:serviceid] appendpath:@""];

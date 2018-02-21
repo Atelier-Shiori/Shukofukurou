@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="messagesmenuitem" destination="60c-At-yy4" id="icl-wA-8qr"/>
                 <outlet property="servicemenucontrol" destination="NCk-PM-EVr" id="J8r-TZ-Al1"/>
             </connections>
         </customObject>
@@ -375,21 +376,18 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importAniDBList:" target="mhI-ho-EeA" id="Kd3-8J-Zmn"/>
-                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="CFB-Mm-T8S"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Import from Kitsu…" id="DZO-y4-ZC1">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importKitsu:" target="mhI-ho-EeA" id="0Fn-E6-y8d"/>
-                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="vz3-QT-xPc"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Import from AniList…" id="6SO-xG-9tj">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importAnilist:" target="mhI-ho-EeA" id="g9j-Iu-nP8"/>
-                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="cn4-sy-hh3"/>
                                             </connections>
                                         </menuItem>
                                     </items>

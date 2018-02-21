@@ -33,7 +33,7 @@
     // This class will test retrevial of the Anime List and Manga List
     //Expectation
     XCTestExpectation *expectation = [self expectationWithDescription:@"List Loading"];
-    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id response){
+    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALAnime completion:^(id response){
         NSArray *animelist = response[@"anime"];
         int animetotal = [self checkListTotals:animelist type:0];
         if (animetotal == animelist.count){
@@ -62,7 +62,7 @@
 
 - (void)testMangaListLoading{
     XCTestExpectation *expectation = [self expectationWithDescription:@"List Loading"];
-    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id response){
+    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALManga completion:^(id response){
         NSArray *mangalist = response[@"manga"];
         
         int mangatotal = [self checkListTotals:mangalist type:1];
@@ -217,7 +217,7 @@
 - (void)testAnimeTitleModify{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *title = @"Love Live! Sunshine!!";
-    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
+    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALAnime completion:^(id responseData){
         NSArray * a = responseData[@"anime"];
         __block NSNumber *listid;
         bool match = false;
@@ -273,7 +273,7 @@
 - (void)testAnimeTitleRemove{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Deletion"];
     __block NSString *title = @"Love Live! Sunshine!!";
-    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseData){
+    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALAnime completion:^(id responseData){
         NSArray * a = responseData[@"anime"];
         __block NSNumber *listid;
         bool match = false;
@@ -383,7 +383,7 @@
 - (void)testMangaTitleModify{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Add"];
     __block NSString *title = @"Loveless";
-    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
+    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALManga completion:^(id responseData){
         NSArray * a = responseData[@"manga"];
         __block NSNumber *listid;
         bool match = false;
@@ -440,7 +440,7 @@
 - (void)testMangaTitleRemove{
     XCTestExpectation *expectation = [self expectationWithDescription:@"Deletion"];
     __block NSString *title = @"Loveless";
-    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseData){
+    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALManga completion:^(id responseData){
         NSArray * a = responseData[@"manga"];
         __block NSNumber *listid;
         bool match = false;
@@ -612,7 +612,7 @@
         return;
     }
     XCTestExpectation *expectation = [self expectationWithDescription:@"History"];
-    [listservice retriveUpdateHistory:[Keychain getusername] completion:^(id responseobject){
+    [listservice retriveUpdateHistory:[listservice getCurrentServiceUsername] completion:^(id responseobject){
         if ([responseobject isKindOfClass:[NSArray class]]) {
             NSLog(@"History object count: %li", [(NSArray *)responseobject count]);
             XCTAssert(YES, @"No errors.");

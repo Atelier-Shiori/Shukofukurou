@@ -7,6 +7,7 @@
 //
 
 #import "listservice.h"
+#import "Keychain.h"
 
 @implementation listservice
 /* Note: Current Service type will be specified as the following:
@@ -23,6 +24,7 @@
             break;
         }
         case 2: {
+            [Kitsu retrieveList:username listType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -369,6 +371,24 @@
         case 3: {
             break;
         }
+    }
+    return @"";
+}
++ (bool)checkAccountForCurrentService {
+    int service = [listservice getCurrentServiceID];
+    if ((![Keychain checkaccount] && service == 1) || (![Kitsu getFirstAccount] && service == 2)) {
+        return false;
+    }
+    return true;
+}
++ (NSString *)getCurrentServiceUsername {
+    switch ([self getCurrentServiceID]) {
+        case 1:
+            return [Keychain getusername];
+        case 2:
+            return [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
+        default:
+            break;
     }
     return @"";
 }

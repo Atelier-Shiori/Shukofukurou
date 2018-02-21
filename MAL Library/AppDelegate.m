@@ -18,6 +18,7 @@
 #import "StreamDataRetriever.h"
 #import "ProfileWindowController.h"
 #import "servicemenucontroller.h"
+#import "listservice.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -68,6 +69,8 @@
     #endif
     [MALLibraryAppStoreMigrate checkPreRelease];
     #endif
+    [_servicemenucontrol setmenuitemvaluefromdefaults];
+    [self refreshUIServiceChange:[listservice getCurrentServiceID]];
     // Load main window
     _mainwindowcontroller = [MainWindow new];
     [_mainwindowcontroller setDelegate:self];
@@ -79,9 +82,10 @@
      forEventClass:kInternetEventClass
      andEventID:kAEGetURL];
     [StreamDataRetriever retrieveStreamData];
-    [_servicemenucontrol setmenuitemvaluefromdefaults];
+    __weak AppDelegate *weakself = self;
     _servicemenucontrol.actionblock = ^(int selected) {
-        
+        [weakself refreshUIServiceChange:selected];
+        [weakself.mainwindowcontroller changeservice];
     };
 }
 
@@ -112,7 +116,7 @@
         [self.preferencesWindowController showWindow:nil];
 }
 - (void)showloginnotice {
-    if (![Keychain checkaccount]) {
+    if (![listservice checkAccountForCurrentService]) {
         // First time prompt
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
@@ -191,29 +195,44 @@
 }
 
 - (IBAction)showmessagewindow:(id)sender {
-    if ([Keychain checkaccount]) {
-        if (!_messageswindow){
-            _messageswindow = [messageswindow new];
+    if ([listservice getCurrentServiceID] == 1) {
+        if ([Keychain checkaccount]) {
+            if (!_messageswindow){
+                _messageswindow = [messageswindow new];
+            }
+            [_messageswindow.window makeKeyAndOrderFront:self];
+            [_messageswindow loadmessagelist:1 refresh:false inital:true];
         }
-        [_messageswindow.window makeKeyAndOrderFront:self];
-        [_messageswindow loadmessagelist:1 refresh:false inital:true];
-    }
-    else {
-        [self showloginnotice];
+        else {
+            [self showloginnotice];
+        }
     }
 }
 
 - (IBAction)viewListStats:(id)sender {
-    if ([Keychain checkaccount]) {
-        if (!_liststatswindow){
-            _liststatswindow = [ListStatistics new];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (![Keychain checkaccount]) {
+                [self showloginnotice];
+                return;
+            }
+            break;
         }
-        [_liststatswindow.window makeKeyAndOrderFront:self];
-        [_liststatswindow populateValues];
+        case 2: {
+            if (![Kitsu getFirstAccount]) {
+                [self showloginnotice];
+                return;
+            }
+            break;
+        }
+        default:
+            return;
     }
-    else {
-        [self showloginnotice];
+    if (!_liststatswindow){
+        _liststatswindow = [ListStatistics new];
     }
+    [_liststatswindow.window makeKeyAndOrderFront:self];
+    [_liststatswindow populateValues];
 }
 
 
@@ -264,5 +283,17 @@
 }
 - (IBAction)reportbugs:(id)sender {
     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/MAL-Library/issues"]];
+}
+
+- (void)refreshUIServiceChange:(int)selected {
+    if (selected != 1) {
+        if (_messageswindow) {
+            [_messageswindow cleartableview];
+        }
+        _messagesmenuitem.hidden = true;
+    }
+    else {
+        _messagesmenuitem.hidden = false;
+    }
 }
 @end

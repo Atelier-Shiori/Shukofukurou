@@ -83,7 +83,7 @@
     }];
 }
 - (NSDictionary *)retrieveMetaDataWithID:(int)titleid {
-    NSArray *filtered = [_metadata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id==[cd] %i", titleid]];
+    NSArray *filtered = [_metadata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", @(titleid).stringValue]];
     if (filtered.count > 0) {
         return filtered[0];
     }

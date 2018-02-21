@@ -46,6 +46,7 @@
 
 @interface AtarashiiAnimeListObject : NSObject
 @property int titleid;
+@property (strong) NSString *title;
 @property int entryid;
 @property int episodes;
 @property int episode_length;
@@ -90,6 +91,7 @@
 
 @interface AtarashiiMangaListObject : NSObject
 @property int titleid;
+@property (strong) NSString *title;
 @property int entryid;
 @property int chapters;
 @property int volumes;

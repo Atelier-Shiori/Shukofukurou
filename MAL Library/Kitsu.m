@@ -107,10 +107,10 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     [OAuth2Manager authenticateUsingOAuthWithURLString:kKitsuTokenURL parameters:@{@"grant_type":@"password", @"username":username, @"password":password} success:^(AFOAuthCredential *credential) {
         [AFOAuthCredential storeCredential:credential
                             withIdentifier:kKeychainIdentifier];
-        [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"hachidori-username"];
+        [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"kitsu-username"];
         completionHandler(@{@"success":@(true)});
         [Kitsu getKitsuidfromUserName:username completionHandler:^(int userid) {
-            [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"hachidori-userid"];
+            [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"kitsu-userid"];
         } error:^(NSError *error) {
         }];
     }
@@ -269,7 +269,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     return [AFOAuthCredential deleteCredentialWithIdentifier:kKeychainIdentifier];
 }
 + (long)getCurrentUserID {
-    return [NSUserDefaults.standardUserDefaults integerForKey:@"hachidori-userid"];
+    return [NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"];
 }
 + (NSDictionary *)generaterelationshipdictionary:(int)titleid withType:(int)mediatype {
     //Create relationship JSON for a new library entry

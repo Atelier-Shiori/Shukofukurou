@@ -211,7 +211,7 @@
 }
 
 - (void)fireTimer{
-    if ([Keychain checkaccount]){
+    if ([listservice checkAccountForCurrentService]) {
         [self loadlist:@(true) type:0];
         [self loadlist:@(true) type:1];
         [self loadlist:@(true) type:2];
@@ -247,8 +247,8 @@
 }
 
 - (void)refreshloginlabel{
-    if ([Keychain checkaccount]){
-        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@",[Keychain getusername]];
+    if ([listservice checkAccountForCurrentService]) {
+        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@",[listservice getCurrentServiceUsername]];
     }
     else {
         _loggedinuser.stringValue = @"Not logged in.";
@@ -366,7 +366,7 @@
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     NSPoint origin = NSMakePoint(0, 0);
         if ([identifier isEqualToString:@"animelist"]){
-            if ([Keychain checkaccount]){
+            if ([listservice checkAccountForCurrentService]) {
                 [self replaceMainViewWithView:_listview.view];
                 [_listview loadList:0];
                 _listview.animelistview.frame = mainviewframe;
@@ -378,7 +378,7 @@
         }
         else if ([identifier isEqualToString:@"mangalist"]){
             if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
-                if ([Keychain checkaccount]){
+                if ([listservice checkAccountForCurrentService]) {
                     [self replaceMainViewWithView:_listview.view];
                     [_listview loadList:1];
                     _listview.mangalistview.frame = mainviewframe;
@@ -393,7 +393,7 @@
             }
         }
         else if ([identifier isEqualToString:@"history"]){
-            if ([Keychain checkaccount]){
+            if ([listservice checkAccountForCurrentService]) {
                 [self replaceMainViewWithView:_historyview.view];
             }
             else{
@@ -467,9 +467,8 @@
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     int indexoffset = 0;
-    
     if ([identifier isEqualToString:@"animelist"]){
-        if ([Keychain checkaccount]){
+        if ([listservice checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
             [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
             [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
@@ -481,7 +480,7 @@
     }
     else if ([identifier isEqualToString:@"mangalist"]){
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
-            if ([Keychain checkaccount]){
+            if ([listservice checkAccountForCurrentService]) {
                 [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
                 [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
                 [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
@@ -493,13 +492,13 @@
         }
     }
     else if ([identifier isEqualToString:@"history"]){
-        if ([Keychain checkaccount]){
+        if ([listservice checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:0];
         }
         
     }
     else if ([identifier isEqualToString:@"search"]){
-        if ([Keychain checkaccount]){
+        if ([listservice checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
         }
         else {
@@ -511,7 +510,7 @@
     }
     else if ([identifier isEqualToString:@"mangasearch"]){
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
-            if ([Keychain checkaccount]){
+            if ([listservice checkAccountForCurrentService]) {
                 [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
             }
             else {
@@ -524,7 +523,7 @@
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         if (_infoview.selectedid > 0){
-            if ([Keychain checkaccount]){
+            if ([listservice checkAccountForCurrentService]) {
                 if ([self checkiftitleisonlist:_infoview.selectedid type:_infoview.type]){
                      [_toolbar insertItemWithItemIdentifier:@"editInfo" atIndex:0];
                 }
@@ -547,7 +546,7 @@
         }
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        if ([Keychain checkaccount]){
+        if ([listservice checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"AddTitleSeason" atIndex:0+indexoffset];
         }
         else {
@@ -561,7 +560,7 @@
         }
     }
     else if ([identifier isEqualToString:@"airing"]){
-        if ([Keychain checkaccount]){
+        if ([listservice checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"AddTitleAiring" atIndex:0+indexoffset];
         }
         else {
@@ -633,8 +632,8 @@
         [_airingview loadAiring:@(true)];
     }
 }
-- (void)loadlist:(NSNumber *)refresh type:(int)type{
-    if ([Keychain checkaccount]){
+- (void)loadlist:(NSNumber *)refresh type:(int)type {
+    if ([listservice checkAccountForCurrentService]) {
         id list;
         bool refreshlist = refresh.boolValue;
         bool exists = false;
@@ -648,7 +647,7 @@
                     return;
                 }
                 else if (!exists || refreshlist){
-                    [listservice retrieveList:[Keychain getusername] listType:MALAnime completion:^(id responseObject){
+                    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALAnime completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:0] appendpath:@"" replace:TRUE] type:0];
                         [self refreshStatistics];
                     }error:^(NSError *error){
@@ -665,7 +664,7 @@
                     return;
                 }
                 else if (!exists || refreshlist){
-                    [listservice retrieveList:[Keychain getusername] listType:MALManga completion:^(id responseObject){
+                    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALManga completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:1] appendpath:@"" replace:TRUE] type:1];
                         [self refreshStatistics];
                     }error:^(NSError *error){
@@ -703,6 +702,28 @@
         [_listview.mangalisttb deselectAll:self];
     }
 
+}
+- (void)changeservice {
+    //Clears List and refreshes UI for service change
+    NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];
+    [a removeAllObjects];
+    [_listview.animelisttb reloadData];
+    [_listview.animelisttb deselectAll:self];
+    a = [_listview.mangalistarraycontroller mutableArrayValueForKey:@"content"];
+    [a removeAllObjects];
+    [_listview.mangalisttb reloadData];
+    [_listview.mangalisttb deselectAll:self];
+    [self loadmainview];
+    [self refreshloginlabel];
+    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
+    [self loadlist:shouldrefresh type:0];
+    [self loadlist:shouldrefresh type:1];
+    [self loadlist:shouldrefresh type:2];
+    NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
+    if (autorefreshlist.boolValue){
+        [self stopTimer];
+        [self startTimer];
+    }
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {

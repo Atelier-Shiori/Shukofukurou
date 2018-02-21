@@ -71,7 +71,7 @@
         [_kitsusavebut setEnabled: NO];
         [_kitsuloggedinview setHidden:NO];
         [_kitsuloginview setHidden:YES];
-        _kitsuloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"hachidori-username"];
+        _kitsuloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
     }
     else {
         //Disable Clearbut

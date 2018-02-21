@@ -21,10 +21,11 @@
                 //Populate fields
                 AtarashiiAnimeListObject *lentry = [AtarashiiAnimeListObject new];
                 lentry.titleid = ((NSNumber *)metadata[@"id"]).intValue;
-                lentry.episodes = ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue;
-                lentry.episode_length = ((NSNumber *)metadata[@"attributes"][@"episodeLength"]).intValue;
+                lentry.title = metadata[@"attributes"][@"canonicalTitle"];
+                lentry.episodes = metadata[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue : 0;
+                lentry.episode_length = metadata[@"attributes"][@"episodeLength"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeLength"]).intValue : 0;
                 if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
-                    lentry.image_url = metadata[@"attributes"][@"posterimage"][@"medium"];
+                    lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
                 }
                 lentry.type = metadata[@"attributes"][@"showType"];
                 NSString *tmpstatus = metadata[@"attributes"][@"status"];
@@ -75,6 +76,7 @@
                 //Populate fields
                 AtarashiiMangaListObject *lentry = [AtarashiiMangaListObject new];
                 lentry.titleid = ((NSNumber *)metadata[@"id"]).intValue;
+                lentry.title = metadata[@"attributes"][@"canonicalTitle"];
                 lentry.chapters = ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue;
                 lentry.volumes = ((NSNumber *)metadata[@"attributes"][@"volumeCount"]).intValue;
                 if (metadata[@"attributes"][@"posterImage"][@"medium"]) {

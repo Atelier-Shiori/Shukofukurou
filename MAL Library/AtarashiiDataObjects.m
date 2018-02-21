@@ -86,6 +86,7 @@
 - (id)init {
     if ([super init]) {
         self.titleid = 0;
+        self.title = @"";
         self.entryid = 0;
         self.episodes = 0;
         self.episode_length = 0;
@@ -106,7 +107,7 @@
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{ @"id" : @(_titleid), @"entryid" : @(_entryid), @"episodes" : @(_episodes), @"duration" : @(_episode_length), @"image_url": _image_url, @"type" : _type, @"status" : _status, @"watched_status" : _watched_status, @"watched_episodes" : @(_watched_episodes), @"score" : @(_score), @"score_type" : @(_score_type), @"watching_start" : _watching_start, @"watching_end" : _watching_end, @"rewatching" : @(_rewatching), @"rewatch_count" : @(_rewatch_count), @"personal_comments" : _personal_comments, @"private": @(_private_entry)};
+    return @{ @"id" : @(_titleid), @"entryid" : @(_entryid), @"title" : _title, @"episodes" : @(_episodes), @"duration" : @(_episode_length), @"image_url": _image_url, @"type" : _type, @"status" : _status, @"watched_status" : _watched_status, @"watched_episodes" : @(_watched_episodes), @"score" : @(_score), @"score_type" : @(_score_type), @"watching_start" : _watching_start, @"watching_end" : _watching_end, @"rewatching" : @(_rewatching), @"rewatch_count" : @(_rewatch_count), @"personal_comments" : _personal_comments, @"private": @(_private_entry)};
 }
 @end
 
@@ -114,6 +115,7 @@
 - (id)init {
     if ([super init]) {
         self.titleid = 0;
+        self.title = @"";
         self.entryid = 0;
         self.chapters = 0;
         self.volumes = 0;
@@ -135,7 +137,7 @@
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{ @"id" : @(_titleid), @"entryid" : @(_entryid), @"chapters" : @(_chapters), @"volumes" : @(_volumes), @"image_url": _image_url, @"type" : _type, @"status" : _status, @"read_status" : _read_status, @"chapters_read" : @(_chapters_read), @"volumes_read" : @(_volumes_read), @"score" : @(_score), @"score_type" : @(_score_type), @"watching_start" : _reading_start, @"reading_end" : _reading_end, @"rereading" : @(_rereading), @"reread_count" : @(_reread_count), @"personal_comments" : _personal_comments, @"private": @(_private_entry)};
+    return @{ @"id" : @(_titleid), @"entryid" : @(_entryid), @"title" : _title, @"chapters" : @(_chapters), @"volumes" : @(_volumes), @"image_url": _image_url, @"type" : _type, @"status" : _status, @"read_status" : _read_status, @"chapters_read" : @(_chapters_read), @"volumes_read" : @(_volumes_read), @"score" : @(_score), @"score_type" : @(_score_type), @"watching_start" : _reading_start, @"reading_end" : _reading_end, @"rereading" : @(_rereading), @"reread_count" : @(_reread_count), @"personal_comments" : _personal_comments, @"private": @(_private_entry)};
 }
 @end
 

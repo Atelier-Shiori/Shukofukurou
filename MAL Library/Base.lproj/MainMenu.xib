@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="messagesmenuitem" destination="PzU-Ui-J4l" id="6kL-cJ-B1O"/>
                 <outlet property="servicemenucontrol" destination="SPk-NX-uMK" id="1AP-bN-KqA"/>
             </connections>
         </customObject>
@@ -387,33 +388,18 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importAniDBList:" target="aOt-b9-3aH" id="ZiK-48-aM2"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="twH-fq-EkU">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Import from Kitsu…" id="Yfh-DT-TKI">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importKitsu:" target="aOt-b9-3aH" id="EY5-ui-ybI"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="h1K-MT-Yt4">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Import from AniList…" id="LhM-Wm-9AK">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importAnilist:" target="aOt-b9-3aH" id="miV-NE-FIo"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="hO6-Qj-mu5">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
                                             </connections>
                                         </menuItem>
                                     </items>

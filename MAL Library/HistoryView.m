@@ -33,7 +33,7 @@
         return;
     }
     else if (!exists || refreshlist) {
-        [listservice retriveUpdateHistory:[Keychain getusername] completion:^(id response){
+        [listservice retriveUpdateHistory:[listservice getCurrentServiceUsername] completion:^(id response){
             [self populateHistory:[Utility saveJSON:response withFilename:[listservice retrieveHistoryFileName] appendpath:@"" replace:TRUE]];
         }error:^(NSError *error){
             NSLog(@"%@", error.userInfo);

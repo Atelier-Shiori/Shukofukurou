@@ -260,6 +260,12 @@
 		91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
 		91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
 		91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		F8B5AA912044813400132C51 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
+		F8B5AA922044813400132C51 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
+		F8B5AA952044888800132C51 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
+		F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
+		F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
+		F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -550,6 +556,12 @@
 		91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageswindow.m; sourceTree = "<group>"; };
 		91DAFC611EAE6FA20037A6F2 /* messageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messageview.h; sourceTree = "<group>"; };
 		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
+		F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
+		F8B5AA902044813400132C51 /* RatingTwentyConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
+		F8B5AA932044888800132C51 /* MyListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListScoreFormatter.h; sourceTree = "<group>"; };
+		F8B5AA942044888800132C51 /* MyListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListScoreFormatter.m; sourceTree = "<group>"; };
+		F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherUserListScoreFormatter.h; sourceTree = "<group>"; };
+		F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherUserListScoreFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -829,6 +841,12 @@
 				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
 				2D7877741F87E44000AD40F1 /* MyListView.h */,
 				2D7877751F87E44000AD40F1 /* MyListView.m */,
+				F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */,
+				F8B5AA902044813400132C51 /* RatingTwentyConvert.m */,
+				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
+				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
+				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
+				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
 				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
 				916502C01E8C606E00565D30 /* NotLoggedIn.m */,
 				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
@@ -1283,6 +1301,7 @@
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
 				2D72F9281FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
+				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
@@ -1302,8 +1321,10 @@
 				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
+				F8B5AA922044813400132C51 /* RatingTwentyConvert.m in Sources */,
 				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
+				F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
 				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
@@ -1348,6 +1369,7 @@
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
 				91D094C21E983095009454F8 /* HistoryView.m in Sources */,
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
+				F8B5AA952044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
@@ -1373,6 +1395,7 @@
 				91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */,
 				2D7877761F87E44000AD40F1 /* MyListView.m in Sources */,
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
+				F8B5AA912044813400132C51 /* RatingTwentyConvert.m in Sources */,
 				91822A561EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
 				9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */,
@@ -1386,6 +1409,7 @@
 				2DB444C41FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
 				2DB444BB1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
+				F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
 				2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,

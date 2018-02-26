@@ -23,6 +23,7 @@
 @property (strong) IBOutlet NSVisualEffectView *filterbarview;
 @property (strong) IBOutlet NSView *animelistview;
 @property (strong) IBOutlet NSVisualEffectView *filterbarview2;
+@property (strong) IBOutlet NSTableColumn *animescorecol;
 
 // Manga List View
 @property (strong) IBOutlet NSArrayController *mangalistarraycontroller;
@@ -33,6 +34,7 @@
 @property (strong) IBOutlet NSButton *mangadroppedfilter;
 @property (strong) IBOutlet NSButton *plantoreadfilter;
 @property (strong) IBOutlet NSView *mangalistview;
+@property (strong) IBOutlet NSTableColumn *mangascorecol;
 
 // Filter Save
 @property (strong) NSString * animelisttitlefilterstring;

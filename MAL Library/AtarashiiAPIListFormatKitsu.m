@@ -77,7 +77,7 @@
                 AtarashiiMangaListObject *lentry = [AtarashiiMangaListObject new];
                 lentry.titleid = ((NSNumber *)metadata[@"id"]).intValue;
                 lentry.title = metadata[@"attributes"][@"canonicalTitle"];
-                lentry.chapters = ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue;
+                lentry.chapters = ((NSNumber *)metadata[@"attributes"][@"chapterCount"]).intValue;
                 lentry.volumes = ((NSNumber *)metadata[@"attributes"][@"volumeCount"]).intValue;
                 if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
                     lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
@@ -185,7 +185,7 @@
     mobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : @[attributes[@"titles"][@"en"]] , @"japanese" : @[attributes[@"titles"][@"ja_jp"]] };
     mobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     mobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
-    mobject.image_url = attributes[@"posterimage"][@"medium"] && attributes[@"posterimage"][@"medium"] != [NSNull null] ? attributes[@"posterimage"][@"medium"] : @"";
+    mobject.image_url = attributes[@"posterImage"][@"medium"] && attributes[@"posterImage"][@"medium"] != [NSNull null] ? attributes[@"posterImage"][@"medium"] : @"";
     mobject.type = attributes[@"subtype"];
     mobject.chapters = attributes[@"chapterCount"] != [NSNull null] ? ((NSNumber *)attributes[@"chapterCount"]).intValue : 0;
     mobject.volumes = attributes[@"volumeCount"] != [NSNull null] ? ((NSNumber *)attributes[@"volumeCount"]).intValue : 0;

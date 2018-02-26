@@ -228,12 +228,25 @@
 
 - (void)fireTimer{
     if ([listservice checkAccountForCurrentService]) {
-        [self loadlist:@(true) type:0];
-        [self loadlist:@(true) type:1];
-        [self loadlist:@(true) type:2];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [self performtimerlistrefresh];
+                break;
+            case 2:
+                [Kitsu getUserRatingTypeForUsername:[NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"] completionHandler:^(int scoretype) {
+                    [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
+                    [self performtimerlistrefresh];
+                } error:^(NSError *error) {
+                    NSLog(@"Error loading list: %@", error.localizedDescription);
+                }];
+        }
     }
 }
-
+- (void)performtimerlistrefresh {
+    [self loadlist:@(true) type:0];
+    [self loadlist:@(true) type:1];
+    [self loadlist:@(true) type:2];
+}
 - (void)windowWillClose:(NSNotification *)notification{
     [[NSApplication sharedApplication] terminate:0];
 }
@@ -640,6 +653,20 @@
 }
 #pragma mark Anime List
 - (IBAction)refreshlist:(id)sender {
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+            [self performlistRefresh];
+            break;
+        case 2:
+            [Kitsu getUserRatingTypeForUsername:[NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"] completionHandler:^(int scoretype) {
+                [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
+                [self performlistRefresh];
+            } error:^(NSError *error) {
+                NSLog(@"Error loading list: %@", error.localizedDescription);
+            }];
+    }
+}
+- (void)performlistRefresh {
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"animelist"]){

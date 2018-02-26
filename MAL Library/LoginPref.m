@@ -152,9 +152,17 @@
                 break;
         }
         if ([listservice getCurrentServiceID] == serviceid) {
-            [_mw loadlist:@(1) type:0];
-            [_mw loadlist:@(1) type:1];
-            [_mw loadlist:@(1) type:2];
+            if (serviceid == 2) {
+                [Kitsu getUserRatingTypeForUsername:[NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"] completionHandler:^(int scoretype) {
+                    [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
+                    [self performlistloading];
+                } error:^(NSError *error) {
+                    NSLog(@"Error loading list: %@", error.localizedDescription);
+                }];
+            }
+            else {
+                [self performlistloading];
+            }
             [_mw loadmainview];
             [_mw refreshloginlabel];
         }
@@ -286,5 +294,10 @@
             break;
     }
     return @"";
+}
+- (void)performlistloading {
+    [_mw loadlist:@(1) type:0];
+    [_mw loadlist:@(1) type:1];
+    [_mw loadlist:@(1) type:2];
 }
 @end

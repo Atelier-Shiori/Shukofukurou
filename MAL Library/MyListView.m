@@ -10,6 +10,7 @@
 //#import "MyAnimeList.h"
 #import "listservice.h"
 #import "EditTitle.h"
+#import "MyListScoreFormatter.h"
 
 @interface MyListView ()
 
@@ -19,7 +20,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    // Do view setup here
+    id transformer = [MyListScoreFormatter new];
+    
+    NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
+    [bindingOptions setObject: transformer
+                       forKey:NSValueTransformerBindingOption];
+    
+    [self.animescorecol bind:@"value" toObject:self.animelistarraycontroller
+       withKeyPath:@"arrangedObjects.score" options:bindingOptions];
+    [self.mangascorecol bind:@"value" toObject:self.mangalistarraycontroller withKeyPath:@"arrangedObjects.score" options:bindingOptions];
 }
 
 - (void)loadList:(int)list {

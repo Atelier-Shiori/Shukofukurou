@@ -13,6 +13,11 @@ typedef NS_ENUM(unsigned int, KitsuMediaType) {
     KitsuAnime = 0,
     KitsuManga = 1
 };
+typedef NS_ENUM(unsigned int, ratingType){
+    ratingSimple = 0,
+    ratingStandard = 1,
+    ratingAdvanced = 2
+};
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
@@ -40,4 +45,5 @@ typedef NS_ENUM(unsigned int, KitsuMediaType) {
 + (NSString *)serviceidtoservicename:(int)serviceid;
 + (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getKitsuIDFromMALId:(int)malid  withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getUserRatingTypeForUsername:(NSString *)username completionHandler:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 @end

@@ -335,4 +335,43 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         errorHandler(error);
     }];
 }
++ (void)getUserRatingTypeForUsername:(NSString *)username completionHandler:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self getUserRatingTypeForUsername:username completionHandler:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@",username] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (((NSArray *)responseObject[@"data"]).count > 0) {
+            NSDictionary *d = [NSArray arrayWithArray:responseObject[@"data"]][0];
+            NSString *ratingtype = d[@"attributes"][@"ratingSystem"];
+            if ([ratingtype isEqualToString:@"simple"]) {
+                completionHandler(ratingSimple);
+            }
+            else if ([ratingtype isEqualToString:@"standard"]) {
+                completionHandler(ratingStandard);
+            }
+            else if ([ratingtype isEqualToString:@"advanced"]) {
+                completionHandler(ratingAdvanced);
+            }
+            else {
+                completionHandler(ratingSimple);
+            }
+        }
+        else {
+            completionHandler(ratingSimple);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(nil);
+    }];
+}
 @end

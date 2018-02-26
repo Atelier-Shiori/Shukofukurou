@@ -11,6 +11,7 @@
                 <outlet property="animelistarraycontroller" destination="hZg-UC-ATg" id="3OZ-jP-GiR"/>
                 <outlet property="animelisttb" destination="etv-3f-0Uh" id="vFX-RV-BNA"/>
                 <outlet property="animelistview" destination="pfO-Zc-dit" id="CA3-6g-TFJ"/>
+                <outlet property="animescorecol" destination="CPD-Wd-FF0" id="d65-Tj-8g5"/>
                 <outlet property="completedfilter" destination="ahz-wi-lKe" id="Uwo-EW-sOI"/>
                 <outlet property="droppedfilter" destination="eQD-fk-uzw" id="Xqw-4e-xyJ"/>
                 <outlet property="filterbarview" destination="zwH-Mn-Icd" id="EsH-1Y-dhf"/>
@@ -21,6 +22,7 @@
                 <outlet property="mangalisttb" destination="3rR-dz-UWg" id="kRY-Xn-lvn"/>
                 <outlet property="mangalistview" destination="eI4-4E-pGL" id="50O-Oh-fK6"/>
                 <outlet property="mangaonholdfilter" destination="IDd-4W-K3f" id="lt8-rj-HD8"/>
+                <outlet property="mangascorecol" destination="nxv-5k-q0g" id="vBk-B8-mFZ"/>
                 <outlet property="onholdfilter" destination="bS2-qQ-E4F" id="Ckv-bP-Cyp"/>
                 <outlet property="plantoreadfilter" destination="yw1-O1-BjM" id="TRO-xd-dyl"/>
                 <outlet property="plantowatchfilter" destination="fqN-qH-lgL" id="Lxb-N2-Qxl"/>
@@ -264,7 +266,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="JM6-04-Bb0">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="565" height="252"/>
@@ -407,7 +409,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="L75-cp-VFK">
-                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
+                        <rect key="frame" x="0.0" y="259" width="564" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ejw-DP-Ces">

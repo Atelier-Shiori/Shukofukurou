@@ -39,4 +39,5 @@ typedef NS_ENUM(unsigned int, KitsuMediaType) {
 + (bool)removeAccount;
 + (NSString *)serviceidtoservicename:(int)serviceid;
 + (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getKitsuIDFromMALId:(int)malid  withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 @end

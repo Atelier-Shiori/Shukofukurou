@@ -793,15 +793,49 @@
     else if ([identifier isEqualToString:@"seasons"]){
         NSDictionary *d = (_seasonview.seasonarraycontroller).selectedObjects[0];
         d = d[@"id"];
-        [listservice retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
-            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
-        }error:^(NSError *error){
-            NSLog(@"Error: %@", error);
-        }];
+        switch ([listservice getCurrentServiceID]) {
+            case 1: {
+                [listservice retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
+                    [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
+                }error:^(NSError *error){
+                    NSLog(@"Error: %@", error);
+                }];
+                break;
+            }
+            case 2: {
+                [Kitsu getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                    [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
+                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
+                    }error:^(NSError *error){
+                        NSLog(@"Error: %@", error);
+                    }];
+                } error:^(NSError *error) {}];
+                break;
+            }
+            default:
+                break;
+        }
     }
     if ([identifier isEqualToString:@"airing"]){
         NSDictionary *d = (_airingview.airingarraycontroller).selectedObjects[0];
-        [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+        switch ([listservice getCurrentServiceID]) {
+            case 1: {
+                [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                break;
+            }
+            case 2: {
+                [Kitsu getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                    [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
+                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                    }error:^(NSError *error){
+                        NSLog(@"Error: %@", error);
+                    }];
+                } error:^(NSError *error) {}];
+                break;
+            }
+            default:
+                 break;
+        }
     }
 
 }

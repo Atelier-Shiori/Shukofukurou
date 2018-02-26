@@ -10,6 +10,7 @@
 #import "Utility.h"
 #import "MainWindow.h"
 #import <AFNetworking/AFNetworking.h>
+#import "listservice.h"
 
 @interface SeasonView ()
 @property (strong) IBOutlet NSPopUpButton *seasonyrpicker;
@@ -34,8 +35,23 @@
         if (_seasontableview.selectedRow >-1){
             NSDictionary *d = _seasonarraycontroller.selectedObjects[0];
             d = d[@"id"];
-            NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
-            [_mw loadinfo:idnum type:0];
+            switch ([listservice getCurrentServiceID]) {
+                case 1: {
+                    NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
+                    [_mw loadinfo:idnum type:0];
+                    break;
+                }
+                case 2: {
+                    [Kitsu getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                        [_mw loadinfo:@(kitsuid) type:0];
+                    } error:^(NSError *error) {
+                    
+                    }];
+                    break;
+                }
+                default:
+                    break;
+            }
         }
     }
 }

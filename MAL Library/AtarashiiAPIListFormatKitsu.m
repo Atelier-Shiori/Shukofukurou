@@ -131,19 +131,19 @@
     aobject.title = attributes[@"canonicalTitle"];
     // Create other titles
     aobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] ? @[attributes[@"titles"][@"en"]] : @[], @"japanese" : attributes[@"titles"][@"ja_jp"] ? @[attributes[@"titles"][@"ja_jp"]] : @[] };
-    aobject.rank = ((NSNumber *)attributes[@"ratingRank"]).intValue;
-    aobject.popularity_rank = ((NSNumber *)attributes[@"popularityRank"]).intValue;
+    aobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
+    aobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
     aobject.image_url = attributes[@"posterImage"][@"medium"] && attributes[@"posterimage"][@"medium"] != [NSNull null] ? attributes[@"posterImage"][@"medium"] : @"";
     aobject.type = attributes[@"subtype"];
     aobject.episodes = attributes[@"episodeCount"] != [NSNull null] ? ((NSNumber *)attributes[@"episodeCount"]).intValue : 0;
     aobject.start_date = attributes[@"startDate"];
     aobject.end_date = attributes[@"endDate"];
-    aobject.duration = ((NSNumber *)attributes[@"episodeLength"]).intValue;
+    aobject.duration = attributes[@"episodeLength"] != [NSNull null] ? ((NSNumber *)attributes[@"episodeLength"]).intValue : 0;
     aobject.classification = attributes[@"ageRating"] != [NSNull null] ? [NSString stringWithFormat:@"%@ - %@", attributes[@"ageRating"], attributes[@"ageRatingGuide"]] : @"Unknown";
     aobject.synposis = attributes[@"synopsis"];
-    aobject.members_score = ((NSNumber *)attributes[@"averageRating"]).floatValue;
-    aobject.members_count = ((NSNumber *)attributes[@"userCount"]).intValue;
-    aobject.favorited_count = ((NSNumber *)attributes[@"favoritesCount"]).intValue;
+    aobject.members_score = attributes[@"averageRating"] != [NSNull null] ? ((NSNumber *)attributes[@"averageRating"]).floatValue : 0;
+    aobject.members_count = attributes[@"userCount"] != [NSNull null] ? ((NSNumber *)attributes[@"userCount"]).intValue : 0;
+    aobject.favorited_count = attributes[@"favoritesCount"] != [NSNull null] ? ((NSNumber *)attributes[@"favoritesCount"]).intValue : 0;
     NSString *tmpstatus = attributes[@"status"];
     if ([tmpstatus isEqualToString:@"finished"]) {
         aobject.status = @"finished airing";
@@ -180,15 +180,15 @@
     mobject.title = attributes[@"canonicalTitle"];
     // Create other titles
     mobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : @[attributes[@"titles"][@"en"]] , @"japanese" : @[attributes[@"titles"][@"ja_jp"]] };
-    mobject.rank = ((NSNumber *)attributes[@"ratingRank"]).intValue;
-    mobject.popularity_rank = ((NSNumber *)attributes[@"popularityRank"]).intValue;
+    mobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
+    mobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
     mobject.image_url = attributes[@"posterimage"][@"medium"] && attributes[@"posterimage"][@"medium"] != [NSNull null] ? attributes[@"posterimage"][@"medium"] : @"";
     mobject.type = attributes[@"subtype"];
     mobject.chapters = attributes[@"chapterCount"] != [NSNull null] ? ((NSNumber *)attributes[@"chapterCount"]).intValue : 0;
     mobject.volumes = attributes[@"volumeCount"] != [NSNull null] ? ((NSNumber *)attributes[@"volumeCount"]).intValue : 0;
-    mobject.members_score = ((NSNumber *)attributes[@"averageRating"]).floatValue;
-    mobject.members_count = ((NSNumber *)attributes[@"userCount"]).intValue;
-    mobject.favorited_count = ((NSNumber *)attributes[@"favoritesCount"]).intValue;
+    mobject.members_score = attributes[@"averageRating"] != [NSNull null] ? ((NSNumber *)attributes[@"averageRating"]).floatValue : 0;
+    mobject.members_count = attributes[@"userCount"] != [NSNull null] ? ((NSNumber *)attributes[@"userCount"]).intValue : 0;
+    mobject.favorited_count = attributes[@"favoritesCount"] != [NSNull null] ? ((NSNumber *)attributes[@"favoritesCount"]).intValue : 0;
     mobject.synposis = attributes[@"synopsis"];
     NSString *tmpstatus = attributes[@"status"];
     if ([tmpstatus isEqualToString:@"finished"]) {

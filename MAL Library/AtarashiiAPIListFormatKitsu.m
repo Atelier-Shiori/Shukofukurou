@@ -80,7 +80,7 @@
                 lentry.chapters = ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue;
                 lentry.volumes = ((NSNumber *)metadata[@"attributes"][@"volumeCount"]).intValue;
                 if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
-                    lentry.image_url = metadata[@"attributes"][@"posterimage"][@"medium"];
+                    lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
                 }
                 lentry.type = metadata[@"attributes"][@"mangaType"];
                 NSString *tmpstatus = metadata[@"attributes"][@"status"];
@@ -102,6 +102,9 @@
                 }
                 else if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"current"]) {
                     lentry.read_status = @"reading";
+                }
+                else if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"finished"]) {
+                    lentry.read_status = @"completed";
                 }
                 else {
                     lentry.read_status = (NSString *)entry[@"attributes"][@"status"];

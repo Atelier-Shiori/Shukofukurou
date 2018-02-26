@@ -5,6 +5,8 @@ MAL Library an open sourced and native MyAnimeList, Kitsu (future), and AniList 
 
 Requires latest SDK (10.13), XCode 9 or later. The C#/Xamarin version is deprecated, but still aviliable in the c-sharp-old branch.
 
+Kitsu support is coming first. AniList support will be added later as a free update.
+
 ## Supporting this Project
 
 You can also support the project by buying the full version from the Mac App Store for $4.99. All future updates are free.
@@ -12,7 +14,7 @@ You can also support the project by buying the full version from the Mac App Sto
 
 [![macappstore](https://malupdaterosx.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
 
-Note that for 3.0, binaries are only available for paid users and will be a free upgrade for people who download it from the Mac App Store. The source code will be free for all users without support.
+Note that for 3.0, binaries are only available as a freenimum application with Pro features like manga list management, list syncing, profile browser and character browser locked. For existing users who downloaded from the App Store, the upgrade fee planned to be $1.99 to help cover the cost of development.
 
 ## How to Compile
 

@@ -57,8 +57,10 @@
 - (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type {
     [self view];
     NSNumber *idnum = d[@"id"];
+    [self setScoreMenu:type];
     if (type == 0) {
         if (![_mw checkiftitleisonlist:idnum.intValue type:0]) {
+            // Set Score Menu
             [self.view replaceSubview:(self.view.subviews)[0] with:_addtitleview];
                 _selecteditem = d;
             if (((NSNumber *)d[@"episodes"]).intValue > 0) {
@@ -325,5 +327,54 @@
         }
     }
 }
-
+- (void)setScoreMenu:(int)type {
+    if (type == 0) {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _addscorefiled.menu = _malscoremenu;
+                break;
+            case 2: {
+                switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
+                    case 0:
+                        _addscorefiled.menu = _kitsusimplescoremenu;
+                        break;
+                    case 1:
+                        _addscorefiled.menu = _kitsustandardscoremenu;
+                        break;
+                    case 2:
+                        _addscorefiled.menu = _kitsuadvancedscoremenu;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            default:
+                break;
+        }
+    }
+    else {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _addmangascorefiled.menu = _malscoremenu;
+                break;
+            case 2: {
+                switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
+                    case 0:
+                        _addmangascorefiled.menu = _kitsusimplescoremenu;
+                        break;
+                    case 1:
+                        _addmangascorefiled.menu = _kitsustandardscoremenu;
+                        break;
+                    case 2:
+                        _addmangascorefiled.menu = _kitsuadvancedscoremenu;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            default:
+                break;
+        }
+    }
+}
 @end

@@ -40,4 +40,5 @@
 + (id)retrieveHistoryFileName:(int)serviceid;
 + (bool)checkAccountForCurrentService;
 + (NSString *)getCurrentServiceUsername;
++ (NSString *)currentservicename;
 @end

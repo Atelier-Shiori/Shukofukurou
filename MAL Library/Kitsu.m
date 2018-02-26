@@ -138,7 +138,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
-    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"type" : @"libraryEntries", @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -161,7 +161,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
-    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuManga], @"attributes" : [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] } } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"type" : @"libraryEntries", @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuManga], @"attributes" : [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] } } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -187,7 +187,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
-    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"id" : @(titleid), @"type" : @"libraryEntries", @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -212,7 +212,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     
-    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"attributes" :  [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"id" : @(titleid), @"type" : @"libraryEntries", @"attributes" :  [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -292,17 +292,17 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 }
 + (NSDictionary *)generateAnimeAttributes:(int)episode withStatus:(NSString *)status withScore:(int)score {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
-    attributes[@"status"] = status;
+    attributes[@"status"] = [self convertWatchStatus:status withType:KitsuAnime];
     attributes[@"progress"] = @(episode);
-    attributes[@"ratingTwenty"] = @(score);
+    attributes[@"ratingTwenty"] = score >= 2 ? @(score) : [NSNull null];
     return attributes;
 }
 + (NSDictionary *)generateMangaAttributes:(int)chapter withVolumes:(int)volume withStatus:(NSString *)status withScore:(int)score {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
-    attributes[@"status"] = status;
+    attributes[@"status"] = [self convertWatchStatus:status withType:KitsuManga];
     attributes[@"progress"] = @(chapter);
     attributes[@"volumesOwned"] = @(volume);
-    attributes[@"ratingTwenty"] = @(score);
+    attributes[@"ratingTwenty"] = score >= 2 ? @(score) : [NSNull null];
     return attributes;
 }
 + (void)getKitsuIDFromMALId:(int)malid  withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -373,5 +373,31 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(nil);
     }];
+}
++ (NSString *)convertWatchStatus:(NSString *)status withType:(int)type{
+    if (type == KitsuAnime) {
+        if ([status isEqualToString:@"watching"]) {
+            return @"current";
+        }
+        else if ([status isEqualToString:@"on-hold"]) {
+            return @"on_hold";
+        }
+        else if ([status isEqualToString:@"plan to watch"]) {
+            return @"planned";
+        }
+        return status;
+    }
+    else {
+        if ([status isEqualToString:@"reading"]) {
+            return @"current";
+        }
+        else if ([status isEqualToString:@"on-hold"]) {
+            return @"on_hold";
+        }
+        else if ([status isEqualToString:@"plan to read"]) {
+            return @"planned";
+        }
+        return status;
+    }
 }
 @end

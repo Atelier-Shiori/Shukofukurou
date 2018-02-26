@@ -176,6 +176,7 @@
             break;
         }
         case 2: {
+            [Kitsu addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -190,6 +191,7 @@
             break;
         }
         case 2: {
+            [Kitsu addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -204,6 +206,7 @@
             break;
         }
         case 2: {
+            [Kitsu updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -218,6 +221,7 @@
             break;
         }
         case 2: {
+            [Kitsu updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -232,6 +236,7 @@
             break;
         }
         case 2: {
+            [Kitsu removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -389,6 +394,19 @@
             return [Keychain getusername];
         case 2:
             return [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
+        default:
+            break;
+    }
+    return @"";
+}
++ (NSString *)currentservicename {
+    switch ([self getCurrentServiceID]) {
+        case 1:
+            return @"MyAnimeList";
+        case 2:
+            return @"Kitsu";
+        case 3:
+            return @"AniList";
         default:
             break;
     }

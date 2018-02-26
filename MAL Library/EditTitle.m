@@ -24,6 +24,7 @@
 @property (strong) IBOutlet NSNumberFormatter *minieditpopovernumformat;
 @property (strong) IBOutlet NSStepper *minipopovereditepstep;
 @property (strong) IBOutlet NSTokenField *animetags;
+@property (strong) IBOutlet NSTextField *animetaglabel;
 
 // Manga
 @property (strong) IBOutlet NSView *mangaeditview;
@@ -41,6 +42,7 @@
 @property (strong) IBOutlet NSStepper *mangapopovereditchapstep;
 @property (strong) IBOutlet NSStepper *mangapopovereditvolstep;
 @property (strong) IBOutlet NSTokenField *mangatags;
+@property (strong) IBOutlet NSTextField *mangataglabel;
 
 @end
 
@@ -59,6 +61,8 @@
 
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
     _selecteditem = d;
+    [self view];
+    [self setScoreMenu:type];
     if (type == 0) {
         [self.view replaceSubview:(self.view.subviews)[0] with:_animeeditview];
         NSString *airingstatus = d[@"status"];
@@ -208,7 +212,8 @@
      _minieditpopover.behavior = NSPopoverBehaviorTransient;
       _minipopoverindicator.hidden = true;
       [_minipopoverindicator stopAnimation:nil];
-      NSLog(@"%@", error);
+      NSLog(@"%@", error.localizedDescription);
+      NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
       _minipopoverstatustext.stringValue = @"Error";
   }];
 }
@@ -258,7 +263,8 @@
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _mangapopoverindicator.hidden = true;
         [_mangapopoverindicator stopAnimation:nil];
-        NSLog(@"%@", error);
+        NSLog(@"%@", error.localizedDescription);
+        NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
         _mangapopoverstatustext.stringValue = @"Error";
     }];
 }
@@ -322,4 +328,62 @@
     }
 }
 
+- (void)setScoreMenu:(int)type {
+    if (type == 0) {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _minipopoverscore.menu = _malscoremenu;
+                _animetags.hidden = false;
+                _animetaglabel.hidden = false;
+                break;
+            case 2: {
+                _animetags.hidden = true;
+                _animetaglabel.hidden = true;
+                switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
+                    case 0:
+                        _minipopoverscore.menu = _kitsusimplescoremenu;
+                        break;
+                    case 1:
+                        _minipopoverscore.menu = _kitsustandardscoremenu;
+                        break;
+                    case 2:
+                        _minipopoverscore.menu = _kitsuadavancedscoremenu;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            default:
+                break;
+        }
+    }
+    else {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _mangapopoverscore.menu = _malscoremenu;
+                _mangatags.hidden = false;
+                _mangataglabel.hidden = false;
+                break;
+            case 2: {
+                switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
+                    case 0:
+                        _mangapopoverscore.menu = _kitsusimplescoremenu;
+                        break;
+                    case 1:
+                        _mangapopoverscore.menu = _kitsustandardscoremenu;
+                        break;
+                    case 2:
+                        _mangapopoverscore.menu = _kitsuadavancedscoremenu;
+                        break;
+                    default:
+                        break;
+                }
+                _mangatags.hidden = true;
+                _mangataglabel.hidden = true;
+            }
+            default:
+                break;
+        }
+    }
+}
 @end

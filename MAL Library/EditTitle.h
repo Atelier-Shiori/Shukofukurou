@@ -18,5 +18,13 @@
 @property bool selectedpublished;
 @property (strong) NSDictionary *selecteditem;
 @property (strong) IBOutlet NSPopover *minieditpopover;
+
+// Score Menus
+@property (strong) IBOutlet NSMenu *malscoremenu;
+@property (strong) IBOutlet NSMenu *kitsustandardscoremenu;
+@property (strong) IBOutlet NSMenu *kitsuadavancedscoremenu;
+@property (strong) IBOutlet NSMenu *kitsusimplescoremenu;
+
+
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type;
 @end

@@ -235,14 +235,6 @@
     alert.alertStyle = NSAlertStyleWarning;
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
-            if ([listservice getCurrentServiceID] == service) {
-                [_mw clearlist:service];
-                if (service == 1) {
-                    [_appdelegate clearMessages];
-                }
-                [_mw loadmainview];
-                [_mw refreshloginlabel];
-            }
             //Remove account from keychain
             switch ([listservice getCurrentServiceID]) {
                 case 1:
@@ -253,6 +245,14 @@
                     break;
                 default:
                     break;
+            }
+            if ([listservice getCurrentServiceID] == service) {
+                [_mw clearlist:service];
+                if (service == 1) {
+                    [_appdelegate clearMessages];
+                }
+                [_mw loadmainview];
+                [_mw refreshloginlabel];
             }
             //Disable Clearbut
             switch (service) {

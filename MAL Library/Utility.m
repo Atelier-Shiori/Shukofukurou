@@ -298,6 +298,14 @@
     dispatch_once(&jronceToken, ^{
         jsonrequest = [AFJSONRequestSerializer serializer];
     });
+    switch ((int)[NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"]) {
+        case 2:
+            [jsonrequest setValue:@"application/vnd.api+json" forHTTPHeaderField:@"Content-Type"];
+            break;
+        default:
+            [jsonrequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+            break;
+    }
     return jsonrequest;
 }
 + (AFHTTPRequestSerializer *)httprequestserializer {

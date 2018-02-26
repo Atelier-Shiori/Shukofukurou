@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13196" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13196"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -29,6 +29,10 @@
                 <outlet property="addvolnumformat" destination="fN7-sT-J7M" id="swL-4F-jwN"/>
                 <outlet property="addvolstepper" destination="zTK-wA-845" id="cXN-It-a4w"/>
                 <outlet property="animeprogresswheel" destination="lD8-r8-wcZ" id="eCM-Ga-hs2"/>
+                <outlet property="kitsuadvancedscoremenu" destination="qgY-lt-fb8" id="AlU-CM-ucY"/>
+                <outlet property="kitsusimplescoremenu" destination="Osx-hO-vQh" id="31y-iw-Ge8"/>
+                <outlet property="kitsustandardscoremenu" destination="8r1-yC-d8y" id="1g6-pN-60z"/>
+                <outlet property="malscoremenu" destination="0Mf-t3-S7F" id="F1Z-QY-yuK"/>
                 <outlet property="mangaprogresswheel" destination="nah-Kn-zWI" id="Y8d-XM-QzP"/>
                 <outlet property="popoveraddtitleexistsview" destination="RsA-E2-DVB" id="QJV-E6-wrl"/>
                 <outlet property="view" destination="4pl-ha-hfb" id="aP6-5P-Dma"/>
@@ -425,6 +429,131 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem title="1 - Unwatchable" tag="1" id="SfQ-aG-EtT">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+        <menu id="8r1-yC-d8y" userLabel="Standard Rating Menu">
+            <items>
+                <menuItem title="No Rating" id="xLI-E0-HLc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="meK-fQ-RNu"/>
+                <menuItem title="0.5" tag="2" id="G7y-3o-VA4">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="1.0" tag="4" id="U3X-Nq-jpY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="1.5" tag="6" id="GI5-fA-gXI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="2.0" tag="7" id="d2U-7G-RFf">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="2.5" tag="10" id="eYb-GU-Mk9">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="3.0" tag="12" id="N0d-mR-D6y">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="3.5" tag="14" id="fPQ-Wi-VgE">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="4.0" tag="16" id="HdJ-tm-Cg3">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="4.5" tag="18" id="qZk-5o-xrK">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="5.0" tag="20" id="WwZ-hx-aHF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-105" y="406"/>
+        </menu>
+        <menu id="qgY-lt-fb8" userLabel="Advanced Rating Menu">
+            <items>
+                <menuItem title="No Rating" id="FlH-8J-8AG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="aWG-Ni-tyR"/>
+                <menuItem title="1.0" tag="2" id="CcC-2d-LTq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="1.5" tag="3" id="NRA-KI-SgI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="2.0" tag="4" id="cpm-6c-SIc">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="2.5" tag="5" id="D2S-dy-bXt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="3.0" tag="6" id="m1J-7y-tfU">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="3.5" tag="7" id="FCe-4n-Lsy">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="4.0" tag="8" id="ejC-Rd-0wq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="4.5" tag="9" id="KrY-I3-QPx">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="5.0" tag="10" id="McM-iU-mZU">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="5.5" tag="11" id="SkV-5M-e7Y">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="6.0" tag="12" id="n5e-Ww-S67">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="6.5" tag="13" id="Oc5-4U-AnO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="7.0" tag="14" id="6mn-92-qoa">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="7.5" tag="15" id="b4B-Ck-Fxh">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="8.0" tag="16" id="ZgW-lc-Uqo">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="8.5" tag="17" id="kwv-q4-oSk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="9.0" tag="18" id="vWF-zZ-Rml">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="9.5" tag="19" id="ceM-5G-EQK">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="10.0" tag="20" id="HoL-iS-G2V">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="233" y="253"/>
+        </menu>
+        <menu id="Osx-hO-vQh" userLabel="Simple Rating Menu">
+            <items>
+                <menuItem title="No Rating" id="1Gz-0Q-Vkm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="aRu-lD-VAx"/>
+                <menuItem title="🙁 Awful" tag="2" id="dla-Fw-ONJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="😐 Meh" tag="8" id="4RR-zX-6KY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="🙂 Good" tag="14" id="XAT-sv-eVd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="😍 Great" tag="20" id="ien-s8-SQf">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>

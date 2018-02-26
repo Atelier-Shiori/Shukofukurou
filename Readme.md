@@ -9,7 +9,7 @@ Kitsu support is coming first. AniList support will be added later as a free upd
 
 ## Supporting this Project
 
-You can also support the project by buying the full version from the Mac App Store for $4.99. All future updates are free.
+You can also support the project by buying the full version from the Mac App Store for $4.99. All future updates are free for 2.x.
 
 
 [![macappstore](https://malupdaterosx.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)

@@ -88,7 +88,7 @@
 - (bool)checkiftitleisonlist:(int)idnum type:(int)type;
 - (void)loadlist:(NSNumber *)refresh type:(int)type;
 - (void)clearlist:(int)service;
-- (void)changeservice;
+- (void)changeservice:(int)oldserviceid;
 - (void)createToolbar;
 
 // Modify Popover

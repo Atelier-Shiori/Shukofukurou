@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MyAnimeList.h"
 #import "Kitsu.h"
+#import "TitleIdConverter.h"
 
 @interface listservice : NSObject
 + (int)getCurrentServiceID;

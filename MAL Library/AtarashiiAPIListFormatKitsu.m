@@ -168,7 +168,7 @@
     NSMutableDictionary *mappings = [NSMutableDictionary new];
     for (NSDictionary *d in included) {
         if ([(NSString *)d[@"type"] isEqualToString:@"mappings"]) {
-            [mappings setObject:d[@"attributes"][@"externalId"] forKey:@"externalSite"];
+            [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
         }
     }
     aobject.mappings = mappings;
@@ -214,7 +214,7 @@
     NSMutableDictionary *mappings = [NSMutableDictionary new];
     for (NSDictionary *d in included) {
         if ([(NSString *)d[@"type"] isEqualToString:@"mappings"]) {
-            [mappings setObject:d[@"attributes"][@"externalId"] forKey:@"externalSite"];
+            [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
         }
     }
     mobject.mappings = mappings;

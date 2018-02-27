@@ -266,6 +266,8 @@
 		F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
 		F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
 		F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
+		F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
+		F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -562,6 +564,8 @@
 		F8B5AA942044888800132C51 /* MyListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListScoreFormatter.m; sourceTree = "<group>"; };
 		F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherUserListScoreFormatter.h; sourceTree = "<group>"; };
 		F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherUserListScoreFormatter.m; sourceTree = "<group>"; };
+		F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdConverter.h; sourceTree = "<group>"; };
+		F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdConverter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -811,6 +815,8 @@
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
 				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
+				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
+				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
 				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
 				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
 				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
@@ -1300,6 +1306,7 @@
 				2DB444BC1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
+				F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				2D72F9281FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
@@ -1384,6 +1391,7 @@
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
 				2D72F9271FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
+				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,

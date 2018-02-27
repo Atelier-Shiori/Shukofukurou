@@ -34,11 +34,12 @@
 
 - (IBAction)setService:(id)sender {
     NSMenuItem *selectedmenuitem = (NSMenuItem *)sender;
+    int previousservice = [NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
     int tag = (int)selectedmenuitem.tag;
     [NSUserDefaults.standardUserDefaults setInteger:tag forKey:@"currentservice"];
     [self setmenuitemvaluefromdefaults];
     if (_actionblock) {
-        _actionblock(tag);
+        _actionblock(tag, previousservice);
     }
 }
 

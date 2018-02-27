@@ -305,36 +305,6 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     attributes[@"ratingTwenty"] = score >= 2 ? @(score) : [NSNull null];
     return attributes;
 }
-+ (void)getKitsuIDFromMALId:(int)malid  withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility jsonmanager];
-    NSString *typestr = @"";
-    switch (type) {
-        case KitsuAnime:
-            typestr = @"anime";
-            break;
-        case KitsuManga:
-            typestr = @"manga";
-        default:
-            break;
-    }
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/mappings?filter[external_site]=myanimelist/%@&filter[external_id]=%i",typestr, malid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (responseObject[@"data"][0]) {
-            NSDictionary *mapping = responseObject[@"data"][0];
-            NSString *relationshipurl = mapping[@"relationships"][@"item"][@"links"][@"self"];
-            [manager GET:relationshipurl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                NSNumber *kitsuid = responseObject[@"data"][@"id"];
-                completionHandler(kitsuid.intValue);
-            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                errorHandler(error);
-            }];
-        }
-        else {
-            errorHandler(nil);
-        }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        errorHandler(error);
-    }];
-}
 + (void)getUserRatingTypeForUsername:(NSString *)username completionHandler:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [Kitsu getFirstAccount];
     if (cred && cred.expired) {

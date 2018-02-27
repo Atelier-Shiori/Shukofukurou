@@ -70,9 +70,9 @@
     [MALLibraryAppStoreMigrate checkPreRelease];
     #endif
     __weak AppDelegate *weakself = self;
-    _servicemenucontrol.actionblock = ^(int selected) {
+    _servicemenucontrol.actionblock = ^(int selected, int previousservice) {
         [weakself refreshUIServiceChange:selected];
-        [weakself.mainwindowcontroller changeservice];
+        [weakself.mainwindowcontroller changeservice:previousservice];
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self refreshUIServiceChange:[listservice getCurrentServiceID]];

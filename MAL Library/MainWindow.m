@@ -756,7 +756,7 @@
     }
 
 }
-- (void)changeservice {
+- (void)changeservice:(int)oldserviceid {
     //Clears List and refreshes UI for service change
     NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
@@ -767,9 +767,7 @@
     [_listview.mangalisttb reloadData];
     [_listview.mangalisttb deselectAll:self];
     [_historyview clearHistory];
-    _infoview.selectedid = 0;
-    _noinfoview.hidden = NO;
-    _progressindicator.hidden = YES;
+    [self loadtitleinfoWithDifferentService:oldserviceid];
     [_searchview clearallsearch];
     [self loadmainview];
     [self refreshloginlabel];
@@ -784,6 +782,63 @@
         [self stopTimer];
         [self startTimer];
     }
+}
+- (void)loadtitleinfoWithDifferentService:(int)oldserviceid {
+    if (_infoview.selectedid > 0) {
+        int tmpselectedid = _infoview.selectedid;
+        _infoview.selectedid = 0;
+        _progressindicator.hidden = NO;
+        [_progressindicator startAnimation:self];
+        switch (oldserviceid) {
+            case 1: {
+                if ([listservice getCurrentServiceID] == 2) {
+                    // MAL > Kitsu Title ID
+                    [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withType:_infoview.type completionHandler:^(int kitsuid) {
+                        [self loadinfo:@(kitsuid) type:_infoview.type];
+                    } error:^(NSError *error) {
+                        [self resetTitleInfoView];
+                    }];
+                }
+                else {
+                    [self resetTitleInfoView];
+                }
+                break;
+            }
+            case 2: {
+                if (_infoview.getSelectedInfo[@"mappings"]) {
+                    NSDictionary *mappings = _infoview.getSelectedInfo[@"mappings"];
+                    switch ([listservice getCurrentServiceID]) {
+                        case 1: { // MyAnimeList > "myanimelist/anime" for anime or "myanimelist/manga" for manga
+                            if (_infoview.type == 0 && mappings[@"myanimelist/anime"]) {
+                                 [self loadinfo:mappings[@"myanimelist/anime"] type:_infoview.type];
+                            }
+                            else if (_infoview.type == 1 && mappings[@"myanimelist/manga"]) {
+                                [self loadinfo:mappings[@"myanimelist/manga"] type:_infoview.type];
+                            }
+                            else {
+                                [self resetTitleInfoView];
+                            }
+                            break;
+                        }
+                        case 3: // AniList > "anilist"
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else {
+                    [self resetTitleInfoView];
+                }
+                break;
+            }
+        }
+    }
+}
+- (void)resetTitleInfoView {
+    _infoview.selectedid = 0;
+    _noinfoview.hidden = NO;
+    _progressindicator.hidden = YES;
+    _infoview.selectedinfo = nil;
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {
@@ -831,7 +886,7 @@
                 break;
             }
             case 2: {
-                [Kitsu getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                         [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
                     }error:^(NSError *error){
@@ -852,7 +907,7 @@
                 break;
             }
             case 2: {
-                [Kitsu getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                         [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                     }error:^(NSError *error){

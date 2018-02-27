@@ -49,6 +49,7 @@
     [_arraycontroller addObjects:sites];
     [_tb reloadData];
     [_tb deselectAll:self];
+    _streamsexist = (a.count > 0);
 }
 
 - (NSArray *)convertNSDictionaryData:(NSDictionary *)dict {
@@ -72,6 +73,4 @@
         }
     }
 }
-
-
 @end

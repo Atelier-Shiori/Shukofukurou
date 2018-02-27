@@ -213,7 +213,7 @@
     else {
         _sourcematerialbutton.hidden = YES;
     }
-    if (self.type == 0 ) {
+    if (self.type == 0 && _steampopupviewcontroller.streamsexist) {
         _streambutton.hidden = NO;
     }
     else {

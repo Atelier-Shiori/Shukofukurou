@@ -130,8 +130,8 @@
     NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
-    if (d[@"episodes"] == nil){
-        if (d[@"duration"] == nil){
+    if (d[@"episodes"] == nil || ((NSNumber *)d[@"episodes"]).intValue > 0) {
+        if (d[@"duration"] == nil  || ((NSNumber *)d[@"duration"]).intValue == 0){
             [details appendString:@"Episodes: Unknown\n"];
         }
         else{
@@ -139,7 +139,7 @@
         }
     }
     else {
-        if (d[@"duration"] == nil){
+        if (d[@"duration"] == nil  || ((NSNumber *)d[@"episodes"]).intValue == 0){
             [details appendString:[NSString stringWithFormat:@"Episodes: %i\n", ((NSNumber *)d[@"episodes"]).intValue]];
         }
         else{
@@ -148,17 +148,21 @@
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
-    if (producers){
+    if (producers) {
         [details appendString:[NSString stringWithFormat:@"Producers: %@\n", producers]];
     }
-    if (d[@"classification"] != nil){
+    if (d[@"classification"] != nil) {
         [details appendString:[NSString stringWithFormat:@"Classification: %@\n", d[@"classification"]]];
     }
-    if (d[@"members_score"]!=nil){
+    if (d[@"members_score"] !=nil || ((NSNumber *)d[@"members_score"]).intValue > 0) {
         [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
     }
-    [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
-    [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
+    if (popularity.intValue > 0) {
+        [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
+    }
+    if (favorites.intValue > 0) {
+        [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
+    }
     if (openingthemes) {
         [details appendString:openingthemes];
     }
@@ -274,15 +278,15 @@
     NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
-    if (d[@"chapters"] == nil){
-        if (d[@"duration"] == nil){
+    if (d[@"chapters"] == nil || ((NSNumber *)d[@"chapters"]).intValue  == 0) {
+        if (d[@"duration"] == nil && d[@"duration"] == [NSNull null]){
             [details appendString:@"Chapters: Unknown\n"];
         }
     }
     else {
         [details appendString:[NSString stringWithFormat:@"Chapters: %i \n", ((NSNumber *)d[@"chapters"]).intValue]];
     }
-    if (d[@"volumes"] == nil){
+    if (d[@"volumes"] == nil || ((NSNumber *)d[@"volumes"]).intValue == 0){
         [details appendString:@"Volumes: Unknown\n"];
     }
     else {
@@ -290,11 +294,15 @@
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
-    if (d[@"members_score"]!=nil){
+    if (d[@"members_score"] !=nil || ((NSNumber *)d[@"members_score"]).intValue > 0) {
         [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
     }
-    [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
-    [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
+    if (popularity.intValue > 0) {
+        [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
+    }
+    if (favorites.intValue > 0) {
+        [details appendString:[NSString stringWithFormat:@"Favorited: %i times\n", favorites.intValue]];
+    }
     NSString *synopsis = d[@"synopsis"];
     _infoviewdetailstextview.string = details;
     [_infoviewsynopsistextview.textStorage setAttributedString:[synopsis convertHTMLtoAttStr]];

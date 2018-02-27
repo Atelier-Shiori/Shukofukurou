@@ -133,7 +133,7 @@
             }];
     }
     else {
-        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"]){
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"] && [listservice getCurrentServiceID] == 1){
             // Check credentials now if user has an account and these values are not set
             [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
@@ -294,6 +294,18 @@
     }
     else {
         _messagesmenuitem.hidden = false;
+    }
+    switch (selected) {
+        case 1:
+            _importkitsumenu.hidden = false;
+            break;
+        case 2:
+            _importkitsumenu.hidden = true;
+            break;
+        case 3:
+            break;
+        default:
+            break;
     }
 }
 @end

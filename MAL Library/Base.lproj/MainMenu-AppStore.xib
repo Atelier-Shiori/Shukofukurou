@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="importkitsumenu" destination="DZO-y4-ZC1" id="tYc-Io-ccR"/>
                 <outlet property="messagesmenuitem" destination="60c-At-yy4" id="icl-wA-8qr"/>
                 <outlet property="servicemenucontrol" destination="NCk-PM-EVr" id="J8r-TZ-Al1"/>
             </connections>

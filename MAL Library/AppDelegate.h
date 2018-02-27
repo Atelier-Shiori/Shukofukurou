@@ -21,7 +21,11 @@
 @property (strong) messageswindow *messageswindow;
 @property (strong) ListStatistics *liststatswindow;
 @property (strong) ProfileWindowController *pwc;
+
+// Menus
 @property (strong) IBOutlet NSMenuItem *messagesmenuitem;
+@property (strong) IBOutlet NSMenuItem *importkitsumenu;
+
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;

@@ -38,4 +38,5 @@ typedef NS_ENUM(unsigned int, SearchType) {
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;
 - (void)clearsearchtb;
+- (void)clearallsearch;
 @end

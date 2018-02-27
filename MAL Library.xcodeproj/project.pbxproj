@@ -1834,7 +1834,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
 				PRODUCT_NAME = "MAL Library";
 			};
@@ -1876,7 +1876,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
 				PRODUCT_NAME = "MAL Library";
 			};
@@ -2038,7 +2038,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -2081,7 +2081,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

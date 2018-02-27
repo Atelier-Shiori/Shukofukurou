@@ -770,6 +770,7 @@
     _infoview.selectedid = 0;
     _noinfoview.hidden = NO;
     _progressindicator.hidden = YES;
+    [_searchview clearallsearch];
     [self loadmainview];
     [self refreshloginlabel];
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];

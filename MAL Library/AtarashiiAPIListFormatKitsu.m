@@ -77,8 +77,8 @@
                 AtarashiiMangaListObject *lentry = [AtarashiiMangaListObject new];
                 lentry.titleid = ((NSNumber *)metadata[@"id"]).intValue;
                 lentry.title = metadata[@"attributes"][@"canonicalTitle"];
-                lentry.chapters = ((NSNumber *)metadata[@"attributes"][@"chapterCount"]).intValue;
-                lentry.volumes = ((NSNumber *)metadata[@"attributes"][@"volumeCount"]).intValue;
+                lentry.chapters = metadata[@"attributes"][@"chapterCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"chapterCount"]).intValue : 0;
+                lentry.volumes = metadata[@"attributes"][@"volumeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"volumeCount"]).intValue : 0;
                 if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
                     lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
                 }
@@ -259,13 +259,13 @@
         mobject.image_url = d[@"attributes"][@"medium"] && d[@"attributes"][@"posterimage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterimage"][@"medium"] : @"";
         NSString *tmpstatus = d[@"attributes"][@"status"];
         if ([tmpstatus isEqualToString:@"finished"]) {
-            mobject.status = @"finished airing";
+            mobject.status = tmpstatus;
         }
         else if ([tmpstatus isEqualToString:@"current"]) {
-            mobject.status = @"currently airing";
+            mobject.status = @"publishing";
         }
         else if ([tmpstatus isEqualToString:@"tba"]||[tmpstatus isEqualToString:@"unreleased"]||[tmpstatus isEqualToString:@"upcoming"]) {
-            mobject.status = @"not yet aired";
+            mobject.status = @"not yet published";
         }
         [tmparray addObject:mobject.NSDictionaryRepresentation];
     }

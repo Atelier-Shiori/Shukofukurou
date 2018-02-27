@@ -7,6 +7,7 @@
 //
 
 #import "ratingchartview.h"
+#import "RatingTwentyConvert.h"
 
 @interface ratingchartview ()
 @property (strong) IBOutlet NSLevelIndicator *scoretenbar;
@@ -36,12 +37,25 @@
     // Do view setup here.
 }
 
-- (void)populateView:(NSArray *)list {
+- (void)populateView:(NSArray *)list withService:(int)service {
     _numofentries.stringValue = [NSString stringWithFormat:@"%li",list.count];
     NSMutableArray *scores = [NSMutableArray new];
     for (NSDictionary *d in list) {
-        if (((NSNumber *)d[@"score"]).intValue > 0) {
-            [scores addObject:d[@"score"]];
+        switch (service) {
+            case 1: {
+                if (((NSNumber *)d[@"score"]).intValue > 0) {
+                    [scores addObject:d[@"score"]];
+                }
+                break;
+            }
+            case 2: {
+                if (((NSNumber *)d[@"score"]).intValue > 0) {
+                    [scores addObject:@([RatingTwentyConvert translateKitsuTwentyScoreToMAL:((NSNumber *)d[@"score"]).intValue])];
+                }
+                break;
+            }
+            default:
+                break;
         }
     }
     if (scores.count > 0) {

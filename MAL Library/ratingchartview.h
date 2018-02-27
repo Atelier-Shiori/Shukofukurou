@@ -9,5 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ratingchartview : NSViewController
-- (void)populateView:(NSArray *)list;
+- (void)populateView:(NSArray *)list withService:(int)service;
 @end

@@ -121,4 +121,15 @@
         [_mangasearchtb deselectAll:self];
     }
 }
+- (void)clearallsearch {
+    [[_searcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
+    [_searchtb reloadData];
+    [_searchtb deselectAll:self];
+    [[_mangasearcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
+    [_mangasearchtb reloadData];
+    [_mangasearchtb deselectAll:self];
+    _AnimeSearchTerm = @"";
+    _MangaSearchTerm = @"";
+    _searchtitlefield.stringValue = @"";
+}
 @end

@@ -9,6 +9,7 @@
 #import "ListStatistics.h"
 #import "ratingchartview.h"
 #import "Utility.h"
+#import "listservice.h"
 
 @interface ListStatistics ()
 @property (strong) ratingchartview *ratingstats;
@@ -57,16 +58,16 @@
 }
 
 -(void)populateValues {
-    if ([Utility checkifFileExists:@"animelist.json" appendPath:@""]) {
-        NSDictionary *anime = [Utility loadJSON:@"animelist.json" appendpath:@""];
-        [_ratingstats populateView:anime[@"anime"]];
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
+        NSDictionary *anime = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""];
+        [_ratingstats populateView:anime[@"anime"] withService:[listservice getCurrentServiceID]];
         [self populatestatuscounts:anime[@"anime"] type:0];
         [self populateTotalEps:anime[@"anime"]];
         _dayspentanime.stringValue = anime[@"statistics"][@"days"];
     }
-    if ([Utility checkifFileExists:@"mangalist.json" appendPath:@""]) {
-        NSDictionary *manga = [Utility loadJSON:@"mangalist.json" appendpath:@""];
-        [_mangastats populateView:manga[@"manga"]];
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""]) {
+        NSDictionary *manga = [Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""];
+        [_mangastats populateView:manga[@"manga"] withService:[listservice getCurrentServiceID]];
         [self populatestatuscounts:manga[@"manga"] type:1];
         [self populateTotalVolandChaps:manga[@"manga"]];
         _daysspentonmanga.stringValue = manga[@"statistics"][@"days"];
@@ -75,13 +76,13 @@
 
 - (void)populateValues:(id)list type:(int)type {
     if (type == 1) {
-        [_ratingstats populateView:list[@"anime"]];
+        [_ratingstats populateView:list[@"anime"] withService:[listservice getCurrentServiceID]];
         [self populatestatuscounts:list[@"anime"] type:0];
         [self populateTotalEps:list[@"anime"]];
         _dayspentanime.stringValue = list[@"statistics"][@"days"];
     }
     else if (type == 2) {
-        [_mangastats populateView:list[@"manga"]];
+        [_mangastats populateView:list[@"manga"] withService:[listservice getCurrentServiceID]];
         [self populatestatuscounts:list[@"manga"] type:1];
         [self populateTotalVolandChaps:list[@"manga"]];
         _daysspentonmanga.stringValue = list[@"statistics"][@"days"];

@@ -9,6 +9,8 @@
 #import "StreamPopup.h"
 #import "NSTableViewAction.h"
 #import "Utility.h"
+#import <CocoaOniguruma/OnigRegexp.h>
+#import <CocoaOniguruma/OnigRegexpUtility.h>
 
 @interface StreamPopup ()
 @property (strong) IBOutlet NSTableViewAction *tb;
@@ -28,7 +30,7 @@
     if (data[@"shows"]) {
         NSArray *shows = data[@"shows"];
         for (NSDictionary *d in shows) {
-            if ([(NSString *)d[@"name"] isEqualToString:title]) {
+            if ([(NSString *)d[@"name"] isEqualToString:[self sanitizetitle:title]]) {
                 [self loadTitles:[self convertNSDictionaryData:d[@"sites"]]];
                 return true;
             }
@@ -40,6 +42,9 @@
             }
         }
     }
+    NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
+    [a removeAllObjects];
+    _streamsexist = false;
     return false;
 }
 
@@ -72,5 +77,13 @@
                     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:URL]];
         }
     }
+}
+
+- (NSString *)sanitizetitle:(NSString *)title {
+    NSString *tmpstr = title;
+    // Remove seasons
+    OnigRegexp *regex = [OnigRegexp compile:@"\\s(((\\d+(st|nd|rd|th)|first|second|third|fourth|fifth|sixth|seventh|eighth|nineth|tenth) season)|\\d+|(X|VIII|VII|VI|V|IV|III|II|I))" options:OnigOptionIgnorecase];
+    tmpstr = [tmpstr replaceByRegexp:regex with:@""];
+    return tmpstr;
 }
 @end

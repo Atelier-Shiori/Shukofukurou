@@ -9,7 +9,7 @@
 #import "TitleIdConverter.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
-#import "Kitsu.h"
+#import "ListService.h"
 
 @implementation TitleIdConverter
 + (void)getKitsuIDFromMALId:(int)malid  withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -48,13 +48,24 @@
             }];
         }
         else {
-            errorHandler(nil);
+            [self findCurrentServiceTitleIDWithMALID:malid type:type completionHandler:^(int currentserviceid, int currentservice) {
+                if (currentservice == 2) {
+                    [self savetitleidtomapping:malid withNewID:currentserviceid withType:type fromService:1 toService:2];
+                    completionHandler(currentserviceid);
+                }
+                else {
+                    errorHandler(nil);
+                }
+            } error:^(NSError *error) {
+                errorHandler(error);
+            }];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];
 }
-+ (int)lookupTitleID:(int)malid withType:(int)type fromService:(int)fromservice toService:(int)toservice {
+#pragma mark Helpers
++ (int)lookupTitleID:(int)titleid withType:(int)type fromService:(int)fromservice toService:(int)toservice {
     NSString *mappingsname = [self getMappingFileName:fromservice withToService:toservice];
     if (mappingsname.length == 0) {
         return -1;
@@ -63,13 +74,13 @@
         NSArray * mappings = [Utility loadJSON:mappingsname appendpath:@""];
         switch (fromservice) {
             case 1:
-                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %i", malid]];
+                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %i", titleid]];
                 break;
             case 2:
-                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kitsu_id == %i", malid]];
+                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kitsu_id == %i", titleid]];
                 break;
             case 3:
-                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %i", malid]];
+                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %i", titleid]];
                 break;
             default:
                 break;
@@ -144,7 +155,6 @@
     }
     [Utility saveJSON:tmparray withFilename:mappingsname appendpath:@"" replace:YES];
 }
-
 + (NSString *)getMappingFileName:(int)fromService withToService:(int)toService {
     switch (fromService) {
         case 1: {
@@ -188,5 +198,31 @@
             return @"";
     }
     return @"";
+}
++ (void)findCurrentServiceTitleIDWithMALID:(int)malid type:(int)type completionHandler:(void (^)(int currentserviceid, int currentservice)) completionHandler error:(void (^)(NSError * error)) errorHandler{
+    [MyAnimeList retrieveTitleInfo:malid withType:type useAccount:NO completion:^(id responseObject) {
+        __block NSString *title = responseObject[@"title"];
+        __block NSDictionary *othertitles = responseObject[@"other_titles"];
+        [listservice searchTitle:title withType:type completion:^(id responseObject) {
+            for (NSDictionary *searchentry in responseObject) {
+                NSString *tmptitle = searchentry[@"title"];
+                if ([tmptitle isEqualToString:title]) {
+                    completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
+                    return;
+                }
+                else if (othertitles[@"english"]) {
+                    if ([tmptitle isEqualToString:othertitles[@"english"]]) {
+                        completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
+                        return;
+                    }
+                }
+            }
+            errorHandler(nil);
+        } error:^(NSError *error) {
+            errorHandler(error);
+        }];
+    } error:^(NSError *error) {
+        errorHandler(error);
+    }];
 }
 @end

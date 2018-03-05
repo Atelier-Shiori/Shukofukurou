@@ -182,7 +182,7 @@
     mobject.titleid = ((NSNumber *)title[@"id"]).intValue;
     mobject.title = attributes[@"canonicalTitle"];
     // Create other titles
-    mobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] != [NSNull null] ? @[attributes[@"titles"][@"en"]] : @[attributes[@"titles"][@"en_jp"]] , @"japanese" : attributes[@"titles"][@"ja_jp"] ?  @[attributes[@"titles"][@"ja_jp"]] : @[] };
+    mobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] ? @[attributes[@"titles"][@"en"]] : @[attributes[@"titles"][@"en_jp"]] , @"japanese" : attributes[@"titles"][@"ja_jp"] ?  @[attributes[@"titles"][@"ja_jp"]] : @[] };
     mobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     mobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
     mobject.image_url = attributes[@"posterImage"][@"medium"] && attributes[@"posterImage"][@"medium"] != [NSNull null] ? attributes[@"posterImage"][@"medium"] : @"";

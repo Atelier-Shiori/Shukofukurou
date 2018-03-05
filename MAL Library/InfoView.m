@@ -244,19 +244,25 @@
     if (dtitles[@"english"] != nil){
         NSArray *e = dtitles[@"english"];
         for (NSString *etitle in e){
-            [othertitles addObject:etitle];
+            if ((NSNull *)etitle != [NSNull null]) {
+                [othertitles addObject:etitle];
+            }
         }
     }
     if (dtitles[@"japanese"] != nil){
         NSArray *j = dtitles[@"japanese"];
         for (NSString *jtitle in j){
-            [othertitles addObject:jtitle];
+            if ((NSNull *)jtitle  != [NSNull null]) {
+                [othertitles addObject:jtitle];
+            }
         }
     }
     if (dtitles[@"synonyms"] != nil){
         NSArray *syn = dtitles[@"synonyms"];
         for (NSString *stitle in syn){
-            [othertitles addObject:stitle];
+            if ((NSNull *)stitle  != [NSNull null]) {
+                [othertitles addObject:stitle];
+            }
         }
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];

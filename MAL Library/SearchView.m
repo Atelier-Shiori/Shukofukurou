@@ -73,7 +73,7 @@
             if (_searchtb.selectedRow >-1){
                 NSDictionary *d = _searcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
-                [_mw loadinfo:idnum type:AnimeSearch];
+                [_mw loadinfo:idnum type:AnimeSearch changeView:YES];
             }
         }
     }
@@ -82,7 +82,7 @@
             if (_mangasearchtb.selectedRow >-1){
                 NSDictionary *d = _mangasearcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
-                [_mw loadinfo:idnum type:MangaSearch];
+                [_mw loadinfo:idnum type:MangaSearch changeView:YES];
             }
         }
     }

@@ -83,7 +83,7 @@
             else {
                 typenum = 1;
             }
-            [_mw loadinfo:idnum type:typenum];
+            [_mw loadinfo:idnum type:typenum changeView:YES];
         }
     }
 }

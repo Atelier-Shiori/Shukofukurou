@@ -47,7 +47,7 @@
             else {
                 idnum = d[@"manga_id"];
             }
-            [_mw loadinfo:idnum type:_selectedtype];
+            [_mw loadinfo:idnum type:_selectedtype changeView:YES];
 
         }
     }

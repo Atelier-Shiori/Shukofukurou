@@ -38,12 +38,12 @@
             switch ([listservice getCurrentServiceID]) {
                 case 1: {
                     NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
-                    [_mw loadinfo:idnum type:0];
+                    [_mw loadinfo:idnum type:0 changeView:YES];
                     break;
                 }
                 case 2: {
                     [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
-                        [_mw loadinfo:@(kitsuid) type:0];
+                        [_mw loadinfo:@(kitsuid) type:0 changeView:YES];
                     } error:^(NSError *error) {
                     
                     }];

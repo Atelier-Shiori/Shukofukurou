@@ -794,7 +794,7 @@
                 if ([listservice getCurrentServiceID] == 2) {
                     // MAL > Kitsu Title ID
                     [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withType:_infoview.type completionHandler:^(int kitsuid) {
-                        [self loadinfo:@(kitsuid) type:_infoview.type];
+                        [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO];
                     } error:^(NSError *error) {
                         [self resetTitleInfoView];
                     }];
@@ -810,10 +810,10 @@
                     switch ([listservice getCurrentServiceID]) {
                         case 1: { // MyAnimeList > "myanimelist/anime" for anime or "myanimelist/manga" for manga
                             if (_infoview.type == 0 && mappings[@"myanimelist/anime"]) {
-                                 [self loadinfo:mappings[@"myanimelist/anime"] type:_infoview.type];
+                                 [self loadinfo:mappings[@"myanimelist/anime"] type:_infoview.type  changeView:NO];
                             }
                             else if (_infoview.type == 1 && mappings[@"myanimelist/manga"]) {
-                                [self loadinfo:mappings[@"myanimelist/manga"] type:_infoview.type];
+                                [self loadinfo:mappings[@"myanimelist/manga"] type:_infoview.type  changeView:NO];
                             }
                             else {
                                 [self resetTitleInfoView];
@@ -924,17 +924,19 @@
 }
 
 #pragma mark Title Information View
-- (void)loadinfo:(NSNumber *) idnum type:(int)type {
+- (void)loadinfo:(NSNumber *) idnum type:(int)type changeView:(bool)changeview {
     int previd = _infoview.selectedid;
     int prevtype = _infoview.type;
     _infoview.selectedid = 0;
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
-        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+    if (changeview) {
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+        }
+        else {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+        }
+            [self loadmainview];
     }
-    else {
-        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
-    }
-    [self loadmainview];
     _noinfoview.hidden = YES;
     _progressindicator.hidden = NO;
     [_progressindicator startAnimation:nil];

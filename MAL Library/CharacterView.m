@@ -205,10 +205,10 @@
             }
             else {
                 if ([(NSString *)d[@"type"] isEqualToString:@"Published Manga"]){
-                    [_mw loadinfo:d[@"id"] type:1];
+                    [_mw loadinfo:d[@"id"] type:1 changeView:YES];
                 }
                 else {
-                    [_mw loadinfo:d[@"id"] type:0];
+                    [_mw loadinfo:d[@"id"] type:0 changeView:YES];
                 }
                 [_mw.window makeKeyAndOrderFront:self];
             }

@@ -82,7 +82,7 @@
 - (void)stopTimer;
 - (void)fireTimer;
 - (void)refreshloginlabel;
-- (void)loadinfo:(NSNumber *) idnum type:(int)type;
+- (void)loadinfo:(NSNumber *) idnum type:(int)type changeView:(bool)changeview;
 - (void)populatesearchtb:(id)json type:(int)type;
 - (void)clearsearchtb;
 - (bool)checkiftitleisonlist:(int)idnum type:(int)type;

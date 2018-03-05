@@ -172,13 +172,13 @@
     if ([url containsString:@"anime/"]) {
         // Loads Anime Information with specified id.
         url = [url stringByReplacingOccurrencesOfString:@"anime/" withString:@""];
-        [_mainwindowcontroller loadinfo:@(url.intValue) type:0];
+        [_mainwindowcontroller loadinfo:@(url.intValue) type:0 changeView:YES];
     }
     else if ([url containsString:@"manga/"]) {
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
             // Loads Manga Information with specified id.
             url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
-            [_mainwindowcontroller loadinfo:@(url.intValue) type:0];
+            [_mainwindowcontroller loadinfo:@(url.intValue) type:0 changeView:YES];
         }
     }
     else if ([url containsString:@"profile/"]) {

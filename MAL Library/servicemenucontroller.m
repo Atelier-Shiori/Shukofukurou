@@ -36,6 +36,9 @@
     NSMenuItem *selectedmenuitem = (NSMenuItem *)sender;
     int previousservice = [NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
     int tag = (int)selectedmenuitem.tag;
+    if (previousservice == tag) {
+        return;
+    }
     [NSUserDefaults.standardUserDefaults setInteger:tag forKey:@"currentservice"];
     [self setmenuitemvaluefromdefaults];
     if (_actionblock) {

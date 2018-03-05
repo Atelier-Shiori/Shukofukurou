@@ -331,7 +331,7 @@
     if (!malid) {
         [self retrieveMALIDwithTitle:entry[@"name"][@"text"] withType:type completionHandler:^(int themalid){
             if (themalid > 0) {
-                [_otheridmalidmapping addObject:@{@"anidb_id":entry[@"animenfoid"][@"text"], @"mal_id":@(themalid)}];
+                [_otheridmalidmapping addObject:@{@"anidb_id":entry[@"animenfoid"][@"text"], @"mal_id":@(themalid), @"type" : @"anime"}];
                 [self performMALUpdatefromAniDBEntry:entry withMALID:themalid];
             }
             else {
@@ -447,7 +447,7 @@
         NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"relationships"][@"anime"][@"id"]).intValue];
         if (!malid) {
             [self retrieveMALID:entry[@"relationships"][@"anime"][@"data"][@"id"] completionHandler:^(int amalid) {
-                [_otheridmalidmapping addObject:@{@"kitsu_id":entry[@"relationships"][@"anime"][@"data"][@"id"], @"mal_id":@(amalid)}];
+                [_otheridmalidmapping addObject:@{@"kitsu_id":entry[@"relationships"][@"anime"][@"data"][@"id"], @"mal_id":@(amalid), @"type" : @"anime"}];
                 [self performMALUpdateFromKitsuEntry:entry withMALID:amalid];
             }error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
@@ -742,7 +742,7 @@
     if (!malid) {
         [self retrieveMALIDwithTitle:entry[@"title_romaji"] withType:entry[@"type"] completionHandler:^(int amalid) {
             if (amalid > 0) {
-                [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
+                [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid), @"type" : @"anime"}];
                 [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
             }
             else {

@@ -9,7 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface AtarashiiAPIKitsuStaffFormat : NSObject
-@property (strong) NSArray *personarray;
-@property (strong) NSArray *castingarray;
-@property (strong) NSArray *anime_staff;
+@property (strong) NSMutableArray *personarray;
+@property (strong) NSMutableArray *castingarray;
+@property (strong) NSMutableArray *anime_staff;
+@property (strong) NSMutableArray *characters;
+@property (strong) NSMutableArray *animecharacters;
+- (id)initwithDataDictionary:(NSDictionary *)characterdata withStaffData:(NSDictionary *)staffdata;
+- (NSDictionary *)generateStaffList;
+
 @end

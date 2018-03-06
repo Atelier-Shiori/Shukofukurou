@@ -307,6 +307,7 @@
             break;
         }
         case 2: {
+            [Kitsu retrieveStaff:titleid completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {

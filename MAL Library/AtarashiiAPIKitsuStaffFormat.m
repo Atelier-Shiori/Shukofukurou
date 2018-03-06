@@ -52,7 +52,10 @@
                 if (casting[@"relationships"][@"person"][@"data"] != [NSNull null]) {
                     NSDictionary *voiceactor = [self findPerson:casting[@"relationships"][@"person"][@"data"][@"id"]];
                     if (voiceactor) {
-                        [castingsarray addObject:@{@"id" : voiceactor[@"id"], @"name" : voiceactor[@"attributes"][@"name"], @"image" : voiceactor[@"attributes"][@"image"] , @"language" : casting[@"attributes"][@"language"]}];
+                        if ([castingsarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", voiceactor[@"id"]]].count == 0) {
+                            [castingsarray addObject:@{@"id" : voiceactor[@"id"], @"name" : voiceactor[@"attributes"][@"name"], @"image" : voiceactor[@"attributes"][@"image"] , @"language" : casting[@"attributes"][@"language"]}];
+                        }
+                       
                     }
                 }
             }

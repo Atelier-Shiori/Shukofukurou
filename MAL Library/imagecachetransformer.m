@@ -19,6 +19,9 @@
     
     if ([value respondsToSelector:@selector(stringByReplacingOccurrencesOfString:withString:)]) {
         NSString *url = value;
+        if ([url isEqualToString:@"/images/original/missing.png"]) {
+            return [NSImage imageNamed:@"noimage"];
+        }
         return [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[url stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:url]];
     }
     return nil;

@@ -424,8 +424,10 @@
         _cbrowser = [CharactersBrowser new];
     }
     [_cbrowser.window makeKeyAndOrderFront:self];
-    _cbrowser.window.title = [NSString stringWithFormat:@"People Browser - %@",_infoviewtitle.stringValue];
-    _cbrowser.selectedtitle = _infoviewtitle.stringValue;
-    [_cbrowser retrievestafflist:self.selectedid];
+    if (_cbrowser.selectedtitleid != _selectedid) {
+        _cbrowser.window.title = [NSString stringWithFormat:@"People Browser - %@",_infoviewtitle.stringValue];
+        _cbrowser.selectedtitle = _infoviewtitle.stringValue;
+        [_cbrowser retrievestafflist:self.selectedid];
+    }
 }
 @end

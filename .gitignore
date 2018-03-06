@@ -71,3 +71,4 @@ iOSInjectionProject/
 # End of https://www.gitignore.io/api/objective-c
 MALLibraryHelp/.sass-cache/*/*.scssc
 MAL Library/ClientConstants.m
+MAL Library.xcodeproj/project.xcworkspace/xcuserdata/tedezarize.xcuserdatad/UserInterfaceState.xcuserstate

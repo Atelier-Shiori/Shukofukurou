@@ -13,6 +13,8 @@
 #import "AppDelegate.h"
 #import "NSTableViewAction.h"
 #import "NSString_stripHtml.h"
+#import "listservice.h"
+#import "TitleIdConverter.h"
 
 
 @interface CharacterView ()
@@ -204,13 +206,21 @@
                     [_cb.sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:[_cb getIndexOfItemWithIdentifier:[NSString stringWithFormat:@"staff-%@",d[@"id"]]]]byExtendingSelection:false];
             }
             else {
-                if ([(NSString *)d[@"type"] isEqualToString:@"Published Manga"]){
-                    [_mw loadinfo:d[@"id"] type:1 changeView:YES];
+                int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Published Manga"] ? 1 : 0;
+                switch ([listservice getCurrentServiceID]) {
+                    case 1:
+                        [_mw loadinfo:d[@"id"] type:loadtype changeView:YES];
+                        [_mw.window makeKeyAndOrderFront:self];
+                        break;
+                    case 2: {
+                        [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"id"]).intValue withType:loadtype completionHandler:^(int kitsuid) {
+                            [_mw loadinfo:@(kitsuid) type:loadtype changeView:YES];
+                            [_mw.window makeKeyAndOrderFront:self];
+                        } error:^(NSError *error) {}];
+                    }
+                    default:
+                        break;
                 }
-                else {
-                    [_mw loadinfo:d[@"id"] type:0 changeView:YES];
-                }
-                [_mw.window makeKeyAndOrderFront:self];
             }
         }
     }

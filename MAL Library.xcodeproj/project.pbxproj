@@ -45,8 +45,6 @@
 		2D71422D1FE2E32C001FA9E9 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
 		2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
 		2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
-		2D72F9271FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */; };
-		2D72F9281FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */; };
 		2D7877761F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D7877771F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D84041A1FE4A30F003DC279 /* MALLibraryAppMigrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */; };
@@ -1307,7 +1305,6 @@
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
 				F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
-				2D72F9281FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
@@ -1390,7 +1387,6 @@
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
-				2D72F9271FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m in Sources */,
 				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,

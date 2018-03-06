@@ -9,7 +9,8 @@
 #import "Kitsu.h"
 #import <AFNetworking/AFNetworking.h>
 #import "AtarashiiAPIListFormatKitsu.h"
-#import "AtarashiiAPIKitsuStaffFormat.h"
+#import "TitleIdConverter.h"
+//#import "AtarashiiAPIKitsuStaffFormat.h"
 #import "KitsuListRetriever.h"
 #import "Utility.h"
 #import "ClientConstants.h"
@@ -257,10 +258,10 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     
 }
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:@"https://kitsu.io/api/edge/anime-characters?include=character,character.castings,character.castings.person&fields[castings]=voiceActor,featured,person,language&fields[people]=name,image,malId"/*[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime-characters?filter[animeId]=%i&include=character,character.castings,character.castings.person&fields[castings]=voiceActor,featured,person,language&fields[people]=name,image,malId",titleid]*/ parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    /*AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime-characters?filter[animeId]=%i&include=character,character.castings,character.castings.person&fields[castings]=voiceActor,featured,person,language&fields[people]=name,image,malId",titleid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         __block NSDictionary *characterData = responseObject;
-        [manager GET:@"https://kitsu.io/api/edge/anime-staff?include=person&fields[people]=name,malId,image"/*[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime-staff?filter[animeId]=%i&include=person&fields[people]=name,malId,image",titleid]*/ parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime-staff?filter[animeId]=%i&include=person&fields[people]=name,malId,image",titleid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             AtarashiiAPIKitsuStaffFormat *sformat = [[AtarashiiAPIKitsuStaffFormat alloc] initwithDataDictionary:characterData withStaffData:responseObject];
             completionHandler([sformat generateStaffList]);
         } failure:^(NSURLSessionTask *operation, NSError *error) {
@@ -270,8 +271,9 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);
         NSLog(@"%@",error.localizedDescription);
-    }];
+    }];*/
 }
+
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
 }
 

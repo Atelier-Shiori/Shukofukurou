@@ -12,7 +12,7 @@
 #import "ListService.h"
 
 @implementation TitleIdConverter
-+ (void)getKitsuIDFromMALId:(int)malid  withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)getKitsuIDFromMALId:(int)malid withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Check to see if title exists in the title id mappings. If so, just use the id from the mapping.
     int tmpid = [self lookupTitleID:malid withType:type fromService:1 toService:2];
     if (tmpid > 0) {
@@ -30,7 +30,7 @@
         default:
             break;
     }
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/mappings?filter[external_site]=myanimelist/%@&filter[external_id]=%i",typestr, malid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/mappings?filter[externalSite]=myanimelist/%@&filter[external_id]=%i",typestr, malid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (((NSArray *)responseObject[@"data"]).count > 0) {
             NSDictionary *mapping = responseObject[@"data"][0];
             NSString *relationshipurl = mapping[@"relationships"][@"item"][@"links"][@"self"];
@@ -64,6 +64,48 @@
         errorHandler(error);
     }];
 }
++ (void)getMALIDFromKitsuId:(int)kitsuid withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    int tmpid = [self lookupTitleID:kitsuid withType:type fromService:2 toService:1];
+    if (tmpid > 0) {
+        completionHandler(tmpid);
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSString *typestr = @"";
+    switch (type) {
+        case 0:
+            typestr = @"anime";
+            break;
+        case 1:
+            typestr = @"manga";
+        default:
+            break;
+    }
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/mappings/%i?filter[externalSite]=myanimelist/%@",kitsuid,typestr] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] != [NSNull null]) {
+            if (responseObject[@"data"][@"id"]) {
+                NSNumber *malid = responseObject[@"data"][@"id"];
+                [self savetitleidtomapping:kitsuid withNewID:malid.intValue withType:type fromService:2 toService:1];
+                completionHandler(malid.intValue);
+            }
+            else {
+                errorHandler(nil);
+            }
+        }
+        else {
+            [self findMALIDWithCurrentServiceID:kitsuid type:type completionHandler:^(int malid) {
+                    [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
+                    completionHandler(malid);
+            } error:^(NSError *error) {
+                errorHandler(error);
+            }];
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+    
+}
+
 #pragma mark Helpers
 + (int)lookupTitleID:(int)titleid withType:(int)type fromService:(int)fromservice toService:(int)toservice {
     NSString *mappingsname = [self getMappingFileName:fromservice withToService:toservice];
@@ -72,29 +114,30 @@
     }
     if ([Utility checkifFileExists:mappingsname appendPath:@""]) {
         NSArray * mappings = [Utility loadJSON:mappingsname appendpath:@""];
+        NSArray * fmappings;
         switch (fromservice) {
             case 1:
-                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %i", titleid]];
+                fmappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %li", titleid]];
                 break;
             case 2:
-                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kitsu_id == %i", titleid]];
+                fmappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kitsu_id == %li OR kitsu_id == %@", titleid, @(titleid).stringValue]];
                 break;
             case 3:
-                mappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %i", titleid]];
+                fmappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"anilist_id == %li OR anilist_id == %@", titleid, @(titleid).stringValue]];
                 break;
             default:
                 break;
         }
-        if (mappings.count > 0) {
-            NSString *mappingtype = mappings[0][@"type"] ? mappings[0][@"type"] : @"anime";
+        if (fmappings.count > 0) {
+            NSString *mappingtype = fmappings[0][@"type"] ? fmappings[0][@"type"] : @"anime";
             if (([mappingtype isEqualToString:@"anime"] && type == 0) || ([mappingtype isEqualToString:@"manga"] && type == 1)) {
                 switch (toservice) {
                     case 1:
-                        return ((NSNumber *)mappings[0][@"mal_id"]).intValue;
+                        return ((NSNumber *)fmappings[0][@"mal_id"]).intValue;
                     case 2:
-                        return ((NSNumber *)mappings[0][@"kitsu_id"]).intValue;
+                        return ((NSNumber *)fmappings[0][@"kitsu_id"]).intValue;
                     case 3:
-                        return ((NSNumber *)mappings[0][@"anilist_id"]).intValue;
+                        return ((NSNumber *)fmappings[0][@"anilist_id"]).intValue;
                 }
             }
         }
@@ -199,7 +242,7 @@
     }
     return @"";
 }
-+ (void)findCurrentServiceTitleIDWithMALID:(int)malid type:(int)type completionHandler:(void (^)(int currentserviceid, int currentservice)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)findCurrentServiceTitleIDWithMALID:(int)malid type:(int)type completionHandler:(void (^)(int currentserviceid, int currentservice)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     [MyAnimeList retrieveTitleInfo:malid withType:type useAccount:NO completion:^(id responseObject) {
         __block NSString *title = responseObject[@"title"];
         __block NSDictionary *othertitles = responseObject[@"other_titles"];
@@ -213,6 +256,33 @@
                 else if (othertitles[@"english"]) {
                     if ([tmptitle isEqualToString:othertitles[@"english"]]) {
                         completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
+                        return;
+                    }
+                }
+            }
+            errorHandler(nil);
+        } error:^(NSError *error) {
+            errorHandler(error);
+        }];
+    } error:^(NSError *error) {
+        errorHandler(error);
+    }];
+}
+
++ (void)findMALIDWithCurrentServiceID:(int)serviceid type:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    [listservice retrieveTitleInfo:serviceid withType:type useAccount:NO completion:^(id responseObject) {
+        __block NSString *title = responseObject[@"title"];
+        __block NSDictionary *othertitles = responseObject[@"other_titles"];
+        [MyAnimeList searchTitle:title withType:type completion:^(id responseObject) {
+            for (NSDictionary *searchentry in responseObject) {
+                NSString *tmptitle = searchentry[@"title"];
+                if ([tmptitle isEqualToString:title]) {
+                    completionHandler(((NSNumber *)searchentry[@"id"]).intValue);
+                    return;
+                }
+                else if (othertitles[@"english"]) {
+                    if ([tmptitle isEqualToString:othertitles[@"english"]]) {
+                        completionHandler(((NSNumber *)searchentry[@"id"]).intValue);
                         return;
                     }
                 }

@@ -393,6 +393,7 @@
         completionHandler(responseObject);
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);
+        NSLog(@"%@",error.localizedDescription);
     }];
 }
 

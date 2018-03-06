@@ -307,7 +307,10 @@
             break;
         }
         case 2: {
-            [Kitsu retrieveStaff:titleid completion:completionHandler error:errorHandler];
+            //[Kitsu retrieveStaff:titleid completion:completionHandler error:errorHandler];
+            [TitleIdConverter getMALIDFromKitsuId:titleid withType:KitsuAnime completionHandler:^(int malid) {
+                [MyAnimeList retrieveStaff:malid completion:completionHandler error:errorHandler];
+            } error:errorHandler];
             break;
         }
         case 3: {
@@ -322,6 +325,7 @@
             break;
         }
         case 2: {
+            [MyAnimeList retrievePersonDetails:personid completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {

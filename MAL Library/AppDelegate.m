@@ -71,6 +71,9 @@
     #endif
     __weak AppDelegate *weakself = self;
     _servicemenucontrol.actionblock = ^(int selected, int previousservice) {
+        if (weakself.liststatswindow) {
+            [_liststatswindow.window close];
+        }
         [weakself refreshUIServiceChange:selected];
         [weakself.mainwindowcontroller changeservice:previousservice];
     };

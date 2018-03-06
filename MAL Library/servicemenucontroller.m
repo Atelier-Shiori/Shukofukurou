@@ -28,6 +28,12 @@
             _kitsuserviceitem.state = NSOffState;
             _anilistserviceitem.state = NSOnState;
             break;
+        default:
+            [NSUserDefaults.standardUserDefaults setInteger:1 forKey:@"currentservice"];
+            _malserviceitem.state = NSOnState;
+            _kitsuserviceitem.state = NSOffState;
+            _anilistserviceitem.state = NSOffState;
+            break;
         }
     }
 }

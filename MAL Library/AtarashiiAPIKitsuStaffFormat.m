@@ -52,11 +52,11 @@
                 if (casting[@"relationships"][@"person"][@"data"] != [NSNull null]) {
                     NSDictionary *voiceactor = [self findPerson:casting[@"relationships"][@"person"][@"data"][@"id"]];
                     if (voiceactor) {
-                        [castingsarray addObject:@{@"id" : voiceactor[@"id"], @"name" : voiceactor[@"attributes"][@"name"], @"image" : voiceactor[@"attributes"][@"image"] , @"language" : voiceactor[@"attributes"][@"language"]}];
+                        [castingsarray addObject:@{@"id" : voiceactor[@"id"], @"name" : voiceactor[@"attributes"][@"name"], @"image" : voiceactor[@"attributes"][@"image"] , @"language" : casting[@"attributes"][@"language"]}];
                     }
                 }
             }
-            [characterarray addObject:@{@"id" : characterid, @"name" : charactername, @"role" : role, @"image" : imageurl, @"description" : description}];
+            [characterarray addObject:@{@"id" : characterid, @"name" : charactername, @"role" : role, @"image" : imageurl, @"description" : description,  @"actors" : castingsarray}];
         }
     }
     // Generate staff list

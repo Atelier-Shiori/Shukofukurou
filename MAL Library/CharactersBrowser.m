@@ -318,7 +318,12 @@
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *d in characterarray) {
         if (d[@"actors"]) {
-            [tmparray addObjectsFromArray:d[@"actors"]];
+            NSArray *voiceactors = d[@"actors"];
+            for (NSDictionary *actor in voiceactors) {
+                if ([tmparray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", actor[@"id"]]].count == 0) {
+                    [tmparray addObject:actor];
+                }
+            }
         }
     }
     return tmparray;

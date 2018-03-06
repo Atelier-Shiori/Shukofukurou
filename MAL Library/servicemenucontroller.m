@@ -40,7 +40,7 @@
 
 - (IBAction)setService:(id)sender {
     NSMenuItem *selectedmenuitem = (NSMenuItem *)sender;
-    int previousservice = [NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
+    int previousservice = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
     int tag = (int)selectedmenuitem.tag;
     if (previousservice == tag) {
         return;

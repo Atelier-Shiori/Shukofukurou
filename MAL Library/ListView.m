@@ -485,7 +485,7 @@
     _completedfilter.state = 0;
     _droppedfilter.state = 0;
     _onholdfilter.state = 0;
-    _plantoreadfilter.state = 0;
+    _plantowatchfilter.state = 0;
     _readingfilter.state = 1;
     _mangacompletedfilter.state = 0;
     _mangadroppedfilter.state = 0;

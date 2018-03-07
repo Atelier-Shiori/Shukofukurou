@@ -26,29 +26,30 @@ Tags|Y|N|N|N
 
 (*) Only completed, plan to watch and watching status. The XML does not contain state/watch status information nor score.
 
+Note: You cannot import Kitsu/Anilist lists if your current service is the same as the list you are importing.
+
 ## How to export lists from other sites and import them
 
 ### MyAnimeList
+Note: Manga list importing is only available for App Store users.
 1. In the library view on MyAnimeList, click "Export" option.
 2. Select what list you want to export and click "Export My List." It will prompt you if you want to export your list. Click OK.
 3. Download your list. Rename the downloaded file to add the ".gz" extension. Then, extract the list.
-4. In MAL Library, click on MyAnimeList > Import List > Import MyAnimeList XML  from the menubar.. Select your list to importe 
+4. In MAL Library, click on Tools > Import List > Import MyAnimeList XML  from the menubar.. Select your list to import.
 Note: To overwrite entries, click "Options" and check "Replace entries if exist"
 5. Click Open and it will import the list to your library. If there is any titles that couldn't be imported, it will show a list.
 
 ### AniDB
-This option requires a donation key entered or an App Store version.
 1. Click Export under "My Stuff" on AniDB.
 2. Choose XML from the template selector and click Request Export. You will have to wait until the export is ready.
 3. Download the export and extract it.
-4. In MAL Library, Click on MyAnimeList > Import List > Import AniDB XML from the menubar.
+4. In MAL Library, Click on Tools > Import List > Import AniDB XML from the menubar.
 5. Go to the extracted folder and select file "mylist.xml." 
 Note: To overwrite entries, click "Options" and check "Replace entries if exist"
 6. Click open to start the import. If there is any titles that couldn't be imported, it will show a list.
 
 ### Kitsu and AniList
-This option requires a donation key entered or an App Store version.
-1. In MAL Library, click on MyAnimeList > Import List > Import from Kitsu or Import from AniList from the menubar.
+1. In MAL Library, click on Tools > Import List > Import from Kitsu or Import from AniList from the menubar.
 2. Specify your username that you want to import your library from.
 Note: To overwrite entries, check "Replace existing entries"
 6. Click import to start the import. If there is any titles that couldn't be imported, it will show a list.

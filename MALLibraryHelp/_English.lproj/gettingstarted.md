@@ -26,4 +26,6 @@ Here are the functionality available:
 * Seasons - Browse through a list of titles that aired in a given season and year.
 * Airing - Browse through shows that are currently airing by day.
 
+## Service Menu
+The service menu allows you to switch between list services. If you have a title loaded in Title Information, MAL Library will atempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.
 

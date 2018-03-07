@@ -3,6 +3,8 @@ title: Messages
 description: Show help for Messages functionality.
 keywords: messages, private messages, reading messages, composing messages
 ---
+This only applies to the MyAnimeList list service.
+
 ![](messages.jpg)
 
 Messages allow you to read private messages from other members on MyAnimeList.

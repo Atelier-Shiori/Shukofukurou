@@ -15,7 +15,7 @@ The following features is in the App Store version:
 * Viewing cast information of an anime title.
 * Viewing profiles and lists from different users.
 
-All users who purchase the full version on the Mac App Store will get MAL Library 3,0 free via In-App Purchase, when MAL Library 3.0 is ready for release, estimated in mid 2018.
+All users who purchase the full version on the Mac App Store will get MAL Library 3.0 for $1.99 via In-App Purchase, when MAL Library 3.0 is ready for release, estimated in mid 2018.
 
 ## Notice
 If you are developing a fork, please set up your own Atarashii-API server. The default API server is only for official copies of MAL Library, MAL Updater OS X and Hachidori. By doing so, you are pirating the software and violating the terms of service.

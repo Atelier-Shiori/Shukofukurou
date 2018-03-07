@@ -43,7 +43,9 @@
 - (IBAction)changeappearence:(id)sender {
     [_mainwindowcontroller setAppearance];
     AppDelegate *del = (AppDelegate *)NSApplication.sharedApplication.delegate;
-    [[del getProfileWindow] setAppearance];
+    if (del.pwc) {
+        [[del getProfileWindow] setAppearance];
+    }
 }
 - (void)setMainWindowController:(MainWindow*)mw{
     _mainwindowcontroller = mw;

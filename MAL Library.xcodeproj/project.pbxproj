@@ -763,7 +763,6 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -779,6 +778,7 @@
 				2D0A64571F5B22A00001C906 /* AniListImport.m */,
 				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
+				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
@@ -813,10 +813,9 @@
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
 				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
-				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
-				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
 				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
 				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
+				919DE8FE20504D7B007DCFBC /* KitsuRetrievers */,
 				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
 				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
 				2D94612B1EC38CC8004E171B /* ListImport.h */,
@@ -843,14 +842,10 @@
 				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
 				9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */,
 				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
-				2D7877741F87E44000AD40F1 /* MyListView.h */,
-				2D7877751F87E44000AD40F1 /* MyListView.m */,
-				F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */,
-				F8B5AA902044813400132C51 /* RatingTwentyConvert.m */,
 				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
 				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
-				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
-				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
+				2D7877741F87E44000AD40F1 /* MyListView.h */,
+				2D7877751F87E44000AD40F1 /* MyListView.m */,
 				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
 				916502C01E8C606E00565D30 /* NotLoggedIn.m */,
 				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
@@ -867,6 +862,8 @@
 				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
 				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
 				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
+				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
+				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
 				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
 				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
 				9199BAC51E89842400F6E9FF /* Preferences.h */,
@@ -876,6 +873,8 @@
 				2DA863E81F895F9B00D2876A /* ProfileWindowController.m */,
 				2D371E781ECF8B4F00F47138 /* ratingchartview.h */,
 				2D371E791ECF8B4F00F47138 /* ratingchartview.m */,
+				F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */,
+				F8B5AA902044813400132C51 /* RatingTwentyConvert.m */,
 				91822A491EAE99E6005E33DB /* RecommendedTitleView.h */,
 				91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */,
 				91999D0E1E8C87F10026D3E9 /* Resources */,
@@ -903,6 +902,8 @@
 				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
 				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
+				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
+				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
 				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
@@ -934,6 +935,13 @@
 				9199BAF01E89844500F6E9FF /* AFNetworking.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		919DE8FE20504D7B007DCFBC /* KitsuRetrievers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = KitsuRetrievers;
 			sourceTree = "<group>";
 		};
 		91D3D89D1E89C0020046C4CC /* about */ = {

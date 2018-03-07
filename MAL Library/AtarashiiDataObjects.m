@@ -211,3 +211,24 @@
     return @{@"position" : _position, @"manga" : _manga};
 }
 @end
+
+@implementation AtarashiiReviewObject
+- (id)init {
+    if ([super init]) {
+        self.username = @"";
+        self.date = @"";
+        self.avatar_url = @"";
+        self.review = @"";
+    }
+    return self;
+}
+- (NSDictionary *)NSDictionaryRepresentation {
+    if (self.mediatype == 0) {
+        return @{@"date" : _date, @"rating" : @(_rating), @"username" : _username, @"episodes" : @(_episodes), @"watched_episodes" : @(_watched_episodes), @"helpful" : @(_helpful), @"helpful_total" : @(_helpful_total), @"avatar_url" : _avatar_url, @"review" : _review };
+    }
+    else {
+        return @{@"date" : _date, @"rating" : @(_rating), @"username" : _username, @"chapters" : @(_chapters), @"read_chapters" : @(_read_chapters), @"helpful" : @(_helpful), @"helpful_total" : @(_helpful_total), @"avatar_url" : _avatar_url, @"review" : _review };
+    }
+    return @{};
+}
+@end

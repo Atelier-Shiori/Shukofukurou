@@ -100,6 +100,7 @@
             break;
         }
         case 2: {
+            [Kitsu retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {

@@ -16,7 +16,7 @@
             <connections>
                 <outlet property="importkitsumenu" destination="Yfh-DT-TKI" id="YoT-kG-iZP"/>
                 <outlet property="messagesmenuitem" destination="PzU-Ui-J4l" id="6kL-cJ-B1O"/>
-                <outlet property="servicemenucontrol" destination="SPk-NX-uMK" id="1AP-bN-KqA"/>
+                <outlet property="servicemenucontrol" destination="Soe-9M-Amc" id="6H8-R2-elv"/>
             </connections>
         </customObject>
         <customObject id="aOt-b9-3aH" customClass="ListImport">
@@ -26,13 +26,6 @@
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="Qdg-2P-lTs" customClass="ListExporter"/>
-        <customObject id="SPk-NX-uMK" customClass="servicemenucontroller">
-            <connections>
-                <outlet property="kitsuserviceitem" destination="Xpj-88-rLY" id="gAN-Bf-pzA"/>
-                <outlet property="malserviceitem" destination="DDy-su-2bd" id="WVk-5c-dK4"/>
-                <outlet property="servicemenu" destination="aod-zG-HhS" id="x37-sp-OAb"/>
-            </connections>
-        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="MAL Library" id="1Xt-HY-uBw">
@@ -331,26 +324,20 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Service" id="aod-zG-HhS">
                         <items>
-                            <menuItem title="MyAnimeList" id="DDy-su-2bd">
+                            <menuItem title="MyAnimeList" tag="1" id="DDy-su-2bd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="setService:" target="SPk-NX-uMK" id="2I7-fN-e0t"/>
+                                    <action selector="setService:" target="Soe-9M-Amc" id="Boz-mS-MyY"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Kitsu" id="Xpj-88-rLY">
+                            <menuItem title="Kitsu" tag="2" id="Xpj-88-rLY">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="setService:" target="SPk-NX-uMK" id="3np-Hp-dSu"/>
+                                    <action selector="setService:" target="Soe-9M-Amc" id="DaX-0J-jFG"/>
                                 </connections>
                             </menuItem>
                         </items>
-                        <connections>
-                            <outlet property="delegate" destination="SPk-NX-uMK" id="N1R-Lx-xEJ"/>
-                        </connections>
                     </menu>
-                    <connections>
-                        <action selector="setService:" target="SPk-NX-uMK" id="uYu-cA-gf6"/>
-                    </connections>
                 </menuItem>
                 <menuItem title="Tools" id="dVb-eF-FSz">
                     <attributedString key="attributedTitle"/>
@@ -768,5 +755,13 @@
         </menu>
         <customObject id="8pF-JQ-aL5" customClass="SUUpdater"/>
         <userDefaultsController representsSharedInstance="YES" id="kZr-4I-AQm"/>
+        <customObject id="Soe-9M-Amc" customClass="servicemenucontroller">
+            <connections>
+                <outlet property="kitsuserviceitem" destination="Xpj-88-rLY" id="tRU-E7-sbQ"/>
+                <outlet property="malserviceitem" destination="DDy-su-2bd" id="xVU-9o-vVt"/>
+                <outlet property="servicemenu" destination="aod-zG-HhS" id="Qmj-fV-8Yt"/>
+                <outlet property="servicemenuitem" destination="gvA-y9-4Af" id="fMs-Kh-tKY"/>
+            </connections>
+        </customObject>
     </objects>
 </document>

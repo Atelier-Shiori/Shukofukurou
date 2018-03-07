@@ -149,3 +149,19 @@
 @property (strong) NSArray *manga;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
+
+@interface AtarashiiReviewObject : NSObject
+@property int mediatype;
+@property (strong) NSString *date;
+@property int rating;
+@property (strong) NSString *username;
+@property int episodes;
+@property int chapters;
+@property int watched_episodes;
+@property int read_chapters;
+@property int helpful;
+@property int helpful_total;
+@property (strong) NSString *avatar_url;
+@property (strong) NSString *review;
+- (NSDictionary *)NSDictionaryRepresentation;
+@end

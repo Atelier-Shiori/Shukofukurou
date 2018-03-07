@@ -56,13 +56,33 @@
     [listservice retrieveReviewsForTitle:idnum withType:type completion:^(id responsedata) {
         _selectedid = idnum;
         _selectedtype = type;
-        self.window.title = [NSString stringWithFormat:@"Reviews - %@", title];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 3:
+                self.window.title = [NSString stringWithFormat:@"Reviews - %@", title];
+                break;
+            case 2:
+                self.window.title = [NSString stringWithFormat:@"Reactions - %@", title];
+                break;
+            default:
+                break;
+        }
         [self populateReviews:responsedata];
         [self toggleprogresswheel:NO];
     } error:^(NSError *error) {
         [self toggleprogresswheel:NO];
         NSAlert *alert = [[NSAlert alloc] init];
-        [alert setMessageText:NSLocalizedString(@"Couldn't Load Reviews",nil)];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 3:
+                [alert setMessageText:NSLocalizedString(@"Couldn't Load Reviews",nil)];
+                break;
+            case 2:
+                [alert setMessageText:NSLocalizedString(@"Couldn't Load Reactions",nil)];
+                break;
+            default:
+                break;
+        }
         [alert setInformativeText:NSLocalizedString(@"Make sure you are connected to the internet and try again.",nil)];
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
@@ -74,7 +94,17 @@
 
 - (void)toggleprogresswheel:(bool)state{
     if (state) {
-        _selectreviewlabel.stringValue = @"Loading Reviews...";
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 3:
+                _selectreviewlabel.stringValue = @"Loading Reviews...";
+                break;
+            case 2:
+                _selectreviewlabel.stringValue = @"Loading Reactions...";
+                break;
+            default:
+                break;
+        }
         [_progresswheel startAnimation:nil];
         _progresswheel.hidden = false;
     }
@@ -88,7 +118,17 @@
     [a removeAllObjects];
     [_reviewtb reloadData];
     [_reviewtb deselectAll:self];
-    self.window.title = @"Reviews";
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+        case 3:
+            self.window.title = @"Reviews";
+            break;
+        case 2:
+            self.window.title = @"Reactions";
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)populateReviews:(id)data{
@@ -96,10 +136,30 @@
     [_reviewtb reloadData];
     [_reviewtb deselectAll:self];
     if ([[_reviewarraycontroller mutableArrayValueForKey:@"content"] count] > 0) {
-        _selectreviewlabel.stringValue = @"Please select a review.";
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 3:
+                _selectreviewlabel.stringValue = @"Please select a review.";
+                break;
+            case 2:
+                _selectreviewlabel.stringValue = @"Please select a reaction.";
+                break;
+            default:
+                break;
+        }
     }
     else {
-        _selectreviewlabel.stringValue = @"No reviews.";
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 3:
+                _selectreviewlabel.stringValue = @"No reviews.";
+                break;
+            case 2:
+                _selectreviewlabel.stringValue = @"No reactions.";
+                break;
+            default:
+                break;
+        }
     }
 }
 

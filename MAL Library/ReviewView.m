@@ -11,6 +11,8 @@
 #import "Utility.h"
 #import "AppDelegate.h"
 #import "ProfileWindowController.h"
+#import "listservice.h"
+#import "RatingTwentyConvert.h"
 
 @interface ReviewView ()
 
@@ -30,9 +32,21 @@
 }
 
 - (void)loadReview:(NSDictionary *)review type:(int)type {
+    int currentservice = [listservice getCurrentServiceID];
     _reviewerusername.stringValue = review[@"username"];
-    _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@", review[@"rating"]];
-    _reviewdatelabel.stringValue = [NSString stringWithFormat:@"Reviewed on %@", [Utility stringDatetoLocalizedDateString:(NSString *)review[@"date"]]];
+    switch (currentservice) {
+        case 1:
+        case 3:
+            _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@", review[@"rating"]];
+            _reviewdatelabel.stringValue = [NSString stringWithFormat:@"Reviewed on %@", [Utility stringDatetoLocalizedDateString:(NSString *)review[@"date"]]];
+            break;
+        case 2:
+            _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@",  [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)review[@"rating"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]]];
+            _reviewdatelabel.stringValue = [NSString stringWithFormat:@"Reacted on %@", [Utility stringDatetoLocalizedDateString:(NSString *)review[@"date"]]];
+            break;
+        default:
+            break;
+    }
     if (type == 0) {
          _episodeswatched.stringValue = [NSString stringWithFormat:@"Episodes watched: %@", review[@"watched_episodes"]];
     }
@@ -42,10 +56,30 @@
     if (review[@"helpful"]) {
         NSNumber *helpful = review[@"helpful"];
         if (helpful.intValue == 1) {
-            _reviewhelpful.stringValue = [NSString stringWithFormat:@"%i user find this review helpful", helpful.intValue];
+            switch (currentservice) {
+                case 1:
+                case 3:
+                    _reviewhelpful.stringValue = [NSString stringWithFormat:@"%i user find this review helpful", helpful.intValue];
+                    break;
+                case 2:
+                    _reviewhelpful.stringValue = [NSString stringWithFormat:@"%i user liked this", helpful.intValue];
+                    break;
+                default:
+                    break;
+            }
         }
         else {
-            _reviewhelpful.stringValue = [NSString stringWithFormat:@"%i users find this review helpful", helpful.intValue];
+            switch (currentservice) {
+                case 1:
+                case 3:
+                    _reviewhelpful.stringValue = [NSString stringWithFormat:@"%i users find this review helpful", helpful.intValue];
+                    break;
+                case 2:
+                    _reviewhelpful.stringValue = [NSString stringWithFormat:@"%i users liked this", helpful.intValue];
+                    break;
+                default:
+                    break;
+            }
         }
     }
     [_reviewtext.textStorage setAttributedString: [(NSString *)review[@"review"] convertHTMLtoAttStr]];
@@ -61,7 +95,18 @@
         [pwc loadProfileWithUsername:_reviewerusername.stringValue];
     }
     else {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_reviewerusername.stringValue]]];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_reviewerusername.stringValue]]];
+                break;
+            case 2:
+                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_reviewerusername.stringValue]]];
+                break;
+            case 3:
+                break;
+            default:
+                break;
+        }
     }
 }
 @end

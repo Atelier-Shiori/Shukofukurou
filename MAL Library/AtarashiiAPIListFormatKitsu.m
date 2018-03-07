@@ -272,6 +272,59 @@
     return tmparray;
 }
 
++ (NSArray *)KitsuReactionstoAtarashii:(NSDictionary *)data withType:(int)type {
+    NSMutableArray *reactionsarray = [NSMutableArray new];
+    NSArray *dataarray = data[@"data"];
+    NSArray *mediaarray = [data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", type == 0 ? @"anime" : @"manga"]];
+    NSArray *libraryentriesarray = [data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"libraryEntries"]];
+    NSArray *usersarray = [data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"users"]];
+    for (NSDictionary *reaction in dataarray) {
+        NSDictionary *mediadict;
+        NSDictionary *libraryentrydict;
+        NSDictionary *userdict;
+        NSArray *tmparray = [mediaarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", type == 0 ? reaction[@"relationships"][@"anime"][@"data"][@"id"] : reaction[@"relationships"][@"manga"][@"data"][@"id"]]];
+        if (tmparray.count > 0) {
+            mediadict = tmparray[0];
+        }
+        else {
+            continue;
+        }
+        tmparray = [libraryentriesarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", reaction[@"relationships"][@"libraryEntry"][@"data"][@"id"]]];
+        if (tmparray.count > 0) {
+            libraryentrydict = tmparray[0];
+        }
+        else {
+            continue;
+        }
+        tmparray = [usersarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", reaction[@"relationships"][@"user"][@"data"][@"id"]]];
+        if (tmparray.count > 0) {
+            userdict = tmparray[0];
+        }
+        else {
+            continue;
+        }
+        AtarashiiReviewObject *reviewobj = [AtarashiiReviewObject new];
+        reviewobj.mediatype = type;
+        reviewobj.date = [(NSString *)reaction[@"attributes"][@"createdAt"] substringToIndex:10];
+        reviewobj.review = reaction[@"attributes"][@"reaction"];
+        reviewobj.helpful = ((NSNumber *)reaction[@"attributes"][@"upVotesCount"]).intValue;
+        reviewobj.helpful_total = reviewobj.helpful;
+        reviewobj.rating = libraryentrydict[@"attributes"][@"ratingTwenty"] != [NSNull null] ? ((NSNumber *)libraryentrydict[@"attributes"][@"ratingTwenty"]).intValue : 0;
+        reviewobj.username = userdict[@"attributes"][@"name"];
+        reviewobj.avatar_url = userdict[@"attributes"][@"avatar"][@"original"];
+        if (type == 0) {
+            reviewobj.watched_episodes = ((NSNumber *)libraryentrydict[@"attributes"][@"progress"]).intValue;
+            reviewobj.episodes = mediadict[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)mediadict[@"attributes"][@"episodeCount"]).intValue : 0;
+        }
+        else {
+            reviewobj.read_chapters = ((NSNumber *)libraryentrydict[@"attributes"][@"progress"]).intValue;
+            reviewobj.chapters = mediadict[@"attributes"][@"chapterCount"] != [NSNull null] ? ((NSNumber *)mediadict[@"attributes"][@"chapterCount"]).intValue : 0;
+        }
+        [reactionsarray addObject:[reviewobj NSDictionaryRepresentation]];
+    }
+    return reactionsarray;
+}
+
 + (double)calculatedays:(NSArray *)list {
     double duration = 0;
     for (NSDictionary *entry in list) {

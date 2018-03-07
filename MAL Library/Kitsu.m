@@ -69,8 +69,37 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     
 }
 + (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
+    NSMutableArray *dataarray = [NSMutableArray new];
+    NSMutableArray *includearray = [NSMutableArray new];
+    [self retrieveReviewsForTitle:titleid withType:type withDataArray:dataarray withIncludeArray:includearray withPageOffset:0 completion:completionHandler error:errorHandler];
 }
+
++ (void)retrieveReviewsForTitle:(int)titleid withType:(int)type withDataArray:(NSMutableArray *)dataarray withIncludeArray:(NSMutableArray *)includearray withPageOffset:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSString *reviewurl = @"";
+    if (type == KitsuAnime) {
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[animeId]=%i&include=anime,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar&fields[anime]=episodeCount&page[limit]=20&page[offset]=%i", titleid,offset];
+    }
+    else {
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[mangaId]=%i&include=manga,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar&fields[manga]=chapterCount&page[limit]=20&page[offset]=%i", titleid, offset];
+    }
+    [manager GET:reviewurl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            [dataarray addObjectsFromArray:responseObject[@"data"]];
+            [includearray addObjectsFromArray:responseObject[@"included"]];
+        }
+        if (responseObject[@"links"][@"next"]) {
+            int newoffset = offset + 20;
+            [self retrieveReviewsForTitle:titleid withType:type withDataArray:dataarray withIncludeArray:includearray withPageOffset:newoffset completion:completionHandler error:errorHandler];
+        }
+        else {
+            completionHandler([AtarashiiAPIListFormatKitsu KitsuReactionstoAtarashii:@{@"data" : dataarray, @"included" : includearray} withType:type]);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 + (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     
 }

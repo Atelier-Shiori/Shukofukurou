@@ -159,17 +159,18 @@
     }
     NSArray * included = data[@"included"];
     NSMutableArray *categories = [NSMutableArray new];
-    for (NSDictionary *d in included) {
-        if ([(NSString *)d[@"type"] isEqualToString:@"categories"]) {
-            [categories addObject:d[@"attributes"][@"title"]];
-        }
+    for (NSDictionary *d in [included filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"categories"]]) {
+        [categories addObject:d[@"attributes"][@"title"]];
     }
     aobject.genres = categories;
+    NSMutableArray *producers = [NSMutableArray new];
+    for (NSDictionary *d in [included filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"producers"]]) {
+        [producers addObject:d[@"attributes"][@"name"]];
+    }
+    aobject.producers = producers;
     NSMutableDictionary *mappings = [NSMutableDictionary new];
-    for (NSDictionary *d in included) {
-        if ([(NSString *)d[@"type"] isEqualToString:@"mappings"]) {
-            [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
-        }
+    for (NSDictionary *d in [included filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"mappings"]]) {
+        [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
     }
     aobject.mappings = mappings;
     return aobject.NSDictionaryRepresentation;
@@ -205,17 +206,13 @@
     }
     NSArray * included = data[@"included"];
     NSMutableArray *categories = [NSMutableArray new];
-    for (NSDictionary *d in included) {
-        if ([(NSString *)d[@"type"] isEqualToString:@"categories"]) {
-            [categories addObject:d[@"attributes"][@"title"]];
-        }
+    for (NSDictionary *d in [included filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"categories"]]) {
+        [categories addObject:d[@"attributes"][@"title"]];
     }
     mobject.genres = categories;
     NSMutableDictionary *mappings = [NSMutableDictionary new];
-    for (NSDictionary *d in included) {
-        if ([(NSString *)d[@"type"] isEqualToString:@"mappings"]) {
-            [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
-        }
+    for (NSDictionary *d in [included filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"mappings"]]) {
+        [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
     }
     mobject.mappings = mappings;
     return mobject.NSDictionaryRepresentation;

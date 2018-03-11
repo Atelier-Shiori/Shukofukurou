@@ -64,8 +64,9 @@
                 _addnumformat.maximum = d[@"episodes"];
             }
             else {
-                [_addnumformat setMaximum:nil];
+                [_addnumformat setMaximum:@(9999999)];
             }
+            _addepstepper.maxValue = _addnumformat.maximum.doubleValue;
             if (d[@"status"]) {
                 [self checkStatus:d[@"status"] type:type];
             }
@@ -104,14 +105,16 @@
                 _addchapnumformat.maximum = d[@"chapters"];
             }
             else {
-                [_addchapnumformat setMaximum:nil];
+                [_addchapnumformat setMaximum:@(9999999)];
             }
             if (((NSNumber *)d[@"volumes"]).intValue > 0) {
                 _addvolnumformat.maximum = d[@"chapters"];
             }
             else {
-                [_addvolnumformat setMaximum:nil];
+                [_addvolnumformat setMaximum:@(9999999)];
             }
+            _addchapstepper.maxValue = _addchapnumformat.maximum.doubleValue;
+            _addvolstepper.maxValue = _addvolnumformat.maximum.doubleValue;
             if (_selecteditem[@"status"]) {
                 [self checkStatus:_selecteditem[@"status"] type:1];
             }
@@ -275,9 +278,12 @@
             segment = (_addepifield.stringValue).intValue;
         }
         totalsegment = (_addtotalepisodes.stringValue).intValue;
-        segment = stepper.intValue;
-        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0) {
+        if ((stepper.intValue <= totalsegment || totalsegment == 0) && stepper.intValue >= 0) {
+            segment = stepper.intValue;
             _addepifield.stringValue = [NSString stringWithFormat:@"%i",segment];
+        }
+        else {
+            stepper.intValue = segment;
         }
     }
     else {
@@ -298,14 +304,17 @@
             totalsegment = (_addtotalvol.stringValue).intValue;
         }
         
-        segment = stepper.intValue;
-        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0) {
+        if ((stepper.intValue <= totalsegment || totalsegment == 0) && stepper.intValue >= 0) {
+            segment = stepper.intValue;
             if ([segmenttype isEqualToString:@"chapters"]) {
                 _addchapfield.stringValue = [NSString stringWithFormat:@"%i",segment];
             }
             else {
                 _addvolfield.stringValue = [NSString stringWithFormat:@"%i",segment];
             }
+        }
+        else {
+            stepper.intValue = segment;
         }
     }
 }

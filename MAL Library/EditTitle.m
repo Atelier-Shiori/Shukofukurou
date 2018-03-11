@@ -85,8 +85,9 @@
             _minieditpopovernumformat.maximum = d[@"episodes"];
         }
         else {
-            [_minieditpopovernumformat setMaximum:nil];
+            [_minieditpopovernumformat setMaximum:@(9999999)];
         }
+        _minipopovereditepstep.maxValue = _minieditpopovernumformat.maximum.doubleValue;
         _selectededitid = ((NSNumber *)d[@"id"]).intValue;
         [_minieditpopover showRelativeToRect:rect ofView:view preferredEdge:rectedge];
         _selectedtype = type;
@@ -113,7 +114,7 @@
             _mangaeditpopoverchapnumformat.maximum = d[@"chapters"];
         }
         else {
-            [_mangaeditpopoverchapnumformat setMaximum:nil];
+            [_mangaeditpopoverchapnumformat setMaximum:@(9999999)];
         }
         _mangapopovervolfield.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovereditvolstep.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
@@ -123,8 +124,10 @@
             _mangaeditpopovervolnumformat.maximum = d[@"volumes"];
         }
         else {
-            [_mangaeditpopovervolnumformat setMaximum:nil];
+            [_mangaeditpopovervolnumformat setMaximum:@(9999999)];
         }
+        _mangapopovereditvolstep.maxValue = _mangaeditpopovervolnumformat.maximum.doubleValue;
+        _mangapopovereditchapstep.maxValue = _mangaeditpopoverchapnumformat.maximum.doubleValue;
         [_mangapopoverstatus selectItemWithTitle:d[@"read_status"]];
         [_mangapopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
         _mangapopoverstatustext.stringValue = @"";
@@ -254,9 +257,12 @@
             segment = (_minipopoverepfield.stringValue).intValue;
         }
         totalsegment = (_minipopovertotalep.stringValue).intValue;
-        segment = stepper.intValue;
-        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0) {
+        if ((stepper.intValue <= totalsegment || totalsegment == 0) && stepper.intValue >= 0) {
+            segment = stepper.intValue;
             _minipopoverepfield.stringValue = [NSString stringWithFormat:@"%i",segment];
+        }
+        else {
+            stepper.intValue = segment;
         }
     }
     else {
@@ -277,14 +283,17 @@
             totalsegment = (_mangapopovertotalvol.stringValue).intValue;
         }
         
-        segment = stepper.intValue;
-        if ((segment <= totalsegment || totalsegment == 0) && segment >= 0) {
+        if ((stepper.intValue <= totalsegment || totalsegment == 0) && stepper.intValue >= 0) {
+            segment = stepper.intValue;
             if ([segmenttype isEqualToString:@"chapters"]) {
                 _mangapopoverchapfield.stringValue = [NSString stringWithFormat:@"%i",segment];
             }
             else {
                 _mangapopovervolfield.stringValue = [NSString stringWithFormat:@"%i",segment];
             }
+        }
+        else {
+            stepper.intValue = segment;
         }
     }
 }

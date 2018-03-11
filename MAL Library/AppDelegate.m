@@ -24,6 +24,7 @@
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
 @property (strong) IBOutlet servicemenucontroller* servicemenucontrol;
+@property (strong) IBOutlet NSMenuItem *malexportmenu;
 @end
 
 @implementation AppDelegate
@@ -294,9 +295,11 @@
             [_messageswindow cleartableview];
         }
         _messagesmenuitem.hidden = true;
+        _malexportmenu.hidden = true;
     }
     else {
         _messagesmenuitem.hidden = false;
+        _malexportmenu.hidden = false;
     }
     switch (selected) {
         case 1:

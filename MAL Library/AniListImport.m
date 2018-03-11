@@ -75,39 +75,41 @@
 }
 + (NSArray *)processAnimeListEntries:(NSArray *)list {
     NSMutableArray *tmplist = [NSMutableArray new];
-    for (NSDictionary *item in list){
-        NSDictionary *details = item[@"anime"];
-        NSMutableDictionary *newitem = [NSMutableDictionary new];
-        [newitem setObject:item[@"series_id"] forKey:@"id"];
-        [newitem setObject:item[@"record_id"] forKey:@"record_id"];
-        [newitem setObject:item[@"rewatched"] forKey:@"rewatched"];
-        [newitem setObject:item[@"score"] forKey:@"score"];
-        [newitem setObject:item[@"score_raw"] forKey:@"score_raw"];
-        [newitem setObject:item[@"priority"] forKey:@"priority"];
-        [newitem setObject:item[@"hidden_default"] forKey:@"hidden_default"];
-        [newitem setObject:item[@"added_time"] forKey:@"added_time"];
-        [newitem setObject:item[@"episodes_watched"] forKey:@"watched_episodes"];
-        [newitem setObject:item[@"started_on"] forKey:@"started_on"];
-        [newitem setObject:item[@"list_status"] forKey:@"watched_status"];
-        [newitem setObject:details[@"title_romaji"] forKey:@"title_romaji"];
-        [newitem setObject:details[@"title_english"] forKey:@"title_english"];
-        [newitem setObject:details[@"type"] forKey:@"type"];
-        [newitem setObject:details[@"total_episodes"] forKey:@"episodes"];
-        [newitem setObject:details[@"airing_status"] forKey:@"status"];
-        if (details[@"advanced_rating_scores"]){
-            [newitem setObject:details[@"advanced_rating_scores"] forKey:@"advanced_rating_scores"];
+    @autoreleasepool {
+        for (NSDictionary *item in list){
+            NSDictionary *details = item[@"anime"];
+            NSMutableDictionary *newitem = [NSMutableDictionary new];
+            [newitem setObject:item[@"series_id"] forKey:@"id"];
+            [newitem setObject:item[@"record_id"] forKey:@"record_id"];
+            [newitem setObject:item[@"rewatched"] forKey:@"rewatched"];
+            [newitem setObject:item[@"score"] forKey:@"score"];
+            [newitem setObject:item[@"score_raw"] forKey:@"score_raw"];
+            [newitem setObject:item[@"priority"] forKey:@"priority"];
+            [newitem setObject:item[@"hidden_default"] forKey:@"hidden_default"];
+            [newitem setObject:item[@"added_time"] forKey:@"added_time"];
+            [newitem setObject:item[@"episodes_watched"] forKey:@"watched_episodes"];
+            [newitem setObject:item[@"started_on"] forKey:@"started_on"];
+            [newitem setObject:item[@"list_status"] forKey:@"watched_status"];
+            [newitem setObject:details[@"title_romaji"] forKey:@"title_romaji"];
+            [newitem setObject:details[@"title_english"] forKey:@"title_english"];
+            [newitem setObject:details[@"type"] forKey:@"type"];
+            [newitem setObject:details[@"total_episodes"] forKey:@"episodes"];
+            [newitem setObject:details[@"airing_status"] forKey:@"status"];
+            if (details[@"advanced_rating_scores"]){
+                [newitem setObject:details[@"advanced_rating_scores"] forKey:@"advanced_rating_scores"];
+            }
+            else{
+                [newitem setObject:[NSArray new] forKey:@"advanced_rating_scores"];
+            }
+            if (!details[@"notes"]){
+                [newitem setObject:[NSNull null] forKey:@"notes"];
+            }
+            else{
+                [newitem setObject:details[@"notes"] forKey:@"notes"];
+            }
+            [newitem setObject:item[@"custom_lists"] forKey:@"custom_lists"];
+            [tmplist addObject:[newitem copy]];
         }
-        else{
-            [newitem setObject:[NSArray new] forKey:@"advanced_rating_scores"];
-        }
-        if (!details[@"notes"]){
-            [newitem setObject:[NSNull null] forKey:@"notes"];
-        }
-        else{
-            [newitem setObject:details[@"notes"] forKey:@"notes"];
-        }
-        [newitem setObject:item[@"custom_lists"] forKey:@"custom_lists"];
-        [tmplist addObject:newitem];
     }
     return tmplist;
 }

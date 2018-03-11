@@ -15,6 +15,7 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="importkitsumenu" destination="Yfh-DT-TKI" id="YoT-kG-iZP"/>
+                <outlet property="malexportmenu" destination="6yC-xo-9wk" id="hcS-EX-hyk"/>
                 <outlet property="messagesmenuitem" destination="PzU-Ui-J4l" id="6kL-cJ-B1O"/>
                 <outlet property="servicemenucontrol" destination="Soe-9M-Amc" id="6H8-R2-elv"/>
             </connections>

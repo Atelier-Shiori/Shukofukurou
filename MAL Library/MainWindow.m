@@ -757,16 +757,18 @@
 
 #pragma mark Title Information View
 - (void)loadinfo:(NSNumber *) idnum type:(int)type {
-    int previd = _infoview.selectedid;
-    int prevtype = _infoview.type;
-    _infoview.selectedid = 0;
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
-        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+    int previd;
+    int prevtype;
+    if (idnum.intValue == _infoview.selectedid && type == _infoview.type) {
+        [self changetoinfoview];
+        return;
     }
     else {
-        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+        previd = _infoview.selectedid;
+        prevtype = _infoview.type;
+        _infoview.selectedid = 0;
+        [self changetoinfoview];
     }
-    [self loadmainview];
     _noinfoview.hidden = YES;
     _progressindicator.hidden = NO;
     [_progressindicator startAnimation:nil];
@@ -791,6 +793,16 @@
         }
         [self loadmainview];
     }];
+}
+
+- (void)changetoinfoview {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+    }
+    else {
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+    }
+    [self loadmainview];
 }
 
 - (bool)checkiftitleisonlist:(int)idnum type:(int)type{

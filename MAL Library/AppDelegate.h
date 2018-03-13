@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <CoreData/CoreData.h>
 #import "MainWindow.h"
 #import "MSWeakTimer.h"
 #import "MainWindow.h"
@@ -29,6 +30,13 @@
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
+
+// Core Data
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+
 - (IBAction)showpreferences:(id)sender;
 - (void)showloginnotice;
 - (void)showloginpref;

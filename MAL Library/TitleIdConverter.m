@@ -9,7 +9,8 @@
 #import "TitleIdConverter.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
-#import "ListService.h"
+#import "listservice.h"
+#import "AppDelegate.h"
 
 @implementation TitleIdConverter
 + (void)getKitsuIDFromMALId:(int)malid withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -108,139 +109,140 @@
 
 #pragma mark Helpers
 + (int)lookupTitleID:(int)titleid withType:(int)type fromService:(int)fromservice toService:(int)toservice {
-    NSString *mappingsname = [self getMappingFileName:fromservice withToService:toservice];
-    if (mappingsname.length == 0) {
-        return -1;
-    }
-    if ([Utility checkifFileExists:mappingsname appendPath:@""]) {
-        NSArray * mappings = [Utility loadJSON:mappingsname appendpath:@""];
-        NSArray * fmappings;
-        switch (fromservice) {
-            case 1:
-                fmappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"mal_id == %li", titleid]];
-                break;
-            case 2:
-                fmappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"kitsu_id == %li OR kitsu_id == %@", titleid, @(titleid).stringValue]];
-                break;
-            case 3:
-                fmappings = [mappings filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"anilist_id == %li OR anilist_id == %@", titleid, @(titleid).stringValue]];
-                break;
-            default:
-                break;
-        }
-        if (fmappings.count > 0) {
-            NSString *mappingtype = fmappings[0][@"type"] ? fmappings[0][@"type"] : @"anime";
-            if (([mappingtype isEqualToString:@"anime"] && type == 0) || ([mappingtype isEqualToString:@"manga"] && type == 1)) {
-                switch (toservice) {
-                    case 1:
-                        return ((NSNumber *)fmappings[0][@"mal_id"]).intValue;
-                    case 2:
-                        return ((NSNumber *)fmappings[0][@"kitsu_id"]).intValue;
-                    case 3:
-                        return ((NSNumber *)fmappings[0][@"anilist_id"]).intValue;
-                }
+    NSManagedObject *mapping = [self retrieveexistingmapping:titleid withType:type fromService:fromservice];
+    switch (toservice) {
+        case 1: {
+            if (((NSNumber *)[mapping valueForKey:@"mal_id"]).intValue > 0) {
+                return ((NSNumber *)[mapping valueForKey:@"mal_id"]).intValue;
             }
+            return -1;
+           }
+        case 2: {
+            if (((NSNumber *)[mapping valueForKey:@"kitsu_id"]).intValue > 0) {
+                return ((NSNumber *)[mapping valueForKey:@"kitsu_id"]).intValue;
+            }
+            return -1;
+        }
+        case 3: {
+            if (((NSNumber *)[mapping valueForKey:@"anilist_id"]).intValue > 0) {
+                return ((NSNumber *)[mapping valueForKey:@"anilist_id"]).intValue;
+            }
+            return -1;
         }
     }
     return -1;
 }
+
++ (NSManagedObject *)retrieveexistingmapping:(int)titleid withType:(int)type fromService:(int)fromservice {
+    NSManagedObjectContext *moc = ((AppDelegate *)NSApp.delegate).managedObjectContext;
+    NSFetchRequest *fetch = [NSFetchRequest new];
+    NSPredicate *predicate;
+    fetch.entity = [NSEntityDescription entityForName:@"Titleidmappings" inManagedObjectContext:moc];
+    NSString *typestr;
+    switch (type) {
+        case 0:
+            typestr = @"anime";
+            break;
+        case 1:
+            typestr = @"manga";
+            break;
+        default:
+            return nil;
+    }
+    switch (fromservice) {
+        case 1:
+            predicate = [NSPredicate predicateWithFormat:@"mal_id == %li AND type == %@", titleid, typestr];
+            break;
+        case 2:
+            predicate = [NSPredicate predicateWithFormat:@"kitsu_id == %li AND type == %@", titleid, typestr];
+            break;
+        case 3:
+            predicate = [NSPredicate predicateWithFormat:@"anilist_id == %li  AND type == %@", titleid, typestr];
+            break;
+        default:
+            return nil;
+    }
+    fetch.predicate = predicate;
+    NSError *error = nil;
+    NSArray *fmappings = [moc executeFetchRequest:fetch error:&error];
+    if (fmappings.count > 0) {
+        return fmappings[0];
+    }
+    return nil;
+}
+
 + (void)savetitleidtomapping:(int)oldid withNewID:(int)newid withType:(int)type fromService:(int)fromService toService:(int)toService {
-    NSString *mappingsname = [self getMappingFileName:fromService withToService:toService];
-    if (mappingsname.length == 0) {
+    NSManagedObject *mapping = [self retrieveexistingmapping:oldid withType:type fromService:fromService];
+    if (mapping) {
+        // Update existing mapping
+        NSManagedObjectContext *moc = ((AppDelegate *)NSApp.delegate).managedObjectContext;
+        switch (toService) {
+            case 1: {
+                if (((NSNumber *)[mapping valueForKey:@"mal_id"]).intValue == 0) {
+                    [mapping setValue:@(newid) forKey:@"mal_id"];
+                }
+                break;
+            }
+            case 2: {
+                if (((NSNumber *)[mapping valueForKey:@"kitsu_id"]).intValue == 0) {
+                    [mapping setValue:@(newid) forKey:@"kitsu_id"];
+                }
+                break;
+            }
+            case 3: {
+                if (((NSNumber *)[mapping valueForKey:@"anilist_id"]).intValue == 0) {
+                    [mapping setValue:@(newid) forKey:@"anlist_id"];
+                }
+                break;
+            }
+            default:
+                break;
+        }
+        [moc save:nil];
+    }
+    else {
+        // Create new mapping
+        [self createandsavetitleidtomapping:oldid withNewID:newid withType:type fromService:fromService toService:toService];
+    }
+}
+
++ (void)createandsavetitleidtomapping:(int)oldid withNewID:(int)newid withType:(int)type fromService:(int)fromService toService:(int)toService {
+    if (fromService < 1 || fromService > 3 || toService < 1 || toService > 3 ) {
         return;
     }
-    NSMutableArray *tmparray = [NSMutableArray new];
-    if ([Utility checkifFileExists:mappingsname appendPath:@""]) {
-        [tmparray addObjectsFromArray: [Utility loadJSON:mappingsname appendpath:@""]];
-    }
+    NSManagedObjectContext *moc = ((AppDelegate *)NSApp.delegate).managedObjectContext;
+    NSManagedObject *obj = [NSEntityDescription
+                            insertNewObjectForEntityForName:@"Titleidmappings"
+                            inManagedObjectContext: moc];
     NSString *strtype = type == 0 ? @"anime" : @"manga";
+    [obj setValue:strtype forKey:@"type"];
     switch (fromService) {
-        case 1: {
-            switch (toService) {
-                case 2:
-                    [tmparray addObject:@{@"mal_id" : @(oldid), @"kitsu_id" : @(newid), @"type" : strtype}];
-                    break;
-                case 3:
-                    [tmparray addObject:@{@"mal_id" : @(oldid), @"anilist_id" : @(newid), @"type" : strtype}];
-                    break;
-                default:
-                    break;
-            }
+        case 1:
+            [obj setValue:@(oldid) forKey:@"mal_id"];
             break;
-        }
-        case 2: {
-            switch (toService) {
-                case 1:
-                    [tmparray addObject:@{@"mal_id" : @(newid), @"kitsu_id" : @(oldid), @"type" : strtype}];
-                    break;
-                case 3:
-                    [tmparray addObject:@{@"anilist_id" : @(newid), @"kitsu_id" : @(oldid), @"type" : strtype}];
-                    break;
-                default:
-                    break;
-            }
+        case 2:
+            [obj setValue:@(oldid) forKey:@"kitsu_id"];
             break;
-        }
-        case 3: {
-            switch (toService) {
-                case 1:
-                    [tmparray addObject:@{@"mal_id" : @(newid), @"anilist_id" : @(oldid), @"type" : strtype}];
-                case 2:
-                    [tmparray addObject:@{@"anilist_id" : @(oldid), @"kitsu_id" : @(newid), @"type" : strtype}];
-                    break;
-                default:
-                    break;
-            }
+        case 3:
+            [obj setValue:@(oldid) forKey:@"anilist_id"];
             break;
-        }
         default:
             break;
     }
-    [Utility saveJSON:tmparray withFilename:mappingsname appendpath:@"" replace:YES];
-}
-+ (NSString *)getMappingFileName:(int)fromService withToService:(int)toService {
-    switch (fromService) {
-        case 1: {
-            switch (toService) {
-                case 2:
-                    return @"KitsuMALMappings.json";
-                    break;
-                case 3:
-                    return @"AniListMALMappings.json";
-                    break;
-                default:
-                    return @"";
-            }
+    switch (toService) {
+        case 1:
+            [obj setValue:@(newid) forKey:@"mal_id"];
             break;
-        }
-        case 2: {
-            switch (toService) {
-                case 1:
-                    return @"KitsuMALMappings.json";
-                case 3:
-                    return @"AniListKitsuMappings.json";
-                    break;
-                default:
-                    return @"";
-            }
+        case 2:
+            [obj setValue:@(newid) forKey:@"kitsu_id"];
             break;
-        }
-        case 3: {
-            switch (toService) {
-                case 1:
-                    return @"AniListMALMappings.json";
-                case 2:
-                    return @"AniListKitsuMappings.json";
-                    break;
-                default:
-                    return @"";
-            }
+        case 3:
+            [obj setValue:@(newid) forKey:@"anilist_id"];
             break;
-        }
         default:
-            return @"";
+            break;
     }
-    return @"";
+    [moc save:nil];
 }
 + (void)findCurrentServiceTitleIDWithMALID:(int)malid type:(int)type completionHandler:(void (^)(int currentserviceid, int currentservice)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     [MyAnimeList retrieveTitleInfo:malid withType:type useAccount:NO completion:^(id responseObject) {

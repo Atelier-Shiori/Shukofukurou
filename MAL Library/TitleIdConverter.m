@@ -11,6 +11,8 @@
 #import "Utility.h"
 #import "listservice.h"
 #import "AppDelegate.h"
+#import "XMLReader.h"
+#import "Keychain.h"
 
 @implementation TitleIdConverter
 + (void)getKitsuIDFromMALId:(int)malid withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -104,12 +106,78 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];
-    
+}
+
++ (void)getMALIDFromAniDBID:(int)anidbid withTitle:(NSString *)title titletype:(NSString *)titletype completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    int tmpid = [self lookupTitleID:anidbid withType:MALAnime fromService:4 toService:1];
+    if (tmpid > 0) {
+        completionHandler(tmpid);
+        return;
+    }
+    [self retrieveMALIDwithTitle:title withMediaType:MALAnime withType:titletype completionHandler:^(int malid) {
+        if (malid > 0) {
+            [self savetitleidtomapping:anidbid withNewID:malid withType:MALAnime fromService:4 toService:1];
+            completionHandler(malid);
+        }
+        else {
+            errorHandler(nil);
+        }
+    } error:^(NSError *error) {
+        errorHandler(error);
+    }];
+}
+
++ (void)getserviceTitleIDFromAniDBID:(int)anidbid withTitle:(NSString *)title titletype:(NSString *)titletype completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    int tmpid = [self lookupTitleID:anidbid withType:MALAnime fromService:4 toService:[listservice getCurrentServiceID]];
+    if (tmpid > 0) {
+        completionHandler(tmpid);
+        return;
+    }
+    [listservice searchTitle:title withType:MALAnime completion:^(id responseObject) {
+        for (NSDictionary *d in responseObject) {
+            if (![titletype isEqualToString:d[@"type"]]) {
+                continue;
+            }
+            bool found = false;
+            if (d[@"other_titles"][@"english"]) {
+                for (NSString *ntitle in d[@"other_titles"][@"english"]) {
+                    if ([title isEqualToString:ntitle]) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (d[@"other_titles"][@"japanese"] && !found) {
+                for (NSString *ntitle in d[@"other_titles"][@"japanese"]) {
+                    if ([title isEqualToString:ntitle]) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (d[@"other_titles"][@"synonyms"] && !found) {
+                for (NSString *ntitle in d[@"other_titles"][@"synonyms"]) {
+                    if ([title isEqualToString:ntitle]) {
+                        found = true;
+                        break;
+                    }
+                }
+            }
+            if (found) {
+                [self savetitleidtomapping:anidbid withNewID:((NSNumber *)d[@"id"]).intValue withType:MALAnime fromService:4 toService:[listservice getCurrentServiceID]];
+                completionHandler(((NSNumber *)d[@"id"]).intValue);
+                return;
+            }
+        }
+        errorHandler(nil);
+    } error:^(NSError *error) {
+        errorHandler(error);
+    }];
 }
 
 #pragma mark Helpers
 + (int)lookupTitleID:(int)titleid withType:(int)type fromService:(int)fromservice toService:(int)toservice {
-    NSManagedObject *mapping = [self retrieveexistingmapping:titleid withType:type fromService:fromservice];
+    NSManagedObject *mapping = [self retrieveexistingmapping:titleid withType:type withService:fromservice];
     switch (toservice) {
         case 1: {
             if (((NSNumber *)[mapping valueForKey:@"mal_id"]).intValue > 0) {
@@ -133,7 +201,7 @@
     return -1;
 }
 
-+ (NSManagedObject *)retrieveexistingmapping:(int)titleid withType:(int)type fromService:(int)fromservice {
++ (NSManagedObject *)retrieveexistingmapping:(int)titleid withType:(int)type withService:(int)service {
     NSManagedObjectContext *moc = ((AppDelegate *)NSApp.delegate).managedObjectContext;
     NSFetchRequest *fetch = [NSFetchRequest new];
     NSPredicate *predicate;
@@ -149,7 +217,7 @@
         default:
             return nil;
     }
-    switch (fromservice) {
+    switch (service) {
         case 1:
             predicate = [NSPredicate predicateWithFormat:@"mal_id == %li AND type == %@", titleid, typestr];
             break;
@@ -158,6 +226,9 @@
             break;
         case 3:
             predicate = [NSPredicate predicateWithFormat:@"anilist_id == %li  AND type == %@", titleid, typestr];
+            break;
+        case 4:
+            predicate = [NSPredicate predicateWithFormat:@"anidb_id == %li  AND type == %@", titleid, typestr];
             break;
         default:
             return nil;
@@ -171,8 +242,13 @@
     return nil;
 }
 
+
 + (void)savetitleidtomapping:(int)oldid withNewID:(int)newid withType:(int)type fromService:(int)fromService toService:(int)toService {
-    NSManagedObject *mapping = [self retrieveexistingmapping:oldid withType:type fromService:fromService];
+    NSManagedObject *mapping = [self retrieveexistingmapping:oldid withType:type withService:fromService];
+    if (!mapping) {
+        // Use to service's title id
+        mapping = [self retrieveexistingmapping:newid withType:type withService:toService];
+    }
     if (mapping) {
         // Update existing mapping
         NSManagedObjectContext *moc = ((AppDelegate *)NSApp.delegate).managedObjectContext;
@@ -207,7 +283,7 @@
 }
 
 + (void)createandsavetitleidtomapping:(int)oldid withNewID:(int)newid withType:(int)type fromService:(int)fromService toService:(int)toService {
-    if (fromService < 1 || fromService > 3 || toService < 1 || toService > 3 ) {
+    if (fromService < 1 || fromService > 4 || toService < 1 || toService > 4 ) {
         return;
     }
     NSManagedObjectContext *moc = ((AppDelegate *)NSApp.delegate).managedObjectContext;
@@ -225,6 +301,9 @@
             break;
         case 3:
             [obj setValue:@(oldid) forKey:@"anilist_id"];
+            break;
+        case 4:
+            [obj setValue:@(oldid) forKey:@"anidb_id"];
             break;
         default:
             break;
@@ -297,4 +376,62 @@
         errorHandler(error);
     }];
 }
+
++ (void)retrieveMALIDwithTitle:(NSString *)searchterm withMediaType:(int)mediatype withType:(NSString *)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility httpmanager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
+    NSString *searchurl = [NSString stringWithFormat:@"https://myanimelist.net/api/%@/search.xml?q=%@", mediatype == MALAnime ? @"anime" : @"manga" , [Utility urlEncodeString:searchterm]];
+    [manager GET:searchurl parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        NSArray *searchdata = [self MALSearchXMLToAtarashiiDataFormat:[[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]];
+        for (NSDictionary *d in searchdata) {
+            if (![(NSString *)d[@"type"] isEqualToString:type]) {
+                continue;
+            }
+            if ([(NSString *)d[@"title"] caseInsensitiveCompare:searchterm] == NSOrderedSame) {
+                completionHandler(((NSNumber *)d[@"id"]).intValue);
+                return;
+            }
+            for (NSString *title in d[@"synonyms"]) {
+                if ([title caseInsensitiveCompare:searchterm] == NSOrderedSame) {
+                    completionHandler(((NSNumber *)d[@"id"]).intValue);
+                    return;
+                }
+            }
+        }
+        completionHandler(0);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+}
+
++ (NSArray *)MALSearchXMLToAtarashiiDataFormat:(NSString *)xml {
+    NSError *error = nil;
+    NSDictionary *d = [XMLReader dictionaryForXMLString:xml options:XMLReaderOptionsProcessNamespaces error:&error];
+    NSArray *searchresults;
+    if (d[@"anime"]) {
+        searchresults = d[@"anime"][@"entry"];
+        if (![searchresults isKindOfClass:[NSArray class]]) {
+            // Import only contains one object, put it in an array.
+            searchresults = [NSArray arrayWithObject:searchresults];
+        }
+    }
+    else {
+        return @[];
+    }
+    NSMutableArray *output = [NSMutableArray new];
+    for (NSDictionary *d in searchresults) {
+        NSMutableArray *synonyms = [NSMutableArray new];
+        NSString *englishtitle = @"";
+        if (d[@"english"][@"text"]) {
+            [synonyms addObject:d[@"english"][@"text"]];
+            englishtitle = d[@"english"][@"text"];
+        }
+        if (d[@"synonyms"][@"text"]) {
+            [synonyms addObjectsFromArray:[((NSString *)d[@"synonyms"][@"text"]) componentsSeparatedByString:@";"]];
+        }
+        [output addObject:@{@"id":@(((NSString *)d[@"id"][@"text"]).intValue), @"episodes":@(((NSString *)d[@"episodes"][@"text"]).intValue), @"score":@(((NSString *)d[@"score"][@"text"]).floatValue), @"status":d[@"status"][@"text"], @"start_date":[NSString stringWithFormat:@"%@",d[@"start_date"][@"text"]], @"end_date":[NSString stringWithFormat:@"%@",d[@"end_date"][@"text"]], @"synonyms": synonyms, @"synopsis":[NSString stringWithFormat:@"%@",d[@"synopsis"][@"text"]], @"type":d[@"type"][@"text"], @"title":d[@"title"][@"text"], @"english_title":englishtitle}];
+    }
+    return output;
+}
+
 @end

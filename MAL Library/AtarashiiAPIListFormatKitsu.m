@@ -230,6 +230,7 @@
             AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
             aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             aobject.title = d[@"attributes"][@"canonicalTitle"];
+            aobject.other_titles = @{@"synonyms" : (d[@"attributes"][@"abbreviatedTitles"] && d[@"attributes"][@"abbreviatedTitles"]  != [NSNull null]) ? d[@"attributes"][@"abbreviatedTitles"] : @[], @"english" : d[@"attributes"][@"titles"][@"en"] ? @[d[@"attributes"][@"titles"][@"en"]] : @[], @"japanese" : d[@"attributes"][@"titles"][@"ja_jp"] ? @[d[@"attributes"][@"titles"][@"ja_jp"]] : @[] };
             aobject.episodes = d[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"episodeCount"]).intValue : 0;
             aobject.type = d[@"attributes"][@"subtype"];
             aobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
@@ -257,6 +258,7 @@
             AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
             mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             mobject.title = d[@"attributes"][@"canonicalTitle"];
+            mobject.other_titles = @{@"synonyms" : (d[@"attributes"][@"abbreviatedTitles"] && d[@"attributes"][@"abbreviatedTitles"]  != [NSNull null]) ? d[@"attributes"][@"abbreviatedTitles"] : @[], @"english" : d[@"attributes"][@"titles"][@"en"] ? @[d[@"attributes"][@"titles"][@"en"]] : @[], @"japanese" : d[@"attributes"][@"titles"][@"ja_jp"] ? @[d[@"attributes"][@"titles"][@"ja_jp"]] : @[] };
             mobject.chapters = d[@"attributes"][@"chapterCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"chapterCount"]).intValue : 0;
             mobject.volumes = d[@"attributes"][@"volumeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"volumeCount"]).intValue : 0;
             mobject.type = d[@"attributes"][@"subtype"];

@@ -358,7 +358,18 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [listservice updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" completion:^(id responseObject){
+            int tmpid = 0;
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    tmpid = malid;
+                    break;
+                case 2:
+                    tmpid = [self retrieveentryidfortitleid:malid];
+                    break;
+                default:
+                    break;
+            }
+            [listservice updateAnimeTitleOnList:tmpid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -747,7 +758,8 @@
     }];
 }
 - (void)performAnilistImport {
-    NSDictionary *entry = _listimport[_progress];
+    __block NSDictionary *entry = _listimport[_progress];
+    
     /*NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"id"]).intValue];
     if (!malid) {
         [self retrieveMALIDwithTitle:entry[@"title_romaji"] withType:entry[@"type"] completionHandler:^(int amalid) {

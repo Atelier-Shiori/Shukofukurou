@@ -141,7 +141,7 @@
             bool found = false;
             if (d[@"other_titles"][@"english"]) {
                 for (NSString *ntitle in d[@"other_titles"][@"english"]) {
-                    if ([title isEqualToString:ntitle]) {
+                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
                         found = true;
                         break;
                     }
@@ -149,7 +149,7 @@
             }
             if (d[@"other_titles"][@"japanese"] && !found) {
                 for (NSString *ntitle in d[@"other_titles"][@"japanese"]) {
-                    if ([title isEqualToString:ntitle]) {
+                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
                         found = true;
                         break;
                     }
@@ -157,11 +157,14 @@
             }
             if (d[@"other_titles"][@"synonyms"] && !found) {
                 for (NSString *ntitle in d[@"other_titles"][@"synonyms"]) {
-                    if ([title isEqualToString:ntitle]) {
+                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
                         found = true;
                         break;
                     }
                 }
+            }
+            if ([title caseInsensitiveCompare:d[@"title"]] == NSOrderedSame) {
+                found = true;
             }
             if (found) {
                 [self savetitleidtomapping:anidbid withNewID:((NSNumber *)d[@"id"]).intValue withType:MALAnime fromService:4 toService:[listservice getCurrentServiceID]];

@@ -108,15 +108,15 @@
     }];
 }
 
-+ (void)getMALIDFromAniDBID:(int)anidbid withTitle:(NSString *)title titletype:(NSString *)titletype completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    int tmpid = [self lookupTitleID:anidbid withType:MALAnime fromService:4 toService:1];
++ (void)getMALIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:fromservice toService:1];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
     [self retrieveMALIDwithTitle:title withMediaType:MALAnime withType:titletype completionHandler:^(int malid) {
         if (malid > 0) {
-            [self savetitleidtomapping:anidbid withNewID:malid withType:MALAnime fromService:4 toService:1];
+            [self savetitleidtomapping:titleid withNewID:malid withType:MALAnime fromService:fromservice toService:1];
             completionHandler(malid);
         }
         else {
@@ -127,15 +127,15 @@
     }];
 }
 
-+ (void)getserviceTitleIDFromAniDBID:(int)anidbid withTitle:(NSString *)title titletype:(NSString *)titletype completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    int tmpid = [self lookupTitleID:anidbid withType:MALAnime fromService:4 toService:[listservice getCurrentServiceID]];
++ (void)getserviceTitleIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
     [listservice searchTitle:title withType:MALAnime completion:^(id responseObject) {
         for (NSDictionary *d in responseObject) {
-            if (![titletype isEqualToString:d[@"type"]]) {
+            if ([titletype caseInsensitiveCompare:d[@"type"]] != NSOrderedSame) {
                 continue;
             }
             bool found = false;
@@ -167,7 +167,7 @@
                 found = true;
             }
             if (found) {
-                [self savetitleidtomapping:anidbid withNewID:((NSNumber *)d[@"id"]).intValue withType:MALAnime fromService:4 toService:[listservice getCurrentServiceID]];
+                [self savetitleidtomapping:titleid withNewID:((NSNumber *)d[@"id"]).intValue withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
                 completionHandler(((NSNumber *)d[@"id"]).intValue);
                 return;
             }
@@ -278,6 +278,7 @@
                 break;
         }
         [moc save:nil];
+        [moc reset];
     }
     else {
         // Create new mapping
@@ -325,6 +326,7 @@
             break;
     }
     [moc save:nil];
+    [moc reset];
 }
 + (void)findCurrentServiceTitleIDWithMALID:(int)malid type:(int)type completionHandler:(void (^)(int currentserviceid, int currentservice)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     [MyAnimeList retrieveTitleInfo:malid withType:type useAccount:NO completion:^(id responseObject) {

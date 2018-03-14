@@ -115,14 +115,14 @@
 }
     
 + (AFOAuthCredential *)getFirstAccessToken{
-    return [AFOAuthCredential retrieveCredentialWithIdentifier:@"MAL Library - AniList Token"];
+    return [AFOAuthCredential retrieveCredentialWithIdentifier:@"MAL Library - AniList Access Token"];
 }
     
 + (void)retrievetoken:(void (^)(bool success)) completionHandler {
     AFOAuthCredential *cred = [self getFirstAccessToken];
     if (!cred||cred.expired) {
         if (cred.expired) {
-            [AFOAuthCredential deleteCredentialWithIdentifier:@"MAL Library - AniList Token"];
+            [AFOAuthCredential deleteCredentialWithIdentifier:@"MAL Library - AniList Access Token"];
         }
         NSURL *baseURL = [NSURL URLWithString:@"https://anilist.co/api/"];
         AFOAuth2Manager *OAuth2Manager =
@@ -130,7 +130,6 @@
                                         clientID:kanilistclient
                                           secret:kanilistsecretkey];
         [OAuth2Manager authenticateUsingOAuthWithURLString:@"auth/access_token" parameters:@{@"grant_type":@"client_credentials"} success:^(AFOAuthCredential *credential) {
-            NSLog(@"Token: %@", credential.accessToken);
             [AFOAuthCredential storeCredential:credential
                                 withIdentifier:@"MAL Library - AniList Access Token"];
             completionHandler(true);
@@ -148,6 +147,7 @@
 }
 + (void)retrieveUserIDFromUsername:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSLog(@"%@",[self getFirstAccessToken].accessToken);
     [manager GET:[NSString stringWithFormat:@"https://anilist.co/api/user/%@", username] parameters:@{@"access_token":[self getFirstAccessToken].accessToken} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         NSDictionary * d = responseObject;
         if (d[@"id"] != [NSNull null]){

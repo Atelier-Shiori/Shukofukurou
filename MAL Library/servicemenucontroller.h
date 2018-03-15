@@ -19,5 +19,5 @@ typedef void (^action)(int selected, int previousservice);
 @property action actionblock;
 
 - (void)setmenuitemvaluefromdefaults;
-
+- (void)enableservicemenuitems:(bool)enable;
 @end

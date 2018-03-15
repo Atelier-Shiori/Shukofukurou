@@ -10,9 +10,10 @@
 #import "ListView.h"
 #import "ProfileViewController.h"
 #import "OtherHistoryView.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import "ListStatistics.h"
+#import "AppDelegate.h"
+#import "servicemenucontroller.h"
 
 @interface ProfileWindowController ()
 @property (strong) IBOutlet NSSplitView *splitview;
@@ -321,7 +322,9 @@
 }
 
 - (void)loadprofile:(NSString *)username {
+    __block servicemenucontroller *smc = ((AppDelegate *)NSApp.delegate).servicemenucontrol;
     _loadedprofile = false;
+    [smc enableservicemenuitems:NO];
     [self setLoadingView:true];
     [self loadMainView];
     [_liststats.window close];
@@ -338,18 +341,22 @@
                     _loadedprofile = true;
                     [self loadMainView];
                     [self setLoadingView:false];
+                    [smc enableservicemenuitems:YES];
                 } error:^(NSError *error) {
                     [self setLoadingView:false];
                     [self showerrormessage:error.localizedFailureReason];
+                    [smc enableservicemenuitems:YES];
                 }];
             } error:^(NSError *error) {
                 [self setLoadingView:false];
                 [self showerrormessage:error.localizedFailureReason];
+                [smc enableservicemenuitems:YES];
             }];
         }
         else {
             [self setLoadingView:false];
             [self showerrormessage:[NSString stringWithFormat:@"Cannot load profile %@. Check the username and try again",username]];
+            [smc enableservicemenuitems:YES];
         }
     }];
 }

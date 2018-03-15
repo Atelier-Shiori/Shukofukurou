@@ -15,6 +15,7 @@
 #import "ListStatistics.h"
 
 @class ProfileWindowController;
+@class servicemenucontroller;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
@@ -26,7 +27,7 @@
 // Menus
 @property (strong) IBOutlet NSMenuItem *messagesmenuitem;
 @property (strong) IBOutlet NSMenuItem *importkitsumenu;
-
+@property (strong) IBOutlet servicemenucontroller* servicemenucontrol;
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;

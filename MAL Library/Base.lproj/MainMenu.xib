@@ -322,7 +322,7 @@
                 </menuItem>
                 <menuItem title="Service" id="gvA-y9-4Af">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Service" id="aod-zG-HhS">
+                    <menu key="submenu" title="Service" autoenablesItems="NO" id="aod-zG-HhS">
                         <items>
                             <menuItem title="MyAnimeList" tag="1" id="DDy-su-2bd">
                                 <modifierMask key="keyEquivalentModifierMask"/>

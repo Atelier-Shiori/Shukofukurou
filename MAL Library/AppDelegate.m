@@ -27,7 +27,6 @@
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
-@property (strong) IBOutlet servicemenucontroller* servicemenucontrol;
 @property (strong) IBOutlet NSMenuItem *malexportmenu;
 - (IBAction)saveAction:(id)sender;
 @end

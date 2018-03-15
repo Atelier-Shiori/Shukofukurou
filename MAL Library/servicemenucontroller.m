@@ -52,4 +52,9 @@
     }
 }
 
+- (void)enableservicemenuitems:(bool)enable {
+    _malserviceitem.enabled = enable;
+    _kitsuserviceitem.enabled = enable;
+}
+
 @end

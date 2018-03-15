@@ -7,7 +7,6 @@
 //
 
 #import "MainWindow.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import "AppDelegate.h"
 #import "Utility.h"
@@ -25,10 +24,13 @@
 #import "HistoryView.h"
 #import "AiringView.h"
 #import "NSTableViewAction.h"
+#import "servicemenucontroller.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
 @property (strong) IBOutlet NSSplitView *splitview;
+@property bool refreshanime;
+@property bool refreshmanga;
 @end
 
 @implementation MainWindow
@@ -653,6 +655,7 @@
 }
 #pragma mark Anime List
 - (IBAction)refreshlist:(id)sender {
+    [_appdel.servicemenucontrol enableservicemenuitems:NO];
     switch ([listservice getCurrentServiceID]) {
         case 1:
             [self performlistRefresh];
@@ -663,6 +666,7 @@
                 [self performlistRefresh];
             } error:^(NSError *error) {
                 NSLog(@"Error loading list: %@", error.localizedDescription);
+                [_appdel.servicemenucontrol enableservicemenuitems:YES];
             }];
     }
 }
@@ -670,9 +674,11 @@
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"animelist"]){
+        _refreshanime = true;
         [self loadlist:@(true) type:0];
     }
     else if ([identifier isEqualToString:@"mangalist"]){
+        _refreshmanga = true;
         [self loadlist:@(true) type:1];
     }
     else if ([identifier isEqualToString:@"history"]){
@@ -697,14 +703,20 @@
                     list = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""];
                     [_listview populateList:list type:0];
                     [self refreshStatistics];
+                    _refreshanime = false;
+                    [self enableservicemenuitems];
                     return;
                 }
                 else if (!exists || refreshlist){
                     [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALAnime completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:0] appendpath:@"" replace:TRUE] type:0];
                         [self refreshStatistics];
+                        _refreshanime = false;
+                        [self enableservicemenuitems];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
+                        _refreshanime = false;
+                        [self enableservicemenuitems];
                     }];
                 }
                 break;
@@ -714,14 +726,20 @@
                 if (exists && !refreshlist){
                     [_listview populateList:list type:1];
                     [self refreshStatistics];
+                    _refreshmanga = false;
+                    [self enableservicemenuitems];
                     return;
                 }
                 else if (!exists || refreshlist){
                     [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALManga completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:1] appendpath:@"" replace:TRUE] type:1];
                         [self refreshStatistics];
+                        _refreshmanga = false;
+                        [self enableservicemenuitems];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
+                        _refreshmanga = false;
+                        [self enableservicemenuitems];
                     }];
                 }
                 break;
@@ -1014,6 +1032,8 @@
     }
     return nil;
 }
-
+- (void)enableservicemenuitems {
+    [_appdel.servicemenucontrol enableservicemenuitems:!_refreshmanga && !_refreshanime];
+}
 @end
 

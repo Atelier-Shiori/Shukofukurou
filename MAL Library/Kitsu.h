@@ -43,6 +43,6 @@ typedef NS_ENUM(unsigned int, ratingType){
 + (AFOAuthCredential *)getFirstAccount;
 + (bool)removeAccount;
 + (NSString *)serviceidtoservicename:(int)serviceid;
-+ (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
-+ (void)getUserRatingTypeForUsername:(NSString *)username completionHandler:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getKitsuid:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getUserRatingTypeForUsername:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 @end

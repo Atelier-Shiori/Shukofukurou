@@ -153,7 +153,7 @@
         }
         if ([listservice getCurrentServiceID] == serviceid) {
             if (serviceid == 2) {
-                [Kitsu getUserRatingTypeForUsername:[NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"] completionHandler:^(int scoretype) {
+                [Kitsu getUserRatingTypeForUsername:^(int scoretype) {
                     [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                     [self performlistloading];
                 } error:^(NSError *error) {

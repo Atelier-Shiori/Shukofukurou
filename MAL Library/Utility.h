@@ -32,6 +32,7 @@
 + (void)checkandclearimagecache;
 + (void)setCacheClearDate;
 + (void)clearImageCache;
++ (void)donateCheck:(AppDelegate*)delegate;
 + (NSDate *)stringDatetoDate:(NSString *)stringdate;
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
 + (AFHTTPSessionManager*)jsonmanager;

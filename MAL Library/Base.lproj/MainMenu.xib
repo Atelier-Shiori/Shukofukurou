@@ -29,11 +29,11 @@
         <customObject id="Qdg-2P-lTs" customClass="ListExporter"/>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
-                <menuItem title="MAL Library" id="1Xt-HY-uBw">
+                <menuItem title="MAL Library Next" id="1Xt-HY-uBw">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="MAL Library" systemMenu="apple" id="uQy-DD-JDr">
+                    <menu key="submenu" title="MAL Library Next" systemMenu="apple" id="uQy-DD-JDr">
                         <items>
-                            <menuItem title="About MAL Library" id="5kV-Vb-QxS">
+                            <menuItem title="About MAL Library Next" id="5kV-Vb-QxS">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="showaboutwindow:" target="Voe-Tx-rLC" id="eea-qa-mpp"/>
@@ -45,10 +45,9 @@
                                     <action selector="checkForUpdates:" target="8pF-JQ-aL5" id="tCe-cK-eLT"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Enter Donation Key…" id="WN9-mm-xrF">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="Unlock Pro Features…" id="WN9-mm-xrF">
                                 <connections>
-                                    <action selector="enterDonationKey:" target="Voe-Tx-rLC" id="2b7-rg-c9a"/>
+                                    <action selector="unlockprofeatures:" target="Voe-Tx-rLC" id="Wqv-dD-hp3"/>
                                     <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="Hzg-dp-o6L"/>
                                 </connections>
                             </menuItem>
@@ -423,11 +422,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="viewListStats:" target="Voe-Tx-rLC" id="rVU-ua-kBr"/>
-                                    <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="1VO-cE-VZG">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
                                 </connections>
                             </menuItem>
                         </items>
@@ -737,7 +731,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                         <items>
-                            <menuItem title="MAL Library Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                            <menuItem title="MAL Library Next Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                 <connections>
                                     <action selector="showHelp:" target="-2" id="n19-Ag-gTx"/>
                                 </connections>
@@ -747,6 +741,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="reportbugs:" target="Voe-Tx-rLC" id="JRy-ho-SMG"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Get MAL Library from App Store" id="YvW-uy-KKR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="getfromAppStore:" target="Voe-Tx-rLC" id="LO0-Gv-9so"/>
                                 </connections>
                             </menuItem>
                         </items>

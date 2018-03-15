@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "Preferences.h"
-#import "PFMoveApplication.h"
 #import "Keychain.h"
 #import "PFAboutWindowController.h"
 #import <Fabric/Fabric.h>
@@ -19,6 +18,11 @@
 #import "ProfileWindowController.h"
 #import "servicemenucontroller.h"
 #import "listservice.h"
+#if defined(AppStore)
+#else
+#import "PFMoveApplication.h"
+#import <MALLibraryAppMigrate/MALLibraryAppMigrate.h>
+#endif
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -45,7 +49,7 @@
     #if defined(AppStore)
     defaultValues[@"donated"] = @(1);
     #else
-    defaultValues[@"donated"] = @(1);
+    defaultValues[@"donated"] = @(0);
     #endif
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"readingfilter"] = @(1);
@@ -69,7 +73,7 @@
     #else
     PFMoveToApplicationsFolderIfNecessary();
     #endif
-    [MALLibraryAppStoreMigrate checkPreRelease];
+    [Utility donateCheck:self];
     #endif
     __weak AppDelegate *weakself = self;
     _servicemenucontrol.actionblock = ^(int selected, int previousservice) {
@@ -163,14 +167,22 @@
     NSMutableString *copyrightstr = [NSMutableString new];
     NSDictionary *bundleDict = [NSBundle mainBundle].infoDictionary;
     [copyrightstr appendFormat:@"%@ \r\r",bundleDict[@"NSHumanReadableCopyright"]];
-    
+#if defined(AppStore)
+    [copyrightstr appendString:@"Mac App Store version."];
+#else
+    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
+        [copyrightstr appendFormat:@"This copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
+    }
+    else {
+        [copyrightstr appendString:@"Free Version."];
+    }
+#endif
     (self.aboutWindowController).appCopyright = [[NSAttributedString alloc] initWithString:copyrightstr
                                                                                 attributes:@{
                                                                                              NSForegroundColorAttributeName:[NSColor labelColor],
                                                                                              NSFontAttributeName:[NSFont fontWithName:[NSFont systemFontOfSize:12.0f].familyName size:11]}];
-
-    [self.aboutWindowController showWindow:nil];
     
+    [self.aboutWindowController showWindow:nil];
 }
 
 - (void)handleURLEvent:(NSAppleEventDescriptor*)event
@@ -482,5 +494,41 @@
     }
     
     return NSTerminateNow;
+}
+- (IBAction)unlockprofeatures:(id)sender {
+#if defined(AppStore)
+#else
+    if ([MALLibraryAppStoreMigrate validateReciept:@"/Applications/MAL Library.app"]) {
+        [self appStoreRegister:@"/Applications/MAL Library.app"];
+    }
+    else {
+        [MALLibraryAppStoreMigrate selectAppandValidate:_mainwindowcontroller.window completionHandler:^(bool success, NSString *path) {
+            if (success) {
+                [self appStoreRegister:path];
+            }
+            else {
+                [Utility showsheetmessage:@"Invalid Copy of MAL Library" explaination:@"Please select a valid copy of MAL Library you downloaded from the App Store." window:_mainwindowcontroller.window];
+            }
+        }];
+    }
+#endif
+}
+- (void)appStoreRegister:(NSString *)path {
+#if defined(AppStore)
+#else
+    [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked" window:_mainwindowcontroller.window];
+    // Add to the preferences
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
+    [[NSUserDefaults standardUserDefaults] setObject:path forKey:@"mallibrarypath"];
+    [_mainwindowcontroller generateSourceList];
+    [_mainwindowcontroller loadmainview];
+#endif
+}
+
+- (IBAction)getfromAppStore:(id)sender {
+#if defined(AppStore)
+#else
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+#endif
 }
 @end

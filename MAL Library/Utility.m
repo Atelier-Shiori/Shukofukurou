@@ -11,6 +11,10 @@
 #import "AppDelegate.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
+#if defined(AppStore)
+#else
+#import <MALLibraryAppMigrate/MALLibraryAppMigrate.h>
+#endif
 
 @implementation Utility
 + (void)showsheetmessage:(NSString *)message
@@ -215,6 +219,73 @@
         return [NSString stringWithFormat:@"%@ %@", givenname, familyname];
     }
     return string;
+}
+
++ (void)donateCheck:(AppDelegate*)delegate {
+#if defined(AppStore)
+#else
+    if (!((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
+        [Utility showDonateReminder:delegate];
+    }
+    else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
+        // Check copy of MAL Library
+        bool valid = [MALLibraryAppStoreMigrate validateReciept:[NSUserDefaults.standardUserDefaults valueForKey:@"mallibrarypath"]];
+        if (valid) {
+            //Reset check
+            [Utility setReminderDate];
+        }
+        else {
+            //Invalid Copy
+            [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. MAL Library will now quit." window:nil];
+            [Utility showDonateReminder:delegate];
+            [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
+            [[NSApplication sharedApplication] terminate:nil];
+        }
+    }
+    else if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
+            [Utility showDonateReminder:delegate];
+    }
+    else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue && ![[NSUserDefaults standardUserDefaults] valueForKey:@"donatereminderdate"]) {
+        [Utility setReminderDate];
+    }
+#endif
+}
++ (void)showDonateReminder:(AppDelegate*)delegate{
+#if defined(AppStore)
+#else
+    // Shows Donation Reminder
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults boolForKey:@"surpressreminder"]) {
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:@"Open App Store"];
+        [alert addButtonWithTitle:@"Not Yet"];
+        alert.messageText = @"Please Support MAL Library";
+        alert.informativeText = @"This is a prerelease version of MAL Library!\r\rWe noticed that you have been using MAL Library for a while. MAL Library is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of MAL Library, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.\r\rIf you already download the App Store version, you can unlock the features using your copy of MAL Library. On the MAL Library menu, select the Unlock Pro Features menu item.";
+        [alert setShowsSuppressionButton:YES];
+        // Set Message type to Warning
+        alert.alertStyle = NSInformationalAlertStyle;
+        long choice = [alert runModal];
+        if (choice == NSAlertFirstButtonReturn) {
+            // Open App Store Page
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+        }
+        if (alert.suppressionButton.state == NSOnState) {
+            // Suppress this alert from now on
+            [defaults setBool: YES forKey: @"surpressreminder"];
+        }
+    }
+#endif
+}
+
++ (void)setReminderDate {
+#if defined(AppStore)
+#else
+    //Sets Reminder Date
+    NSDate *now = [NSDate date];
+    NSDate *reminderdate = [now dateByAddingTimeInterval:60*60*24];
+    [[NSUserDefaults standardUserDefaults] setObject:reminderdate forKey:@"donatereminderdate"];
+#endif
 }
 
 + (void)checkandclearimagecache {

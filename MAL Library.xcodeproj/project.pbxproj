@@ -497,7 +497,7 @@
 		91999D0B1E8C86A40026D3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SeasonView.xib; sourceTree = "<group>"; };
 		91999D0F1E8C88280026D3E9 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		91999D101E8C88280026D3E9 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
-		9199BA961E89836000F6E9FF /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9199BA961E89836000F6E9FF /* MAL Library Next.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library Next.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA9D1E89836000F6E9FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9199BA9F1E89836000F6E9FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9199BAA21E89836000F6E9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -754,7 +754,7 @@
 		9199BA971E89836000F6E9FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9199BA961E89836000F6E9FF /* MAL Library.app */,
+				9199BA961E89836000F6E9FF /* MAL Library Next.app */,
 				913A11AA1E8F206A00450B66 /* MAL Library.app */,
 				2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */,
 				913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */,
@@ -1035,9 +1035,9 @@
 			productReference = 913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9199BA951E89836000F6E9FF /* MAL Library */ = {
+		9199BA951E89836000F6E9FF /* MAL Library Next */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library" */;
+			buildConfigurationList = 9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library Next" */;
 			buildPhases = (
 				9199BA921E89836000F6E9FF /* Sources */,
 				9199BA931E89836000F6E9FF /* Frameworks */,
@@ -1051,9 +1051,9 @@
 			dependencies = (
 				2D185EBF1ECCB05200E1A594 /* PBXTargetDependency */,
 			);
-			name = "MAL Library";
+			name = "MAL Library Next";
 			productName = "MAL Library";
-			productReference = 9199BA961E89836000F6E9FF /* MAL Library.app */;
+			productReference = 9199BA961E89836000F6E9FF /* MAL Library Next.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1110,7 +1110,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9199BA951E89836000F6E9FF /* MAL Library */,
+				9199BA951E89836000F6E9FF /* MAL Library Next */,
 				913A115F1E8F206A00450B66 /* MAL Library (AppStore) */,
 				2D60A11E1E9B322A0034C3AA /* MAL LibraryUITests */,
 				913A627A1E9D7AF40023E6A1 /* MAL Library Unit Tests */,
@@ -1853,7 +1853,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-3";
 				PRODUCT_NAME = "MAL Library";
 			};
 			name = Debug;
@@ -1895,7 +1895,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-3";
 				PRODUCT_NAME = "MAL Library";
 			};
 			name = Release;
@@ -2057,7 +2057,7 @@
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2100,7 +2100,7 @@
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library";
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2153,7 +2153,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library" */ = {
+		9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library Next" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9199BAA81E89836000F6E9FF /* Debug */,

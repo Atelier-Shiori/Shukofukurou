@@ -38,7 +38,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
-                        <tabViewItem label="MyAnineList" identifier="" id="L6q-wp-TZZ">
+                        <tabViewItem label="MyAnimeList" identifier="" id="L6q-wp-TZZ">
                             <view key="view" id="AH2-ft-ULp">
                                 <rect key="frame" x="10" y="33" width="373" height="162"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

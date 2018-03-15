@@ -20,7 +20,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
 
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     KitsuListRetriever *retriever = [KitsuListRetriever new];
-    [self getKitsuid:^(int userid) {
+    [self getKitsuid:username completion:^(int userid) {
         if (userid > -1) {
             [retriever retrieveKitsuLibrary:userid type:type atPage:0 completionHandler:^(id responseObject) {
                 completionHandler(responseObject);
@@ -142,7 +142,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
                             withIdentifier:kKeychainIdentifier];
         [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"kitsu-username"];
         completionHandler(@{@"success":@(true)});
-        [Kitsu getKitsuid:^(int userid) {
+        [Kitsu getOwnKitsuid:^(int userid) {
             [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"kitsu-userid"];
         } error:^(NSError *error) {
         }];
@@ -351,12 +351,12 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     NSDictionary * mediad = @{@"data" : @{@"id" : @(titleid), @"type" : mediatype == KitsuAnime ? @"anime" : @"manga"}};
     return @{@"user" : userd, @"media" : mediad};
 }
-+ (void)getKitsuid:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)getOwnKitsuid:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [Kitsu getFirstAccount];
     if (cred && cred.expired) {
         [Kitsu refreshToken:^(bool success) {
             if (success) {
-                [self getKitsuid:completionHandler error:errorHandler];
+                [self getOwnKitsuid:completionHandler error:errorHandler];
             }
             else {
                 errorHandler(nil);
@@ -367,6 +367,32 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     [manager GET:@"https://kitsu.io/api/edge/users?filter[self]=true" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        if (responseObject[@"data"][0]) {
+            completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);
+        }
+        else {
+            completionHandler(-1);
+        }
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+}
++ (void)getKitsuid:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self getKitsuid:username completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[slug]=%@", username] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"][0]) {
             completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);
         }

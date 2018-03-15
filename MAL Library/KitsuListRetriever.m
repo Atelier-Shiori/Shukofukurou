@@ -57,7 +57,7 @@
                 [_metadata addObjectsFromArray:responseObject[@"included"]];
             }
             if (responseObject[@"links"][@"next"]) {
-                int nextPage = pagenum+1;
+                int nextPage = pagenum+500;
                 [self retrieveKitsuLibrary:userID type:type atPage:nextPage completionHandler:completionHandler error:errorHandler];
             }
             else {

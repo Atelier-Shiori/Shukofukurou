@@ -397,7 +397,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     if (cred && cred.expired) {
         [Kitsu refreshToken:^(bool success) {
             if (success) {
-                [self getUserRatingTypeForUsername:completionHandler error:errorHandler];
+                [self getUserRatingType:completionHandler error:errorHandler];
             }
             else {
                 errorHandler(nil);

@@ -233,7 +233,7 @@
                 [self performtimerlistrefresh];
                 break;
             case 2:
-                [Kitsu getUserRatingTypeForUsername:^(int scoretype) {
+                [Kitsu getUserRatingType:^(int scoretype) {
                     [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                     [self performtimerlistrefresh];
                 } error:^(NSError *error) {
@@ -658,7 +658,7 @@
             [self performlistRefresh];
             break;
         case 2:
-            [Kitsu getUserRatingTypeForUsername:^(int scoretype) {
+            [Kitsu getUserRatingType:^(int scoretype) {
                 [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                 [self performlistRefresh];
             } error:^(NSError *error) {

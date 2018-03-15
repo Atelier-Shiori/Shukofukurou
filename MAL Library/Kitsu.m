@@ -28,7 +28,9 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
                 errorHandler(error);
             }];
         }
-        errorHandler(nil);
+        else {
+            errorHandler(nil);
+        }
     } error:^(NSError *error) {
         errorHandler(error);
     }];
@@ -150,6 +152,33 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     }];
 }
 + (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self retrieveProfile:username completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    }
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@&include=profileLinks,userRoles,profileLinks.profileLinkSite",username] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *tmpdict = [AtarashiiAPIListFormatKitsu KitsuUsertoAtarashii:responseObject];
+        if (tmpdict) {
+            completionHandler(tmpdict);
+        }
+        else {
+            errorHandler(nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
     
 }
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {

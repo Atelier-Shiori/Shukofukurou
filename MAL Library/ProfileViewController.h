@@ -13,5 +13,7 @@
 @property (strong) IBOutlet NSTextView *profiledetails;
 @property (strong) IBOutlet NSButton *homepagebtn;
 @property (strong) IBOutlet NSImageView *profileimage;
+@property (strong) IBOutlet NSButton *sendmessagebtn;
 - (void)loadprofilewithUsername:(NSString *)username completion:(void (^)(bool))completion;
+- (void)resetprofileview;
 @end

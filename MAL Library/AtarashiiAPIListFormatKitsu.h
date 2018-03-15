@@ -17,4 +17,5 @@
 + (NSArray *)KitsuAnimeSearchtoAtarashii:(NSDictionary *)data;
 + (NSArray *)KitsuMangaSearchtoAtarashii:(NSDictionary *)data;
 + (NSArray *)KitsuReactionstoAtarashii:(NSDictionary *)data withType:(int)type;
++ (NSDictionary *)KitsuUsertoAtarashii:(NSDictionary *)userinfo;
 @end

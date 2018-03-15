@@ -306,9 +306,7 @@
 
 - (IBAction)profilesearch:(id)sender {
     if (_searchfield.stringValue.length == 0) {
-        _loadedprofile = false;
-        [_liststats.window close];
-        [self loadMainView];
+        [self resetprofilewindow];
     }
     else {
         [self loadprofile:_searchfield.stringValue];
@@ -364,17 +362,44 @@
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"profile"]){
         if (_loadedprofile){
-            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_searchfield.stringValue]]];
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_searchfield.stringValue]]];
+                    break;
+                case 2:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_searchfield.stringValue]]];
+                    break;
+                default:
+                    break;
+            }
         }
     }
     else if ([identifier isEqualToString:@"animelist"]){
         if (_loadedprofile){
-            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@",_searchfield.stringValue]]];
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@",_searchfield.stringValue]]];
+                    break;
+                case 2:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=anime",_searchfield.stringValue]]];
+                    break;
+                default:
+                    break;
+            }
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
         if (_loadedprofile){
-            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@",_searchfield.stringValue]]];
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@",_searchfield.stringValue]]];
+                    break;
+                case 2:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=manga",_searchfield.stringValue]]];
+                    break;
+                default:
+                    break;
+            }
         }
         
     }
@@ -387,13 +412,40 @@
     //Generate Items to Share
     NSArray *shareItems;
     if ([identifier isEqualToString:@"profile"]){
-        shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@", _searchfield.stringValue]]];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@", _searchfield.stringValue]]];
+                break;
+            case 2:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_searchfield.stringValue]]];
+                break;
+            default:
+                break;
+        }
     }
     if ([identifier isEqualToString:@"animelist"]){
-        shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@", _searchfield.stringValue]]];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@", _searchfield.stringValue]]];
+                break;
+            case 2:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=manga",_searchfield.stringValue]]];
+                break;
+            default:
+                break;
+        }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
-        shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@", _searchfield.stringValue]]];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@", _searchfield.stringValue]]];
+                break;
+            case 2:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@", _searchfield.stringValue]]];
+                break;
+            default:
+                break;
+        }
     }
     //Get Share Picker
     NSSharingServicePicker *sharePicker = [[NSSharingServicePicker alloc] initWithItems:shareItems];
@@ -432,7 +484,17 @@
     a.informativeText = errormessage;
     a.alertStyle = NSAlertStyleCritical;
     [a beginSheetModalForWindow:self.window completionHandler:nil];
-    
+}
+
+
+- (void)resetprofilewindow {
+    _searchfield.stringValue = @"";
+    _loadedprofile = false;
+    [_liststats.window close];
+    [_listview clearalllists];
+    [_ohistoryvc clearHistory];
+    [_profilevc resetprofileview];
+    [self loadMainView];
 }
 
 @end

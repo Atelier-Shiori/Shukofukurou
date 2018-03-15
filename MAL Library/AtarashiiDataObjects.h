@@ -165,3 +165,24 @@
 @property (strong) NSString *review;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
+
+@interface AtarashiiUserObject : NSObject
+@property (strong) NSString *avatar_url;
+@property (strong) NSString *last_online;
+@property (strong) NSString *gender;
+@property (strong) NSString *birthday;
+@property (strong) NSString *location;
+@property (strong) NSString *website;
+@property (strong) NSString *join_date;
+@property (strong) NSString *access_rank;
+@property int anime_list_views;
+@property int manga_list_views;
+@property int forum_posts;
+@property int reviews;
+@property int recommendations;
+@property int blog_posts;
+@property int clubs;
+@property int comments;
+@property (strong) NSDictionary *extradict;
+- (NSDictionary *)NSDictionaryRepresentation;
+@end

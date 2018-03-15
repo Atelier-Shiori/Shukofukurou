@@ -13,6 +13,7 @@
 //#import "MyAnimeList.h"
 #import "listservice.h"
 #import "Utility.h"
+#import "MyListScoreFormatter.h"
 
 @interface ListView ()
 
@@ -37,6 +38,14 @@
     _mangalistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _animelisttitlefilterstring = @"";
     _mangalisttitlefilterstring = @"";
+    id transformer = [MyListScoreFormatter new];
+    NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
+    [bindingOptions setObject: transformer
+                       forKey:NSValueTransformerBindingOption];
+    
+    [self.animescorecol bind:@"value" toObject:self.animelistarraycontroller
+                 withKeyPath:@"arrangedObjects.score" options:bindingOptions];
+    [self.mangascorecol bind:@"value" toObject:self.mangalistarraycontroller withKeyPath:@"arrangedObjects.score" options:bindingOptions];
 }
 
 - (void)loadList:(int)list {
@@ -492,5 +501,14 @@
     _mangadroppedfilter.state = 0;
     _mangaonholdfilter.state = 0;
     _plantoreadfilter.state = 0;
+}
+
+- (void)clearalllists {
+    NSMutableArray *a = [_animelistarraycontroller mutableArrayValueForKey:@"content"];
+    [a removeAllObjects];
+    [_animelisttb reloadData];
+    a = [_mangalistarraycontroller mutableArrayValueForKey:@"content"];
+    [a removeAllObjects];
+    [_mangalisttb reloadData];
 }
 @end

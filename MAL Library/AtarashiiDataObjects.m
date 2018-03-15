@@ -232,3 +232,31 @@
     return @{};
 }
 @end
+
+@implementation AtarashiiUserObject
+- (id)init {
+    if ([super init]) {
+        self.avatar_url = @"";
+        self.last_online = @"";
+        self.gender = @"";
+        self.birthday = @"";
+        self.location = @"";
+        self.website = @"";
+        self.join_date = @"";
+        self.access_rank = @"";
+        self.anime_list_views = 0;
+        self.manga_list_views = 0;
+        self.forum_posts = 0;
+        self.reviews = 0;
+        self.recommendations = 0;
+        self.blog_posts = 0;
+        self.clubs = 0;
+        self.comments = 0;
+        self.extradict = @{};
+    }
+    return self;
+}
+- (NSDictionary *)NSDictionaryRepresentation {
+    return @{@"avatar_url" : _avatar_url, @"details" : @{@"last_online" : _last_online, @"gender" :  _gender, @"birthday" : _birthday, @"location" : _location, @"website" : _website, @"join_date" : _join_date, @"access_rank" : _access_rank, @"anime_list_views" : @(_anime_list_views), @"manga_list_views" : @(_manga_list_views), @"forum_posts" : @(_forum_posts), @"reviews" : @(_reviews), @"recommendations" : @(_recommendations), @"blog_posts" : @(_blog_posts), @"clubs" : @(_clubs), @"comments" : @(_comments), @"extra" : _extradict}};
+}
+@end

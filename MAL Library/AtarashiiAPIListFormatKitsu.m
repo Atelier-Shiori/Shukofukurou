@@ -338,6 +338,28 @@
     return reactionsarray;
 }
 
++ (NSDictionary *)KitsuUsertoAtarashii:(NSDictionary *)userinfo {
+    if (((NSArray *)userinfo[@"data"]).count > 0) {
+        @autoreleasepool {
+            AtarashiiUserObject *user = [AtarashiiUserObject new];
+            NSDictionary *userdata = userinfo[@"data"][0];
+            user.avatar_url = userdata[@"attributes"][@"avatar"] != [NSNull null] && userdata[@"attributes"][@"avatar"] ? userdata[@"attributes"][@"avatar"][@"original"] : [NSNull null];
+            user.gender = userdata[@"attributes"][@"gender"] != [NSNull null] ? userdata[@"attributes"][@"gender"] : @"Unknown";
+            user.birthday =  userdata[@"attributes"][@"birthday"] != [NSNull null] ?  userdata[@"attributes"][@"gender"] : [NSNull null];
+            user.location =  userdata[@"attributes"][@"location"] != [NSNull null] ?  userdata[@"attributes"][@"location"] : [NSNull null];
+            user.website =  userdata[@"attributes"][@"website"] != [NSNull null] ?  userdata[@"attributes"][@"website"] : [NSNull null];
+            user.join_date =  [(NSString *)userdata[@"attributes"][@"createdAt"] substringToIndex:10];
+            user.access_rank = userdata[@"attributes"][@"status"];
+            user.forum_posts = ((NSNumber *)userdata[@"attributes"][@"postsCount"]).intValue;
+            user.reviews = ((NSNumber *)userdata[@"attributes"][@"mediaReactionsCount"]).intValue;
+            user.comments = ((NSNumber *)userdata[@"attributes"][@"commentsCount"]).intValue;
+            user.extradict = @{@"likes_recieved" : userdata[@"attributes"][@"likesReceivedCount"], @"likes_given" : userdata[@"attributes"][@"likesGivenCount"], @"about" : userdata[@"attributes"][@"about"] != [NSNull null] ? userdata[@"attributes"][@"about"] : [NSNull null]};
+            return [user.NSDictionaryRepresentation copy];
+        }
+    }
+    return nil;
+}
+
 + (double)calculatedays:(NSArray *)list {
     double duration = 0;
     for (NSDictionary *entry in list) {
@@ -346,4 +368,5 @@
     duration = (duration/60)/24;
     return duration;
 }
+
 @end

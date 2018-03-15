@@ -52,7 +52,7 @@
     defaultValues[@"malapiurl"] = @"https://malapi.malupdaterosx.moe";
     defaultValues[@"stream_region"] = @(0);
     defaultValues[@"currentservice"] = @(1);
-    
+    defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
@@ -74,10 +74,14 @@
     __weak AppDelegate *weakself = self;
     _servicemenucontrol.actionblock = ^(int selected, int previousservice) {
         if (weakself.liststatswindow) {
-            [_liststatswindow.window close];
+            [weakself.liststatswindow.window close];
         }
         [weakself refreshUIServiceChange:selected];
         [weakself.mainwindowcontroller changeservice:previousservice];
+        if (weakself.pwc) {
+            [weakself.pwc.window close];
+            [weakself.pwc resetprofilewindow];
+        }
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self refreshUIServiceChange:[listservice getCurrentServiceID]];

@@ -115,6 +115,7 @@
             break;
         }
         case 2: {
+            completionHandler(@[]);
             break;
         }
         case 3: {
@@ -163,6 +164,7 @@
             break;
         }
         case 2: {
+            [Kitsu retrieveProfile:username completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -379,6 +381,7 @@
             break;
         }
         case 2: {
+            return @"kitsu-history.json";
             break;
         }
         case 3: {

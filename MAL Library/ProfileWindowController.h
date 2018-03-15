@@ -14,4 +14,5 @@
 @property (strong) IBOutlet PXSourceList *sourceList;
 - (void)setAppearance;
 - (void)loadProfileWithUsername:(NSString *)username;
+- (void)resetprofilewindow;
 @end

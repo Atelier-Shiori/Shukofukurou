@@ -46,4 +46,5 @@ typedef NS_ENUM(unsigned int, ratingType){
 + (void)getOwnKitsuid:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getKitsuid:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getUserRatingType:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)saveuserinfoforcurrenttoken;
 @end

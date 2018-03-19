@@ -8,6 +8,7 @@
 
 #import "Kitsu.h"
 #import <AFNetworking/AFNetworking.h>
+#import "AFHTTPSessionManager+Synchronous.h"
 #import "AtarashiiAPIListFormatKitsu.h"
 #import "TitleIdConverter.h"
 //#import "AtarashiiAPIKitsuStaffFormat.h"
@@ -80,10 +81,10 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     NSString *reviewurl = @"";
     if (type == KitsuAnime) {
-        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[animeId]=%i&include=anime,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar&fields[anime]=episodeCount&page[limit]=20&page[offset]=%i", titleid,offset];
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[animeId]=%i&include=anime,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar,slug&fields[anime]=episodeCount&page[limit]=20&page[offset]=%i", titleid,offset];
     }
     else {
-        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[mangaId]=%i&include=manga,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar&fields[manga]=chapterCount&page[limit]=20&page[offset]=%i", titleid, offset];
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[mangaId]=%i&include=manga,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar,slug&fields[manga]=chapterCount&page[limit]=20&page[offset]=%i", titleid, offset];
     }
     [manager GET:reviewurl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
@@ -433,7 +434,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    [manager GET:@"https://kitsu.io/api/edge/users?filter[self]=true" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:@"https://kitsu.io/api/edge/users?filter[self]=true&fields[users]=ratingSystem" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (((NSArray *)responseObject[@"data"]).count > 0) {
             NSDictionary *d = [NSArray arrayWithArray:responseObject[@"data"]][0];
             NSString *ratingtype = d[@"attributes"][@"ratingSystem"];
@@ -481,6 +482,56 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
             return @"planned";
         }
         return status;
+    }
+}
+
++ (void)saveuserinfoforcurrenttoken {
+    // Retrieves missing user information and populates it before showing the UI.
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self saveuserinfoforcurrenttoken];
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility syncmanager];
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    }
+    NSError *error;
+    id responseObject = [manager syncGET:@"https://kitsu.io/api/edge/users?filter[self]=true&fields[users]=name,slug,avatar,ratingSystem" parameters:@{} task:NULL error:&error];
+    if (!error) {
+        if (((NSArray *)responseObject[@"data"]).count > 0) {
+            NSDictionary *d = [NSArray arrayWithArray:responseObject[@"data"]][0];
+            NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+            [defaults setValue:d[@"id"] forKey:@"kitsu-userid"];
+            [defaults setValue:d[@"attributes"][@"slug"] forKey:@"kitsu-username"];
+            NSString *ratingtype = d[@"attributes"][@"ratingSystem"];
+            if (ratingtype) {
+                if ([ratingtype isEqualToString:@"simple"]) {
+                    [defaults setInteger:ratingSimple forKey:@"kitsu-ratingsystem"];
+                }
+                else if ([ratingtype isEqualToString:@"standard"]) {
+                    [defaults setInteger:ratingStandard forKey:@"kitsu-ratingsystem"];
+                }
+                else if ([ratingtype isEqualToString:@"advanced"]) {
+                    [defaults setInteger:ratingAdvanced forKey:@"kitsu-ratingsystem"];
+                }
+            }
+            else {
+                 [defaults setInteger:ratingSimple forKey:@"kitsu-ratingsystem"];
+            }
+        }
+        else {
+            // Remove Account, invalid token
+            [self removeAccount];
+        }
+    }
+    else {
+        // Remove Account
+        [self removeAccount];
     }
 }
 @end

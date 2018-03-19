@@ -333,7 +333,7 @@
                                                              dateStyle: NSDateFormatterShortStyle
                                                              timeStyle: NSDateFormatterNoStyle];
 }
-+ (AFHTTPSessionManager*) jsonmanager {
++ (AFHTTPSessionManager*)jsonmanager {
     static dispatch_once_t jonceToken;
     static AFHTTPSessionManager *jmanager = nil;
     if (jmanager) {
@@ -348,7 +348,7 @@
     });
     return jmanager;
 }
-+ (AFHTTPSessionManager*) httpmanager {
++ (AFHTTPSessionManager*)httpmanager {
     static dispatch_once_t hmonceToken;
     static AFHTTPSessionManager *hmanager = nil;
     if (hmanager) {
@@ -362,6 +362,22 @@
         hmanager.responseSerializer =  [Utility httpresponseserializer];
     });
     return hmanager;
+}
++ (AFHTTPSessionManager*)syncmanager {
+    static dispatch_once_t synconceToken;
+    static AFHTTPSessionManager *syncmanager = nil;
+    if (syncmanager) {
+        [syncmanager.requestSerializer clearAuthorizationHeader];
+        syncmanager.requestSerializer = [Utility httprequestserializer];
+        syncmanager.responseSerializer = [Utility jsonresponseserializer];
+    }
+    dispatch_once(&synconceToken, ^{
+        syncmanager = [AFHTTPSessionManager manager];
+        syncmanager.requestSerializer = [Utility httprequestserializer];
+        syncmanager.responseSerializer = [Utility jsonresponseserializer];
+        syncmanager.completionQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
+    });
+    return syncmanager;
 }
 + (AFJSONRequestSerializer *)jsonrequestserializer {
     static dispatch_once_t jronceToken;
@@ -387,7 +403,7 @@
     });
     return httprequest;
 }
-+ (AFJSONResponseSerializer *) jsonresponseserializer {
++ (AFJSONResponseSerializer *)jsonresponseserializer {
     static dispatch_once_t jonceToken;
     static AFJSONResponseSerializer *jsonresponse = nil;
     dispatch_once(&jonceToken, ^{
@@ -396,7 +412,7 @@
     });
     return jsonresponse;
 }
-+ (AFHTTPResponseSerializer *) httpresponseserializer {
++ (AFHTTPResponseSerializer *)httpresponseserializer {
     static dispatch_once_t honceToken;
     static AFHTTPResponseSerializer *httpresponse = nil;
     dispatch_once(&honceToken, ^{

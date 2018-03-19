@@ -14,65 +14,65 @@
 
 + (NSDictionary *)KitsutoAtarashiiAnimeList: (KitsuListRetriever *)retriever {
     NSMutableArray *tmpanimelist = [NSMutableArray new];
-    @autoreleasepool {
         for (NSDictionary *entry in retriever.tmplist) {
-            if (entry[@"relationships"][@"anime"][@"data"]) {
-                NSDictionary *metadata = [retriever retrieveMetaDataWithID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue];
-                if (metadata) {
-                    //Populate fields
-                    AtarashiiAnimeListObject *lentry = [AtarashiiAnimeListObject new];
-                    lentry.titleid = ((NSNumber *)metadata[@"id"]).intValue;
-                    lentry.title = metadata[@"attributes"][@"canonicalTitle"];
-                    lentry.episodes = metadata[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue : 0;
-                    lentry.episode_length = metadata[@"attributes"][@"episodeLength"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeLength"]).intValue : 0;
-                    if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
-                        lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
+            @autoreleasepool {
+                if (entry[@"relationships"][@"anime"][@"data"]) {
+                    NSDictionary *metadata = [retriever retrieveMetaDataWithID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue];
+                    if (metadata) {
+                        //Populate fields
+                        AtarashiiAnimeListObject *lentry = [AtarashiiAnimeListObject new];
+                        lentry.titleid = ((NSNumber *)metadata[@"id"]).intValue;
+                        lentry.title = metadata[@"attributes"][@"canonicalTitle"];
+                        lentry.episodes = metadata[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue : 0;
+                        lentry.episode_length = metadata[@"attributes"][@"episodeLength"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeLength"]).intValue : 0;
+                        if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
+                            lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
+                        }
+                        lentry.type = metadata[@"attributes"][@"showType"];
+                        NSString *tmpstatus = metadata[@"attributes"][@"status"];
+                        if ([tmpstatus isEqualToString:@"finished"]) {
+                            lentry.status = @"finished airing";
+                        }
+                        else if ([tmpstatus isEqualToString:@"current"]) {
+                            lentry.status = @"currently airing";
+                        }
+                        else if ([tmpstatus isEqualToString:@"tba"]||[tmpstatus isEqualToString:@"unreleased"]||[tmpstatus isEqualToString:@"upcoming"]) {
+                            lentry.status = @"not yet aired";
+                        }
+                        lentry.entryid = ((NSNumber *)entry[@"id"]).intValue;
+                        if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"on_hold"]) {
+                            lentry.watched_status = @"on-hold";
+                        }
+                        else if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"planned"]) {
+                            lentry.watched_status = @"plan to watch";
+                        }
+                        else if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"current"]) {
+                            lentry.watched_status = @"watching";
+                        }
+                        else {
+                            lentry.watched_status = (NSString *)entry[@"attributes"][@"status"];
+                        }
+                        lentry.watched_episodes = ((NSNumber *)entry[@"attributes"][@"progress"]).intValue;
+                        if (entry[@"attributes"][@"ratingTwenty"] != [NSNull null]) {
+                            lentry.score = ((NSNumber *)entry[@"attributes"][@"ratingTwenty"]).intValue;
+                        }
+                        lentry.watching_start = entry[@"attributes"][@"startedAt"];
+                        lentry.watching_end  = entry[@"attributes"][@"finishedAt"];
+                        lentry.rewatching = ((NSNumber *)entry[@"attributes"][@"reconsuming"]).boolValue;
+                        lentry.rewatch_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
+                        lentry.personal_comments = entry[@"attributes"][@"notes"];
+                        lentry.private_entry = ((NSNumber *) entry[@"attributes"][@"private"]).boolValue;
+                        [tmpanimelist addObject: lentry.NSDictionaryRepresentation];
                     }
-                    lentry.type = metadata[@"attributes"][@"showType"];
-                    NSString *tmpstatus = metadata[@"attributes"][@"status"];
-                    if ([tmpstatus isEqualToString:@"finished"]) {
-                        lentry.status = @"finished airing";
-                    }
-                    else if ([tmpstatus isEqualToString:@"current"]) {
-                        lentry.status = @"currently airing";
-                    }
-                    else if ([tmpstatus isEqualToString:@"tba"]||[tmpstatus isEqualToString:@"unreleased"]||[tmpstatus isEqualToString:@"upcoming"]) {
-                        lentry.status = @"not yet aired";
-                    }
-                    lentry.entryid = ((NSNumber *)entry[@"id"]).intValue;
-                    if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"on_hold"]) {
-                        lentry.watched_status = @"on-hold";
-                    }
-                    else if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"planned"]) {
-                        lentry.watched_status = @"plan to watch";
-                    }
-                    else if ([(NSString *)entry[@"attributes"][@"status"] isEqualToString:@"current"]) {
-                        lentry.watched_status = @"watching";
-                    }
-                    else {
-                        lentry.watched_status = (NSString *)entry[@"attributes"][@"status"];
-                    }
-                    lentry.watched_episodes = ((NSNumber *)entry[@"attributes"][@"progress"]).intValue;
-                    if (entry[@"attributes"][@"ratingTwenty"] != [NSNull null]) {
-                        lentry.score = ((NSNumber *)entry[@"attributes"][@"ratingTwenty"]).intValue;
-                    }
-                    lentry.watching_start = entry[@"attributes"][@"startedAt"];
-                    lentry.watching_end  = entry[@"attributes"][@"finishedAt"];
-                    lentry.rewatching = ((NSNumber *)entry[@"attributes"][@"reconsuming"]).boolValue;
-                    lentry.rewatch_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
-                    lentry.personal_comments = entry[@"attributes"][@"notes"];
-                    lentry.private_entry = ((NSNumber *) entry[@"attributes"][@"private"]).boolValue;
-                    [tmpanimelist addObject: [lentry.NSDictionaryRepresentation copy]];
                 }
             }
         }
-    }
     return @{@"anime" : tmpanimelist, @"statistics" : @{@"days" : @([self calculatedays:tmpanimelist])}};
 }
 + (NSDictionary *)KitsutoAtarashiiMangaList: (KitsuListRetriever *)retriever {
     NSMutableArray *tmpmangalist = [NSMutableArray new];
-    @autoreleasepool {
         for (NSDictionary *entry in retriever.tmplist) {
+            @autoreleasepool {
             if (entry[@"relationships"][@"manga"][@"data"]) {
                 NSDictionary *metadata = [retriever retrieveMetaDataWithID:((NSNumber *)entry[@"relationships"][@"manga"][@"data"][@"id"]).intValue];
                 if (metadata) {
@@ -123,7 +123,7 @@
                     lentry.reread_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
                     lentry.personal_comments = entry[@"attributes"][@"notes"];
                     lentry.private_entry = ((NSNumber *) entry[@"attributes"][@"private"]).boolValue;
-                    [tmpmangalist addObject: [lentry.NSDictionaryRepresentation copy]];
+                    [tmpmangalist addObject: lentry.NSDictionaryRepresentation];
                 }
             }
         }
@@ -177,7 +177,7 @@
         [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
     }
     aobject.mappings = mappings;
-    return [aobject.NSDictionaryRepresentation copy];
+    return aobject.NSDictionaryRepresentation;
 }
 
 + (NSDictionary *)KitsuMangaInfotoAtarashii:(NSDictionary *)data {
@@ -219,14 +219,14 @@
         [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
     }
     mobject.mappings = mappings;
-    return [mobject.NSDictionaryRepresentation copy];
+    return mobject.NSDictionaryRepresentation;
 }
 
 + (NSArray *)KitsuAnimeSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"];
     NSMutableArray *tmparray = [NSMutableArray new];
-    @autoreleasepool {
         for (NSDictionary *d in dataarray) {
+            @autoreleasepool {
             AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
             aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             aobject.title = d[@"attributes"][@"canonicalTitle"];
@@ -246,7 +246,7 @@
             else if ([tmpstatus isEqualToString:@"tba"]||[tmpstatus isEqualToString:@"unreleased"]||[tmpstatus isEqualToString:@"upcoming"]) {
                 aobject.status = @"not yet aired";
             }
-            [tmparray addObject:[aobject.NSDictionaryRepresentation copy]];
+            [tmparray addObject:aobject.NSDictionaryRepresentation];
         }
     }
     return tmparray;
@@ -255,8 +255,8 @@
 + (NSArray *)KitsuMangaSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"];
     NSMutableArray *tmparray = [NSMutableArray new];
-    @autoreleasepool {
         for (NSDictionary *d in dataarray) {
+            @autoreleasepool {
             AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
             mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             mobject.title = d[@"attributes"][@"canonicalTitle"];
@@ -277,7 +277,7 @@
             else if ([tmpstatus isEqualToString:@"tba"]||[tmpstatus isEqualToString:@"unreleased"]||[tmpstatus isEqualToString:@"upcoming"]) {
                 mobject.status = @"not yet published";
             }
-            [tmparray addObject: [mobject.NSDictionaryRepresentation copy]];
+            [tmparray addObject: mobject.NSDictionaryRepresentation];
         }
     }
     return tmparray;
@@ -289,8 +289,8 @@
     NSArray *mediaarray = [data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", type == 0 ? @"anime" : @"manga"]];
     NSArray *libraryentriesarray = [data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"libraryEntries"]];
     NSArray *usersarray = [data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"users"]];
-    @autoreleasepool {
         for (NSDictionary *reaction in dataarray) {
+            @autoreleasepool {
             NSDictionary *mediadict;
             NSDictionary *libraryentrydict;
             NSDictionary *userdict;
@@ -332,7 +332,7 @@
                 reviewobj.read_chapters = ((NSNumber *)libraryentrydict[@"attributes"][@"progress"]).intValue;
                 reviewobj.chapters = mediadict[@"attributes"][@"chapterCount"] != [NSNull null] ? ((NSNumber *)mediadict[@"attributes"][@"chapterCount"]).intValue : 0;
             }
-            [reactionsarray addObject:[[reviewobj NSDictionaryRepresentation] copy]];
+            [reactionsarray addObject:[reviewobj NSDictionaryRepresentation]];
         }
     }
     return reactionsarray;
@@ -340,7 +340,6 @@
 
 + (NSDictionary *)KitsuUsertoAtarashii:(NSDictionary *)userinfo {
     if (((NSArray *)userinfo[@"data"]).count > 0) {
-        @autoreleasepool {
             AtarashiiUserObject *user = [AtarashiiUserObject new];
             NSDictionary *userdata = userinfo[@"data"][0];
             user.avatar_url = userdata[@"attributes"][@"avatar"] != [NSNull null] && userdata[@"attributes"][@"avatar"] ? userdata[@"attributes"][@"avatar"][@"original"] : [NSNull null];
@@ -355,7 +354,6 @@
             user.comments = ((NSNumber *)userdata[@"attributes"][@"commentsCount"]).intValue;
             user.extradict = @{@"likes_recieved" : userdata[@"attributes"][@"likesReceivedCount"], @"likes_given" : userdata[@"attributes"][@"likesGivenCount"], @"about" : userdata[@"attributes"][@"about"] != [NSNull null] ? userdata[@"attributes"][@"about"] : [NSNull null]};
             return [user.NSDictionaryRepresentation copy];
-        }
     }
     return nil;
 }

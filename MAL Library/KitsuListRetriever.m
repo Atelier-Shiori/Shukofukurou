@@ -24,12 +24,15 @@
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     NSString *listtype;
+    NSString *includes;
     switch (type) {
         case 0:
             listtype = @"anime";
+            includes = @"canonicalTitle,episodeCount,episodeLength,showType,posterImage,status";
             break;
         case 1:
             listtype = @"manga";
+            includes = @"canonicalTitle,chapterCount,volumeCount,mangaType,posterImage,status";
             break;
         default:
             errorHandler(nil);
@@ -50,7 +53,7 @@
     if (cred) {
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     }
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%i&filter[kind]=%@&include=%@&page[limit]=500&page[offset]=%i",userID, listtype, listtype, pagenum] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%i&filter[kind]=%@&include=%@&fields[%@]=%@&page[limit]=500&page[offset]=%i",userID, listtype, listtype, listtype, includes, pagenum] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"]){
             [_tmplist addObjectsFromArray:responseObject[@"data"]];
             if (responseObject[@"included"]){

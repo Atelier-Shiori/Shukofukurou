@@ -37,6 +37,7 @@
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
 + (AFHTTPSessionManager*)jsonmanager;
 + (AFHTTPSessionManager*)httpmanager;
++ (AFHTTPSessionManager*)syncmanager;
 + (AFJSONRequestSerializer *)jsonrequestserializer;
 + (AFHTTPRequestSerializer *)httprequestserializer;
 @end

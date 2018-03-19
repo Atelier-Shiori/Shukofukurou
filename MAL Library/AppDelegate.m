@@ -87,6 +87,7 @@
         }
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
+    [self checkaccountinformation];
     [self refreshUIServiceChange:[listservice getCurrentServiceID]];
     // Load main window
     _mainwindowcontroller = [MainWindow new];
@@ -533,5 +534,17 @@
 #else
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
 #endif
+}
+
+- (void)checkaccountinformation {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if ([Kitsu getFirstAccount]) {
+        if (![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) {
+            [Kitsu saveuserinfoforcurrenttoken];
+        }
+        else if (((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0) {
+            [Kitsu saveuserinfoforcurrenttoken];
+        }
+    }
 }
 @end

@@ -163,6 +163,7 @@
 @property int helpful_total;
 @property (strong) NSString *avatar_url;
 @property (strong) NSString *review;
+@property (strong) NSString *actual_username;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

@@ -747,6 +747,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="getfromAppStore:" target="Voe-Tx-rLC" id="LO0-Gv-9so"/>
+                                    <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="PG1-Vk-ewI"/>
                                 </connections>
                             </menuItem>
                         </items>

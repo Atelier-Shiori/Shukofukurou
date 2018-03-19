@@ -171,7 +171,7 @@
     [copyrightstr appendString:@"Mac App Store version."];
 #else
     if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
-        [copyrightstr appendFormat:@"This copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donor"]];
+        [copyrightstr appendString:@"Pro version."];
     }
     else {
         [copyrightstr appendString:@"Free Version."];

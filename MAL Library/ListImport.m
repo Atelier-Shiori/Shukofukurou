@@ -775,7 +775,7 @@
         status = @"plan to watch";
     }
     if (entry[@"score"]) {
-        score = ((NSNumber *)entry[@"score"]).intValue;
+        score = ((NSNumber *)entry[@"score"]).intValue/10;
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {

@@ -184,7 +184,7 @@
     }
 
     //Generate Items to Share
-    NSArray *shareItems;
+    NSArray *shareItems = @[];;
     switch ([listservice getCurrentServiceID]) {
         case 1: {
             if (type == AnimeType){

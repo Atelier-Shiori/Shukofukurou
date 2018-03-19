@@ -417,7 +417,7 @@
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     
     //Generate Items to Share
-    NSArray *shareItems;
+    NSArray *shareItems = @[];
     if ([identifier isEqualToString:@"profile"]){
         switch ([listservice getCurrentServiceID]) {
             case 1:

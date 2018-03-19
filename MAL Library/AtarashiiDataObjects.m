@@ -10,7 +10,8 @@
 
 @implementation AtarashiiAnimeObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         self.titleid = 0;
         self.title = @"";
         self.other_titles = @{};
@@ -54,7 +55,8 @@
 
 @implementation AtarashiiMangaObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         self.titleid = 0;
         self.title = @"";
         self.other_titles = @{};
@@ -85,7 +87,8 @@
 
 @implementation AtarashiiAnimeListObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         self.titleid = 0;
         self.title = @"";
         self.entryid = 0;
@@ -114,7 +117,8 @@
 
 @implementation AtarashiiMangaListObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         self.titleid = 0;
         self.title = @"";
         self.entryid = 0;
@@ -144,7 +148,8 @@
 
 @implementation AtarashiiPersonObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         _personid = 0;
         _name = @"";
         _alternate_names = @[];
@@ -168,7 +173,8 @@
 
 @implementation AtarashiiVoiceActingRoleObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         _characterid = 0;
         _name = @"";
         _image_url = @"";
@@ -185,7 +191,8 @@
 
 @implementation AtarrashiiStaffObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         _position = @"";
         _details = @"";
         _anime = @[];
@@ -200,7 +207,8 @@
 
 @implementation AtarashiiPublishedMangaObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         _position = @"";
         _manga = @[];
     }
@@ -214,7 +222,8 @@
 
 @implementation AtarashiiReviewObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         self.username = @"";
         self.date = @"";
         self.avatar_url = @"";
@@ -236,7 +245,8 @@
 
 @implementation AtarashiiUserObject
 - (id)init {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         self.avatar_url = @"";
         self.last_online = @"";
         self.gender = @"";

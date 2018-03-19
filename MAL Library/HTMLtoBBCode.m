@@ -213,27 +213,33 @@
     return html;
 }
 - (NSString *)getParagraph:(NSString *)html paragraph:(NSString *)paragraph {
-    NSScanner *scanner = [NSScanner scannerWithString:html];
-    NSString *theParagraph;
-    NSString *paragraphtag = [NSString stringWithFormat:@"<p class=\"%@\">",paragraph];
-    while (![scanner isAtEnd]){
-        [scanner scanUpToString:paragraphtag intoString:NULL];
-        [scanner scanString:paragraphtag intoString:NULL];
-        [scanner scanUpToString:@"</p>" intoString:&theParagraph];
+    if (html) {
+        NSScanner *scanner = [NSScanner scannerWithString:html];
+        NSString *theParagraph;
+        NSString *paragraphtag = [NSString stringWithFormat:@"<p class=\"%@\">",paragraph];
+        while (![scanner isAtEnd]){
+            [scanner scanUpToString:paragraphtag intoString:NULL];
+            [scanner scanString:paragraphtag intoString:NULL];
+            [scanner scanUpToString:@"</p>" intoString:&theParagraph];
+        }
+        return theParagraph;
     }
-    return theParagraph;
+    return @"";
 }
 
 - (NSString *)getSpan:(NSString *)html span:(NSString *)span {
-    NSScanner *scanner = [NSScanner scannerWithString:html];
-    NSString *theParagraph;
-    NSString *spantag = [NSString stringWithFormat:@"<span class=\"%@\">",span];
-    while (![scanner isAtEnd]){
-        [scanner scanUpToString:spantag intoString:NULL];
-        [scanner scanString:spantag intoString:NULL];
-        [scanner scanUpToString:@"</span>" intoString:&theParagraph];
+    if (html) {
+        NSScanner *scanner = [NSScanner scannerWithString:html];
+        NSString *theParagraph;
+        NSString *spantag = [NSString stringWithFormat:@"<span class=\"%@\">",span];
+        while (![scanner isAtEnd]){
+            [scanner scanUpToString:spantag intoString:NULL];
+            [scanner scanString:spantag intoString:NULL];
+            [scanner scanUpToString:@"</span>" intoString:&theParagraph];
+        }
+        return theParagraph;
     }
-    return theParagraph;
+    return @"";
 }
 
 @end

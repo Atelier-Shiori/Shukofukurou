@@ -67,7 +67,7 @@ fastlane/test_output
 iOSInjectionProject/
 
 # AppCode
-.idea/**
+.idea/*
 
 ### Objective-C Patch ###
 

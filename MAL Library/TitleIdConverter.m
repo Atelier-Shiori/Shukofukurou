@@ -15,13 +15,19 @@
 #import "Keychain.h"
 
 @implementation TitleIdConverter
+static BOOL lookingupid;
+
 + (void)getKitsuIDFromMALId:(int)malid withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid)  {
+        return;
+    }
     // Check to see if title exists in the title id mappings. If so, just use the id from the mapping.
     int tmpid = [self lookupTitleID:malid withType:type fromService:1 toService:2];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
+    lookingupid = true;
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     NSString *typestr = @"";
     switch (type) {
@@ -46,8 +52,10 @@
                 else {
                     errorHandler(nil);
                 }
+                lookingupid = false;
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 errorHandler(error);
+                lookingupid = false;
             }];
         }
         else {
@@ -55,24 +63,32 @@
                 if (currentservice == 2) {
                     [self savetitleidtomapping:malid withNewID:currentserviceid withType:type fromService:1 toService:2];
                     completionHandler(currentserviceid);
+                    lookingupid = false;
                 }
                 else {
                     errorHandler(nil);
+                    lookingupid = false;
                 }
             } error:^(NSError *error) {
                 errorHandler(error);
+                lookingupid = false;
             }];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
+        lookingupid = false;
     }];
 }
 + (void)getMALIDFromKitsuId:(int)kitsuid withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid)  {
+        return;
+    }
     int tmpid = [self lookupTitleID:kitsuid withType:type fromService:2 toService:1];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
+    lookingupid = true;
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     NSString *typestr = @"";
     switch (type) {
@@ -90,30 +106,39 @@
                 NSNumber *malid = responseObject[@"data"][@"id"];
                 [self savetitleidtomapping:kitsuid withNewID:malid.intValue withType:type fromService:2 toService:1];
                 completionHandler(malid.intValue);
+                lookingupid = false;
             }
             else {
                 errorHandler(nil);
+                lookingupid = false;
             }
         }
         else {
             [self findMALIDWithCurrentServiceID:kitsuid type:type completionHandler:^(int malid) {
                     [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
                     completionHandler(malid);
+                    lookingupid = false;
             } error:^(NSError *error) {
                 errorHandler(error);
+                lookingupid = false;
             }];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
+        lookingupid = false;
     }];
 }
 
 + (void)getMALIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid)  {
+        return;
+    }
     int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:fromservice toService:1];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
+    lookingupid = true;
     [self retrieveMALIDwithTitle:title withMediaType:MALAnime withType:titletype completionHandler:^(int malid) {
         if (malid > 0) {
             [self savetitleidtomapping:titleid withNewID:malid withType:MALAnime fromService:fromservice toService:1];
@@ -122,17 +147,23 @@
         else {
             errorHandler(nil);
         }
+        lookingupid = false;
     } error:^(NSError *error) {
         errorHandler(error);
+        lookingupid = false;
     }];
 }
 
 + (void)getserviceTitleIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid)  {
+        return;
+    }
     int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
+    lookingupid = true;
     [listservice searchTitle:title withType:MALAnime completion:^(id responseObject) {
         for (NSDictionary *d in responseObject) {
             if ([titletype caseInsensitiveCompare:d[@"type"]] != NSOrderedSame) {
@@ -169,12 +200,15 @@
             if (found) {
                 [self savetitleidtomapping:titleid withNewID:((NSNumber *)d[@"id"]).intValue withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
                 completionHandler(((NSNumber *)d[@"id"]).intValue);
+                lookingupid = false;
                 return;
             }
         }
         errorHandler(nil);
+        lookingupid = false;
     } error:^(NSError *error) {
         errorHandler(error);
+        lookingupid = false;
     }];
 }
 
@@ -334,15 +368,33 @@
         __block NSDictionary *othertitles = responseObject[@"other_titles"];
         [listservice searchTitle:title withType:type completion:^(id responseObject) {
             for (NSDictionary *searchentry in responseObject) {
-                NSString *tmptitle = searchentry[@"title"];
+                NSString *tmptitle = (NSString *)searchentry[@"title"];
                 if ([tmptitle isEqualToString:title]) {
                     completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
                     return;
                 }
-                else if (othertitles[@"english"]) {
-                    if ([tmptitle isEqualToString:othertitles[@"english"]]) {
-                        completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
-                        return;
+                if (othertitles[@"english"]) {
+                    for (NSString *etitle in othertitles[@"english"]) {
+                        if ([title isEqualToString:etitle]) {
+                            completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
+                            return;
+                        }
+                    }
+                }
+                if (othertitles[@"japanese"]) {
+                    for (NSString *jtitle in othertitles[@"japanese"]) {
+                        if ([title isEqualToString:jtitle]) {
+                            completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
+                            return;
+                        }
+                    }
+                }
+                if (othertitles[@"synonyms"]) {
+                    for (NSString *stitle in othertitles[@"synonyms"]) {
+                        if ([title isEqualToString:stitle]) {
+                            completionHandler(((NSNumber *)searchentry[@"id"]).intValue, [listservice getCurrentServiceID]);
+                            return;
+                        }
                     }
                 }
             }
@@ -362,14 +414,35 @@
         [MyAnimeList searchTitle:title withType:type completion:^(id responseObject) {
             for (NSDictionary *searchentry in responseObject) {
                 NSString *tmptitle = searchentry[@"title"];
+                if (tmptitle.class != [NSString class]) {
+                    continue;
+                }
                 if ([tmptitle isEqualToString:title]) {
                     completionHandler(((NSNumber *)searchentry[@"id"]).intValue);
                     return;
                 }
-                else if (othertitles[@"english"]) {
-                    if ([tmptitle isEqualToString:othertitles[@"english"]]) {
-                        completionHandler(((NSNumber *)searchentry[@"id"]).intValue);
-                        return;
+                if (othertitles[@"english"]) {
+                    for (NSString *etitle in othertitles[@"english"]) {
+                        if ([title isEqualToString:etitle]) {
+                            completionHandler(((NSNumber *)searchentry[@"id"]).intValue);
+                            return;
+                        }
+                    }
+                }
+                if (othertitles[@"japanese"]) {
+                    for (NSString *jtitle in othertitles[@"japanese"]) {
+                        if ([title isEqualToString:jtitle]) {
+                            completionHandler(((NSNumber *)searchentry[@"id"]).intValue);
+                            return;
+                        }
+                    }
+                }
+                if (othertitles[@"synonyms"]) {
+                    for (NSString *stitle in othertitles[@"synonyms"]) {
+                        if ([title isEqualToString:stitle]) {
+                            completionHandler(((NSNumber *)searchentry[@"id"]).intValue);
+                            return;
+                        }
                     }
                 }
             }

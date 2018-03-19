@@ -34,18 +34,17 @@
     if (_seasontableview.selectedRow >=0){
         if (_seasontableview.selectedRow >-1){
             NSDictionary *d = _seasonarraycontroller.selectedObjects[0];
-            d = d[@"id"];
             switch ([listservice getCurrentServiceID]) {
                 case 1: {
-                    NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
+                    NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"][@"id"]].integerValue);
                     [_mw loadinfo:idnum type:0 changeView:YES];
                     break;
                 }
                 case 2: {
-                    [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                    [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"][@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
                         [_mw loadinfo:@(kitsuid) type:0 changeView:YES];
                     } error:^(NSError *error) {
-                    
+                        [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
                     }];
                     break;
                 }

@@ -115,7 +115,7 @@
             [endingthemes appendFormat:@"%@\n",theme];
         }
     }
-    if (d[@"background"] != nil){
+    if (d[@"background"] != nil || ((NSString *)d[@"background"]).length > 0){
         background = [(NSString *)d[@"background"] convertHTMLtoAttStr];
     }
     else {

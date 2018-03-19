@@ -15,7 +15,7 @@
 #import "RatingTwentyConvert.h"
 
 @interface ReviewView ()
-
+@property (strong) NSString *profile_username;
 @end
 
 @implementation ReviewView
@@ -34,6 +34,9 @@
 - (void)loadReview:(NSDictionary *)review type:(int)type {
     int currentservice = [listservice getCurrentServiceID];
     _reviewerusername.stringValue = review[@"username"];
+    if (currentservice == 2) {
+        _profile_username = review[@"actual_username"];
+    }
     switch (currentservice) {
         case 1:
         case 3:
@@ -97,7 +100,16 @@
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
         [pwc.window makeKeyAndOrderFront:self];
-        [pwc loadProfileWithUsername:_reviewerusername.stringValue];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [pwc loadProfileWithUsername:_reviewerusername.stringValue];
+                break;
+            case 2:
+                [pwc loadProfileWithUsername:_profile_username];
+                break;
+            default:
+                break;
+        }
     }
     else {
         switch ([listservice getCurrentServiceID]) {
@@ -105,7 +117,7 @@
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_reviewerusername.stringValue]]];
                 break;
             case 2:
-                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_reviewerusername.stringValue]]];
+                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_profile_username]]];
                 break;
             case 3:
                 break;

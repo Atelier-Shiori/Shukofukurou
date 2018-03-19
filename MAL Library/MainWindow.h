@@ -33,6 +33,7 @@
 @property (strong) IBOutlet NSTextField *loggedinuser;
 @property (strong) IBOutlet PXSourceList *sourceList;
 @property (strong) ReviewWindow *reviewwindow;
+@property (weak) IBOutlet NSProgressIndicator *progresswheel;
 
 @property (nonatomic, assign, getter=getDelegate) AppDelegate *appdel;
 //Anime List View

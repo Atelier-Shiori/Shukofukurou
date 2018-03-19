@@ -24,6 +24,7 @@
                 <outlet property="notloggedin" destination="N7e-Wr-mOx" id="i8v-Pv-cu4"/>
                 <outlet property="progressindicator" destination="nJp-pg-isf" id="mIT-I9-J37"/>
                 <outlet property="progressview" destination="K71-hX-Lqz" id="UxL-8a-2aR"/>
+                <outlet property="progresswheel" destination="AoA-ct-bjC" id="gRX-BE-cd5"/>
                 <outlet property="requireslicense" destination="LUW-Wj-as8" id="fud-9q-qyV"/>
                 <outlet property="searchview" destination="3aF-oI-xAM" id="Kt7-Uz-xOb"/>
                 <outlet property="seasonview" destination="UX5-t5-v6p" id="gj6-7B-Eyh"/>
@@ -171,6 +172,10 @@
                             <outlet property="delegate" destination="-2" id="dXx-3r-Bgd"/>
                         </connections>
                     </splitView>
+                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="AoA-ct-bjC">
+                        <rect key="frame" x="678" y="5" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    </progressIndicator>
                 </subviews>
                 <constraints>
                     <constraint firstItem="juR-gi-pJh" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="7PV-Fv-nlD"/>

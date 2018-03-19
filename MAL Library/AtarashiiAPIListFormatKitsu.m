@@ -323,6 +323,7 @@
             reviewobj.helpful_total = reviewobj.helpful;
             reviewobj.rating = libraryentrydict[@"attributes"][@"ratingTwenty"] != [NSNull null] ? ((NSNumber *)libraryentrydict[@"attributes"][@"ratingTwenty"]).intValue : 0;
             reviewobj.username = userdict[@"attributes"][@"name"];
+            reviewobj.actual_username = userdict[@"attributes"][@"slug"];
             reviewobj.avatar_url = userdict[@"attributes"][@"avatar"] != [NSNull null] ? userdict[@"attributes"][@"avatar"][@"original"] : @"";
             if (type == 0) {
                 reviewobj.watched_episodes = ((NSNumber *)libraryentrydict[@"attributes"][@"progress"]).intValue;

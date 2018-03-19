@@ -675,10 +675,12 @@
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"animelist"]){
         _refreshanime = true;
+        [self showProgressWheel:false];
         [self loadlist:@(true) type:0];
     }
     else if ([identifier isEqualToString:@"mangalist"]){
         _refreshmanga = true;
+        [self showProgressWheel:false];
         [self loadlist:@(true) type:1];
     }
     else if ([identifier isEqualToString:@"history"]){
@@ -1034,6 +1036,20 @@
 }
 - (void)enableservicemenuitems {
     [_appdel.servicemenucontrol enableservicemenuitems:!_refreshmanga && !_refreshanime];
+    [self showProgressWheel:!_refreshmanga &&! _refreshanime];
+}
+
+- (void)showProgressWheel:(bool)hidden {
+    if (hidden) {
+        [_progresswheel stopAnimation:self];
+        _progresswheel.hidden = YES;
+    }
+    else {
+        if (_progresswheel.hidden) {
+            [_progresswheel startAnimation:self];
+        }
+        _progresswheel.hidden = NO;
+    }
 }
 @end
 

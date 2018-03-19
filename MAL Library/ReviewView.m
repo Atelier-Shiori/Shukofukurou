@@ -85,7 +85,12 @@
     [_reviewtext.textStorage setAttributedString: [(NSString *)review[@"review"] convertHTMLtoAttStr]];
     [_reviewtext scrollToBeginningOfDocument:self];
     [_reviewtext scrollToBeginningOfDocument:self];
-    _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@.jpg",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];
+    if (((NSString *)review[@"avatar_url"]).length > 0) {
+        _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@.jpg",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];
+    }
+    else {
+        _revieweravatar.image = [NSImage imageNamed:@"noimage"];
+    }
 }
 
 - (IBAction)viewreviewerprofile:(id)sender {

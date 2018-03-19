@@ -30,6 +30,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
     
 }
@@ -47,6 +49,8 @@
             [MyAnimeList retrieveAiringSchedule:completionHandler error:errorHandler];
             break;
         }
+        default:
+            break;
     }
 }
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -62,6 +66,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -76,6 +82,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type useAccount:(bool)useAccount completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -91,6 +99,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -127,14 +137,9 @@
     switch ([self getCurrentServiceID]) {
         case 1: {
             return [MyAnimeList verifyAccount];
-            break;
         }
-        case 2: {
+        default:
             break;
-        }
-        case 3: {
-            break;
-        }
     }
     return false;
 }
@@ -200,6 +205,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -215,6 +222,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -230,6 +239,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -245,6 +256,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -259,6 +272,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)retrievemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -273,6 +288,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -287,6 +304,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -301,6 +320,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -319,6 +340,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -334,6 +357,8 @@
         case 3: {
             break;
         }
+        default:
+            break;
     }
 }
 + (NSString *)retrieveListFileName:(int)type {
@@ -368,6 +393,8 @@
             }
             break;
         }
+        default:
+            break;
     }
     return @"";
 }
@@ -378,15 +405,15 @@
     switch (serviceid) {
         case 1: {
             return @"mal-history.json";
-            break;
         }
         case 2: {
             return @"kitsu-history.json";
-            break;
         }
         case 3: {
             break;
         }
+        default:
+            break;
     }
     return @"";
 }

@@ -174,7 +174,7 @@
     aobject.producers = producers;
     NSMutableDictionary *mappings = [NSMutableDictionary new];
     for (NSDictionary *d in [included filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"mappings"]]) {
-        [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
+        mappings[d[@"attributes"][@"externalSite"]] = d[@"attributes"][@"externalId"];
     }
     aobject.mappings = mappings;
     return aobject.NSDictionaryRepresentation;
@@ -216,7 +216,7 @@
     mobject.genres = categories;
     NSMutableDictionary *mappings = [NSMutableDictionary new];
     for (NSDictionary *d in [included filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type == %@", @"mappings"]]) {
-        [mappings setObject:d[@"attributes"][@"externalId"] forKey:d[@"attributes"][@"externalSite"]];
+        mappings[d[@"attributes"][@"externalSite"]] = d[@"attributes"][@"externalId"];
     }
     mobject.mappings = mappings;
     return mobject.NSDictionaryRepresentation;

@@ -231,16 +231,21 @@
 - (void)fireTimer{
     if ([listservice checkAccountForCurrentService]) {
         switch ([listservice getCurrentServiceID]) {
-            case 1:
+            case 1: {
                 [self performtimerlistrefresh];
                 break;
-            case 2:
+            }
+            case 2: {
                 [Kitsu getUserRatingType:^(int scoretype) {
                     [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                     [self performtimerlistrefresh];
                 } error:^(NSError *error) {
                     NSLog(@"Error loading list: %@", error.localizedDescription);
                 }];
+            }
+            default: {
+                break;
+            }
         }
     }
 }
@@ -354,7 +359,7 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSWidth([[[splitView subviews] objectAtIndex:0] frame]);
+        CGFloat dividerPos = NSWidth([[splitView subviews][0] frame]);
         CGFloat width = NSWidth([splitView frame]);
         
         if (dividerPos < 0)
@@ -657,10 +662,11 @@
 - (IBAction)refreshlist:(id)sender {
     [_appdel.servicemenucontrol enableservicemenuitems:NO];
     switch ([listservice getCurrentServiceID]) {
-        case 1:
+        case 1: {
             [self performlistRefresh];
             break;
-        case 2:
+        }
+        case 2: {
             [Kitsu getUserRatingType:^(int scoretype) {
                 [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                 [self performlistRefresh];
@@ -668,6 +674,10 @@
                 NSLog(@"Error loading list: %@", error.localizedDescription);
                 [_appdel.servicemenucontrol enableservicemenuitems:YES];
             }];
+        }
+        default: {
+            break;
+        }
     }
 }
 - (void)performlistRefresh {
@@ -851,6 +861,8 @@
                 }
                 break;
             }
+            default:
+                break;
         }
     }
 }

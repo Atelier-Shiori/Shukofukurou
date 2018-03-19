@@ -236,7 +236,7 @@
     if (self.mediatype == 0) {
         return @{@"date" : _date.copy, @"rating" : @(_rating), @"username" : _username, @"actual_username" : _actual_username.copy, @"episodes" : @(_episodes), @"watched_episodes" : @(_watched_episodes), @"helpful" : @(_helpful), @"helpful_total" : @(_helpful_total), @"avatar_url" : _avatar_url.copy, @"review" : _review.copy };
     }
-    else {
+    else if (self.mediatype == 1) {
         return @{@"date" : _date.copy, @"rating" : @(_rating), @"username" : _username.copy, @"actual_username" : _actual_username.copy, @"chapters" : @(_chapters), @"read_chapters" : @(_read_chapters), @"helpful" : @(_helpful), @"helpful_total" : @(_helpful_total), @"avatar_url" : _avatar_url.copy, @"review" : _review.copy };
     }
     return @{};

@@ -155,6 +155,8 @@
                     filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"plan to read"]];
                     plantoread = @(filtered.count);
                     break;
+                default:
+                    break;
             }
         }
         _mangareadingcount.stringValue = reading.stringValue;

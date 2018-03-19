@@ -152,7 +152,7 @@
                        }
                        if (![_listimport isKindOfClass:[NSArray class]]){
                            // Import only contains one object, put it in an array.
-                           _listimport = [NSArray arrayWithObject:_listimport];
+                           _listimport = @[_listimport];
                        }
                        _replaceexisting = (((NSButton*)op.accessoryView).state == NSOnState);
                        _listtype = @"myanimelist";
@@ -287,7 +287,7 @@
                                _listimport = d[@"mylist"][@"anime"];
                                if (![_listimport isKindOfClass:[NSArray class]]){
                                    // Import only contains one object, put it in an array.
-                                   _listimport = [NSArray arrayWithObject:_listimport];
+                                   _listimport = @[_listimport];
                                }
                                _listtype = @"anidb";
                                _importlisttype = MALAnime;
@@ -659,7 +659,7 @@
         case 20:
             return 10;
         default:
-            return 0;
+            break;
     }
     return 0;
 }

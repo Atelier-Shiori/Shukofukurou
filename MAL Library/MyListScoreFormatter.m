@@ -23,7 +23,6 @@
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 return @(rating).stringValue;
-                break;
             case 2:
                 return [RatingTwentyConvert convertRatingTwentyToActualScore:rating scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
             default:

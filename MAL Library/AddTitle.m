@@ -78,8 +78,8 @@
             }
             else {
                 [listservice retrieveTitleInfo:idnum.intValue withType:MALAnime useAccount:NO completion:^(id responseObject) {
-                    NSDictionary * d = responseObject;
-                    [self checkStatus:d[@"status"] type: 0];
+                    NSDictionary *titleinfo = responseObject;
+                    [self checkStatus:titleinfo[@"status"] type: 0];
                 }error:^(NSError *error) {
                     NSLog(@"Error: %@", error);
                 }];
@@ -123,8 +123,8 @@
             }
             else {
                 [listservice retrieveTitleInfo:idnum.intValue withType:MALManga useAccount:NO completion:^(id responseObject) {
-                    NSDictionary * d = responseObject;
-                    [self checkStatus:d[@"status"] type: MALManga];
+                    NSDictionary *titleinfo = responseObject;
+                    [self checkStatus:titleinfo[@"status"] type: MALManga];
                 }error:^(NSError *error) {
                     NSLog(@"Error: %@", error);
                 }];

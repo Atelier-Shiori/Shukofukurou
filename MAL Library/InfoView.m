@@ -88,7 +88,7 @@
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
     _infoviewalttitles.stringValue = titles;
-    if (d[@"genres"]!= nil){
+    if (d[@"genres"]!= nil) {
         NSArray *genresa = d[@"genres"];
         [genres appendString:[Utility appendstringwithArray:genresa]];
     }
@@ -130,7 +130,7 @@
     NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
-    if (d[@"episodes"] == nil || ((NSNumber *)d[@"episodes"]).intValue > 0) {
+    if (d[@"episodes"] == nil || ((NSNumber *)d[@"episodes"]).intValue == 0) {
         if (d[@"duration"] == nil  || ((NSNumber *)d[@"duration"]).intValue == 0){
             [details appendString:@"Episodes: Unknown\n"];
         }
@@ -154,8 +154,13 @@
     if (d[@"classification"] != nil) {
         [details appendString:[NSString stringWithFormat:@"Classification: %@\n", d[@"classification"]]];
     }
-    if (d[@"members_score"] !=nil || ((NSNumber *)d[@"members_score"]).intValue > 0) {
-        [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
+    if (d[@"members_score"] != nil || ((NSNumber *)d[@"members_score"]).intValue > 0) {
+        if (rank.intValue > 0) {
+            [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
+        }
+        else {
+            [details appendString:[NSString stringWithFormat:@"Score: %f (%i users)\n", score.floatValue, memberscount.intValue]];
+        }
     }
     if (popularity.intValue > 0) {
         [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
@@ -244,7 +249,7 @@
     if (dtitles[@"english"] != nil){
         NSArray *e = dtitles[@"english"];
         for (NSString *etitle in e){
-            if ((NSNull *)etitle != [NSNull null]) {
+            if (etitle != [NSNull null]) {
                 [othertitles addObject:etitle];
             }
         }
@@ -252,7 +257,7 @@
     if (dtitles[@"japanese"] != nil){
         NSArray *j = dtitles[@"japanese"];
         for (NSString *jtitle in j){
-            if ((NSNull *)jtitle  != [NSNull null]) {
+            if (jtitle  != [NSNull null]) {
                 [othertitles addObject:jtitle];
             }
         }
@@ -260,7 +265,7 @@
     if (dtitles[@"synonyms"] != nil){
         NSArray *syn = dtitles[@"synonyms"];
         for (NSString *stitle in syn){
-            if ((NSNull *)stitle  != [NSNull null]) {
+            if (stitle  != [NSNull null]) {
                 [othertitles addObject:stitle];
             }
         }
@@ -300,8 +305,13 @@
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
-    if (d[@"members_score"] !=nil || ((NSNumber *)d[@"members_score"]).intValue > 0) {
-        [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
+    if (d[@"members_score"] !=nil || ((NSNumber *)d[@"members_score"]).intValue) {
+        if (rank.intValue > 0) {
+            [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue > 0]];
+        }
+        else {
+            [details appendString:[NSString stringWithFormat:@"Score: %f (%i users)\n", score.floatValue, memberscount.intValue]];
+        }
     }
     if (popularity.intValue > 0) {
         [details appendString:[NSString stringWithFormat:@"Popularity: %i\n", popularity.intValue]];
@@ -395,13 +405,15 @@
             case 2:
                 btn = _streambutton;
                 break;
+            default:
+                break;
         }
         if (!btn.hidden) {
             [buttonarray addObject:btn];
         }
     }
     for (int i = 0; i < buttonarray.count; i++) {
-        NSButton *btn = [buttonarray objectAtIndex:i];
+        NSButton *btn = buttonarray[i];
         CGPoint btnorigin = btn.frame.origin;
         switch (i) {
             case 0:

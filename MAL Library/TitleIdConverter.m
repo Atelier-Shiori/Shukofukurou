@@ -234,6 +234,8 @@ static BOOL lookingupid;
             }
             return -1;
         }
+        default:
+            break;
     }
     return -1;
 }
@@ -490,7 +492,7 @@ static BOOL lookingupid;
         searchresults = d[@"anime"][@"entry"];
         if (![searchresults isKindOfClass:[NSArray class]]) {
             // Import only contains one object, put it in an array.
-            searchresults = [NSArray arrayWithObject:searchresults];
+            searchresults = @[searchresults];
         }
     }
     else {

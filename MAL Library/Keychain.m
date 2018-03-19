@@ -22,7 +22,7 @@ NSString *const kserviceName = @"MAL Library";
 + (NSString *)getusername {
     // This method checks for any accounts that Hachidori can use
     NSArray *accounts = [SSKeychain accountsForService:kserviceName];
-    if (accounts > 0) {
+    if (accounts.count > 0) {
         //retrieve first valid account
         for (NSDictionary *account in accounts){
             return (NSString *)account[@"acct"];

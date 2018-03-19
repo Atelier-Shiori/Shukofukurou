@@ -94,6 +94,8 @@
             case 20:
                 standardrating = 5.0;
                 break;
+            default:
+                break;
         }
     return @(standardrating).stringValue;
 }
@@ -157,6 +159,8 @@
             break;
         case 20:
             advrating = 10.0;
+            break;
+        default:
             break;
     }
     return @(advrating).stringValue;

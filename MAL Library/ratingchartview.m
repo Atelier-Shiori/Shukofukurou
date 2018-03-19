@@ -120,7 +120,7 @@
         runningTotal += number.doubleValue;
     }
     
-    return [NSNumber numberWithDouble:(runningTotal / array.count)];
+    return @(runningTotal / array.count);
 }
 
 - (NSNumber *)standardDeviationOf:(NSArray *)array {
@@ -135,7 +135,7 @@
         sumOfSquaredDifferences += difference * difference;
     }
     
-    return [NSNumber numberWithDouble:sqrt(sumOfSquaredDifferences / array.count)];
+    return @(sqrt(sumOfSquaredDifferences / array.count));
 }
 
 @end

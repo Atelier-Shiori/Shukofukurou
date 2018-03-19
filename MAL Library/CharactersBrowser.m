@@ -122,7 +122,7 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSWidth([[[splitView subviews] objectAtIndex:0] frame]);
+        CGFloat dividerPos = NSWidth([[splitView subviews][0] frame]);
         CGFloat width = NSWidth([splitView frame]);
         
         if (dividerPos < 0)

@@ -34,6 +34,8 @@
         case ImportAniList:
             _promptext.stringValue = @"Please enter an AniList username to import.";
             break;
+        default:
+            break;
     }
 }
     

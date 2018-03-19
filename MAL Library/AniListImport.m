@@ -48,29 +48,31 @@
         switch (i) {
             case 0:
             list = lists[@"watching"];
-            [statuscount setObject:[NSNumber numberWithLong:[list count]] forKey:@"watching"];
+            statuscount[@"watching"] = @([list count]);
             break;
             case 1:
             list = lists[@"on_hold"];
-            [statuscount setObject:[NSNumber numberWithLong:[list count]] forKey:@"on_hold"];
+            statuscount[@"on_hold"] = @([list count]);
             break;
             case 2:
             list = lists[@"completed"];
-            [statuscount setObject:[NSNumber numberWithLong:[list count]] forKey:@"completed"];
+            statuscount[@"completed"] = @([list count]);
             break;
             case 3:
             list = lists[@"plan_to_watch"];
-            [statuscount setObject:[NSNumber numberWithLong:[list count]] forKey:@"plan_to_watch"];
+            statuscount[@"plan_to_watch"] = @([list count]);
             break;
             case 4:
             list = lists[@"dropped"];
-            [statuscount setObject:[NSNumber numberWithLong:[list count]] forKey:@"dropped"];
+            statuscount[@"dropped"] = @([list count]);
             break;
+            default:
+                break;
         }
         [fulllist addObjectsFromArray:[self processAnimeListEntries:list]];
     }
-    [final setObject:fulllist forKey:@"list"];
-    [final setObject:statuscount forKey:@"status_count"];
+    final[@"list"] = fulllist;
+    final[@"status_count"] = statuscount;
     return final;
 }
 + (NSArray *)processAnimeListEntries:(NSArray *)list {
@@ -79,35 +81,35 @@
         for (NSDictionary *item in list){
             NSDictionary *details = item[@"anime"];
             NSMutableDictionary *newitem = [NSMutableDictionary new];
-            [newitem setObject:item[@"series_id"] forKey:@"id"];
-            [newitem setObject:item[@"record_id"] forKey:@"record_id"];
-            [newitem setObject:item[@"rewatched"] forKey:@"rewatched"];
-            [newitem setObject:item[@"score"] forKey:@"score"];
-            [newitem setObject:item[@"score_raw"] forKey:@"score_raw"];
-            [newitem setObject:item[@"priority"] forKey:@"priority"];
-            [newitem setObject:item[@"hidden_default"] forKey:@"hidden_default"];
-            [newitem setObject:item[@"added_time"] forKey:@"added_time"];
-            [newitem setObject:item[@"episodes_watched"] forKey:@"watched_episodes"];
-            [newitem setObject:item[@"started_on"] forKey:@"started_on"];
-            [newitem setObject:item[@"list_status"] forKey:@"watched_status"];
-            [newitem setObject:details[@"title_romaji"] forKey:@"title_romaji"];
-            [newitem setObject:details[@"title_english"] forKey:@"title_english"];
-            [newitem setObject:details[@"type"] forKey:@"type"];
-            [newitem setObject:details[@"total_episodes"] forKey:@"episodes"];
-            [newitem setObject:details[@"airing_status"] forKey:@"status"];
+            newitem[@"id"] = item[@"series_id"];
+            newitem[@"record_id"] = item[@"record_id"];
+            newitem[@"rewatched"] = item[@"rewatched"];
+            newitem[@"score"] = item[@"score"];
+            newitem[@"score_raw"] = item[@"score_raw"];
+            newitem[@"priority"] = item[@"priority"];
+            newitem[@"hidden_default"] = item[@"hidden_default"];
+            newitem[@"added_time"] = item[@"added_time"];
+            newitem[@"watched_episodes"] = item[@"episodes_watched"];
+            newitem[@"started_on"] = item[@"started_on"];
+            newitem[@"watched_status"] = item[@"list_status"];
+            newitem[@"title_romaji"] = details[@"title_romaji"];
+            newitem[@"title_english"] = details[@"title_english"];
+            newitem[@"type"] = details[@"type"];
+            newitem[@"episodes"] = details[@"total_episodes"];
+            newitem[@"status"] = details[@"airing_status"];
             if (details[@"advanced_rating_scores"]){
-                [newitem setObject:details[@"advanced_rating_scores"] forKey:@"advanced_rating_scores"];
+                newitem[@"advanced_rating_scores"] = details[@"advanced_rating_scores"];
             }
             else{
-                [newitem setObject:[NSArray new] forKey:@"advanced_rating_scores"];
+                newitem[@"advanced_rating_scores"] = [NSArray new];
             }
             if (!details[@"notes"]){
-                [newitem setObject:[NSNull null] forKey:@"notes"];
+                newitem[@"notes"] = [NSNull null];
             }
             else{
-                [newitem setObject:details[@"notes"] forKey:@"notes"];
+                newitem[@"notes"] = details[@"notes"];
             }
-            [newitem setObject:item[@"custom_lists"] forKey:@"custom_lists"];
+            newitem[@"custom_lists"] = item[@"custom_lists"];
             [tmplist addObject:[newitem copy]];
         }
     }

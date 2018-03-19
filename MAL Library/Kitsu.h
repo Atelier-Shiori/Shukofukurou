@@ -42,7 +42,6 @@ typedef NS_ENUM(unsigned int, ratingType){
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (AFOAuthCredential *)getFirstAccount;
 + (bool)removeAccount;
-+ (NSString *)serviceidtoservicename:(int)serviceid;
 + (void)getOwnKitsuid:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getKitsuid:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getUserRatingType:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler;

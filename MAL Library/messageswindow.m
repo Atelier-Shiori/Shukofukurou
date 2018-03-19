@@ -209,7 +209,7 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSHeight([[[splitView subviews] objectAtIndex:0] frame]);
+        CGFloat dividerPos = NSHeight([[splitView subviews][0] frame]);
         CGFloat height = NSHeight([splitView frame]);
         
         if (dividerPos < 0)

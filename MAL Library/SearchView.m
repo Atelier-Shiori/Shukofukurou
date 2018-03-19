@@ -51,6 +51,8 @@
             [self.view replaceSubview:(self.view).subviews[0] with:_mangasearch];
             [self setToolbarButtonStatus];
             break;
+        default:
+            break;
     }
 }
 

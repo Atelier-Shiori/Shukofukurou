@@ -520,6 +520,8 @@
                     filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"plan to watch"]];
                     plantowatch = @(filtered.count);
                     break;
+                default:
+                    break;
             }
         }
         NSLog(@"List Statistics - Anime");
@@ -558,6 +560,8 @@
                 case 4:
                     filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"plan to read"]];
                     plantoread = @(filtered.count);
+                    break;
+                default:
                     break;
             }
         }

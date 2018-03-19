@@ -100,7 +100,7 @@
             OnigRegexp *regex = [OnigRegexp compile:@"p.p\\d+"];
             if ([regex match:s]){
                 NSDictionary *d = cssparsed[s];
-                [styles setObject:[self parseCSS:d] forKey:s];
+                styles[s] = [self parseCSS:d];
             }
             regex = [OnigRegexp compile:@"span.s\\d+"];
             if ([regex match:s]) {
@@ -121,14 +121,14 @@
                     if ([(NSString *)d[@"text-decoration"] isEqualToString:@"underline"]){
                         if (fontsize) {
                             if (fontsize.intValue != 12) {
-                                [styles setObject:@{@"fontsize":fontsize,@"textdecoration":@"underline"} forKey:s];
+                                styles[s] = @{@"fontsize": fontsize, @"textdecoration": @"underline"};
                             }
                             else {
-                                [styles setObject:@{@"textdecoration":@"underline"} forKey:s];
+                                styles[s] = @{@"textdecoration": @"underline"};
                             }
                         }
                         else {
-                            [styles setObject:@{@"textdecoration":@"underline"} forKey:s];
+                            styles[s] = @{@"textdecoration": @"underline"};
                         }
                     }
                 }

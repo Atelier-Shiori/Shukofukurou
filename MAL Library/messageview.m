@@ -56,7 +56,7 @@ decidePolicyForNavigationAction:(NSDictionary *)actionInformation
           frame:(WebFrame *)frame
 decisionListener:(id <WebPolicyDecisionListener>)listener
 {
-    if ([actionInformation objectForKey:WebActionElementKey]) {
+    if (actionInformation[WebActionElementKey]) {
         [listener ignore];
         [[NSWorkspace sharedWorkspace] openURL:[request URL]];
     }

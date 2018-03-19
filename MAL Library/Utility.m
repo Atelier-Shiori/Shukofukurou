@@ -39,7 +39,7 @@
 + (NSString *)urlEncodeString:(NSString *)string{
 	return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                                                                                   NULL,
-                                                                                                  (CFStringRef)string,
+                                                                                                  (__bridge CFStringRef)string,
                                                                                                   NULL,
                                                                                                   (CFStringRef)@"!*'();:@&=+$,/?%#[]",
                                                                                                   kCFStringEncodingUTF8 ));
@@ -199,13 +199,10 @@
     if (!startedairing && !finishedairing) {
         return @"not yet aired";
     }
-    else if (startedairing && !finishedairing) {
-        return @"currently airing";
-    }
     else if (startedairing && finishedairing) {
         return @"finished airing";
     }
-    return @"";
+    return @"currently airing";
 }
 
 + (NSString *)convertNameFormat:(NSString *)string {

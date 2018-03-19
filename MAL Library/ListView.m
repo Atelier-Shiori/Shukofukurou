@@ -40,8 +40,7 @@
     _mangalisttitlefilterstring = @"";
     id transformer = [MyListScoreFormatter new];
     NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
-    [bindingOptions setObject: transformer
-                       forKey:NSValueTransformerBindingOption];
+    bindingOptions[NSValueTransformerBindingOption] = transformer;
     
     [self.animescorecol bind:@"value" toObject:self.animelistarraycontroller
                  withKeyPath:@"arrangedObjects.score" options:bindingOptions];
@@ -195,6 +194,8 @@
                     filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"watched_status ==[cd] %@", @"plan to watch"]];
                     plantowatch = @(filtered.count);
                     break;
+                default:
+                    break;
             }
         }
         _watchingfilter.title = [NSString stringWithFormat:@"Watching (%i)",watching.intValue];
@@ -230,6 +231,8 @@
                 case 4:
                     filtered = [a filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"read_status ==[cd] %@", @"plan to read"]];
                     plantoread = @(filtered.count);
+                    break;
+                default:
                     break;
             }
         }

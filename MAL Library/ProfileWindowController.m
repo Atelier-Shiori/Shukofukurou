@@ -55,7 +55,6 @@
     [_mainview addSubview:[NSView new]];
     // Generate Source List
     [self generateSourceList];
-    [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
     
     // Set Resizing mask
     (_listview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
@@ -283,7 +282,7 @@
     }
 }
 
--(void)generateSourceList{
+- (void)generateSourceList {
     self.sourceListItems = [[NSMutableArray alloc] init];
     
     //Library Group
@@ -296,12 +295,17 @@
     mangalistItem.icon = [NSImage imageNamed:@"library"];
     PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
     historyItem.icon = [NSImage imageNamed:@"history"];
-    profilegroupItem.children = @[profileItem, animelistItem, mangalistItem, historyItem];
+    if ([listservice getCurrentServiceID] == 1) {
+        profilegroupItem.children = @[profileItem, animelistItem, mangalistItem, historyItem];
+    }
+    else {
+        profilegroupItem.children = @[profileItem, animelistItem, mangalistItem];
+    }
 
     // Populate Source List
     [self.sourceListItems addObject:profilegroupItem];
     [_sourceList reloadData];
-    
+    [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1] byExtendingSelection:NO];
 }
 
 

@@ -83,6 +83,7 @@
         [weakself.mainwindowcontroller changeservice:previousservice];
         if (weakself.pwc) {
             [weakself.pwc.window close];
+            [weakself.pwc generateSourceList];
             [weakself.pwc resetprofilewindow];
         }
     };

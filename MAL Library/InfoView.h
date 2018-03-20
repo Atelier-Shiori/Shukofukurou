@@ -26,6 +26,10 @@ typedef NS_ENUM(unsigned int, InfoType) {
 @property (strong) IBOutlet NSTextView *infoviewdetailstextview;
 @property (strong) IBOutlet NSTextView *infoviewsynopsistextview;
 
+// Search Menus
+@property (strong) IBOutlet NSMenuItem *anidbmenuitem;
+@property (strong) IBOutlet NSMenuItem *bakaupdatesmenuitem;
+
 @property (strong) CharactersBrowser *cbrowser;
 
 - (void)populateAnimeInfoView:(id)object;
@@ -33,4 +37,5 @@ typedef NS_ENUM(unsigned int, InfoType) {
 - (IBAction)viewonmal:(id)sender;
 - (IBAction)viewreviews:(id)sender;
 - (IBAction)openpeoplebrowser:(id)sender;
+- (IBAction)searchsite:(id)sender;
 @end

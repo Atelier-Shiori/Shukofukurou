@@ -50,7 +50,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -102,10 +102,8 @@
     //    [[NSBundle mainBundle] loadNibNamed:@"MainWindow_Touch_Bar" owner:self topLevelObjects:nil];
     //}
     
-    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
-    [self loadlist:shouldrefresh type:0];
-    [self loadlist:shouldrefresh type:1];
-    [self loadlist:shouldrefresh type:2];
+    [self initallistload];
+    
     NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
         [self startTimer];
@@ -115,7 +113,7 @@
 
 - (void)generateSourceList {
     self.sourceListItems = [[NSMutableArray alloc] init];
-    
+    int currentservice = [listservice getCurrentServiceID];
     //Library Group
     PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
     PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
@@ -125,10 +123,20 @@
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
         mangalistItem.icon = [NSImage imageNamed:@"library"];
-        libraryItem.children = @[animelistItem, mangalistItem, historyItem];
+        if (currentservice == 1) {
+            libraryItem.children = @[animelistItem, mangalistItem, historyItem];
+        }
+        else {
+            libraryItem.children = @[animelistItem, mangalistItem];
+        }
     }
     else {
-        libraryItem.children = @[animelistItem, historyItem];
+        if (currentservice == 1) {
+            libraryItem.children = @[animelistItem, historyItem];
+        }
+        else {
+            libraryItem.children = @[animelistItem];
+        }
     }
     // Search
     PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
@@ -250,6 +258,8 @@
     }
 }
 - (void)performtimerlistrefresh {
+    [_appdel.servicemenucontrol enableservicemenuitems:NO];
+    [self showProgressWheel:NO];
     [self loadlist:@(true) type:0];
     [self loadlist:@(true) type:1];
     [self loadlist:@(true) type:2];
@@ -585,9 +595,11 @@
             if (_infoview.type == MALAnime && [[NSUserDefaults standardUserDefaults] boolForKey:@"donated"]) {
                 [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"web" atIndex:5+indexoffset];
             }
             else {
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:3+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"web" atIndex:4+indexoffset];
             }
         }
     }
@@ -695,12 +707,15 @@
     }
     else if ([identifier isEqualToString:@"history"]){
         [self loadlist:@(true) type:2];
+        [_appdel.servicemenucontrol enableservicemenuitems:YES];
     }
     else if ([identifier isEqualToString:@"seasons"]){
         [_seasonview performseasonindexretrieval];
+        [_appdel.servicemenucontrol enableservicemenuitems:YES];
     }
     else if ([identifier isEqualToString:@"airing"]){
         [_airingview loadAiring:@(true)];
+        [_appdel.servicemenucontrol enableservicemenuitems:YES];
     }
 }
 - (void)loadlist:(NSNumber *)refresh type:(int)type {
@@ -799,14 +814,10 @@
     [_historyview clearHistory];
     [self loadtitleinfoWithDifferentService:oldserviceid];
     [_searchview clearallsearch];
+    [self generateSourceList];
     [self loadmainview];
     [self refreshloginlabel];
-    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
-    [self loadlist:shouldrefresh type:0];
-    [self loadlist:shouldrefresh type:1];
-    if ([listservice getCurrentServiceID] == 1) {
-        [self loadlist:shouldrefresh type:2];
-    }
+    [self initallistload];
     NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
         [self stopTimer];
@@ -996,11 +1007,22 @@
 }
 
 - (void)changetoinfoview {
+    int currentservice = [listservice getCurrentServiceID];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
-        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+        if (currentservice == 1) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+        }
+        else {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:7]byExtendingSelection:false];
+        }
     }
     else {
-        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+        if (currentservice == 1) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+        }
+        else {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:5]byExtendingSelection:false];
+        }
     }
     [self loadmainview];
 }
@@ -1061,6 +1083,19 @@
             [_progresswheel startAnimation:self];
         }
         _progresswheel.hidden = NO;
+    }
+}
+
+- (void)initallistload {
+    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
+    if (shouldrefresh) {
+        [_appdel.servicemenucontrol enableservicemenuitems:NO];
+        [self showProgressWheel:NO];
+    }
+    [self loadlist:shouldrefresh type:0];
+    [self loadlist:shouldrefresh type:1];
+    if ([listservice getCurrentServiceID] == 1) {
+        [self loadlist:shouldrefresh type:2];
     }
 }
 @end

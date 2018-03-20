@@ -13,6 +13,7 @@
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet PXSourceList *sourceList;
 - (void)setAppearance;
+- (void)generateSourceList;
 - (void)loadProfileWithUsername:(NSString *)username;
 - (void)resetprofilewindow;
 @end

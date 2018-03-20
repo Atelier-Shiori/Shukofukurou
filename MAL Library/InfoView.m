@@ -229,6 +229,7 @@
     else {
         _streambutton.hidden = YES;
     }
+    [self showhidewebmenus];
 }
 
 - (void)fixtextviewscrollposition {
@@ -249,25 +250,19 @@
     if (dtitles[@"english"] != nil){
         NSArray *e = dtitles[@"english"];
         for (NSString *etitle in e){
-            if (etitle != [NSNull null]) {
-                [othertitles addObject:etitle];
-            }
+            [othertitles addObject:etitle];
         }
     }
     if (dtitles[@"japanese"] != nil){
         NSArray *j = dtitles[@"japanese"];
         for (NSString *jtitle in j){
-            if (jtitle  != [NSNull null]) {
-                [othertitles addObject:jtitle];
-            }
+            [othertitles addObject:jtitle];
         }
     }
     if (dtitles[@"synonyms"] != nil){
         NSArray *syn = dtitles[@"synonyms"];
         for (NSString *stitle in syn){
-            if (stitle  != [NSNull null]) {
-                [othertitles addObject:stitle];
-            }
+            [othertitles addObject:stitle];
         }
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
@@ -440,6 +435,50 @@
         _cbrowser.window.title = [NSString stringWithFormat:@"People Browser - %@",_infoviewtitle.stringValue];
         _cbrowser.selectedtitle = _infoviewtitle.stringValue;
         [_cbrowser retrievestafflist:self.selectedid];
+    }
+}
+
+- (IBAction)searchsite:(id)sender {
+    NSMenuItem *siteitem = (NSMenuItem *)sender;
+    NSURL *openurl;
+    switch (siteitem.tag) {
+        case 1:
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://anidb.net/perl-bin/animedb.pl?show=animelist&amp;adb.search=%@&amp;noalias=1&amp;do.update=update",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        case 2:
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.animenewsnetwork.com/search?q=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        case 3:
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.mangaupdates.com/search.html?search=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        case 4: {
+            if (_type == MALAnime) {
+                openurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", @"https://www.reddit.com/search?sort=new&amp;q=subreddit%3Aanime%20title%3A", [Utility urlEncodeString:_infoviewtitle.stringValue], @"%20episode%20discussion"]];
+            }
+            else {
+                openurl = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@%@", @"https://www.reddit.com/search?sort=new&amp;q=subreddit%3Amanga%20title%3A", [Utility urlEncodeString:_infoviewtitle.stringValue], @"%20ch"]];
+            }
+            break;
+        }
+        case 5:
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://tvtropes.org/pmwiki/search_result.php?q=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        case 6:
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en.wikipedia.org/wiki/Special:Search?search=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        default:
+            return;
+    }
+    [[NSWorkspace sharedWorkspace] openURL:openurl];
+}
+- (void)showhidewebmenus {
+    if (_type == MALAnime) {
+        _anidbmenuitem.hidden = NO;
+        _bakaupdatesmenuitem.hidden = YES;
+    }
+    else {
+        _anidbmenuitem.hidden = YES;
+        _bakaupdatesmenuitem.hidden = NO;
     }
 }
 @end

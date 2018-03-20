@@ -171,8 +171,6 @@
         if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
             //Login Failed, show error message
             [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account since you don't have the correct username and/or password.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
-            [_savebut setEnabled: YES];
-            _savebut.keyEquivalent = @"\r";
         }
         else if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {
             // Too many login attempts
@@ -191,7 +189,7 @@
             }
             [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account", [self serviceidtoservicename:serviceid]] explaination:errormessage window:self.view.window];
         }
-        switch ([listservice getCurrentServiceID]) {
+        switch (serviceid) {
             case 1:
                 [_savebut setEnabled: YES];
                 _savebut.keyEquivalent = @"\r";
@@ -236,7 +234,7 @@
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertFirstButtonReturn) {
             //Remove account from keychain
-            switch ([listservice getCurrentServiceID]) {
+            switch (service) {
                 case 1:
                     [Keychain removeaccount];
                     break;
@@ -246,11 +244,11 @@
                 default:
                     break;
             }
+            [_mw clearlist:service];
+            if (service == 1) {
+                [_appdelegate clearMessages];
+            }
             if ([listservice getCurrentServiceID] == service) {
-                [_mw clearlist:service];
-                if (service == 1) {
-                    [_appdelegate clearMessages];
-                }
                 [_mw loadmainview];
                 [_mw refreshloginlabel];
             }

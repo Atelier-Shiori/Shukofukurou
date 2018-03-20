@@ -67,7 +67,6 @@
     (_searchview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_seasonview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_notloggedin.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
-    _requireslicense.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_airingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     self.window.titleVisibility = NSWindowTitleHidden;
     
@@ -434,9 +433,6 @@
                      [self loadNotLoggedIn];
                 }
             }
-            else {
-                [self loadnotLicensed];
-            }
         }
         else if ([identifier isEqualToString:@"history"]){
             if ([listservice checkAccountForCurrentService]) {
@@ -458,9 +454,6 @@
                 [_searchview loadsearchView:MangaSearch];
                 _searchview.mangasearch.frame = mainviewframe;
                 [_searchview.mangasearch setFrameOrigin:origin];
-            }
-            else {
-                [self loadnotLicensed];
             }
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
@@ -500,9 +493,6 @@
 }
 - (void)loadNotLoggedIn {
     [self replaceMainViewWithView:_notloggedin.view];
-}
-- (void)loadnotLicensed {
-    [self replaceMainViewWithView:_requireslicense];
 }
 - (void)createToolbar{
     NSArray *toolbaritems = _toolbar.items;
@@ -877,11 +867,17 @@
         }
     }
 }
-- (void)resetTitleInfoView {
-    _infoview.selectedid = 0;
-    _noinfoview.hidden = NO;
-    _progressindicator.hidden = YES;
-    _infoview.selectedinfo = nil;
+- (void)initallistload {
+    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
+    if (shouldrefresh && [listservice checkAccountForCurrentService]) {
+        [_appdel.servicemenucontrol enableservicemenuitems:NO];
+        [self showProgressWheel:NO];
+    }
+    [self loadlist:shouldrefresh type:0];
+    [self loadlist:shouldrefresh type:1];
+    if ([listservice getCurrentServiceID] == 1) {
+        [self loadlist:shouldrefresh type:2];
+    }
 }
 #pragma mark Edit Popover
 - (IBAction)performmodifytitle:(id)sender {
@@ -1026,7 +1022,13 @@
     }
     [self loadmainview];
 }
-
+- (void)resetTitleInfoView {
+    _infoview.selectedid = 0;
+    _noinfoview.hidden = NO;
+    _progressindicator.hidden = YES;
+    _infoview.selectedinfo = nil;
+}
+#pragma mark helpers
 - (bool)checkiftitleisonlist:(int)idnum type:(int)type{
     if (type == 0){
         NSArray * list = (_listview.animelistarraycontroller).content;
@@ -1083,19 +1085,6 @@
             [_progresswheel startAnimation:self];
         }
         _progresswheel.hidden = NO;
-    }
-}
-
-- (void)initallistload {
-    NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
-    if (shouldrefresh && [listservice checkAccountForCurrentService]) {
-        [_appdel.servicemenucontrol enableservicemenuitems:NO];
-        [self showProgressWheel:NO];
-    }
-    [self loadlist:shouldrefresh type:0];
-    [self loadlist:shouldrefresh type:1];
-    if ([listservice getCurrentServiceID] == 1) {
-        [self loadlist:shouldrefresh type:2];
     }
 }
 @end

@@ -33,7 +33,8 @@
 @property (strong) IBOutlet NSTextField *loggedinuser;
 @property (strong) IBOutlet PXSourceList *sourceList;
 @property (strong) ReviewWindow *reviewwindow;
-@property (weak) IBOutlet NSProgressIndicator *progresswheel;
+@property (strong) IBOutlet NSProgressIndicator *progresswheel;
+@property (strong) IBOutlet NSToolbarItem *viewonsitetoolbaritem;
 
 @property (nonatomic, assign, getter=getDelegate) AppDelegate *appdel;
 //Anime List View
@@ -63,8 +64,6 @@
 // Add Popover
 @property (strong) IBOutlet NSPopover *addpopover;
 @property (strong) IBOutlet AddTitle *addtitlecontroller;
-
-@property (strong) IBOutlet NSVisualEffectView *requireslicense;
 
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property (strong, nonatomic) MSWeakTimer *refreshtimer;

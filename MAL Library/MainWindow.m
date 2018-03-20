@@ -1088,7 +1088,7 @@
 
 - (void)initallistload {
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
-    if (shouldrefresh) {
+    if (shouldrefresh && [listservice checkAccountForCurrentService]) {
         [_appdel.servicemenucontrol enableservicemenuitems:NO];
         [self showProgressWheel:NO];
     }

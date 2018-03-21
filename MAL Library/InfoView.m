@@ -302,7 +302,7 @@
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
     if (d[@"members_score"] !=nil || ((NSNumber *)d[@"members_score"]).intValue) {
         if (rank.intValue > 0) {
-            [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue > 0]];
+            [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
         }
         else {
             [details appendString:[NSString stringWithFormat:@"Score: %f (%i users)\n", score.floatValue, memberscount.intValue]];

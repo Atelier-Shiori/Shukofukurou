@@ -404,7 +404,7 @@
 
 #pragma mark -
 #pragma mark Main View Control
-- (void)loadmainview{
+- (void)loadmainview {
     NSRect mainviewframe = _mainview.frame;
     long selectedrow = _sourceList.selectedRow;
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
@@ -476,7 +476,7 @@
         }
         else{
             // Fallback
-            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:2]byExtendingSelection:false];
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
             [self loadmainview];
             return;
         }

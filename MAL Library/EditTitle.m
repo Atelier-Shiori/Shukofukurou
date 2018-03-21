@@ -25,6 +25,7 @@
 @property (strong) IBOutlet NSStepper *minipopovereditepstep;
 @property (strong) IBOutlet NSTokenField *animetags;
 @property (strong) IBOutlet NSTextField *animetaglabel;
+@property (strong) IBOutlet NSButton *animeadvancededit;
 
 // Manga
 @property (strong) IBOutlet NSView *mangaeditview;
@@ -43,6 +44,7 @@
 @property (strong) IBOutlet NSStepper *mangapopovereditvolstep;
 @property (strong) IBOutlet NSTokenField *mangatags;
 @property (strong) IBOutlet NSTextField *mangataglabel;
+@property (strong) IBOutlet NSButton *mangaadvancededit;
 
 @end
 
@@ -173,7 +175,7 @@
 }
 
 - (void)updateanimeentry {
-    [_minipopovereditbtn setEnabled:false];
+    [self disableeditbuttons:false];
     _minipopoverstatustext.stringValue = @"";
     _minipopoverindicator.hidden = false;
     [_minipopoverindicator startAnimation:self];
@@ -182,7 +184,7 @@
     }
     if(!_selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)) {
         // Invalid input, mark it as such
-        [_minipopovereditbtn setEnabled:true];
+        [self disableeditbuttons:true];
         _minipopoverstatustext.stringValue = @"Invalid update.";
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
@@ -204,14 +206,15 @@
     [_minipopoverindicator startAnimation:nil];
     [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
-        [_minipopovereditbtn setEnabled:true];
+        [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
         [_minipopoverindicator stopAnimation:nil];
         [_minieditpopover close];
+        [self cleanup];
     }
   error:^(NSError * error) {
-     [_minipopovereditbtn setEnabled:true];
+     [self disableeditbuttons:true];
      _minieditpopover.behavior = NSPopoverBehaviorTransient;
       _minipopoverindicator.hidden = true;
       [_minipopoverindicator stopAnimation:nil];
@@ -222,7 +225,7 @@
 }
 
 - (void)updatemangaentry {
-    [_mangapopovereditbtn setEnabled:false];
+    [self disableeditbuttons:false];
     _mangapopoverstatustext.stringValue = @"";
     _mangapopoverindicator.hidden = false;
     [_mangapopoverindicator startAnimation:self];
@@ -231,7 +234,7 @@
     }
     if(!_selectedpublished && (![_mangapopoverstatus.title isEqual:@"plan to read"] ||_mangapopoverchapfield.intValue > 0 || _mangapopovertotalvol.intValue > 0)) {
         // Invalid input, mark it as such
-        [_mangapopovereditbtn setEnabled:true];
+        [self disableeditbuttons:true];
         _mangapopoverstatustext.stringValue = @"Invalid update.";
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _mangapopoverindicator.hidden = true;
@@ -256,13 +259,14 @@
     [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
-        [_mangapopovereditbtn setEnabled:true];
+        [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _mangapopoverindicator.hidden = true;
         [_mangapopoverindicator stopAnimation:nil];
         [_minieditpopover close];
+        [self cleanup];
     }error:^(NSError * error) {
-        [_mangapopovereditbtn setEnabled:true];
+        [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _mangapopoverindicator.hidden = true;
         [_mangapopoverindicator stopAnimation:nil];
@@ -394,5 +398,28 @@
                 break;
         }
     }
+}
+- (void)disableeditbuttons:(bool)enable {
+    _minipopovereditbtn.enabled = enable;
+    _animeadvancededit.enabled = enable;
+    _mangapopovereditbtn.enabled = enable;
+    _mangaadvancededit.enabled = enable;
+}
+- (void)cleanup {
+    _selecteditem = nil;
+}
+- (IBAction)showadvanced:(id)sender {
+    if (!_mw.ade) {
+        _mw.ade = [advancededitdialog new];
+    }
+    [_mw.ade window];
+    [_mw.ade setupeditwindow:_selecteditem.copy type:_selectedtype];
+    [_minieditpopover close];
+    [_mw.window beginSheet:_mw.ade.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            [_mw loadlist:@(true) type:_selectedtype];
+            [_mw loadlist:@(true) type:2];
+        }
+    }];
 }
 @end

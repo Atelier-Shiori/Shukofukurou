@@ -268,6 +268,10 @@
 		F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
 		F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
 		F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
+		F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
+		F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
+		F8F9E0342061920E0083912B /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8F9E0312061920E0083912B /* advancededitdialog.xib */; };
+		F8F9E0352061920E0083912B /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8F9E0312061920E0083912B /* advancededitdialog.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -567,6 +571,9 @@
 		F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherUserListScoreFormatter.m; sourceTree = "<group>"; };
 		F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdConverter.h; sourceTree = "<group>"; };
 		F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdConverter.m; sourceTree = "<group>"; };
+		F8F9E02F2061920E0083912B /* advancededitdialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = advancededitdialog.h; sourceTree = "<group>"; };
+		F8F9E0302061920E0083912B /* advancededitdialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advancededitdialog.m; sourceTree = "<group>"; };
+		F8F9E0312061920E0083912B /* advancededitdialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = advancededitdialog.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -766,6 +773,9 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
+				F8F9E0302061920E0083912B /* advancededitdialog.m */,
+				F8F9E0312061920E0083912B /* advancededitdialog.xib */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -1165,6 +1175,7 @@
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				2D4E01081FA3B1A10053A82B /* ProfileViewController.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
+				F8F9E0352061920E0083912B /* advancededitdialog.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
 				2D8BF8B81EC4EED80068856A /* ImportPrompt.xib in Resources */,
@@ -1216,6 +1227,7 @@
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */,
+				F8F9E0342061920E0083912B /* advancededitdialog.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				2D4E01171FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
@@ -1336,6 +1348,7 @@
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
 				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
+				F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
 				F8B5AA922044813400132C51 /* RatingTwentyConvert.m in Sources */,
@@ -1401,6 +1414,7 @@
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
+				F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */,
 				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,

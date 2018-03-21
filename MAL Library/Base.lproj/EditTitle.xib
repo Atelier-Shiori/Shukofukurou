@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EditTitle">
             <connections>
+                <outlet property="animeadvancededit" destination="WRL-hf-R0e" id="qy8-ot-bjK"/>
                 <outlet property="animeeditview" destination="96X-Ic-2H8" id="CTh-Hz-hpM"/>
                 <outlet property="animetaglabel" destination="uDN-mw-dB4" id="Gic-D6-AHT"/>
                 <outlet property="animetags" destination="tvw-y9-GQX" id="XiU-n3-D7g"/>
@@ -15,6 +16,7 @@
                 <outlet property="kitsusimplescoremenu" destination="Q8A-2f-cjy" id="0y4-Kp-kYj"/>
                 <outlet property="kitsustandardscoremenu" destination="lJy-PF-Nc1" id="O0R-FC-CZu"/>
                 <outlet property="malscoremenu" destination="1Kq-9h-Ula" id="oDo-42-QX2"/>
+                <outlet property="mangaadvancededit" destination="Rpt-Ox-knq" id="6mF-9I-sho"/>
                 <outlet property="mangaeditpopoverchapnumformat" destination="uM6-Sd-fSL" id="CtC-1h-9QJ"/>
                 <outlet property="mangaeditpopovervolnumformat" destination="SgK-IB-bUe" id="wpd-xy-Izv"/>
                 <outlet property="mangaeditview" destination="z80-JN-AgD" id="JIc-LL-2bD"/>
@@ -25,7 +27,6 @@
                 <outlet property="mangapopoverindicator" destination="CAN-5p-U7b" id="cXA-Nt-Jma"/>
                 <outlet property="mangapopoverscore" destination="cf0-NQ-he5" id="ynM-cX-HAm"/>
                 <outlet property="mangapopoverstatus" destination="wPQ-xB-3CM" id="TZg-81-NCP"/>
-                <outlet property="mangapopoverstatustext" destination="fxg-M5-lzG" id="F3c-gF-5gh"/>
                 <outlet property="mangapopovertotalchap" destination="4Ge-CC-Fo5" id="Ozb-q2-WXj"/>
                 <outlet property="mangapopovertotalvol" destination="Sa7-Xd-frU" id="YyR-OY-YZY"/>
                 <outlet property="mangapopovervolfield" destination="CbC-1i-nUF" id="Xks-Cs-dTw"/>
@@ -38,7 +39,6 @@
                 <outlet property="minipopoverindicator" destination="Ejz-jx-mSm" id="yIy-0K-d8w"/>
                 <outlet property="minipopoverscore" destination="0i1-Bo-hKf" id="oHo-Jd-4LM"/>
                 <outlet property="minipopoverstatus" destination="kuE-mr-8w6" id="ESl-LK-gjX"/>
-                <outlet property="minipopoverstatustext" destination="fxg-M5-lzG" id="G2Y-F9-dsZ"/>
                 <outlet property="minipopovertotalep" destination="Mqk-vb-oed" id="Bsy-ur-IRD"/>
                 <outlet property="view" destination="dBB-FP-eti" id="ZgW-k0-KxD"/>
             </connections>
@@ -214,15 +214,6 @@
                         <outlet property="menu" destination="1Kq-9h-Ula" id="nz0-6o-LeX"/>
                     </connections>
                 </popUpButton>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fxg-M5-lzG">
-                    <rect key="frame" x="43" y="152" width="126" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status" id="VDn-7Y-inn">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <tokenField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rHK-F1-FKe">
                     <rect key="frame" x="86" y="10" width="137" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -241,6 +232,17 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rpt-Ox-knq">
+                    <rect key="frame" x="51" y="143" width="122" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Advanced Edit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bB4-mH-VHU">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showadvanced:" target="-2" id="FSx-Ur-rMp"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-486.5" y="931"/>
         </customView>
@@ -335,15 +337,6 @@
                         <action selector="performupdatetitle:" target="-2" id="sqY-H2-mGt"/>
                     </connections>
                 </button>
-                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tfw-kc-zto">
-                    <rect key="frame" x="43" y="153" width="126" height="17"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Status" id="ufm-yQ-LWv">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
                 <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ACO-pd-hRX">
                     <rect key="frame" x="140" y="102" width="19" height="27"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -392,6 +385,17 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </tokenFieldCell>
                 </tokenField>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WRL-hf-R0e">
+                    <rect key="frame" x="52" y="143" width="122" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Advanced Edit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g63-Lq-1fP">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showadvanced:" target="-2" id="305-Yd-qd0"/>
+                    </connections>
+                </button>
             </subviews>
             <point key="canvasLocation" x="-241.5" y="1139"/>
         </customView>

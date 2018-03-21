@@ -10,6 +10,7 @@
 #import <PXSourceList/PXSourceList.h>
 #import <AFNetworking/AFNetworking.h>
 #import "ReviewWindow.h"
+#import "advancededitdialog.h"
 
 @class AppDelegate;
 @class NSTextFieldNumber;
@@ -71,6 +72,8 @@
 // Airing View
 @property (strong) IBOutlet AiringView *airingview;
 
+//Advanced Edit Dialog
+@property (strong) advancededitdialog *ade;
 
 //Public Methods
 - (void)setDelegate:(AppDelegate*) adelegate;

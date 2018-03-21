@@ -5,7 +5,7 @@ keyword: overview
 order: -.INF
 ---
 
-MAL Library is a native MyAnimeList tracker. While you don't need to login, to use the list management functions, you need to add an account. MAL Library will prompt you to login at start up.
+MAL Library is a native MyAnimeList and Kitsu tracker. While you don't need to login, to use the list management functions, you need to add an account. MAL Library will prompt you to login at start up.
 
 ## Main Window
 Here are the functionality available:

@@ -192,6 +192,8 @@
 		9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
 		9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		9169BC442062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
+		9169BC452062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
@@ -270,8 +272,6 @@
 		F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
 		F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
 		F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
-		F8F9E0342061920E0083912B /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8F9E0312061920E0083912B /* advancededitdialog.xib */; };
-		F8F9E0352061920E0083912B /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8F9E0312061920E0083912B /* advancededitdialog.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -480,6 +480,7 @@
 		9168F92A1E89858900CCB5B3 /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
+		9169BC462062C3F700C534B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/advancededitdialog.xib; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		91822A491EAE99E6005E33DB /* RecommendedTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedTitleView.h; sourceTree = "<group>"; };
@@ -573,7 +574,6 @@
 		F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdConverter.m; sourceTree = "<group>"; };
 		F8F9E02F2061920E0083912B /* advancededitdialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = advancededitdialog.h; sourceTree = "<group>"; };
 		F8F9E0302061920E0083912B /* advancededitdialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advancededitdialog.m; sourceTree = "<group>"; };
-		F8F9E0312061920E0083912B /* advancededitdialog.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = advancededitdialog.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -775,7 +775,7 @@
 			children = (
 				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
 				F8F9E0302061920E0083912B /* advancededitdialog.m */,
-				F8F9E0312061920E0083912B /* advancededitdialog.xib */,
+				9169BC472062C3F700C534B8 /* advancededitdialog.xib */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -1175,7 +1175,7 @@
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				2D4E01081FA3B1A10053A82B /* ProfileViewController.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
-				F8F9E0352061920E0083912B /* advancededitdialog.xib in Resources */,
+				9169BC452062C3F700C534B8 /* advancededitdialog.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
 				2D8BF8B81EC4EED80068856A /* ImportPrompt.xib in Resources */,
@@ -1227,7 +1227,7 @@
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
 				2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */,
-				F8F9E0342061920E0083912B /* advancededitdialog.xib in Resources */,
+				9169BC442062C3F700C534B8 /* advancededitdialog.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				2D4E01171FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
@@ -1642,6 +1642,14 @@
 				916502C81E8C65A900565D30 /* Base */,
 			);
 			name = NotLoggedIn.xib;
+			sourceTree = "<group>";
+		};
+		9169BC472062C3F700C534B8 /* advancededitdialog.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9169BC462062C3F700C534B8 /* Base */,
+			);
+			name = advancededitdialog.xib;
 			sourceTree = "<group>";
 		};
 		917897F01E89F19C00C155DF /* PFAboutWindow.xib */ = {

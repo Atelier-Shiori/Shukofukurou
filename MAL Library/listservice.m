@@ -209,14 +209,14 @@
             break;
     }
 }
-+ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
-            [MyAnimeList updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
+            [MyAnimeList updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
+            [Kitsu updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
@@ -226,14 +226,14 @@
             break;
     }
 }
-+ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
-            [MyAnimeList updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
+            [MyAnimeList updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags completion:completionHandler error:errorHandler];
+            [Kitsu updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {

@@ -66,5 +66,9 @@
 @property (strong) IBOutlet NSView *segmentfield;
 @property (strong) IBOutlet NSView *listservicefields;
 @property (strong) IBOutlet NSTextField *title;
+@property (strong) IBOutlet NSProgressIndicator *progressindicator;
+@property (strong) IBOutlet NSButton *editbtn;
+@property (strong) IBOutlet NSButton *closebtn;
+
 - (void)setupeditwindow:(NSDictionary *)d type:(int)type;
 @end

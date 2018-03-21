@@ -8,6 +8,8 @@
 
 #import "advancededitdialog.h"
 #import "listservice.h"
+#import "AppDelegate.h"
+#import "MainWindow.h"
 
 @interface advancededitdialog ()
 @property (strong) IBOutlet NSView *editview;
@@ -29,6 +31,10 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+}
+
+- (MainWindow *)mw {
+    return ((AppDelegate *)[NSApp delegate]).mainwindowcontroller;
 }
 
 - (void)setupeditwindow:(NSDictionary *)d type:(int)type {
@@ -159,10 +165,167 @@
 }
 
 - (IBAction)editaction:(id)sender {
+    if (_selectedtype == 0) {
+        [self updateanimeentry];
+    }
+    else {
+        [self updatemangaentry];
+    }
+}
+
+- (void)updateanimeentry {
+    [self disableeditbuttons:false];
+    //_minipopoverstatustext.stringValue = @"";
+    _progressindicator.hidden = false;
+    [_progressindicator startAnimation:self];
+    if(![_status.title isEqual:@"completed"] && _episodefield.intValue == _totalepisodes.intValue && _selectedaircompleted) {
+        [_status selectItemWithTitle:@"completed"];
+    }
+    if(!_selectedaired && (![_status.title isEqual:@"plan to watch"] ||_episodefield.intValue > 0)) {
+        // Invalid input, mark it as such
+        [self disableeditbuttons:true];
+        //_minipopoverstatustext.stringValue = @"Invalid update.";
+        _progressindicator.hidden = true;
+        [_progressindicator stopAnimation:nil];
+        return;
+    }
+    if (_episodefield.intValue == _totalepisodes.intValue && _totalepisodes.intValue != 0 && _selectedaircompleted && _selectedaired) {
+        [_status selectItemWithTitle:@"completed"];
+        _episodefield.stringValue = _totalepisodes.stringValue;
+    }
+    if ([_status.title isEqual:@"completed"] && _totalepisodes.intValue != 0 && _episodefield.intValue != _totalepisodes.intValue && _selectedaircompleted) {
+        _episodefield.stringValue = _totalepisodes.stringValue;
+    }
+    NSString *tags = @"";
+    NSMutableDictionary *extrafields = [NSMutableDictionary new];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (((NSArray *)_tagsfield.objectValue).count > 0){
+                tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
+            }
+            NSDateFormatter *df = [NSDateFormatter new];
+            df.dateFormat = @"yyyy-MM-dd";
+            if (@(_setstartdatecheck.state).boolValue) {
+                extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                extrafields[@"end"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            extrafields[@"is_rewatching"] = @(_reconsuming.state);
+            break;
+        }
+        case 2: {
+            if (_notesfield.stringValue.length > 0) {
+                extrafields[@"notes"] = _notesfield.stringValue;
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            extrafields[@"private"] = @(_privatecheck.state);
+            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            break;
+        }
+        default:
+            break;
+    }
+    [_progressindicator startAnimation:nil];
+    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:(int)_score.selectedTag withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
+        [self disableeditbuttons:true];
+        _progressindicator.hidden = true;
+        [_progressindicator stopAnimation:nil];
+        [self updateissuccessful];
+        _selecteditem = nil;
+    }
+                                  error:^(NSError * error) {
+                                      [self disableeditbuttons:true];
+                                      _progressindicator.hidden = true;
+                                      [_progressindicator stopAnimation:nil];
+                                      NSLog(@"%@", error.localizedDescription);
+                                      NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+                                      //_minipopoverstatustext.stringValue = @"Error";
+                                  }];
+}
+
+- (void)updatemangaentry {
+    [self disableeditbuttons:false];
+    //_mangapopoverstatustext.stringValue = @"";
+    _progressindicator.hidden = false;
+    [_progressindicator startAnimation:self];
+    if(![_status.title isEqual:@"completed"] && _chaptersfield.intValue == _totalchapters.intValue && _volumesfield.intValue == _totalvolumes.intValue && _selectedfinished) {
+        [_status selectItemWithTitle:@"completed"];
+    }
+    if(!_selectedpublished && (![_status.title isEqual:@"plan to read"] ||_chaptersfield.intValue > 0 || _totalvolumes.intValue > 0)) {
+        // Invalid input, mark it as such
+        [self disableeditbuttons:true];
+        //_mangapopoverstatustext.stringValue = @"Invalid update.";
+        _progressindicator.hidden = true;
+        [_progressindicator stopAnimation:nil];
+        return;
+    }
+    if (((_chaptersfield.intValue == _totalchapters.intValue && _chaptersfield.intValue != 0) || (_volumesfield.intValue == _totalvolumes.intValue && _totalvolumes.intValue != 0)) && _selectedfinished && _selectedpublished) {
+        [_status selectItemWithTitle:@"completed"];
+        _chaptersfield.stringValue = _totalchapters.stringValue;
+        _totalvolumes.stringValue = _totalvolumes.stringValue;
+    }
+    if([_status.title isEqual:@"completed"] && ((_chaptersfield.intValue != _totalchapters.intValue && _chaptersfield.intValue != 0) || (_volumesfield.intValue != _totalvolumes.intValue && _totalvolumes.intValue != 0)) && _selectedfinished) {
+        _chaptersfield.stringValue = _totalchapters.stringValue;
+        _totalvolumes.stringValue = _totalvolumes.stringValue;
+    }
+    NSString *tags = @"";
+    NSMutableDictionary *extrafields = [NSMutableDictionary new];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (((NSArray *)_tagsfield.objectValue).count > 0){
+                tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
+            }
+            NSDateFormatter *df = [NSDateFormatter new];
+            df.dateFormat = @"yyyy-MM-dd";
+            if (@(_setstartdatecheck.state).boolValue) {
+                extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                extrafields[@"end"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            extrafields[@"is_rereading"] = @(_reconsuming.state);
+            break;
+        }
+        case 2: {
+            if (_notesfield.stringValue.length > 0) {
+                extrafields[@"notes"] = _notesfield.stringValue;
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            extrafields[@"private"] = @(_privatecheck.state);
+            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            break;
+        }
+        default:
+            break;
+    }
+    [_progressindicator startAnimation:nil];
+    [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:(int)_score.selectedTag withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
+        [self disableeditbuttons:true];
+        _progressindicator.hidden = true;
+        [_progressindicator stopAnimation:nil];
+        [self updateissuccessful];
+        _selecteditem = nil;
+    }error:^(NSError * error) {
+        [self disableeditbuttons:true];
+        _progressindicator.hidden = true;
+        [_progressindicator stopAnimation:nil];
+        NSLog(@"%@", error.localizedDescription);
+        NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+        //_mangapopoverstatustext.stringValue = @"Error";
+    }];
 }
 
 - (IBAction)cancel:(id)sender {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
+    [self.window close];
+}
+- (void)updateissuccessful {
+    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
     [self.window close];
 }
 #pragma mark steppers and text fields
@@ -266,45 +429,60 @@
         if (_selecteditem[@"watching_start"] && _selecteditem[@"watching_start"] != [NSNull null]) {
             _startdatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"watching_start"] substringToIndex:10]];
             _setstartdatecheck.state = true;
+            _setstartdatecheck.enabled = false;
         }
         else {
             _startdatepicker.dateValue = [NSDate date];
             _setstartdatecheck.state = false;
+            _setstartdatecheck.enabled = true;
         }
         if (_selecteditem[@"watching_end"]  && _selecteditem[@"watching_end"] != [NSNull null]) {
             _enddatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"watching_end"] substringToIndex:10]];
             _setenddatecheck.state = true;
+            _setenddatecheck.enabled = false;
         }
         else {
             _enddatepicker.dateValue = [NSDate date];
             _setenddatecheck.state = false;
+            _setenddatecheck.enabled = true;
         }
     }
     else {
         if (_selecteditem[@"reading_start"] && _selecteditem[@"reading_start"] != [NSNull null]) {
             _startdatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"reading_start"] substringToIndex:10]];
             _setstartdatecheck.state = true;
+            _setstartdatecheck.enabled = false;
         }
         else {
             _startdatepicker.dateValue = [NSDate date];
             _setstartdatecheck.state = false;
+            _setstartdatecheck.enabled = true;
         }
         if (_selecteditem[@"reading_end"]  && _selecteditem[@"reading_end"] != [NSNull null]) {
             _enddatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"reading_end"] substringToIndex:10]];
             _setenddatecheck.state = true;
+            _setenddatecheck.enabled = false;
         }
         else {
             _enddatepicker.dateValue = [NSDate date];
             _setenddatecheck.state = false;
+            _setenddatecheck.enabled = true;
         }
     }
     [self refreshdatepickerstate];
 }
+
 - (IBAction)dateCheckStateChanged:(id)sender {
     [self refreshdatepickerstate];
 }
+
 - (void)refreshdatepickerstate {
     _startdatepicker.enabled = @(_setstartdatecheck.state).boolValue;
     _enddatepicker.enabled = @(_setenddatecheck.state).boolValue;
+}
+
+-(void)disableeditbuttons:(bool)enable {
+    _editbtn.enabled = enable;
+    _closebtn.enabled = enable;
 }
 @end

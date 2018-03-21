@@ -142,7 +142,7 @@
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{ @"id" : @(_titleid), @"entryid" : @(_entryid), @"title" : _title.copy, @"chapters" : @(_chapters), @"volumes" : @(_volumes), @"image_url": _image_url.copy, @"type" : _type.copy, @"status" : _status.copy, @"read_status" : _read_status.copy, @"chapters_read" : @(_chapters_read), @"volumes_read" : @(_volumes_read), @"score" : @(_score), @"score_type" : @(_score_type), @"watching_start" : _reading_start.copy, @"reading_end" : _reading_end.copy, @"rereading" : @(_rereading), @"reread_count" : @(_reread_count), @"personal_comments" : _personal_comments.copy, @"private": @(_private_entry)};
+    return @{ @"id" : @(_titleid), @"entryid" : @(_entryid), @"title" : _title.copy, @"chapters" : @(_chapters), @"volumes" : @(_volumes), @"image_url": _image_url.copy, @"type" : _type.copy, @"status" : _status.copy, @"read_status" : _read_status.copy, @"chapters_read" : @(_chapters_read), @"volumes_read" : @(_volumes_read), @"score" : @(_score), @"score_type" : @(_score_type), @"reading_start" : _reading_start.copy, @"reading_end" : _reading_end.copy, @"rereading" : @(_rereading), @"reread_count" : @(_reread_count), @"personal_comments" : _personal_comments.copy, @"private": @(_private_entry)};
 }
 @end
 

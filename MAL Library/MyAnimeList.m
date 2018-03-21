@@ -258,11 +258,16 @@
     }
 }
 
-+ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
+        NSMutableDictionary *parameters = [NSMutableDictionary new];
+        [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags}];
+        if (efields) {
+            [parameters addEntriesFromDictionary:efields];
+        }
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:parameters success:^(NSURLSessionTask *task, id responseObject) {
             completionHandler(responseObject);
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             completionHandler(error);
@@ -273,11 +278,16 @@
     }
 }
 
-+ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
+        NSMutableDictionary *parameters = [NSMutableDictionary new];
+        [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags}];
+        if (efields) {
+            [parameters addEntriesFromDictionary:efields];
+        }
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags} success:^(NSURLSessionTask *task, id responseObject) {
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:parameters success:^(NSURLSessionTask *task, id responseObject) {
             completionHandler(responseObject);
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             errorHandler(error);
@@ -385,7 +395,7 @@
 
 #pragma mark People Methods
 
-+ (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
 
     NSString *url = [NSString stringWithFormat:@"%@/2.1/anime/cast/%i",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"],titleid];

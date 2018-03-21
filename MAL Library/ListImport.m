@@ -369,7 +369,7 @@
                 default:
                     break;
             }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:tmpid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -486,7 +486,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [listservice updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:@"" withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
@@ -668,7 +668,7 @@
     [listservice addAnimeTitleToList:titleid withEpisode:episodenum withStatus:status withScore:score  completion:^(id responseobject){
         if (tags.length > 0 && [listservice getCurrentServiceID] == 1) {
             // Set Tags by updating the entry
-            [listservice updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withTags:tags completion:^(id responseobject) {
+            [listservice updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withTags:tags withExtraFields:nil completion:^(id responseobject) {
                 [self incrementProgress:nil withTitle:nil];
             }error:^(NSError *error){
                 [self incrementProgress:nil withTitle:nil];
@@ -683,7 +683,7 @@
     }];
 }
 - (void)performanimetitleupdate:(int)titleid withEpisode:(int)episodenum withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
-    [listservice updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withTags:tags completion:^(id responseobject) {
+    [listservice updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withTags:tags withExtraFields:nil completion:^(id responseobject) {
         [self incrementProgress:nil withTitle:nil];
     }error:^(NSError *error){
         NSLog(@"%@", error.localizedDescription);
@@ -695,7 +695,7 @@
     [listservice addMangaTitleToList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score completion:^(id responseObject){
         if (d[@"my_tags"][@"text"] && [listservice getCurrentServiceID] == 1) {
             // Set Tags by updating the entry
-            [listservice updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" completion:^(id responseObject){
+            [listservice updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(NSError *error){
                 [self incrementProgress:nil withTitle:nil];
@@ -709,7 +709,7 @@
     }];
 }
 - (void)performmangatitleupdate:(int)titleid withChapter:(int)chapters withVolumes:(int)volumes withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
-    [listservice updateMangaTitleOnList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score withTags:tags completion:^(id responseObject){
+    [listservice updateMangaTitleOnList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score withTags:tags withExtraFields:nil completion:^(id responseObject){
         [self incrementProgress:nil withTitle:nil];
     }error:^(NSError *error){
         [self incrementProgress:d withTitle:title];
@@ -824,7 +824,7 @@
                 default:
                     break;
             }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:@"" withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"title_romanji"]];

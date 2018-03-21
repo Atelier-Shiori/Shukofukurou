@@ -204,7 +204,7 @@
     }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
+    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag withTags:tags withExtraFields:nil completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
@@ -256,7 +256,7 @@
     }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_mangapopoverindicator startAnimation:nil];
-    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag withTags:tags completion:^(id responseobject) {
+    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_mangapopoverstatus.title withScore:(int)_mangapopoverscore.selectedTag withTags:tags withExtraFields:(NSDictionary *)nil completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
         [self disableeditbuttons:true];

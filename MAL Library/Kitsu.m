@@ -40,14 +40,27 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     
 }
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    [self searchTitle:searchterm withType:type withDataArray:tmparray withPageOffet:0 completion:completionHandler error:errorHandler];
+}
++ (void)searchTitle:(NSString *)searchterm withType:(int)type withDataArray:(NSMutableArray *)darray withPageOffet:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/?filter[text]=%@&page[limit]=20", type == KitsuAnime ? @"anime" : @"manga", [Utility urlEncodeString:searchterm]] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (type == KitsuAnime) {
-            completionHandler([AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:responseObject]);
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            [darray addObjectsFromArray:responseObject[@"data"]];
         }
-        else if (type == KitsuManga) {
-            completionHandler([AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:responseObject]);
+        if (responseObject[@"links"][@"next"] && offset < 40) {
+            int newoffset = offset + 20;
+            [self searchTitle:searchterm withType:type withDataArray:darray withPageOffet:newoffset completion:completionHandler error:errorHandler];
+        }
+        else {
+            if (type == KitsuAnime) {
+                completionHandler([AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:@{@"data":darray}]);
+            }
+            else if (type == KitsuManga) {
+                completionHandler([AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:@{@"data":darray}]);
+            }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);

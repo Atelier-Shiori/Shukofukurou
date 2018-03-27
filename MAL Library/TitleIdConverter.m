@@ -16,9 +16,10 @@
 
 @implementation TitleIdConverter
 static BOOL lookingupid;
+static BOOL importing;
 
 + (void)getKitsuIDFromMALId:(int)malid withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    if (lookingupid)  {
+    if (lookingupid && !importing)  {
         return;
     }
     // Check to see if title exists in the title id mappings. If so, just use the id from the mapping.
@@ -80,7 +81,7 @@ static BOOL lookingupid;
     }];
 }
 + (void)getMALIDFromKitsuId:(int)kitsuid withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    if (lookingupid)  {
+    if (lookingupid && !importing)  {
         return;
     }
     int tmpid = [self lookupTitleID:kitsuid withType:type fromService:2 toService:1];
@@ -127,8 +128,51 @@ static BOOL lookingupid;
     }];
 }
 
++ (void)getMALIDFromAniListID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid && !importing)  {
+        return;
+    }
+    int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:fromservice toService:1];
+    if (tmpid > 0) {
+        completionHandler(tmpid);
+        return;
+    }
+    lookingupid = true;
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSString *typestr = @"";
+    switch (type) {
+        case 0:
+            typestr = @"ANIME";
+            break;
+        case 1:
+            typestr = @"MANGA";
+        default:
+            break;
+    }
+    NSDictionary *parameters = @{@"query": @"query ($id: Int!, $type: MediaType) {\n  Media(id: $id, type: $type) {\n    id\n    idMal\n  }\n}", @"variables" : @{@"id":@(titleid), @"type" : typestr}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self savetitleidtomapping:titleid withNewID:((NSNumber *)responseObject[@"data"][@"Media"][@"idMal"]).intValue withType:MALAnime fromService:fromservice toService:1];
+            completionHandler(((NSNumber *)responseObject[@"data"][@"Media"][@"idMal"]).intValue);
+            lookingupid = false;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self retrieveMALIDwithTitle:title withMediaType:MALAnime withType:titletype completionHandler:^(int malid) {
+            if (malid > 0) {
+                [self savetitleidtomapping:titleid withNewID:malid withType:MALAnime fromService:fromservice toService:1];
+                completionHandler(malid);
+            }
+            else {
+                errorHandler(nil);
+            }
+            lookingupid = false;
+        } error:^(NSError *error) {
+            errorHandler(error);
+            lookingupid = false;
+        }];
+    }];
+}
+
 + (void)getMALIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    if (lookingupid)  {
+    if (lookingupid && !importing)  {
         return;
     }
     int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:fromservice toService:1];
@@ -153,7 +197,7 @@ static BOOL lookingupid;
 }
 
 + (void)getserviceTitleIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    if (lookingupid)  {
+    if (lookingupid && !importing)  {
         return;
     }
     int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
@@ -305,6 +349,28 @@ static BOOL lookingupid;
             case 3: {
                 if (((NSNumber *)[mapping valueForKey:@"anilist_id"]).intValue == 0) {
                     [mapping setValue:@(newid) forKey:@"anlist_id"];
+                }
+                break;
+            }
+            default:
+                break;
+        }
+        switch (fromService) {
+            case 1: {
+                if (((NSNumber *)[mapping valueForKey:@"mal_id"]).intValue == 0) {
+                    [mapping setValue:@(oldid) forKey:@"mal_id"];
+                }
+                break;
+            }
+            case 2: {
+                if (((NSNumber *)[mapping valueForKey:@"kitsu_id"]).intValue == 0) {
+                    [mapping setValue:@(oldid) forKey:@"kitsu_id"];
+                }
+                break;
+            }
+            case 3: {
+                if (((NSNumber *)[mapping valueForKey:@"anilist_id"]).intValue == 0) {
+                    [mapping setValue:@(oldid) forKey:@"anilist_id"];
                 }
                 break;
             }
@@ -510,6 +576,13 @@ static BOOL lookingupid;
         [output addObject:@{@"id":@(((NSString *)d[@"id"][@"text"]).intValue), @"episodes":@(((NSString *)d[@"episodes"][@"text"]).intValue), @"score":@(((NSString *)d[@"score"][@"text"]).floatValue), @"status":d[@"status"][@"text"], @"start_date":[NSString stringWithFormat:@"%@",d[@"start_date"][@"text"]], @"end_date":[NSString stringWithFormat:@"%@",d[@"end_date"][@"text"]], @"synonyms": synonyms, @"synopsis":[NSString stringWithFormat:@"%@",d[@"synopsis"][@"text"]], @"type":d[@"type"][@"text"], @"title":d[@"title"][@"text"], @"english_title":englishtitle}];
     }
     return output;
+}
+
++ (void)setImportStatus:(bool)isImporting {
+    importing = isImporting;
+    if (!isImporting) {
+        lookingupid = false;
+    }
 }
 
 @end

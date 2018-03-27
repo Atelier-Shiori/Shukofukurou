@@ -40,4 +40,5 @@
 + (AFHTTPSessionManager*)syncmanager;
 + (AFJSONRequestSerializer *)jsonrequestserializer;
 + (AFHTTPRequestSerializer *)httprequestserializer;
++ (double)calculatedays:(NSArray *)list;
 @end

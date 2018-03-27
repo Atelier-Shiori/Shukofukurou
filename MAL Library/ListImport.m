@@ -58,6 +58,7 @@
     _progressbar.maxValue = _listimport.count;
     _progressbar.doubleValue = _progress;
     _progresspercentage.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progressbar.doubleValue/_progressbar.maxValue*100)];
+    [TitleIdConverter setImportStatus:true];
     if (d && title) {
         [_failedarraycontroller addObject:@{@"title":title, @"data":d}];
     }
@@ -69,6 +70,7 @@
     if (_progress == _listimport.count) {
         [NSApp endSheet:self.window returnCode:0];
         [self.window close];
+        [TitleIdConverter setImportStatus:false];
         if ([(NSArray *)_failedarraycontroller.content count] > 0) {
             [_failedtb reloadData];
             [NSApp beginSheet:_failedw
@@ -674,7 +676,7 @@
     
 - (void)startAnilist:(NSString *)username {
     [AniListImport retrievelist:username completion:^(id responseobject){
-        _listimport = responseobject[@"list"];
+        _listimport = responseobject[@"anime"];
         _listtype = @"anilist";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
@@ -690,28 +692,19 @@
     __block NSDictionary *entry = _listimport[_progress];
     switch ([listservice getCurrentServiceID]) {
         case 1: {
-            [TitleIdConverter getMALIDFromServiceID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title_romaji"] titletype:entry[@"type"] fromServiceID:3 completionHandler:^(int malid) {
+            [TitleIdConverter getMALIDFromAniListID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] fromServiceID:3 withType:_importlisttype completionHandler:^(int malid) {
                 [self performMALUpdateFromAnilistEntry:entry withMALID:malid];
             } error:^(NSError *error) {
-                [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
+                [self incrementProgress:entry withTitle:entry[@"title"]];
             }];
             break;
         }
         case 2:
         case 3:{
-            [TitleIdConverter getserviceTitleIDFromServiceID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title_romaji"] titletype:entry[@"type"] fromServiceID:3 completionHandler:^(int kitsuid) {
+            [TitleIdConverter getserviceTitleIDFromServiceID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] fromServiceID:3 completionHandler:^(int kitsuid) {
                 [self performMALUpdateFromAnilistEntry:entry withMALID:kitsuid];
             } error:^(NSError *error) {
-                if (!error && ((NSString *)entry[@"title_english"]).length > 0) {
-                    [TitleIdConverter getserviceTitleIDFromServiceID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title_english"] titletype:entry[@"type"] fromServiceID:3 completionHandler:^(int kitsuid) {
-                        [self performMALUpdateFromAnilistEntry:entry withMALID:kitsuid];
-                    } error:^(NSError *error) {
-                        [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
-                    }];
-                }
-                else {
-                    [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
-                }
+                [self incrementProgress:entry withTitle:entry[@"title"]];
             }];
             break;
         }
@@ -722,19 +715,13 @@
 - (void)performMALUpdateFromAnilistEntry:(NSDictionary *)entry withMALID:(int)malid{
     int score = 0;
     NSString *status = entry[@"watched_status"];
-    if ([status isEqualToString:@"on_hold"]) {
-        status = @"on-hold";
-    }
-    else if ([status isEqualToString:@"plan_to_watch"]) {
-        status = @"plan to watch";
-    }
     if (entry[@"score"]) {
         switch ([listservice getCurrentServiceID]) {
             case 1:
-                score = ((NSNumber *)entry[@"score_raw"]).intValue/10;
+                score = ((NSNumber *)entry[@"score"]).intValue/10;
                 break;
             case 2:
-                score = [RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSNumber *)entry[@"score_raw"]).intValue/10];
+                score = [RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSNumber *)entry[@"score"]).intValue/10];
                 break;
             default:
                 break;
@@ -756,7 +743,7 @@
             [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
-                [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+                [self incrementProgress:entry withTitle:entry[@"title"]];
             }];
         }
         else {
@@ -767,7 +754,7 @@
         [listservice addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
-            [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+            [self incrementProgress:entry withTitle:entry[@"title"]];
         }];
     }
 }

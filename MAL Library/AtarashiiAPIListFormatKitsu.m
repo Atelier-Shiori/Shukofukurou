@@ -9,6 +9,7 @@
 #import "AtarashiiAPIListFormatKitsu.h"
 #import "KitsuListRetriever.h"
 #import "AtarashiiDataObjects.h"
+#import "Utility.h"
 
 @implementation AtarashiiAPIListFormatKitsu
 
@@ -67,7 +68,7 @@
                 }
             }
         }
-    return @{@"anime" : tmpanimelist, @"statistics" : @{@"days" : @([self calculatedays:tmpanimelist])}};
+    return @{@"anime" : tmpanimelist, @"statistics" : @{@"days" : @([Utility calculatedays:tmpanimelist])}};
 }
 + (NSDictionary *)KitsutoAtarashiiMangaList: (KitsuListRetriever *)retriever {
     NSMutableArray *tmpmangalist = [NSMutableArray new];
@@ -359,13 +360,5 @@
     return nil;
 }
 
-+ (double)calculatedays:(NSArray *)list {
-    double duration = 0;
-    for (NSDictionary *entry in list) {
-        duration += ((NSNumber *)entry[@"watched_episodes"]).integerValue * ((NSNumber *)entry[@"duration"]).intValue;
-    }
-    duration = (duration/60)/24;
-    return duration;
-}
 
 @end

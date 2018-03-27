@@ -198,6 +198,8 @@
 		916D7FA7206AA543005F98E9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		916D7FA8206AA549005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
 		916D7FA9206AA549005F98E9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
+		916D7FE2206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
@@ -486,6 +488,8 @@
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		9169BC462062C3F700C534B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/advancededitdialog.xib; sourceTree = "<group>"; };
 		916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SAMKeychain.framework; sourceTree = "<group>"; };
+		916D7FDF206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatAniList.h; sourceTree = "<group>"; };
+		916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatAniList.m; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		91822A491EAE99E6005E33DB /* RecommendedTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedTitleView.h; sourceTree = "<group>"; };
@@ -715,6 +719,8 @@
 				2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */,
 				2DB444C21FE9875F00BE5534 /* AtarashiiDataObjects.h */,
 				2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */,
+				916D7FDF206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.h */,
+				916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */,
 			);
 			name = AtarashiiDataFormatters;
 			sourceTree = "<group>";
@@ -1307,6 +1313,7 @@
 				91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 				2D371E751ECF8AF500F47138 /* ListStatistics.m in Sources */,
 				2D94612F1EC38CC8004E171B /* ListImport.m in Sources */,
+				916D7FE2206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
 				91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
@@ -1457,6 +1464,7 @@
 				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,
 				2D88CA6A1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */,
+				916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
 				91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,

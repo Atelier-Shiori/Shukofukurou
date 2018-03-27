@@ -132,14 +132,12 @@
 		913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
 		913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB21E89842400F6E9FF /* GeneralPref.m */; };
 		913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
-		913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */; };
 		913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */; };
 		913A11721E8F206A00450B66 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
 		913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */; };
 		913A11761E8F206A00450B66 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
 		913A11771E8F206A00450B66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
 		913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */; };
-		913A11791E8F206A00450B66 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC91E89842400F6E9FF /* SSKeychain.m */; };
 		913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */; };
 		913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
 		913A117C1E8F206A00450B66 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D101E8C88280026D3E9 /* InfoView.m */; };
@@ -194,6 +192,12 @@
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		9169BC442062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
 		9169BC452062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
+		916D7FA4206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
+		916D7FA5206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
+		916D7FA6206AA543005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
+		916D7FA7206AA543005F98E9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		916D7FA8206AA549005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
+		916D7FA9206AA549005F98E9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
@@ -226,8 +230,6 @@
 		9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
 		9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */; };
-		9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC91E89842400F6E9FF /* SSKeychain.m */; };
-		9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */; };
 		9199BAE11E89842400F6E9FF /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACD1E89842400F6E9FF /* Utility.m */; };
 		9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE21E89843300F6E9FF /* GeneralPref.xib */; };
 		9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE41E89843300F6E9FF /* LoginView.xib */; };
@@ -314,6 +316,7 @@
 			files = (
 				2DB59D161EB7D4BE00FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				913A11A11E8F206A00450B66 /* AFNetworking.framework in Embed Frameworks */,
+				916D7FA7206AA543005F98E9 /* SAMKeychain.framework in Embed Frameworks */,
 				913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */,
 				913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */,
 			);
@@ -347,6 +350,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9199BAFF1E89847D00F6E9FF /* AFNetworking.framework in Embed Frameworks */,
+				916D7FA9206AA549005F98E9 /* SAMKeychain.framework in Embed Frameworks */,
 				91AECE591E89921200824C2D /* PXSourceList.framework in Embed Frameworks */,
 				9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */,
 				2DB59D141EB7D4B700FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
@@ -481,6 +485,7 @@
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		9169BC462062C3F700C534B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/advancededitdialog.xib; sourceTree = "<group>"; };
+		916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SAMKeychain.framework; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		91822A491EAE99E6005E33DB /* RecommendedTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedTitleView.h; sourceTree = "<group>"; };
@@ -527,10 +532,6 @@
 		9199BAC51E89842400F6E9FF /* Preferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Preferences.h; sourceTree = "<group>"; };
 		9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoftwareUpdatesPref.h; sourceTree = "<group>"; };
 		9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoftwareUpdatesPref.m; sourceTree = "<group>"; };
-		9199BAC81E89842400F6E9FF /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
-		9199BAC91E89842400F6E9FF /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
-		9199BACA1E89842400F6E9FF /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
-		9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
 		9199BACC1E89842400F6E9FF /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		9199BACD1E89842400F6E9FF /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		9199BAE31E89843300F6E9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GeneralPref.xib; sourceTree = "<group>"; };
@@ -597,11 +598,13 @@
 			files = (
 				913A117E1E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				913A117F1E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
+				916D7FA5206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */,
 				913A11801E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
 				913A11821E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				2DB59D151EB7D4BE00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A11831E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				913A11841E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
+				916D7FA6206AA543005F98E9 /* SAMKeychain.framework in Frameworks */,
 				913A11851E8F206A00450B66 /* Crashlytics.framework in Frameworks */,
 				913A11861E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
 				2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
@@ -631,9 +634,11 @@
 				9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */,
 				9199BAF51E89844C00F6E9FF /* MASPreferences.framework in Frameworks */,
 				9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */,
+				916D7FA8206AA549005F98E9 /* SAMKeychain.framework in Frameworks */,
 				918C0D391E89FF920037898E /* Crashlytics.framework in Frameworks */,
 				9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */,
 				2D84041A1FE4A30F003DC279 /* MALLibraryAppMigrate.framework in Frameworks */,
+				916D7FA4206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */,
 				918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */,
 				9199BAFC1E89847D00F6E9FF /* Sparkle.framework in Frameworks */,
 				91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */,
@@ -726,6 +731,7 @@
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */,
 				9199BB011E8984E300F6E9FF /* PXSourceList.framework */,
 				9199BAF21E89844C00F6E9FF /* MASPreferences.framework */,
 				2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */,
@@ -905,10 +911,6 @@
 				2DAB19E81EF9F2C400420182 /* siteimage.m */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
 				9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */,
-				9199BAC81E89842400F6E9FF /* SSKeychain.h */,
-				9199BAC91E89842400F6E9FF /* SSKeychain.m */,
-				9199BACA1E89842400F6E9FF /* SSKeychainQuery.h */,
-				9199BACB1E89842400F6E9FF /* SSKeychainQuery.m */,
 				2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */,
 				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
 				2DAB19DC1EF9D16800420182 /* StreamPopup.h */,
@@ -1347,7 +1349,6 @@
 				2D8BF8AC1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
-				913A11701E8F206A00450B66 /* SSKeychainQuery.m in Sources */,
 				F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
@@ -1366,7 +1367,6 @@
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
-				913A11791E8F206A00450B66 /* SSKeychain.m in Sources */,
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
@@ -1420,7 +1420,6 @@
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
 				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
-				9199BAE01E89842400F6E9FF /* SSKeychainQuery.m in Sources */,
 				2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */,
 				2D42FA971F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
@@ -1444,7 +1443,6 @@
 				F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
 				2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
-				9199BADF1E89842400F6E9FF /* SSKeychain.m in Sources */,
 				91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */,
 				2DAB19DF1EF9D16800420182 /* StreamPopup.m in Sources */,
 				2D6ECA341F2E9B20003C455E /* NSString_stripHtml.m in Sources */,

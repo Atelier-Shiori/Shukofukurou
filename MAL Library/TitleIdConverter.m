@@ -100,28 +100,26 @@ static BOOL lookingupid;
         default:
             break;
     }
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/mappings/%i?filter[externalSite]=myanimelist/%@",kitsuid,typestr] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (responseObject[@"data"] != [NSNull null]) {
-            if (responseObject[@"data"][@"id"]) {
-                NSNumber *malid = responseObject[@"data"][@"id"];
+    NSString *filterstr = [NSString stringWithFormat:@"myanimelist/%@", typestr];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/%i?include=mappings&fields[anime]=id",typestr ,kitsuid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        for (NSDictionary *map in responseObject[@"included"]) {
+            if ([(NSString *)map[@"attributes"][@"externalSite"] caseInsensitiveCompare:filterstr] == NSOrderedSame) {
+                NSNumber *malid = map[@"attributes"][@"externalId"];
                 [self savetitleidtomapping:kitsuid withNewID:malid.intValue withType:type fromService:2 toService:1];
                 completionHandler(malid.intValue);
                 lookingupid = false;
-            }
-            else {
-                errorHandler(nil);
-                lookingupid = false;
+                break;
             }
         }
-        else {
+        if (lookingupid) {
             [self findMALIDWithCurrentServiceID:kitsuid type:type completionHandler:^(int malid) {
-                    [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
-                    completionHandler(malid);
+                        [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
+                        completionHandler(malid);
+                        lookingupid = false;
+                } error:^(NSError *error) {
+                    errorHandler(error);
                     lookingupid = false;
-            } error:^(NSError *error) {
-                errorHandler(error);
-                lookingupid = false;
-            }];
+                }];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);

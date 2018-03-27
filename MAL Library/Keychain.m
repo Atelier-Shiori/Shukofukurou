@@ -7,7 +7,7 @@
 //
 
 #import "Keychain.h"
-#import "SSKeychain.h"
+#import <SAMKeychain/SAMKeychain.h>
 #import "Base64Category.h"
 
 @implementation Keychain
@@ -21,7 +21,7 @@ NSString *const kserviceName = @"MAL Library";
 }
 + (NSString *)getusername {
     // This method checks for any accounts that Hachidori can use
-    NSArray *accounts = [SSKeychain accountsForService:kserviceName];
+    NSArray *accounts = [SAMKeychain accountsForService:kserviceName];
     if (accounts.count > 0) {
         //retrieve first valid account
         for (NSDictionary *account in accounts){
@@ -35,14 +35,14 @@ NSString *const kserviceName = @"MAL Library";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:@"" forKey:@"Base64Token"];
     [defaults setObject:@"" forKey:@"Username"];
-    return [SSKeychain setPassword:password forService:kserviceName account:uname];
+    return [SAMKeychain setPassword:password forService:kserviceName account:uname];
 }
 + (BOOL)removeaccount {
-    bool success = [SSKeychain deletePasswordForService:kserviceName account:[Keychain getusername]];
+    bool success = [SAMKeychain deletePasswordForService:kserviceName account:[Keychain getusername]];
     return success;
 }
 + (NSString *)getBase64 {
-    return [[NSString stringWithFormat:@"%@:%@", [self getusername], [SSKeychain passwordForService:kserviceName account:[self getusername]]] base64Encoding];
+    return [[NSString stringWithFormat:@"%@:%@", [self getusername], [SAMKeychain passwordForService:kserviceName account:[self getusername]]] base64Encoding];
 }
 
 @end

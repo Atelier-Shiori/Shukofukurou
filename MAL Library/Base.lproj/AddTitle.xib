@@ -183,7 +183,7 @@
                     </connections>
                 </popUpButton>
             </subviews>
-            <point key="canvasLocation" x="-39.5" y="508.5"/>
+            <point key="canvasLocation" x="-374" y="392"/>
         </customView>
         <customView id="SJd-oo-DjL">
             <rect key="frame" x="0.0" y="0.0" width="269" height="159"/>

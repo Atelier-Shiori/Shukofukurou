@@ -369,7 +369,7 @@
                 default:
                     break;
             }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:tmpid withEpisode:watchedeps withStatus:status withScore:0 withTags:nil withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -416,80 +416,53 @@
 
 
 - (void)startKitsuImport:(NSString *)username {
-    [self getKitsuidfromUserName:username completionHandler:^(id responseObject) {
-        NSArray *data = responseObject[@"data"];
-        if (data.count > 0) {
-            NSDictionary *d = data[0];
-            [self retrieveKitsuLibrary:((NSNumber *)d[@"id"]).intValue atPage:0 completionHandler:^(id responseObject) {
-                _listimport = [_tmplist copy];
-                _tmplist = nil;
-                _listtype = @"kitsu";
-                _importlisttype = MALAnime;
-                _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-                _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
-                [self importsetup];
-                [self performKitsuImport];
-            } error:^(NSError *error){
-                NSLog(@"%@",error);
-                [Utility showsheetmessage:@"Unable to retrieve Kitsu library." explaination:@"Please try again." window:[_del getMainWindowController].window];
-            }];
-        }
-        else {
-            [Utility showsheetmessage:@"Unable to retrieve Kitsu library." explaination:@"Make sure the username is correct." window:[_del getMainWindowController].window];
-        }
-    }error:^(NSError *error){
-        NSLog(@"%@",error);
-        [Utility showsheetmessage:@"Unable to retrieve Kitsu library." explaination:@"Please try again." window:[_del getMainWindowController].window];
+    [Kitsu retrieveList:username listType:KitsuAnime completion:^(id responseObject) {
+        _listimport = responseObject[@"anime"];
+        _tmplist = nil;
+        _listtype = @"kitsu";
+        _importlisttype = MALAnime;
+        _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
+        _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
+        [self importsetup];
+        [self performKitsuImport];
+    } error:^(NSError *error) {
+        [Utility showsheetmessage:@"Unable to retrieve Kitsu library." explaination:@"Make sure the username is correct." window:[_del getMainWindowController].window];
     }];
 }
 - (void)performKitsuImport {
     NSDictionary *entry = _listimport[_progress];
-    if (entry[@"relationships"][@"anime"][@"data"] != [NSNull null]) {
-        switch ([listservice getCurrentServiceID]) {
-            case 1: {
-                [TitleIdConverter getMALIDFromKitsuId:((NSNumber *) entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue withType:KitsuAnime completionHandler:^(int malid) {
-                    [self performMALUpdateFromKitsuEntry:entry withMALID:malid];
-                } error:^(NSError *error) {
-                    [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
-                }];
-                break;
-            }
-            case 3: {
-                break;
-            }
-            default: {
-                [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
-                break;
-            }
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            [TitleIdConverter getMALIDFromKitsuId:((NSNumber *)entry[@"id"]).intValue  withType:MALAnime completionHandler:^(int malid) {
+                [self performListServiceUpdateFromKitsuEntry:entry withID:malid];
+            } error:^(NSError *error) {
+                [self incrementProgress:entry withTitle:entry[@"title"]];
+            }];
+            break;
         }
-    }
-    else {
-        [self incrementProgress:entry withTitle:nil];
+        default:
+            break;
     }
 }
-- (void)performMALUpdateFromKitsuEntry:(NSDictionary *)entry withMALID:(int)malid{
+- (void)performListServiceUpdateFromKitsuEntry:(NSDictionary *)entry withID:(int)titleid{
     int score = 0;
-    NSDictionary *attributes = entry[@"attributes"];
-    NSString *status = attributes[@"status"];
-    if ([status isEqualToString:@"on_hold"]) {
-        status = @"on-hold";
+    NSString *status = entry[@"watched_status"];
+    if (entry[@"score"] > 0) {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                score = [self translateKitsuTwentyScoreToMAL:((NSNumber *)entry[@"score"]).intValue];
+                break;
+            default:
+                score = ((NSNumber *)entry[@"score"]).intValue;
+                break;
+        }
     }
-    else if ([status isEqualToString:@"planned"]) {
-        status = @"plan to watch";
-    }
-    if (attributes[@"ratingTwenty"] != [NSNull null]) {
-        NSNumber *ratingtwenty = attributes[@"ratingTwenty"];
-        score = [self translateKitsuTwentyScoreToMAL:ratingtwenty.intValue];
-    }
-    else if (attributes[@"rating"] != [NSNull null]) {
-        score = (int)roundf(((NSNumber *)attributes[@"rating"]).floatValue);
-    }
-    if ([self checkiftitleisonlist:malid]) {
+    if ([self checkiftitleisonlist:titleid]) {
         if (_replaceexisting) {
-            [listservice updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:titleid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
-                [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
+                [self incrementProgress:entry withTitle:entry[@"title"]];
             }];
         }
         else {
@@ -497,10 +470,10 @@
         }
     }
     else {
-        [listservice addAnimeTitleToList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+        [listservice addAnimeTitleToList:titleid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
-            [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
+            [self incrementProgress:entry withTitle:entry[@"title"]];
         }];
     }
 }
@@ -578,50 +551,6 @@
 - (int)retrieveentryidfortitleid:(int)idnum {
     NSArray *list = [_existinglist filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", idnum]];
     return list.count > 0 ? ((NSNumber *)list[0][@"entryid"]).intValue : -1;
-}
-- (NSString *)retrieveTitlefromKitsuID:(int)kitsuid {
-    NSArray *list = [_metadata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %i", kitsuid]];
-    if (list.count > 0) {
-        return list[0][@"attributes"][@"canonicalTitle"];
-    }
-    return nil;
-}
-
-- (void)getKitsuidfromUserName:(NSString *)username completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[name]=%@",[Utility urlEncodeString:username]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        completionHandler(responseObject);
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
-}
-
-- (void)retrieveKitsuLibrary:(int)userID atPage:(int)pagenum completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%i&include=anime&page[limit]=500&page[offset]=%i",userID, pagenum] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        if (responseObject[@"data"]){
-            if (!_tmplist){
-                _tmplist = [NSMutableArray new];
-            }
-                
-            [_tmplist addObjectsFromArray:responseObject[@"data"]];
-            if (responseObject[@"included"]){
-                [_metadata addObjectsFromArray:responseObject[@"included"]];
-            }
-            if (responseObject[@"links"][@"next"]) {
-                int nextPage = pagenum+500;
-                [self retrieveKitsuLibrary:userID atPage:nextPage completionHandler:completionHandler error:errorHandler];
-            }
-            else {
-                completionHandler(responseObject);
-            }
-        }
-        else {
-            completionHandler(responseObject);
-        }
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        errorHandler(error);
-    }];
 }
 
 - (int)translateKitsuTwentyScoreToMAL:(int)rating {
@@ -824,7 +753,7 @@
                 default:
                     break;
             }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"title_romanji"]];

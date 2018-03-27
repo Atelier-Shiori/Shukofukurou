@@ -262,7 +262,12 @@
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         NSMutableDictionary *parameters = [NSMutableDictionary new];
-        [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags}];
+        if (tags) {
+            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags}];
+        }
+        else {
+            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"episodes":@(episode)}];
+        }
         if (efields) {
             [parameters addEntriesFromDictionary:efields];
         }
@@ -282,7 +287,12 @@
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         NSMutableDictionary *parameters = [NSMutableDictionary new];
-        [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags}];
+        if (tags) {
+            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags}];
+        }
+        else {
+            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume)}];
+        }
         if (efields) {
             [parameters addEntriesFromDictionary:efields];
         }

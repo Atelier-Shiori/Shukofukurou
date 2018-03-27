@@ -25,6 +25,8 @@
 @property (strong) IBOutlet NSMenu *kitsuadavancedscoremenu;
 @property (strong) IBOutlet NSMenu *kitsusimplescoremenu;
 
+@property (strong) IBOutlet NSMenu *animestatusmenu;
+@property (strong) IBOutlet NSMenu *mangastatusmenu;
 
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type;
 @end

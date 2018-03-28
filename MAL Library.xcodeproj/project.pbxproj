@@ -243,6 +243,8 @@
 		91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
 		91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
 		91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		F881C428206BD9FB005A7D97 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F881C427206BD9FA005A7D97 /* AtarashiiDataObjects.m */; };
+		F881C429206BD9FB005A7D97 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = F881C427206BD9FA005A7D97 /* AtarashiiDataObjects.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -517,6 +519,8 @@
 		91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageswindow.m; sourceTree = "<group>"; };
 		91DAFC611EAE6FA20037A6F2 /* messageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messageview.h; sourceTree = "<group>"; };
 		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
+		F881C426206BD9FA005A7D97 /* AtarashiiDataObjects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtarashiiDataObjects.h; sourceTree = "<group>"; };
+		F881C427206BD9FA005A7D97 /* AtarashiiDataObjects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtarashiiDataObjects.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -704,6 +708,8 @@
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
+				F881C426206BD9FA005A7D97 /* AtarashiiDataObjects.h */,
+				F881C427206BD9FA005A7D97 /* AtarashiiDataObjects.m */,
 				910589E81E981E1A00501B9A /* AdvancedPref.h */,
 				910589E91E981E1A00501B9A /* AdvancedPref.m */,
 				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
@@ -1255,6 +1261,7 @@
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
+				F881C429206BD9FB005A7D97 /* AtarashiiDataObjects.m in Sources */,
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
 			);
@@ -1283,6 +1290,7 @@
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
 				91D094C21E983095009454F8 /* HistoryView.m in Sources */,
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
+				F881C428206BD9FB005A7D97 /* AtarashiiDataObjects.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,

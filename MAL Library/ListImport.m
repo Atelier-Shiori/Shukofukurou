@@ -361,7 +361,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 withTags:@"" completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:watchedeps withStatus:status withScore:0 withTags:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -479,7 +479,7 @@
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)attributes[@"progress"]).intValue withStatus:status withScore:score withTags:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:[self retrieveTitlefromKitsuID:((NSNumber *)entry[@"relationships"][@"anime"][@"data"][@"id"]).intValue]];
@@ -717,7 +717,7 @@
     
 - (void)startAnilist:(NSString *)username {
     [AniListImport retrievelist:username completion:^(id responseobject){
-        _listimport = responseobject[@"list"];
+        _listimport = responseobject[@"anime"];
         _listtype = @"anilist";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
@@ -739,26 +739,21 @@
     NSDictionary *entry = _listimport[_progress];
     NSNumber *malid = [self checkifmappingexists:((NSNumber *)entry[@"id"]).intValue];
     if (!malid) {
-        [self retrieveMALIDwithTitle:entry[@"title_romaji"] withType:entry[@"type"] completionHandler:^(int amalid) {
-            if (amalid > 0) {
-                [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
-                [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
-            }
-            else {
-                [self retrieveMALIDwithTitle:entry[@"title_english"] withType:entry[@"type"] completionHandler:^(int amalid) {
-                    if (amalid > 0) {
-                        [_otheridmalidmapping addObject:@{@"anilist_id":entry[@"id"], @"mal_id":@(amalid)}];
-                        [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
-                    }
-                    else {
-                        [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
-                    }
-                }error:^(NSError *error) {
-                    [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
-                }];
-            }
-        }error:^(NSError *error) {
-            [self incrementProgress:entry withTitle:entry[@"title_romaji"]];
+        [self getMALIDFromAniListID:((NSNumber *)entry[@"id"]).intValue completionHandler:^(int malid) {
+            [_otheridmalidmapping addObject:@{@"anilist_id":(entry[@"id"]), @"mal_id":@(malid)}];
+            [self performMALUpdateFromAnilistEntry:entry withMALID:malid];
+        } error:^(NSError *error) {
+            [self retrieveMALIDwithTitle:entry[@"title"] withType:entry[@"type"] completionHandler:^(int amalid) {
+                if (amalid > 0) {
+                    [_otheridmalidmapping addObject:@{@"anilist_id":(entry[@"id"]), @"mal_id":@(amalid)}];
+                    [self performMALUpdateFromAnilistEntry:entry withMALID:amalid];
+                }
+                else {
+                    [self incrementProgress:entry withTitle:entry[@"title"]];
+                }
+            }error:^(NSError *error) {
+                [self incrementProgress:entry withTitle:entry[@"title"]];
+            }];
         }];
     }
     else {
@@ -768,21 +763,15 @@
 - (void)performMALUpdateFromAnilistEntry:(NSDictionary *)entry withMALID:(int)malid{
     int score = 0;
     NSString *status = entry[@"watched_status"];
-    if ([status isEqualToString:@"on_hold"]) {
-        status = @"on-hold";
-    }
-    else if ([status isEqualToString:@"plan_to_watch"]) {
-        status = @"plan to watch";
-    }
     if (entry[@"score"]) {
         score = ((NSNumber *)entry[@"score"]).intValue/10;
     }
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
-            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:@"" completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
-                [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+                [self incrementProgress:entry withTitle:entry[@"title"]];
             }];
         }
         else {
@@ -793,7 +782,7 @@
         [MyAnimeList addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
-            [self incrementProgress:entry withTitle:entry[@"title_romanji"]];
+            [self incrementProgress:entry withTitle:entry[@"title"]];
         }];
     }
 }
@@ -856,5 +845,16 @@
     }
     return output;
 }
+
+- (void)getMALIDFromAniListID:(int)titleid completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSDictionary *parameters = @{@"query": @"query ($id: Int!, $type: MediaType) {\n  Media(id: $id, type: $type) {\n    id\n    idMal\n  }\n}", @"variables" : @{@"id":@(titleid), @"type" : @"ANIME"}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(((NSNumber *)responseObject[@"data"][@"Media"][@"idMal"]).intValue);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 
 @end

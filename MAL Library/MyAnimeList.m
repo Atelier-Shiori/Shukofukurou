@@ -261,7 +261,14 @@
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags} success:^(NSURLSessionTask *task, id responseObject) {
+        NSDictionary *parameters;
+        if (tags) {
+            parameters = @{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags};
+        }
+        else {
+            parameters = @{ @"status":status, @"score":@(score), @"episodes":@(episode)};
+        }
+        [manager PUT:[NSString stringWithFormat:@"%@/2.1/animelist/anime/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:parameters success:^(NSURLSessionTask *task, id responseObject) {
             completionHandler(responseObject);
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             completionHandler(error);
@@ -276,7 +283,14 @@
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@", [Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
-        [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags} success:^(NSURLSessionTask *task, id responseObject) {
+        NSDictionary *parameters;
+        if (tags) {
+            parameters = @{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags};
+        }
+        else {
+            parameters = @{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume)};
+        }
+    [manager PUT:[NSString stringWithFormat:@"%@/2.1/mangalist/manga/%@", [[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"], @(titleid)] parameters:parameters success:^(NSURLSessionTask *task, id responseObject) {
             completionHandler(responseObject);
         } failure:^(NSURLSessionTask *operation, NSError *error) {
             errorHandler(error);

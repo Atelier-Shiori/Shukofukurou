@@ -309,6 +309,9 @@
             else {
                 continue;
             }
+            if (reaction[@"relationships"][@"user"][@"data"] == [NSNull null]) {
+                continue;
+            }
             tmparray = [usersarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", reaction[@"relationships"][@"user"][@"data"][@"id"]]];
             if (tmparray.count > 0) {
                 userdict = tmparray[0];

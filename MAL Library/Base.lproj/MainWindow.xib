@@ -41,7 +41,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="911" y="501" width="700" height="450"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="700" height="450"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="450"/>
@@ -565,7 +565,7 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
                             <rect key="frame" x="0.0" y="14" width="43" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">
@@ -587,6 +587,12 @@
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="em1-qQ-HE6"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Pixiv Encyclopedia (English)" tag="8" id="hF8-ki-jWx">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="pku-XV-dqj"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Reddit" tag="4" id="1gj-0I-y4Y">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
@@ -603,6 +609,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="ger-tf-T3K"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="ピクシブ百科事典" tag="7" id="L56-BR-1kQ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="Qrd-jw-bk9"/>
                                             </connections>
                                         </menuItem>
                                     </items>

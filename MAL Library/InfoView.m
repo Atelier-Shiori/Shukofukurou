@@ -466,6 +466,20 @@
         case 6:
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en.wikipedia.org/wiki/Special:Search?search=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
+        case 7: {
+            NSString *tmptitle;
+            if (((NSArray *)_selectedinfo[@"other_titles"][@"japanese"]).count > 0) {
+                tmptitle = _selectedinfo[@"other_titles"][@"japanese"][0];
+            }
+            else {
+                tmptitle = _infoviewtitle.stringValue;
+            }
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://dic.pixiv.net/search?query=%@",[Utility urlEncodeString:tmptitle]]];
+            break;
+        }
+        case 8:
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en-dic.pixiv.net/search?query=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
         default:
             return;
     }

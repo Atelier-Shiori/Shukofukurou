@@ -28,6 +28,7 @@
             break;
         }
         case 3: {
+            [AniList retrieveList:username listType:type completion:completionHandler error:errorHandler];
             break;
         }
         default:

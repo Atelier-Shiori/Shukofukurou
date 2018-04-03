@@ -92,21 +92,15 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
 }
 #pragma mark Search
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    NSMutableArray *tmparray = [NSMutableArray new];
-    [self searchTitle:searchterm withType:type withDataArray:tmparray withPageOffet:0 completion:completionHandler error:errorHandler];
-}
-+ (void)searchTitle:(NSString *)searchterm withType:(int)type withDataArray:(NSMutableArray *)darray withPageOffet:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     NSDictionary *parameters = @{@"query" : kAnilisttitlesearch, @"variables" : @{@"query" : searchterm, @"type" : type == AniListAnime ? @"ANIME" : @"MANGA"}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
-            [darray addObjectsFromArray:responseObject[@"data"]];
-        }
         if (type == AniListAnime) {
-            //completionHandler([AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:@{@"data":darray}]);
+            // To Do ; Search
+            //completionHandler([AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:@{@"data":responseObject[@"data"][@"Page"][@"media"]}]);
         }
         else if (type == AniListManga) {
-            //completionHandler([AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:@{@"data":darray}]);
+            //completionHandler([AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:@{@"data":responseObject[@"data"][@"Page"][@"media"]}]);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -364,7 +358,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     [manager POST:@"https://graphql.anilist.co" parameters:@{@"query" : kAnilistCurrentUsernametoUserId, @"variables" : @{}} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        if (((NSArray *)responseObject[@"data"]).count > 0) {
+        if (responseObject[@"data"][@"Viewer"] != [NSNull null]) {
             NSDictionary *d = responseObject[@"data"][@"Viewer"];
             completionHandler(((NSNumber *)d[@"id"]).intValue,d[@"name"], d[@"mediaListOptions"][@"scoreFormat"]);
         }
@@ -382,10 +376,13 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[slug]=%@", username] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        if (responseObject[@"data"][0]) {
-            completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    }
+    NSDictionary *parameters = @{@"query" : kAnilistUsernametoUserId, @"variables" : @{@"name" : username}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        if (responseObject[@"data"][@"user"] != [NSNull null]) {
+            completionHandler(((NSNumber *)responseObject[@"data"][@"user"][@"id"]).intValue);
         }
         else {
             completionHandler(-1);
@@ -396,26 +393,44 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
 }
 + (NSDictionary *)generateAnimeAttributes:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
-    attributes[@"status"] = [self convertWatchStatus:status withType:AniListAnime];
+    bool reconsuming = false;
+    if (efields) {
+        if (efields[@"reconsuming"]) {
+            reconsuming = ((NSNumber *)efields[@"reconsuming"]).boolValue;
+        }
+    }
+    attributes[@"status"] = [self convertWatchStatus:status isReconsuming:false withType:AniListAnime];
     attributes[@"progress"] = @(episode);
     attributes[@"ratingTwenty"] = score >= 2 ? @(score) : [NSNull null];
     if (efields) {
         [attributes addEntriesFromDictionary:efields];
+        if (efields[@"reconsuming"]) {
+            [attributes removeObjectForKey:@"reconsuming"];
+        }
     }
     return attributes;
 }
 + (NSDictionary *)generateMangaAttributes:(int)chapter withVolumes:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
-    attributes[@"status"] = [self convertWatchStatus:status withType:AniListManga];
+    bool reconsuming = false;
+    if (efields) {
+        if (efields[@"reconsuming"]) {
+            reconsuming = ((NSNumber *)efields[@"reconsuming"]).boolValue;
+        }
+    }
+    attributes[@"status"] = [self convertWatchStatus:status isReconsuming:false withType:AniListManga];
     attributes[@"progress"] = @(chapter);
     attributes[@"volumesOwned"] = @(volume);
     attributes[@"ratingTwenty"] = score >= 2 ? @(score) : [NSNull null];
     if (efields) {
         [attributes addEntriesFromDictionary:efields];
+        if (efields[@"reconsuming"]) {
+            [attributes removeObjectForKey:@"reconsuming"];
+        }
     }
     return attributes;
 }
-+ (void)getUserRatingType:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)getUserRatingType:(void (^)(NSString *scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
         errorHandler(nil);
@@ -423,54 +438,48 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    [manager GET:@"https://kitsu.io/api/edge/users?filter[self]=true&fields[users]=ratingSystem" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (((NSArray *)responseObject[@"data"]).count > 0) {
-            NSDictionary *d = [NSArray arrayWithArray:responseObject[@"data"]][0];
-            NSString *ratingtype = d[@"attributes"][@"ratingSystem"];
-            /*if ([ratingtype isEqualToString:@"simple"]) {
-                completionHandler(ratingSimple);
-            }
-            else if ([ratingtype isEqualToString:@"standard"]) {
-                completionHandler(ratingStandard);
-            }
-            else if ([ratingtype isEqualToString:@"advanced"]) {
-                completionHandler(ratingAdvanced);
-            }
-            else {
-                completionHandler(ratingSimple);
-            }*/
+    [manager POST:@"https://graphql.anilist.co" parameters:@{@"query" : kAnilistCurrentUsernametoUserId, @"variables" : @{}} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"][@"Viewer"] != [NSNull null]) {
+            NSDictionary *d = responseObject[@"data"][@"Viewer"];
+            completionHandler(d[@"mediaListOptions"][@"scoreFormat"]);
         }
         else {
-            //completionHandler(ratingSimple);
+            errorHandler(nil);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        errorHandler(nil);
+        errorHandler(error);
     }];
 }
-+ (NSString *)convertWatchStatus:(NSString *)status withType:(int)type{
++ (NSString *)convertWatchStatus:(NSString *)status isReconsuming:(bool)reconsuming withType:(int)type{
     if (type == AniListAnime) {
-        if ([status isEqualToString:@"watching"]) {
-            return @"current";
+        if ([status isEqualToString:@"watching"] && !reconsuming) {
+            return @"CURRENT";
+        }
+        else if ([status isEqualToString:@"watching"] && reconsuming) {
+            return @"REPEATING";
         }
         else if ([status isEqualToString:@"on-hold"]) {
-            return @"on_hold";
+            return @"PAUSED";
         }
         else if ([status isEqualToString:@"plan to watch"]) {
-            return @"planned";
+            return @"PLANNING";
         }
-        return status;
+        return status.uppercaseString;
     }
     else {
-        if ([status isEqualToString:@"reading"]) {
-            return @"current";
+        if ([status isEqualToString:@"reading"] && !reconsuming) {
+            return @"CURRENT";
+        }
+        else if ([status isEqualToString:@"reading"] && !reconsuming) {
+            return @"REPEATING";
         }
         else if ([status isEqualToString:@"on-hold"]) {
-            return @"on_hold";
+            return @"PAUSED";
         }
         else if ([status isEqualToString:@"plan to read"]) {
-            return @"planned";
+            return @"PLANNING";
         }
-        return status;
+        return status.uppercaseString;
     }
 }
 
@@ -488,7 +497,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     
     id responseObject = [manager syncPOST:@"https://graphql.anilist.co" parameters:@{@"query" : kAnilistCurrentUsernametoUserId, @"variables" : @{}} task:NULL error:&error];
     if (!error) {
-        if (((NSArray *)responseObject[@"data"]).count > 0) {
+        if (responseObject[@"data"][@"Viewer"] != [NSNull null]) {
             NSDictionary *d = responseObject[@"data"][@"Viewer"];
             NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
             [defaults setValue:d[@"id"] forKey:@"anilist-userid"];

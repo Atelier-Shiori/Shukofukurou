@@ -268,8 +268,8 @@
 		91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
 		F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
-		F84BB9EC2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */; };
-		F84BB9ED2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */; };
+		F84BB9FC2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
+		F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
 		F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F8A85912207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
@@ -579,7 +579,7 @@
 		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
 		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
 		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
-		F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AniListAuthWindow.xib; sourceTree = "<group>"; };
+		F84BB9FE2074128B0056F5B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AniListAuthWindow.xib; sourceTree = "<group>"; };
 		F88CD0F92072BC330093C478 /* AniListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
 		F88CD0FA2072BC330093C478 /* AniListConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
 		F8A85910207023E40026EC0A /* AniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
@@ -824,7 +824,7 @@
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
 				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
 				F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */,
-				F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */,
+				F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */,
 				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
@@ -1199,7 +1199,7 @@
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
-				F84BB9ED2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */,
+				F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */,
 				2D4E01101FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				2D4E01141FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
@@ -1252,7 +1252,7 @@
 				2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */,
 				2D8BF8B71EC4EED80068856A /* ImportPrompt.xib in Resources */,
-				F84BB9EC2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */,
+				F84BB9FC2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */,
 				91822A601EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
 				2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */,
@@ -1799,6 +1799,14 @@
 				91B378B81E989C83000061E6 /* Base */,
 			);
 			name = HistoryView.xib;
+			sourceTree = "<group>";
+		};
+		F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F84BB9FE2074128B0056F5B0 /* Base */,
+			);
+			name = AniListAuthWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

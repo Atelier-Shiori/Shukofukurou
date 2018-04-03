@@ -414,7 +414,9 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         return;
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    }
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[slug]=%@", username] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"][0]) {
             completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);

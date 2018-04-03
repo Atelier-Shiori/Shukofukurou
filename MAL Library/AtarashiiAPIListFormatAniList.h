@@ -10,4 +10,5 @@
 
 @interface AtarashiiAPIListFormatAniList : NSObject
 + (id)AniListtoAtarashiiAnimeList:(id)data;
++ (id)AniListtoAtarashiiMangaList:(id)data;
 @end

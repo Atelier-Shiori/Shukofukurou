@@ -61,4 +61,55 @@
     }
     return @{@"anime" : tmparray, @"statistics" : @{@"days" : @([Utility calculatedays:tmparray])}};
 }
++ (id)AniListtoAtarashiiMangaList:(id)data {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *entry in data) {
+        @autoreleasepool{
+            AtarashiiMangaListObject *mentry = [AtarashiiMangaListObject new];
+            mentry.titleid = ((NSNumber *)entry[@"id"][@"id"]).intValue;
+            mentry.entryid = ((NSNumber *)entry[@"entryid"]).intValue;
+            mentry.title = entry[@"title"][@"title"][@"title"];
+            mentry.chapters = entry[@"chapters"][@"chapters"] != [NSNull null] ? ((NSNumber *)entry[@"chapters"][@"chapters"]).intValue : 0;
+            mentry.volumes = entry[@"volumes"][@"volumes"] != [NSNull null] ? ((NSNumber *)entry[@"volumes"][@"volumes"]).intValue : 0;
+            mentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
+            mentry.type = entry[@"type"][@"format"];
+            mentry.status = entry[@"status"][@"status"];
+            if ([mentry.status isEqualToString:@"FINISHED"]||[mentry.status isEqualToString:@"CANCELLED"]) {
+                mentry.status = @"finished";
+            }
+            else if ([mentry.status isEqualToString:@"RELEASING"]) {
+                mentry.status = @"publishing";
+            }
+            else if ([mentry.status isEqualToString:@"NOT_YET_RELEASED"]) {
+                mentry.status = @"not yet published";
+            }
+            mentry.score = ((NSNumber *)entry[@"score"]).intValue;
+            mentry.chapters_read = ((NSNumber *)entry[@"read_chapters"]).intValue;
+            mentry.volumes_read = ((NSNumber *)entry[@"read_volumes"]).intValue;
+            if ([(NSString *)entry[@"read_status"] isEqualToString:@"PAUSED"]) {
+                mentry.read_status = @"on-hold";
+            }
+            else if ([(NSString *)entry[@"read_status"] isEqualToString:@"PLANNING"]) {
+                mentry.read_status = @"plan to read";
+            }
+            else if ([(NSString *)entry[@"read_status"] isEqualToString:@"CURRENT"]) {
+                mentry.read_status = @"reading";
+            }
+            else if ([(NSString *)entry[@"read_status"] isEqualToString:@"REPEATING"]) {
+                mentry.read_status = @"reading";
+                mentry.rereading = true;
+            }
+            else {
+                mentry.read_status = ((NSString *)entry[@"read_status"]).lowercaseString;
+            }
+            mentry.reread_count =  ((NSNumber *)entry[@"rewatch_count"]).intValue;
+            mentry.private_entry =  ((NSNumber *)entry[@"private"]).boolValue;
+            mentry.personal_comments = entry[@"notes"];
+            mentry.reading_start = entry[@"read_start"][@"year"] != [NSNull null] && entry[@"read_start"][@"year"] != [NSNull null] && entry[@"read_start"][@"year"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",entry[@"read_start"][@"year"],entry[@"read_start"][@"month"],entry[@"read_start"][@"day"]] : @"";
+            mentry.reading_end = entry[@"read_end"][@"year"] != [NSNull null] && entry[@"read_end"][@"year"] != [NSNull null] && entry[@"read_end"][@"year"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",entry[@"read_end"][@"year"],entry[@"read_end"][@"month"],entry[@"read_end"][@"day"]] : @"";
+            [tmparray addObject:[mentry NSDictionaryRepresentation]];
+        }
+    }
+    return @{@"manga" : tmparray, @"statistics" : @{@"days" : @(0)}};
+}
 @end

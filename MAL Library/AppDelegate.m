@@ -547,5 +547,10 @@
             [Kitsu saveuserinfoforcurrenttoken];
         }
     }
+    if ([AniList getFirstAccount]) {
+        if (![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) {
+            [AniList saveuserinfoforcurrenttoken];
+        }
+    }
 }
 @end

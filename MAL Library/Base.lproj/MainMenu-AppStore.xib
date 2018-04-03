@@ -29,6 +29,7 @@
         <customObject id="O22-er-S4a" customClass="ListExporter"/>
         <customObject id="NCk-PM-EVr" customClass="servicemenucontroller">
             <connections>
+                <outlet property="anilistserviceitem" destination="ZDE-SI-S69" id="gdn-nL-gt6"/>
                 <outlet property="kitsuserviceitem" destination="sCe-nQ-b6W" id="PON-EA-IAs"/>
                 <outlet property="malserviceitem" destination="frr-T0-hoW" id="CNA-X9-58U"/>
                 <outlet property="servicemenu" destination="CWk-2N-5Ar" id="bSj-WS-vVk"/>
@@ -336,6 +337,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="setService:" target="NCk-PM-EVr" id="zhV-5q-vKY"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="AniList" tag="3" id="ZDE-SI-S69">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="NCk-PM-EVr" id="UBz-K3-QFY"/>
                                 </connections>
                             </menuItem>
                         </items>

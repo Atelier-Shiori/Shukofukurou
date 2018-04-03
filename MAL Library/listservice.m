@@ -158,6 +158,7 @@
             break;
         }
         case 3: {
+            [AniList verifyAccountWithPin:password completion:completionHandler error:errorHandler];
             break;
         }
     }
@@ -410,7 +411,7 @@
             return @"kitsu-history.json";
         }
         case 3: {
-            break;
+            return @"anilist-history.json";
         }
         default:
             break;
@@ -430,6 +431,8 @@
             return [Keychain getusername];
         case 2:
             return [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
+        case 3:
+            return [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
         default:
             break;
     }

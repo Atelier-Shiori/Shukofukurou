@@ -336,6 +336,12 @@
                                     <action selector="setService:" target="Soe-9M-Amc" id="DaX-0J-jFG"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="AniList" tag="3" id="EDO-26-kV2">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="setService:" target="Soe-9M-Amc" id="OO2-HG-Rdm"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -759,6 +765,7 @@
         <userDefaultsController representsSharedInstance="YES" id="kZr-4I-AQm"/>
         <customObject id="Soe-9M-Amc" customClass="servicemenucontroller">
             <connections>
+                <outlet property="anilistserviceitem" destination="EDO-26-kV2" id="uha-3S-rBE"/>
                 <outlet property="kitsuserviceitem" destination="Xpj-88-rLY" id="tRU-E7-sbQ"/>
                 <outlet property="malserviceitem" destination="DDy-su-2bd" id="xVU-9o-vVt"/>
                 <outlet property="servicemenu" destination="aod-zG-HhS" id="Qmj-fV-8Yt"/>

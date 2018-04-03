@@ -266,6 +266,14 @@
 		91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
 		91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
 		91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
+		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
+		F84BB9EC2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */; };
+		F84BB9ED2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */; };
+		F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
+		F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
+		F8A85912207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
+		F8A85913207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
 		F8B5AA912044813400132C51 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
 		F8B5AA922044813400132C51 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
 		F8B5AA952044888800132C51 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
@@ -569,6 +577,13 @@
 		91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageswindow.m; sourceTree = "<group>"; };
 		91DAFC611EAE6FA20037A6F2 /* messageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messageview.h; sourceTree = "<group>"; };
 		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
+		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
+		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
+		F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AniListAuthWindow.xib; sourceTree = "<group>"; };
+		F88CD0F92072BC330093C478 /* AniListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
+		F88CD0FA2072BC330093C478 /* AniListConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
+		F8A85910207023E40026EC0A /* AniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
+		F8A85911207023E40026EC0A /* AniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniList.m; sourceTree = "<group>"; };
 		F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
 		F8B5AA902044813400132C51 /* RatingTwentyConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
 		F8B5AA932044888800132C51 /* MyListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListScoreFormatter.h; sourceTree = "<group>"; };
@@ -785,12 +800,12 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
-				F8F9E0302061920E0083912B /* advancededitdialog.m */,
-				9169BC472062C3F700C534B8 /* advancededitdialog.xib */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
+				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
+				F8F9E0302061920E0083912B /* advancededitdialog.m */,
+				9169BC472062C3F700C534B8 /* advancededitdialog.xib */,
 				910589E81E981E1A00501B9A /* AdvancedPref.h */,
 				910589E91E981E1A00501B9A /* AdvancedPref.m */,
 				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
@@ -799,10 +814,17 @@
 				2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */,
 				91D094CD1E9876D8009454F8 /* AiringView.h */,
 				91D094CE1E9876D8009454F8 /* AiringView.m */,
+				F8A85910207023E40026EC0A /* AniList.h */,
+				F8A85911207023E40026EC0A /* AniList.m */,
+				F88CD0F92072BC330093C478 /* AniListConstants.h */,
+				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
 				2D0A64561F5B22A00001C906 /* AniListImport.h */,
 				2D0A64571F5B22A00001C906 /* AniListImport.m */,
 				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
+				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
+				F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */,
+				F84BB9E92073DE4B0056F5B0 /* AniListAuthWindow.xib */,
 				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
@@ -1177,6 +1199,7 @@
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
+				F84BB9ED2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */,
 				2D4E01101FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				2D4E01141FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
@@ -1229,6 +1252,7 @@
 				2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */,
 				2D8BF8B71EC4EED80068856A /* ImportPrompt.xib in Resources */,
+				F84BB9EC2073DE4B0056F5B0 /* AniListAuthWindow.xib in Resources */,
 				91822A601EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
 				2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */,
@@ -1319,6 +1343,7 @@
 				91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				91D094C41E983098009454F8 /* HistoryView.m in Sources */,
 				2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */,
+				F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */,
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
 				2D88CA6B1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
@@ -1327,6 +1352,7 @@
 				2D0A64591F5B22A00001C906 /* AniListImport.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				911E4F4B2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */,
+				F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */,
 				2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */,
 				2DA863F21F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				913A11681E8F206A00450B66 /* LoginPref.m in Sources */,
@@ -1353,6 +1379,7 @@
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
 				2D371E7C1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				91822A571EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
+				F8A85913207023E40026EC0A /* AniList.m in Sources */,
 				2D8BF8AC1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
@@ -1422,10 +1449,12 @@
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
 				F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */,
+				F8A85912207023E40026EC0A /* AniList.m in Sources */,
 				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
+				F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */,
 				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */,
 				2D42FA971F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
@@ -1444,6 +1473,7 @@
 				91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
+				F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */,
 				2DB444C41FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
 				2DB444BB1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,

@@ -8,6 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LoginPref">
             <connections>
+                <outlet property="anilistclearbut" destination="mdA-mp-yJB" id="NJk-QZ-Boi"/>
+                <outlet property="anilistloggedinuser" destination="SmV-em-iUC" id="ryg-0A-dKa"/>
+                <outlet property="anilistloggedinview" destination="rha-Lb-BT6" id="sHo-fY-wFp"/>
+                <outlet property="anilistloginview" destination="xgb-bn-58h" id="A97-7G-jUM"/>
                 <outlet property="clearbut" destination="41" id="44"/>
                 <outlet property="fieldpassword" destination="9" id="24"/>
                 <outlet property="fieldusername" destination="10" id="23"/>
@@ -304,6 +308,103 @@
                                             </textField>
                                         </subviews>
                                     </customView>
+                                </subviews>
+                            </view>
+                        </tabViewItem>
+                        <tabViewItem label="AniList" identifier="" id="yAz-OV-LXm">
+                            <view key="view" id="SHS-QF-aXE">
+                                <rect key="frame" x="10" y="33" width="373" height="183"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <view id="TJM-WX-5Ih">
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="183"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <customView hidden="YES" id="rha-Lb-BT6" userLabel="Logged in View">
+                                                <rect key="frame" x="-2" y="-3" width="376" height="184"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" id="8JA-TM-2kw">
+                                                        <rect key="frame" x="122" y="41" width="131" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Getting Started" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="PBg-U8-YKA">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="showgettingstartedpage:" target="-2" id="KIF-WE-CLZ"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" id="mdA-mp-yJB">
+                                                        <rect key="frame" x="140" y="71" width="96" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Logout" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tfy-Gn-owp">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="clearanilistlogin:" target="-2" id="Y0j-aT-K07"/>
+                                                        </connections>
+                                                    </button>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="mFB-YF-eYB">
+                                                        <rect key="frame" x="75" y="162" width="236" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Logged in as: " id="2sL-0d-0cm">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="SmV-em-iUC">
+                                                        <rect key="frame" x="20" y="139" width="340" height="17"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Username" id="cKt-b4-thX">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </customView>
+                                            <customView id="xgb-bn-58h" userLabel="Logged out View">
+                                                <rect key="frame" x="-2" y="-3" width="376" height="191"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" misplaced="YES" id="p9s-5n-Syx">
+                                                        <rect key="frame" x="128" y="42" width="118" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Register" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mZ6-0J-OBm">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="registerAnilist:" target="-2" id="fqO-0H-suX"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" misplaced="YES" id="0Ag-J5-nug">
+                                                        <rect key="frame" x="139" y="72" width="96" height="32"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="yF4-L8-MhH">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="authorize:" target="-2" id="OGJ-VS-6Vw"/>
+                                                        </connections>
+                                                    </button>
+                                                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="vNp-6a-aj0">
+                                                        <rect key="frame" x="13" y="139" width="353" height="42"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="To login to AniList, click the Authorize button." id="q6E-je-k3g">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                            </customView>
+                                        </subviews>
+                                    </view>
                                 </subviews>
                             </view>
                         </tabViewItem>

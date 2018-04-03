@@ -1,29 +1,30 @@
 //
-//  listservice.h
+//  AniList.h
 //  MAL Library
 //
-//  Created by 桐間紗路 on 2017/12/14.
-//  Copyright © 2017年 Atelier Shiori. All rights reserved.
+//  Created by 小鳥遊六花 on 3/31/18.
+//  Copyright © 2018 Atelier Shiori. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "MyAnimeList.h"
-#import "Kitsu.h"
-#import "AniList.h"
-#import "TitleIdConverter.h"
+@class AFOAuthCredential;
 
-@interface listservice : NSObject
-+ (int)getCurrentServiceID;
+@interface AniList : NSObject
+
+
+typedef NS_ENUM(unsigned int, AniListMediaType) {
+    AniListAnime = 0,
+    AniListManga = 1
+};
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
-+ (void)retrieveTitleInfo:(int)titleid withType:(int)type useAccount:(bool)useAccount completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
-+ (bool)verifyAccount;
-+ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
-+ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (bool)tokenexpired;
++ (void)verifyAccountWithPin:(NSString *)pin completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
@@ -36,11 +37,10 @@
 + (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
-+ (NSString *)retrieveListFileName:(int)type;
-+ (NSString *)retrieveListFileName:(int)type withServiceID:(int)serviceid;
-+ (id)retrieveHistoryFileName;
-+ (id)retrieveHistoryFileName:(int)serviceid;
-+ (bool)checkAccountForCurrentService;
-+ (NSString *)getCurrentServiceUsername;
-+ (NSString *)currentservicename;
++ (AFOAuthCredential *)getFirstAccount;
++ (bool)removeAccount;
++ (void)getOwnAnilistid:(void (^)(int userid, NSString *username, NSString *scoreformat)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getAniListUserid:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getUserRatingType:(void (^)(int scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)saveuserinfoforcurrenttoken;
 @end

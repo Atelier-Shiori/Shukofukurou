@@ -12,6 +12,7 @@
 
 @class AppDelegate;
 @class MainWindow;
+@class AniListAuthWindow;
 
 @interface LoginPref : NSViewController <MASPreferencesViewController>
 @property (strong) IBOutlet NSImageView *logo;
@@ -34,6 +35,13 @@
 @property (strong) IBOutlet NSTextField *kitsuloggedinuser;
 @property (strong) IBOutlet NSView *kitsuloginview;
 @property (strong) IBOutlet NSView *kitsuloggedinview;
+
+// Login Preference AniList
+@property (strong) IBOutlet NSButton *anilistclearbut;
+@property (strong) IBOutlet NSTextField *anilistloggedinuser;
+@property (strong) IBOutlet NSView *anilistloginview;
+@property (strong) IBOutlet NSView *anilistloggedinview;
+@property (strong) IBOutlet AniListAuthWindow *anilistauthw;
 
 - (id)initwithAppDelegate:(AppDelegate *)adelegate;
 - (IBAction)startlogin:(id)sender;

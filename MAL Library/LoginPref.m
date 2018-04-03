@@ -11,8 +11,9 @@
 #import "AppDelegate.h"
 #import "MainWindow.h"
 #import "Utility.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
+#import "AniListAuthWindow.h"
+
 @implementation LoginPref
 
 - (instancetype)init
@@ -78,6 +79,16 @@
         [_kitsuclearbut setEnabled: NO];
         [_kitsusavebut setEnabled: YES];
     }
+    if ([AniList getFirstAccount]) {
+        [_anilistclearbut setEnabled: YES];
+        [_anilistloggedinview setHidden:NO];
+        [_anilistloginview setHidden:YES];
+        _anilistloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
+    }
+    else {
+        //Disable Clearbut
+        [_anilistclearbut setEnabled: NO];
+    }
 }
 - (IBAction)startlogin:(id)sender
 {
@@ -124,6 +135,21 @@
         }
     }
 }
+- (IBAction)authorize:(id)sender {
+    if (!_anilistauthw) {
+        _anilistauthw = [AniListAuthWindow new];
+        [_anilistauthw.window makeKeyAndOrderFront:self];
+        [_anilistauthw close];
+    }
+    [_anilistauthw loadAuthorization];
+    [self.view.window beginSheet:_anilistauthw.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            NSString *pin = _anilistauthw.pin.copy;
+            _anilistauthw.pin = nil;
+            [self login:@"" password:pin withServiceID:3];
+        }
+    }];
+}
 - (void)login:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid {
     [_savebut setEnabled:NO];
     [listservice verifyAccountWithUsername:username password:password withServiceID:serviceid completion:^(id responseObject){
@@ -147,6 +173,12 @@
                 [_kitsuloggedinview setHidden:NO];
                 [_kitsuloginview setHidden:YES];
                 [_kitsusavebut setEnabled:YES];
+                break;
+            case 3:
+                [_anilistclearbut setEnabled: YES];
+                _anilistloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
+                [_anilistloggedinview setHidden:NO];
+                [_anilistloginview setHidden:YES];
                 break;
             default:
                 break;
@@ -210,6 +242,8 @@
 - (IBAction)registerKitsu:(id)sender {
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kitsu.io/"]];
 }
+- (IBAction)registerAnilist:(id)sender {
+}
 - (IBAction) showgettingstartedpage:(id)sender
 {
     //Show Getting Started help page
@@ -221,6 +255,9 @@
 }
 - (IBAction)clearkitsulogin:(id)sender {
     [self performClearLogin:2];
+}
+- (IBAction)clearanilistlogin:(id)sender {
+    [self performClearLogin:3];
 }
 - (void)performClearLogin:(int)service {
     // Set Up Prompt Message Window
@@ -241,6 +278,8 @@
                 case 2:
                     [Kitsu removeAccount];
                     break;
+                case 3:
+                    [AniList removeAccount];
                 default:
                     break;
             }
@@ -271,6 +310,12 @@
                     [_kitsuloginview setHidden:NO];
                     _kitsufieldusername.stringValue = @"";
                     _kitsufieldpassword.stringValue = @"";
+                    break;
+                case 3:
+                    [_anilistclearbut setEnabled: NO];
+                    _kitsuloggedinuser.stringValue = @"";
+                    [_anilistloggedinview setHidden:YES];
+                    [_anilistloginview setHidden:NO];
                     break;
                 default:
                     break;

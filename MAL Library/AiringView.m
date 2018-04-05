@@ -103,6 +103,12 @@
                     }];
                     break;
                 }
+                case 3: {
+                    [TitleIdConverter getAniIDFromMALListID:[NSString stringWithFormat:@"%@",d[@"id"]].intValue  withTitle:d[@"title"] titletype:d[@"type"] withType:MALAnime completionHandler:^(int anilistid) {
+                        [_mw loadinfo:@(anilistid) type:0 changeView:YES];
+                    } error:^(NSError *error) {
+                    }];
+                }
                 default:
                     break;
             }

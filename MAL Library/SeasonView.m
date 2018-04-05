@@ -48,6 +48,13 @@
                     }];
                     break;
                 }
+                case 3: {
+                    [TitleIdConverter getAniIDFromMALListID:[NSString stringWithFormat:@"%@",d[@"id"][@"id"]].intValue withTitle:d[@"title"] titletype:@"" withType:MALAnime completionHandler:^(int anilistid) {
+                        [_mw loadinfo:@(anilistid) type:0 changeView:YES];
+                    } error:^(NSError *error) {
+                        [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
+                    }];
+                }
                 default:
                     break;
             }

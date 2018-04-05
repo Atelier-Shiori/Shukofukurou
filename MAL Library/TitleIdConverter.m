@@ -170,6 +170,48 @@ static BOOL importing;
         }];
     }];
 }
++ (void)getAniIDFromMALListID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid && !importing)  {
+        return;
+    }
+    int tmpid = [self lookupTitleID:titleid withType:MALAnime fromService:1 toService:3];
+    if (tmpid > 0) {
+        completionHandler(tmpid);
+        return;
+    }
+    lookingupid = true;
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSString *typestr = @"";
+    switch (type) {
+        case 0:
+            typestr = @"ANIME";
+            break;
+        case 1:
+            typestr = @"MANGA";
+        default:
+            break;
+    }
+    NSDictionary *parameters = @{@"query": @"query ($id: Int!, $type: MediaType) {\n  Media(idMal: $id, type: $type) {\n    id\n    idMal\n  }\n}", @"variables" : @{@"id":@(titleid), @"type" : typestr}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [self savetitleidtomapping:titleid withNewID:((NSNumber *)responseObject[@"data"][@"Media"][@"id"]).intValue withType:MALAnime fromService:1 toService:3];
+        completionHandler(((NSNumber *)responseObject[@"data"][@"Media"][@"id"]).intValue);
+        lookingupid = false;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [self getserviceTitleIDFromServiceID:titleid withTitle:title titletype:titletype fromServiceID:1 completionHandler:^(int anilistid) {
+            if (anilistid > 0) {
+                [self savetitleidtomapping:titleid withNewID:anilistid withType:MALAnime fromService:1 toService:3];
+                completionHandler(anilistid);
+            }
+            else {
+                errorHandler(nil);
+            }
+            lookingupid = false;
+        } error:^(NSError *error) {
+            errorHandler(error);
+            lookingupid = false;
+        }];
+    }];
+}
 
 + (void)getMALIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (lookingupid && !importing)  {

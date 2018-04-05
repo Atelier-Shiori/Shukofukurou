@@ -126,7 +126,7 @@
     AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
     NSDictionary *title = data[@"data"][@"Media"];
     aobject.titleid = ((NSNumber *)title[@"id"]).intValue;
-    aobject.title = title[@"title"][@"userPreferred"];
+    aobject.title = title[@"title"][@"romaji"];
     // Create other titles
     aobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] ? @[title[@"title"][@"native"], title[@"title"][@"romaji"]] : @[title[@"title"][@"romaji"]] };
     aobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
@@ -193,7 +193,7 @@
     AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
     NSDictionary *title = data[@"data"][@"Media"];
     mobject.titleid = ((NSNumber *)title[@"id"]).intValue;
-    mobject.title = title[@"title"][@"userPreferred"];
+    mobject.title = title[@"title"][@"romaji"];
     // Create other titles
     mobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] ? @[title[@"title"][@"native"], title[@"title"][@"romaji"]] : @[title[@"title"][@"romaji"]] };
     mobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
@@ -246,7 +246,8 @@
         @autoreleasepool {
             AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
             aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
-            aobject.title = d[@"title"][@"userPreferred"];
+            aobject.title = d[@"title"][@"romaji"];
+            aobject.other_titles = @{@"synonyms" : d[@"synonyms"] , @"english" : d[@"d"][@"english"] != [NSNull null] ? @[d[@"d"][@"english"]] : @[], @"japanese" : d[@"d"][@"native"] != [NSNull null] ? @[d[@"d"][@"native"], d[@"d"][@"romaji"]] : @[d[@"d"][@"romaji"]] };
             aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
             aobject.status = d[@"status"];
             if ([aobject.status isEqualToString:@"FINISHED"]||[aobject.status isEqualToString:@"CANCELLED"]) {
@@ -272,7 +273,7 @@
         @autoreleasepool {
             AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
             mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
-            mobject.title = d[@"title"][@"userPreferred"];
+            mobject.title = d[@"title"][@"romaji"];
             mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
             mobject.status = d[@"status"];
             if ([mobject.status isEqualToString:@"FINISHED"]||[mobject.status isEqualToString:@"CANCELLED"]) {

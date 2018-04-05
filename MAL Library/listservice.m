@@ -99,6 +99,7 @@
             break;
         }
         case 3: {
+            [AniList retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default:

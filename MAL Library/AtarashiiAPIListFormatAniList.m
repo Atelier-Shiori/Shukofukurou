@@ -122,14 +122,13 @@
     }
     return @{@"manga" : tmparray, @"statistics" : @{@"days" : @(0)}};
 }
-+ (NSDictionary *)KitsuAnimeInfotoAtarashii:(NSDictionary *)data {
++ (NSDictionary *)AniListAnimeInfotoAtarashii:(NSDictionary *)data {
     AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
     NSDictionary *title = data[@"data"][@"Media"];
     aobject.titleid = ((NSNumber *)title[@"id"]).intValue;
     aobject.title = title[@"title"][@"userPreferred"];
     // Create other titles
-    aobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"titles"][@"english"] != [NSNull null] ? @[title[@"titles"][@"english"]] : @[], @"japanese" : title[@"titles"][@"native"] != [NSNull null] ? @[title[@"titles"][@"native"], title[@"romaji"]] : @[title[@"romaji"]] };
-    aobject.rank = title[@"ratingRank"] != [NSNull null] ? ((NSNumber *)title[@"ratingRank"]).intValue : 0;
+    aobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] ? @[title[@"title"][@"native"], title[@"title"][@"romaji"]] : @[title[@"title"][@"romaji"]] };
     aobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
     aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
     aobject.type = title[@"format"];
@@ -138,7 +137,7 @@
     aobject.end_date = title[@"endDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"endDate"][@"year"],title[@"endDate"][@"month"],title[@"endDate"][@"day"]] : @"";
     aobject.duration = title[@"duration"] != [NSNull null] ? ((NSNumber *)title[@"duration"]).intValue : 0;
     aobject.classification = @"";
-    aobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"synopsis"] : @"Synopsis not available for adult titles";
+    aobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] : @"Synopsis not available for adult titles";
     aobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
     NSString *tmpstatus = title[@"status"];
     if ([tmpstatus isEqualToString:@"FINISHED"]||[tmpstatus isEqualToString:@"CANCELLED"]) {
@@ -156,29 +155,89 @@
         [genres addObject:genre];
     }
     aobject.genres = genres;
-    aobject.mappings = @{@"myanimelist/anime" : title[@"malId"]};
+    if (title[@"idMal"]) {
+        aobject.mappings = @{@"myanimelist/anime" : title[@"idMal"]};
+    }
     NSMutableArray *mangaadaptations = [NSMutableArray new];
-    for (NSDictionary *adpt in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", "ADAPTATION"]]) {
+    for (NSDictionary *adpt in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", @"ADAPTATION"]]) {
         if ([(NSString *)adpt[@"node"][@"type"] isEqualToString:@"MANGA"]) {
             [mangaadaptations addObject: @{@"manga_id": adpt[@"node"][@"id"], @"title" : adpt[@"node"][@"title"][@"romaji"]}];
         }
     }
     NSMutableArray *sidestories = [NSMutableArray new];
-    for (NSDictionary *side in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", "SIDE_STORY"]]) {
+    for (NSDictionary *side in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", @"SIDE_STORY"]]) {
         if ([(NSString *)side[@"node"][@"type"] isEqualToString:@"ANIME"]) {
             [sidestories addObject: @{@"anime_id": side[@"node"][@"id"], @"title" : side[@"node"][@"title"][@"romaji"]}];
         }
     }
     NSMutableArray *sequels = [NSMutableArray new];
-    for (NSDictionary *sequel in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", "SEQUEL"]]) {
+    for (NSDictionary *sequel in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", @"SEQUEL"]]) {
         if ([(NSString *)sequel[@"node"][@"type"] isEqualToString:@"ANIME"]) {
             [sequels addObject: @{@"anime_id": sequel[@"node"][@"id"], @"title" : sequel[@"node"][@"title"][@"romaji"]}];
+        }
+    }
+    NSMutableArray *prequels = [NSMutableArray new];
+    for (NSDictionary *prequel in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", @"PREQUEL"]]) {
+        if ([(NSString *)prequel[@"node"][@"type"] isEqualToString:@"ANIME"]) {
+            [prequels addObject: @{@"anime_id": prequel[@"node"][@"id"], @"title" : prequel[@"node"][@"title"][@"romaji"]}];
         }
     }
     aobject.manga_adaptations = mangaadaptations;
     aobject.side_stories = sidestories;
     aobject.sequels = sequels;
+    aobject.prequels = prequels;
+
     return aobject.NSDictionaryRepresentation;
+}
++ (NSDictionary *)AniListMangaInfotoAtarashii:(NSDictionary *)data {
+    AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
+    NSDictionary *title = data[@"data"][@"Media"];
+    mobject.titleid = ((NSNumber *)title[@"id"]).intValue;
+    mobject.title = title[@"title"][@"userPreferred"];
+    // Create other titles
+    mobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] ? @[title[@"title"][@"native"], title[@"title"][@"romaji"]] : @[title[@"title"][@"romaji"]] };
+    mobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
+    mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
+    mobject.type = title[@"format"];
+    mobject.chapters = title[@"chapters"] != [NSNull null] ? ((NSNumber *)title[@"chapters"]).intValue : 0;
+    mobject.volumes = title[@"volumes"] != [NSNull null] ? ((NSNumber *)title[@"volumes"]).intValue : 0;
+    mobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] : @"Synopsis not available for adult titles";
+    mobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
+    NSString *tmpstatus = title[@"status"];
+    if ([tmpstatus isEqualToString:@"FINISHED"]||[tmpstatus isEqualToString:@"CANCELLED"]) {
+        tmpstatus = @"finished";
+    }
+    else if ([tmpstatus isEqualToString:@"RELEASING"]) {
+        tmpstatus = @"publishing";
+    }
+    else if ([tmpstatus isEqualToString:@"NOT_YET_RELEASED"]) {
+        tmpstatus = @"not yet published";
+    }
+    mobject.status = tmpstatus;
+    NSMutableArray *genres = [NSMutableArray new];
+    for (NSString *genre in title[@"genres"]) {
+        [genres addObject:genre];
+    }
+    mobject.genres = genres;
+    if (title[@"idMal"]) {
+        mobject.mappings = @{@"myanimelist/manga" : title[@"idMal"]};
+    }
+    NSMutableArray *animeadaptations = [NSMutableArray new];
+    for (NSDictionary *adpt in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", @"ADAPTATION"]]) {
+        if ([(NSString *)adpt[@"node"][@"type"] isEqualToString:@"ANIME"]) {
+            [animeadaptations addObject: @{@"anime_id": adpt[@"node"][@"id"], @"title" : adpt[@"node"][@"title"][@"romaji"]}];
+        }
+    }
+    NSMutableArray *alternativestories = [NSMutableArray new];
+    for (NSDictionary *alt in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", @"ALTERNATIVE"]]) {
+        if ([(NSString *)alt[@"node"][@"type"] isEqualToString:@"MANGA"]) {
+            [alternativestories addObject: @{@"manga_id": alt[@"node"][@"id"], @"title" : alt[@"node"][@"title"][@"romaji"]}];
+        }
+    }
+    mobject.anime_adaptations = animeadaptations;
+    mobject.alternative_versions = alternativestories;
+    
+    return mobject.NSDictionaryRepresentation;
 }
 + (NSArray *)AniListAnimeSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"][@"Page"][@"media"];

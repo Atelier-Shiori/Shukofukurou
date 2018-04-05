@@ -75,8 +75,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
                 completionHandler([AtarashiiAPIListFormatAniList AniListtoAtarashiiAnimeList:tmparray]);
                 break;
             case AniListManga:
-                // TODO: Manga List conversion
-                //        completionHandler([AtarashiiAPIListFormatAniList AniListtoAtarashiiAnimeList:tmparray]);
+                completionHandler([AtarashiiAPIListFormatAniList AniListtoAtarashiiMangaList:tmparray]);
                 break;
             default:
                 errorHandler(nil);

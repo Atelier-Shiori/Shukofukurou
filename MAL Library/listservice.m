@@ -421,7 +421,7 @@
 }
 + (bool)checkAccountForCurrentService {
     int service = [listservice getCurrentServiceID];
-    if ((![Keychain checkaccount] && service == 1) || (![Kitsu getFirstAccount] && service == 2)) {
+    if ((![Keychain checkaccount] && service == 1) || (![Kitsu getFirstAccount] && service == 2) || (![AniList getFirstAccount] && service == 3)) {
         return false;
     }
     return true;

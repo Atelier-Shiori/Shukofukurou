@@ -15,6 +15,11 @@
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *entry in data) {
         @autoreleasepool{
+            // Prevent duplicates
+            if ([tmparray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"entryid == %i", ((NSNumber *)entry[@"entryid"]).intValue]].count > 0) {
+                continue;
+            }
+            // Create the entry in a standardized format
             AtarashiiAnimeListObject *aentry = [AtarashiiAnimeListObject new];
             aentry.titleid = ((NSNumber *)entry[@"id"][@"id"]).intValue;
             aentry.entryid = ((NSNumber *)entry[@"entryid"]).intValue;
@@ -65,6 +70,11 @@
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *entry in data) {
         @autoreleasepool{
+            // Prevent duplicates
+            if ([tmparray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"entryid == %i", ((NSNumber *)entry[@"entryid"]).intValue]].count > 0) {
+                continue;
+            }
+            // Create the entry in a standardized format
             AtarashiiMangaListObject *mentry = [AtarashiiMangaListObject new];
             mentry.titleid = ((NSNumber *)entry[@"id"][@"id"]).intValue;
             mentry.entryid = ((NSNumber *)entry[@"entryid"]).intValue;

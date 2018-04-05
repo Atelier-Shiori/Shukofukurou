@@ -282,6 +282,8 @@
 		F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
 		F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
 		F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
+		F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */; };
+		F8F0482120767DF600DAAD57 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */; };
 		F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
 		F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
 /* End PBXBuildFile section */
@@ -592,6 +594,8 @@
 		F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherUserListScoreFormatter.m; sourceTree = "<group>"; };
 		F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdConverter.h; sourceTree = "<group>"; };
 		F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdConverter.m; sourceTree = "<group>"; };
+		F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListScoreConvert.h; sourceTree = "<group>"; };
+		F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListScoreConvert.m; sourceTree = "<group>"; };
 		F8F9E02F2061920E0083912B /* advancededitdialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = advancededitdialog.h; sourceTree = "<group>"; };
 		F8F9E0302061920E0083912B /* advancededitdialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advancededitdialog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -892,6 +896,8 @@
 				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
 				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
 				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
+				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
+				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
 				2D7877741F87E44000AD40F1 /* MyListView.h */,
 				2D7877751F87E44000AD40F1 /* MyListView.m */,
 				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
@@ -1372,6 +1378,7 @@
 				2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */,
 				91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */,
+				F8F0482120767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				2D6ECA351F2E9B20003C455E /* NSString_stripHtml.m in Sources */,
 				2DA863EB1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
@@ -1439,6 +1446,7 @@
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
+				F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
 				2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */,
 				91999D081E8C81580026D3E9 /* SeasonView.m in Sources */,
 				9199BAD61E89842400F6E9FF /* LoginPref.m in Sources */,

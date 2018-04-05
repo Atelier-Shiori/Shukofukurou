@@ -9,6 +9,7 @@
 #import "MyListScoreFormatter.h"
 #import "listservice.h"
 #import "RatingTwentyConvert.h"
+#import "AniListScoreConvert.h"
 
 @implementation MyListScoreFormatter
 + (Class)transformedValueClass {
@@ -25,6 +26,8 @@
                 return @(rating).stringValue;
             case 2:
                 return [RatingTwentyConvert convertRatingTwentyToActualScore:rating scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]];
+            case 3:
+                return [AniListScoreConvert convertAniListScoreToActualScore:rating withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]];
             default:
                 break;
         }

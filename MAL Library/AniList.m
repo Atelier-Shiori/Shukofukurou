@@ -380,8 +380,8 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     }
     NSDictionary *parameters = @{@"query" : kAnilistUsernametoUserId, @"variables" : @{@"name" : username}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        if (responseObject[@"data"][@"user"] != [NSNull null]) {
-            completionHandler(((NSNumber *)responseObject[@"data"][@"user"][@"id"]).intValue);
+        if (responseObject[@"data"][@"User"] != [NSNull null]) {
+            completionHandler(((NSNumber *)responseObject[@"data"][@"User"][@"id"]).intValue);
         }
         else {
             completionHandler(-1);

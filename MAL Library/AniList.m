@@ -95,11 +95,10 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     NSDictionary *parameters = @{@"query" : kAnilisttitlesearch, @"variables" : @{@"query" : searchterm, @"type" : type == AniListAnime ? @"ANIME" : @"MANGA"}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (type == AniListAnime) {
-            // To Do ; Search
-            //completionHandler([AtarashiiAPIListFormatKitsu KitsuAnimeSearchtoAtarashii:@{@"data":responseObject[@"data"][@"Page"][@"media"]}]);
+            completionHandler([AtarashiiAPIListFormatAniList AniListAnimeSearchtoAtarashii:responseObject]);
         }
         else if (type == AniListManga) {
-            //completionHandler([AtarashiiAPIListFormatKitsu KitsuMangaSearchtoAtarashii:@{@"data":responseObject[@"data"][@"Page"][@"media"]}]);
+            completionHandler([AtarashiiAPIListFormatAniList AniListMangaSearchtoAtarashii:responseObject]);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);

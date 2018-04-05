@@ -124,7 +124,7 @@
 }
 
 + (NSArray *)AniListAnimeSearchtoAtarashii:(NSDictionary *)data {
-    NSArray *dataarray = data[@"data"][@"page"][@"media"];
+    NSArray *dataarray = data[@"data"][@"Page"][@"media"];
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *d in dataarray) {
         @autoreleasepool {
@@ -151,7 +151,7 @@
 }
 
 + (NSArray *)AniListMangaSearchtoAtarashii:(NSDictionary *)data {
-    NSArray *dataarray = data[@"data"][@"page"][@"media"];
+    NSArray *dataarray = data[@"data"][@"Page"][@"media"];
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *d in dataarray) {
         @autoreleasepool {

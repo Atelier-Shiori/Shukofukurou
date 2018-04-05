@@ -65,6 +65,7 @@
             break;
         }
         case 3: {
+            [AniList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default:

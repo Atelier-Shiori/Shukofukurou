@@ -122,7 +122,64 @@
     }
     return @{@"manga" : tmparray, @"statistics" : @{@"days" : @(0)}};
 }
-
++ (NSDictionary *)KitsuAnimeInfotoAtarashii:(NSDictionary *)data {
+    AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
+    NSDictionary *title = data[@"data"][@"Media"];
+    aobject.titleid = ((NSNumber *)title[@"id"]).intValue;
+    aobject.title = title[@"title"][@"userPreferred"];
+    // Create other titles
+    aobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"titles"][@"english"] != [NSNull null] ? @[title[@"titles"][@"english"]] : @[], @"japanese" : title[@"titles"][@"native"] != [NSNull null] ? @[title[@"titles"][@"native"], title[@"romaji"]] : @[title[@"romaji"]] };
+    aobject.rank = title[@"ratingRank"] != [NSNull null] ? ((NSNumber *)title[@"ratingRank"]).intValue : 0;
+    aobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
+    aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
+    aobject.type = title[@"format"];
+    aobject.episodes = title[@"episodes"] != [NSNull null] ? ((NSNumber *)title[@"episodes"]).intValue : 0;
+    aobject.start_date = title[@"startDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"startDate"][@"year"],title[@"startDate"][@"month"],title[@"startDate"][@"day"]] : @"";
+    aobject.end_date = title[@"endDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"endDate"][@"year"],title[@"endDate"][@"month"],title[@"endDate"][@"day"]] : @"";
+    aobject.duration = title[@"duration"] != [NSNull null] ? ((NSNumber *)title[@"duration"]).intValue : 0;
+    aobject.classification = @"";
+    aobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"synopsis"] : @"Synopsis not available for adult titles";
+    aobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
+    NSString *tmpstatus = title[@"status"];
+    if ([tmpstatus isEqualToString:@"FINISHED"]||[tmpstatus isEqualToString:@"CANCELLED"]) {
+        tmpstatus = @"finished airing";
+    }
+    else if ([tmpstatus isEqualToString:@"RELEASING"]) {
+        tmpstatus = @"currently airing";
+    }
+    else if ([tmpstatus isEqualToString:@"NOT_YET_RELEASED"]) {
+        tmpstatus = @"not yet aired";
+    }
+    aobject.status = tmpstatus;
+    NSMutableArray *genres = [NSMutableArray new];
+    for (NSString *genre in title[@"genres"]) {
+        [genres addObject:genre];
+    }
+    aobject.genres = genres;
+    aobject.mappings = @{@"myanimelist/anime" : title[@"malId"]};
+    NSMutableArray *mangaadaptations = [NSMutableArray new];
+    for (NSDictionary *adpt in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", "ADAPTATION"]]) {
+        if ([(NSString *)adpt[@"node"][@"type"] isEqualToString:@"MANGA"]) {
+            [mangaadaptations addObject: @{@"manga_id": adpt[@"node"][@"id"], @"title" : adpt[@"node"][@"title"][@"romaji"]}];
+        }
+    }
+    NSMutableArray *sidestories = [NSMutableArray new];
+    for (NSDictionary *side in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", "SIDE_STORY"]]) {
+        if ([(NSString *)side[@"node"][@"type"] isEqualToString:@"ANIME"]) {
+            [sidestories addObject: @{@"anime_id": side[@"node"][@"id"], @"title" : side[@"node"][@"title"][@"romaji"]}];
+        }
+    }
+    NSMutableArray *sequels = [NSMutableArray new];
+    for (NSDictionary *sequel in [(NSArray *)title[@"relations"][@"edges"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"relationType == %@", "SEQUEL"]]) {
+        if ([(NSString *)sequel[@"node"][@"type"] isEqualToString:@"ANIME"]) {
+            [sequels addObject: @{@"anime_id": sequel[@"node"][@"id"], @"title" : sequel[@"node"][@"title"][@"romaji"]}];
+        }
+    }
+    aobject.manga_adaptations = mangaadaptations;
+    aobject.side_stories = sidestories;
+    aobject.sequels = sequels;
+    return aobject.NSDictionaryRepresentation;
+}
 + (NSArray *)AniListAnimeSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"][@"Page"][@"media"];
     NSMutableArray *tmparray = [NSMutableArray new];
@@ -149,7 +206,6 @@
     }
     return tmparray;
 }
-
 + (NSArray *)AniListMangaSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"][@"Page"][@"media"];
     NSMutableArray *tmparray = [NSMutableArray new];

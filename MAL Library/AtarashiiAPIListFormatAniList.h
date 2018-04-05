@@ -11,6 +11,7 @@
 @interface AtarashiiAPIListFormatAniList : NSObject
 + (id)AniListtoAtarashiiAnimeList:(id)data;
 + (id)AniListtoAtarashiiMangaList:(id)data;
++ (NSDictionary *)KitsuAnimeInfotoAtarashii:(NSDictionary *)data;
 + (NSArray *)AniListAnimeSearchtoAtarashii:(NSDictionary *)data;
 + (NSArray *)AniListMangaSearchtoAtarashii:(NSDictionary *)data;
 @end

@@ -112,4 +112,59 @@
     }
     return @{@"manga" : tmparray, @"statistics" : @{@"days" : @(0)}};
 }
+
++ (NSArray *)AniListAnimeSearchtoAtarashii:(NSDictionary *)data {
+    NSArray *dataarray = data[@"data"][@"page"][@"media"];
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *d in dataarray) {
+        @autoreleasepool {
+            AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
+            aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
+            aobject.title = d[@"title"][@"userPreferred"];
+            aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            aobject.status = d[@"status"];
+            if ([aobject.status isEqualToString:@"FINISHED"]||[aobject.status isEqualToString:@"CANCELLED"]) {
+                aobject.status = @"finished airing";
+            }
+            else if ([aobject.status isEqualToString:@"RELEASING"]) {
+                aobject.status = @"currently airing";
+            }
+            else if ([aobject.status isEqualToString:@"NOT_YET_RELEASED"]) {
+                aobject.status = @"not yet aired";
+            }
+            aobject.episodes = d[@"episodes"] != [NSNull null] ? ((NSNumber *)d[@"episodes"]).intValue : 0;
+            aobject.type = d[@"format"];
+            [tmparray addObject:aobject.NSDictionaryRepresentation];
+        }
+    }
+    return tmparray;
+}
+
++ (NSArray *)AniListMangaSearchtoAtarashii:(NSDictionary *)data {
+    NSArray *dataarray = data[@"data"][@"page"][@"media"];
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *d in dataarray) {
+        @autoreleasepool {
+            AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
+            mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
+            mobject.title = d[@"title"][@"userPreferred"];
+            mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            mobject.status = d[@"status"];
+            if ([mobject.status isEqualToString:@"FINISHED"]||[mobject.status isEqualToString:@"CANCELLED"]) {
+                mobject.status = @"finished";
+            }
+            else if ([mobject.status isEqualToString:@"RELEASING"]) {
+                mobject.status = @"publishing";
+            }
+            else if ([mobject.status isEqualToString:@"NOT_YET_RELEASED"]) {
+                mobject.status = @"not yet published";
+            }
+            mobject.chapters = d[@"chapters"] != [NSNull null] ? ((NSNumber *)d[@"chapters"]).intValue : 0;
+            mobject.volumes = d[@"volumes"] != [NSNull null] ? ((NSNumber *)d[@"volumes"]).intValue : 0;
+            mobject.type = d[@"format"];
+            [tmparray addObject:mobject.NSDictionaryRepresentation];
+        }
+    }
+    return tmparray;
+}
 @end

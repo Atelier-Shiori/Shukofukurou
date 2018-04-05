@@ -22,6 +22,11 @@ The Preferences window allows you to change various settings
 
 Allows you to login or log out of your account. Credentials are saved in the login Keychain. Credentials are checked every 24 hours to make sure they are valid. If they become invalid, you have to log out and login again.
 
+For Kitsu and AniList, no user credentials are saved. Instead, OAuth is used to retrieve a token, which works the same as a username and password.
+
+### Note
+* If you are having trouble logging into Kitsu, use your profile name instead.
+
 ## Software Updates (Non-Appstore Version)
 ![](su.jpg)
 * Automatically Check for Updates - MAL Library will check for new updates automatically

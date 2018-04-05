@@ -3,7 +3,7 @@ title: App Store Version
 description: About App Store Version
 keywords: app store version, app store
 ---
-While MAL Library is free and open source software, substaining development costs from hosting the Atarashii-API and maintaining the Apple Developer Program costs money and we rely on donations to keep the application running and distribute a free version. The free version only have the core features found in most Anime tracking programs such as Anime List managmeent, searching and viewing of Anime Titles, Anime Statistics, Messages, Viewing Reviews, and Importing lists from AniDB, Kitsn and Anilist.
+While MAL Library is free and open source software, substaining development costs from hosting the Atarashii-API and maintaining the Apple Developer Program costs money and we rely on donations to keep the application running and distribute a free version. The free version only have the core features found in most Anime tracking programs such as Anime List managmeent, searching and viewing of Anime Titles, Anime Statistics, Messages, Viewing Reviews, and Importing lists from AniDB, Kitsu and Anilist. We reserve certain features that take a lot of effort to develop for people who donated to the projec so they can recieve some thing in return.
 
 This only applies if you didn't download MAL Library from the Mac App Store. The extra features are usually reserved for people who decide to donate to the project.
 

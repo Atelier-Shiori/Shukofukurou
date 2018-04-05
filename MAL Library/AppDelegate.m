@@ -551,6 +551,9 @@
         if (![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) {
             [AniList saveuserinfoforcurrenttoken];
         }
+        else if (((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0) {
+            [AniList saveuserinfoforcurrenttoken];
+        }
     }
 }
 @end

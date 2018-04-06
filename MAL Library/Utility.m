@@ -426,4 +426,11 @@
     duration = (duration/60)/24;
     return duration;
 }
+
++ (NSString *)dateIntervalToDateString:(double)timeinterval {
+    NSDate *aDate = [NSDate dateWithTimeIntervalSince1970:timeinterval];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    dateFormatter.dateFormat = @"YYYY-MM-dd";
+    return [dateFormatter stringFromDate:aDate];
+}
 @end

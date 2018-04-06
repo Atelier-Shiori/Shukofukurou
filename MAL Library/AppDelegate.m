@@ -247,6 +247,13 @@
             }
             break;
         }
+        case 3: {
+            if (![AniList getFirstAccount]) {
+                [self showloginnotice];
+                return;
+            }
+            break;
+        }
         default:
             return;
     }
@@ -322,11 +329,15 @@
     switch (selected) {
         case 1:
             _importkitsumenu.hidden = false;
+            _importanilist.hidden = false;
             break;
         case 2:
             _importkitsumenu.hidden = true;
+            _importanilist.hidden = false;
             break;
         case 3:
+            _importkitsumenu.hidden = false;
+            _importanilist.hidden = true;
             break;
         default:
             break;

@@ -13,6 +13,7 @@
 #import "ProfileWindowController.h"
 #import "listservice.h"
 #import "RatingTwentyConvert.h"
+#import "AniListScoreConvert.h"
 
 @interface ReviewView ()
 @property (strong) NSString *profile_username;
@@ -40,12 +41,21 @@
     switch (currentservice) {
         case 1:
         case 3:
-            _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@", review[@"rating"]];
+            if (currentservice == 1) {
+                _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@", review[@"rating"]];
+                _episodeswatched.hidden = false;
+            
+            }
+            else {
+                _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@", [AniListScoreConvert convertAniListScoreToActualScore:((NSNumber *)review[@"rating"]).intValue withScoreType:[NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"]]];
+                _episodeswatched.hidden = true;
+            }
             _reviewdatelabel.stringValue = [NSString stringWithFormat:@"Reviewed on %@", [Utility stringDatetoLocalizedDateString:(NSString *)review[@"date"]]];
             break;
         case 2:
             _reviewerscore.stringValue = [NSString stringWithFormat:@"Score: %@",  [RatingTwentyConvert convertRatingTwentyToActualScore:((NSNumber *)review[@"rating"]).intValue scoretype:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]]];
             _reviewdatelabel.stringValue = [NSString stringWithFormat:@"Reacted on %@", [Utility stringDatetoLocalizedDateString:(NSString *)review[@"date"]]];
+            _episodeswatched.hidden = false;
             break;
         default:
             break;

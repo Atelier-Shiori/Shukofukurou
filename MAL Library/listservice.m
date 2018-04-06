@@ -117,6 +117,7 @@
             break;
         }
         case 3: {
+            [AniList retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
     }

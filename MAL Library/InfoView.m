@@ -349,6 +349,16 @@
             }
             break;
         }
+        case 3: {
+            if (_type == AnimeType){
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",_selectedid]]];
+            }
+            else {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/manga/%i",_selectedid]]];
+            }
+            break;
+        }
+            
         default:
             break;
     }

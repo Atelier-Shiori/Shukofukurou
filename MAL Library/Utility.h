@@ -41,4 +41,5 @@
 + (AFJSONRequestSerializer *)jsonrequestserializer;
 + (AFHTTPRequestSerializer *)httprequestserializer;
 + (double)calculatedays:(NSArray *)list;
++ (NSString *)dateIntervalToDateString:(double)timeinterval;
 @end

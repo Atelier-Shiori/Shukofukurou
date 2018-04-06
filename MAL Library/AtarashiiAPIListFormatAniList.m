@@ -128,7 +128,7 @@
     aobject.titleid = ((NSNumber *)title[@"id"]).intValue;
     aobject.title = title[@"title"][@"romaji"];
     // Create other titles
-    aobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] ? @[title[@"title"][@"native"], title[@"title"][@"romaji"]] : @[title[@"title"][@"romaji"]] };
+    aobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] && title[@"title"][@"english"] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] && title[@"title"][@"native"] ? @[title[@"title"][@"native"]] : @[] };
     aobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
     aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
     aobject.type = title[@"format"];
@@ -195,7 +195,7 @@
     mobject.titleid = ((NSNumber *)title[@"id"]).intValue;
     mobject.title = title[@"title"][@"romaji"];
     // Create other titles
-    mobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] ? @[title[@"title"][@"native"], title[@"title"][@"romaji"]] : @[title[@"title"][@"romaji"]] };
+    mobject.other_titles = @{@"synonyms" : title[@"synonyms"] , @"english" : title[@"title"][@"english"] != [NSNull null] && title[@"title"][@"english"] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] && title[@"title"][@"native"] ? @[title[@"title"][@"native"]] : @[] };
     mobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
     mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
     mobject.type = title[@"format"];
@@ -247,7 +247,7 @@
             AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
             aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             aobject.title = d[@"title"][@"romaji"];
-            aobject.other_titles = @{@"synonyms" : d[@"synonyms"] , @"english" : d[@"d"][@"english"] != [NSNull null] ? @[d[@"d"][@"english"]] : @[], @"japanese" : d[@"d"][@"native"] != [NSNull null] ? @[d[@"d"][@"native"], d[@"d"][@"romaji"]] : @[d[@"d"][@"romaji"]] };
+            aobject.other_titles = @{@"synonyms" : d[@"synonyms"] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
             aobject.status = d[@"status"];
             if ([aobject.status isEqualToString:@"FINISHED"]||[aobject.status isEqualToString:@"CANCELLED"]) {
@@ -274,6 +274,7 @@
             AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
             mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             mobject.title = d[@"title"][@"romaji"];
+            mobject.other_titles = @{@"synonyms" : d[@"synonyms"] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
             mobject.status = d[@"status"];
             if ([mobject.status isEqualToString:@"FINISHED"]||[mobject.status isEqualToString:@"CANCELLED"]) {
@@ -289,6 +290,25 @@
             mobject.volumes = d[@"volumes"] != [NSNull null] ? ((NSNumber *)d[@"volumes"]).intValue : 0;
             mobject.type = d[@"format"];
             [tmparray addObject:mobject.NSDictionaryRepresentation];
+        }
+    }
+    return tmparray;
+}
++ (NSArray *)AniListReviewstoAtarashii:(NSArray *)reviews withType:(int)type {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *review in reviews) {
+        @autoreleasepool {
+            AtarashiiReviewObject *nreview = [AtarashiiReviewObject new];
+            nreview.mediatype = type;
+            nreview.date = [Utility dateIntervalToDateString:((NSNumber *)review[@"createdAt"]).doubleValue];
+            nreview.rating = ((NSNumber *)review[@"score"]).intValue;
+            nreview.helpful = ((NSNumber *)review[@"rating"]).intValue;
+            nreview.helpful_total = ((NSNumber *)review[@"rating"]).intValue;
+            nreview.avatar_url = review[@"user"][@"avatar"] != [NSNull null] && review[@"user"][@"avatar"][@"large"] ? review[@"user"][@"avatar"][@"large"] : @"";
+            nreview.review = review[@"body"];
+            nreview.actual_username = review[@"user"][@"name"];
+            nreview.username = nreview.actual_username;
+            [tmparray addObject:nreview.NSDictionaryRepresentation];
         }
     }
     return tmparray;

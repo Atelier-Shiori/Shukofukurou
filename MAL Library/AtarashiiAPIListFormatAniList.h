@@ -15,4 +15,5 @@
 + (NSDictionary *)AniListMangaInfotoAtarashii:(NSDictionary *)data;
 + (NSArray *)AniListAnimeSearchtoAtarashii:(NSDictionary *)data;
 + (NSArray *)AniListMangaSearchtoAtarashii:(NSDictionary *)data;
++ (NSArray *)AniListReviewstoAtarashii:(NSArray *)reviews withType:(int)type;
 @end

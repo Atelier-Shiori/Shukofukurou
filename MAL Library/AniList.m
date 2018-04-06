@@ -126,25 +126,23 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
 #pragma mark Reviews
 + (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *dataarray = [NSMutableArray new];
-    NSMutableArray *includearray = [NSMutableArray new];
-    [self retrieveReviewsForTitle:titleid withType:type withDataArray:dataarray withIncludeArray:includearray withPageOffset:0 completion:completionHandler error:errorHandler];
+    [self retrieveReviewsForTitle:titleid withType:type withDataArray:dataarray withPageOffset:0 completion:completionHandler error:errorHandler];
 }
 
-+ (void)retrieveReviewsForTitle:(int)titleid withType:(int)type withDataArray:(NSMutableArray *)dataarray withIncludeArray:(NSMutableArray *)includearray withPageOffset:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)retrieveReviewsForTitle:(int)titleid withType:(int)type withDataArray:(NSMutableArray *)dataarray withPageOffset:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     NSDictionary *parameters;
     parameters = @{@"query" : kAnilistreviewbytitleid,@"variables" : @{@"id" : @(titleid), @"page" : @(offset)}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
-            [dataarray addObjectsFromArray:responseObject[@"data"]];
-            [includearray addObjectsFromArray:responseObject[@"included"]];
+            [dataarray addObjectsFromArray:responseObject[@"data"][@"Page"][@"reviews"]];
         }
-        if (responseObject[@"links"][@"next"]) {
-            int newoffset = offset + 20;
-            [self retrieveReviewsForTitle:titleid withType:type withDataArray:dataarray withIncludeArray:includearray withPageOffset:newoffset completion:completionHandler error:errorHandler];
+        if (((NSNumber *)responseObject[@"Page"][@"pageInfo"][@"hasNextPage"]).boolValue) {
+            int newoffset = offset + 1;
+            [self retrieveReviewsForTitle:titleid withType:type withDataArray:dataarray withPageOffset:newoffset completion:completionHandler error:errorHandler];
         }
         else {
-            //completionHandler([AtarashiiAPIListFormatKitsu KitsuReactionstoAtarashii:@{@"data" : dataarray, @"included" : includearray} withType:type]);
+            completionHandler([AtarashiiAPIListFormatAniList AniListReviewstoAtarashii:dataarray withType:type]);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);

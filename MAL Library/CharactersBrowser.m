@@ -8,7 +8,6 @@
 
 #import "CharactersBrowser.h"
 #import "CharacterView.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
@@ -267,22 +266,56 @@
 }
 
 - (IBAction)vieonmal:(id)sender {
-    if (_characterviewcontroller.persontype == PersonCharacter) {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i",_characterviewcontroller.selectedid]]];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (_characterviewcontroller.persontype == PersonCharacter) {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i",_characterviewcontroller.selectedid]]];
+            }
+            else {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/people/%i",_characterviewcontroller.selectedid]]];
+            }
+            break;
+        }
+        case 2: {
+            break;
+        }
+        case 3: {
+            if (_characterviewcontroller.persontype == PersonCharacter) {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/character/%i",_characterviewcontroller.selectedid]]];
+            }
+            else {
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/staff/%i",_characterviewcontroller.selectedid]]];
+            }
+            break;
+        }
+        default:
+            break;
     }
-    else {
-        [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/people/%i",_characterviewcontroller.selectedid]]];
-    }
+            
 }
 
 - (IBAction)share:(id)sender {
     //Generate Items to Share
     NSArray *shareItems;
-    if (_characterviewcontroller.persontype == PersonCharacter) {
-        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i", _characterviewcontroller.selectedid]]];
-    }
-    else {
-        shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/people/%i", _characterviewcontroller.selectedid]]];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (_characterviewcontroller.persontype == PersonCharacter) {
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i", _characterviewcontroller.selectedid]]];
+            }
+            else {
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/people/%i", _characterviewcontroller.selectedid]]];
+            }
+            break;
+        }
+        case 3: {
+            if (_characterviewcontroller.persontype == PersonCharacter) {
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on AniList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/character/%i", _characterviewcontroller.selectedid]]];
+            }
+            else {
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on AniList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/staff/%i", _characterviewcontroller.selectedid]]];
+            }
+            break;
+        }
     }
     //Get Share Picker
     NSSharingServicePicker *sharePicker = [[NSSharingServicePicker alloc] initWithItems:shareItems];

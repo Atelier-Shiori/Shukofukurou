@@ -270,6 +270,8 @@
 		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		F84BB9FC2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
 		F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
+		F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
+		F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F8A85912207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
@@ -582,6 +584,8 @@
 		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
 		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
 		F84BB9FE2074128B0056F5B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AniListAuthWindow.xib; sourceTree = "<group>"; };
+		F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherListScoreFormatter.h; sourceTree = "<group>"; };
+		F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherListScoreFormatter.m; sourceTree = "<group>"; };
 		F88CD0F92072BC330093C478 /* AniListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
 		F88CD0FA2072BC330093C478 /* AniListConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
 		F8A85910207023E40026EC0A /* AniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
@@ -896,6 +900,8 @@
 				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
 				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
 				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
+				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
+				F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */,
 				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
 				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
 				2D7877741F87E44000AD40F1 /* MyListView.h */,
@@ -1337,6 +1343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */,
 				2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */,
@@ -1433,6 +1440,7 @@
 				2D0A64581F5B22A00001C906 /* AniListImport.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
+				F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */,
 				2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */,

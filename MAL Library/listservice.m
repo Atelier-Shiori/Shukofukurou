@@ -178,6 +178,7 @@
             break;
         }
         case 3: {
+            [AniList retrieveProfile:username completion:completionHandler error:errorHandler];
             break;
         }
     }

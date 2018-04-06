@@ -194,14 +194,13 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     if (cred) {
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     }
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[slug]=%@&include=profileLinks,userRoles,profileLinks.profileLinkSite",username] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        /*NSDictionary *tmpdict = [AtarashiiAPIListFormatKitsu KitsuUsertoAtarashii:responseObject];
-        if (tmpdict) {
-            completionHandler(tmpdict);
+    [manager POST:@"https://graphql.anilist.co" parameters:@{@"query":kAnilistUserProfileByUsername, @"variables" : @{@"name" : username}} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"][@"User"] != [NSNull null]) {
+            completionHandler([AtarashiiAPIListFormatAniList AniListUserProfiletoAtarashii:responseObject[@"data"][@"User"]]);
         }
         else {
             errorHandler(nil);
-        }*/
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];

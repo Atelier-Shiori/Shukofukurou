@@ -313,4 +313,10 @@
     }
     return tmparray;
 }
++ (NSDictionary *)AniListUserProfiletoAtarashii:(NSDictionary *)userdata {
+    AtarashiiUserObject *uobject = [AtarashiiUserObject new];
+    uobject.avatar_url = userdata[@"avatar"][@"large"];
+    uobject.extradict = @{@"about" : userdata[@"about"], @"following" : userdata[@"isFollowing"], @"scoreFormat" : userdata[@"mediaListOptions"][@"scoreFormat"]};
+    return uobject.NSDictionaryRepresentation;
+}
 @end

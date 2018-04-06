@@ -14,6 +14,7 @@
 #import "listservice.h"
 #import "Utility.h"
 #import "MyListScoreFormatter.h"
+#import "OtherListScoreFormatter.h"
 
 @interface ListView ()
 
@@ -38,7 +39,13 @@
     _mangalistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _animelisttitlefilterstring = @"";
     _mangalisttitlefilterstring = @"";
-    id transformer = [MyListScoreFormatter new];
+    id transformer;
+    if (![[self className] isEqualToString:@"MyListView"]) {
+        transformer = [OtherListScoreFormatter new];
+    }
+    else {
+        transformer = [MyListScoreFormatter new];
+    }
     NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
     bindingOptions[NSValueTransformerBindingOption] = transformer;
     

@@ -380,6 +380,9 @@
                 case 2:
                     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_searchfield.stringValue]]];
                     break;
+                case 3:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/user/%@",_searchfield.stringValue]]];
+                    break;
                 default:
                     break;
             }
@@ -394,6 +397,9 @@
                 case 2:
                     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=anime",_searchfield.stringValue]]];
                     break;
+                case 3:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/user/%@/animelist",_searchfield.stringValue]]];
+                    break;
                 default:
                     break;
             }
@@ -407,6 +413,9 @@
                     break;
                 case 2:
                     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=manga",_searchfield.stringValue]]];
+                    break;
+                case 3:
+                    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/user/%@/mangalist",_searchfield.stringValue]]];
                     break;
                 default:
                     break;
@@ -428,7 +437,10 @@
                 shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@", _searchfield.stringValue]]];
                 break;
             case 2:
-                shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_searchfield.stringValue]]];
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on Kitsu ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_searchfield.stringValue]]];
+                break;
+            case 3:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on AniList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/user/%@", _searchfield.stringValue]]];
                 break;
             default:
                 break;
@@ -440,7 +452,10 @@
                 shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@", _searchfield.stringValue]]];
                 break;
             case 2:
-                shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=manga",_searchfield.stringValue]]];
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on Kitsu ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=anime",_searchfield.stringValue]]];
+                break;
+            case 3:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on AniList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/user/%@/animelist", _searchfield.stringValue]]];
                 break;
             default:
                 break;
@@ -452,7 +467,10 @@
                 shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@", _searchfield.stringValue]]];
                 break;
             case 2:
-                shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@", _searchfield.stringValue]]];
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on Kitsu ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@/library?media=manga",_searchfield.stringValue]]];
+                break;
+            case 3:
+                shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on AniList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/user/%@/mangalist", _searchfield.stringValue]]];
                 break;
             default:
                 break;

@@ -7,7 +7,6 @@
 //
 
 #import "ProfileViewController.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import "AppDelegate.h"
 #import "messageswindow.h"
@@ -51,54 +50,62 @@
         _profileimage.image = [NSImage new];
     }
     NSMutableString *details = [NSMutableString new];
-    if (responseobject[@"details"][@"extra"][@"about"]) {
+    if (responseobject[@"details"][@"extra"][@"about"] && responseobject[@"details"][@"extra"][@"about"] != [NSNull null]) {
         if (((NSString *)responseobject[@"details"][@"extra"][@"about"]).length > 0) {
             [details appendFormat:@"%@\n\n", responseobject[@"details"][@"extra"][@"about"]];
         }
     }
-    [details appendString:@"General Details:\n"];
-    if (responseobject[@"details"][@"gender"] && responseobject[@"details"][@"gender"] != [NSNull null]) {
-        [details appendFormat:@"Gender: %@\n", responseobject[@"details"][@"gender"]];
-    }
-    if (responseobject[@"details"][@"birthday"] && responseobject[@"details"][@"birthday"] != [NSNull null]) {
-        [details appendFormat:@"Birthday: %@\n", responseobject[@"details"][@"birthday"]];
-    }
-    if (responseobject[@"details"][@"location"] && ![NSNull null]) {
-        [details appendFormat:@"Location: %@\n", responseobject[@"details"][@"location"]];
-    }
-    [details appendFormat:@"Join Date: %@\n", responseobject[@"details"][@"join_date"]];
-    [details appendFormat:@"Access Rank: %@\n\n", responseobject[@"details"][@"access_rank"]];
-    [details appendString:@"Member Statistics:\n"];
-    [details appendFormat:@"Forum Posts: %@\n", responseobject[@"details"][@"forum_posts"]];
-    switch ([listservice getCurrentServiceID]) {
-        case 1: {
-            [details appendFormat:@"Reviews: %@\n", responseobject[@"details"][@"reviews"]];
-            [details appendFormat:@"Recommendations: %@\n", responseobject[@"details"][@"recommendations"]];
-            [details appendFormat:@"Blog Posts: %@\n", responseobject[@"details"][@"blog_posts"]];
-            [details appendFormat:@"Clubs Joined: %@\n", responseobject[@"details"][@"clubs"]];
-            [details appendFormat:@"Comments: %@\n", responseobject[@"details"][@"comments"]];
-            _sendmessagebtn.hidden = false;
-            break;
+    if ([listservice getCurrentServiceID] != 3) {
+        [details appendString:@"General Details:\n"];
+        if (responseobject[@"details"][@"gender"] && responseobject[@"details"][@"gender"] != [NSNull null]) {
+            [details appendFormat:@"Gender: %@\n", responseobject[@"details"][@"gender"]];
         }
-        case 2: {
-            [details appendFormat:@"Reactions: %@\n", responseobject[@"details"][@"reviews"]];
-            [details appendFormat:@"Likes Given: %@\n", responseobject[@"details"][@"extra"][@"likes_given"]];
-            [details appendFormat:@"Liked: %@\n", responseobject[@"details"][@"extra"][@"likes_recieved"]];
-            [details appendFormat:@"Comments: %@\n", responseobject[@"details"][@"comments"]];
-            _sendmessagebtn.hidden = true;
-            break;
+        if (responseobject[@"details"][@"birthday"] && responseobject[@"details"][@"birthday"] != [NSNull null]) {
+            [details appendFormat:@"Birthday: %@\n", responseobject[@"details"][@"birthday"]];
         }
-        default:
-            break;
-    }
+        if (responseobject[@"details"][@"location"] && ![NSNull null]) {
+            [details appendFormat:@"Location: %@\n", responseobject[@"details"][@"location"]];
+        }
+        [details appendFormat:@"Join Date: %@\n", responseobject[@"details"][@"join_date"]];
+        [details appendFormat:@"Access Rank: %@\n\n", responseobject[@"details"][@"access_rank"]];
+        [details appendString:@"Member Statistics:\n"];
+        [details appendFormat:@"Forum Posts: %@\n", responseobject[@"details"][@"forum_posts"]];
+        switch ([listservice getCurrentServiceID]) {
+            case 1: {
+                [details appendFormat:@"Reviews: %@\n", responseobject[@"details"][@"reviews"]];
+                [details appendFormat:@"Recommendations: %@\n", responseobject[@"details"][@"recommendations"]];
+                [details appendFormat:@"Blog Posts: %@\n", responseobject[@"details"][@"blog_posts"]];
+                [details appendFormat:@"Clubs Joined: %@\n", responseobject[@"details"][@"clubs"]];
+                [details appendFormat:@"Comments: %@\n", responseobject[@"details"][@"comments"]];
+                _sendmessagebtn.hidden = false;
+                break;
+            }
+            case 2: {
+                [details appendFormat:@"Reactions: %@\n", responseobject[@"details"][@"reviews"]];
+                [details appendFormat:@"Likes Given: %@\n", responseobject[@"details"][@"extra"][@"likes_given"]];
+                [details appendFormat:@"Liked: %@\n", responseobject[@"details"][@"extra"][@"likes_recieved"]];
+                [details appendFormat:@"Comments: %@\n", responseobject[@"details"][@"comments"]];
+                _sendmessagebtn.hidden = true;
+                break;
+            }
+            default:
+                break;
+        }
 
-    if (responseobject[@"details"][@"website"] && responseobject[@"details"][@"website"] != [NSNull null] && ![(NSString *)responseobject[@"details"][@"website"] containsString:@"myanimelist.net/rss.php"]) {
-        _homepageurl = responseobject[@"details"][@"website"];
-        _homepagebtn.hidden = false;
+        if (responseobject[@"details"][@"website"] && responseobject[@"details"][@"website"] != [NSNull null] && ![(NSString *)responseobject[@"details"][@"website"] containsString:@"myanimelist.net/rss.php"]) {
+            _homepageurl = responseobject[@"details"][@"website"];
+            _homepagebtn.hidden = false;
+        }
+        else {
+            _homepageurl = @"";
+            _homepagebtn.hidden = true;
+        }
     }
     else {
         _homepageurl = @"";
         _homepagebtn.hidden = true;
+        _sendmessagebtn.hidden = true;
+        [NSUserDefaults.standardUserDefaults setObject:responseobject[@"details"][@"extra"][@"scoreFormat"] forKey:@"anilist-otheruser-scoreformat"];
     }
     _profiledetails.string = details;
     _profiledetails.textColor = NSColor.controlTextColor;

@@ -331,7 +331,7 @@
             NSString *imageurl = acharacter[@"node"][@"image"] != [NSNull null] && acharacter[@"node"][@"image"][@"large"] ? acharacter[@"node"][@"image"][@"large"] : @"";
             NSMutableArray *castingsarray = [NSMutableArray new];
             for (NSDictionary *va in acharacter[@"voiceActors"]) {
-                [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", va[@"name"][@"last"], va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"large"] ? va[@"image"][@"large"] : @"" , @"language" : va[@"language"]}];
+                [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", va[@"name"][@"last"], va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"large"] ? va[@"image"][@"large"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
             }
             [tmpcharacterarray addObject:@{@"id" : characterid.copy, @"name" : charactername.copy, @"role" : role.copy, @"image" : imageurl.copy, @"description" : description.copy,  @"actors" : castingsarray.copy}];
         }

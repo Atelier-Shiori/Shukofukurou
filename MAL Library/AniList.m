@@ -309,23 +309,66 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
 }
 #pragma mark Characters
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    /*AFHTTPSessionManager *manager = [Utility jsonmanager];
-     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime-characters?filter[animeId]=%i&include=character,character.castings,character.castings.person&fields[castings]=voiceActor,featured,person,language&fields[people]=name,image,malId",titleid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-     __block NSDictionary *characterData = responseObject;
-     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime-staff?filter[animeId]=%i&include=person&fields[people]=name,malId,image",titleid] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-     AtarashiiAPIKitsuStaffFormat *sformat = [[AtarashiiAPIKitsuStaffFormat alloc] initwithDataDictionary:characterData withStaffData:responseObject];
-     completionHandler([sformat generateStaffList]);
-     } failure:^(NSURLSessionTask *operation, NSError *error) {
-     errorHandler(error);
-     NSLog(@"%@",error.localizedDescription);
-     }];
-     } failure:^(NSURLSessionTask *operation, NSError *error) {
-     errorHandler(error);
-     NSLog(@"%@",error.localizedDescription);
-     }];*/
+    NSMutableArray *characterarray = [NSMutableArray new];
+    [self retrievecharacters:titleid withCharacterArray:characterarray withPageOffset:1 completion:completionHandler error:errorHandler];
+}
+
++ (void)retrievecharacters:(int)titleid withCharacterArray:(NSMutableArray *)characters withPageOffset:(int)pageoffset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    manager.requestSerializer = [Utility jsonrequestserializer];
+    NSDictionary *parameters = @{@"query" : kAnilistcharacterslist , @"variables" : @{@"id" : @(titleid), @"page" : @(pageoffset)}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"][@"Media"] != [NSNull null]) {
+            [characters addObjectsFromArray:responseObject[@"data"][@"Media"][@"characters"][@"edges"]];
+            if (((NSNumber *)responseObject[@"data"][@"Media"][@"characters"][@"pageInfo"][@"hasNextPage"]).boolValue) {
+                int newpageoffset = pageoffset+1;
+                [self retrievecharacters:titleid withCharacterArray:characters withPageOffset:newpageoffset completion:completionHandler error:errorHandler];
+            }
+            else {
+                NSMutableArray *staffmembers = [NSMutableArray new];
+                [self retrievestaffmembers:titleid withCharacterArray:characters withStaffArray:staffmembers withPageOffset:1 completion:completionHandler error:errorHandler];
+            }
+        }
+        else {
+            errorHandler(nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
++ (void)retrievestaffmembers:(int)titleid withCharacterArray:(NSMutableArray *)characters withStaffArray:(NSMutableArray *)staffarray withPageOffset:(int)pageoffset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    manager.requestSerializer = [Utility jsonrequestserializer];
+    NSDictionary *parameters = @{@"query" : kAniliststafflist , @"variables" : @{@"id" : @(titleid), @"page" : @(pageoffset)}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"][@"Media"] != [NSNull null]) {
+            [staffarray addObjectsFromArray:responseObject[@"data"][@"Media"][@"staff"][@"staff"]];
+            if (((NSNumber *)responseObject[@"data"][@"Media"][@"staff"][@"pageInfo"][@"hasNextPage"]).boolValue) {
+                int newpageoffset = pageoffset+1;
+                [self retrievestaffmembers:titleid withCharacterArray:characters withStaffArray:staffarray withPageOffset:newpageoffset completion:completionHandler error:errorHandler];
+            }
+            else {
+                completionHandler([AtarashiiAPIListFormatAniList generateStaffList:staffarray withCharacterArray:characters]);
+            }
+        }
+        else {
+            errorHandler(nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
 }
 
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    manager.requestSerializer = [Utility jsonrequestserializer];
+    NSDictionary *parameters = @{@"query" : kAniListstaffpage , @"variables" : @{@"id" : @(personid)}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler([AtarashiiAPIListFormatAniList AniListPersontoAtarashii:responseObject[@"data"][@"Staff"]]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
 }
 
 #pragma mark helpers

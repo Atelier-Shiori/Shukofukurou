@@ -118,7 +118,9 @@
 @property (strong) NSArray *alternate_names;
 @property (strong) NSString *given_name;
 @property (strong) NSString *familyname;
+@property (strong) NSString *native_name;
 @property (strong) NSString *birthdate;
+@property (strong) NSString *image_url;
 @property (strong) NSString *website_url;
 @property (strong) NSString *more_details;
 @property int favorited_count;
@@ -133,14 +135,14 @@
 @property (strong) NSString *name;
 @property (strong) NSString *image_url;
 @property bool main_role;
-@property (strong) NSArray *anime;
+@property (strong) NSDictionary *anime;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
 @interface AtarrashiiStaffObject : NSObject
 @property (strong) NSString *position;
 @property (strong) NSString *details;
-@property (strong) NSArray *anime;
+@property (strong) NSDictionary *anime;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
@@ -187,3 +189,5 @@
 @property (strong) NSDictionary *extradict;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
+
+

@@ -155,8 +155,10 @@
         _alternate_names = @[];
         _given_name = @"";
         _familyname = @"";
+        _native_name = @"";
         _birthdate = @"";
         _website_url = @"";
+        _image_url = @"";
         _more_details = @"";
         _favorited_count = 0;
         _voice_acting_roles = @[];
@@ -167,7 +169,7 @@
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{@"id" : @(_personid), @"name" : _name.copy, @"alternate_names" : _alternate_names.copy, @"family_name" : _familyname.copy, @"birthdate" : _birthdate.copy, @"website_url" : _website_url.copy, @"more_details" : _more_details.copy, @"favorited_count" : @(_favorited_count), @"voice_acting_roles" : _voice_acting_roles.copy, @"anime_staff_positions" : _anime_staff_positions.copy, @"published_manga" : _published_manga.copy};
+    return @{@"id" : @(_personid), @"name" : _name.copy, @"alternate_names" : _alternate_names.copy, @"family_name" : _familyname.copy, @"native_name" : _native_name, @"birthdate" : _birthdate.copy, @"website_url" : _website_url.copy, @"image_url" : _image_url.copy, @"more_details" : _more_details.copy, @"favorited_count" : @(_favorited_count), @"voice_acting_roles" : _voice_acting_roles.copy, @"anime_staff_positions" : _anime_staff_positions.copy, @"published_manga" : _published_manga.copy};
 }
 @end
 
@@ -179,7 +181,7 @@
         _name = @"";
         _image_url = @"";
         _main_role = false;
-        _anime = @[];
+        _anime = @{};
     }
     return self;
 }
@@ -195,7 +197,7 @@
     if (self) {
         _position = @"";
         _details = @"";
-        _anime = @[];
+        _anime = @{};
     }
     return self;
 }

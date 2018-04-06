@@ -44,7 +44,22 @@
 - (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title {
     _charactername.stringValue = d[@"name"];
     _posterimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image"]]]];
-    _details.string = [NSString stringWithFormat:@"%@ character from %@. View more details on MyAnimeList.", d[@"role"], title];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            _details.string = [NSString stringWithFormat:@"%@ character from %@. View more details on MyAnimeList.", d[@"role"], title];
+            break;
+        }
+        case 2:
+        case 3: {
+            NSMutableString *details = [NSMutableString new];
+            [details appendFormat:@"%@ Role\n\n", d[@"role"]];
+            [details appendString:d[@"description"]];
+            _details.string = details;
+            break;
+        }
+        default:
+            break;
+    }
     _details.textColor = NSColor.controlTextColor;
     _selectedid = ((NSNumber *)d[@"id"]).intValue;
     _persontype = PersonCharacter;
@@ -63,10 +78,13 @@
 - (void)populateStaffInformation:(NSDictionary *)d {
     NSMutableString *tmpstr = [NSMutableString new];
     _charactername.stringValue = d[@"name"];
-    _posterimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
-    /*if (d[@"given_name"] && d[@"family_name"]) {
+    _posterimage.image = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
+    if (d[@"native_name"]) {
+        [tmpstr appendFormat:@"Native name: %@\n",d[@"native_name"]];
+    }
+    else if (d[@"given_name"] && d[@"family_name"]) {
         [tmpstr appendFormat:@"%@, %@\n",d[@"family_name"], d[@"given_name"]];
-    }*/
+    }
     if (((NSArray *)d[@"alternate_names"]).count > 0 ) {
         [tmpstr appendFormat:@"Other Names: %@\n",[Utility appendstringwithArray:d[@"alternate_names"]]];
     }
@@ -76,12 +94,14 @@
     if (d[@"more_details"]) {
         [tmpstr appendFormat:@"%@\n",[(NSString *)d[@"more_details"] stripHtml]];
     }
-    if (d[@"favorited_count"]) {
+    if (d[@"favorited_count"] && [listservice getCurrentServiceID] == 1) {
         [tmpstr appendFormat:@"Favorited: %@\n",d[@"favorited_count"]];
     }
     if (d[@"website_url"]) {
-        _personhomepage = d[@"website_url"];
-        _viewhomepage.hidden = NO;
+        if (((NSString *)d[@"website_url"]).length > 0){
+            _personhomepage = d[@"website_url"];
+            _viewhomepage.hidden = NO;
+        }
     }
     else {
         _personhomepage = @"";
@@ -209,6 +229,7 @@
                 int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Published Manga"] ? 1 : 0;
                 switch ([listservice getCurrentServiceID]) {
                     case 1:
+                    case 3:
                         [_mw loadinfo:d[@"id"] type:loadtype changeView:YES];
                         [_mw.window makeKeyAndOrderFront:self];
                         break;

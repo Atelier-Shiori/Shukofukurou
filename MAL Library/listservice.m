@@ -344,6 +344,7 @@
             break;
         }
         case 3: {
+            [AniList retrieveStaff:titleid completion:completionHandler error:errorHandler];
             break;
         }
         default:
@@ -361,6 +362,7 @@
             break;
         }
         case 3: {
+            [AniList retrievePersonDetails:personid completion:completionHandler error:errorHandler];
             break;
         }
         default:

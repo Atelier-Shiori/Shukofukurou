@@ -228,6 +228,7 @@
             break;
         }
         case 3: {
+            [AniList updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         default:
@@ -245,6 +246,7 @@
             break;
         }
         case 3: {
+            [AniList updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         default:

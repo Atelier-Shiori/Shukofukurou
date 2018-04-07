@@ -8,6 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="advancededitdialog">
             <connections>
+                <outlet property="AniListFiveScoreMenu" destination="aYC-cn-zNO" id="dai-Ev-VJ8"/>
+                <outlet property="AniListThreeScoreMenu" destination="Xss-Ga-Pzn" id="wcE-GQ-ZS4"/>
+                <outlet property="advancedscore" destination="dcr-97-G2v" id="fXq-lb-i7J"/>
+                <outlet property="advancedscoreformat" destination="o88-hT-Ksv" id="jWt-HI-1ok"/>
                 <outlet property="animestatusmenu" destination="nuR-LE-LHd" id="hpF-Bk-7O1"/>
                 <outlet property="chaptersfield" destination="pbw-Ct-i3a" id="XsR-gN-LIN"/>
                 <outlet property="chaptersnumformat" destination="5Hj-AZ-QxQ" id="RUR-bl-jAj"/>
@@ -55,7 +59,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="273"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="273"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -173,6 +177,16 @@ Gw
                         <rect key="frame" x="10" y="14" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </progressIndicator>
+                    <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dcr-97-G2v">
+                        <rect key="frame" x="329" y="157" width="60" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="yuW-YD-C6u">
+                            <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="o88-hT-Ksv"/>
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <connections>
@@ -180,6 +194,47 @@ Gw
             </connections>
             <point key="canvasLocation" x="336" y="586.5"/>
         </window>
+        <menu id="Xss-Ga-Pzn">
+            <items>
+                <menuItem title="No Rating" id="gdD-hF-VON">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="01g-qG-h1j"/>
+                <menuItem title="🙁" tag="1" id="Vcz-Jw-aCs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="😐" tag="2" id="Dvi-F2-upT">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="🙂" tag="3" id="yVi-7M-b3z">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+        <menu id="aYC-cn-zNO">
+            <items>
+                <menuItem title="No Rating" id="G4H-l6-MCd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="lUg-Ma-tT5"/>
+                <menuItem title="⭐️" tag="1" id="Erh-he-jsk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️" tag="2" id="b85-Ts-ybn">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️⭐️" tag="3" id="Iyb-KV-KwN">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️⭐️⭐️" tag="4" id="oGP-Ys-Veh">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️⭐️⭐️⭐️" tag="5" id="qAX-TC-qu1">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-517" y="830"/>
+        </menu>
         <customView id="4WN-UT-Eez">
             <rect key="frame" x="0.0" y="0.0" width="480" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -208,7 +263,7 @@ Gw
                     <datePickerCell key="cell" enabled="NO" borderStyle="bezel" alignment="left" id="J6s-vh-y2X">
                         <font key="font" metaFont="system"/>
                         <date key="date" timeIntervalSinceReferenceDate="-595929600">
-                            <!--1982-02-12 16午後4:00:00 +0000-->
+                            <!--1982-02-12 4:00:00 PM +0000-->
                         </date>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -229,7 +284,7 @@ Gw
                     <datePickerCell key="cell" enabled="NO" borderStyle="bezel" alignment="left" id="L82-ZN-Hwe">
                         <font key="font" metaFont="system"/>
                         <date key="date" timeIntervalSinceReferenceDate="-595929600">
-                            <!--1982-02-12 16午後4:00:00 +0000-->
+                            <!--1982-02-12 4:00:00 PM +0000-->
                         </date>
                         <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>

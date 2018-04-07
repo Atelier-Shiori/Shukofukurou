@@ -250,6 +250,14 @@
                     NSLog(@"Error loading list: %@", error.localizedDescription);
                 }];
             }
+            case 3: {
+                [AniList getUserRatingType:^(NSString *scoretype) {
+                    [NSUserDefaults.standardUserDefaults setValue:scoretype forKey:@"anilist-scoreformat"];
+                    [self performtimerlistrefresh];
+                } error:^(NSError *error) {
+                     NSLog(@"Error loading list: %@", error.localizedDescription);
+                }];
+            }
             default: {
                 break;
             }
@@ -677,6 +685,14 @@
                 [_appdel.servicemenucontrol enableservicemenuitems:YES];
             }];
         }
+        case 3: {
+            [AniList getUserRatingType:^(NSString *scoretype) {
+                [NSUserDefaults.standardUserDefaults setValue:scoretype forKey:@"anilist-scoreformat"];
+                [self performlistRefresh];
+            } error:^(NSError *error) {
+                NSLog(@"Error loading list: %@", error.localizedDescription);
+            }];
+        }
         default: {
             break;
         }
@@ -822,16 +838,27 @@
         [_progressindicator startAnimation:self];
         switch (oldserviceid) {
             case 1: {
-                if ([listservice getCurrentServiceID] == 2) {
-                    // MAL > Kitsu Title ID
-                    [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withType:_infoview.type completionHandler:^(int kitsuid) {
-                        [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO];
-                    } error:^(NSError *error) {
+                switch ([listservice getCurrentServiceID]) {
+                    case 2: {
+                        // MAL > Kitsu Title ID
+                        [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withType:_infoview.type completionHandler:^(int kitsuid) {
+                            [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO];
+                        } error:^(NSError *error) {
+                            [self resetTitleInfoView];
+                        }];
+                        break;
+                    }
+                    case 3: {
+                        [TitleIdConverter getAniIDFromMALListID:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int anilistid) {
+                            [self loadinfo:@(anilistid) type:_infoview.type changeView:NO];
+                        } error:^(NSError *error) {
+                            [self resetTitleInfoView];
+                        }];
+                        break;
+                    }
+                    default:
                         [self resetTitleInfoView];
-                    }];
-                }
-                else {
-                    [self resetTitleInfoView];
+                        break;
                 }
                 break;
             }
@@ -851,14 +878,61 @@
                             }
                             break;
                         }
-                        case 3: // AniList > "anilist"
+                        case 3: { // AniList > "anilist"
+                            // MyAnimeList > "myanimelist/anime" for anime or "myanimelist/manga" for manga
+                            int malid = 0;
+                            if (_infoview.type == 0 && mappings[@"myanimelist/anime"]) {
+                                malid = ((NSNumber *)mappings[@"myanimelist/anime"]).intValue;
+                            }
+                            else if (_infoview.type == 1 && mappings[@"myanimelist/manga"]) {
+                                malid = ((NSNumber *)mappings[@"myanimelist/manga"]).intValue;
+                            }
+                            else {
+                                [self resetTitleInfoView];
+                            }
+                            if (malid > 0) {
+                                [TitleIdConverter getAniIDFromMALListID:malid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int anilistid) {
+                                    [self loadinfo:@(anilistid) type:_infoview.type changeView:NO];
+                                } error:^(NSError *error) {
+                                    [self resetTitleInfoView];
+                                }];
+                            }
                             break;
+                        }
                         default:
                             break;
                     }
                 }
                 else {
                     [self resetTitleInfoView];
+                }
+                break;
+            }
+            case 3: {
+                switch ([listservice getCurrentServiceID]) {
+                    case 1: {
+                        [TitleIdConverter getMALIDFromAniListID:tmpselectedid withTitle:_selecteditem[@"title"] titletype:_selecteditem[@"type"] fromServiceID:3 withType:_infoview.type completionHandler:^(int malid) {
+                            [self loadinfo:@(malid) type:_infoview.type changeView:NO];
+                        } error:^(NSError *error) {
+                            [self resetTitleInfoView];
+                        }];
+                        break;
+                    }
+                    case 2: {
+                        [TitleIdConverter getMALIDFromAniListID:tmpselectedid withTitle:_selecteditem[@"title"] titletype:_selecteditem[@"type"] fromServiceID:3 withType:_infoview.type completionHandler:^(int malid) {
+                            [TitleIdConverter getKitsuIDFromMALId:malid withType:_infoview.type completionHandler:^(int kitsuid) {
+                                [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO];
+                            } error:^(NSError *error) {
+                                [self resetTitleInfoView];
+                            }];
+                        } error:^(NSError *error) {
+                            [self resetTitleInfoView];
+                        }];
+                        break;
+                    }
+                    default:
+                        [self resetTitleInfoView];
+                        break;
                 }
                 break;
             }

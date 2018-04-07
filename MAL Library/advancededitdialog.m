@@ -7,6 +7,7 @@
 //
 
 #import "advancededitdialog.h"
+#import "AniListScoreConvert.h"
 #import "listservice.h"
 #import "AppDelegate.h"
 #import "MainWindow.h"
@@ -63,7 +64,7 @@
         _totalepisodes.intValue = ((NSNumber *)d[@"episodes"]).intValue;
         _tagsfield.stringValue = ((NSArray *)d[@"personal_tags"]).count > 0 ? [((NSArray *)d[@"personal_tags"]) componentsJoinedByString:@","] : @"";
         [_status selectItemWithTitle:d[@"watched_status"]];
-        [_score selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
+        [self setScoreMenu:d];
         _reconsuming.state = ((NSNumber *)d[@"rewatching"]).boolValue;
         if (!_privatecheck.hidden) {
             _privatecheck.state = ((NSNumber *)d[@"private"]).boolValue;
@@ -90,6 +91,7 @@
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
             case 2:
+            case 3:
                 _selectededitid = ((NSNumber *)d[@"entryid"]).intValue;
                 break;
             default:
@@ -135,7 +137,7 @@
         _volumestepper.maxValue = _volumesformatter.maximum.doubleValue;
         _chaptertepper.maxValue = _chaptersnumformat.maximum.doubleValue;
         [_status selectItemWithTitle:d[@"read_status"]];
-        [_score selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
+        [self setScoreMenu:d];
         _reconsuming.state = ((NSNumber *)d[@"rereading"]).boolValue;
         if (!_privatecheck.hidden) {
             _privatecheck.state = ((NSNumber *)d[@"private"]).boolValue;
@@ -155,6 +157,7 @@
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
             case 2:
+            case 3:
                 _selectededitid = ((NSNumber *)d[@"entryid"]).intValue;
                 break;
             default:
@@ -180,6 +183,7 @@
     [_progressindicator startAnimation:self];
     if(![_status.title isEqual:@"completed"] && _episodefield.intValue == _totalepisodes.intValue && _selectedaircompleted) {
         [_status selectItemWithTitle:@"completed"];
+        [_reconsuming setState:NSControlStateValueOff];
     }
     if(!_selectedaired && (![_status.title isEqual:@"plan to watch"] ||_episodefield.intValue > 0)) {
         // Invalid input, mark it as such
@@ -198,7 +202,8 @@
     }
     NSString *tags = @"";
     NSMutableDictionary *extrafields = [NSMutableDictionary new];
-    switch ([listservice getCurrentServiceID]) {
+    int currentlistservice = [listservice getCurrentServiceID];
+    switch (currentlistservice) {
         case 1: {
             if (((NSArray *)_tagsfield.objectValue).count > 0){
                 tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
@@ -214,7 +219,8 @@
             extrafields[@"is_rewatching"] = @(_reconsuming.state);
             break;
         }
-        case 2: {
+        case 2:
+        case 3:{
             if (_notesfield.stringValue.length > 0) {
                 extrafields[@"notes"] = _notesfield.stringValue;
             }
@@ -228,8 +234,28 @@
         default:
             break;
     }
+    int score = 0;
+    switch (currentlistservice) {
+        case 1:
+        case 2:
+            score = (int)_score.selectedTag;
+            break;
+        case 3: {
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            if ([scoretype isEqualToString:@"POINT_100"]) {
+                score = _advancedscore.intValue;
+            }
+            else if ([scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_advancedscore.doubleValue withScoreType:scoretype];
+            }
+            else {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_score.selectedTag withScoreType:scoretype];
+            }
+            break;
+        }
+    }
     [_progressindicator startAnimation:nil];
-    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:(int)_score.selectedTag withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
+    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
@@ -273,7 +299,8 @@
     }
     NSString *tags = @"";
     NSMutableDictionary *extrafields = [NSMutableDictionary new];
-    switch ([listservice getCurrentServiceID]) {
+    int currentlistservice = [listservice getCurrentServiceID];
+    switch (currentlistservice) {
         case 1: {
             if (((NSArray *)_tagsfield.objectValue).count > 0){
                 tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
@@ -303,8 +330,28 @@
         default:
             break;
     }
+    int score = 0;
+    switch (currentlistservice) {
+        case 1:
+        case 2:
+            score = (int)_score.selectedTag;
+            break;
+        case 3: {
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            if ([scoretype isEqualToString:@"POINT_100"]) {
+                score = _advancedscore.intValue;
+            }
+            else if ([scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_advancedscore.doubleValue withScoreType:scoretype];
+            }
+            else {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_score.selectedTag withScoreType:scoretype];
+            }
+            break;
+        }
+    }
     [_progressindicator startAnimation:nil];
-    [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:(int)_score.selectedTag withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
+    [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
@@ -399,10 +446,14 @@
             _score.menu = _malscoremenu;
             [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_malfieldsview];
             _privatecheck.hidden = YES;
+            _advancedscore.hidden = true;
+            _score.hidden = false;
             break;
         case 2: {
             [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_kitsufieldsview];
             _privatecheck.hidden = NO;
+            _advancedscore.hidden = true;
+            _score.hidden = false;
             switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
                 case 0:
                     _score.menu = _kitsusimplerating;
@@ -420,6 +471,30 @@
         case 3: {
             [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_kitsufieldsview];
             _privatecheck.hidden = NO;
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            if ([scoretype isEqualToString:@"POINT_100"] || [scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                _advancedscore.hidden = false;
+                _score.hidden = true;
+                if ([scoretype isEqualToString:@"POINT_100"]) {
+                    _advancedscoreformat.maximum = @(100);
+                }
+                else {
+                    _advancedscoreformat.maximum = @(10);
+                }
+            }
+            else {
+                _advancedscore.hidden = true;
+                _score.hidden = false;
+                if ([scoretype isEqualToString:@"POINT_10"]) {
+                    _score.menu = _malscoremenu;
+                }
+                else if ([scoretype isEqualToString:@"POINT_5"]) {
+                    _score.menu = _AniListFiveScoreMenu;
+                }
+                else if ([scoretype isEqualToString:@"POINT_3"]) {
+                    _score.menu = _AniListThreeScoreMenu;
+                }
+            }
             break;
         }
         default:
@@ -489,5 +564,27 @@
 -(void)disableeditbuttons:(bool)enable {
     _editbtn.enabled = enable;
     _closebtn.enabled = enable;
+}
+
+- (void)setScoreMenu:(NSDictionary *)d {
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+        case 2:
+            [_score selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
+            break;
+        case 3: {
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            NSNumber *convertedScore = [AniListScoreConvert convertScoreToRawActualScore:((NSNumber *)d[@"score"]).intValue withScoreType:scoretype];
+            if ([scoretype isEqualToString:@"POINT_100"]) {
+                _advancedscore.intValue = convertedScore.intValue;
+            }
+            else if ([scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                _advancedscore.doubleValue = convertedScore.doubleValue;
+            }
+            else {
+                [_score selectItemWithTag:convertedScore.intValue];
+            }
+        }
+    }
 }
 @end

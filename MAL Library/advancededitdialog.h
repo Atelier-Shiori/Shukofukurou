@@ -56,10 +56,13 @@
 @property (strong) IBOutlet NSMenu *kitsusimplerating;
 @property (strong) IBOutlet NSMenu *kitsustandardrating;
 @property (strong) IBOutlet NSMenu *kitsuadvancedrating;
-
+@property (strong) IBOutlet NSMenu *AniListThreeScoreMenu;
+@property (strong) IBOutlet NSMenu *AniListFiveScoreMenu;
 
 // Main Controls
 @property (strong) IBOutlet NSPopUpButton *status;
+@property (strong) IBOutlet NSTextField *advancedscore;
+@property (strong) IBOutlet NSNumberFormatter *advancedscoreformat;
 @property (strong) IBOutlet NSPopUpButton *score;
 @property (strong) IBOutlet NSButton *reconsuming;
 @property (strong) IBOutlet NSButton *privatecheck;

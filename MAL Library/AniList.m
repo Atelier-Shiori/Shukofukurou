@@ -258,8 +258,16 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    
-    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"id" : @(titleid), @"type" : @"libraryEntries", @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score withExtraFields:efields] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary *parameters;
+    NSMutableDictionary *variables = [self generateAnimeAttributes:episode withStatus:status withScore:score withExtraFields:efields];
+    variables[@"id"] = @(titleid);
+    if (efields.count == 1) {
+        parameters = @{@"query" : kAnilistUpdateAnimeListEntrySimple, @"variables" : variables};
+    }
+    else {
+        parameters = @{@"query" : kAnilistUpdateAnimeListEntryAdvanced , @"variables" : variables};
+    }
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -276,13 +284,20 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    
-    [manager PATCH:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:@{@"data" : @{ @"id" : @(titleid), @"type" : @"libraryEntries", @"attributes" :  [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score withExtraFields:efields] }} success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSDictionary *parameters;
+    NSMutableDictionary *variables = [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score withExtraFields:efields];
+    variables[@"id"] = @(titleid);
+    if (efields.count == 1) {
+        parameters = @{@"query" : kAnilistUpdateMangaListEntrySimple, @"variables" : variables};
+    }
+    else {
+        parameters = @{@"query" : kAnilistUpdateMangaListEntryAdvanced, @"variables" : variables};
+    }
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];
-    
 }
 + (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id

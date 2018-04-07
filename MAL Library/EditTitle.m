@@ -6,10 +6,10 @@
 //  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
+#import "AniListScoreConvert.h"
 #import "EditTitle.h"
 #import "NSTextFieldNumber.h"
 #import "MainWindow.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 @interface EditTitle ()
 
@@ -21,6 +21,8 @@
 @property (strong) IBOutlet NSButton *minipopovereditbtn;
 @property (strong) IBOutlet NSButton *animeadvancededit;
 @property (strong) IBOutlet NSView *segmentview;
+@property (strong) IBOutlet NSTextField *advancedscorefield;
+@property (strong) IBOutlet NSNumberFormatter *advancedscoreformat;
 
 // Anime
 @property (strong) IBOutlet NSView *animeeditview;
@@ -81,7 +83,7 @@
         _minipopovereditepstep.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
         _minipopovertotalep.intValue = ((NSNumber *)d[@"episodes"]).intValue;
         [_minipopoverstatus selectItemWithTitle:d[@"watched_status"]];
-        [_minipopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
+        [self setScore:d];
         _minipopoverstatustext.stringValue = @"";
         if (((NSNumber *)d[@"episodes"]).intValue > 0) {
             _minieditpopovernumformat.maximum = d[@"episodes"];
@@ -95,6 +97,7 @@
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
             case 2:
+            case 3:
                 _selectededitid = ((NSNumber *)d[@"entryid"]).intValue;
                 break;
             default:
@@ -141,13 +144,14 @@
         _mangapopovereditvolstep.maxValue = _mangaeditpopovervolnumformat.maximum.doubleValue;
         _mangapopovereditchapstep.maxValue = _mangaeditpopoverchapnumformat.maximum.doubleValue;
         [_minipopoverstatus selectItemWithTitle:d[@"read_status"]];
-        [_minipopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
+        [self setScore:d];
         _minipopoverstatustext.stringValue = @"";
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
             case 2:
+            case 3:
                 _selectededitid = ((NSNumber *)d[@"entryid"]).intValue;
                 break;
             default:
@@ -176,8 +180,10 @@
     _minipopoverstatustext.stringValue = @"";
     _minipopoverindicator.hidden = false;
     [_minipopoverindicator startAnimation:self];
-    if(![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue && _selectedaircompleted) {
+    bool rewatching = ((NSNumber *)_selecteditem[@"rewatching"]).boolValue;
+    if (![_minipopoverstatus.title isEqual:@"completed"] && _minipopoverepfield.intValue == _minipopovertotalep.intValue && _selectedaircompleted) {
         [_minipopoverstatus selectItemWithTitle:@"completed"];
+        rewatching = false;
     }
     if(!_selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)) {
         // Invalid input, mark it as such
@@ -199,9 +205,40 @@
     if (((NSArray *)_selecteditem[@"personal_tags"]).count > 0){
         tags = [(NSArray *)_selecteditem[@"personal_tags"] componentsJoinedByString:@","];
     }
+    NSDictionary * extraparameters = @{};
+    int currentservice = [listservice getCurrentServiceID];
+    switch (currentservice) {
+        case 2:
+        case 3: {
+            extraparameters = @{@"reconsuming" : @(rewatching)};
+            break;
+        }
+        default:
+            break;
+    }
+    int score = 0;
+    switch (currentservice) {
+        case 1:
+        case 2:
+            score = (int)_minipopoverscore.selectedTag;
+            break;
+        case 3: {
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            if ([scoretype isEqualToString:@"POINT_100"]) {
+                score = _advancedscorefield.intValue;
+            }
+            else if ([scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_advancedscorefield.doubleValue withScoreType:scoretype];
+            }
+            else {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_minipopoverscore.selectedTag withScoreType:scoretype];
+            }
+            break;
+        }
+    }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag withTags:tags withExtraFields:nil completion:^(id responseobject) {
+    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withTags:tags withExtraFields:extraparameters completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
@@ -226,8 +263,10 @@
     _minipopoverstatustext.stringValue = @"";
     _minipopoverindicator.hidden = false;
     [_minipopoverindicator startAnimation:self];
+    bool rereading = ((NSNumber *)_selecteditem[@"rereading"]).boolValue;
     if(![_minipopoverstatus.title isEqual:@"completed"] && _mangapopoverchapfield.intValue == _mangapopovertotalchap.intValue && _mangapopovertotalvol.intValue == _mangapopovertotalvol.intValue && _selectedfinished) {
         [_minipopoverstatus selectItemWithTitle:@"completed"];
+        rereading = false;
     }
     if(!_selectedpublished && (![_minipopoverstatus.title isEqual:@"plan to read"] ||_mangapopoverchapfield.intValue > 0 || _mangapopovertotalvol.intValue > 0)) {
         // Invalid input, mark it as such
@@ -251,9 +290,40 @@
     if (((NSArray *)_selecteditem[@"personal_tags"]).count > 0){
         tags = [(NSArray *)_selecteditem[@"personal_tags"] componentsJoinedByString:@","];
     }
+    NSDictionary * extraparameters = @{};
+    int currentservice = [listservice getCurrentServiceID];
+    switch ([listservice getCurrentServiceID]) {
+        case 2:
+        case 3: {
+            extraparameters = @{@"reconsuming" : @(rereading)};
+            break;
+        }
+        default:
+            break;
+    }
+    int score = 0;
+    switch (currentservice) {
+        case 1:
+        case 2:
+            score = (int)_minipopoverscore.selectedTag;
+            break;
+        case 3: {
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            if ([scoretype isEqualToString:@"POINT_100"]) {
+                score = _advancedscorefield.intValue;
+            }
+            else if ([scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_advancedscorefield.doubleValue withScoreType:scoretype];
+            }
+            else {
+                score = [AniListScoreConvert convertScoretoScoreRaw:_minipopoverscore.selectedTag withScoreType:scoretype];
+            }
+            break;
+        }
+    }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:(int)_minipopoverscore.selectedTag withTags:tags withExtraFields:(NSDictionary *)nil completion:^(id responseobject) {
+    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withTags:tags withExtraFields:extraparameters completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
         [self disableeditbuttons:true];
@@ -339,53 +409,57 @@
 }
 
 - (void)setScoreMenu:(int)type {
-    if (type == 0) {
-        switch ([listservice getCurrentServiceID]) {
-            case 1:
-                _minipopoverscore.menu = _malscoremenu;
-                break;
-            case 2: {
-                switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
-                    case 0:
-                        _minipopoverscore.menu = _kitsusimplescoremenu;
-                        break;
-                    case 1:
-                        _minipopoverscore.menu = _kitsustandardscoremenu;
-                        break;
-                    case 2:
-                        _minipopoverscore.menu = _kitsuadavancedscoremenu;
-                        break;
-                    default:
-                        break;
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+            _advancedscorefield.hidden = true;
+            _minipopoverscore.hidden = false;
+            _minipopoverscore.menu = _malscoremenu;
+            break;
+        case 2: {
+            _advancedscorefield.hidden = true;
+            _minipopoverscore.hidden = false;
+            switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
+                case 0:
+                    _minipopoverscore.menu = _kitsusimplescoremenu;
+                    break;
+                case 1:
+                    _minipopoverscore.menu = _kitsustandardscoremenu;
+                    break;
+                case 2:
+                    _minipopoverscore.menu = _kitsuadavancedscoremenu;
+                    break;
+                default:
+                    break;
+            }
+        }
+        case 3: {
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            if ([scoretype isEqualToString:@"POINT_100"] || [scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                _advancedscorefield.hidden = false;
+                _minipopoverscore.hidden = true;
+                if ([scoretype isEqualToString:@"POINT_100"]) {
+                    _advancedscoreformat.maximum = @(100);
+                }
+                else {
+                    _advancedscoreformat.maximum = @(10);
                 }
             }
-            default:
-                break;
-        }
-    }
-    else {
-        switch ([listservice getCurrentServiceID]) {
-            case 1:
-                _minipopoverscore.menu = _malscoremenu;
-                break;
-            case 2: {
-                switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
-                    case 0:
-                        _minipopoverscore.menu = _kitsusimplescoremenu;
-                        break;
-                    case 1:
-                        _minipopoverscore.menu = _kitsustandardscoremenu;
-                        break;
-                    case 2:
-                        _minipopoverscore.menu = _kitsuadavancedscoremenu;
-                        break;
-                    default:
-                        break;
+            else {
+                _advancedscorefield.hidden = true;
+                _minipopoverscore.hidden = false;
+                if ([scoretype isEqualToString:@"POINT_10"]) {
+                    _minipopoverscore.menu = _malscoremenu;
+                }
+                else if ([scoretype isEqualToString:@"POINT_5"]) {
+                    _minipopoverscore.menu = _AniListFiveScoreMenu;
+                }
+                else if ([scoretype isEqualToString:@"POINT_3"]) {
+                    _minipopoverscore.menu = _AniListThreeScoreMenu;
                 }
             }
-            default:
-                break;
         }
+        default:
+            break;
     }
 }
 - (void)disableeditbuttons:(bool)enable {
@@ -410,5 +484,26 @@
             [_mw loadlist:@(true) type:2];
         }
     }];
+}
+- (void)setScore:(NSDictionary *)d {
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+        case 2:
+            [_minipopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
+            break;
+        case 3: {
+            NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+            NSNumber *convertedScore = [AniListScoreConvert convertScoreToRawActualScore:((NSNumber *)d[@"score"]).intValue withScoreType:scoretype];
+            if ([scoretype isEqualToString:@"POINT_100"]) {
+                _advancedscorefield.intValue = convertedScore.intValue;
+            }
+            else if ([scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                _advancedscorefield.doubleValue = convertedScore.doubleValue;
+            }
+            else {
+                [_minipopoverscore selectItemWithTag:convertedScore.intValue];
+            }
+        }
+    }
 }
 @end

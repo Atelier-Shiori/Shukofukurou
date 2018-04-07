@@ -24,6 +24,8 @@
 @property (strong) IBOutlet NSMenu *kitsustandardscoremenu;
 @property (strong) IBOutlet NSMenu *kitsuadavancedscoremenu;
 @property (strong) IBOutlet NSMenu *kitsusimplescoremenu;
+@property (strong) IBOutlet NSMenu *AniListThreeScoreMenu;
+@property (strong) IBOutlet NSMenu *AniListFiveScoreMenu;
 
 @property (strong) IBOutlet NSMenu *animestatusmenu;
 @property (strong) IBOutlet NSMenu *mangastatusmenu;

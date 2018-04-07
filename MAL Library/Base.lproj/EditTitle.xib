@@ -8,6 +8,10 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="EditTitle">
             <connections>
+                <outlet property="AniListFiveScoreMenu" destination="Jpz-km-naa" id="DEO-Dn-gU4"/>
+                <outlet property="AniListThreeScoreMenu" destination="yc0-Ju-KL5" id="SYN-7H-c5K"/>
+                <outlet property="advancedscorefield" destination="MOV-p9-Wus" id="s9S-bI-nMB"/>
+                <outlet property="advancedscoreformat" destination="R9X-4R-eqI" id="teh-ux-bk8"/>
                 <outlet property="animeadvancededit" destination="LDp-yw-zs1" id="Qsy-mL-X3t"/>
                 <outlet property="animeeditview" destination="96X-Ic-2H8" id="CTh-Hz-hpM"/>
                 <outlet property="animestatusmenu" destination="y4h-fC-hux" id="7ld-ET-uD6"/>
@@ -304,6 +308,16 @@
                         <outlet property="menu" destination="1Kq-9h-Ula" id="tg4-4g-cvc"/>
                     </connections>
                 </popUpButton>
+                <textField hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MOV-p9-Wus">
+                    <rect key="frame" x="97" y="18" width="60" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Kyv-AN-JGR">
+                        <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="R9X-4R-eqI"/>
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </subviews>
             <point key="canvasLocation" x="-187.5" y="922.5"/>
         </customView>
@@ -485,6 +499,47 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem title="😍 Great" tag="20" id="YcA-OA-ooY">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+        <menu id="Jpz-km-naa">
+            <items>
+                <menuItem title="No Rating" id="AN7-Tl-TUF">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="cX7-th-j2I"/>
+                <menuItem title="⭐️" tag="1" id="g7x-ux-etp">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️" tag="2" id="zp6-56-I8E">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️⭐️" tag="3" id="Ixp-dE-mXi">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️⭐️⭐️" tag="4" id="HLd-af-3qG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="⭐️⭐️⭐️⭐️⭐️" tag="5" id="qhp-oI-n6n">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-517" y="830"/>
+        </menu>
+        <menu id="yc0-Ju-KL5">
+            <items>
+                <menuItem title="No Rating" id="8ao-uQ-Y70">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Frc-2I-hXx"/>
+                <menuItem title="🙁" tag="1" id="dQK-CI-BTB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="😐" tag="2" id="MgX-Qu-xbX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="🙂" tag="3" id="aSz-7e-fbH">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>

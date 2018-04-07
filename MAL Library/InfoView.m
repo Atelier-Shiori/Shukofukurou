@@ -151,7 +151,7 @@
     if (producers) {
         [details appendString:[NSString stringWithFormat:@"Producers: %@\n", producers]];
     }
-    if (d[@"classification"] != nil) {
+    if (d[@"classification"] != nil && ((NSString *)d[@"classification"]).length > 0) {
         [details appendString:[NSString stringWithFormat:@"Classification: %@\n", d[@"classification"]]];
     }
     if (d[@"members_score"] != nil || ((NSNumber *)d[@"members_score"]).intValue > 0) {

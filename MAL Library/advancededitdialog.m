@@ -417,6 +417,11 @@
                     break;
             }
         }
+        case 3: {
+            [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_kitsufieldsview];
+            _privatecheck.hidden = NO;
+            break;
+        }
         default:
             break;
     }

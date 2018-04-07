@@ -23,4 +23,7 @@ FOUNDATION_EXPORT NSString *const kAniliststafflist;
 FOUNDATION_EXPORT NSString *const kAniListstaffpage;
 FOUNDATION_EXPORT NSString *const kAnilistpersonbyid;
 FOUNDATION_EXPORT NSString *const kAnilistUserProfileByUsername;
+FOUNDATION_EXPORT NSString *const kAnilistDeleteListEntry;
+FOUNDATION_EXPORT NSString *const kAnilistAddAnimeListEntry;
+FOUNDATION_EXPORT NSString *const kAnilistAddMangaListEntry;
 @end

@@ -144,6 +144,7 @@
                     selid = d[@"id"];
                     break;
                 case 2:
+                case 3:
                     selid = d[@"entryid"];
                     break;
                 default:
@@ -163,6 +164,7 @@
                     selid = d[@"id"];
                     break;
                 case 2:
+                case 3:
                     selid = d[@"entryid"];
                     break;
                 default:

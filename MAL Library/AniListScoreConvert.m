@@ -11,7 +11,7 @@
 @implementation AniListScoreConvert
 + (NSString *)convertAniListScoreToActualScore: (int)score withScoreType:(NSString *)scoretype {
     NSNumber *rawscore = [self convertScoreToRawActualScore:score withScoreType:scoretype];
-    return [self convertRawActualScoreToDisplayScore:rawscore withScoreTyp:scoretype];
+    return [self convertRawActualScoreToDisplayScore:rawscore withScoreType:scoretype];
     
 }
 + (NSNumber *)convertScoreToRawActualScore:(int)score withScoreType:(NSString *)scoretype {
@@ -45,7 +45,33 @@
     }
     return @(score);
 }
-+ (NSString *)convertRawActualScoreToDisplayScore:(NSNumber *)rawscore withScoreTyp:(NSString *)scoretype {
++ (int)convertScoretoScoreRaw:(double)score withScoreType:(NSString *)scoretype {
+    if ([scoretype isEqualToString:@"POINT_100"]) {
+        return (int)score;
+    }
+    else if ([scoretype isEqualToString:@"POINT_10_DECIMAL"] || [scoretype isEqualToString:@"POINT_10"]) {
+        return (int)score*10;
+    }
+    else if ([scoretype isEqualToString:@"POINT_5"]) {
+        return (int)(score*2)*10;
+    }
+    else if ([scoretype isEqualToString:@"POINT_3"]) {
+        switch ((int)score) {
+            case 0:
+                return 0;
+            case 1:
+                return 30;
+            case 2:
+                return 60;
+            case 3:
+                return 100;
+            default:
+                break;
+        }
+    }
+    return (int)score;
+}
++ (NSString *)convertRawActualScoreToDisplayScore:(NSNumber *)rawscore withScoreType:(NSString *)scoretype {
     if ([scoretype isEqualToString:@"POINT_100"] || [scoretype isEqualToString:@"POINT_10_DECIMAL"] || [scoretype isEqualToString:@"POINT_10"]) {
         return rawscore.stringValue;
     }

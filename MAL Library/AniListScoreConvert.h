@@ -10,5 +10,6 @@
 
 @interface AniListScoreConvert : NSObject
 + (NSString *)convertAniListScoreToActualScore: (int)score withScoreType:(NSString *)scoretype;
++ (int)convertScoretoScoreRaw:(double)score withScoreType:(NSString *)scoretype;
 + (NSNumber *)convertScoreToRawActualScore:(int)score withScoreType:(NSString *)scoretype;
 @end

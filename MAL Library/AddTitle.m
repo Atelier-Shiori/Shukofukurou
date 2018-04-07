@@ -7,6 +7,7 @@
 //
 
 #import "AddTitle.h"
+#import "AniListScoreConvert.h"
 #import "MainWindow.h"
 //#import "MyAnimeList.h"
 #import "listservice.h"
@@ -20,6 +21,8 @@
 @property (strong) IBOutlet NSNumberFormatter *addnumformat;
 @property (strong) IBOutlet NSTextField *addtotalepisodes;
 @property (strong) IBOutlet NSPopUpButton *addscorefiled;
+@property (strong) IBOutlet NSNumberFormatter *addscorefieldformat;
+@property (strong) IBOutlet NSTextField *addadvancedscore;
 @property (strong) IBOutlet NSPopUpButton *addstatusfield;
 @property (strong) IBOutlet NSButton *addfield;
 @property (strong) IBOutlet NSStepper *addepstepper;
@@ -34,6 +37,8 @@
 @property (strong) IBOutlet NSTextField *addtotalchap;
 @property (strong) IBOutlet NSTextField *addtotalvol;
 @property (strong) IBOutlet NSPopUpButton *addmangascorefiled;
+@property (strong) IBOutlet NSTextField *addmangaadvancescorefield;
+@property (strong) IBOutlet NSNumberFormatter *addmangaadvancescoreformat;
 @property (strong) IBOutlet NSPopUpButton *addmangastatusfield;
 @property (strong) IBOutlet NSButton *addmangabtn;
 @property (strong) IBOutlet NSStepper *addchapstepper;
@@ -207,8 +212,24 @@
         if([_addstatusfield.title isEqual:@"completed"] && _addtotalepisodes.intValue != 0 && _addepifield.intValue != _addtotalepisodes.intValue && _selectedaircompleted) {
             _addepifield.stringValue = _addtotalepisodes.stringValue;
         }
+        int score = 0;
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 2:
+                score = (int)_addscorefiled.selectedTag;
+                break;
+            case 3: {
+                NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+                if ([scoretype isEqualToString:@"POINT_100"] || [scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                    score = [AniListScoreConvert convertScoretoScoreRaw:_addadvancedscore.doubleValue withScoreType:scoretype];
+                }
+                else {
+                    score = [AniListScoreConvert convertScoretoScoreRaw:_addscorefiled.selectedTag withScoreType:scoretype];
+                }
+            }
+        }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [listservice addAnimeTitleToList:_selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:(int)_addscorefiled.selectedTag completion:^(id responseObject) {
+        [listservice addAnimeTitleToList:_selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:score completion:^(id responseObject) {
             [_mw loadlist:@(true) type:0];
             [_mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
@@ -340,9 +361,13 @@
     if (type == 0) {
         switch ([listservice getCurrentServiceID]) {
             case 1:
+                _addadvancedscore.hidden = true;
+                _addscorefiled.hidden = false;
                 _addscorefiled.menu = _malscoremenu;
                 break;
             case 2: {
+                _addadvancedscore.hidden = true;
+                _addscorefiled.hidden = false;
                 switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
                     case 0:
                         _addscorefiled.menu = _kitsusimplescoremenu;
@@ -357,6 +382,33 @@
                         break;
                 }
             }
+            case 3: {
+                NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+                if ([scoretype isEqualToString:@"POINT_100"] || [scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                    _addadvancedscore.hidden = false;
+                    _addscorefiled.hidden = true;
+                    if ([scoretype isEqualToString:@"POINT_100"]) {
+                        _addscorefieldformat.maximum = @(100);
+                    }
+                    else {
+                        _addscorefieldformat.maximum = @(10);
+                    }
+                    _addadvancedscore.intValue = 0;
+                }
+                else {
+                    _addadvancedscore.hidden = true;
+                    _addscorefiled.hidden = false;
+                    if ([scoretype isEqualToString:@"POINT_10"]) {
+                        _addscorefiled.menu = _malscoremenu;
+                    }
+                    else if ([scoretype isEqualToString:@"POINT_5"]) {
+                        _addscorefiled.menu = _AniListFiveScoreMenu;
+                    }
+                    else if ([scoretype isEqualToString:@"POINT_3"]) {
+                        _addscorefiled.menu = _AniListThreeScoreMenu;
+                    }
+                }
+            }
             default:
                 break;
         }
@@ -364,9 +416,13 @@
     else {
         switch ([listservice getCurrentServiceID]) {
             case 1:
+                _addmangaadvancescorefield.hidden = true;
+                _addmangascorefiled.hidden = false;
                 _addmangascorefiled.menu = _malscoremenu;
                 break;
             case 2: {
+                _addmangaadvancescorefield.hidden = true;
+                _addmangascorefiled.hidden = false;
                 switch ([NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-ratingsystem"]) {
                     case 0:
                         _addmangascorefiled.menu = _kitsusimplescoremenu;
@@ -381,6 +437,33 @@
                         break;
                 }
             }
+            case 3: {
+                NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+                if ([scoretype isEqualToString:@"POINT_100"] || [scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                    _addmangaadvancescorefield.hidden = false;
+                    _addmangascorefiled.hidden = true;
+                    if ([scoretype isEqualToString:@"POINT_100"]) {
+                        _addmangaadvancescoreformat.maximum = @(100);
+                    }
+                    else {
+                        _addmangaadvancescoreformat.maximum = @(10);
+                    }
+                }
+                else {
+                    _addmangaadvancescorefield.hidden = true;
+                    _addmangascorefiled.hidden = false;
+                    if ([scoretype isEqualToString:@"POINT_10"]) {
+                        _addmangascorefiled.menu = _malscoremenu;
+                    }
+                    else if ([scoretype isEqualToString:@"POINT_5"]) {
+                        _addmangascorefiled.menu = _AniListFiveScoreMenu;
+                    }
+                    else if ([scoretype isEqualToString:@"POINT_3"]) {
+                        _addmangascorefiled.menu = _AniListThreeScoreMenu;
+                    }
+                }
+            }
+
             default:
                 break;
         }

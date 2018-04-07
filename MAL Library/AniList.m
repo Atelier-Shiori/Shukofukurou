@@ -8,6 +8,7 @@
 
 #import "AniList.h"
 #import "AniListConstants.h"
+#import "AniListScoreConvert.h"
 #import "AtarashiiAPIListFormatAniList.h"
 #import "ClientConstants.h"
 #import <AFNetworking/AFNetworking.h>
@@ -216,8 +217,11 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    
-    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"type" : @"libraryEntries", @"relationships" : [self generaterelationshipdictionary:titleid withType:AniListAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score withExtraFields:nil] }} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSMutableDictionary *variables =  [self generateAnimeAttributes:episode withStatus:[self convertWatchStatus:status isReconsuming:false withType:AniListAnime] withScore:score withExtraFields:nil];
+    variables[@"mediaid"] = @(titleid);
+    NSDictionary *parameters = @{@"query"
+        : kAnilistAddAnimeListEntry, @"variables" : variables};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -232,8 +236,11 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    
-    [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"type" : @"libraryEntries", @"relationships" : [self generaterelationshipdictionary:titleid withType:AniListManga], @"attributes" : [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score withExtraFields:nil] } } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSMutableDictionary *variables = [self generateMangaAttributes:chapter withVolumes:volume withStatus:status withScore:score withExtraFields:nil];
+    variables[@"mediaid"] = @(titleid);
+    NSDictionary *parameters = @{@"query"
+                                 : kAnilistAddMangaListEntry, @"variables" : variables};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -288,10 +295,16 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
-    [manager DELETE:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries/%i",titleid] parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        completionHandler(responseObject);
+    NSDictionary *parameters = @{@"query" : kAnilistDeleteListEntry, @"variables" : @{@"id" : @(titleid) }};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"][@"DeleteMediaListEntry"] != [NSNull null]) {
+            completionHandler(responseObject);
+        }
+        else {
+            errorHandler(nil);
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        errorHandler(error);
+        errorHandler(nil);
     }];
 }
 #pragma mark Messages
@@ -429,7 +442,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
-+ (NSDictionary *)generateAnimeAttributes:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
++ (NSMutableDictionary *)generateAnimeAttributes:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
     bool reconsuming = false;
     if (efields) {
@@ -437,9 +450,9 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
             reconsuming = ((NSNumber *)efields[@"reconsuming"]).boolValue;
         }
     }
-    attributes[@"status"] = [self convertWatchStatus:status isReconsuming:false withType:AniListAnime];
+    attributes[@"status"] = [self convertWatchStatus:status isReconsuming:reconsuming withType:AniListAnime];
     attributes[@"progress"] = @(episode);
-    attributes[@"ratingTwenty"] = score >= 2 ? @(score) : [NSNull null];
+    attributes[@"score"] = @(score);
     if (efields) {
         [attributes addEntriesFromDictionary:efields];
         if (efields[@"reconsuming"]) {
@@ -448,7 +461,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     }
     return attributes;
 }
-+ (NSDictionary *)generateMangaAttributes:(int)chapter withVolumes:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
++ (NSMutableDictionary *)generateMangaAttributes:(int)chapter withVolumes:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
     bool reconsuming = false;
     if (efields) {
@@ -456,10 +469,10 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
             reconsuming = ((NSNumber *)efields[@"reconsuming"]).boolValue;
         }
     }
-    attributes[@"status"] = [self convertWatchStatus:status isReconsuming:false withType:AniListManga];
+    attributes[@"status"] = [self convertWatchStatus:status isReconsuming:reconsuming withType:AniListManga];
     attributes[@"progress"] = @(chapter);
-    attributes[@"volumesOwned"] = @(volume);
-    attributes[@"ratingTwenty"] = score >= 2 ? @(score) : [NSNull null];
+    attributes[@"progessVolumes"] = @(volume);
+    attributes[@"score"] = @(score);
     if (efields) {
         [attributes addEntriesFromDictionary:efields];
         if (efields[@"reconsuming"]) {

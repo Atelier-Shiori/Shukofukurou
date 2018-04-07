@@ -24,6 +24,8 @@
 @property (strong) IBOutlet NSMenu *kitsustandardscoremenu;
 @property (strong) IBOutlet NSMenu *kitsuadvancedscoremenu;
 @property (strong) IBOutlet NSMenu *kitsusimplescoremenu;
+@property (strong) IBOutlet NSMenu *AniListThreeScoreMenu;
+@property (strong) IBOutlet NSMenu *AniListFiveScoreMenu;
 
 
 - (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type;

@@ -8,6 +8,7 @@
 
 #import "ratingchartview.h"
 #import "RatingTwentyConvert.h"
+#import "AniListScoreConvert.h"
 
 @interface ratingchartview ()
 @property (strong) IBOutlet NSLevelIndicator *scoretenbar;
@@ -51,6 +52,12 @@
             case 2: {
                 if (((NSNumber *)d[@"score"]).intValue > 0) {
                     [scores addObject:@([RatingTwentyConvert translateKitsuTwentyScoreToMAL:((NSNumber *)d[@"score"]).intValue])];
+                }
+                break;
+            }
+            case 3: {
+                if (((NSNumber *)d[@"score"]).intValue > 0) {
+                    [scores addObject:[AniListScoreConvert convertScoreToRawActualScore:((NSNumber *)d[@"score"]).intValue withScoreType:@"POINT_10"]];
                 }
                 break;
             }

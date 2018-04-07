@@ -316,7 +316,8 @@
             extrafields[@"is_rereading"] = @(_reconsuming.state);
             break;
         }
-        case 2: {
+        case 2:
+        case 3:{
             if (_notesfield.stringValue.length > 0) {
                 extrafields[@"notes"] = _notesfield.stringValue;
             }

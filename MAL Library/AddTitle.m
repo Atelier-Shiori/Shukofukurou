@@ -448,6 +448,7 @@
                     else {
                         _addmangaadvancescoreformat.maximum = @(10);
                     }
+                    _addmangaadvancescorefield.intValue = 0;
                 }
                 else {
                     _addmangaadvancescorefield.hidden = true;

@@ -128,6 +128,7 @@
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
     NSImage *posterimage = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
+    _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"episodes"] == nil || ((NSNumber *)d[@"episodes"]).intValue == 0) {
         if (d[@"duration"] == nil  || ((NSNumber *)d[@"duration"]).intValue == 0){

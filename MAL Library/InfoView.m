@@ -127,8 +127,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
-    _infoviewposterimage.image = posterimage;
+    NSImage *posterimage = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"episodes"] == nil || ((NSNumber *)d[@"episodes"]).intValue == 0) {
         if (d[@"duration"] == nil  || ((NSNumber *)d[@"duration"]).intValue == 0){
@@ -158,8 +157,11 @@
         if (rank.intValue > 0) {
             [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
         }
-        else {
+        else if (memberscount.intValue > 0){
             [details appendString:[NSString stringWithFormat:@"Score: %f (%i users)\n", score.floatValue, memberscount.intValue]];
+        }
+        else {
+            [details appendString:[NSString stringWithFormat:@"Score: %f \n", score.floatValue]];
         }
     }
     if (popularity.intValue > 0) {
@@ -281,7 +283,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]];
+    NSImage *posterimage = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"chapters"] == nil || ((NSNumber *)d[@"chapters"]).intValue  == 0) {
@@ -304,8 +306,11 @@
         if (rank.intValue > 0) {
             [details appendString:[NSString stringWithFormat:@"Score: %f (%i users, ranked %i)\n", score.floatValue, memberscount.intValue, rank.intValue]];
         }
-        else {
+        else if (memberscount.intValue > 0){
             [details appendString:[NSString stringWithFormat:@"Score: %f (%i users)\n", score.floatValue, memberscount.intValue]];
+        }
+        else {
+            [details appendString:[NSString stringWithFormat:@"Score: %f \n", score.floatValue]];
         }
     }
     if (popularity.intValue > 0) {

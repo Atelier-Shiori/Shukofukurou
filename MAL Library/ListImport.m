@@ -12,7 +12,6 @@
 #import "listservice.h"
 #import "Utility.h"
 #import "ImportPrompt.h"
-#import "AniListImport.h"
 #import "Keychain.h"
 #import "TitleIdConverter.h"
 #import "XMLReader.h"
@@ -676,15 +675,15 @@
     
     
 - (void)startAnilist:(NSString *)username {
-    [AniListImport retrievelist:username completion:^(id responseobject){
-        _listimport = responseobject[@"anime"];
+    [AniList retrieveList:username listType:AniListAnime completion:^(id responseObject) {
+        _listimport = responseObject[@"anime"];
         _listtype = @"anilist";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
         _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
         [self importsetup];
         [self performAnilistImport];
-    } error:^(NSError *error){
+    } error:^(NSError *error) {
         NSLog(@"%@",error);
         [Utility showsheetmessage:@"Unable to retrieve AniList library." explaination:@"Make sure you entered a valid user name and try again." window:[_del getMainWindowController].window];
     }];
@@ -700,9 +699,8 @@
             }];
             break;
         }
-        case 2:
-        case 3:{
-            [TitleIdConverter getserviceTitleIDFromServiceID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] fromServiceID:3 completionHandler:^(int kitsuid) {
+        case 2: {
+            [TitleIdConverter getKitsuIdFromAniID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:_importlisttype completionHandler:^(int kitsuid) {
                 [self performMALUpdateFromAnilistEntry:entry withMALID:kitsuid];
             } error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:entry[@"title"]];

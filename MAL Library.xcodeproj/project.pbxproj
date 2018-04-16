@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
 		2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
-		2D0A64581F5B22A00001C906 /* AniListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A64571F5B22A00001C906 /* AniListImport.m */; };
-		2D0A64591F5B22A00001C906 /* AniListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D0A64571F5B22A00001C906 /* AniListImport.m */; };
 		2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
 		2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
 		2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
@@ -379,8 +377,6 @@
 /* Begin PBXFileReference section */
 		2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imagecachetransformer.h; sourceTree = "<group>"; };
 		2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagecachetransformer.m; sourceTree = "<group>"; };
-		2D0A64561F5B22A00001C906 /* AniListImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AniListImport.h; sourceTree = "<group>"; };
-		2D0A64571F5B22A00001C906 /* AniListImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AniListImport.m; sourceTree = "<group>"; };
 		2D159FCE1F96507800734250 /* OtherHistoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherHistoryView.h; sourceTree = "<group>"; };
 		2D159FCF1F96507800734250 /* OtherHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherHistoryView.m; sourceTree = "<group>"; };
 		2D20C4F01EB8FF6000B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messagecomposer.xib; sourceTree = "<group>"; };
@@ -826,8 +822,6 @@
 				F8A85911207023E40026EC0A /* AniList.m */,
 				F88CD0F92072BC330093C478 /* AniListConstants.h */,
 				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
-				2D0A64561F5B22A00001C906 /* AniListImport.h */,
-				2D0A64571F5B22A00001C906 /* AniListImport.m */,
 				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
 				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
@@ -1362,7 +1356,6 @@
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
 				2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
-				2D0A64591F5B22A00001C906 /* AniListImport.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				911E4F4B2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */,
 				F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */,
@@ -1437,7 +1430,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
-				2D0A64581F5B22A00001C906 /* AniListImport.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
 				F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */,

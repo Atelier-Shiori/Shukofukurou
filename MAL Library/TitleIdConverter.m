@@ -669,7 +669,7 @@ static BOOL importing;
 }
 + (int)findTitle:(NSString *)title withType:(NSString *)titletype withResponseObject:(id)responseObject {
     for (NSDictionary *d in responseObject) {
-        if ([titletype caseInsensitiveCompare:d[@"type"]] != NSOrderedSame && titletype.length > 0) {
+        if ([titletype caseInsensitiveCompare:d[@"type"]] != NSOrderedSame && titletype && titletype.length > 0) {
             continue;
         }
         bool found = false;

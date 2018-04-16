@@ -991,6 +991,16 @@
                 } error:^(NSError *error) {}];
                 break;
             }
+            case 3: {
+                [TitleIdConverter getAniIDFromMALListID:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:@"" withType:AniListAnime completionHandler:^(int anilistid) {
+                    [listservice retrieveTitleInfo:anilistid withType:AniListAnime useAccount:NO completion:^(id responseObject) {
+                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
+                    } error:^(NSError *error) {
+                        NSLog(@"Error: %@", error);
+                    }];
+                } error:^(NSError *error) {}];
+                break;
+            }
             default:
                 break;
         }
@@ -1007,6 +1017,16 @@
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                         [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                     }error:^(NSError *error){
+                        NSLog(@"Error: %@", error);
+                    }];
+                } error:^(NSError *error) {}];
+                break;
+            }
+            case 3: {
+                [TitleIdConverter getAniIDFromMALListID:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:d[@"type"] withType:AniListAnime completionHandler:^(int anilistid) {
+                    [listservice retrieveTitleInfo:anilistid withType:AniListAnime useAccount:NO completion:^(id responseObject) {
+                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                    } error:^(NSError *error) {
                         NSLog(@"Error: %@", error);
                     }];
                 } error:^(NSError *error) {}];

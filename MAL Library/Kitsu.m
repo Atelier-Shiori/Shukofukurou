@@ -217,6 +217,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     }
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
+    NSLog(@"%@", cred.accessToken);
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     NSLog(@"%@",@{@"data" : @{ @"type" : @"libraryEntries", @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score withExtraFields:nil] }});
     [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"type" : @"libraryEntries", @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score withExtraFields:nil] }} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -368,7 +369,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     return [AFOAuthCredential deleteCredentialWithIdentifier:kKeychainIdentifier];
 }
 + (long)getCurrentUserID {
-    return [NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"];
+    return [NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"];
 }
 + (NSDictionary *)generaterelationshipdictionary:(int)titleid withType:(int)mediatype {
     //Create relationship JSON for a new library entry

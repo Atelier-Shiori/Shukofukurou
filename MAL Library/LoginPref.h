@@ -42,6 +42,7 @@
 @property (strong) IBOutlet NSView *anilistloginview;
 @property (strong) IBOutlet NSView *anilistloggedinview;
 @property (strong) IBOutlet AniListAuthWindow *anilistauthw;
+@property (strong) IBOutlet NSButton *anilistauthorizebtn;
 
 - (id)initwithAppDelegate:(AppDelegate *)adelegate;
 - (IBAction)startlogin:(id)sender;

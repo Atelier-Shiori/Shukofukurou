@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="LoginPref">
             <connections>
+                <outlet property="anilistauthorizebtn" destination="0Ag-J5-nug" id="7B3-yE-ppv"/>
                 <outlet property="anilistclearbut" destination="mdA-mp-yJB" id="NJk-QZ-Boi"/>
                 <outlet property="anilistloggedinuser" destination="SmV-em-iUC" id="ryg-0A-dKa"/>
                 <outlet property="anilistloggedinview" destination="rha-Lb-BT6" id="sHo-fY-wFp"/>

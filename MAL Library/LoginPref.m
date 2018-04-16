@@ -142,16 +142,19 @@
         [_anilistauthw close];
     }
     [_anilistauthw loadAuthorization];
+    _anilistauthorizebtn.enabled = NO;
     [self.view.window beginSheet:_anilistauthw.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             NSString *pin = _anilistauthw.pin.copy;
             _anilistauthw.pin = nil;
             [self login:@"" password:pin withServiceID:3];
         }
+        else {
+            _anilistauthorizebtn.enabled = YES;
+        }
     }];
 }
 - (void)login:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid {
-    [_savebut setEnabled:NO];
     [listservice verifyAccountWithUsername:username password:password withServiceID:serviceid completion:^(id responseObject){
         //Login successful
         [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:self.view.window];
@@ -179,6 +182,7 @@
                 _anilistloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
                 [_anilistloggedinview setHidden:NO];
                 [_anilistloginview setHidden:YES];
+                _anilistauthorizebtn.enabled = YES;
                 break;
             default:
                 break;
@@ -313,7 +317,7 @@
                     break;
                 case 3:
                     [_anilistclearbut setEnabled: NO];
-                    _kitsuloggedinuser.stringValue = @"";
+                    _anilistloggedinuser.stringValue = @"";
                     [_anilistloggedinview setHidden:YES];
                     [_anilistloginview setHidden:NO];
                     break;

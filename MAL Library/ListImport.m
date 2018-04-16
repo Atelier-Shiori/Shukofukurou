@@ -472,8 +472,16 @@
     NSDictionary *entry = _listimport[_progress];
     switch ([listservice getCurrentServiceID]) {
         case 1: {
-            [TitleIdConverter getMALIDFromKitsuId:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"]  withType:MALAnime completionHandler:^(int malid) {
+            [TitleIdConverter getMALIDFromKitsuId:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"]  withType:_importlisttype completionHandler:^(int malid) {
                 [self performListServiceUpdateFromKitsuEntry:entry withID:malid];
+            } error:^(NSError *error) {
+                [self incrementProgress:entry withTitle:entry[@"title"]];
+            }];
+            break;
+        }
+        case 3: {
+            [TitleIdConverter getAniIDFromKitsuID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:_importlisttype completionHandler:^(int anilistid) {
+                [self performListServiceUpdateFromKitsuEntry:entry withID:anilistid];
             } error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:entry[@"title"]];
             }];
@@ -485,20 +493,28 @@
 }
 - (void)performListServiceUpdateFromKitsuEntry:(NSDictionary *)entry withID:(int)titleid{
     int score = 0;
+    int currentservice = [listservice getCurrentServiceID];
+    int tmpid = titleid;
     NSString *status = entry[@"watched_status"];
     if (entry[@"score"] > 0) {
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 score = [self translateKitsuTwentyScoreToMAL:((NSNumber *)entry[@"score"]).intValue];
                 break;
+            case 3:
+                score = [self translateKitsuTwentyScoreToMAL:((NSNumber *)entry[@"score"]).intValue] * 10;
+                break;
             default:
                 score = ((NSNumber *)entry[@"score"]).intValue;
                 break;
         }
     }
-    if ([self checkiftitleisonlist:titleid]) {
+    if ([self checkiftitleisonlist:tmpid]) {
         if (_replaceexisting) {
-            [listservice updateAnimeTitleOnList:titleid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil withExtraFields:nil completion:^(id responseObject){
+            if (currentservice == 3) {
+                tmpid = [self retrieveentryidfortitleid:tmpid];
+            }
+            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"title"]];

@@ -45,11 +45,11 @@
     _charactername.stringValue = d[@"name"];
     _posterimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image"]]]];
     switch ([listservice getCurrentServiceID]) {
-        case 1: {
+        case 1:
+        case 2:{
             _details.string = [NSString stringWithFormat:@"%@ character from %@. View more details on MyAnimeList.", d[@"role"], title];
             break;
         }
-        case 2:
         case 3: {
             NSMutableString *details = [NSMutableString new];
             [details appendFormat:@"%@ Role\n\n", d[@"role"]];

@@ -1,5 +1,5 @@
 # MAL Library
-![screenshot](https://malupdaterosx.ateliershiori.moe/assets/mallibrary.png)
+![screenshot](https://malupdaterosx.moe/wp-content/uploads/2018/04/mallibrary.png)
 
 MAL Library an open sourced and native [MyAnimeList](https://myanimelist.net), [Kitsu](https://kitsu.io/), and [AniList](https://anilist.co) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
 
@@ -9,7 +9,7 @@ Requires latest SDK (10.13), XCode 9 or later. The C#/Xamarin version is depreca
 
 You can also support the project by buying the full version from the Mac App Store for $4.99. All future updates are free for 2.x.
 
-[![macappstore](https://malupdaterosx.moe/assets/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
+[![macappstore](https://malupdaterosx.moe/wp-content/uploads/2018/04/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
 
 Note that for 3.0, binaries are only available as a freenimum application with Donor/Pro features like manga list management, list syncing, profile browser and character browser locked.
 

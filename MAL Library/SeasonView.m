@@ -41,7 +41,7 @@
                     break;
                 }
                 case 2: {
-                    [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"][@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                    [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"][@"id"]].intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
                         [_mw loadinfo:@(kitsuid) type:0 changeView:YES];
                     } error:^(NSError *error) {
                         [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];

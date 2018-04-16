@@ -842,7 +842,7 @@
                 switch (currentservice) {
                     case 2: {
                         // MAL > Kitsu Title ID
-                        [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withType:_infoview.type completionHandler:^(int kitsuid) {
+                        [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int kitsuid) {
                             [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO];
                         } error:^(NSError *error) {
                             [self resetTitleInfoView];
@@ -982,7 +982,7 @@
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                         [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
                     }error:^(NSError *error){
@@ -1003,7 +1003,7 @@
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:d[@"type"] withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                         [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                     }error:^(NSError *error){

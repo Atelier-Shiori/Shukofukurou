@@ -96,7 +96,7 @@
                     break;
                 }
                 case 2: {
-                    [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:KitsuAnime completionHandler:^(int kitsuid) {
+                    [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:d[@"type"] withType:KitsuAnime completionHandler:^(int kitsuid) {
                         [_mw loadinfo:@(kitsuid) type:0 changeView:YES];
                     } error:^(NSError *error) {
                         

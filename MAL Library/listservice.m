@@ -343,9 +343,13 @@
         }
         case 2: {
             //[Kitsu retrieveStaff:titleid completion:completionHandler error:errorHandler];
-            [TitleIdConverter getMALIDFromKitsuId:titleid withType:KitsuAnime completionHandler:^(int malid) {
-                [MyAnimeList retrieveStaff:malid completion:completionHandler error:errorHandler];
-            } error:errorHandler];
+            [Kitsu retrieveTitleInfo:titleid withType:KitsuAnime completion:^(id responseObject) {
+                [TitleIdConverter getMALIDFromKitsuId:titleid withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:KitsuAnime completionHandler:^(int malid) {
+                    [MyAnimeList retrieveStaff:malid completion:completionHandler error:errorHandler];
+                } error:errorHandler];
+            } error:^(NSError *error) {
+                errorHandler(error);
+            }];
             break;
         }
         case 3: {

@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface TitleIdConverter : NSObject
-+ (void)getKitsuIDFromMALId:(int)malid  withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
-+ (void)getMALIDFromKitsuId:(int)kitsuid withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getKitsuIDFromMALId:(int)malid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)getMALIDFromKitsuId:(int)kitsuid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getMALIDFromAniListID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getAniIDFromMALListID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)getAniIDFromKitsuID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler;

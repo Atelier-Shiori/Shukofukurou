@@ -195,7 +195,7 @@
 				break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:((NSString *)d[@"series_animedb_id"][@"text"]).intValue withType:MALAnime completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:((NSString *)d[@"series_animedb_id"][@"text"]).intValue withTitle:d[@"series_title"][@"text"] titletype:d[@"series_type"][@"text"] withType:MALAnime completionHandler:^(int kitsuid) {
                     if ([self checkiftitleisonlist:kitsuid]) {
                         if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
                             [self performanimetitleupdate:[self retrieveentryidfortitleid:kitsuid] withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"series_title"][@"text"]];
@@ -236,7 +236,7 @@
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withType:MALManga completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withTitle:d[@"manga_title"][@"text"] titletype:@""  withType:MALManga completionHandler:^(int kitsuid) {
                     if ([self checkiftitleisonlist:kitsuid]) {
                         if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
                             [self performmangatitleupdate:[self retrieveentryidfortitleid:kitsuid] withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"manga_title"][@"text"]];
@@ -436,7 +436,7 @@
     NSDictionary *entry = _listimport[_progress];
     switch ([listservice getCurrentServiceID]) {
         case 1: {
-            [TitleIdConverter getMALIDFromKitsuId:((NSNumber *)entry[@"id"]).intValue  withType:MALAnime completionHandler:^(int malid) {
+            [TitleIdConverter getMALIDFromKitsuId:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"]  withType:MALAnime completionHandler:^(int malid) {
                 [self performListServiceUpdateFromKitsuEntry:entry withID:malid];
             } error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:entry[@"title"]];

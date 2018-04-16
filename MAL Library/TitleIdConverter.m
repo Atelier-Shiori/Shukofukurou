@@ -18,7 +18,7 @@
 static BOOL lookingupid;
 static BOOL importing;
 
-+ (void)getKitsuIDFromMALId:(int)malid withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)getKitsuIDFromMALId:(int)malid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (lookingupid && !importing)  {
         return;
     }
@@ -60,18 +60,18 @@ static BOOL importing;
             }];
         }
         else {
-            [self findCurrentServiceTitleIDWithMALID:malid type:type completionHandler:^(int currentserviceid, int currentservice) {
-                if (currentservice == 2) {
-                    [self savetitleidtomapping:malid withNewID:currentserviceid withType:type fromService:1 toService:2];
-                    completionHandler(currentserviceid);
-                    lookingupid = false;
+            [Kitsu searchTitle:title withType:type completion:^(id responseObject) {
+                int newid = [self findTitle:title withType:titletype withResponseObject:responseObject];
+                if (newid > 0) {
+                    [self savetitleidtomapping:malid withNewID:newid withType:type fromService:1 toService:2];
+                    completionHandler(newid);
                 }
                 else {
                     errorHandler(nil);
-                    lookingupid = false;
                 }
+                lookingupid = false;
             } error:^(NSError *error) {
-                errorHandler(error);
+                errorHandler(nil);
                 lookingupid = false;
             }];
         }
@@ -80,7 +80,7 @@ static BOOL importing;
         lookingupid = false;
     }];
 }
-+ (void)getMALIDFromKitsuId:(int)kitsuid withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)getMALIDFromKitsuId:(int)kitsuid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (lookingupid && !importing)  {
         return;
     }
@@ -113,14 +113,15 @@ static BOOL importing;
             }
         }
         if (lookingupid) {
-            [self findMALIDWithCurrentServiceID:kitsuid type:type completionHandler:^(int malid) {
-                        [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
-                        completionHandler(malid);
-                        lookingupid = false;
-                } error:^(NSError *error) {
-                    errorHandler(error);
-                    lookingupid = false;
-                }];
+            lookingupid = false;
+            [self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
+                [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
+                completionHandler(malid);
+                lookingupid = false;
+            } error:^(NSError *error) {
+                errorHandler(error);
+                lookingupid = false;
+            }];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -213,41 +214,67 @@ static BOOL importing;
     }];
 }
 + (void)getAniIDFromKitsuID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid && !importing)  {
+        return;
+    }
     int tmpid = [self lookupTitleID:titleid withType:type fromService:2 toService:3];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
-    lookingupid = true;
-    [self getMALIDFromKitsuId:titleid withType:type completionHandler:^(int malid) {
-        [self getAniIDFromMALListID:malid withTitle:title titletype:titletype withType:type completionHandler:^(int anilistid) {
-            [self savetitleidtomapping:titleid withNewID:malid withType:type fromService:2 toService:3];
-            completionHandler(malid);
-            lookingupid = false;
+    lookingupid = false;
+    [self getMALIDFromKitsuId:titleid withTitle:title titletype:titletype  withType:type completionHandler:^(int malid) {
+        lookingupid = false;
+        [self KitsuFindAniId:malid withTitle:title withTitleType:titletype withTitleid:titleid withType:type completionHandler:completionHandler error:errorHandler];
+    } error:^(NSError *error) {
+        lookingupid = false;
+        [self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
+            if (malid > 0) {
+                [self KitsuFindAniId:malid withTitle:title withTitleType:titletype withTitleid:titleid withType:type completionHandler:completionHandler error:errorHandler];
+                lookingupid = false;
+            }
+            else {
+                errorHandler(nil);
+                lookingupid = false;
+            }
         } error:^(NSError *error) {
             errorHandler(error);
             lookingupid = false;
         }];
-    } error:^(NSError *error) {
-        errorHandler(error);
-        lookingupid = false;
-    }];
+    }];;
 }
 + (void)getKitsuIdFromAniID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    if (lookingupid && !importing)  {
+        return;
+    }
     int tmpid = [self lookupTitleID:titleid withType:type fromService:3 toService:2];
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
     }
-    lookingupid = true;
+    lookingupid = false;
     [self getMALIDFromAniListID:titleid withTitle:titletype titletype:titletype withType:type completionHandler:^(int malid) {
-        [self getKitsuIDFromMALId:malid withType:type completionHandler:^(int kitsuid) {
-            [self savetitleidtomapping:titleid withNewID:malid withType:type fromService:2 toService:3];
-            completionHandler(malid);
+        lookingupid = false;
+        [self getKitsuIDFromMALId:malid withTitle:title titletype:titletype withType:type completionHandler:^(int kitsuid) {
+            [self savetitleidtomapping:titleid withNewID:kitsuid withType:type fromService:2 toService:3];
+            completionHandler(kitsuid);
             lookingupid = false;
         } error:^(NSError *error) {
-            errorHandler(error);
-            lookingupid = false;
+            lookingupid = true;
+            [Kitsu searchTitle:title withType:type completion:^(id responseObject) {
+                int newid = [self findTitle:title withType:titletype withResponseObject:responseObject];
+                if (newid > 0) {
+                    [self savetitleidtomapping:titleid withNewID:newid withType:type fromService:3 toService:2];
+                    completionHandler(newid);
+                }
+                else {
+                    errorHandler(nil);
+                }
+                lookingupid = false;
+            } error:^(NSError *error) {
+                errorHandler(error);
+                lookingupid = false;
+            }];
         }];
     } error:^(NSError *error) {
         errorHandler(error);
@@ -290,44 +317,12 @@ static BOOL importing;
     }
     lookingupid = true;
     [listservice searchTitle:title withType:MALAnime completion:^(id responseObject) {
-        for (NSDictionary *d in responseObject) {
-            if ([titletype caseInsensitiveCompare:d[@"type"]] != NSOrderedSame) {
-                continue;
-            }
-            bool found = false;
-            if (d[@"other_titles"][@"english"]) {
-                for (NSString *ntitle in d[@"other_titles"][@"english"]) {
-                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            if (d[@"other_titles"][@"japanese"] && !found) {
-                for (NSString *ntitle in d[@"other_titles"][@"japanese"]) {
-                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            if (d[@"other_titles"][@"synonyms"] && !found) {
-                for (NSString *ntitle in d[@"other_titles"][@"synonyms"]) {
-                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
-                        found = true;
-                        break;
-                    }
-                }
-            }
-            if ([title caseInsensitiveCompare:d[@"title"]] == NSOrderedSame) {
-                found = true;
-            }
-            if (found) {
-                [self savetitleidtomapping:titleid withNewID:((NSNumber *)d[@"id"]).intValue withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
-                completionHandler(((NSNumber *)d[@"id"]).intValue);
-                lookingupid = false;
-                return;
-            }
+        int newid = [self findTitle:title withType:MALAnime withResponseObject:responseObject];
+        if (newid > 0) {
+            [self savetitleidtomapping:titleid withNewID:newid withType:MALAnime fromService:fromservice toService:[listservice getCurrentServiceID]];
+            completionHandler(newid);
+            lookingupid = false;
+            return;
         }
         errorHandler(nil);
         lookingupid = false;
@@ -672,5 +667,54 @@ static BOOL importing;
         lookingupid = false;
     }
 }
-
++ (int)findTitle:(NSString *)title withType:(NSString *)titletype withResponseObject:(id)responseObject {
+    for (NSDictionary *d in responseObject) {
+        if ([titletype caseInsensitiveCompare:d[@"type"]] != NSOrderedSame && titletype.length > 0) {
+            continue;
+        }
+        bool found = false;
+        if (d[@"other_titles"][@"english"]) {
+            for (NSString *ntitle in d[@"other_titles"][@"english"]) {
+                if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if (d[@"other_titles"][@"japanese"] && !found) {
+            for (NSString *ntitle in d[@"other_titles"][@"japanese"]) {
+                if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if (d[@"other_titles"][@"synonyms"] && !found) {
+            for (NSString *ntitle in d[@"other_titles"][@"synonyms"]) {
+                if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
+                    found = true;
+                    break;
+                }
+            }
+        }
+        if ([title caseInsensitiveCompare:d[@"title"]] == NSOrderedSame) {
+            found = true;
+        }
+        if (found) {
+            lookingupid = false;
+            return ((NSNumber *)d[@"id"]).intValue;
+        }
+    }
+    return -1;
+}
++ (void)KitsuFindAniId:(int)malid withTitle:(NSString *)title withTitleType:(NSString *)titletype withTitleid:(int)titleid withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    [self getAniIDFromMALListID:malid withTitle:title titletype:titletype withType:type completionHandler:^(int anilistid) {
+        [self savetitleidtomapping:titleid withNewID:anilistid withType:type fromService:2 toService:3];
+        completionHandler(anilistid);
+        lookingupid = false;
+    } error:^(NSError *error) {
+        errorHandler(error);
+        lookingupid = false;
+    }];
+}
 @end

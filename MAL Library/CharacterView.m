@@ -234,10 +234,14 @@
                         [_mw.window makeKeyAndOrderFront:self];
                         break;
                     case 2: {
-                        [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"id"]).intValue withType:loadtype completionHandler:^(int kitsuid) {
-                            [_mw loadinfo:@(kitsuid) type:loadtype changeView:YES];
-                            [_mw.window makeKeyAndOrderFront:self];
-                        } error:^(NSError *error) {}];
+                        [MyAnimeList retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:loadtype useAccount:NO completion:^(id responseObject) {
+                            [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"id"]).intValue withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:loadtype completionHandler:^(int kitsuid) {
+                                [_mw loadinfo:@(kitsuid) type:loadtype changeView:YES];
+                                [_mw.window makeKeyAndOrderFront:self];
+                            } error:^(NSError *error) {}];
+                        } error:^(NSError *error) {
+                            
+                        }];
                     }
                     default:
                         break;

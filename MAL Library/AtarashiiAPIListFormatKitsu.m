@@ -141,7 +141,7 @@
     aobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] ? @[attributes[@"titles"][@"en"]] : @[], @"japanese" : attributes[@"titles"][@"ja_jp"] ? @[attributes[@"titles"][@"ja_jp"]] : @[] };
     aobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     aobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
-    aobject.image_url = attributes[@"posterImage"][@"medium"] && attributes[@"posterimage"][@"medium"] != [NSNull null] ? attributes[@"posterImage"][@"medium"] : @"";
+    aobject.image_url = attributes[@"posterImage"][@"large"] && attributes[@"posterimage"][@"large"] != [NSNull null] ? attributes[@"posterImage"][@"large"] : @"";
     aobject.type = attributes[@"subtype"];
     aobject.episodes = attributes[@"episodeCount"] != [NSNull null] ? ((NSNumber *)attributes[@"episodeCount"]).intValue : 0;
     aobject.start_date = attributes[@"startDate"];
@@ -191,7 +191,7 @@
     mobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] ? @[attributes[@"titles"][@"en"]] : @[attributes[@"titles"][@"en_jp"]] , @"japanese" : attributes[@"titles"][@"ja_jp"] ?  @[attributes[@"titles"][@"ja_jp"]] : @[] };
     mobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     mobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
-    mobject.image_url = attributes[@"posterImage"][@"medium"] && attributes[@"posterImage"][@"medium"] != [NSNull null] ? attributes[@"posterImage"][@"medium"] : @"";
+    mobject.image_url = attributes[@"posterImage"][@"large"] && attributes[@"posterImage"][@"large"] != [NSNull null] ? attributes[@"posterImage"][@"large"] : @"";
     mobject.type = attributes[@"subtype"];
     mobject.chapters = attributes[@"chapterCount"] != [NSNull null] ? ((NSNumber *)attributes[@"chapterCount"]).intValue : 0;
     mobject.volumes = attributes[@"volumeCount"] != [NSNull null] ? ((NSNumber *)attributes[@"volumeCount"]).intValue : 0;

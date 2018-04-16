@@ -209,6 +209,25 @@
                 } error:^(NSError *error) {
                     [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
                 }];
+                break;
+            }
+            case 3: {
+                [TitleIdConverter getAniIDFromMALListID:((NSString *)d[@"series_animedb_id"][@"text"]).intValue withTitle:d[@"series_title"][@"text"] titletype:d[@"series_type"][@"text"] withType:MALAnime completionHandler:^(int anilistid) {
+                    if ([self checkiftitleisonlist:anilistid]) {
+                        if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
+                            [self performanimetitleupdate:[self retrieveentryidfortitleid:anilistid] withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                        }
+                        else {
+                            [self incrementProgress:nil withTitle:nil];
+                        }
+                    }
+                    else {
+                        [self performanimetitleadd:anilistid withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                    }
+                } error:^(NSError *error) {
+                    [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
+                }];
+                break;
             }
             default:
                 break;
@@ -246,6 +265,24 @@
                     }
                     else {
                         [self performmangatitleadd:kitsuid withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                    }
+                } error:^(NSError *error) {
+                    [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
+                }];
+                break;
+            }
+            case 3: {
+                [TitleIdConverter getAniIDFromMALListID:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withTitle:d[@"manga_title"][@"text"] titletype:@""  withType:MALManga completionHandler:^(int anilistid) {
+                    if ([self checkiftitleisonlist:anilistid]) {
+                        if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
+                            [self performmangatitleupdate:[self retrieveentryidfortitleid:anilistid] withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                        }
+                        else {
+                            [self incrementProgress:nil withTitle:nil];
+                        }
+                    }
+                    else {
+                        [self performmangatitleadd:anilistid withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"manga_title"][@"text"]];
                     }
                 } error:^(NSError *error) {
                     [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];

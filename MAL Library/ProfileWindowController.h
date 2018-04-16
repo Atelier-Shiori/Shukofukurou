@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <PXSourceList/PXSourceList.h>
 
-@interface ProfileWindowController : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
+@interface ProfileWindowController : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate, NSWindowDelegate>
 @property (strong) IBOutlet NSView *mainview;
 @property (strong) IBOutlet PXSourceList *sourceList;
 - (void)setAppearance;

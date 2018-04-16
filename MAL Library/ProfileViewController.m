@@ -122,7 +122,7 @@
 }
 
 - (void)resetprofileview {
-    _profileimage.image = [NSImage new];
+    _profileimage.image = nil;
     _homepageurl = nil;
     _profiledetails.string = @"";
     _usernamelabel.stringValue = @"";

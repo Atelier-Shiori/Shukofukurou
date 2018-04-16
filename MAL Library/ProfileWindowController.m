@@ -44,6 +44,14 @@
     [self loadMainView];
     [self setAppearance];
 }
+- (void)windowWillClose:(NSNotification *)notification {
+    // Cleanup
+    if (_liststats) {
+        [_liststats.window close];
+    }
+    _searchfield.stringValue = @"";
+    [self resetprofilewindow];
+}
 
 - (instancetype)init {
     return [super initWithWindowNibName:@"ProfileWindowController"];

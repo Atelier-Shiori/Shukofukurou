@@ -82,7 +82,7 @@
             mentry.chapters = entry[@"chapters"][@"chapters"] != [NSNull null] ? ((NSNumber *)entry[@"chapters"][@"chapters"]).intValue : 0;
             mentry.volumes = entry[@"volumes"][@"volumes"] != [NSNull null] ? ((NSNumber *)entry[@"volumes"][@"volumes"]).intValue : 0;
             mentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
-            mentry.type = entry[@"type"][@"format"];
+            mentry.type = ((NSString *)entry[@"type"][@"format"]).capitalizedString;
             mentry.status = entry[@"status"][@"status"];
             if ([mentry.status isEqualToString:@"FINISHED"]||[mentry.status isEqualToString:@"CANCELLED"]) {
                 mentry.status = @"finished";
@@ -288,7 +288,7 @@
             }
             mobject.chapters = d[@"chapters"] != [NSNull null] ? ((NSNumber *)d[@"chapters"]).intValue : 0;
             mobject.volumes = d[@"volumes"] != [NSNull null] ? ((NSNumber *)d[@"volumes"]).intValue : 0;
-            mobject.type = d[@"format"];
+            mobject.type = ((NSString *)d[@"format"]).capitalizedString;
             [tmparray addObject:mobject.NSDictionaryRepresentation];
         }
     }

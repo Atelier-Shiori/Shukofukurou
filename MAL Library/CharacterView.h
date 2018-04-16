@@ -28,4 +28,5 @@ typedef NS_ENUM(unsigned int, ArrayType) {
 };
 - (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title;
 - (void)populateStaffInformation:(NSDictionary *)d;
+- (void)cleanup;
 @end

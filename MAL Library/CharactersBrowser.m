@@ -39,6 +39,7 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    self.sourceListItems = [[NSMutableArray alloc] init];
     [_mainview addSubview:[NSView new]];
     _characterviewcontroller = [CharacterView new];
     _characterviewcontroller.cb = self;
@@ -48,6 +49,16 @@
     [self setDefaultView];
     [self enabletoolbaritems:NO];
     [self setAppearance];
+}
+- (void)windowWillClose:(NSNotification *)notification {
+    // Cleanup
+    [_sourceListItems removeAllObjects];
+    [_sourceList reloadData];
+    _castdict = nil;
+    [_characterviewcontroller cleanup];
+    _selectedtitleid = 0;
+    _selectedtitle = nil;
+    [self setDefaultView];
 }
 
 #pragma mark -
@@ -202,7 +213,7 @@
 
 -(void)generateSourceList:(NSDictionary *)d {
     // Generates source list
-    self.sourceListItems = [[NSMutableArray alloc] init];
+    [_sourceListItems removeAllObjects];
     PXSourceListItem *characterItem = [PXSourceListItem itemWithTitle:@"CHARACTERS" identifier:@"characters"];
     PXSourceListItem *voiceactorsItem = [PXSourceListItem itemWithTitle:@"VOICE ACTORS" identifier:@"voiceactors"];
     PXSourceListItem *staffItem = [PXSourceListItem itemWithTitle:@"STAFF" identifier:@"staff"];

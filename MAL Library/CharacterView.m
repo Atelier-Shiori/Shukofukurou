@@ -257,4 +257,14 @@
 - (IBAction)openhomepage:(id)sender {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:_personhomepage]];
 }
+
+- (void)cleanup {
+    [_arraycontroller.content removeAllObjects];
+    [_tb reloadData];
+    _selectedid = 0;
+    _persontype = 0;
+    _details.string = @"";
+    _charactername.stringValue = @"";
+    _posterimage.image = nil;
+}
 @end

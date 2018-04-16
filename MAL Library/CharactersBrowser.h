@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <PXSourceList/PXSourceList.h>
 
-@interface CharactersBrowser : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
+@interface CharactersBrowser : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate, NSWindowDelegate>
 @property (strong) IBOutlet PXSourceList *sourceList;
 @property int selectedtitleid;
 @property (strong) NSString *selectedtitle;

@@ -374,6 +374,15 @@
             }];
         }
         case 3: {
+            [TitleIdConverter getMALIDFromServiceID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type withType:MALAnime fromServiceID:4 completionHandler:^(int malid) {
+                [TitleIdConverter getAniIDFromMALListID:malid withTitle:entry[@"name"][@"text"] titletype:type withType:AniListAnime completionHandler:^(int anilistid) {
+                    [self performMALUpdatefromAniDBEntry:entry withMALID:anilistid];
+                } error:^(NSError *error) {
+                    [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
+                }];
+            } error:^(NSError *error) {
+                [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
+            }];
             break;
         }
         default:
@@ -403,6 +412,7 @@
                     tmpid = malid;
                     break;
                 case 2:
+                case 3:
                     tmpid = [self retrieveentryidfortitleid:malid];
                     break;
                 default:

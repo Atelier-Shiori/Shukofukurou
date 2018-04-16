@@ -288,9 +288,7 @@
     _infoviewposterimage.image = posterimage;
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"chapters"] == nil || ((NSNumber *)d[@"chapters"]).intValue  == 0) {
-        if (d[@"duration"] == nil && d[@"duration"] == [NSNull null]){
-            [details appendString:@"Chapters: Unknown\n"];
-        }
+        [details appendString:@"Chapters: Unknown\n"];
     }
     else {
         [details appendString:[NSString stringWithFormat:@"Chapters: %i \n", ((NSNumber *)d[@"chapters"]).intValue]];

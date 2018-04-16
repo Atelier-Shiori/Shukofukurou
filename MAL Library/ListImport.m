@@ -323,20 +323,21 @@
     }
     switch ([listservice getCurrentServiceID]) {
         case 1: {
-            [TitleIdConverter getMALIDFromServiceID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type fromServiceID:4 completionHandler:^(int malid) {
+            [TitleIdConverter getMALIDFromServiceID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type withType:MALAnime fromServiceID:4 completionHandler:^(int malid) {
                 [self performMALUpdatefromAniDBEntry:entry withMALID:malid];
             } error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
             }];
              break;
         }
-        case 2:
-        case 3: {
-            [TitleIdConverter getserviceTitleIDFromServiceID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type fromServiceID:4 completionHandler:^(int kitsuid) {
+        case 2: {
+            [TitleIdConverter getKitsuIdFromAniID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type withType:MALAnime completionHandler:^(int kitsuid) {
                 [self performMALUpdatefromAniDBEntry:entry withMALID:kitsuid];
             } error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
             }];
+        }
+        case 3: {
             break;
         }
         default:
@@ -692,7 +693,7 @@
     __block NSDictionary *entry = _listimport[_progress];
     switch ([listservice getCurrentServiceID]) {
         case 1: {
-            [TitleIdConverter getMALIDFromAniListID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] fromServiceID:3 withType:_importlisttype completionHandler:^(int malid) {
+            [TitleIdConverter getMALIDFromAniListID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:_importlisttype completionHandler:^(int malid) {
                 [self performMALUpdateFromAnilistEntry:entry withMALID:malid];
             } error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:entry[@"title"]];

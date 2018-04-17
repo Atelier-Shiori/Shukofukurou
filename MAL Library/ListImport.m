@@ -58,6 +58,14 @@
     _progressbar.doubleValue = _progress;
     _progresspercentage.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progressbar.doubleValue/_progressbar.maxValue*100)];
     [TitleIdConverter setImportStatus:true];
+    // Wait Time
+    switch ([listservice getCurrentServiceID]) {
+        case 3:
+            [NSThread sleepForTimeInterval:0.5f];
+            break;
+        default:
+            break;
+    }
     if (d && title) {
         [_failedarraycontroller addObject:@{@"title":title, @"data":d}];
     }

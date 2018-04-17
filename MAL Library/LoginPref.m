@@ -247,6 +247,7 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://kitsu.io/"]];
 }
 - (IBAction)registerAnilist:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://anilist.co/register"]];
 }
 - (IBAction) showgettingstartedpage:(id)sender
 {

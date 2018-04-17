@@ -146,13 +146,13 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSWidth([[splitView subviews][0] frame]);
-        CGFloat width = NSWidth([splitView frame]);
+        CGFloat dividerPos = NSWidth((splitView.subviews[0]).frame);
+        CGFloat width = NSWidth(splitView.frame);
         
         if (dividerPos < 0)
             dividerPos = 0;
-        if (width - dividerPos < 528 + [splitView dividerThickness])
-            dividerPos = width - (528 + [splitView dividerThickness]);
+        if (width - dividerPos < 528 + splitView.dividerThickness)
+            dividerPos = width - (528 + splitView.dividerThickness);
         
         [splitView adjustSubviews];
         [splitView setPosition:dividerPos ofDividerAtIndex:0];
@@ -163,14 +163,14 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat width = NSWidth([splitView frame]);
+        CGFloat width = NSWidth(splitView.frame);
         
         if (ABS(167 - proposedPosition) <= 8)
             proposedPosition = 180;
         if (proposedPosition < 0)
             proposedPosition = 0;
-        if (width - proposedPosition < 528 + [splitView dividerThickness])
-            proposedPosition = width - (528 + [splitView dividerThickness]);
+        if (width - proposedPosition < 528 + splitView.dividerThickness)
+            proposedPosition = width - (528 + splitView.dividerThickness);
     }
     
     return proposedPosition;

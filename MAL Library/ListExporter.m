@@ -25,7 +25,7 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-            NSURL *url = [sp URL];
+            NSURL *url = sp.URL;
             // Load List
             NSError *error;
             NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
@@ -47,10 +47,11 @@
     }
     else {
         // USer not logged in, show login notice
-        AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+        AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
         [delegate showloginnotice];
     }
 }
+
 - (IBAction)exportMangaList:(id)sender {
     // Export Manga List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
@@ -64,7 +65,7 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-            NSURL *url = [sp URL];
+            NSURL *url = sp.URL;
             // Load List
             NSError *error;
             NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
@@ -86,7 +87,7 @@
     }
     else {
         // USer not logged in, show login notice
-        AppDelegate *delegate = (AppDelegate *)[[NSApplication sharedApplication] delegate];
+        AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
         [delegate showloginnotice];
     }
 }

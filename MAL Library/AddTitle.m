@@ -72,7 +72,7 @@
                 _addnumformat.maximum = d[@"episodes"];
             }
             else {
-                [_addnumformat setMaximum:@(9999999)];
+                _addnumformat.maximum = @(9999999);
             }
             _addepstepper.maxValue = _addnumformat.maximum.doubleValue;
             if (d[@"status"]) {
@@ -113,13 +113,13 @@
                 _addchapnumformat.maximum = d[@"chapters"];
             }
             else {
-                [_addchapnumformat setMaximum:@(9999999)];
+                _addchapnumformat.maximum = @(9999999);
             }
             if (((NSNumber *)d[@"volumes"]).intValue > 0) {
                 _addvolnumformat.maximum = d[@"chapters"];
             }
             else {
-                [_addvolnumformat setMaximum:@(9999999)];
+                _addvolnumformat.maximum = @(9999999);
             }
             _addchapstepper.maxValue = _addchapnumformat.maximum.doubleValue;
             _addvolstepper.maxValue = _addvolnumformat.maximum.doubleValue;
@@ -209,7 +209,7 @@
             [_addstatusfield selectItemWithTitle:@"completed"];
             _addepifield.stringValue = _addtotalepisodes.stringValue;
         }
-        if([_addstatusfield.title isEqual:@"completed"] && _addtotalepisodes.intValue != 0 && _addepifield.intValue != _addtotalepisodes.intValue && _selectedaircompleted) {
+        if ([_addstatusfield.title isEqual:@"completed"] && _addtotalepisodes.intValue != 0 && _addepifield.intValue != _addtotalepisodes.intValue && _selectedaircompleted) {
             _addepifield.stringValue = _addtotalepisodes.stringValue;
         }
         int score = 0;

@@ -8,11 +8,10 @@
 
 #import "HistoryView.h"
 #import "Utility.h"
-#import "Keychain.h"
 #import "NSTableViewAction.h"
 #import "MainWindow.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
+
 @interface HistoryView ()
 
 @end
@@ -23,6 +22,7 @@
     [super viewDidLoad];
     // Do view setup here.
 }
+
 - (void)loadHistory:(NSNumber *)refresh{
     id list;
     bool refreshlist = refresh.boolValue;
@@ -39,8 +39,8 @@
             NSLog(@"%@", error.userInfo);
         }];
     }
-
 }
+
 - (void)populateHistory:(id)history {
     // Populates history
     NSMutableArray *a = [_historyarraycontroller mutableArrayValueForKey:@"content"];
@@ -55,12 +55,14 @@
     [_historytb reloadData];
     [_historytb deselectAll:self];
 }
+
 - (void)clearHistory {
     NSMutableArray *a = _historyarraycontroller.content;
     [a removeAllObjects];
     [self.historytb reloadData];
     [self.historytb deselectAll:self];
 }
+
 - (void)clearHistory:(int)serviceid {
     [Utility deleteFile:[listservice retrieveHistoryFileName:serviceid] appendpath:@""];
     if ([listservice getCurrentServiceID] == serviceid) {
@@ -70,6 +72,7 @@
         [self.historytb deselectAll:self];
     }
 }
+
 - (IBAction)historydoubleclick:(id)sender {
     if (_historytb.selectedRow >=0) {
         if (_historytb.selectedRow >-1) {

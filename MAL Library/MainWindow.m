@@ -12,7 +12,6 @@
 #import "Utility.h"
 #import "NSTextFieldNumber.h"
 #import "MSWeakTimer.h"
-#import "Keychain.h"
 #import "AddTitle.h"
 #import "EditTitle.h"
 #import "MyListView.h"
@@ -272,7 +271,7 @@
     [self loadlist:@(true) type:2];
 }
 - (void)windowWillClose:(NSNotification *)notification{
-    [[NSApplication sharedApplication] terminate:0];
+    [[NSApplication sharedApplication] terminate:nil];
 }
 
 - (void)setAppearance {
@@ -376,13 +375,13 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSWidth([[splitView subviews][0] frame]);
-        CGFloat width = NSWidth([splitView frame]);
+        CGFloat dividerPos = NSWidth((splitView.subviews[0]).frame);
+        CGFloat width = NSWidth(splitView.frame);
         
         if (dividerPos < 0)
             dividerPos = 0;
-        if (width - dividerPos < 558 + [splitView dividerThickness])
-            dividerPos = width - (558 + [splitView dividerThickness]);
+        if (width - dividerPos < 558 + splitView.dividerThickness)
+            dividerPos = width - (558 + splitView.dividerThickness);
         
         [splitView adjustSubviews];
         [splitView setPosition:dividerPos ofDividerAtIndex:0];
@@ -393,14 +392,14 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat width = NSWidth([splitView frame]);
+        CGFloat width = NSWidth(splitView.frame);
         
         if (ABS(137 - proposedPosition) <= 8)
             proposedPosition = 150;
         if (proposedPosition < 0)
             proposedPosition = 0;
-        if (width - proposedPosition < 558 + [splitView dividerThickness])
-            proposedPosition = width - (558 + [splitView dividerThickness]);
+        if (width - proposedPosition < 558 + splitView.dividerThickness)
+            proposedPosition = width - (558 + splitView.dividerThickness);
     }
     
     return proposedPosition;

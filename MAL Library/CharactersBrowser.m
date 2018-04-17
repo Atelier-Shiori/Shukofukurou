@@ -50,6 +50,7 @@
     [self enabletoolbaritems:NO];
     [self setAppearance];
 }
+
 - (void)windowWillClose:(NSNotification *)notification {
     // Cleanup
     [_sourceListItems removeAllObjects];
@@ -63,31 +64,27 @@
 
 #pragma mark -
 #pragma mark Source List Data Source Methods
-- (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item
-{
+- (NSUInteger)sourceList:(PXSourceList*)sourceList numberOfChildrenOfItem:(id)item {
     if (!item)
         return self.sourceListItems.count;
     
     return [item children].count;
 }
 
-- (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item
-{
+- (id)sourceList:(PXSourceList*)aSourceList child:(NSUInteger)index ofItem:(id)item {
     if (!item)
         return self.sourceListItems[index];
     
     return [item children][index];
 }
 
-- (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item
-{
+- (BOOL)sourceList:(PXSourceList*)aSourceList isItemExpandable:(id)item {
     return [item hasChildren];
 }
 
 
 #pragma mark Source List Delegate Methods
-- (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item
-{
+- (NSView *)sourceList:(PXSourceList *)aSourceList viewForItem:(id)item {
     PXSourceListTableCellView *cellView = nil;
     if ([aSourceList levelForItem:item] == 0)
         cellView = [aSourceList makeViewWithIdentifier:@"HeaderCell" owner:nil];
@@ -107,8 +104,7 @@
 }
 
 
-- (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group
-{
+- (BOOL)sourceList:(PXSourceList*)aSourceList isGroupAlwaysExpanded:(id)group {
     if ([[group identifier] isEqualToString:@"characters"])
         return YES;
     else if ([[group identifier] isEqualToString:@"staff"])
@@ -128,41 +124,39 @@
 #pragma mark -
 #pragma mark SplitView Delegate
 
-- (void) splitView:(NSSplitView*) splitView resizeSubviewsWithOldSize:(NSSize) oldSize
-{
+- (void) splitView:(NSSplitView*) splitView resizeSubviewsWithOldSize:(NSSize) oldSize {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSWidth([[splitView subviews][0] frame]);
-        CGFloat width = NSWidth([splitView frame]);
+        CGFloat dividerPos = NSWidth((splitView.subviews[0]).frame);
+        CGFloat width = NSWidth(splitView.frame);
         
         if (dividerPos < 0)
             dividerPos = 0;
-        if (width - dividerPos < 528 + [splitView dividerThickness])
-            dividerPos = width - (528 + [splitView dividerThickness]);
+        if (width - dividerPos < 528 + splitView.dividerThickness)
+            dividerPos = width - (528 + splitView.dividerThickness);
         
         [splitView adjustSubviews];
         [splitView setPosition:dividerPos ofDividerAtIndex:0];
     }
 }
 
-- (CGFloat) splitView:(NSSplitView*) splitView constrainSplitPosition:(CGFloat) proposedPosition ofSubviewAt:(NSInteger) dividerIndex
-{
+- (CGFloat) splitView:(NSSplitView*) splitView constrainSplitPosition:(CGFloat) proposedPosition ofSubviewAt:(NSInteger) dividerIndex {
     if (splitView == _splitview)
     {
-        CGFloat width = NSWidth([splitView frame]);
+        CGFloat width = NSWidth(splitView.frame);
         
         if (ABS(167 - proposedPosition) <= 8)
             proposedPosition = 180;
         if (proposedPosition < 0)
             proposedPosition = 0;
-        if (width - proposedPosition < 528 + [splitView dividerThickness])
-            proposedPosition = width - (528 + [splitView dividerThickness]);
+        if (width - proposedPosition < 528 + splitView.dividerThickness)
+            proposedPosition = width - (528 + splitView.dividerThickness);
     }
     
     return proposedPosition;
 }
 
-- (void)splitViewDidResizeSubviews:(NSNotification *)notification{
+- (void)splitViewDidResizeSubviews:(NSNotification *)notification {
     [self.window setFrame:self.window.frame display:false];
 }
 
@@ -307,7 +301,7 @@
 
 - (IBAction)share:(id)sender {
     //Generate Items to Share
-    NSArray *shareItems;
+    NSArray *shareItems = @[];
     switch ([listservice getCurrentServiceID]) {
         case 1: {
             if (_characterviewcontroller.persontype == PersonCharacter) {
@@ -372,6 +366,7 @@
     }
     return tmparray;
 }
+
 - (int)getIndexOfItemWithIdentifier:(NSString *)string {
     int index = 0;
     for (PXSourceListItem *item in _sourceListItems) {

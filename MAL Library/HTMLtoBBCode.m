@@ -20,10 +20,11 @@
     text = [parser convertLinks:text];
     return text;
 }
+
 - (NSString *)extractBody:(NSString *)html{
     NSScanner *scanner = [NSScanner scannerWithString:html];
     NSString *bodytext;
-    while (![scanner isAtEnd]){
+    while (!scanner.atEnd){
         [scanner scanUpToString:@"<body>" intoString:NULL];
         [scanner scanString:@"<body>" intoString:NULL];
         [scanner scanUpToString:@"</body>" intoString:&bodytext];
@@ -59,6 +60,7 @@
     }
     return bodytext;
 }
+
 - (NSString *)convertFormatting:(NSString *)html{
     // Bold
     html = [html stringByReplacingOccurrencesOfString:@"<b>" withString:@"[b]"];
@@ -78,6 +80,7 @@
     // finish
     return html;
 }
+
 - (NSString *)convertLinks:(NSString *)html {
     // URL
     html = [html stringByReplacingOccurrencesOfString:@"<a href=\"" withString:@"[url="];
@@ -85,10 +88,11 @@
     html = [html stringByReplacingOccurrencesOfString:@"\">" withString:@"]"];
     return html;
 }
+
 - (NSDictionary *)csstoStyleDictionary:(NSString *)html {
     NSScanner *scanner = [NSScanner scannerWithString:html];
     NSString *css;
-    while (![scanner isAtEnd]){
+    while (!scanner.atEnd) {
         [scanner scanUpToString:@"<style type=\"text/css\">" intoString:NULL];
         [scanner scanString:@"<style type=\"text/css\">" intoString:NULL];
         [scanner scanUpToString:@"</style>" intoString:&css];
@@ -170,6 +174,7 @@
     }
     return @{};
 }
+
 - (NSString *)applyBBCodeFormatting:(NSString *)html formatting:(NSDictionary *)formatdict {
     for (NSString *key in [formatdict.allKeys sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)]) {
         NSDictionary *formatinfo = formatdict[key];
@@ -212,12 +217,13 @@
     }
     return html;
 }
+
 - (NSString *)getParagraph:(NSString *)html paragraph:(NSString *)paragraph {
     if (html) {
         NSScanner *scanner = [NSScanner scannerWithString:html];
         NSString *theParagraph;
         NSString *paragraphtag = [NSString stringWithFormat:@"<p class=\"%@\">",paragraph];
-        while (![scanner isAtEnd]){
+        while (!scanner.atEnd) {
             [scanner scanUpToString:paragraphtag intoString:NULL];
             [scanner scanString:paragraphtag intoString:NULL];
             [scanner scanUpToString:@"</p>" intoString:&theParagraph];
@@ -232,7 +238,7 @@
         NSScanner *scanner = [NSScanner scannerWithString:html];
         NSString *theParagraph;
         NSString *spantag = [NSString stringWithFormat:@"<span class=\"%@\">",span];
-        while (![scanner isAtEnd]){
+        while (!scanner.atEnd) {
             [scanner scanUpToString:spantag intoString:NULL];
             [scanner scanString:spantag intoString:NULL];
             [scanner scanUpToString:@"</span>" intoString:&theParagraph];

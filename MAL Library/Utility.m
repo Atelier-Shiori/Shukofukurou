@@ -37,7 +37,7 @@
 }
 
 + (NSString *)urlEncodeString:(NSString *)string{
-	return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
+    return (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                                                                                   NULL,
                                                                                                   (__bridge CFStringRef)string,
                                                                                                   NULL,
@@ -287,7 +287,7 @@
 
 + (void)checkandclearimagecache {
     if ([[NSUserDefaults standardUserDefaults] valueForKey:@"imagecacheexpire"]) {
-        if ([(NSDate *)[[NSUserDefaults standardUserDefaults] valueForKey:@"imagecacheexpire"] timeIntervalSinceNow] < 0) {
+        if (((NSDate *)[[NSUserDefaults standardUserDefaults] valueForKey:@"imagecacheexpire"]).timeIntervalSinceNow < 0) {
             [Utility clearImageCache];
         }
     }

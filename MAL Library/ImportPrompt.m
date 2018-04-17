@@ -13,10 +13,11 @@
 @end
 
 @implementation ImportPrompt
-- (instancetype)init{
+- (instancetype)init {
     self = [super initWithWindowNibName:@"ImportPrompt"];
-    if (!self)
+    if (!self) {
         return nil;
+    }
     return self;
 }
 

@@ -27,7 +27,7 @@
 }
 
 - (MainWindow *)_mw {
-    return [(AppDelegate *)[NSApplication sharedApplication].delegate getMainWindowController];
+    return ((AppDelegate *)[NSApplication sharedApplication].delegate).mainwindowcontroller;
 }
 
 - (void)viewDidLoad {
@@ -40,7 +40,7 @@
     _animelisttitlefilterstring = @"";
     _mangalisttitlefilterstring = @"";
     id transformer;
-    if (![[self className] isEqualToString:@"MyListView"]) {
+    if (![self.className isEqualToString:@"MyListView"]) {
         transformer = [OtherListScoreFormatter new];
     }
     else {
@@ -164,6 +164,7 @@
         [self performfilter:type];
     }
 }
+
 - (void)populatefiltercounts:(NSArray *)a type:(int)type{
     // Generates item counts for each status filter
     NSArray *arg = [NSProcessInfo processInfo].arguments;
@@ -250,6 +251,7 @@
         _plantoreadfilter.title = [NSString stringWithFormat:@"Plan to read (%i)",plantoread.intValue];
     }
 }
+
 - (IBAction)filterperform:(id)sender {
     if ([sender isKindOfClass:[NSButton class]]) {
         [self filterStatusAsTabs:(NSButton *)sender];

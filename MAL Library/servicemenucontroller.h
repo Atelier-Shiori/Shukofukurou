@@ -1,9 +1,9 @@
 //
 //  servicemenucontroller.h
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 桐間紗路 on 2017/12/18.
-//  Copyright © 2017年 Atelier Shiori. All rights reserved.
+//  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

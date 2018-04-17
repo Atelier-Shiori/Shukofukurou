@@ -1,7 +1,7 @@
 ---
 layout: title-page
-title: MAL Library Help
-apple_title: MAL Library Help
+title: Shukofukuro Help
+apple_title: Shukofukuro Help
 anchor: title-page
 menu_exclude: true
 robots: anchors

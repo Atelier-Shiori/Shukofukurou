@@ -1,9 +1,9 @@
 //
 //  ClientConstants.h
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by アナスタシア on 2017/09/09.
-//  Copyright © 2017年 Atelier Shiori. All rights reserved.
+//  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 桐間紗路 on 2017/02/28.
-//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "AppDelegate.h"
@@ -135,7 +135,7 @@
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
         [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
-        [alert setMessageText:NSLocalizedString(@"Welcome to MAL Library",nil)];
+        [alert setMessageText:NSLocalizedString(@"Welcome to Shukofukuro",nil)];
         alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Before you can use this program, you need to add an account for %@. Do you want to open Preferences to authenticate an account now? \r\rNote that there is limited functionality if you don't add an account.\r\rYou can change the current service by clicking on the service menu and selecting a list service.",nil),[listservice currentservicename]];
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
@@ -354,9 +354,9 @@
     // The directory the application uses to store the Core Data store file. This code uses a directory named "moe.ateliershiori.test" in the user's Application Support directory.
     NSURL *appSupportURL = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].lastObject;
 #if defined(AppStore)
-    return [appSupportURL URLByAppendingPathComponent:@"MAL Library"];
+    return [appSupportURL URLByAppendingPathComponent:@"Shukofukuro"];
 #else
-    return [appSupportURL URLByAppendingPathComponent:@"MAL Library Next"];
+    return [appSupportURL URLByAppendingPathComponent:@"Shukofukuro Next"];
 #endif
 }
 
@@ -514,8 +514,8 @@
 - (IBAction)unlockprofeatures:(id)sender {
 #if defined(AppStore)
 #else
-    if ([MALLibraryAppStoreMigrate validateReciept:@"/Applications/MAL Library.app"]) {
-        [self appStoreRegister:@"/Applications/MAL Library.app"];
+    if ([MALLibraryAppStoreMigrate validateReciept:@"/Applications/Shukofukuro.app"]) {
+        [self appStoreRegister:@"/Applications/Shukofukuro.app"];
     }
     else {
         [MALLibraryAppStoreMigrate selectAppandValidate:_mainwindowcontroller.window completionHandler:^(bool success, NSString *path) {
@@ -523,7 +523,7 @@
                 [self appStoreRegister:path];
             }
             else {
-                [Utility showsheetmessage:@"Invalid Copy of MAL Library" explaination:@"Please select a valid copy of MAL Library you downloaded from the App Store." window:_mainwindowcontroller.window];
+                [Utility showsheetmessage:@"Invalid Copy of Shukofukuro" explaination:@"Please select a valid copy of Shukofukuro you downloaded from the App Store." window:_mainwindowcontroller.window];
             }
         }];
     }

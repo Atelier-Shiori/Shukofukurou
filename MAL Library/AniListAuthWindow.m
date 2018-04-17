@@ -1,9 +1,9 @@
 //
 //  AniListAuthWindow.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 小鳥遊六花 on 4/3/18.
-//  Copyright © 2018 Atelier Shiori. All rights reserved.
+//  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
 //
 
 #import "AniListAuthWindow.h"
@@ -55,9 +55,9 @@
 - (void)webView:(WKWebView *)webView
 decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if ([webView.URL.absoluteString containsString:@"mallibraryauth://anilistauth/?code="]) {
+    if ([webView.URL.absoluteString containsString:@"shukofukuroauth://anilistauth/?code="]) {
         // Save Pin
-        _pin = [webView.URL.absoluteString stringByReplacingOccurrencesOfString:@"mallibraryauth://anilistauth/?code=" withString:@""];
+        _pin = [webView.URL.absoluteString stringByReplacingOccurrencesOfString:@"shukofukuroauth://anilistauth/?code=" withString:@""];
         decisionHandler(WKNavigationActionPolicyCancel);
         [self resetWebView];
         [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];

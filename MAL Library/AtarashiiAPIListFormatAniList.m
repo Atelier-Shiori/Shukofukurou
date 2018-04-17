@@ -1,9 +1,9 @@
 //
 //  AtarashiiAPIListFormatAniList.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 天々座理世 on 2018/03/27.
-//  Copyright © 2018年 Atelier Shiori. All rights reserved.
+//  Copyright © 2018年 MAL Updater OS X Group. All rights reserved.
 //
 
 #import "AtarashiiAPIListFormatAniList.h"

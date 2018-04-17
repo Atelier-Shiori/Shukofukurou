@@ -1,9 +1,9 @@
 //
 //  MainWindow.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 桐間紗路 on 2017/02/28.
-//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "MainWindow.h"
@@ -43,7 +43,7 @@
 - (void)awakeFromNib
 {
     // Register queue
-    _privateQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukuro", DISPATCH_QUEUE_CONCURRENT);
     // Add blank subview to mainview
     [_mainview addSubview:[NSView new]];
     // Insert code here to initialize your application

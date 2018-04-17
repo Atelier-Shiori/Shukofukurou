@@ -7,9 +7,9 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleHelpBookFolder</key>
-	<string>MALLibraryHelp.help</string>
+	<string>ShukofukuroHelp.help</string>
 	<key>CFBundleHelpBookName</key>
-	<string>moe.ateliershiori.MALLibraryHelp.help</string>
+	<string>moe.malupdaterosx.ShukofukuroHelp.help</string>
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
@@ -58,7 +58,7 @@
 	<key>NSAppleScriptEnabled</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2017-2018 Atelier Shiori &amp; Moy IT Solutions. All rights reserved.</string>
+	<string>Copyright © 2017-2018 MAL Updater OS X Group &amp; Moy IT Solutions. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

@@ -1,9 +1,9 @@
 //
 //  LoginPref.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by Nanoha Takamachi on 2014/10/18.
-//  Copyright 2014 Atelier Shiori. All rights reserved.
+//  Copyright 2014 MAL Updater OS X Group. All rights reserved.
 //
 
 #import "LoginPref.h"
@@ -212,16 +212,16 @@
 - (void)showLoginFailure:(NSError *)error withServiceID:(int)serviceid {
     if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
         //Login Failed, show error message
-        [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account since the username and/or password are incorrect.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
+        [Utility showsheetmessage:[NSString stringWithFormat:@"Shukofukuro was unable to log you into your %@ account since the username and/or password are incorrect.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
     }
     else if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {
         // Too many login attempts
         //Login Failed, show error message
         if (serviceid == 1) {
-            [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account since there is too many login attempts." explaination:@"Check your username and password and try logging in again after several hours." window:self.view.window];
+            [Utility showsheetmessage:@"Shukofukuro was unable to log you into your MyAnimeList account since there is too many login attempts." explaination:@"Check your username and password and try logging in again after several hours." window:self.view.window];
         }
         else {
-            [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account since the username and/or password are incorrect.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
+            [Utility showsheetmessage:[NSString stringWithFormat:@"Shukofukuro was unable to log you into your %@ account since the username and/or password are incorrect.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
         }
     }
     else{
@@ -229,7 +229,7 @@
         if ([error.userInfo valueForKey:@"NSLocalizedDescription"]) {
             errormessage = [error.userInfo valueForKey:@"NSLocalizedDescription"];
         }
-        [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account", [self serviceidtoservicename:serviceid]] explaination:errormessage window:self.view.window];
+        [Utility showsheetmessage:[NSString stringWithFormat:@"Shukofukuro was unable to log you into your %@ account", [self serviceidtoservicename:serviceid]] explaination:errormessage window:self.view.window];
     }
     switch (serviceid) {
         case 1:
@@ -361,12 +361,12 @@
 
 - (void)showloginfailurenousername {
     //No Username Entered! Show error message
-    [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:self.view.window];
+    [Utility showsheetmessage:@"Shukofukuro was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:self.view.window];
 }
 
 - (void)showloginfailurenopassword {
     //No Password Entered! Show error message.
-    [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:self.view.window];
+    [Utility showsheetmessage:@"Shukofukuro was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:self.view.window];
 }
 
 - (void)performlistloading {

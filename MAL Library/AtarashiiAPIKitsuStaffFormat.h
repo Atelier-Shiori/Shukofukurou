@@ -1,9 +1,9 @@
 //
 //  AtarashiiAPIKitsuStaffFormat.h
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 桐間紗路 on 2018/01/04.
-//  Copyright © 2018年 Atelier Shiori. All rights reserved.
+//  Copyright © 2018年 MAL Updater OS X Group. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

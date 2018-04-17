@@ -1,9 +1,9 @@
 //
 //  ListStatistics.h
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 桐間紗路 on 2017/05/19.
-//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved.
+//  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

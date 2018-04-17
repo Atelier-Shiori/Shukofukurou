@@ -1,9 +1,9 @@
 //
 //  advancededitdialog.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 小鳥遊六花 on 3/20/18.
-//  Copyright © 2018 Atelier Shiori. All rights reserved.
+//  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
 //
 
 #import "advancededitdialog.h"

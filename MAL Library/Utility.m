@@ -3,7 +3,7 @@
 //  MAL Updater OS X
 //
 //  Created by Tail Red on 1/31/15.
-//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "Utility.h"
@@ -225,7 +225,7 @@
         [Utility showDonateReminder:delegate];
     }
     else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
-        // Check copy of MAL Library
+        // Check copy of Shukofukuro
         bool valid = [MALLibraryAppStoreMigrate validateReciept:[NSUserDefaults.standardUserDefaults valueForKey:@"mallibrarypath"]];
         if (valid) {
             //Reset check
@@ -233,7 +233,7 @@
         }
         else {
             //Invalid Copy
-            [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. MAL Library will now quit." window:nil];
+            [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. Shukofukuro will now quit." window:nil];
             [Utility showDonateReminder:delegate];
             [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
@@ -257,8 +257,8 @@
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:@"Open App Store"];
         [alert addButtonWithTitle:@"Not Yet"];
-        alert.messageText = @"Please Support MAL Library";
-        alert.informativeText = @"This is a prerelease version of MAL Library!\r\rWe noticed that you have been using MAL Library for a while. MAL Library is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of MAL Library, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.\r\rIf you already download the App Store version, you can unlock the features using your copy of MAL Library. On the MAL Library menu, select the Unlock Pro Features menu item.";
+        alert.messageText = @"Please Support Shukofukuro";
+        alert.informativeText = @"This is a prerelease version of Shukofukuro!\r\rWe noticed that you have been using Shukofukuro for a while. Shukofukuro is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of Shukofukuro, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.\r\rIf you already download the App Store version, you can unlock the features using your copy of Shukofukuro. On the Shukofukuro menu, select the Unlock Pro Features menu item.";
         [alert setShowsSuppressionButton:YES];
         // Set Message type to Warning
         alert.alertStyle = NSInformationalAlertStyle;
@@ -372,7 +372,7 @@
         syncmanager = [AFHTTPSessionManager manager];
         syncmanager.requestSerializer = [Utility httprequestserializer];
         syncmanager.responseSerializer = [Utility jsonresponseserializer];
-        syncmanager.completionQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
+        syncmanager.completionQueue = dispatch_queue_create("moe.ateliershiori.Shukofukuro", DISPATCH_QUEUE_CONCURRENT);
     });
     return syncmanager;
 }

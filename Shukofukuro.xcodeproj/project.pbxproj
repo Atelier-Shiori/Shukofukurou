@@ -11,7 +11,7 @@
 		2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
 		2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
 		2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
-		2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
+		2D185EBB1ECCB01F00E1A594 /* ShukofukuroHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukuroHelp.help */; };
 		2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
@@ -70,7 +70,7 @@
 		2D8BF8B81EC4EED80068856A /* ImportPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8BA1EC4EED80068856A /* ImportPrompt.xib */; };
 		2D94612E1EC38CC8004E171B /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
 		2D94612F1EC38CC8004E171B /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
-		2D96A5231ECBB65A00942B28 /* MALLibraryHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */; };
+		2D96A5231ECBB65A00942B28 /* ShukofukuroHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukuroHelp.help */; };
 		2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
 		2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863E81F895F9B00D2876A /* ProfileWindowController.m */; };
@@ -268,6 +268,9 @@
 		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		F84BB9FC2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
 		F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
+		F84D051D2086667700502379 /* DonationLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D051B2086667700502379 /* DonationLicenseManager.m */; };
+		F84D051E2086667700502379 /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84D051C2086667700502379 /* DonationLicenseManager.xib */; };
+		F84D05202086720800502379 /* DonationCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; };
 		F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
@@ -394,7 +397,7 @@
 		2D4E01111FA3B1C10053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharactersBrowser.xib; sourceTree = "<group>"; };
 		2D4E01151FA3B1C90053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharacterView.xib; sourceTree = "<group>"; };
 		2D4E01191FA3B1D50053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/StreamPopup.xib; sourceTree = "<group>"; };
-		2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL LibraryUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D60A11F1E9B322A0034C3AA /* ShukofukuroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShukofukuroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D60A1211E9B322B0034C3AA /* MAL_LibraryUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_LibraryUITests.m; sourceTree = "<group>"; };
 		2D60A1231E9B322B0034C3AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D6ECA321F2E9B20003C455E /* NSString_stripHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSString_stripHtml.h; sourceTree = "<group>"; };
@@ -425,7 +428,7 @@
 		2D8BF8B91EC4EED80068856A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ImportPrompt.xib; sourceTree = "<group>"; };
 		2D94612B1EC38CC8004E171B /* ListImport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListImport.h; sourceTree = "<group>"; };
 		2D94612C1EC38CC8004E171B /* ListImport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListImport.m; sourceTree = "<group>"; };
-		2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MALLibraryHelp.help; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D96A5171ECBA8B800942B28 /* ShukofukuroHelp.help */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShukofukuroHelp.help; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D96A5191ECBA8B800942B28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D96A51D1ECBA94400942B28 /* _English.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _English.lproj; sourceTree = "<group>"; };
 		2D96A51F1ECBA95200942B28 /* _config.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = _config.yml; sourceTree = "<group>"; };
@@ -463,10 +466,10 @@
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
 		911E4F492058213C00EF38D4 /* datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = datamodel.xcdatamodel; sourceTree = "<group>"; };
-		913A11AA1E8F206A00450B66 /* MAL Library.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		913A11AA1E8F206A00450B66 /* Shukofukuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shukofukuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A11AB1E8F206A00450B66 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "MAL Library/Info-AppStore.plist"; sourceTree = SOURCE_ROOT; };
 		913A11AD1E8F212600450B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-AppStore.xib"; sourceTree = "<group>"; };
-		913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MAL Library Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		913A627B1E9D7AF40023E6A1 /* Shukofukuro Unit Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shukofukuro Unit Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A627D1E9D7AF40023E6A1 /* MAL_Library_Unit_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAL_Library_Unit_Tests.m; sourceTree = "<group>"; };
 		913A627F1E9D7AF40023E6A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
@@ -519,7 +522,7 @@
 		91999D0B1E8C86A40026D3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SeasonView.xib; sourceTree = "<group>"; };
 		91999D0F1E8C88280026D3E9 /* InfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoView.h; sourceTree = "<group>"; };
 		91999D101E8C88280026D3E9 /* InfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoView.m; sourceTree = "<group>"; };
-		9199BA961E89836000F6E9FF /* MAL Library Next.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MAL Library Next.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9199BA961E89836000F6E9FF /* Shukofukuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shukofukuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9199BA9D1E89836000F6E9FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9199BA9F1E89836000F6E9FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9199BAA21E89836000F6E9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -580,6 +583,10 @@
 		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
 		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
 		F84BB9FE2074128B0056F5B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AniListAuthWindow.xib; sourceTree = "<group>"; };
+		F84D051A2086667700502379 /* DonationLicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DonationLicenseManager.h; sourceTree = "<group>"; };
+		F84D051B2086667700502379 /* DonationLicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DonationLicenseManager.m; sourceTree = "<group>"; };
+		F84D051C2086667700502379 /* DonationLicenseManager.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DonationLicenseManager.xib; sourceTree = "<group>"; };
+		F84D051F2086720700502379 /* DonationCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationCheck.framework; path = "MAL Library/DonationCheck.framework"; sourceTree = "<group>"; };
 		F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherListScoreFormatter.h; sourceTree = "<group>"; };
 		F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherListScoreFormatter.m; sourceTree = "<group>"; };
 		F88CD0F92072BC330093C478 /* AniListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
@@ -651,6 +658,7 @@
 				91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */,
 				9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */,
 				2D84041B1FE4A403003DC279 /* MALLibraryAppMigrate.framework in Frameworks */,
+				F84D05202086720800502379 /* DonationCheck.framework in Frameworks */,
 				9199BAFE1E89847D00F6E9FF /* AFNetworking.framework in Frameworks */,
 				2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */,
@@ -758,6 +766,7 @@
 			children = (
 				916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */,
 				9199BB011E8984E300F6E9FF /* PXSourceList.framework */,
+				F84D051F2086720700502379 /* DonationCheck.framework */,
 				9199BAF21E89844C00F6E9FF /* MASPreferences.framework */,
 				2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */,
 				918C0D401E8A00ED0037898E /* Cocoa.framework */,
@@ -792,11 +801,11 @@
 		9199BA971E89836000F6E9FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9199BA961E89836000F6E9FF /* MAL Library Next.app */,
-				913A11AA1E8F206A00450B66 /* MAL Library.app */,
-				2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */,
-				913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */,
-				2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */,
+				9199BA961E89836000F6E9FF /* Shukofukuro.app */,
+				913A11AA1E8F206A00450B66 /* Shukofukuro.app */,
+				2D60A11F1E9B322A0034C3AA /* ShukofukuroUITests.xctest */,
+				913A627B1E9D7AF40023E6A1 /* Shukofukuro Unit Tests.xctest */,
+				2D96A5171ECBA8B800942B28 /* ShukofukuroHelp.help */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -961,6 +970,9 @@
 				2D4C22161FA7B1ED00539245 /* XIB */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				F84D051A2086667700502379 /* DonationLicenseManager.h */,
+				F84D051B2086667700502379 /* DonationLicenseManager.m */,
+				F84D051C2086667700502379 /* DonationLicenseManager.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1007,9 +1019,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2D60A11E1E9B322A0034C3AA /* MAL LibraryUITests */ = {
+		2D60A11E1E9B322A0034C3AA /* ShukofukuroUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D60A1261E9B322B0034C3AA /* Build configuration list for PBXNativeTarget "MAL LibraryUITests" */;
+			buildConfigurationList = 2D60A1261E9B322B0034C3AA /* Build configuration list for PBXNativeTarget "ShukofukuroUITests" */;
 			buildPhases = (
 				2D60A11B1E9B322A0034C3AA /* Sources */,
 				2D60A11C1E9B322A0034C3AA /* Frameworks */,
@@ -1020,14 +1032,14 @@
 			dependencies = (
 				2D60A1251E9B322B0034C3AA /* PBXTargetDependency */,
 			);
-			name = "MAL LibraryUITests";
+			name = ShukofukuroUITests;
 			productName = "MAL LibraryUITests";
-			productReference = 2D60A11F1E9B322A0034C3AA /* MAL LibraryUITests.xctest */;
+			productReference = 2D60A11F1E9B322A0034C3AA /* ShukofukuroUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		2D96A5161ECBA8B800942B28 /* MALLibraryHelp */ = {
+		2D96A5161ECBA8B800942B28 /* ShukofukuroHelp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D96A51A1ECBA8B800942B28 /* Build configuration list for PBXNativeTarget "MALLibraryHelp" */;
+			buildConfigurationList = 2D96A51A1ECBA8B800942B28 /* Build configuration list for PBXNativeTarget "ShukofukuroHelp" */;
 			buildPhases = (
 				2D96A5141ECBA8B800942B28 /* Frameworks */,
 				2D96A5151ECBA8B800942B28 /* Resources */,
@@ -1037,14 +1049,14 @@
 			);
 			dependencies = (
 			);
-			name = MALLibraryHelp;
+			name = ShukofukuroHelp;
 			productName = MALLibraryHelp;
-			productReference = 2D96A5171ECBA8B800942B28 /* MALLibraryHelp.help */;
+			productReference = 2D96A5171ECBA8B800942B28 /* ShukofukuroHelp.help */;
 			productType = "com.apple.product-type.bundle";
 		};
-		913A115F1E8F206A00450B66 /* MAL Library (AppStore) */ = {
+		913A115F1E8F206A00450B66 /* Shukofukuro (AppStore) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */;
+			buildConfigurationList = 913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "Shukofukuro (AppStore)" */;
 			buildPhases = (
 				913A11601E8F206A00450B66 /* Sources */,
 				913A117D1E8F206A00450B66 /* Frameworks */,
@@ -1058,14 +1070,14 @@
 			dependencies = (
 				2D185EBD1ECCB04D00E1A594 /* PBXTargetDependency */,
 			);
-			name = "MAL Library (AppStore)";
+			name = "Shukofukuro (AppStore)";
 			productName = "MAL Library";
-			productReference = 913A11AA1E8F206A00450B66 /* MAL Library.app */;
+			productReference = 913A11AA1E8F206A00450B66 /* Shukofukuro.app */;
 			productType = "com.apple.product-type.application";
 		};
-		913A627A1E9D7AF40023E6A1 /* MAL Library Unit Tests */ = {
+		913A627A1E9D7AF40023E6A1 /* Shukofukuro Unit Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 913A62821E9D7AF40023E6A1 /* Build configuration list for PBXNativeTarget "MAL Library Unit Tests" */;
+			buildConfigurationList = 913A62821E9D7AF40023E6A1 /* Build configuration list for PBXNativeTarget "Shukofukuro Unit Tests" */;
 			buildPhases = (
 				913A62771E9D7AF40023E6A1 /* Sources */,
 				913A62781E9D7AF40023E6A1 /* Frameworks */,
@@ -1076,14 +1088,14 @@
 			dependencies = (
 				913A62811E9D7AF40023E6A1 /* PBXTargetDependency */,
 			);
-			name = "MAL Library Unit Tests";
+			name = "Shukofukuro Unit Tests";
 			productName = "MAL Library Unit Tests";
-			productReference = 913A627B1E9D7AF40023E6A1 /* MAL Library Unit Tests.xctest */;
+			productReference = 913A627B1E9D7AF40023E6A1 /* Shukofukuro Unit Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9199BA951E89836000F6E9FF /* MAL Library Next */ = {
+		9199BA951E89836000F6E9FF /* Shukofukuro */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library Next" */;
+			buildConfigurationList = 9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "Shukofukuro" */;
 			buildPhases = (
 				9199BA921E89836000F6E9FF /* Sources */,
 				9199BA931E89836000F6E9FF /* Frameworks */,
@@ -1097,9 +1109,9 @@
 			dependencies = (
 				2D185EBF1ECCB05200E1A594 /* PBXTargetDependency */,
 			);
-			name = "MAL Library Next";
+			name = Shukofukuro;
 			productName = "MAL Library";
-			productReference = 9199BA961E89836000F6E9FF /* MAL Library Next.app */;
+			productReference = 9199BA961E89836000F6E9FF /* Shukofukuro.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1143,7 +1155,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "MAL Library" */;
+			buildConfigurationList = 9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "Shukofukuro" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1156,11 +1168,11 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9199BA951E89836000F6E9FF /* MAL Library Next */,
-				913A115F1E8F206A00450B66 /* MAL Library (AppStore) */,
-				2D60A11E1E9B322A0034C3AA /* MAL LibraryUITests */,
-				913A627A1E9D7AF40023E6A1 /* MAL Library Unit Tests */,
-				2D96A5161ECBA8B800942B28 /* MALLibraryHelp */,
+				9199BA951E89836000F6E9FF /* Shukofukuro */,
+				913A115F1E8F206A00450B66 /* Shukofukuro (AppStore) */,
+				2D60A11E1E9B322A0034C3AA /* ShukofukuroUITests */,
+				913A627A1E9D7AF40023E6A1 /* Shukofukuro Unit Tests */,
+				2D96A5161ECBA8B800942B28 /* ShukofukuroHelp */,
 			);
 		};
 /* End PBXProject section */
@@ -1184,7 +1196,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D96A5231ECBB65A00942B28 /* MALLibraryHelp.help in Resources */,
+				2D96A5231ECBB65A00942B28 /* ShukofukuroHelp.help in Resources */,
 				2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
 				913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */,
 				2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */,
@@ -1237,11 +1249,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D185EBB1ECCB01F00E1A594 /* MALLibraryHelp.help in Resources */,
+				2D185EBB1ECCB01F00E1A594 /* ShukofukuroHelp.help in Resources */,
 				91822A5C1EAEAC77005E33DB /* messageview.xib in Resources */,
 				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
 				2D4E010F1FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
+				F84D051E2086667700502379 /* DonationLicenseManager.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
 				91822A581EAEAC70005E33DB /* messageswindow.xib in Resources */,
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
@@ -1429,6 +1442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F84D051D2086667700502379 /* DonationLicenseManager.m in Sources */,
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
@@ -1515,22 +1529,22 @@
 /* Begin PBXTargetDependency section */
 		2D185EBD1ECCB04D00E1A594 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D96A5161ECBA8B800942B28 /* MALLibraryHelp */;
+			target = 2D96A5161ECBA8B800942B28 /* ShukofukuroHelp */;
 			targetProxy = 2D185EBC1ECCB04D00E1A594 /* PBXContainerItemProxy */;
 		};
 		2D185EBF1ECCB05200E1A594 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D96A5161ECBA8B800942B28 /* MALLibraryHelp */;
+			target = 2D96A5161ECBA8B800942B28 /* ShukofukuroHelp */;
 			targetProxy = 2D185EBE1ECCB05200E1A594 /* PBXContainerItemProxy */;
 		};
 		2D60A1251E9B322B0034C3AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 913A115F1E8F206A00450B66 /* MAL Library (AppStore) */;
+			target = 913A115F1E8F206A00450B66 /* Shukofukuro (AppStore) */;
 			targetProxy = 2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */;
 		};
 		913A62811E9D7AF40023E6A1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 913A115F1E8F206A00450B66 /* MAL Library (AppStore) */;
+			target = 913A115F1E8F206A00450B66 /* Shukofukuro (AppStore) */;
 			targetProxy = 913A62801E9D7AF40023E6A1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1864,7 +1878,7 @@
 				INFOPLIST_FILE = MALLibraryHelp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.MALLibraryHelp;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.ShukofukuroHelp.help;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1882,7 +1896,7 @@
 				INFOPLIST_FILE = MALLibraryHelp/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
-				PRODUCT_BUNDLE_IDENTIFIER = moe.ateliershiori.MALLibraryHelp;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.ShukofukuroHelp.help;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1927,8 +1941,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-3";
-				PRODUCT_NAME = "MAL Library";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuro;
+				PRODUCT_NAME = Shukofukuro;
 			};
 			name = Debug;
 		};
@@ -1969,8 +1983,8 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-3";
-				PRODUCT_NAME = "MAL Library";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuro;
+				PRODUCT_NAME = Shukofukuro;
 			};
 			name = Release;
 		};
@@ -1986,7 +2000,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAL Library.app/Contents/MacOS/MAL Library";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shukofukuro.app/Contents/MacOS/Shukofukuro";
 			};
 			name = Debug;
 		};
@@ -2002,7 +2016,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Unit-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAL Library.app/Contents/MacOS/MAL Library";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shukofukuro.app/Contents/MacOS/Shukofukuro";
 			};
 			name = Release;
 		};
@@ -2126,12 +2140,13 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Next";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -2169,12 +2184,13 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "moe.ateliershiori.MAL-Library-Next";
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -2182,7 +2198,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D60A1261E9B322B0034C3AA /* Build configuration list for PBXNativeTarget "MAL LibraryUITests" */ = {
+		2D60A1261E9B322B0034C3AA /* Build configuration list for PBXNativeTarget "ShukofukuroUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D60A1271E9B322B0034C3AA /* Debug */,
@@ -2191,7 +2207,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D96A51A1ECBA8B800942B28 /* Build configuration list for PBXNativeTarget "MALLibraryHelp" */ = {
+		2D96A51A1ECBA8B800942B28 /* Build configuration list for PBXNativeTarget "ShukofukuroHelp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D96A51B1ECBA8B800942B28 /* Debug */,
@@ -2200,7 +2216,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "MAL Library (AppStore)" */ = {
+		913A11A71E8F206A00450B66 /* Build configuration list for PBXNativeTarget "Shukofukuro (AppStore)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				913A11A81E8F206A00450B66 /* Debug */,
@@ -2209,7 +2225,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		913A62821E9D7AF40023E6A1 /* Build configuration list for PBXNativeTarget "MAL Library Unit Tests" */ = {
+		913A62821E9D7AF40023E6A1 /* Build configuration list for PBXNativeTarget "Shukofukuro Unit Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				913A62831E9D7AF40023E6A1 /* Debug */,
@@ -2218,7 +2234,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "MAL Library" */ = {
+		9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "Shukofukuro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9199BAA51E89836000F6E9FF /* Debug */,
@@ -2227,7 +2243,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "MAL Library Next" */ = {
+		9199BAA71E89836000F6E9FF /* Build configuration list for PBXNativeTarget "Shukofukuro" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9199BAA81E89836000F6E9FF /* Debug */,

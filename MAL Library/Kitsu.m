@@ -1,9 +1,9 @@
 //
 //  Kitsu.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 桐間紗路 on 2017/12/14.
-//  Copyright © 2017年 Atelier Shiori. All rights reserved.
+//  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.
 //
 
 #import "Kitsu.h"
@@ -15,7 +15,7 @@
 #import "ClientConstants.h"
 
 @implementation Kitsu
-NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
+NSString *const kKeychainIdentifier = @"Shukofukuro - Kitsu";
 
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {

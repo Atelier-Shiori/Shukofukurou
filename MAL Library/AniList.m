@@ -1,9 +1,9 @@
 //
 //  AniList.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 小鳥遊六花 on 3/31/18.
-//  Copyright © 2018 Atelier Shiori. All rights reserved.
+//  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
 //
 
 #import "AniList.h"
@@ -15,7 +15,7 @@
 #import "Utility.h"
 
 @implementation AniList
-NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
+NSString *const kAniListKeychainIdentifier = @"Shukofukuro - AniList";
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Retrieves list

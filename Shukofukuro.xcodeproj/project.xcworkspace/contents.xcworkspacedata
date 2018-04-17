@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MAL Library.xcodeproj">
+      location = "self:/Users/takanashirikka/Desktop/repo/MAL-Library/Shukofukuro.xcodeproj">
    </FileRef>
 </Workspace>

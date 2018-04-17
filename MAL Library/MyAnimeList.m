@@ -1,9 +1,9 @@
 //
 //  MyAnimeList.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 天々座理世 on 2017/04/11.
-//  Copyright © 2017年 Atelier Shiori. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017年 MAL Updater OS X Group. All rights reserved. Licensed under 3-clause BSD License
 //
 
 //#import "MyAnimeList.h"
@@ -184,7 +184,7 @@
     }
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"] timeIntervalSinceNow] < 0) {
         AFHTTPSessionManager *manager = [self verifymanager];
-        manager.completionQueue = dispatch_queue_create("moe.ateliershiori.MAL Library", DISPATCH_QUEUE_CONCURRENT);
+        manager.completionQueue = dispatch_queue_create("moe.ateliershiori.Shukofukuro", DISPATCH_QUEUE_CONCURRENT);
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Basic %@",[Keychain getBase64]] forHTTPHeaderField:@"Authorization"];
         // Check for errors
         NSError *error = nil;

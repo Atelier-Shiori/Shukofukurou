@@ -1,9 +1,9 @@
 //
 //  CharacterView.h
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 桐間紗路 on 2017/07/26.
-//  Copyright © 2017年 Atelier Shiori. All rights reserved.
+//  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

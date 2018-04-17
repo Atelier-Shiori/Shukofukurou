@@ -1,11 +1,11 @@
 ---
 title: Getting Started
-description: Getting Started with MAL Library
+description: Getting Started with Shukofukuro
 keyword: overview
 order: -.INF
 ---
 
-MAL Library is a native MyAnimeList and Kitsu tracker. While you don't need to login, to use the list management functions, you need to add an account. MAL Library will prompt you to login at start up.
+Shukofukuro is a native MyAnimeList, Kitsu, and AniList tracker. While you don't need to login, to use the list management functions, you need to add an account. Shukofukuro will prompt you to login at start up.
 
 ## Main Window
 Here are the functionality available:
@@ -27,5 +27,5 @@ Here are the functionality available:
 * Airing - Browse through shows that are currently airing by day.
 
 ## Service Menu
-The service menu allows you to switch between list services. If you have a title loaded in Title Information, MAL Library will atempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.
+The service menu allows you to switch between list services. If you have a title loaded in Title Information, Shukofukuro will atempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.
 

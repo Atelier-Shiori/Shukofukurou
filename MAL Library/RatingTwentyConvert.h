@@ -1,9 +1,9 @@
 //
 //  RatingTwentyConvert.h
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 小鳥遊六花 on 2/26/18.
-//  Copyright © 2018 Atelier Shiori. All rights reserved.
+//  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

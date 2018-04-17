@@ -1,9 +1,9 @@
 //
 //  Keychain.m
-//  MAL Library
+//  Shukofukuro
 //
 //  Created by 天々座理世 on 2017/03/27.
-//  Copyright © 2017-2018 Atelier Shiori Software and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
+//  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "Keychain.h"
@@ -11,7 +11,7 @@
 #import "Base64Category.h"
 
 @implementation Keychain
-NSString *const kserviceName = @"MAL Library";
+NSString *const kserviceName = @"Shukofukuro";
 
 + (BOOL)checkaccount {
     if ([Keychain getusername]) {

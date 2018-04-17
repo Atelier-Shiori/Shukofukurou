@@ -14,9 +14,11 @@
          1. MyAnimeList
          2. Kitsu
          3. AniList */
+
 + (int)getCurrentServiceID {
     return (int)[NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
 }
+
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -31,11 +33,12 @@
             [AniList retrieveList:username listType:type completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
-    
 }
+
 + (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -50,10 +53,12 @@
             [MyAnimeList retrieveAiringSchedule:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -68,26 +73,24 @@
             [AniList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList advsearchTitle:searchterm withType:type withGenres:genres excludeGenres:exclude startDate:startDate endDate:endDate minScore:minscore rating:rating withStatus:status completion:completionHandler error:errorHandler];
             break;
         }
-        case 2: {
+        default: {
             break;
         }
-        case 3: {
-            break;
-        }
-        default:
-            break;
     }
 }
+
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type useAccount:(bool)useAccount completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -102,10 +105,12 @@
             [AniList retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -120,37 +125,46 @@
             [AniList retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
+        default: {
+            break;
+        }
     }
 }
+
 + (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retriveUpdateHistory:username completion:completionHandler error:errorHandler];
             break;
         }
-        case 2: {
+        case 2:
+        case 3: {
             completionHandler(@[]);
             break;
         }
-        case 3: {
+        default: {
             break;
         }
     }
 }
+
 + (bool)verifyAccount {
     switch ([self getCurrentServiceID]) {
         case 1: {
             return [MyAnimeList verifyAccount];
         }
-        default:
+        default: {
             break;
+        }
     }
     return false;
 }
+
 + (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     [self verifyAccountWithUsername:username password:password withServiceID:[self getCurrentServiceID] completion:completionHandler error:errorHandler];
 
 }
+
 + (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch (serviceid) {
         case 1: {
@@ -165,8 +179,12 @@
             [AniList verifyAccountWithPin:password completion:completionHandler error:errorHandler];
             break;
         }
+        default: {
+            break;
+        }
     }
 }
+
 + (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -181,8 +199,12 @@
             [AniList retrieveProfile:username completion:completionHandler error:errorHandler];
             break;
         }
+        default: {
+            break;
+        }
     }
 }
+
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -197,8 +219,12 @@
             [AniList addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
+        default: {
+            break;
+        }
     }
 }
+
 + (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -213,10 +239,12 @@
             [AniList addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -231,10 +259,12 @@
             [AniList updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -249,10 +279,12 @@
             [AniList updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -267,10 +299,12 @@
             [AniList removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -283,10 +317,12 @@
         case 3: {
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)retrievemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -299,10 +335,12 @@
         case 3: {
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -315,10 +353,12 @@
         case 3: {
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -331,10 +371,12 @@
         case 3: {
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
@@ -356,8 +398,9 @@
             [AniList retrieveStaff:titleid completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -374,13 +417,16 @@
             [AniList retrievePersonDetails:personid completion:completionHandler error:errorHandler];
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
 }
+
 + (NSString *)retrieveListFileName:(int)type {
     return [self retrieveListFileName:type withServiceID:[self getCurrentServiceID]];
 }
+
 + (NSString *)retrieveListFileName:(int)type withServiceID:(int)serviceid {
     switch (serviceid) {
         case 1: {
@@ -410,14 +456,17 @@
             }
             break;
         }
-        default:
+        default: {
             break;
+        }
     }
     return @"";
 }
+
 + (id)retrieveHistoryFileName {
     return [self retrieveHistoryFileName:[self getCurrentServiceID]];
 }
+
 + (id)retrieveHistoryFileName:(int)serviceid {
     switch (serviceid) {
         case 1: {
@@ -429,11 +478,13 @@
         case 3: {
             return @"anilist-history.json";
         }
-        default:
+        default: {
             break;
+        }
     }
     return @"";
 }
+
 + (bool)checkAccountForCurrentService {
     int service = [listservice getCurrentServiceID];
     if ((![Keychain checkaccount] && service == 1) || (![Kitsu getFirstAccount] && service == 2) || (![AniList getFirstAccount] && service == 3)) {
@@ -441,6 +492,7 @@
     }
     return true;
 }
+
 + (NSString *)getCurrentServiceUsername {
     switch ([self getCurrentServiceID]) {
         case 1:
@@ -454,6 +506,7 @@
     }
     return @"";
 }
+
 + (NSString *)currentservicename {
     switch ([self getCurrentServiceID]) {
         case 1:

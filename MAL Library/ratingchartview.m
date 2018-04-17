@@ -131,7 +131,7 @@
 }
 
 - (NSNumber *)standardDeviationOf:(NSArray *)array {
-    if(![array count]) return nil;
+    if(!array.count) return nil;
     
     double mean = [self meanOf:array].doubleValue;
     double sumOfSquaredDifferences = 0.0;

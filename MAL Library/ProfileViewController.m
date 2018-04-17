@@ -42,7 +42,7 @@
     }];
 }
 - (void)populateProfile:(id)responseobject withUsername:(NSString *)username {
-    _usernamelabel.stringValue = [username lowercaseString];
+    _usernamelabel.stringValue = username.lowercaseString;
     if (responseobject[@"avatar_url"] && responseobject[@"avatar_url"] != [NSNull null]) {
         _profileimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[responseobject[@"avatar_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""]stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",responseobject[@"avatar_url"]]]];
     }

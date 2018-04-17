@@ -38,7 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    _mw = [((AppDelegate *)[NSApplication sharedApplication].delegate) getMainWindowController];
+    _mw = ((AppDelegate *)[NSApplication sharedApplication].delegate).mainwindowcontroller;
 }
 
 - (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title {

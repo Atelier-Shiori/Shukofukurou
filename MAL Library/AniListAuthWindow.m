@@ -7,7 +7,6 @@
 //
 
 #import "AniListAuthWindow.h"
-#import <WebKit/WebKit.h>
 #import "ClientConstants.h"
 
 @interface AniListAuthWindow ()
@@ -17,13 +16,13 @@
 
 @implementation AniListAuthWindow
 
-- (instancetype)init{
+- (instancetype)init {
     self = [super initWithWindowNibName:@"AniListAuthWindow"];
-    if (!self)
+    if (!self) {
         return nil;
+    }
     return self;
 }
-
 
 - (void)windowDidLoad {
     [super windowDidLoad];
@@ -52,6 +51,7 @@
 - (void)webViewDidClose:(WKWebView *)webView {
     [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
 }
+
 - (void)webView:(WKWebView *)webView
 decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
@@ -66,6 +66,7 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
         decisionHandler(WKNavigationActionPolicyAllow);
     }
 }
+
 - (void)resetWebView {
     // Clears WebView cookies and cache
     NSSet *websiteDataTypes

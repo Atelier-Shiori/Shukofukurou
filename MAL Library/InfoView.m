@@ -10,7 +10,6 @@
 #import "MainWindow.h"
 #import "Utility.h"
 #import "NSString+HTMLtoNSAttributedString.h"
-#import "ReviewView.h"
 #import "RecommendedTitleView.h"
 #import "StreamPopup.h"
 #import "listservice.h"
@@ -30,8 +29,7 @@
 
 @implementation InfoView
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [super initWithNibName:@"InfoView" bundle:nil];
 }
 
@@ -43,7 +41,7 @@
     }
 }
 
-- (void)populateAnimeInfoView:(id)object{
+- (void)populateAnimeInfoView:(id)object {
     NSDictionary *d = object;
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
@@ -134,12 +132,12 @@
         if (d[@"duration"] == nil  || ((NSNumber *)d[@"duration"]).intValue == 0){
             [details appendString:@"Episodes: Unknown\n"];
         }
-        else{
+        else {
             [details appendString:[NSString stringWithFormat:@"Episodes: Unknown (%i mins per episode)\n", ((NSNumber *)d[@"duration"]).intValue]];
         }
     }
     else {
-        if (d[@"duration"] == nil  || ((NSNumber *)d[@"episodes"]).intValue == 0){
+        if (d[@"duration"] == nil  || ((NSNumber *)d[@"episodes"]).intValue == 0) {
             [details appendString:[NSString stringWithFormat:@"Episodes: %i\n", ((NSNumber *)d[@"episodes"]).intValue]];
         }
         else{
@@ -199,7 +197,7 @@
 
 - (void)showbuttons:(NSDictionary *)d {
     if (d[@"recommendations"]){
-        if ([(NSArray *)d[@"recommendations"] count] > 0){
+        if (((NSArray *)d[@"recommendations"]).count > 0){
             _recommendedtitlebutton.hidden = NO;
         }
         else {
@@ -210,8 +208,8 @@
         _recommendedtitlebutton.hidden = YES;
     }
     if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
-        if (d[@"manga_adaptations"]){
-            if ([(NSArray *)d[@"manga_adaptations"] count] > 0){
+        if (d[@"manga_adaptations"]) {
+            if (((NSArray *)d[@"manga_adaptations"]).count > 0){
                 _sourcematerialbutton.hidden = NO;
             }
             else {
@@ -241,7 +239,7 @@
     [_infoviewbackgroundtextview scrollToBeginningOfDocument:self];
 }
 
-- (void)populateMangaInfoView:(id)object{
+- (void)populateMangaInfoView:(id)object {
     NSDictionary *d = object;
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
@@ -250,19 +248,19 @@
     _infoviewtitle.stringValue = d[@"title"];
     NSDictionary *dtitles =  d[@"other_titles"];
     NSMutableArray *othertitles = [NSMutableArray new];
-    if (dtitles[@"english"] != nil){
+    if (dtitles[@"english"] != nil) {
         NSArray *e = dtitles[@"english"];
         for (NSString *etitle in e){
             [othertitles addObject:etitle];
         }
     }
-    if (dtitles[@"japanese"] != nil){
+    if (dtitles[@"japanese"] != nil) {
         NSArray *j = dtitles[@"japanese"];
         for (NSString *jtitle in j){
             [othertitles addObject:jtitle];
         }
     }
-    if (dtitles[@"synonyms"] != nil){
+    if (dtitles[@"synonyms"] != nil) {
         NSArray *syn = dtitles[@"synonyms"];
         for (NSString *stitle in syn){
             [othertitles addObject:stitle];
@@ -270,7 +268,7 @@
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
     _infoviewalttitles.stringValue = titles;
-    if (d[@"genres"]!= nil){
+    if (d[@"genres"]!= nil) {
         NSArray *genresa = d[@"genres"];
         [genres appendString:[Utility appendstringwithArray:genresa]];
     }
@@ -293,7 +291,7 @@
     else {
         [details appendString:[NSString stringWithFormat:@"Chapters: %i \n", ((NSNumber *)d[@"chapters"]).intValue]];
     }
-    if (d[@"volumes"] == nil || ((NSNumber *)d[@"volumes"]).intValue == 0){
+    if (d[@"volumes"] == nil || ((NSNumber *)d[@"volumes"]).intValue == 0) {
         [details appendString:@"Volumes: Unknown\n"];
     }
     else {
@@ -345,7 +343,7 @@
             break;
         }
         case 2: {
-            if (_type == AnimeType){
+            if (_type == AnimeType) {
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/anime/%i",_selectedid]]];
             }
             else {
@@ -354,7 +352,7 @@
             break;
         }
         case 3: {
-            if (_type == AnimeType){
+            if (_type == AnimeType) {
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%i",_selectedid]]];
             }
             else {
@@ -370,7 +368,7 @@
 }
 
 - (IBAction)viewreviews:(id)sender {
-    if (!_mw.reviewwindow){
+    if (!_mw.reviewwindow) {
         _mw.reviewwindow = [ReviewWindow new];
     }
     [_mw.reviewwindow loadReview:_selectedid type:_type title:_infoviewtitle.stringValue];
@@ -378,7 +376,7 @@
 }
 
 - (IBAction)showrecommendedtitlepopover:(id)sender {
-    if (_otherpopoverviewcontroller.selectedid == 0){
+    if (_otherpopoverviewcontroller.selectedid == 0) {
         [_otherpopoverviewcontroller viewDidLoad];
     }
     _otherpopoverviewcontroller.popovertitle.stringValue = @"Recommended Titles";
@@ -387,7 +385,7 @@
 }
 
 - (IBAction)showadaptationspopover:(id)sender {
-    if (_otherpopoverviewcontroller.selectedid == 0){
+    if (_otherpopoverviewcontroller.selectedid == 0) {
         [_otherpopoverviewcontroller viewDidLoad];
     }
     _otherpopoverviewcontroller.popovertitle.stringValue = @"Manga Adaptations";
@@ -456,14 +454,17 @@
     NSMenuItem *siteitem = (NSMenuItem *)sender;
     NSURL *openurl;
     switch (siteitem.tag) {
-        case 1:
+        case 1: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://anidb.net/perl-bin/animedb.pl?show=animelist&amp;adb.search=%@&amp;noalias=1&amp;do.update=update",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
-        case 2:
+        }
+        case 2: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.animenewsnetwork.com/search?q=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+        }
             break;
-        case 3:
+        case 3: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.mangaupdates.com/search.html?search=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+        }
             break;
         case 4: {
             if (_type == MALAnime) {
@@ -474,12 +475,14 @@
             }
             break;
         }
-        case 5:
+        case 5: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://tvtropes.org/pmwiki/search_result.php?q=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
-        case 6:
+        }
+        case 6: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en.wikipedia.org/wiki/Special:Search?search=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
+        }
         case 7: {
             NSString *tmptitle;
             if (((NSArray *)_selectedinfo[@"other_titles"][@"japanese"]).count > 0) {
@@ -491,14 +494,17 @@
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://dic.pixiv.net/search?query=%@",[Utility urlEncodeString:tmptitle]]];
             break;
         }
-        case 8:
+        case 8: {
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en-dic.pixiv.net/search?query=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
-        default:
+        }
+        default: {
             return;
+        }
     }
     [[NSWorkspace sharedWorkspace] openURL:openurl];
 }
+
 - (void)showhidewebmenus {
     if (_type == MALAnime) {
         _anidbmenuitem.hidden = NO;

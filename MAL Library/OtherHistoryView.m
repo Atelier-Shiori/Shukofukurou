@@ -52,7 +52,7 @@
             else {
                 typenum = 1;
             }
-            MainWindow *mwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getMainWindowController];
+            MainWindow *mwc = ((AppDelegate *)NSApplication.sharedApplication.delegate).mainwindowcontroller;
             [mwc loadinfo:idnum type:typenum changeView:YES];
             [mwc.window makeKeyAndOrderFront:self];
         }

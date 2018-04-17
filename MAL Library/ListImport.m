@@ -12,7 +12,6 @@
 #import "listservice.h"
 #import "Utility.h"
 #import "ImportPrompt.h"
-#import "Keychain.h"
 #import "TitleIdConverter.h"
 #import "XMLReader.h"
 #import "RatingTwentyConvert.h"
@@ -49,7 +48,7 @@
     _imported = 0;
     _progresspercentage.stringValue = @"0%";
     _progressbar.doubleValue = 0;
-    [NSApp beginSheet:self.window modalForWindow:[_del getMainWindowController].window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+    [NSApp beginSheet:self.window modalForWindow:_del.mainwindowcontroller.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
 }
 
 - (void)incrementProgress:( NSDictionary * _Nullable )d withTitle:(NSString * _Nullable) title {
@@ -78,19 +77,19 @@
         [NSApp endSheet:self.window returnCode:0];
         [self.window close];
         [TitleIdConverter setImportStatus:false];
-        if ([(NSArray *)_failedarraycontroller.content count] > 0) {
+        if (((NSArray *)_failedarraycontroller.content).count > 0) {
             [_failedtb reloadData];
             [NSApp beginSheet:_failedw
-               modalForWindow:[_del getMainWindowController].window modalDelegate:self
+               modalForWindow:_del.mainwindowcontroller.window modalDelegate:self
                didEndSelector:nil
                   contextInfo:nil];
         }
         else {
-            [Utility showsheetmessage:@"Import Completed." explaination:[NSString stringWithFormat:@"%i entries have been imported",_imported] window:[_del getMainWindowController].window];
+            [Utility showsheetmessage:@"Import Completed." explaination:[NSString stringWithFormat:@"%i entries have been imported",_imported] window:_del.mainwindowcontroller.window];
         }
-        [[_del getMainWindowController] loadlist:@(true) type:MALAnime];
-        [[_del getMainWindowController] loadlist:@(true) type:MALManga];
-        [[_del getMainWindowController] loadlist:@(true) type:2];
+        [_del.mainwindowcontroller loadlist:@(true) type:MALAnime];
+        [_del.mainwindowcontroller loadlist:@(true) type:MALManga];
+        [_del.mainwindowcontroller loadlist:@(true) type:2];
         // Cleanup
         _listimport = nil;
         _existinglist = nil;
@@ -124,7 +123,7 @@
         button.title = NSLocalizedString(@"Replace entries if exist", @"");
         [button sizeToFit];
         op.accessoryView = button;
-        [op beginSheetModalForWindow:[_del getMainWindowController].window
+        [op beginSheetModalForWindow:_del.mainwindowcontroller.window
                    completionHandler:^(NSInteger result) {
                        if (result == NSFileHandlingPanelCancelButton) {
                            return;
@@ -139,7 +138,7 @@
                        
                        NSDictionary *d = [XMLReader dictionaryForXMLString:str options:XMLReaderOptionsProcessNamespaces error:&error];
                        if (!d[@"myanimelist"]) {
-                            [Utility showsheetmessage:@"Invalid list." explaination:@"This is not a MyAnimeList XML formatted list. Please select a valid XML file and try again." window:[_del getMainWindowController].window];
+                            [Utility showsheetmessage:@"Invalid list." explaination:@"This is not a MyAnimeList XML formatted list. Please select a valid XML file and try again." window:_del.mainwindowcontroller.window];
                            return;
                        }
                        d = d[@"myanimelist"];
@@ -155,7 +154,7 @@
                            _existinglist = [Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""][@"manga"];
                            }
                            else {
-                               [Utility showsheetmessage:@"Unable to import list." explaination:@"Manga import requires a donation key." window:[_del getMainWindowController].window];
+                               [Utility showsheetmessage:@"Unable to import list." explaination:@"Manga import requires a donation key." window:_del.mainwindowcontroller.window];
                                return;
                            }
                        }
@@ -199,7 +198,7 @@
                 else {
                     [self performanimetitleadd:((NSString *)d[@"series_animedb_id"][@"text"]).intValue withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue withDictionary:d withTitle:d[@"series_title"][@"text"]];
                 }
-				break;
+                break;
             }
             case 2: {
                 [TitleIdConverter getKitsuIDFromMALId:((NSString *)d[@"series_animedb_id"][@"text"]).intValue withTitle:d[@"series_title"][@"text"] titletype:d[@"series_type"][@"text"] withType:MALAnime completionHandler:^(int kitsuid) {
@@ -239,7 +238,7 @@
             }
             default:
                 break;
-		}
+        }
     }
 }
 
@@ -314,7 +313,7 @@
         button.title = NSLocalizedString(@"Replace entries if exist", @"");
         [button sizeToFit];
         op.accessoryView = button;
-        [op beginSheetModalForWindow:[_del getMainWindowController].window
+        [op beginSheetModalForWindow:_del.mainwindowcontroller.window
                    completionHandler:^(NSInteger result) {
                        if (result == NSFileHandlingPanelCancelButton) {
                            return;
@@ -343,7 +342,7 @@
                            }
                        }
                        else {
-                           [Utility showsheetmessage:@"Invalid list." explaination:@"This is not a AniDB XML formatted list. Please select a valid XML file and try again." window:[_del getMainWindowController].window];
+                           [Utility showsheetmessage:@"Invalid list." explaination:@"This is not a AniDB XML formatted list. Please select a valid XML file and try again." window:_del.mainwindowcontroller.window];
                        }
                    }];
     }
@@ -452,7 +451,7 @@
             _importprompt = [ImportPrompt new];
         }
         [NSApp beginSheet:_importprompt.window
-       modalForWindow:[_del getMainWindowController].window modalDelegate:self
+       modalForWindow:_del.mainwindowcontroller.window modalDelegate:self
        didEndSelector:@selector(KitsuPromptEnd:returnCode:contextInfo:)
           contextInfo:(void *)nil];
         [_importprompt setImportType:ImportKitsu];
@@ -483,7 +482,7 @@
         [self importsetup];
         [self performKitsuImport];
     } error:^(NSError *error) {
-        [Utility showsheetmessage:@"Unable to retrieve Kitsu library." explaination:@"Make sure the username is correct." window:[_del getMainWindowController].window];
+        [Utility showsheetmessage:@"Unable to retrieve Kitsu library." explaination:@"Make sure the username is correct." window:_del.mainwindowcontroller.window];
     }];
 }
 - (void)performKitsuImport {
@@ -509,12 +508,13 @@
             break;
     }
 }
+
 - (void)performListServiceUpdateFromKitsuEntry:(NSDictionary *)entry withID:(int)titleid{
     int score = 0;
     int currentservice = [listservice getCurrentServiceID];
     int tmpid = titleid;
     NSString *status = entry[@"watched_status"];
-    if (entry[@"score"] > 0) {
+    if (((NSNumber *)entry[@"score"]).intValue > 0) {
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 score = [self translateKitsuTwentyScoreToMAL:((NSNumber *)entry[@"score"]).intValue];
@@ -551,6 +551,118 @@
     }
 }
 
+#pragma mark AniList Import
+- (IBAction)importAnilist:(id)sender {
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
+        if (!_importprompt){
+            _importprompt = [ImportPrompt new];
+        }
+        [NSApp beginSheet:_importprompt.window
+           modalForWindow:_del.mainwindowcontroller.window modalDelegate:self
+           didEndSelector:@selector(AnilistPromptEnd:returnCode:contextInfo:)
+              contextInfo:(void *)nil];
+        [_importprompt setImportType:ImportAniList];
+    }
+    else {
+        [_del showloginnotice];
+    }
+}
+
+- (void)AnilistPromptEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
+    if (returnCode == 1) {
+        [self startAnilist:_importprompt.usernamefield.stringValue];
+    }
+    else {
+        [_importprompt.window close];
+        _importprompt = nil;
+    }
+}
+
+- (void)startAnilist:(NSString *)username {
+    [AniList retrieveList:username listType:AniListAnime completion:^(id responseObject) {
+        _listimport = responseObject[@"anime"];
+        _listtype = @"anilist";
+        _importlisttype = MALAnime;
+        _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
+        _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
+        [self importsetup];
+        [self performAnilistImport];
+    } error:^(NSError *error) {
+        NSLog(@"%@",error);
+        [Utility showsheetmessage:@"Unable to retrieve AniList library." explaination:@"Make sure you entered a valid user name and try again." window:_del.mainwindowcontroller.window];
+    }];
+}
+
+- (void)performAnilistImport {
+    __block NSDictionary *entry = _listimport[_progress];
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            [TitleIdConverter getMALIDFromAniListID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:_importlisttype completionHandler:^(int malid) {
+                [self performMALUpdateFromAnilistEntry:entry withMALID:malid];
+            } error:^(NSError *error) {
+                [self incrementProgress:entry withTitle:entry[@"title"]];
+            }];
+            break;
+        }
+        case 2: {
+            [TitleIdConverter getKitsuIdFromAniID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:_importlisttype completionHandler:^(int kitsuid) {
+                [self performMALUpdateFromAnilistEntry:entry withMALID:kitsuid];
+            } error:^(NSError *error) {
+                [self incrementProgress:entry withTitle:entry[@"title"]];
+            }];
+            break;
+        }
+        default:
+            break;
+    }
+}
+- (void)performMALUpdateFromAnilistEntry:(NSDictionary *)entry withMALID:(int)malid{
+    int score = 0;
+    NSString *status = entry[@"watched_status"];
+    if (entry[@"score"]) {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                score = ((NSNumber *)entry[@"score"]).intValue/10;
+                break;
+            case 2:
+                score = [RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSNumber *)entry[@"score"]).intValue/10];
+                break;
+            default:
+                break;
+        }
+    }
+    if ([self checkiftitleisonlist:malid]) {
+        if (_replaceexisting) {
+            int tmpid = 0;
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    tmpid = malid;
+                    break;
+                case 2:
+                    tmpid = [self retrieveentryidfortitleid:malid];
+                    break;
+                default:
+                    break;
+            }
+            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil withExtraFields:nil completion:^(id responseObject){
+                [self incrementProgress:nil withTitle:nil];
+            }error:^(id error){
+                [self incrementProgress:entry withTitle:entry[@"title"]];
+            }];
+        }
+        else {
+            [self incrementProgress:nil withTitle:nil];
+        }
+    }
+    else {
+        [listservice addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+            [self incrementProgress:nil withTitle:nil];
+        }error:^(id error){
+            [self incrementProgress:entry withTitle:entry[@"title"]];
+        }];
+    }
+}
+
 #pragma mark -
 #pragma mark Window Delegate
 - (void)windowDidLoad {
@@ -576,7 +688,7 @@
         if (result == NSFileHandlingPanelCancelButton) {
             return;
         }
-        NSURL *url = [sp URL];
+        NSURL *url = sp.URL;
         //Create JSON string from array controller
         NSError *error;
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:_failedarraycontroller.content
@@ -585,7 +697,7 @@
         if (!jsonData) {
             return;
         } else {
-            NSString *JSONString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
+            NSString *JSONString = [[NSString alloc] initWithBytes:jsonData.bytes length:jsonData.length encoding:NSUTF8StringEncoding];
             
             
             //write JSON to file
@@ -684,6 +796,7 @@
         [self incrementProgress:d withTitle:title];
     }];
 }
+
 - (void)performanimetitleupdate:(int)titleid withEpisode:(int)episodenum withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
     [listservice updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withTags:tags withExtraFields:nil completion:^(id responseobject) {
         [self incrementProgress:nil withTitle:nil];
@@ -710,123 +823,13 @@
         [self incrementProgress:d withTitle:title];
     }];
 }
+
 - (void)performmangatitleupdate:(int)titleid withChapter:(int)chapters withVolumes:(int)volumes withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
     [listservice updateMangaTitleOnList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score withTags:tags withExtraFields:nil completion:^(id responseObject){
         [self incrementProgress:nil withTitle:nil];
     }error:^(NSError *error){
         [self incrementProgress:d withTitle:title];
     }];
-}
-
-#pragma mark AniList
-- (IBAction)importAnilist:(id)sender {
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
-        if (!_importprompt){
-            _importprompt = [ImportPrompt new];
-        }
-        [NSApp beginSheet:_importprompt.window
-           modalForWindow:[_del getMainWindowController].window modalDelegate:self
-           didEndSelector:@selector(AnilistPromptEnd:returnCode:contextInfo:)
-              contextInfo:(void *)nil];
-        [_importprompt setImportType:ImportAniList];
-    }
-    else {
-        [_del showloginnotice];
-    }
-}
-- (void)AnilistPromptEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo {
-    if (returnCode == 1) {
-        [self startAnilist:_importprompt.usernamefield.stringValue];
-    }
-    else {
-        [_importprompt.window close];
-        _importprompt = nil;
-    }
-}
-    
-    
-- (void)startAnilist:(NSString *)username {
-    [AniList retrieveList:username listType:AniListAnime completion:^(id responseObject) {
-        _listimport = responseObject[@"anime"];
-        _listtype = @"anilist";
-        _importlisttype = MALAnime;
-        _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-        _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
-        [self importsetup];
-        [self performAnilistImport];
-    } error:^(NSError *error) {
-        NSLog(@"%@",error);
-        [Utility showsheetmessage:@"Unable to retrieve AniList library." explaination:@"Make sure you entered a valid user name and try again." window:[_del getMainWindowController].window];
-    }];
-}
-- (void)performAnilistImport {
-    __block NSDictionary *entry = _listimport[_progress];
-    switch ([listservice getCurrentServiceID]) {
-        case 1: {
-            [TitleIdConverter getMALIDFromAniListID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:_importlisttype completionHandler:^(int malid) {
-                [self performMALUpdateFromAnilistEntry:entry withMALID:malid];
-            } error:^(NSError *error) {
-                [self incrementProgress:entry withTitle:entry[@"title"]];
-            }];
-            break;
-        }
-        case 2: {
-            [TitleIdConverter getKitsuIdFromAniID:((NSNumber *)entry[@"id"]).intValue withTitle:entry[@"title"] titletype:entry[@"type"] withType:_importlisttype completionHandler:^(int kitsuid) {
-                [self performMALUpdateFromAnilistEntry:entry withMALID:kitsuid];
-            } error:^(NSError *error) {
-                [self incrementProgress:entry withTitle:entry[@"title"]];
-            }];
-            break;
-        }
-        default:
-            break;
-    }
-}
-- (void)performMALUpdateFromAnilistEntry:(NSDictionary *)entry withMALID:(int)malid{
-    int score = 0;
-    NSString *status = entry[@"watched_status"];
-    if (entry[@"score"]) {
-        switch ([listservice getCurrentServiceID]) {
-            case 1:
-                score = ((NSNumber *)entry[@"score"]).intValue/10;
-                break;
-            case 2:
-                score = [RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSNumber *)entry[@"score"]).intValue/10];
-                break;
-            default:
-                break;
-        }
-    }
-    if ([self checkiftitleisonlist:malid]) {
-        if (_replaceexisting) {
-            int tmpid = 0;
-            switch ([listservice getCurrentServiceID]) {
-                case 1:
-                    tmpid = malid;
-                    break;
-                case 2:
-                    tmpid = [self retrieveentryidfortitleid:malid];
-                    break;
-                default:
-                    break;
-            }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withTags:nil withExtraFields:nil completion:^(id responseObject){
-                [self incrementProgress:nil withTitle:nil];
-            }error:^(id error){
-                [self incrementProgress:entry withTitle:entry[@"title"]];
-            }];
-        }
-        else {
-            [self incrementProgress:nil withTitle:nil];
-        }
-    }
-    else {
-        [listservice addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
-            [self incrementProgress:nil withTitle:nil];
-        }error:^(id error){
-            [self incrementProgress:entry withTitle:entry[@"title"]];
-        }];
-    }
 }
 
 @end

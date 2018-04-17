@@ -89,7 +89,7 @@
             _minieditpopovernumformat.maximum = d[@"episodes"];
         }
         else {
-            [_minieditpopovernumformat setMaximum:@(9999999)];
+            _minieditpopovernumformat.maximum = @(9999999);
         }
         _minipopovereditepstep.maxValue = _minieditpopovernumformat.maximum.doubleValue;
         switch ([listservice getCurrentServiceID]) {
@@ -129,17 +129,16 @@
             _mangaeditpopoverchapnumformat.maximum = d[@"chapters"];
         }
         else {
-            [_mangaeditpopoverchapnumformat setMaximum:@(9999999)];
+            _mangaeditpopoverchapnumformat.maximum = @(9999999);
         }
         _mangapopovervolfield.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovereditvolstep.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovertotalvol.intValue = ((NSNumber *)d[@"volumes"]).intValue;
-        //_mangatags.stringValue = ((NSArray *)d[@"personal_tags"]).count > 0 ? [((NSArray *)d[@"personal_tags"]) componentsJoinedByString:@","] : @"";
         if (((NSNumber *)d[@"volumes"]).intValue > 0) {
             _mangaeditpopovervolnumformat.maximum = d[@"volumes"];
         }
         else {
-            [_mangaeditpopovervolnumformat setMaximum:@(9999999)];
+            _mangaeditpopovervolnumformat.maximum = @(9999999);
         }
         _mangapopovereditvolstep.maxValue = _mangaeditpopovervolnumformat.maximum.doubleValue;
         _mangapopovereditchapstep.maxValue = _mangaeditpopoverchapnumformat.maximum.doubleValue;
@@ -282,7 +281,7 @@
         _mangapopoverchapfield.stringValue = _mangapopovertotalchap.stringValue;
         _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
     }
-    if([_minipopoverstatus.title isEqual:@"completed"] && ((_mangapopoverchapfield.intValue != _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue != _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && _selectedfinished) {
+    if ([_minipopoverstatus.title isEqual:@"completed"] && ((_mangapopoverchapfield.intValue != _mangapopovertotalchap.intValue && _mangapopoverchapfield.intValue != 0) || (_mangapopovervolfield.intValue != _mangapopovertotalvol.intValue && _mangapopovertotalvol.intValue != 0)) && _selectedfinished) {
         _mangapopoverchapfield.stringValue = _mangapopovertotalchap.stringValue;
         _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
     }
@@ -462,15 +461,18 @@
             break;
     }
 }
+
 - (void)disableeditbuttons:(bool)enable {
     _minipopovereditbtn.enabled = enable;
     _animeadvancededit.enabled = enable;
     _minipopovereditbtn.enabled = enable;
     _animeadvancededit.enabled = enable;
 }
+
 - (void)cleanup {
     _selecteditem = nil;
 }
+
 - (IBAction)showadvanced:(id)sender {
     if (!_mw.ade) {
         _mw.ade = [advancededitdialog new];
@@ -485,6 +487,7 @@
         }
     }];
 }
+
 - (void)setScore:(NSDictionary *)d {
     switch ([listservice getCurrentServiceID]) {
         case 1:

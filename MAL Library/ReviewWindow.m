@@ -7,11 +7,9 @@
 //
 
 #import "ReviewWindow.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import "NSTableViewAction.h"
 #import "ReviewView.h"
-#import "AppDelegate.h"
 
 @interface ReviewWindow ()
 @property (strong) IBOutlet NSArrayController *reviewarraycontroller;
@@ -29,7 +27,7 @@
 
 @implementation ReviewWindow
 
-- (instancetype)init{
+- (instancetype)init {
     self = [super initWithWindowNibName:@"ReviewWindow"];
     if (!self)
         return nil;
@@ -48,7 +46,7 @@
 }
 
 - (void)loadReview:(int)idnum type:(int)type title:(NSString *)title {
-    if (_selectedid == idnum && type == _selectedtype){
+    if (_selectedid == idnum && type == _selectedtype) {
         return;
     }
     [self cleartableview];
@@ -113,7 +111,7 @@
         _progresswheel.hidden = true;
     }
 }
-- (void)cleartableview{
+- (void)cleartableview {
     NSMutableArray *a = [_reviewarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_reviewtb reloadData];
@@ -131,11 +129,11 @@
     }
 }
 
-- (void)populateReviews:(id)data{
+- (void)populateReviews:(id)data {
     [_reviewarraycontroller addObjects:data];
     [_reviewtb reloadData];
     [_reviewtb deselectAll:self];
-    if ([[_reviewarraycontroller mutableArrayValueForKey:@"content"] count] > 0) {
+    if ([_reviewarraycontroller mutableArrayValueForKey:@"content"].count > 0) {
         switch ([listservice getCurrentServiceID]) {
             case 1:
             case 3:
@@ -196,13 +194,13 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSHeight([[[splitView subviews] objectAtIndex:0] frame]);
-        CGFloat height = NSHeight([splitView frame]);
+        CGFloat dividerPos = NSHeight((splitView.subviews[0]).frame);
+        CGFloat height = NSHeight(splitView.frame);
         
         if (dividerPos < 0)
             dividerPos = 0;
-        if (height - dividerPos < 300 + [splitView dividerThickness])
-            dividerPos = height - (300 + [splitView dividerThickness]);
+        if (height - dividerPos < 300 + splitView.dividerThickness)
+            dividerPos = height - (300 + splitView.dividerThickness);
         
         [splitView adjustSubviews];
         [splitView setPosition:dividerPos ofDividerAtIndex:0];
@@ -213,14 +211,14 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat height = NSHeight([splitView frame]);
+        CGFloat height = NSHeight(splitView.frame);
         
         if (ABS(300 - proposedPosition) <= 8)
             proposedPosition = 300;
         if (proposedPosition < 0)
             proposedPosition = 0;
-        if (height - proposedPosition < 300 + [splitView dividerThickness])
-            proposedPosition = height - (300 + [splitView dividerThickness]);
+        if (height - proposedPosition < 300 + splitView.dividerThickness)
+            proposedPosition = height - (300 + splitView.dividerThickness);
     }
     return proposedPosition;
 }

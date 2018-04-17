@@ -7,12 +7,10 @@
 //
 
 #import "AiringView.h"
-#import "HistoryView.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
 #import "NSTableViewAction.h"
 #import "MainWindow.h"
-#import <AFNetworking/AFNetworking.h>
 #import "listservice.h"
 
 @interface AiringView ()

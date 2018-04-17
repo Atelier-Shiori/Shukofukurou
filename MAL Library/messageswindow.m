@@ -13,7 +13,6 @@
 #import "NSTableViewAction.h"
 #import "Utility.h"
 #import "messageview.h"
-#import "AppDelegate.h"
 #import "NSString+HTMLtoNSAttributedString.h"
 
 @interface messageswindow ()
@@ -141,7 +140,7 @@
 }
 
 - (void)setselectmessagetitle{
-    if ([[_messagearraycontroller mutableArrayValueForKey:@"content"] count] > 0) {
+    if ([_messagearraycontroller mutableArrayValueForKey:@"content"].count > 0) {
         _selectmessagelabel.stringValue = @"Please select a message.";
     }
     else {
@@ -158,7 +157,7 @@
     else {
         _selectedid = -1;
         [self toggleprogresswheel:NO];
-        if ([[_messagearraycontroller mutableArrayValueForKey:@"content"] count] > 0) {
+        if ([_messagearraycontroller mutableArrayValueForKey:@"content"].count > 0) {
             _selectmessagelabel.stringValue = @"Please select a message.";
         }
         else {
@@ -209,13 +208,13 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat dividerPos = NSHeight([[splitView subviews][0] frame]);
-        CGFloat height = NSHeight([splitView frame]);
+        CGFloat dividerPos = NSHeight((splitView.subviews[0]).frame);
+        CGFloat height = NSHeight(splitView.frame);
         
         if (dividerPos < 0)
             dividerPos = 0;
-        if (height - dividerPos < 300 + [splitView dividerThickness])
-            dividerPos = height - (300 + [splitView dividerThickness]);
+        if (height - dividerPos < 300 + splitView.dividerThickness)
+            dividerPos = height - (300 + splitView.dividerThickness);
         
         [splitView adjustSubviews];
         [splitView setPosition:dividerPos ofDividerAtIndex:0];
@@ -226,14 +225,14 @@
 {
     if (splitView == _splitview)
     {
-        CGFloat height = NSHeight([splitView frame]);
+        CGFloat height = NSHeight(splitView.frame);
         
         if (ABS(300 - proposedPosition) <= 8)
             proposedPosition = 300;
         if (proposedPosition < 0)
             proposedPosition = 0;
-        if (height - proposedPosition < 300 + [splitView dividerThickness])
-            proposedPosition = height - (300 + [splitView dividerThickness]);
+        if (height - proposedPosition < 300 + splitView.dividerThickness)
+            proposedPosition = height - (300 + splitView.dividerThickness);
     }
     return proposedPosition;
 }

@@ -8,7 +8,6 @@
 
 #import "AniList.h"
 #import "AniListConstants.h"
-#import "AniListScoreConvert.h"
 #import "AtarashiiAPIListFormatAniList.h"
 #import "ClientConstants.h"
 #import <AFNetworking/AFNetworking.h>
@@ -27,6 +26,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
             errorHandler(error);
     }];
 }
+
 + (void)retrievelist:(int)userid withArray:(NSMutableArray *)tmparray withType:(int)type page:(int)page completion:(void (^)(id))completionHandler error:(void (^)(NSError *))errorHandler  {
     // Retrieve List
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -87,9 +87,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
-+ (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
+
 #pragma mark Search
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -105,9 +103,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
-+ (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
+
 #pragma mark Title Information
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -122,8 +118,8 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];
-    
 }
+
 #pragma mark Reviews
 + (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *dataarray = [NSMutableArray new];
@@ -149,10 +145,6 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
-#pragma mark History
-+ (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
 
 #pragma mark OAuth Tokens
 + (bool)tokenexpired {
@@ -162,6 +154,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     }
     return false;
 }
+
 + (void)verifyAccountWithPin:(NSString *)pin completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuth2Manager *OAuth2Manager =
     [[AFOAuth2Manager alloc] initWithBaseURL:[NSURL URLWithString:@"https://anilist.co/"]
@@ -184,6 +177,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
                                                    errorHandler(error);
                                                }];
 }
+
 #pragma mark Profiles
 + (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
@@ -207,6 +201,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     }];
     
 }
+
 #pragma mark List Operations
 + (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
@@ -227,6 +222,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
+
 + (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
@@ -245,8 +241,8 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];
-    
 }
+
 + (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id
     // Note: Tags field is ignored.
@@ -273,6 +269,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
+
 + (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id
     // Note: Tags field is ignored.
@@ -299,6 +296,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
+
 + (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id
     // Note; Type field is ignored
@@ -322,19 +320,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(nil);
     }];
 }
-#pragma mark Messages
-+ (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
-+ (void)retrievemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
-+ (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
-+ (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
+
 #pragma mark Characters
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *characterarray = [NSMutableArray new];
@@ -403,18 +389,22 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
 + (AFOAuthCredential *)getFirstAccount {
     return [AFOAuthCredential retrieveCredentialWithIdentifier:kAniListKeychainIdentifier];
 }
+
 + (bool)removeAccount {
     return [AFOAuthCredential deleteCredentialWithIdentifier:kAniListKeychainIdentifier];
 }
+
 + (long)getCurrentUserID {
     return [NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"];
 }
+
 + (NSDictionary *)generaterelationshipdictionary:(int)titleid withType:(int)mediatype {
     //Create relationship JSON for a new library entry
     NSDictionary * userd =  @{@"data" : @{@"id" : @([self getCurrentUserID]), @"type" : @"users"}};
     NSDictionary * mediad = @{@"data" : @{@"id" : @(titleid), @"type" : mediatype == AniListAnime ? @"anime" : @"manga"}};
     return @{@"user" : userd, @"media" : mediad};
 }
+
 + (void)getOwnAnilistid:(void (^)(int userid, NSString *username, NSString *scoreformat)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
@@ -435,6 +425,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
+
 + (void)getAniListUserid:(NSString *)username completion:(void (^)(int userid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
@@ -457,6 +448,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
+
 + (NSMutableDictionary *)generateAnimeAttributes:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
     bool reconsuming = false;
@@ -476,6 +468,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     }
     return attributes;
 }
+
 + (NSMutableDictionary *)generateMangaAttributes:(int)chapter withVolumes:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields {
     NSMutableDictionary * attributes = [NSMutableDictionary new];
     bool reconsuming = false;
@@ -496,6 +489,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
     }
     return attributes;
 }
+
 + (void)getUserRatingType:(void (^)(NSString *scoretype)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
@@ -516,6 +510,7 @@ NSString *const kAniListKeychainIdentifier = @"MAL Library - AniList";
         errorHandler(error);
     }];
 }
+
 + (NSString *)convertWatchStatus:(NSString *)status isReconsuming:(bool)reconsuming withType:(int)type{
     if (type == AniListAnime) {
         if ([status isEqualToString:@"watching"] && !reconsuming) {

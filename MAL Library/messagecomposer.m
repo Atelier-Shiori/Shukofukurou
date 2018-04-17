@@ -8,8 +8,6 @@
 
 #import "messagecomposer.h"
 #import "HTMLtoBBCode.h"
-#import "AppDelegate.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import "Utility.h"
 

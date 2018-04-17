@@ -59,7 +59,7 @@
 
 - (NSArray *)convertNSDictionaryData:(NSDictionary *)dict {
     NSMutableArray *final = [NSMutableArray new];
-    for (int i = 0; i < [dict count]; i++) {
+    for (int i = 0; i < dict.count; i++) {
         NSString *site = dict.allKeys[i];
         site = site.capitalizedString;
         NSString *url = dict.allValues[i];

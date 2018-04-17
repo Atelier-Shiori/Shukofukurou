@@ -10,14 +10,13 @@
 #import <AFNetworking/AFNetworking.h>
 #import "AFHTTPSessionManager+Synchronous.h"
 #import "AtarashiiAPIListFormatKitsu.h"
-#import "TitleIdConverter.h"
-//#import "AtarashiiAPIKitsuStaffFormat.h"
 #import "KitsuListRetriever.h"
 #import "Utility.h"
 #import "ClientConstants.h"
 
 @implementation Kitsu
 NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
+
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     KitsuListRetriever *retriever = [KitsuListRetriever new];
@@ -36,14 +35,13 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         errorHandler(error);
     }];
 }
-+ (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
+
 #pragma mark Search
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *tmparray = [NSMutableArray new];
     [self searchTitle:searchterm withType:type withDataArray:tmparray withPageOffet:0 completion:completionHandler error:errorHandler];
 }
+
 + (void)searchTitle:(NSString *)searchterm withType:(int)type withDataArray:(NSMutableArray *)darray withPageOffet:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     
@@ -67,9 +65,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         errorHandler(error);
     }];
 }
-+ (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
+
 #pragma mark Title Information
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -118,10 +114,6 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
         errorHandler(error);
     }];
 }
-#pragma mark History
-+ (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
 
 #pragma mark OAuth Tokens
 + (bool)tokenexpired {
@@ -131,6 +123,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     }
     return false;
 }
+
 + (void)refreshToken:(void (^)(bool success))completion {
     AFOAuthCredential *cred =
     [AFOAuthCredential retrieveCredentialWithIdentifier:kKeychainIdentifier];
@@ -150,6 +143,7 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
                                                 completion(false);
                                             }];
 }
+
 + (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSURL *baseURL = [NSURL URLWithString:kKitsuBaseURL];
     AFOAuth2Manager *OAuth2Manager =
@@ -221,7 +215,6 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     [manager POST:@"https://kitsu.io/api/edge/library-entries" parameters:@{@"data" : @{ @"type" : @"libraryEntries", @"relationships" : [self generaterelationshipdictionary:titleid withType:KitsuAnime], @"attributes" :  [self generateAnimeAttributes:episode withStatus:status withScore:score withExtraFields:nil] }} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
         errorHandler(error);
     }];
 }
@@ -323,19 +316,6 @@ NSString *const kKeychainIdentifier = @"MAL Library - Kitsu";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];
-}
-#pragma mark Messages
-+ (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
-+ (void)retrievemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
-+ (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
-}
-+ (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    
 }
 #pragma mark Characters
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {

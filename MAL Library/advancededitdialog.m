@@ -24,10 +24,12 @@
         return nil;
     return self;
 }
+
 - (void)awakeFromNib {
     [_segmentfield addSubview:[NSView new]];
     [_listservicefields addSubview:[NSView new]];
 }
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     
@@ -35,7 +37,7 @@
 }
 
 - (MainWindow *)mw {
-    return ((AppDelegate *)[NSApp delegate]).mainwindowcontroller;
+    return ((AppDelegate *)NSApp.delegate).mainwindowcontroller;
 }
 
 - (void)setupeditwindow:(NSDictionary *)d type:(int)type {
@@ -83,7 +85,7 @@
             _episodefieldnumberformat.maximum = d[@"episodes"];
         }
         else {
-            [_episodefieldnumberformat setMaximum:@(9999999)];
+            _episodefieldnumberformat.maximum = @(9999999);
         }
         _episodestepper.maxValue = _episodefieldnumberformat.maximum.doubleValue;
         switch ([listservice getCurrentServiceID]) {
@@ -122,7 +124,7 @@
             _chaptersnumformat.maximum = d[@"chapters"];
         }
         else {
-            [_chaptersnumformat setMaximum:@(9999999)];
+            _chaptersnumformat.maximum = @(9999999);
         }
         _volumesfield.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _volumestepper.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
@@ -132,7 +134,7 @@
             _volumesformatter.maximum = d[@"volumes"];
         }
         else {
-            [_volumesformatter setMaximum:@(9999999)];
+            _volumesformatter.maximum = @(9999999);
         }
         _volumestepper.maxValue = _volumesformatter.maximum.doubleValue;
         _chaptertepper.maxValue = _chaptersnumformat.maximum.doubleValue;
@@ -183,7 +185,7 @@
     [_progressindicator startAnimation:self];
     if(![_status.title isEqual:@"completed"] && _episodefield.intValue == _totalepisodes.intValue && _selectedaircompleted) {
         [_status selectItemWithTitle:@"completed"];
-        [_reconsuming setState:NSControlStateValueOff];
+        _reconsuming.state = NSControlStateValueOff;
     }
     if(!_selectedaired && (![_status.title isEqual:@"plan to watch"] ||_episodefield.intValue > 0)) {
         // Invalid input, mark it as such

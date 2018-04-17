@@ -166,6 +166,7 @@
         _mangaptrcount.stringValue = plantoread.stringValue;
     }
 }
+
 - (void)populateTotalEps:(NSArray *)a {
     int totaleps = 0;
     for (NSDictionary *d in a) {

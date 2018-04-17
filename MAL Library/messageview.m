@@ -8,9 +8,6 @@
 
 #import "messageview.h"
 #import <WebKit/WebKit.h>
-#import <QuartzCore/QuartzCore.h>
-//#import "MyAnimeList.h"
-#import "listservice.h"
 #import "AppDelegate.h"
 #import "ProfileWindowController.h"
 
@@ -46,7 +43,7 @@
     else {
         messagestr = @"(Message has no content or Message API broken)";
     }
-    [[_messagewebview mainFrame] loadHTMLString:messagestr baseURL:[[NSBundle mainBundle] bundleURL]];
+    [_messagewebview.mainFrame loadHTMLString:messagestr baseURL:[NSBundle mainBundle].bundleURL];
     _selectedmessage = message;
 }
 
@@ -58,7 +55,7 @@ decisionListener:(id <WebPolicyDecisionListener>)listener
 {
     if (actionInformation[WebActionElementKey]) {
         [listener ignore];
-        [[NSWorkspace sharedWorkspace] openURL:[request URL]];
+        [[NSWorkspace sharedWorkspace] openURL:request.URL];
     }
     else {
         [listener use];

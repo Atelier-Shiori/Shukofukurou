@@ -495,7 +495,7 @@
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		9169BC462062C3F700C534B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/advancededitdialog.xib; sourceTree = "<group>"; };
-		916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SAMKeychain.framework; sourceTree = "<group>"; };
+		916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAMKeychain.framework; path = "MAL Library/SAMKeychain.framework"; sourceTree = "<group>"; };
 		916D7FDF206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatAniList.h; sourceTree = "<group>"; };
 		916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatAniList.m; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };

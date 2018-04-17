@@ -24,10 +24,12 @@
         return nil;
     return self;
 }
+
 - (void)awakeFromNib {
     [_segmentfield addSubview:[NSView new]];
     [_listservicefields addSubview:[NSView new]];
 }
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     

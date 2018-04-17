@@ -134,7 +134,6 @@
         _mangapopovervolfield.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovereditvolstep.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _mangapopovertotalvol.intValue = ((NSNumber *)d[@"volumes"]).intValue;
-        //_mangatags.stringValue = ((NSArray *)d[@"personal_tags"]).count > 0 ? [((NSArray *)d[@"personal_tags"]) componentsJoinedByString:@","] : @"";
         if (((NSNumber *)d[@"volumes"]).intValue > 0) {
             _mangaeditpopovervolnumformat.maximum = d[@"volumes"];
         }

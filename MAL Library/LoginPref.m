@@ -95,14 +95,12 @@
     _savebut.enabled = NO;
     [_savebut displayIfNeeded];
     if (_fieldusername.stringValue.length == 0) {
-        //No Username Entered! Show error message
-        [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:self.view.window];
+        [self showloginfailurenousername];
         _savebut.enabled = YES;
     }
     else {
         if (_fieldpassword.stringValue.length == 0 ) {
-            //No Password Entered! Show error message.
-            [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:self.view.window];
+            [self showloginfailurenopassword];
             _savebut.enabled = YES;
         }
         else {
@@ -118,14 +116,13 @@
     _kitsusavebut.enabled = NO;
     [_kitsusavebut displayIfNeeded];
     if (_kitsufieldusername.stringValue.length == 0) {
-        //No Username Entered! Show error message
-        [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:self.view.window];
+        [self showloginfailurenousername];
         _kitsusavebut.enabled = YES;
     }
     else {
         if (_kitsufieldpassword.stringValue.length == 0 ) {
             //No Password Entered! Show error message.
-            [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:self.view.window];
+            [self showloginfailurenopassword];
             _kitsusavebut.enabled = YES;
         }
         else {
@@ -157,61 +154,65 @@
 
 - (void)login:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid {
     [listservice verifyAccountWithUsername:username password:password withServiceID:serviceid completion:^(id responseObject){
-        //Login successful
-        [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:self.view.window];
-        // Store account in login keychain
-        switch (serviceid) {
-            case 1:
-                [Keychain storeaccount:_fieldusername.stringValue password:_fieldpassword.stringValue];
-                [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*24] forKey:@"credentialscheckdate"];
-                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
-                _clearbut.enabled = YES;
-                _loggedinuser.stringValue = username;
-                _loggedinview.hidden = NO;
-                _loginview.hidden = YES;
-                [_savebut setEnabled:YES];
-                break;
-            case 2:
-                _kitsuclearbut.enabled = YES;
-                _kitsuloggedinuser.stringValue = username;
-                _kitsuloggedinview.hidden = NO;
-                _kitsuloginview.hidden = YES;
-                [_kitsusavebut setEnabled:YES];
-                break;
-            case 3:
-                _anilistclearbut.enabled = YES;
-                _anilistloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
-                _anilistloggedinview.hidden = NO;
-                _anilistloginview.hidden = YES;
-                _anilistauthorizebtn.enabled = YES;
-                break;
-            default:
-                break;
-        }
-        if ([listservice getCurrentServiceID] == serviceid) {
-            if (serviceid == 2) {
-                [Kitsu getUserRatingType:^(int scoretype) {
-                    [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
-                    [self performlistloading];
-                } error:^(NSError *error) {
-                    NSLog(@"Error loading list: %@", error.localizedDescription);
-                }];
-            }
-            else {
-                [self performlistloading];
-            }
-            [_mw loadmainview];
-            [_mw refreshloginlabel];
-        }
-    }error:^(NSError *error) {
+        [self showLoginSuccess:username withServiceID:serviceid];
+    } error:^(NSError *error) {
         [self showLoginFailure:error withServiceID:serviceid];
     }];
+}
+
+- (void)showLoginSuccess:(NSString *)username withServiceID:(int)serviceid {
+    //Login successful
+    [Utility showsheetmessage:@"Login Successful" explaination: @"Login is successful." window:self.view.window];
+    // Store account in login keychain
+    switch (serviceid) {
+        case 1:
+            [Keychain storeaccount:_fieldusername.stringValue password:_fieldpassword.stringValue];
+            [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*24] forKey:@"credentialscheckdate"];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
+            _clearbut.enabled = YES;
+            _loggedinuser.stringValue = username;
+            _loggedinview.hidden = NO;
+            _loginview.hidden = YES;
+            [_savebut setEnabled:YES];
+            break;
+        case 2:
+            _kitsuclearbut.enabled = YES;
+            _kitsuloggedinuser.stringValue = username;
+            _kitsuloggedinview.hidden = NO;
+            _kitsuloginview.hidden = YES;
+            [_kitsusavebut setEnabled:YES];
+            break;
+        case 3:
+            _anilistclearbut.enabled = YES;
+            _anilistloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
+            _anilistloggedinview.hidden = NO;
+            _anilistloginview.hidden = YES;
+            _anilistauthorizebtn.enabled = YES;
+            break;
+        default:
+            break;
+    }
+    if ([listservice getCurrentServiceID] == serviceid) {
+        if (serviceid == 2) {
+            [Kitsu getUserRatingType:^(int scoretype) {
+                [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
+                [self performlistloading];
+            } error:^(NSError *error) {
+                NSLog(@"Error loading list: %@", error.localizedDescription);
+            }];
+        }
+        else {
+            [self performlistloading];
+        }
+        [_mw loadmainview];
+        [_mw refreshloginlabel];
+    }
 }
 
 - (void)showLoginFailure:(NSError *)error withServiceID:(int)serviceid {
     if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
         //Login Failed, show error message
-        [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account since you don't have the correct username and/or password.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
+        [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account since the username and/or password are incorrect.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
     }
     else if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {
         // Too many login attempts
@@ -220,7 +221,7 @@
             [Utility showsheetmessage:@"MAL Library was unable to log you into your MyAnimeList account since there is too many login attempts." explaination:@"Check your username and password and try logging in again after several hours." window:self.view.window];
         }
         else {
-            [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account since you don't have the correct username and/or password.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
+            [Utility showsheetmessage:[NSString stringWithFormat:@"MAL Library was unable to log you into your %@ account since the username and/or password are incorrect.", [self serviceidtoservicename:serviceid]] explaination:@"Check your username and password and try logging in again. If you recently changed your password, enter your new password and try again." window:self.view.window];
         }
     }
     else{
@@ -356,6 +357,16 @@
             break;
     }
     return @"";
+}
+
+- (void)showloginfailurenousername {
+    //No Username Entered! Show error message
+    [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a username" explaination:@"Enter a valid username and try logging in again" window:self.view.window];
+}
+
+- (void)showloginfailurenopassword {
+    //No Password Entered! Show error message.
+    [Utility showsheetmessage:@"MAL Library was unable to log you in since you didn't enter a password" explaination:@"Enter a valid password and try logging in again." window:self.view.window];
 }
 
 - (void)performlistloading {

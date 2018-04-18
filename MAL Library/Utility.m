@@ -259,9 +259,11 @@
     if (![defaults boolForKey:@"surpressreminder"]) {
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:@"Open App Store"];
+        [alert addButtonWithTitle:@"Donate"];
+        [alert addButtonWithTitle:@"Enter Key"];
         [alert addButtonWithTitle:@"Not Yet"];
         alert.messageText = @"Please Support Shukofukurou";
-        alert.informativeText = @"This is a prerelease version of Shukofukurou!\r\rWe noticed that you have been using Shukofukurou for a while. Shukofukurou is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of Shukofukurou, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.\r\rIf you already download the App Store version, you can unlock the features using your copy of Shukofukurou. On the Shukofukurou menu, select the Unlock Pro Features menu item.";
+        alert.informativeText = @"We noticed that you have been using Shukofukurou for a while. Shukofukurou is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of Shukofukurou, which adds Manga support and more from the Mac App Store or Purchase a License. You can hide this message if you just want to use the free version.";
         [alert setShowsSuppressionButton:YES];
         // Set Message type to Warning
         alert.alertStyle = NSInformationalAlertStyle;
@@ -269,6 +271,12 @@
         if (choice == NSAlertFirstButtonReturn) {
             // Open App Store Page
             [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+        }
+        else if (choice == NSAlertSecondButtonReturn) {
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://softwareateliershiori.onfastspring.com/shukofukurou"]];
+        }
+        else if (choice == NSAlertThirdButtonReturn) {
+            [(AppDelegate *)[NSApplication sharedApplication].delegate unlockprofeatures:self];
         }
         if (alert.suppressionButton.state == NSOnState) {
             // Suppress this alert from now on

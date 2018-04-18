@@ -9,6 +9,7 @@
 #import "DonationLicenseManager.h"
 #import <DonationCheck/DonationCheck.h>
 #import "AppDelegate.h"
+#import "MainWindow.h"
 #import "Utility.h"
 
 @interface DonationLicenseManager ()
@@ -42,7 +43,7 @@
 - (IBAction)registerkey:(id)sender {
     bool success = [DonationKeyVerify checkLicense:_name.stringValue withDonationKey:_donationkey.stringValue isUpgradeLicense:false];
     if (success) {
-        [[self getAppDelegate] donationKeyRegister:_name.stringValue withKey:_donationkey.stringValue];
+        [self donationKeyRegister:_name.stringValue withKey:_donationkey.stringValue];
         [self.window close];
     }
     else {
@@ -50,7 +51,7 @@
         if (success) {
             [MigrateAppStoreLicense validateApp:self.window completionHandler:^(bool success, id responseObject, NSString *path) {
                 if (success) {
-                    [[self getAppDelegate] donationKeyRegister:_name.stringValue withKey:_donationkey.stringValue];
+                    [self donationKeyRegister:_name.stringValue withKey:_donationkey.stringValue];
                     [self.window close];
                 }
             }];
@@ -116,5 +117,18 @@
     _registerbtn.enabled = enable;
     _cancelbtn.enabled = enable;
     _upgradebtn.enabled = enable;
+}
+- (void)donationKeyRegister:(NSString *)name withKey:(NSString *)license {
+#if defined(AppStore)
+#else
+    MainWindow *mw = [[self getAppDelegate] getMainWindowController];
+    [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked. Thank you for supporting the development of Shukofukurou!" window:mw.window];
+    // Add to the preferences
+    [[NSUserDefaults standardUserDefaults] setObject:license forKey:@"donation_license"];
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"donation_name"];
+    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
+    [mw generateSourceList];
+    [mw loadmainview];
+#endif
 }
 @end

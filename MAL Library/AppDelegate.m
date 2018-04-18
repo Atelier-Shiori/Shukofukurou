@@ -524,18 +524,6 @@
 #endif
 }
 
-- (void)donationKeyRegister:(NSString *)name withKey:(NSString *)license {
-#if defined(AppStore)
-#else
-    [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked. Thank you for supporting the development of Shukofukurou!" window:_mainwindowcontroller.window];
-    // Add to the preferences
-    [[NSUserDefaults standardUserDefaults] setObject:license forKey:@"donation_license"];
-    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"donation_name"];
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
-    [_mainwindowcontroller generateSourceList];
-    [_mainwindowcontroller loadmainview];
-#endif
-}
 
 - (IBAction)getfromAppStore:(id)sender {
 #if defined(AppStore)

@@ -45,5 +45,5 @@
 - (void)clearMessages;
 - (messageswindow *)getMessagesWindow;
 - (ProfileWindowController *)getProfileWindow;
-- (void)donationKeyRegister:(NSString *)name withKey:(NSString *)license;
+- (IBAction)unlockprofeatures:(id)sender;
 @end

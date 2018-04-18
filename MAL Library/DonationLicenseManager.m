@@ -1,6 +1,6 @@
 //
 //  DonationLicenseManager.m
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 小鳥遊六花 on 4/17/18.
 //  Copyright © 2018 Atelier Shiori. All rights reserved.
@@ -69,7 +69,7 @@
             if (success && freeupgrade){
                 NSString *licensedetails = [NSString stringWithFormat:@"\n\nName: %@\nLicense: %@", name, license];
                 [self writeLicensetoDesktop:licensedetails];
-                [Utility showsheetmessage:@"Your License" explaination:[NSString stringWithFormat:@"Use these details to register Shukofukuro. The details are saved to your desktop.%@",licensedetails] window:self.window];
+                [Utility showsheetmessage:@"Your License" explaination:[NSString stringWithFormat:@"Use these details to register Shukofukurou. The details are saved to your desktop.%@",licensedetails] window:self.window];
             }
             else if (success && !freeupgrade) {
                 [MigrateAppStoreLicense showfreeupgradenoteligible:self.window];
@@ -88,7 +88,7 @@
 }
 
 - (IBAction)purchasekey:(id)sender {
-    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://softwareateliershiori.onfastspring.com/shukofukuro"]];
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://softwareateliershiori.onfastspring.com/shukofukurou"]];
 }
 
 - (IBAction)lookupkey:(id)sender {
@@ -100,7 +100,7 @@
     NSString *desktopDirectory = [paths objectAtIndex:0]; // Get documents directory
     
     NSError *error;
-    BOOL success = [details writeToFile:[desktopDirectory stringByAppendingPathComponent:@"Shukofukuro License Details"]
+    BOOL success = [details writeToFile:[desktopDirectory stringByAppendingPathComponent:@"Shukofukurou License Details"]
                               atomically:YES encoding:NSUTF8StringEncoding error:&error];
     if (!success) {
         // Handle error here

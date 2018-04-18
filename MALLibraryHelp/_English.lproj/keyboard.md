@@ -11,7 +11,7 @@ Action                      | Shortcut
 Close Window                | Command (⌘)-,
 Close Window                | Command (⌘)-W
 Quit application            | Command (⌘)-Q 
-Shukofukuro Help            | Command (⌘)-? 
+Shukofukurou Help            | Command (⌘)-? 
 
 ## Messages Composer
 

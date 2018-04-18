@@ -1,11 +1,11 @@
 ---
 title: Getting Started
-description: Getting Started with Shukofukuro
+description: Getting Started with Shukofukurou
 keyword: overview
 order: -.INF
 ---
 
-Shukofukuro is a native MyAnimeList, Kitsu, and AniList tracker. While you don't need to login, to use the list management functions, you need to add an account. Shukofukuro will prompt you to login at start up.
+Shukofukurou is a native MyAnimeList, Kitsu, and AniList tracker. While you don't need to login, to use the list management functions, you need to add an account. Shukofukurou will prompt you to login at start up.
 
 ## Main Window
 Here are the functionality available:
@@ -27,5 +27,5 @@ Here are the functionality available:
 * Airing - Browse through shows that are currently airing by day.
 
 ## Service Menu
-The service menu allows you to switch between list services. If you have a title loaded in Title Information, Shukofukuro will atempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.
+The service menu allows you to switch between list services. If you have a title loaded in Title Information, Shukofukurou will atempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.
 

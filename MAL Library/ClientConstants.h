@@ -1,6 +1,6 @@
 //
 //  ClientConstants.h
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by アナスタシア on 2017/09/09.
 //  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.

@@ -3,7 +3,7 @@ title: Adding and Editing Entries
 description: Shows how to update existing entries or add new ones.
 keywords: adding titles, updating titles, library, list management
 ---
-Shukofukuro makes it easy to add and update new titles to your list.
+Shukofukurou makes it easy to add and update new titles to your list.
 
 ## Updating existing entries
 

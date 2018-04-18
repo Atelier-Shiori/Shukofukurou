@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 桐間紗路 on 2017/02/28.
 //  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
@@ -138,7 +138,7 @@
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
         [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
-        [alert setMessageText:NSLocalizedString(@"Welcome to Shukofukuro",nil)];
+        [alert setMessageText:NSLocalizedString(@"Welcome to Shukofukurou",nil)];
         alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Before you can use this program, you need to add an account for %@. Do you want to open Preferences to authenticate an account now? \r\rNote that there is limited functionality if you don't add an account.\r\rYou can change the current service by clicking on the service menu and selecting a list service.",nil),[listservice currentservicename]];
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
@@ -357,9 +357,9 @@
     // The directory the application uses to store the Core Data store file. This code uses a directory named "moe.ateliershiori.test" in the user's Application Support directory.
     NSURL *appSupportURL = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].lastObject;
 #if defined(AppStore)
-    return [appSupportURL URLByAppendingPathComponent:@"Shukofukuro"];
+    return [appSupportURL URLByAppendingPathComponent:@"Shukofukurou"];
 #else
-    return [appSupportURL URLByAppendingPathComponent:@"Shukofukuro Next"];
+    return [appSupportURL URLByAppendingPathComponent:@"Shukofukurou Next"];
 #endif
 }
 
@@ -527,7 +527,7 @@
 - (void)donationKeyRegister:(NSString *)name withKey:(NSString *)license {
 #if defined(AppStore)
 #else
-    [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked. Thank you for supporting the development of Shukofukuro!" window:_mainwindowcontroller.window];
+    [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked. Thank you for supporting the development of Shukofukurou!" window:_mainwindowcontroller.window];
     // Add to the preferences
     [[NSUserDefaults standardUserDefaults] setObject:license forKey:@"donation_license"];
     [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"donation_name"];

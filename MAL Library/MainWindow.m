@@ -1,6 +1,6 @@
 //
 //  MainWindow.m
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 桐間紗路 on 2017/02/28.
 //  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
@@ -43,7 +43,7 @@
 - (void)awakeFromNib
 {
     // Register queue
-    _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukuro", DISPATCH_QUEUE_CONCURRENT);
+    _privateQueue = dispatch_queue_create("moe.ateliershiori.Shukofukurou", DISPATCH_QUEUE_CONCURRENT);
     // Add blank subview to mainview
     [_mainview addSubview:[NSView new]];
     // Insert code here to initialize your application

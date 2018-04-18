@@ -9,8 +9,8 @@ The Preferences window allows you to change various settings
 ![](general.jpg)
 ### List Options
 * Double Click Action - Specifies the action when an item is double clicked in the library view. The possible actions are Do Nothing, View Info and Modify Title.
-* Refresh List on start - Shukofukuro will refresh your list when Shukofukuro is launched.
-* Refresh List Automatically - This allows Shukofukuro to refresh your list periodically.
+* Refresh List on start - Shukofukurou will refresh your list when Shukofukurou is launched.
+* Refresh List Automatically - This allows Shukofukurou to refresh your list periodically.
 
 ### General
 * Appearance - Sets the appearance of the main window. Possible options are light or dark.
@@ -30,9 +30,9 @@ For Kitsu and AniList, no user credentials are saved. Instead, OAuth is used to 
 
 ## Software Updates (Non-Appstore Version)
 ![](su.jpg)
-* Automatically Check for Updates - Shukofukuro will check for new updates automatically
-* Send anonymous system profile - Sends system information (CPU, memory, macOS version) and the version of Shukofukuro when you update. No personal information is sent.
-* Automatically download new updates - Shukofukuro will download new updates automatically. When you quit Shukofukuro, it will install the new version.
+* Automatically Check for Updates - Shukofukurou will check for new updates automatically
+* Send anonymous system profile - Sends system information (CPU, memory, macOS version) and the version of Shukofukurou when you update. No personal information is sent.
+* Automatically download new updates - Shukofukurou will download new updates automatically. When you quit Shukofukurou, it will install the new version.
 
 ## Advanced
 ![](advanced.jpg)

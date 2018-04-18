@@ -225,7 +225,7 @@
         [Utility showDonateReminder:delegate];
     }
     else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
-        // Check copy of Shukofukuro
+        // Check copy of Shukofukurou
         NSString *license = [[NSUserDefaults standardUserDefaults] valueForKey:@"donation_license"];
         NSString *name = [[NSUserDefaults standardUserDefaults] valueForKey:@"donation_name"];
         bool valid = [DonationKeyVerify checkLicense:name withDonationKey:license isUpgradeLicense:NO];
@@ -236,7 +236,7 @@
         }
         else {
             //Invalid Copy
-            [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. Shukofukuro will now quit." window:nil];
+            [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. Shukofukurou will now quit." window:nil];
             [Utility showDonateReminder:delegate];
             [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
@@ -260,8 +260,8 @@
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:@"Open App Store"];
         [alert addButtonWithTitle:@"Not Yet"];
-        alert.messageText = @"Please Support Shukofukuro";
-        alert.informativeText = @"This is a prerelease version of Shukofukuro!\r\rWe noticed that you have been using Shukofukuro for a while. Shukofukuro is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of Shukofukuro, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.\r\rIf you already download the App Store version, you can unlock the features using your copy of Shukofukuro. On the Shukofukuro menu, select the Unlock Pro Features menu item.";
+        alert.messageText = @"Please Support Shukofukurou";
+        alert.informativeText = @"This is a prerelease version of Shukofukurou!\r\rWe noticed that you have been using Shukofukurou for a while. Shukofukurou is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of Shukofukurou, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.\r\rIf you already download the App Store version, you can unlock the features using your copy of Shukofukurou. On the Shukofukurou menu, select the Unlock Pro Features menu item.";
         [alert setShowsSuppressionButton:YES];
         // Set Message type to Warning
         alert.alertStyle = NSInformationalAlertStyle;
@@ -375,7 +375,7 @@
         syncmanager = [AFHTTPSessionManager manager];
         syncmanager.requestSerializer = [Utility httprequestserializer];
         syncmanager.responseSerializer = [Utility jsonresponseserializer];
-        syncmanager.completionQueue = dispatch_queue_create("moe.ateliershiori.Shukofukuro", DISPATCH_QUEUE_CONCURRENT);
+        syncmanager.completionQueue = dispatch_queue_create("moe.ateliershiori.Shukofukurou", DISPATCH_QUEUE_CONCURRENT);
     });
     return syncmanager;
 }

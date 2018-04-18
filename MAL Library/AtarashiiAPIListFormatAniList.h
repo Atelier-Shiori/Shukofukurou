@@ -1,6 +1,6 @@
 //
 //  AtarashiiAPIListFormatAniList.h
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 天々座理世 on 2018/03/27.
 //  Copyright © 2018年 MAL Updater OS X Group. All rights reserved.

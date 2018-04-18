@@ -1,10 +1,10 @@
 ---
 title: License Agreement
-description: Show the license for Shukofukuro
+description: Show the license for Shukofukurou
 keywords: eula
 order: .INF
 ---
-Shukofukuro is open sourced and is licensed under the New BSD License.
+Shukofukurou is open sourced and is licensed under the New BSD License.
 
 Copyright © 2017-2018, MAL Updater OS X Group, Moy IT Solutions
 All rights reserved.

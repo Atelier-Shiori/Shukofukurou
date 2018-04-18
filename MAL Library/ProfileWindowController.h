@@ -1,6 +1,6 @@
 //
 //  ProfileWindowController.h
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 桐間紗路 on 2017/10/07.
 //  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.

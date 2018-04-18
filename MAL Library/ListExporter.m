@@ -1,6 +1,6 @@
 //
 //  ListExporter.m
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 桐間紗路 on 2017/05/09.
 //  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
@@ -93,7 +93,7 @@
 }
 
 - (NSString *)generateAnimeListXML:(NSArray *)a {
-    NSString *headerstring = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<!--\n\tCreated by Shukofukuro\n\tProgrammed by MAL Updater OS X Group Software (James Moy), a division of Moy IT Solutions \n\tNote that not all values are exposed by the API and not all fields will be exported.\n\t--> \n\n\t<myanimelist>";
+    NSString *headerstring = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<!--\n\tCreated by Shukofukurou\n\tProgrammed by MAL Updater OS X Group Software (James Moy), a division of Moy IT Solutions \n\tNote that not all values are exposed by the API and not all fields will be exported.\n\t--> \n\n\t<myanimelist>";
     NSString *footerstring = @"\n\n\t</myanimelist>";
     NSString *animepretag = @"\n\n\t\t<anime>";
     NSString *animeendtag = @"\n\t\t</anime>";
@@ -122,7 +122,7 @@
 }
 
 - (NSString *)generateMangaListXML:(NSArray *)a {
-    NSString *headerstring = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<!--\n\tCreated by Shukofukuro\n\tProgrammed by MAL Updater OS X Group (James Moy) \n\tNote that not all values are exposed by the API and not all fields will be exported.\n\t--> \n\n\t<myanimelist>";
+    NSString *headerstring = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<!--\n\tCreated by Shukofukurou\n\tProgrammed by MAL Updater OS X Group (James Moy) \n\tNote that not all values are exposed by the API and not all fields will be exported.\n\t--> \n\n\t<myanimelist>";
     NSString *footerstring = @"\n\n\t</myanimelist>";
     NSString *mangapretag = @"\n\n\t\t<manga>";
     NSString *mangaendtag = @"\n\t\t</manga>";

@@ -1,6 +1,6 @@
 //
 //  Kitsu.m
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 桐間紗路 on 2017/12/14.
 //  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.
@@ -15,7 +15,7 @@
 #import "ClientConstants.h"
 
 @implementation Kitsu
-NSString *const kKeychainIdentifier = @"Shukofukuro - Kitsu";
+NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {

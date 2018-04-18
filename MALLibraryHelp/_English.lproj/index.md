@@ -1,7 +1,7 @@
 ---
 layout: title-page
-title: Shukofukuro Help
-apple_title: Shukofukuro Help
+title: Shukofukurou Help
+apple_title: Shukofukurou Help
 anchor: title-page
 menu_exclude: true
 robots: anchors

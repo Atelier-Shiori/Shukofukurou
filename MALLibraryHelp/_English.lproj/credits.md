@@ -1,9 +1,9 @@
 ---
 title: Credits
-description: Show list of libraries used in Shukofukuro
+description: Show list of libraries used in Shukofukurou
 order: .INF
 ---
-Shukofukuro uses the following open source frameworks and classes. Note that this applications license do not apply to these classes/libraries/frameworks. 
+Shukofukurou uses the following open source frameworks and classes. Note that this applications license do not apply to these classes/libraries/frameworks. 
 
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking) - Used to create HTTP requests - Licensed under MIT License
 * [Atarashii API](https://bitbucket.org/ratan12/atarashii-api) - Not included, but MAL Updater OS X uses this unofficial MAL API to make update functionality possible. Licensed under Apache Public License 2.0

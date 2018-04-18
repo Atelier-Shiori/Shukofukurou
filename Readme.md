@@ -1,9 +1,9 @@
-# Shukofukuro
+# Shukofukurou
 ![screenshot](https://malupdaterosx.moe/wp-content/uploads/2018/04/mallibrary.png)
 
 Formerly known as MAL Library
 
-Shukofukuro an open sourced and native [MyAnimeList](https://myanimelist.net), [Kitsu](https://kitsu.io/), and [AniList](https://anilist.co) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
+Shukofukurou an open sourced and native [MyAnimeList](https://myanimelist.net), [Kitsu](https://kitsu.io/), and [AniList](https://anilist.co) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
 
 This app is named after the owl, Shuko from Sora no Woto.
 

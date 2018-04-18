@@ -1,6 +1,6 @@
 //
 //  KitsuListRetriever.m
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 桐間紗路 on 2017/12/18.
 //  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.

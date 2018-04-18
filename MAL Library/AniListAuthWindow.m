@@ -1,6 +1,6 @@
 //
 //  AniListAuthWindow.m
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 小鳥遊六花 on 4/3/18.
 //  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
@@ -55,9 +55,9 @@
 - (void)webView:(WKWebView *)webView
 decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if ([webView.URL.absoluteString containsString:@"shukofukuroauth://anilistauth/?code="]) {
+    if ([webView.URL.absoluteString containsString:@"shukofukurouauth://anilistauth/?code="]) {
         // Save Pin
-        _pin = [webView.URL.absoluteString stringByReplacingOccurrencesOfString:@"shukofukuroauth://anilistauth/?code=" withString:@""];
+        _pin = [webView.URL.absoluteString stringByReplacingOccurrencesOfString:@"shukofukurouauth://anilistauth/?code=" withString:@""];
         decisionHandler(WKNavigationActionPolicyCancel);
         [self resetWebView];
         [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];

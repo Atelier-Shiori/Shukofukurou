@@ -1,6 +1,6 @@
 //
 //  ReviewView.h
-//  Shukofukuro
+//  Shukofukurou
 //
 //  Created by 天々座理世 on 2017/04/23.
 //  Copyright © 2017年 MAL Updater OS X Group. All rights reserved.

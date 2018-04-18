@@ -1,12 +1,12 @@
 ---
 title: Importing and Exporting Lists
-description: About the Import and Export features in Shukofukuro.
+description: About the Import and Export features in Shukofukurou.
 keywords: importing, kitsu, exporting, backup lists, syncing lists, anidb
 ---
-In Shukofukuro 2.1, you can import lists from other services.
+In Shukofukurou 2.1, you can import lists from other services.
 
-Here are the formats that Shukofukuro supports:
-* MyAnimeList XML Format (generated from the website or export done in Shukofukuro)
+Here are the formats that Shukofukurou supports:
+* MyAnimeList XML Format (generated from the website or export done in Shukofukurou)
 * AniDB XML (full) Lists.(1)
 * Kitsu (Anime only for now).(1)
 * AniList (Anime only for now).(1)
@@ -35,7 +35,7 @@ Note: Manga list importing is only available for App Store users.
 1. In the library view on MyAnimeList, click "Export" option.
 2. Select what list you want to export and click "Export My List." It will prompt you if you want to export your list. Click OK.
 3. Download your list. Rename the downloaded file to add the ".gz" extension. Then, extract the list.
-4. In Shukofukuro, click on Tools > Import List > Import MyAnimeList XML  from the menubar.. Select your list to import.
+4. In Shukofukurou, click on Tools > Import List > Import MyAnimeList XML  from the menubar.. Select your list to import.
 Note: To overwrite entries, click "Options" and check "Replace entries if exist"
 5. Click Open and it will import the list to your library. If there is any titles that couldn't be imported, it will show a list.
 
@@ -43,13 +43,13 @@ Note: To overwrite entries, click "Options" and check "Replace entries if exist"
 1. Click Export under "My Stuff" on AniDB.
 2. Choose XML from the template selector and click Request Export. You will have to wait until the export is ready.
 3. Download the export and extract it.
-4. In Shukofukuro, Click on Tools > Import List > Import AniDB XML from the menubar.
+4. In Shukofukurou, Click on Tools > Import List > Import AniDB XML from the menubar.
 5. Go to the extracted folder and select file "mylist.xml." 
 Note: To overwrite entries, click "Options" and check "Replace entries if exist"
 6. Click open to start the import. If there is any titles that couldn't be imported, it will show a list.
 
 ### Kitsu and AniList
-1. In Shukofukuro, click on Tools > Import List > Import from Kitsu or Import from AniList from the menubar.
+1. In Shukofukurou, click on Tools > Import List > Import from Kitsu or Import from AniList from the menubar.
 2. Specify your username that you want to import your library from.
 Note: To overwrite entries, check "Replace existing entries"
 6. Click import to start the import. If there is any titles that couldn't be imported, it will show a list.

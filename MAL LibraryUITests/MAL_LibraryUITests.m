@@ -1,6 +1,6 @@
 //
 //  MAL_LibraryUITests.m
-//  ShukofukuroUITests
+//  ShukofukurouUITests
 //
 //  Created by 桐間紗路 on 2017/04/09.
 //  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved.

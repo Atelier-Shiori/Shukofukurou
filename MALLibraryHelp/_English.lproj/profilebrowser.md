@@ -1,11 +1,11 @@
 ---
 title: Profile Browser
-description: About the Profile Browser in Shukofukuro.
+description: About the Profile Browser in Shukofukurou.
 keywords: lists, profile, viewing other's lists
 ---
 ![](profilebrowser.jpg)
 
-In Shukofukuro, you can view profiles of other users including lists. This option is only aviliable for registered users.
+In Shukofukurou, you can view profiles of other users including lists. This option is only aviliable for registered users.
 
 In the Profile Browser, you can
 * View basic information on a user

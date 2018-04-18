@@ -6,13 +6,22 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="DonationLicenseManager"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="DonationLicenseManager">
+            <connections>
+                <outlet property="cancelbtn" destination="GyI-n8-Z7U" id="14j-Q7-Hff"/>
+                <outlet property="donationkey" destination="sCc-Yq-VZJ" id="edP-rB-ad0"/>
+                <outlet property="name" destination="CcH-np-8y9" id="D0O-n8-GZd"/>
+                <outlet property="registerbtn" destination="YgZ-WY-w6g" id="jU9-Fk-hWv"/>
+                <outlet property="upgradebtn" destination="Sb6-W1-Bd9" id="UFX-pi-6bu"/>
+                <outlet property="window" destination="kgM-5x-cg0" id="Rfq-pa-utp"/>
+            </connections>
+        </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Register Donation Key" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="" animationBehavior="default" id="kgM-5x-cg0">
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="803" y="415" width="480" height="345"/>
+            <rect key="contentRect" x="677" y="437" width="480" height="345"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <view key="contentView" id="tm8-J5-9eH">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="345"/>
@@ -64,6 +73,9 @@
 DQ
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="registerkey:" target="-2" id="JMm-fI-dM4"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GyI-n8-Z7U">
                         <rect key="frame" x="280" y="189" width="94" height="32"/>
@@ -75,6 +87,9 @@ DQ
 Gw
 </string>
                         </buttonCell>
+                        <connections>
+                            <action selector="cancel:" target="-2" id="YhC-pZ-qRs"/>
+                        </connections>
                     </button>
                     <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="pmx-uB-PAO">
                         <rect key="frame" x="26" y="173" width="429" height="5"/>
@@ -87,6 +102,9 @@ Gw
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="upgrade:" target="-2" id="5xv-RH-GQD"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ezx-kg-OVe">
                         <rect key="frame" x="12" y="145" width="272" height="17"/>
@@ -113,6 +131,9 @@ Gw
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="purchasekey:" target="-2" id="6qe-4g-0K7"/>
+                        </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eRP-ev-ltt">
                         <rect key="frame" x="12" y="122" width="272" height="17"/>
@@ -130,6 +151,9 @@ Gw
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="lookupkey:" target="-2" id="VzY-xa-yDi"/>
+                        </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mIJ-f0-ZV1">
                         <rect key="frame" x="12" y="0.0" width="272" height="50"/>
@@ -142,6 +166,9 @@ Gw
                     </textField>
                 </subviews>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="3aV-gG-Z2x"/>
+            </connections>
             <point key="canvasLocation" x="186" y="175.5"/>
         </window>
     </objects>

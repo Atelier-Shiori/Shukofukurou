@@ -45,9 +45,6 @@
 		2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
 		2D7877761F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D7877771F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
-		2D84041A1FE4A30F003DC279 /* MALLibraryAppMigrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */; };
-		2D84041B1FE4A403003DC279 /* MALLibraryAppMigrate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */; };
-		2D84041C1FE4A403003DC279 /* MALLibraryAppMigrate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
 		2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
 		2D88CA6A1FE815B600AD142E /* servicemenucontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D88CA691FE815B600AD142E /* servicemenucontroller.m */; };
@@ -190,12 +187,6 @@
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		9169BC442062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
 		9169BC452062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
-		916D7FA4206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
-		916D7FA5206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
-		916D7FA6206AA543005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
-		916D7FA7206AA543005F98E9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		916D7FA8206AA549005F98E9 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; };
-		916D7FA9206AA549005F98E9 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		916D7FE2206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
@@ -277,6 +268,14 @@
 		F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F8A85912207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
 		F8A85913207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
+		F8ABAAA72087C22600752627 /* DonationCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; };
+		F8ABAAA82087C22600752627 /* DonationCheck.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F8ABAAAA2087C33300752627 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		F8ABAAAB2087C33300752627 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		F8ABAAAC2087C33800752627 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		F8ABAAAD2087C33800752627 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F8ABAAAE2087C33C00752627 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		F8ABAAAF2087C33C00752627 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F8B5AA912044813400132C51 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
 		F8B5AA922044813400132C51 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
 		F8B5AA952044888800132C51 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
@@ -331,7 +330,7 @@
 			files = (
 				2DB59D161EB7D4BE00FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				913A11A11E8F206A00450B66 /* AFNetworking.framework in Embed Frameworks */,
-				916D7FA7206AA543005F98E9 /* SAMKeychain.framework in Embed Frameworks */,
+				F8ABAAAF2087C33C00752627 /* SAMKeychain.framework in Embed Frameworks */,
 				913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */,
 				913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */,
 			);
@@ -365,12 +364,12 @@
 			dstSubfolderSpec = 10;
 			files = (
 				9199BAFF1E89847D00F6E9FF /* AFNetworking.framework in Embed Frameworks */,
-				916D7FA9206AA549005F98E9 /* SAMKeychain.framework in Embed Frameworks */,
+				F8ABAAAD2087C33800752627 /* SAMKeychain.framework in Embed Frameworks */,
 				91AECE591E89921200824C2D /* PXSourceList.framework in Embed Frameworks */,
 				9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */,
+				F8ABAAA82087C22600752627 /* DonationCheck.framework in Embed Frameworks */,
 				2DB59D141EB7D4B700FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
-				2D84041C1FE4A403003DC279 /* MALLibraryAppMigrate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,7 +409,6 @@
 		2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIKitsuStaffFormat.m; sourceTree = "<group>"; };
 		2D7877741F87E44000AD40F1 /* MyListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListView.h; sourceTree = "<group>"; };
 		2D7877751F87E44000AD40F1 /* MyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListView.m; sourceTree = "<group>"; };
-		2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MALLibraryAppMigrate.framework; sourceTree = "<group>"; };
 		2D86F1891EC21D4B00650E34 /* ListExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListExporter.h; sourceTree = "<group>"; };
 		2D86F18A1EC21D4B00650E34 /* ListExporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListExporter.m; sourceTree = "<group>"; };
 		2D88CA681FE815B600AD142E /* servicemenucontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = servicemenucontroller.h; sourceTree = "<group>"; };
@@ -498,7 +496,6 @@
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		9169BC462062C3F700C534B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/advancededitdialog.xib; sourceTree = "<group>"; };
-		916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAMKeychain.framework; path = "MAL Library/SAMKeychain.framework"; sourceTree = "<group>"; };
 		916D7FDF206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatAniList.h; sourceTree = "<group>"; };
 		916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatAniList.m; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
@@ -554,9 +551,9 @@
 		9199BAE71E89843300F6E9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		9199BAE91E89843300F6E9FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SoftwareUpdateView.xib; sourceTree = "<group>"; };
 		9199BAF01E89844500F6E9FF /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AFNetworking.framework; sourceTree = "<group>"; };
-		9199BAF21E89844C00F6E9FF /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = "/Volumes/MacStorage/MALLibrary/MAL Library/MASPreferences.framework"; sourceTree = "<absolute>"; };
+		9199BAF21E89844C00F6E9FF /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MASPreferences.framework; path = "/Users/takanashirikka/Desktop/repo/MAL-Library/MAL Library/MASPreferences.framework"; sourceTree = "<absolute>"; };
 		9199BAF41E89844C00F6E9FF /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
-		9199BB011E8984E300F6E9FF /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PXSourceList.framework; path = "/Volumes/MacStorage/MALLibrary/MAL Library/PXSourceList.framework"; sourceTree = "<absolute>"; };
+		9199BB011E8984E300F6E9FF /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PXSourceList.framework; path = "/Users/takanashirikka/Desktop/repo/MAL-Library/MAL Library/PXSourceList.framework"; sourceTree = "<absolute>"; };
 		91AECE5A1E89922A00824C2D /* MASPreferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MASPreferences.framework; sourceTree = "<group>"; };
 		91B378B41E989C7C000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AiringView.xib; sourceTree = "<group>"; };
 		91B378B81E989C83000061E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HistoryView.xib; sourceTree = "<group>"; };
@@ -593,6 +590,7 @@
 		F88CD0FA2072BC330093C478 /* AniListConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
 		F8A85910207023E40026EC0A /* AniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
 		F8A85911207023E40026EC0A /* AniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniList.m; sourceTree = "<group>"; };
+		F8ABAAA92087C33200752627 /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAMKeychain.framework; path = "MAL Library/SAMKeychain.framework"; sourceTree = "<group>"; };
 		F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
 		F8B5AA902044813400132C51 /* RatingTwentyConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
 		F8B5AA932044888800132C51 /* MyListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListScoreFormatter.h; sourceTree = "<group>"; };
@@ -628,13 +626,13 @@
 			files = (
 				913A117E1E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				913A117F1E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
-				916D7FA5206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */,
+				F8ABAAAB2087C33300752627 /* SAMKeychain.framework in Frameworks */,
 				913A11801E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
 				913A11821E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				2DB59D151EB7D4BE00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A11831E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				913A11841E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
-				916D7FA6206AA543005F98E9 /* SAMKeychain.framework in Frameworks */,
+				F8ABAAAE2087C33C00752627 /* SAMKeychain.framework in Frameworks */,
 				913A11851E8F206A00450B66 /* Crashlytics.framework in Frameworks */,
 				913A11861E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
 				2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
@@ -657,7 +655,6 @@
 				2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */,
 				9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */,
-				2D84041B1FE4A403003DC279 /* MALLibraryAppMigrate.framework in Frameworks */,
 				F84D05202086720800502379 /* DonationCheck.framework in Frameworks */,
 				9199BAFE1E89847D00F6E9FF /* AFNetworking.framework in Frameworks */,
 				2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
@@ -665,11 +662,11 @@
 				9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */,
 				9199BAF51E89844C00F6E9FF /* MASPreferences.framework in Frameworks */,
 				9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */,
-				916D7FA8206AA549005F98E9 /* SAMKeychain.framework in Frameworks */,
+				F8ABAAAC2087C33800752627 /* SAMKeychain.framework in Frameworks */,
 				918C0D391E89FF920037898E /* Crashlytics.framework in Frameworks */,
 				9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */,
-				2D84041A1FE4A30F003DC279 /* MALLibraryAppMigrate.framework in Frameworks */,
-				916D7FA4206AA53A005F98E9 /* SAMKeychain.framework in Frameworks */,
+				F8ABAAA72087C22600752627 /* DonationCheck.framework in Frameworks */,
+				F8ABAAAA2087C33300752627 /* SAMKeychain.framework in Frameworks */,
 				918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */,
 				9199BAFC1E89847D00F6E9FF /* Sparkle.framework in Frameworks */,
 				91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */,
@@ -764,7 +761,7 @@
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				916D7FA3206AA53A005F98E9 /* SAMKeychain.framework */,
+				F8ABAAA92087C33200752627 /* SAMKeychain.framework */,
 				9199BB011E8984E300F6E9FF /* PXSourceList.framework */,
 				F84D051F2086720700502379 /* DonationCheck.framework */,
 				9199BAF21E89844C00F6E9FF /* MASPreferences.framework */,
@@ -988,7 +985,6 @@
 		9199BAEF1E89843B00F6E9FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D8404191FE4A30F003DC279 /* MALLibraryAppMigrate.framework */,
 				918C0D381E89FF920037898E /* Crashlytics.framework */,
 				918C0D361E89FF8B0037898E /* Fabric.framework */,
 				91AECE5A1E89922A00824C2D /* MASPreferences.framework */,
@@ -1936,6 +1932,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
@@ -1973,6 +1971,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -2141,6 +2141,9 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
@@ -2177,6 +2180,9 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",

@@ -13,7 +13,7 @@
 #import <CocoaOniguruma/OnigRegexpUtility.h>
 #if defined(AppStore)
 #else
-#import <MALLibraryAppMigrate/MALLibraryAppMigrate.h>
+#import <DonationCheck/DonationCheck.h>
 #endif
 
 @implementation Utility
@@ -226,7 +226,10 @@
     }
     else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
         // Check copy of Shukofukuro
-        bool valid = [MALLibraryAppStoreMigrate validateReciept:[NSUserDefaults.standardUserDefaults valueForKey:@"mallibrarypath"]];
+        NSString *license = [[NSUserDefaults standardUserDefaults] valueForKey:@"donation_license"];
+        NSString *name = [[NSUserDefaults standardUserDefaults] valueForKey:@"donation_name"];
+        bool valid = [DonationKeyVerify checkLicense:name withDonationKey:license isUpgradeLicense:NO];
+        valid = !valid ? [DonationKeyVerify checkLicense:name withDonationKey:license isUpgradeLicense:YES] : valid;
         if (valid) {
             //Reset check
             [Utility setReminderDate];

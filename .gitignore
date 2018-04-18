@@ -81,3 +81,5 @@ iOSInjectionProject/
 MALLibraryHelp/.sass-cache/*/*.scssc
 MAL Library/ClientConstants.m
 MAL Library.xcodeproj/project.xcworkspace/xcuserdata/*./UserInterfaceState.xcuserstate
+
+MAL Library/DonationCheck.framework/**

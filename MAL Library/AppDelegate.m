@@ -12,7 +12,6 @@
 #import "PFAboutWindowController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
-#import <MALLibraryAppMigrate/MALLibraryAppMigrate.h>
 #import "Utility.h"
 #import "StreamDataRetriever.h"
 #import "ProfileWindowController.h"
@@ -21,13 +20,17 @@
 #if defined(AppStore)
 #else
 #import "PFMoveApplication.h"
-#import <MALLibraryAppMigrate/MALLibraryAppMigrate.h>
+#import "DonationLicenseManager.h"
 #endif
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
 @property (strong) IBOutlet NSMenuItem *malexportmenu;
+#if defined(AppStore)
+#else
+@property (strong) DonationLicenseManager *dlmanager;
+#endif
 - (IBAction)saveAction:(id)sender;
 @end
 
@@ -514,28 +517,21 @@
 - (IBAction)unlockprofeatures:(id)sender {
 #if defined(AppStore)
 #else
-    if ([MALLibraryAppStoreMigrate validateReciept:@"/Applications/Shukofukuro.app"]) {
-        [self appStoreRegister:@"/Applications/Shukofukuro.app"];
+    if (!_dlmanager) {
+        _dlmanager = [DonationLicenseManager new];
     }
-    else {
-        [MALLibraryAppStoreMigrate selectAppandValidate:_mainwindowcontroller.window completionHandler:^(bool success, NSString *path) {
-            if (success) {
-                [self appStoreRegister:path];
-            }
-            else {
-                [Utility showsheetmessage:@"Invalid Copy of Shukofukuro" explaination:@"Please select a valid copy of Shukofukuro you downloaded from the App Store." window:_mainwindowcontroller.window];
-            }
-        }];
-    }
+    [_dlmanager.window makeKeyAndOrderFront:self];
 #endif
 }
-- (void)appStoreRegister:(NSString *)path {
+
+- (void)donationKeyRegister:(NSString *)name withKey:(NSString *)license {
 #if defined(AppStore)
 #else
-    [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked" window:_mainwindowcontroller.window];
+    [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked. Thank you for supporting the development of Shukofukuro!" window:_mainwindowcontroller.window];
     // Add to the preferences
+    [[NSUserDefaults standardUserDefaults] setObject:license forKey:@"donation_license"];
+    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"donation_name"];
     [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
-    [[NSUserDefaults standardUserDefaults] setObject:path forKey:@"mallibrarypath"];
     [_mainwindowcontroller generateSourceList];
     [_mainwindowcontroller loadmainview];
 #endif

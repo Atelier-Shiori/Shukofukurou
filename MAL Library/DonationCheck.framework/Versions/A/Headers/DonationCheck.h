@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char DonationCheckVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <DonationCheck/PublicHeader.h>
 #import <DonationCheck/DonationKeyVerify.h>
-
+#import <DonationCheck/MigrateAppStoreLicense.h>

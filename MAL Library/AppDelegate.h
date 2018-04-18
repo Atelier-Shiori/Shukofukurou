@@ -45,4 +45,5 @@
 - (void)clearMessages;
 - (messageswindow *)getMessagesWindow;
 - (ProfileWindowController *)getProfileWindow;
+- (void)donationKeyRegister:(NSString *)name withKey:(NSString *)license;
 @end

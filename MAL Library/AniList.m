@@ -479,7 +479,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     }
     attributes[@"status"] = [self convertWatchStatus:status isReconsuming:reconsuming withType:AniListManga];
     attributes[@"progress"] = @(chapter);
-    attributes[@"progessVolumes"] = @(volume);
+    attributes[@"progressVolumes"] = @(volume);
     attributes[@"score"] = @(score);
     if (efields) {
         [attributes addEntriesFromDictionary:efields];

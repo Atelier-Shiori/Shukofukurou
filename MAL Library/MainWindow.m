@@ -1152,16 +1152,18 @@
 }
 
 - (void)showProgressWheel:(bool)hidden {
-    if (hidden) {
-        [_progresswheel stopAnimation:self];
-        _progresswheel.hidden = YES;
-    }
-    else {
-        if (_progresswheel.hidden) {
-            [_progresswheel startAnimation:self];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (hidden) {
+            [_progresswheel stopAnimation:self];
+            _progresswheel.hidden = YES;
         }
-        _progresswheel.hidden = NO;
-    }
+        else {
+            if (_progresswheel.hidden) {
+                [_progresswheel startAnimation:self];
+            }
+            _progresswheel.hidden = NO;
+        }
+    });
 }
 @end
 

@@ -25,6 +25,13 @@
 @property (strong) IBOutlet NSPopover *streampopover;
 @property (strong) IBOutlet NSButton *streambutton;
 @property bool buttonmoved;
+@property (strong) IBOutlet NSView *backgroundview;
+@property (strong) IBOutlet NSView *synopsisview;
+@property (strong) IBOutlet NSView *bigsynopsisview;
+
+@property (strong) IBOutlet NSView *backgroundareaview;
+@property (strong) IBOutlet NSView *synopsisareaview;
+
 @end
 
 @implementation InfoView
@@ -39,6 +46,11 @@
     if (!_steampopupviewcontroller.isViewLoaded) {
         [_steampopupviewcontroller loadView];
     }
+    [_bigsynopsisview addSubview:[NSView new]];
+    [_synopsisview addSubview:[NSView new]];
+    [_backgroundview addSubview:[NSView new]];
+    _backgroundareaview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    _synopsisareaview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
 }
 
 - (void)populateAnimeInfoView:(id)object {
@@ -117,7 +129,7 @@
         background = [(NSString *)d[@"background"] convertHTMLtoAttStr];
     }
     else {
-        background = [[NSAttributedString alloc] initWithString:@"None available"];
+        background = [[NSAttributedString alloc] initWithString:@""];
     }
     NSString *type = d[@"type"];
     NSNumber *score = d[@"members_score"];
@@ -183,14 +195,15 @@
     _infoviewdetailstextview.textColor = NSColor.controlTextColor;
     _infoviewsynopsistextview.textColor = NSColor.controlTextColor;
     _infoviewbackgroundtextview.textColor = NSColor.controlTextColor;
+    // Show buttons?
+    [self showbuttons:d];
+    [_mw loadmainview];
     // Fix scrolling
     if (!_selectedinfo){
         [self fixtextviewscrollposition];
     }
     [self fixtextviewscrollposition];
-    // Show buttons?
-    [self showbuttons:d];
-    [_mw loadmainview];
+    [self setviews];
     [self setButtonPositions];
     _selectedinfo = d;
 }
@@ -275,7 +288,7 @@
     else{
         [genres appendString:@"None"];
     }
-    background = [[NSAttributedString alloc] initWithString:@"None available"];
+    background = [[NSAttributedString alloc] initWithString:@""];
     NSString *type = d[@"type"];
     NSNumber *score = d[@"members_score"];
     NSNumber *popularity = d[@"popularity_rank"];
@@ -329,6 +342,12 @@
     [_mw loadmainview];
     [self setButtonPositions];
     _selectedinfo = d;
+    // Fix scrolling
+    if (!_selectedinfo){
+        [self fixtextviewscrollposition];
+    }
+    [self fixtextviewscrollposition];
+    [self setviews];
 }
 
 - (IBAction)viewonmal:(id)sender {
@@ -421,16 +440,15 @@
     }
     for (int i = 0; i < buttonarray.count; i++) {
         NSButton *btn = buttonarray[i];
-        CGPoint btnorigin = btn.frame.origin;
         switch (i) {
             case 0:
-                [btn setFrameOrigin:NSMakePoint(btnorigin.x, 109)];
+                [btn setFrameOrigin:NSMakePoint(5, 66)];
                 break;
             case 1:
-                [btn setFrameOrigin:NSMakePoint(btnorigin.x, 78)];
+                [btn setFrameOrigin:NSMakePoint(5, 35)];
                 break;
             case 2:
-                [btn setFrameOrigin:NSMakePoint(btnorigin.x, 45)];
+                [btn setFrameOrigin:NSMakePoint(5, 2)];
                 break;
             default:
                 break;
@@ -513,6 +531,26 @@
     else {
         _anidbmenuitem.hidden = YES;
         _bakaupdatesmenuitem.hidden = NO;
+    }
+}
+
+- (void)setviews {
+    NSPoint origin = NSMakePoint(0, 0);
+    if (_infoviewbackgroundtextview.textStorage.string.length > 0 && _backgroundview.subviews[0] != _backgroundareaview) {
+        [_bigsynopsisview replaceSubview:_bigsynopsisview.subviews[0] with:[NSView new]];
+        [_backgroundview replaceSubview:_backgroundview.subviews[0] with:_backgroundareaview];
+        [_synopsisview replaceSubview:_synopsisview.subviews[0] with:_synopsisareaview];
+        _synopsisareaview.frame = _synopsisview.frame;
+        _backgroundareaview.frame = _backgroundview.frame;
+        [_synopsisareaview setFrameOrigin:origin];
+        [_backgroundareaview setFrameOrigin:origin];
+    }
+    else if (_bigsynopsisview.subviews[0] != _synopsisareaview && _infoviewbackgroundtextview.textStorage.string.length  == 0){
+        [_bigsynopsisview replaceSubview:_bigsynopsisview.subviews[0] with:_synopsisareaview];
+        [_backgroundview replaceSubview:_backgroundview.subviews[0] with:[NSView new]];
+        [_synopsisview replaceSubview:_synopsisview.subviews[0] with:[NSView new]];
+        _synopsisareaview.frame = _bigsynopsisview.frame;
+        [_synopsisareaview setFrameOrigin:origin];
     }
 }
 @end

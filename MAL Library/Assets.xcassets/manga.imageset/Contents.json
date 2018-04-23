@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "manga.png",
+      "filename" : "icons8-literature.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "manga2.png",
+      "filename" : "icons8-literature-32.png",
       "scale" : "2x"
     },
     {

@@ -17,7 +17,7 @@ Shukofukurou uses the following open source frameworks and classes. Note that th
 * [Sparkle](https://github.com/sparkle-project/Sparkle) - Used for automatic software updating and checking - Licensed under MIT License
 * [SSKeychain](https://github.com/soffes/sskeychain) - Used to store account information. Licensed under MIT License
 * [XMLReader](https://github.com/amarcadet/XMLReader) - Used to read XML List files to import. Licensed under MIT License
-* Toolbar icons from [gemicon.net](http://gemicon.net)
+* Toolbar icons from [icons8](https://icons8.com/)
 * Season data provided from [Taiga](http://taiga.moe)
 
 To see a list of people who donated to the development of this program, [click here](https://github.com/Atelier-Shiori/malupdaterosx-cocoa/wiki/Credits)

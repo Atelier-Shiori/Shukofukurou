@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "animeinfo.png",
+      "filename" : "icons8-tv-16.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "animeinfox2.png",
+      "filename" : "icons8-tv-32.png",
       "scale" : "2x"
     },
     {

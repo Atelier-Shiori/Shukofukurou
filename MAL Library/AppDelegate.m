@@ -59,6 +59,7 @@
     defaultValues[@"stream_region"] = @(0);
     defaultValues[@"currentservice"] = @(1);
     defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
+    defaultValues[@"showadult"] = @NO;
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];

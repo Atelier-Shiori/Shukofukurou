@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "14@0,5x.png",
+      "filename" : "icons8-bar_chart-32.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "14.png",
+      "filename" : "icons8-bar_chart-64.png",
       "scale" : "2x"
     },
     {

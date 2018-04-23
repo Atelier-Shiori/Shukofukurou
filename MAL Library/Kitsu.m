@@ -44,7 +44,26 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 
 + (void)searchTitle:(NSString *)searchterm withType:(int)type withDataArray:(NSMutableArray *)darray withPageOffet:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-    
+#if defined(AppStore) // Do not provide authorization as Mac App Store rating does not allow adult content. Exclude all adult content
+#else
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+        AFOAuthCredential *cred = [Kitsu getFirstAccount];
+        if (cred && cred.expired) {
+            [Kitsu refreshToken:^(bool success) {
+                if (success) {
+                    [self searchTitle:searchterm withType:type withDataArray:darray withPageOffet:offset completion:completionHandler error:errorHandler];
+                }
+                else {
+                    errorHandler(nil);
+                }
+            }];
+            return;
+        }
+        if (cred) {
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+        }
+    }
+#endif
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/?filter[text]=%@&page[limit]=20&page[offset]=%i", type == KitsuAnime ? @"anime" : @"manga", [Utility urlEncodeString:searchterm], offset] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
             [darray addObjectsFromArray:responseObject[@"data"]];
@@ -69,7 +88,26 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 #pragma mark Title Information
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
-
+#if defined(AppStore) // Do not provide authorization as Mac App Store rating does not allow adult content. Exclude all adult content
+#else
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+        AFOAuthCredential *cred = [Kitsu getFirstAccount];
+        if (cred && cred.expired) {
+            [Kitsu refreshToken:^(bool success) {
+                if (success) {
+                    [self retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
+                }
+                else {
+                    errorHandler(nil);
+                }
+            }];
+            return;
+        }
+        if (cred) {
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+        }
+    }
+#endif
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/%i?include=categories,mappings%@", type == KitsuAnime ? @"anime" : @"manga", titleid, type == KitsuAnime ? @",animeProductions,animeProductions.producer" : @""] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (type == KitsuAnime) {
             completionHandler([AtarashiiAPIListFormatKitsu KitsuAnimeInfotoAtarashii:responseObject]);
@@ -91,6 +129,26 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 
 + (void)retrieveReviewsForTitle:(int)titleid withType:(int)type withDataArray:(NSMutableArray *)dataarray withIncludeArray:(NSMutableArray *)includearray withPageOffset:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
+#if defined(AppStore) // Do not provide authorization as Mac App Store rating does not allow adult content. Exclude all adult content
+#else
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+        AFOAuthCredential *cred = [Kitsu getFirstAccount];
+        if (cred && cred.expired) {
+            [Kitsu refreshToken:^(bool success) {
+                if (success) {
+                    [self retrieveReviewsForTitle:titleid withType:type withDataArray:dataarray withIncludeArray:includearray withPageOffset:offset completion:completionHandler error:errorHandler];
+                }
+                else {
+                    errorHandler(nil);
+                }
+            }];
+            return;
+        }
+        if (cred) {
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+        }
+    }
+#endif
     NSString *reviewurl = @"";
     if (type == KitsuAnime) {
         reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[animeId]=%i&include=anime,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar,slug&fields[anime]=episodeCount&page[limit]=20&page[offset]=%i", titleid,offset];

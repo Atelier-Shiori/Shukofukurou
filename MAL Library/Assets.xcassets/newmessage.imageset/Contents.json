@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "newmessage.png",
+      "filename" : "icons8-new_message-32.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "newmessagex2.png",
+      "filename" : "icons8-new_message-64.png",
       "scale" : "2x"
     },
     {

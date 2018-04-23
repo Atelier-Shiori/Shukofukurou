@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "compass.png",
+      "filename" : "icons8-domain-32.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "compass@2x.png",
+      "filename" : "icons8-domain-64.png",
       "scale" : "2x"
     },
     {

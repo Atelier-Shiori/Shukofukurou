@@ -5,10 +5,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-menu-16.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-menu-32.png",
       "scale" : "2x"
     },
     {
@@ -86,12 +88,10 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "library.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "libraryx2.png",
       "scale" : "2x"
     }
   ],

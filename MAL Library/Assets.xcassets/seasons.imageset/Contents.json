@@ -5,10 +5,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-calendar-16.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icons8-calendar-32.png",
       "scale" : "2x"
     },
     {
@@ -86,12 +88,10 @@
     },
     {
       "idiom" : "mac",
-      "filename" : "seasons.png",
       "scale" : "1x"
     },
     {
       "idiom" : "mac",
-      "filename" : "seasonsx2.png",
       "scale" : "2x"
     }
   ],

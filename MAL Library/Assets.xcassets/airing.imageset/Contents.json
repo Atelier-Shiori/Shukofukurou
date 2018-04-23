@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "airing.png",
+      "filename" : "icons8-overtime-16.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "airing-1.png",
+      "filename" : "icons8-overtime-32.png",
       "scale" : "2x"
     },
     {

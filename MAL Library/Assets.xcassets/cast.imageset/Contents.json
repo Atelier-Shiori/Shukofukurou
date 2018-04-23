@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "staff.png",
+      "filename" : "icons8-conference_call-32.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "castx2.png",
+      "filename" : "icons8-conference_call.png",
       "scale" : "2x"
     },
     {

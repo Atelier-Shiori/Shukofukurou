@@ -45,5 +45,7 @@ All the frameworks are included. Just build! Here are the frameworks that are us
 
 Licenses for these frameworks and related classes can be seen [here](https://github.com/Atelier-Shiori/mallibrary/wiki/Credits).
 
+Icons provided by [icons8](https://icons8.com/)
+
 ## License
 Unless stated, Source code is licensed under New BSD License

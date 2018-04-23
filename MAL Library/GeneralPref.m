@@ -14,12 +14,19 @@
 #import "StreamDataRetriever.h"
 
 @interface GeneralPref ()
+@property (strong) IBOutlet NSButton *showadultoption;
 
 @end
 
 @implementation GeneralPref
 - (instancetype)init {
     return [super initWithNibName:@"GeneralPref" bundle:nil];
+}
+- (void)viewDidLoad {
+#if defined(AppStore)
+    // Do not show adult content in the Mac App Store version
+    _showadultoption.hidden = YES;
+#endif
 }
 
 #pragma mark -

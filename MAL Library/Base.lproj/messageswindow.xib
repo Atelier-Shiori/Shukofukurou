@@ -252,7 +252,7 @@
     </objects>
     <resources>
         <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="delete" width="39.724136352539062" height="39.724136352539062"/>
+        <image name="delete" width="32" height="32"/>
         <image name="newmessage" width="32" height="32"/>
         <image name="reply" width="32" height="32"/>
     </resources>

@@ -536,19 +536,17 @@
 - (void)checkaccountinformation {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     if ([Kitsu getFirstAccount]) {
-        if (![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) {
+        bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
+        if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
             [Kitsu saveuserinfoforcurrenttoken];
-        }
-        else if (((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0) {
-            [Kitsu saveuserinfoforcurrenttoken];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
         }
     }
     if ([AniList getFirstAccount]) {
-        if (![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) {
+        bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
+        if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
             [AniList saveuserinfoforcurrenttoken];
-        }
-        else if (((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0) {
-            [AniList saveuserinfoforcurrenttoken];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
         }
     }
 }

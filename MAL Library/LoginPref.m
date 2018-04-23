@@ -181,6 +181,7 @@
             _kitsuloggedinview.hidden = NO;
             _kitsuloginview.hidden = YES;
             [_kitsusavebut setEnabled:YES];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
             break;
         case 3:
             _anilistclearbut.enabled = YES;
@@ -188,6 +189,7 @@
             _anilistloggedinview.hidden = NO;
             _anilistloginview.hidden = YES;
             _anilistauthorizebtn.enabled = YES;
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
             break;
         default:
             break;

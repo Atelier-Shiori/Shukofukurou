@@ -57,8 +57,8 @@
                         if (entry[@"attributes"][@"ratingTwenty"] != [NSNull null]) {
                             lentry.score = ((NSNumber *)entry[@"attributes"][@"ratingTwenty"]).intValue;
                         }
-                        lentry.watching_start = entry[@"attributes"][@"startedAt"];
-                        lentry.watching_end  = entry[@"attributes"][@"finishedAt"];
+                        lentry.watching_start = entry[@"attributes"][@"startedAt"] != [NSNull null] ? [(NSString *)entry[@"attributes"][@"startedAt"] substringToIndex:10] : @"";
+                        lentry.watching_end  = entry[@"attributes"][@"finishedAt"] != [NSNull null] ? [(NSString *)entry[@"attributes"][@"finishedAt"] substringToIndex:10] : @"";
                         lentry.rewatching = ((NSNumber *)entry[@"attributes"][@"reconsuming"]).boolValue;
                         lentry.rewatch_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
                         lentry.personal_comments = entry[@"attributes"][@"notes"];
@@ -118,8 +118,10 @@
                     if (entry[@"attributes"][@"ratingTwenty"] != [NSNull null]) {
                         lentry.score = ((NSNumber *)entry[@"attributes"][@"ratingTwenty"]).intValue;
                     }
-                    lentry.reading_start = entry[@"attributes"][@"startedAt"];
-                    lentry.reading_end = entry[@"attributes"][@"finishedAt"];
+                    lentry.reading_start = entry[@"attributes"][@"startedAt"] != [NSNull null] ? [(NSString *)entry[@"attributes"][@"startedAt"] substringToIndex:10] : @"";
+                    lentry.reading_end  = entry[@"attributes"][@"finishedAt"] != [NSNull null] ? [(NSString *)entry[@"attributes"][@"finishedAt"] substringToIndex:10] : @"";
+                    lentry.reading_start = [(NSString *)entry[@"attributes"][@"startedAt"] substringToIndex:10];
+                    lentry.reading_end = [(NSString *)entry[@"attributes"][@"finishedAt"] substringToIndex:10];
                     lentry.rereading = ((NSNumber *)entry[@"attributes"][@"reconsuming"]).boolValue;
                     lentry.reread_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
                     lentry.personal_comments = entry[@"attributes"][@"notes"];

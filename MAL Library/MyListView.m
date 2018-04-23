@@ -7,7 +7,6 @@
 //
 
 #import "MyListView.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import "EditTitle.h"
 

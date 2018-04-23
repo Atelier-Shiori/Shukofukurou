@@ -45,6 +45,7 @@
 
     [self setuplistservicefields];
     _title.stringValue = d[@"title"];
+    [self setMALdates];
     if (type == 0) {
         [_segmentfield replaceSubview:_segmentfield.subviews[0] with:_episodeview];
         _status.menu = _animestatusmenu;
@@ -76,9 +77,6 @@
             else {
                 _notesfield.stringValue = @"";
             }
-        }
-        else {
-            [self setMALdates];
         }
         //_minipopoverstatustext.stringValue = @"";
         if (((NSNumber *)d[@"episodes"]).intValue > 0) {
@@ -150,9 +148,6 @@
                 _notesfield.stringValue = @"";
             }
         }
-        else {
-            [self setMALdates];
-        }
         //_mangapopoverstatustext.stringValue = @"";
         switch ([listservice getCurrentServiceID]) {
             case 1:
@@ -180,7 +175,6 @@
 
 - (void)updateanimeentry {
     [self disableeditbuttons:false];
-    //_minipopoverstatustext.stringValue = @"";
     _progressindicator.hidden = false;
     [_progressindicator startAnimation:self];
     if(![_status.title isEqual:@"completed"] && _episodefield.intValue == _totalepisodes.intValue && _selectedaircompleted) {
@@ -190,7 +184,6 @@
     if(!_selectedaired && (![_status.title isEqual:@"plan to watch"] ||_episodefield.intValue > 0)) {
         // Invalid input, mark it as such
         [self disableeditbuttons:true];
-        //_minipopoverstatustext.stringValue = @"Invalid update.";
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
         return;
@@ -204,14 +197,14 @@
     }
     NSString *tags = @"";
     NSMutableDictionary *extrafields = [NSMutableDictionary new];
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateFormat = @"yyyy-MM-dd";
     int currentlistservice = [listservice getCurrentServiceID];
     switch (currentlistservice) {
         case 1: {
             if (((NSArray *)_tagsfield.objectValue).count > 0){
                 tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
             }
-            NSDateFormatter *df = [NSDateFormatter new];
-            df.dateFormat = @"yyyy-MM-dd";
             if (@(_setstartdatecheck.state).boolValue) {
                 extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
             }
@@ -221,13 +214,43 @@
             extrafields[@"is_rewatching"] = @(_reconsuming.state);
             break;
         }
-        case 2:
+        case 2: {
+            if (_notesfield.stringValue.length > 0) {
+                extrafields[@"notes"] = _notesfield.stringValue;
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            if (@(_setstartdatecheck.state).boolValue) {
+                extrafields[@"startedAt"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                extrafields[@"finishedAt"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            extrafields[@"private"] = @(_privatecheck.state);
+            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            break;
+        }
         case 3:{
             if (_notesfield.stringValue.length > 0) {
                 extrafields[@"notes"] = _notesfield.stringValue;
             }
             else {
                 extrafields[@"notes"] = [NSNull null];
+            }
+            if (@(_setstartdatecheck.state).boolValue) {
+                NSString *tmpstr = [df stringFromDate:_startdatepicker.dateValue];
+                extrafields[@"startedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"startedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                NSString *tmpstr = [df stringFromDate:_enddatepicker.dateValue];
+                extrafields[@"completedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
             }
             extrafields[@"private"] = @(_privatecheck.state);
             extrafields[@"reconsuming"] = @(_reconsuming.state);
@@ -301,14 +324,14 @@
     }
     NSString *tags = @"";
     NSMutableDictionary *extrafields = [NSMutableDictionary new];
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateFormat = @"yyyy-MM-dd";
     int currentlistservice = [listservice getCurrentServiceID];
     switch (currentlistservice) {
         case 1: {
             if (((NSArray *)_tagsfield.objectValue).count > 0){
                 tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
             }
-            NSDateFormatter *df = [NSDateFormatter new];
-            df.dateFormat = @"yyyy-MM-dd";
             if (@(_setstartdatecheck.state).boolValue) {
                 extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
             }
@@ -318,13 +341,43 @@
             extrafields[@"is_rereading"] = @(_reconsuming.state);
             break;
         }
-        case 2:
+        case 2: {
+            if (_notesfield.stringValue.length > 0) {
+                extrafields[@"notes"] = _notesfield.stringValue;
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            if (@(_setstartdatecheck.state).boolValue) {
+                extrafields[@"startedAt"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                extrafields[@"finishedAt"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            extrafields[@"private"] = @(_privatecheck.state);
+            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            break;
+        }
         case 3:{
             if (_notesfield.stringValue.length > 0) {
                 extrafields[@"notes"] = _notesfield.stringValue;
             }
             else {
                 extrafields[@"notes"] = [NSNull null];
+            }
+            if (@(_setstartdatecheck.state).boolValue) {
+                NSString *tmpstr = [df stringFromDate:_startdatepicker.dateValue];
+                extrafields[@"startedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"startedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                NSString *tmpstr = [df stringFromDate:_enddatepicker.dateValue];
+                extrafields[@"completedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
             }
             extrafields[@"private"] = @(_privatecheck.state);
             extrafields[@"reconsuming"] = @(_reconsuming.state);
@@ -509,7 +562,7 @@
     NSDateFormatter *dateformat = [NSDateFormatter new];
     dateformat.dateFormat = @"yyyy-MM-dd";
     if (_selectedtype == MALAnime) {
-        if (_selecteditem[@"watching_start"] && _selecteditem[@"watching_start"] != [NSNull null]) {
+        if (_selecteditem[@"watching_start"] && _selecteditem[@"watching_start"] != [NSNull null] && ((NSString *)_selecteditem[@"watching_start"]).length > 0) {
             _startdatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"watching_start"] substringToIndex:10]];
             _setstartdatecheck.state = true;
             _setstartdatecheck.enabled = false;
@@ -519,7 +572,7 @@
             _setstartdatecheck.state = false;
             _setstartdatecheck.enabled = true;
         }
-        if (_selecteditem[@"watching_end"]  && _selecteditem[@"watching_end"] != [NSNull null]) {
+        if (_selecteditem[@"watching_end"]  && _selecteditem[@"watching_end"] != [NSNull null] && ((NSString *)_selecteditem[@"watching_end"]).length > 0) {
             _enddatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"watching_end"] substringToIndex:10]];
             _setenddatecheck.state = true;
             _setenddatecheck.enabled = false;
@@ -531,7 +584,7 @@
         }
     }
     else {
-        if (_selecteditem[@"reading_start"] && _selecteditem[@"reading_start"] != [NSNull null]) {
+        if (_selecteditem[@"reading_start"] && _selecteditem[@"reading_start"] != [NSNull null] && ((NSString *)_selecteditem[@"reading_start"]).length > 0) {
             _startdatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"reading_start"] substringToIndex:10]];
             _setstartdatecheck.state = true;
             _setstartdatecheck.enabled = false;
@@ -541,7 +594,7 @@
             _setstartdatecheck.state = false;
             _setstartdatecheck.enabled = true;
         }
-        if (_selecteditem[@"reading_end"]  && _selecteditem[@"reading_end"] != [NSNull null]) {
+        if (_selecteditem[@"reading_end"]  && _selecteditem[@"reading_end"] != [NSNull null] && ((NSString *)_selecteditem[@"reading_end"]).length > 0) {
             _enddatepicker.dateValue = [dateformat dateFromString:[(NSString *)_selecteditem[@"reading_end"] substringToIndex:10]];
             _setenddatecheck.state = true;
             _setenddatecheck.enabled = false;

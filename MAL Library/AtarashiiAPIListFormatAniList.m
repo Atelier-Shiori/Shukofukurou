@@ -411,7 +411,7 @@
 #pragma mark helpers
 + (NSString *)convertAnimeType:(NSString *)type {
     NSString *tmpstr = type.lowercaseString;
-    if ([tmpstr isEqualToString: @"tv"]||[tmpstr isEqualToString: @"ova"]||[tmpstr isEqualToString: @"ova"]) {
+    if ([tmpstr isEqualToString: @"tv"]||[tmpstr isEqualToString: @"ova"]||[tmpstr isEqualToString: @"ona"]) {
         tmpstr = tmpstr.uppercaseString;
     }
     else {

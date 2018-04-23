@@ -16,7 +16,6 @@
 // Common
 @property (strong) IBOutlet NSPopUpButton *minipopoverstatus;
 @property (strong) IBOutlet NSPopUpButton *minipopoverscore;
-@property (strong) IBOutlet NSTextField *minipopoverstatustext;
 @property (strong) IBOutlet NSProgressIndicator *minipopoverindicator;
 @property (strong) IBOutlet NSButton *minipopovereditbtn;
 @property (strong) IBOutlet NSButton *animeadvancededit;
@@ -40,7 +39,6 @@
 @property (strong) IBOutlet NSTextFieldNumber *mangapopovervolfield;
 @property (strong) IBOutlet NSTextField *mangapopovertotalvol;
 @property (strong) IBOutlet NSNumberFormatter *mangaeditpopovervolnumformat;
-@property (strong) IBOutlet NSButton *mangapopovereditbtn;
 @property (strong) IBOutlet NSStepper *mangapopovereditchapstep;
 @property (strong) IBOutlet NSStepper *mangapopovereditvolstep;
 
@@ -66,6 +64,7 @@
     if (type == 0) {
         [_segmentview replaceSubview:(_segmentview.subviews)[0] with:_animeeditview];
         _minipopoverstatus.menu = _animestatusmenu;
+        [_commonview setFrameOrigin:NSMakePoint(_commonview.frame.origin.x, 44)];
         NSString *airingstatus = d[@"status"];
         if ([airingstatus isEqualToString:@"finished airing"]) {
             _selectedaircompleted = true;
@@ -84,7 +83,7 @@
         _minipopovertotalep.intValue = ((NSNumber *)d[@"episodes"]).intValue;
         [_minipopoverstatus selectItemWithTitle:d[@"watched_status"]];
         [self setScore:d];
-        _minipopoverstatustext.stringValue = @"";
+    
         if (((NSNumber *)d[@"episodes"]).intValue > 0) {
             _minieditpopovernumformat.maximum = d[@"episodes"];
         }
@@ -109,6 +108,7 @@
     else {
         [_segmentview replaceSubview:(_segmentview.subviews)[0] with:_mangaeditview];
         _minipopoverstatus.menu = _mangastatusmenu;
+        [_commonview setFrameOrigin:NSMakePoint(_commonview.frame.origin.x, 18)];
         NSString *publishtatus = _selecteditem[@"status"];
         if ([publishtatus isEqualToString:@"finished"]) {
             _selectedfinished = true;
@@ -144,7 +144,6 @@
         _mangapopovereditchapstep.maxValue = _mangaeditpopoverchapnumformat.maximum.doubleValue;
         [_minipopoverstatus selectItemWithTitle:d[@"read_status"]];
         [self setScore:d];
-        _minipopoverstatustext.stringValue = @"";
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
@@ -176,7 +175,7 @@
 
 - (void)updateanimeentry {
     [self disableeditbuttons:false];
-    _minipopoverstatustext.stringValue = @"";
+
     _minipopoverindicator.hidden = false;
     [_minipopoverindicator startAnimation:self];
     bool rewatching = ((NSNumber *)_selecteditem[@"rewatching"]).boolValue;
@@ -187,7 +186,6 @@
     if(!_selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)) {
         // Invalid input, mark it as such
         [self disableeditbuttons:true];
-        _minipopoverstatustext.stringValue = @"Invalid update.";
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
         [_minipopoverindicator stopAnimation:nil];
@@ -253,13 +251,11 @@
       [_minipopoverindicator stopAnimation:nil];
       NSLog(@"%@", error.localizedDescription);
       NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
-      _minipopoverstatustext.stringValue = @"Error";
   }];
 }
 
 - (void)updatemangaentry {
     [self disableeditbuttons:false];
-    _minipopoverstatustext.stringValue = @"";
     _minipopoverindicator.hidden = false;
     [_minipopoverindicator startAnimation:self];
     bool rereading = ((NSNumber *)_selecteditem[@"rereading"]).boolValue;
@@ -270,7 +266,6 @@
     if(!_selectedpublished && (![_minipopoverstatus.title isEqual:@"plan to read"] ||_mangapopoverchapfield.intValue > 0 || _mangapopovertotalvol.intValue > 0)) {
         // Invalid input, mark it as such
         [self disableeditbuttons:true];
-        _minipopoverstatustext.stringValue = @"Invalid update.";
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
         [_minipopoverindicator stopAnimation:nil];
@@ -338,7 +333,6 @@
         [_minipopoverindicator stopAnimation:nil];
         NSLog(@"%@", error.localizedDescription);
         NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
-        _minipopoverstatustext.stringValue = @"Error";
     }];
 }
 

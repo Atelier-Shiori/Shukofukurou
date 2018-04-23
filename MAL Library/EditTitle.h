@@ -29,6 +29,7 @@
 
 @property (strong) IBOutlet NSMenu *animestatusmenu;
 @property (strong) IBOutlet NSMenu *mangastatusmenu;
+@property (strong) IBOutlet NSView *commonview;
 
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type;
 @end

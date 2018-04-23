@@ -78,7 +78,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="fgM-Kb-a35" name="value" keyPath="arrangedObjects.episodes" id="DNp-WS-B5X">
                                                 <dictionary key="options">
@@ -98,7 +98,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="fgM-Kb-a35" name="value" keyPath="arrangedObjects.type" id="Ygf-O1-BEo">
                                                 <dictionary key="options">
@@ -116,11 +116,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="zWg-me-gqj">
-                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
+                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Bjd-sz-s1c">
-                        <rect key="frame" x="-15" y="15" width="15" height="0.0"/>
+                        <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="TpQ-tp-8r6">
@@ -180,7 +180,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="6oV-sT-NIM" name="value" keyPath="arrangedObjects.chapters" id="u0a-NG-2ZB">
                                                 <dictionary key="options">
@@ -200,7 +200,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="6oV-sT-NIM" name="value" keyPath="arrangedObjects.volumes" id="zhq-xh-yS8">
                                                 <dictionary key="options">
@@ -220,7 +220,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="6oV-sT-NIM" name="value" keyPath="arrangedObjects.type" id="6dY-1A-BKe"/>
                                         </connections>
@@ -234,11 +234,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="t2i-rH-3za">
-                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
+                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="0Bl-Jg-4DO">
-                        <rect key="frame" x="-15" y="15" width="15" height="0.0"/>
+                        <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="zM1-Wj-Oxs">

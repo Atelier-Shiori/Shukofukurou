@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -45,7 +46,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="t75-mm-BQR" name="displayPatternValue1" keyPath="arrangedObjects.title" id="a9A-IM-Cx8">
+                                            <binding destination="t75-mm-BQR" name="displayPatternValue3" keyPath="arrangedObjects.segment" previousBinding="2iC-5i-AO9" id="aEz-Nu-4E9">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
                                                 </dictionary>
@@ -55,7 +56,7 @@
                                                     <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="t75-mm-BQR" name="displayPatternValue3" keyPath="arrangedObjects.segment" previousBinding="2iC-5i-AO9" id="aEz-Nu-4E9">
+                                            <binding destination="t75-mm-BQR" name="displayPatternValue1" keyPath="arrangedObjects.title" id="a9A-IM-Cx8">
                                                 <dictionary key="options">
                                                     <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
                                                 </dictionary>
@@ -73,7 +74,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.type" id="RqV-pQ-SiG">
                                                 <dictionary key="options">
@@ -93,7 +94,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.last_updated" id="FGy-UN-5ah"/>
                                         </connections>
@@ -106,11 +107,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="cig-Ss-qvG">
-                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
+                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="UQR-6L-hb7">
-                        <rect key="frame" x="-15" y="16" width="15" height="0.0"/>
+                        <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="OIw-jT-MOW">

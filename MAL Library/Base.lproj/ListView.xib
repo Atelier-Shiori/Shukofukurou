@@ -306,7 +306,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="Ckb-CV-hJI" name="displayPatternValue2" keyPath="arrangedObjects.chapters" previousBinding="ucg-u7-HJ2" id="QA2-bs-eEa">
                                                 <dictionary key="options">
@@ -329,7 +329,7 @@
                                         <levelIndicatorCell key="dataCell" controlSize="small" state="on" alignment="left" doubleValue="3" maxValue="3" warningValue="3" criticalValue="3" levelIndicatorStyle="continuousCapacity" id="OJF-Nx-gcc">
                                             <font key="font" metaFont="smallSystem"/>
                                         </levelIndicatorCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="Ckb-CV-hJI" name="maxValue" keyPath="arrangedObjects.chapters" id="Kcb-oo-Xk8"/>
                                             <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.chapters_read" previousBinding="Kcb-oo-Xk8" id="R4Q-yv-9rH"/>
@@ -346,7 +346,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="Ckb-CV-hJI" name="displayPatternValue2" keyPath="arrangedObjects.volumes" previousBinding="0zN-GT-w1G" id="yga-FI-4om">
                                                 <dictionary key="options">
@@ -371,7 +371,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.score" id="iAk-nc-Asi">
                                                 <dictionary key="options">
@@ -391,7 +391,7 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.type" id="8D8-CV-xfb">
                                                 <dictionary key="options">

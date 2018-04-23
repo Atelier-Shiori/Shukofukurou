@@ -3,15 +3,15 @@ title: Importing and Exporting Lists
 description: About the Import and Export features in Shukofukurou.
 keywords: importing, kitsu, exporting, backup lists, syncing lists, anidb
 ---
-In Shukofukurou 2.1, you can import lists from other services.
+In Shukofukurou, you can import lists from other services to the current service.
 
 Here are the formats that Shukofukurou supports:
 * MyAnimeList XML Format (generated from the website or export done in Shukofukurou)
-* AniDB XML (full) Lists.(1)
-* Kitsu (Anime only for now).(1)
-* AniList (Anime only for now).(1)
+* AniDB XML (full) Lists.
+* Kitsu (Anime only for now).
+* AniList (Anime only for now).
 
-(1) These import options requires a donation key or an App Store version.
+**Note: Manga importing for Kitsu and AniList lists will come at a later date**
 
 If there are titles that could not be imported, it will show them after the import is complete. You can save the list to a JSON file for inspection.
 

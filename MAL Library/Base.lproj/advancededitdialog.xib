@@ -338,7 +338,7 @@ Gw
                     </textFieldCell>
                 </textField>
                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o37-w9-uDq">
-                    <rect key="frame" x="103" y="10" width="366" height="76"/>
+                    <rect key="frame" x="101" y="10" width="366" height="76"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" selectable="YES" editable="YES" continuous="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="zv9-Qw-KPi">
                         <font key="font" metaFont="system"/>
@@ -347,7 +347,7 @@ Gw
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="316" y="-218"/>
+            <point key="canvasLocation" x="316" y="-195"/>
         </customView>
         <customView id="s5B-vG-k8r">
             <rect key="frame" x="0.0" y="0.0" width="258" height="60"/>

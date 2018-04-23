@@ -194,7 +194,11 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="MdS-ya-WtK" name="value" keyPath="values.showadult" id="K2q-fp-c9I"/>
+                        <binding destination="MdS-ya-WtK" name="value" keyPath="values.showadult" id="mbQ-o8-gnI">
+                            <dictionary key="options">
+                                <bool key="NSValidatesImmediately" value="YES"/>
+                            </dictionary>
+                        </binding>
                     </connections>
                 </button>
             </subviews>

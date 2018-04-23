@@ -55,6 +55,17 @@
 
 - (void)populateAnimeInfoView:(id)object {
     NSDictionary *d = object;
+#if defined(AppStore)
+    if ([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]]) {
+        [self infoPopulationDidAbort];
+        return;
+    }
+#else
+    if (([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]]) && ![NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+        [self infoPopulationDidAbort];
+        return;
+    }
+#endif
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
     NSMutableString *genres = [NSMutableString new];
@@ -254,6 +265,17 @@
 
 - (void)populateMangaInfoView:(id)object {
     NSDictionary *d = object;
+#if defined(AppStore)
+    if ([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]]) {
+        [self infoPopulationDidAbort];
+        return;
+    }
+#else
+    if (([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]]) && ![NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+        [self infoPopulationDidAbort];
+        return;
+    }
+#endif
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
     NSMutableString *genres = [NSMutableString new];
@@ -552,5 +574,23 @@
         _synopsisareaview.frame = _bigsynopsisview.frame;
         [_synopsisareaview setFrameOrigin:origin];
     }
+}
+- (void)infoPopulationDidAbort {
+    _selectedid = -1;
+    _selectedinfo = nil;
+    _mw.noinfoview.hidden = NO;
+    _mw.progressindicator.hidden = YES;
+    [_mw loadmainview];
+}
+- (bool)checkifTitleIsAdult:(NSArray *)genres {
+    if (!genres) {
+        return false;
+    }
+    for (NSString *genre in genres) {
+        if ([genre isEqualToString:@"Hentai"]) {
+            return true;
+        }
+    }
+    return false;
 }
 @end

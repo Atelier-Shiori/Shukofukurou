@@ -679,13 +679,13 @@
 		2D4C22161FA7B1ED00539245 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
-				F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */,
 				915E8C4D1E8C235D005A49A4 /* AddTitle.xib */,
 				910589F21E981E2400501B9A /* AdvancedPref.xib */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
 				91B378B51E989C7C000061E6 /* AiringView.xib */,
 				2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */,
 				2D4E01161FA3B1C90053A82B /* CharacterView.xib */,
+				F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */,
 				915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */,
 				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
 				91B378B91E989C83000061E6 /* HistoryView.xib */,

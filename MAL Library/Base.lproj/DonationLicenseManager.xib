@@ -22,7 +22,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="677" y="437" width="480" height="345"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="tm8-J5-9eH">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="345"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -57,7 +57,7 @@
                     <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sCc-Yq-VZJ">
                         <rect key="frame" x="119" y="245" width="339" height="61"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" controlSize="mini" lineBreakMode="charWrapping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="MllQdgZ/oY9/GMSz42LphcZa5s2RnhgNjxLqQ6cgs2GqdES+Lguq7c1KkkQwNef0zzctfyqLEcA8Z7n+nYlp5g==" drawsBackground="YES" id="W19-35-vql">
+                        <textFieldCell key="cell" controlSize="mini" lineBreakMode="charWrapping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="FFFFF-FFFFF-88FF4-FFF2F-FFFF0-F2FFF-FF8F2-2F2FF-FF4F2-F88F4-FFF2F-9F2F2-FFFFF-FFFFF-FF0F" drawsBackground="YES" id="W19-35-vql">
                             <font key="font" size="13" name="Menlo-Regular"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

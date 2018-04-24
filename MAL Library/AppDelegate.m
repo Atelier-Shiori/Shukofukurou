@@ -20,6 +20,7 @@
 #import "ProfileWindowController.h"
 #import "servicemenucontroller.h"
 #import "listservice.h"
+#import "InfoView.h"
 #if defined(AppStore)
 #else
 #import "PFMoveApplication.h"
@@ -209,23 +210,44 @@
         withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
     NSString* url = [event paramDescriptorForKeyword:keyDirectObject].stringValue;
     NSLog(@"%@", url);
-    url = [url stringByReplacingOccurrencesOfString:@"mallibrary://" withString:@""];
+    url = [url stringByReplacingOccurrencesOfString:@"shukofukurou://" withString:@""];
+    int service = 0;
+    if ([url containsString:@"myanimelist/"]) {
+        service = 1;
+        url = [url stringByReplacingOccurrencesOfString:@"myanimelist/" withString:@""];
+    }
+    else if ([url containsString:@"kitsu/"]) {
+        service = 2;
+        url = [url stringByReplacingOccurrencesOfString:@"kitsu/" withString:@""];
+    }
+    else if ([url containsString:@"anilist/"]) {
+        service = 3;
+        url = [url stringByReplacingOccurrencesOfString:@"anilist/" withString:@""];
+    }
+    bool surpressidconversion = (service != [listservice getCurrentServiceID]);
     if ([url containsString:@"anime/"]) {
         // Loads Anime Information with specified id.
+        [self clearInfoView:surpressidconversion];
         url = [url stringByReplacingOccurrencesOfString:@"anime/" withString:@""];
+        [_servicemenucontrol setServiceWithServiceId:service];
         [_mainwindowcontroller loadinfo:@(url.intValue) type:0 changeView:YES];
     }
     else if ([url containsString:@"manga/"]) {
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
             // Loads Manga Information with specified id.
+            [self clearInfoView:surpressidconversion];
+            [_servicemenucontrol setServiceWithServiceId:service];
             url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
-            [_mainwindowcontroller loadinfo:@(url.intValue) type:0 changeView:YES];
+            [_mainwindowcontroller loadinfo:@(url.intValue) type:1 changeView:YES];
         }
     }
-    else if ([url containsString:@"profile/"]) {
+    else if ([url containsString:@"profile/"]||[url containsString:@"user/"]||[url containsString:@"users/"]) {
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
+            [_servicemenucontrol setServiceWithServiceId:service];
             // Loads Manga Information with specified id.
             url = [url stringByReplacingOccurrencesOfString:@"profile/" withString:@""];
+            url = [url stringByReplacingOccurrencesOfString:@"user/" withString:@""];
+            url = [url stringByReplacingOccurrencesOfString:@"users/" withString:@""];
             if ([self getProfileWindow]) {
                 [pwc.window makeKeyAndOrderFront:self];
                 [pwc loadProfileWithUsername:url];
@@ -233,6 +255,12 @@
         }
     }
     
+}
+
+- (void)clearInfoView:(bool)doclear {
+    if (doclear) {
+        [_mainwindowcontroller.infoview infoPopulationDidAbort];
+    }
 }
 
 - (IBAction)showmessagewindow:(id)sender {

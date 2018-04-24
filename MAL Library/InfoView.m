@@ -31,6 +31,8 @@
 
 @property (strong) IBOutlet NSView *backgroundareaview;
 @property (strong) IBOutlet NSView *synopsisareaview;
+@property (strong) IBOutlet NSView *blankbackground;
+@property (strong) IBOutlet NSView *blanksynopsis;
 
 @end
 
@@ -559,18 +561,18 @@
 - (void)setviews {
     NSPoint origin = NSMakePoint(0, 0);
     if (_infoviewbackgroundtextview.textStorage.string.length > 0 && _backgroundview.subviews[0] != _backgroundareaview) {
-        [_bigsynopsisview replaceSubview:_bigsynopsisview.subviews[0] with:[NSView new]];
-        [_backgroundview replaceSubview:_backgroundview.subviews[0] with:_backgroundareaview];
-        [_synopsisview replaceSubview:_synopsisview.subviews[0] with:_synopsisareaview];
+        [_synopsisview setSubviews:@[_synopsisareaview]];
+        [_bigsynopsisview setSubviews:@[_blanksynopsis]];
+        [_backgroundview setSubviews:@[_backgroundareaview]];
         _synopsisareaview.frame = _synopsisview.frame;
         _backgroundareaview.frame = _backgroundview.frame;
         [_synopsisareaview setFrameOrigin:origin];
         [_backgroundareaview setFrameOrigin:origin];
     }
     else if (_bigsynopsisview.subviews[0] != _synopsisareaview && _infoviewbackgroundtextview.textStorage.string.length  == 0){
-        [_bigsynopsisview replaceSubview:_bigsynopsisview.subviews[0] with:_synopsisareaview];
-        [_backgroundview replaceSubview:_backgroundview.subviews[0] with:[NSView new]];
-        [_synopsisview replaceSubview:_synopsisview.subviews[0] with:[NSView new]];
+        [_backgroundview setSubviews:@[_blankbackground]];
+        [_synopsisview setSubviews:@[_blanksynopsis]];
+        [_bigsynopsisview setSubviews:@[_synopsisareaview]];
         _synopsisareaview.frame = _bigsynopsisview.frame;
         [_synopsisareaview setFrameOrigin:origin];
     }

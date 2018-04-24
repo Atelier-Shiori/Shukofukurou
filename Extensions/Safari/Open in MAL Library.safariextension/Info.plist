@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Builder Version</key>
-	<string>13604.1.38.1.6</string>
+	<string>13604.4.7.1.6</string>
 	<key>CFBundleDisplayName</key>
-	<string>Open in MAL Library</string>
+	<string>Open in Shukofukurou</string>
 	<key>CFBundleIdentifier</key>
-	<string>moe.ateliershiori.openinmallibrary</string>
+	<string>moe.malupdaterosx.openinshukofukurou</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
@@ -24,7 +24,7 @@
 				<key>Identifier</key>
 				<string>open_in_mal_library_menu</string>
 				<key>Title</key>
-				<string>Open in MAL Library</string>
+				<string>Open in  Shukofukurou</string>
 			</dict>
 		</array>
 		<key>Global Page</key>
@@ -48,7 +48,7 @@
 		</array>
 	</dict>
 	<key>Description</key>
-	<string>Opens a title in MyAnimeList in MAL Library</string>
+	<string>Opens a title in Shukofukurou from MyAnimeList, Kitsu or AniList</string>
 	<key>DeveloperIdentifier</key>
 	<string>9HDZTER525</string>
 	<key>ExtensionInfoDictionaryVersion</key>
@@ -64,6 +64,6 @@
 		</dict>
 	</dict>
 	<key>Website</key>
-	<string>https://malupdaterosx.ateliershiori.moe/mallibrary</string>
+	<string>https://malupdaterosx.moe/shukofukurou</string>
 </dict>
 </plist>

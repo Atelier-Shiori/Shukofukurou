@@ -11,6 +11,8 @@
                 <outlet property="backgroundareaview" destination="lI0-DR-KzA" id="aMa-YZ-tL0"/>
                 <outlet property="backgroundview" destination="4Rt-Iz-Csu" id="NMY-fM-aYs"/>
                 <outlet property="bigsynopsisview" destination="9EW-c1-556" id="avU-BK-4NU"/>
+                <outlet property="blankbackground" destination="Iqr-wG-rcE" id="rpc-2q-4OI"/>
+                <outlet property="blanksynopsis" destination="GTg-J5-aw6" id="8ke-OU-7pp"/>
                 <outlet property="infoviewalttitles" destination="SOk-lf-PGY" id="SAj-cK-vai"/>
                 <outlet property="infoviewbackgroundtextview" destination="BvR-BE-l82" id="kgm-DJ-1M2"/>
                 <outlet property="infoviewdetailstextview" destination="2hd-4G-Qtq" id="eRG-pU-llm"/>
@@ -215,7 +217,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="AO0-Lv-EUS">
                         <rect key="frame" x="0.0" y="0.0" width="531" height="50"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="BvR-BE-l82">
                                 <rect key="frame" x="0.0" y="0.0" width="546" height="50"/>
@@ -241,7 +243,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="t7x-lm-ukm">
-                        <rect key="frame" x="515" y="0.0" width="16" height="50"/>
+                        <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -270,7 +272,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="WcZ-15-6Fx">
                         <rect key="frame" x="0.0" y="0.0" width="531" height="91"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="8FO-Uz-7hT">
                                 <rect key="frame" x="0.0" y="0.0" width="546" height="91"/>
@@ -296,12 +298,20 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="MKx-OJ-lyG">
-                        <rect key="frame" x="515" y="0.0" width="16" height="91"/>
+                        <rect key="frame" x="-16" y="0.0" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
             </subviews>
             <point key="canvasLocation" x="308" y="2403"/>
+        </customView>
+        <customView id="Iqr-wG-rcE">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+        </customView>
+        <customView id="GTg-J5-aw6">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
         </customView>
     </objects>
 </document>

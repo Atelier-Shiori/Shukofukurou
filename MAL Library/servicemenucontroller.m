@@ -52,6 +52,18 @@
     }
 }
 
+- (void)setServiceWithServiceId:(int)serviceid {
+    int previousservice = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
+    if (previousservice == serviceid) {
+        return;
+    }
+    [NSUserDefaults.standardUserDefaults setInteger:serviceid forKey:@"currentservice"];
+    [self setmenuitemvaluefromdefaults];
+    if (_actionblock) {
+        _actionblock(serviceid, previousservice);
+    }
+}
+
 - (void)enableservicemenuitems:(bool)enable {
     _malserviceitem.enabled = enable;
     _kitsuserviceitem.enabled = enable;

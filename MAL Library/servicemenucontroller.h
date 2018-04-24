@@ -20,4 +20,5 @@ typedef void (^action)(int selected, int previousservice);
 
 - (void)setmenuitemvaluefromdefaults;
 - (void)enableservicemenuitems:(bool)enable;
+- (void)setServiceWithServiceId:(int)serviceid;
 @end

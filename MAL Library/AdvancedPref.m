@@ -44,7 +44,11 @@
 #pragma mark
 -(IBAction)resetMALAPI:(id)sender {
     //Reset Unofficial MAL API URL
+#if defined(OSS)
+    _fieldmalapi.stringValue = @"http://localhost:8000";
+#else
     _fieldmalapi.stringValue = @"https://malapi.malupdaterosx.moe";
+#endif
     // Set MAL API URL in settings
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults] ;
     [defaults setObject:_fieldmalapi.stringValue forKey:@"MALAPIURL"];

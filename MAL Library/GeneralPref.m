@@ -24,8 +24,11 @@
 }
 - (void)viewDidLoad {
 #if defined(AppStore)
+#if defined(OSS)
+#else
     // Do not show adult content in the Mac App Store version
     _showadultoption.hidden = YES;
+#endif
 #endif
 }
 

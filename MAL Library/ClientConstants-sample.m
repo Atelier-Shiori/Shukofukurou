@@ -22,5 +22,4 @@
     //
     NSString *const kanilistsecretkey = @"";
     NSString *const kanlistclient =@"";
-    NSString *const kanilistredirect = @"";
 @end

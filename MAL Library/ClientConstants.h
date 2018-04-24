@@ -16,5 +16,4 @@
     FOUNDATION_EXPORT NSString *const kKitsuClient;
     FOUNDATION_EXPORT NSString *const kanilistsecretkey;
     FOUNDATION_EXPORT NSString *const kanilistclient;
-    FOUNDATION_EXPORT NSString *const kanilistredirect;
 @end

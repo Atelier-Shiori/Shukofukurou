@@ -10,8 +10,11 @@
 #import "Preferences.h"
 #import "Keychain.h"
 #import "PFAboutWindowController.h"
+#if defined(OSS)
+#else
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#endif
 #import "Utility.h"
 #import "StreamDataRetriever.h"
 #import "ProfileWindowController.h"
@@ -55,7 +58,11 @@
     #endif
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"readingfilter"] = @(1);
+#if defined(OSS)
+    defaultValues[@"malapiurl"] = @"http://localhost:8000";
+#else
     defaultValues[@"malapiurl"] = @"https://malapi.malupdaterosx.moe";
+#endif
     defaultValues[@"stream_region"] = @(0);
     defaultValues[@"currentservice"] = @(1);
     defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
@@ -67,7 +74,10 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    #if defined(OSS)
+    #else
     [Fabric with:@[[Crashlytics class]]];
+    #endif
     [Utility checkandclearimagecache];
     // Ask to move application
     #if defined(AppStore)
@@ -173,7 +183,11 @@
     NSDictionary *bundleDict = [NSBundle mainBundle].infoDictionary;
     [copyrightstr appendFormat:@"%@ \r\r",bundleDict[@"NSHumanReadableCopyright"]];
 #if defined(AppStore)
+#if defined(OSS)
+    [copyrightstr appendString:@"Community version. No support will be provided."];
+#else
     [copyrightstr appendString:@"Mac App Store version."];
+#endif
 #else
     if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
         [copyrightstr appendString:@"Pro version. Thank you for supporting Shukofukurou's development!¥"];

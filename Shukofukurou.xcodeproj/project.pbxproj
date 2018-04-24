@@ -266,6 +266,140 @@
 		F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F888F404208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
 		F888F405208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
+		F888F40A208FB1F500C22C39 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
+		F888F40B208FB1F500C22C39 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
+		F888F40C208FB1F500C22C39 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
+		F888F40D208FB1F500C22C39 /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
+		F888F40E208FB1F500C22C39 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
+		F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E721ECF8AF500F47138 /* ListStatistics.m */; };
+		F888F410208FB1F500C22C39 /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
+		F888F411208FB1F500C22C39 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
+		F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */; };
+		F888F413208FB1F500C22C39 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
+		F888F414208FB1F500C22C39 /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
+		F888F415208FB1F500C22C39 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
+		F888F416208FB1F500C22C39 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
+		F888F417208FB1F500C22C39 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
+		F888F418208FB1F500C22C39 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502BB1E8C576B00565D30 /* ListView.m */; };
+		F888F419208FB1F500C22C39 /* servicemenucontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D88CA691FE815B600AD142E /* servicemenucontroller.m */; };
+		F888F41A208FB1F500C22C39 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABA1E89842400F6E9FF /* MainWindow.m */; };
+		F888F41B208FB1F500C22C39 /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
+		F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
+		F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
+		F888F41E208FB1F500C22C39 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */; };
+		F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
+		F888F420208FB1F500C22C39 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
+		F888F421208FB1F500C22C39 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
+		F888F422208FB1F500C22C39 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB71E89842400F6E9FF /* LoginPref.m */; };
+		F888F423208FB1F500C22C39 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */; };
+		F888F424208FB1F500C22C39 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
+		F888F425208FB1F500C22C39 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
+		F888F426208FB1F500C22C39 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
+		F888F427208FB1F500C22C39 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC81EB8DF64005B7B77 /* ESCssTokenizer.m */; };
+		F888F428208FB1F500C22C39 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
+		F888F429208FB1F500C22C39 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACD1E89842400F6E9FF /* Utility.m */; };
+		F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABC1E89842400F6E9FF /* MSWeakTimer.m */; };
+		F888F42B208FB1F500C22C39 /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
+		F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
+		F888F42D208FB1F500C22C39 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
+		F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
+		F888F42F208FB1F500C22C39 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB21E89842400F6E9FF /* GeneralPref.m */; };
+		F888F430208FB1F500C22C39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
+		F888F431208FB1F500C22C39 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */; };
+		F888F432208FB1F500C22C39 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		F888F433208FB1F500C22C39 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */; };
+		F888F434208FB1F500C22C39 /* ReviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C0601C1EAD309C0099E433 /* ReviewView.m */; };
+		F888F435208FB1F500C22C39 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */; };
+		F888F436208FB1F500C22C39 /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863E81F895F9B00D2876A /* ProfileWindowController.m */; };
+		F888F437208FB1F500C22C39 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
+		F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
+		F888F439208FB1F500C22C39 /* ratingchartview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E791ECF8B4F00F47138 /* ratingchartview.m */; };
+		F888F43A208FB1F500C22C39 /* NSTextFieldCellMiddleAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */; };
+		F888F43B208FB1F500C22C39 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
+		F888F43C208FB1F500C22C39 /* ImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */; };
+		F888F43D208FB1F500C22C39 /* StringDatetoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */; };
+		F888F43E208FB1F500C22C39 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
+		F888F43F208FB1F500C22C39 /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
+		F888F440208FB1F500C22C39 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
+		F888F441208FB1F500C22C39 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */; };
+		F888F442208FB1F500C22C39 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
+		F888F443208FB1F500C22C39 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
+		F888F444208FB1F500C22C39 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */; };
+		F888F445208FB1F500C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
+		F888F446208FB1F500C22C39 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
+		F888F447208FB1F500C22C39 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
+		F888F448208FB1F500C22C39 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
+		F888F449208FB1F500C22C39 /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
+		F888F44A208FB1F500C22C39 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
+		F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
+		F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
+		F888F44D208FB1F500C22C39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
+		F888F44E208FB1F500C22C39 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
+		F888F44F208FB1F500C22C39 /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
+		F888F450208FB1F500C22C39 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
+		F888F451208FB1F500C22C39 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */; };
+		F888F452208FB1F500C22C39 /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
+		F888F453208FB1F500C22C39 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */; };
+		F888F454208FB1F500C22C39 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
+		F888F455208FB1F500C22C39 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
+		F888F456208FB1F500C22C39 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
+		F888F457208FB1F500C22C39 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D101E8C88280026D3E9 /* InfoView.m */; };
+		F888F459208FB1F500C22C39 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		F888F45A208FB1F500C22C39 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
+		F888F45B208FB1F500C22C39 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		F888F45C208FB1F500C22C39 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
+		F888F45D208FB1F500C22C39 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		F888F45E208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		F888F45F208FB1F500C22C39 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF21E89844C00F6E9FF /* MASPreferences.framework */; };
+		F888F460208FB1F500C22C39 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		F888F461208FB1F500C22C39 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		F888F463208FB1F500C22C39 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
+		F888F464208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		F888F466208FB1F500C22C39 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		F888F468208FB1F500C22C39 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */; };
+		F888F469208FB1F500C22C39 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
+		F888F46A208FB1F500C22C39 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
+		F888F46B208FB1F500C22C39 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
+		F888F46C208FB1F500C22C39 /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
+		F888F46D208FB1F500C22C39 /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */; };
+		F888F46E208FB1F500C22C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
+		F888F46F208FB1F500C22C39 /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5B1EAEAC70005E33DB /* messageswindow.xib */; };
+		F888F470208FB1F500C22C39 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAB01E89842400F6E9FF /* dsa_pub.pem */; };
+		F888F471208FB1F500C22C39 /* RecommendedTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */; };
+		F888F472208FB1F500C22C39 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
+		F888F473208FB1F500C22C39 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D041E8C7DFE0026D3E9 /* SearchView.xib */; };
+		F888F474208FB1F500C22C39 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
+		F888F475208FB1F500C22C39 /* ListImport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8B61EC4EED30068856A /* ListImport.xib */; };
+		F888F476208FB1F500C22C39 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE41E89843300F6E9FF /* LoginView.xib */; };
+		F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE61E89843300F6E9FF /* MainWindow.xib */; };
+		F888F478208FB1F500C22C39 /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
+		F888F479208FB1F500C22C39 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
+		F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE21E89843300F6E9FF /* GeneralPref.xib */; };
+		F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */; };
+		F888F47C208FB1F500C22C39 /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5F1EAEAC77005E33DB /* messageview.xib */; };
+		F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
+		F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */; };
+		F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01161FA3B1C90053A82B /* CharacterView.xib */; };
+		F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C91E8C65A900565D30 /* NotLoggedIn.xib */; };
+		F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */; };
+		F888F482208FB1F500C22C39 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */; };
+		F888F483208FB1F500C22C39 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
+		F888F484208FB1F500C22C39 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
+		F888F485208FB1F500C22C39 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
+		F888F486208FB1F500C22C39 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
+		F888F487208FB1F500C22C39 /* ImportPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8BA1EC4EED80068856A /* ImportPrompt.xib */; };
+		F888F488208FB1F500C22C39 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
+		F888F489208FB1F500C22C39 /* SeasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D0C1E8C86A40026D3E9 /* SeasonView.xib */; };
+		F888F48A208FB1F500C22C39 /* ListStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E821ECFA3E400F47138 /* ListStatistics.xib */; };
+		F888F48B208FB1F500C22C39 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
+		F888F48C208FB1F500C22C39 /* AdvancedSearch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */; };
+		F888F48D208FB1F500C22C39 /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */; };
+		F888F48E208FB1F500C22C39 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C61E8C65A500565D30 /* ListView.xib */; };
+		F888F490208FB1F500C22C39 /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F888F491208FB1F500C22C39 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F888F492208FB1F500C22C39 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F888F493208FB1F500C22C39 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F888F494208FB1F500C22C39 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F8A85912207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
@@ -321,6 +455,13 @@
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "MAL Library (AppStore)";
 		};
+		F888F408208FB1F500C22C39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
+			remoteInfo = MALLibraryHelp;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -374,6 +515,31 @@
 				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F888F48F208FB1F500C22C39 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F888F490208FB1F500C22C39 /* CocoaOniguruma.framework in Embed Frameworks */,
+				F888F491208FB1F500C22C39 /* AFNetworking.framework in Embed Frameworks */,
+				F888F492208FB1F500C22C39 /* SAMKeychain.framework in Embed Frameworks */,
+				F888F493208FB1F500C22C39 /* PXSourceList.framework in Embed Frameworks */,
+				F888F494208FB1F500C22C39 /* MASPreferences.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F888F496208FB1F500C22C39 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -590,6 +756,9 @@
 		F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherListScoreFormatter.m; sourceTree = "<group>"; };
 		F888F402208F889D00C22C39 /* AuthWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthWebView.h; sourceTree = "<group>"; };
 		F888F403208F889D00C22C39 /* AuthWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthWebView.m; sourceTree = "<group>"; wrapsLines = 0; };
+		F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F888F49B208FB1F600C22C39 /* Shukofukurou (Open Source)-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shukofukurou (Open Source)-Info.plist"; path = "/Users/takanashirikka/Desktop/repo/MAL-Library/MAL Library/Shukofukurou (Open Source)-Info.plist"; sourceTree = "<absolute>"; };
+		F888F49C208FB20C00C22C39 /* Shukofukurou Open Source.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou Open Source.entitlements"; sourceTree = "<group>"; };
 		F88CD0F92072BC330093C478 /* AniListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
 		F88CD0FA2072BC330093C478 /* AniListConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
 		F8A85910207023E40026EC0A /* AniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
@@ -674,6 +843,25 @@
 				918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */,
 				9199BAFC1E89847D00F6E9FF /* Sparkle.framework in Frameworks */,
 				91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F888F458208FB1F500C22C39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F888F459208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
+				F888F45A208FB1F500C22C39 /* AFNetworking.framework in Frameworks */,
+				F888F45B208FB1F500C22C39 /* SAMKeychain.framework in Frameworks */,
+				F888F45C208FB1F500C22C39 /* AFNetworking.framework in Frameworks */,
+				F888F45D208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
+				F888F45E208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */,
+				F888F45F208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
+				F888F460208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
+				F888F461208FB1F500C22C39 /* SAMKeychain.framework in Frameworks */,
+				F888F463208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
+				F888F464208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */,
+				F888F466208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -808,6 +996,7 @@
 				2D60A11F1E9B322A0034C3AA /* ShukofukurouUITests.xctest */,
 				913A627B1E9D7AF40023E6A1 /* Shukofukurou Unit Tests.xctest */,
 				2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */,
+				F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -831,16 +1020,18 @@
 				91D094CE1E9876D8009454F8 /* AiringView.m */,
 				F8A85910207023E40026EC0A /* AniList.h */,
 				F8A85911207023E40026EC0A /* AniList.m */,
-				F88CD0F92072BC330093C478 /* AniListConstants.h */,
-				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
-				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
-				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
 				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
 				F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */,
+				F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */,
+				F88CD0F92072BC330093C478 /* AniListConstants.h */,
+				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
+				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
+				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
+				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
+				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
+				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				F888F402208F889D00C22C39 /* AuthWebView.h */,
 				F888F403208F889D00C22C39 /* AuthWebView.m */,
-				F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */,
-				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
 				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
 				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
@@ -850,6 +1041,8 @@
 				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
 				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
 				911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */,
+				F84D051A2086667700502379 /* DonationLicenseManager.h */,
+				F84D051B2086667700502379 /* DonationLicenseManager.m */,
 				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
 				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
 				2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */,
@@ -907,10 +1100,6 @@
 				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
 				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
 				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
-				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
-				F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */,
-				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
-				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
 				2D7877741F87E44000AD40F1 /* MyListView.h */,
 				2D7877751F87E44000AD40F1 /* MyListView.m */,
 				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
@@ -929,6 +1118,8 @@
 				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
 				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
 				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
+				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
+				F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */,
 				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
 				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
 				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
@@ -954,6 +1145,8 @@
 				91999D061E8C81580026D3E9 /* SeasonView.m */,
 				2D88CA681FE815B600AD142E /* servicemenucontroller.h */,
 				2D88CA691FE815B600AD142E /* servicemenucontroller.m */,
+				F888F49B208FB1F600C22C39 /* Shukofukurou (Open Source)-Info.plist */,
+				F888F49C208FB20C00C22C39 /* Shukofukurou Open Source.entitlements */,
 				2DAB19E71EF9F2C400420182 /* siteimage.h */,
 				2DAB19E81EF9F2C400420182 /* siteimage.m */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
@@ -974,8 +1167,6 @@
 				2D4C22161FA7B1ED00539245 /* XIB */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
-				F84D051A2086667700502379 /* DonationLicenseManager.h */,
-				F84D051B2086667700502379 /* DonationLicenseManager.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1116,6 +1307,26 @@
 			productReference = 9199BA961E89836000F6E9FF /* Shukofukurou.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F888F406208FB1F500C22C39 /* Shukofukurou Community */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F888F497208FB1F500C22C39 /* Build configuration list for PBXNativeTarget "Shukofukurou Community" */;
+			buildPhases = (
+				F888F409208FB1F500C22C39 /* Sources */,
+				F888F458208FB1F500C22C39 /* Frameworks */,
+				F888F467208FB1F500C22C39 /* Resources */,
+				F888F48F208FB1F500C22C39 /* Embed Frameworks */,
+				F888F496208FB1F500C22C39 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F888F407208FB1F500C22C39 /* PBXTargetDependency */,
+			);
+			name = "Shukofukurou Community";
+			productName = "MAL Library";
+			productReference = F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1155,6 +1366,17 @@
 						DevelopmentTeam = 9HDZTER525;
 						ProvisioningStyle = Automatic;
 					};
+					F888F406208FB1F500C22C39 = {
+						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "Shukofukurou" */;
@@ -1175,6 +1397,7 @@
 				2D60A11E1E9B322A0034C3AA /* ShukofukurouUITests */,
 				913A627A1E9D7AF40023E6A1 /* Shukofukurou Unit Tests */,
 				2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */,
+				F888F406208FB1F500C22C39 /* Shukofukurou Community */,
 			);
 		};
 /* End PBXProject section */
@@ -1291,6 +1514,52 @@
 				2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F888F467208FB1F500C22C39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F888F468208FB1F500C22C39 /* ShukofukurouHelp.help in Resources */,
+				F888F469208FB1F500C22C39 /* messagecomposer.xib in Resources */,
+				F888F46A208FB1F500C22C39 /* EditTitle.xib in Resources */,
+				F888F46B208FB1F500C22C39 /* ReviewView.xib in Resources */,
+				F888F46C208FB1F500C22C39 /* ReviewWindow.xib in Resources */,
+				F888F46D208FB1F500C22C39 /* ProfileWindowController.xib in Resources */,
+				F888F46E208FB1F500C22C39 /* Assets.xcassets in Resources */,
+				F888F46F208FB1F500C22C39 /* messageswindow.xib in Resources */,
+				F888F470208FB1F500C22C39 /* dsa_pub.pem in Resources */,
+				F888F471208FB1F500C22C39 /* RecommendedTitleView.xib in Resources */,
+				F888F472208FB1F500C22C39 /* Credits.rtf in Resources */,
+				F888F473208FB1F500C22C39 /* SearchView.xib in Resources */,
+				F888F474208FB1F500C22C39 /* AiringView.xib in Resources */,
+				F888F475208FB1F500C22C39 /* ListImport.xib in Resources */,
+				F888F476208FB1F500C22C39 /* LoginView.xib in Resources */,
+				F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */,
+				F888F478208FB1F500C22C39 /* AdvancedPref.xib in Resources */,
+				F888F479208FB1F500C22C39 /* EULA.rtf in Resources */,
+				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
+				F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */,
+				F888F47C208FB1F500C22C39 /* messageview.xib in Resources */,
+				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
+				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
+				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
+				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
+				F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */,
+				F888F482208FB1F500C22C39 /* ProfileViewController.xib in Resources */,
+				F888F483208FB1F500C22C39 /* ratingchartview.xib in Resources */,
+				F888F484208FB1F500C22C39 /* advancededitdialog.xib in Resources */,
+				F888F485208FB1F500C22C39 /* AddTitle.xib in Resources */,
+				F888F486208FB1F500C22C39 /* InfoView.xib in Resources */,
+				F888F487208FB1F500C22C39 /* ImportPrompt.xib in Resources */,
+				F888F488208FB1F500C22C39 /* PFAboutWindow.xib in Resources */,
+				F888F489208FB1F500C22C39 /* SeasonView.xib in Resources */,
+				F888F48A208FB1F500C22C39 /* ListStatistics.xib in Resources */,
+				F888F48B208FB1F500C22C39 /* HistoryView.xib in Resources */,
+				F888F48C208FB1F500C22C39 /* AdvancedSearch.xib in Resources */,
+				F888F48D208FB1F500C22C39 /* StreamPopup.xib in Resources */,
+				F888F48E208FB1F500C22C39 /* ListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1528,6 +1797,91 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F888F409208FB1F500C22C39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F888F40A208FB1F500C22C39 /* OtherListScoreFormatter.m in Sources */,
+				F888F40B208FB1F500C22C39 /* Kitsu.m in Sources */,
+				F888F40C208FB1F500C22C39 /* Keychain.m in Sources */,
+				F888F40D208FB1F500C22C39 /* messagecomposer.m in Sources */,
+				F888F40E208FB1F500C22C39 /* messageswindow.m in Sources */,
+				F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */,
+				F888F410208FB1F500C22C39 /* ListImport.m in Sources */,
+				F888F411208FB1F500C22C39 /* AtarashiiAPIListFormatAniList.m in Sources */,
+				F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */,
+				F888F413208FB1F500C22C39 /* Base64Category.m in Sources */,
+				F888F414208FB1F500C22C39 /* RecommendedTitleView.m in Sources */,
+				F888F415208FB1F500C22C39 /* HistoryView.m in Sources */,
+				F888F416208FB1F500C22C39 /* ListExporter.m in Sources */,
+				F888F417208FB1F500C22C39 /* AniListAuthWindow.m in Sources */,
+				F888F418208FB1F500C22C39 /* ListView.m in Sources */,
+				F888F419208FB1F500C22C39 /* servicemenucontroller.m in Sources */,
+				F888F41A208FB1F500C22C39 /* MainWindow.m in Sources */,
+				F888F41B208FB1F500C22C39 /* NSTextFieldNumber.m in Sources */,
+				F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */,
+				F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */,
+				F888F41E208FB1F500C22C39 /* datamodel.xcdatamodeld in Sources */,
+				F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */,
+				F888F420208FB1F500C22C39 /* XMLReader.m in Sources */,
+				F888F421208FB1F500C22C39 /* ProfileViewController.m in Sources */,
+				F888F422208FB1F500C22C39 /* LoginPref.m in Sources */,
+				F888F423208FB1F500C22C39 /* ESCssParser.m in Sources */,
+				F888F424208FB1F500C22C39 /* listservice.m in Sources */,
+				F888F425208FB1F500C22C39 /* MyListView.m in Sources */,
+				F888F426208FB1F500C22C39 /* SearchView.m in Sources */,
+				F888F427208FB1F500C22C39 /* ESCssTokenizer.m in Sources */,
+				F888F428208FB1F500C22C39 /* AtarashiiAPIListFormatKitsu.m in Sources */,
+				F888F429208FB1F500C22C39 /* Utility.m in Sources */,
+				F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */,
+				F888F42B208FB1F500C22C39 /* TitleIdConverter.m in Sources */,
+				F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */,
+				F888F42D208FB1F500C22C39 /* NotLoggedIn.m in Sources */,
+				F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */,
+				F888F42F208FB1F500C22C39 /* GeneralPref.m in Sources */,
+				F888F430208FB1F500C22C39 /* AppDelegate.m in Sources */,
+				F888F431208FB1F500C22C39 /* ESCssTokens.m in Sources */,
+				F888F432208FB1F500C22C39 /* messageview.m in Sources */,
+				F888F433208FB1F500C22C39 /* AniListScoreConvert.m in Sources */,
+				F888F434208FB1F500C22C39 /* ReviewView.m in Sources */,
+				F888F435208FB1F500C22C39 /* NSString_stripHtml.m in Sources */,
+				F888F436208FB1F500C22C39 /* ProfileWindowController.m in Sources */,
+				F888F437208FB1F500C22C39 /* siteimage.m in Sources */,
+				F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */,
+				F888F439208FB1F500C22C39 /* ratingchartview.m in Sources */,
+				F888F43A208FB1F500C22C39 /* NSTextFieldCellMiddleAligned.m in Sources */,
+				F888F43B208FB1F500C22C39 /* AniList.m in Sources */,
+				F888F43C208FB1F500C22C39 /* ImportPrompt.m in Sources */,
+				F888F43D208FB1F500C22C39 /* StringDatetoDate.m in Sources */,
+				F888F43E208FB1F500C22C39 /* StreamDataRetriever.m in Sources */,
+				F888F43F208FB1F500C22C39 /* advancededitdialog.m in Sources */,
+				F888F440208FB1F500C22C39 /* ReviewWindow.m in Sources */,
+				F888F441208FB1F500C22C39 /* NSTableViewAction.m in Sources */,
+				F888F442208FB1F500C22C39 /* RatingTwentyConvert.m in Sources */,
+				F888F443208FB1F500C22C39 /* AddTitle.m in Sources */,
+				F888F444208FB1F500C22C39 /* NSNumberFormatterNumberOnly.m in Sources */,
+				F888F445208FB1F500C22C39 /* AuthWebView.m in Sources */,
+				F888F446208FB1F500C22C39 /* OtherUserListScoreFormatter.m in Sources */,
+				F888F447208FB1F500C22C39 /* CharacterView.m in Sources */,
+				F888F448208FB1F500C22C39 /* EditTitle.m in Sources */,
+				F888F449208FB1F500C22C39 /* AdvancedPref.m in Sources */,
+				F888F44A208FB1F500C22C39 /* AFHTTPSessionManager+Synchronous.m in Sources */,
+				F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */,
+				F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */,
+				F888F44D208FB1F500C22C39 /* main.m in Sources */,
+				F888F44E208FB1F500C22C39 /* AiringView.m in Sources */,
+				F888F44F208FB1F500C22C39 /* HTMLtoBBCode.m in Sources */,
+				F888F450208FB1F500C22C39 /* OtherHistoryView.m in Sources */,
+				F888F451208FB1F500C22C39 /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				F888F452208FB1F500C22C39 /* imagecachetransformer.m in Sources */,
+				F888F453208FB1F500C22C39 /* SoftwareUpdatesPref.m in Sources */,
+				F888F454208FB1F500C22C39 /* AdvancedSearch.m in Sources */,
+				F888F455208FB1F500C22C39 /* StreamPopup.m in Sources */,
+				F888F456208FB1F500C22C39 /* KitsuListRetriever.m in Sources */,
+				F888F457208FB1F500C22C39 /* InfoView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1550,6 +1904,11 @@
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* Shukofukurou (AppStore) */;
 			targetProxy = 913A62801E9D7AF40023E6A1 /* PBXContainerItemProxy */;
+		};
+		F888F407208FB1F500C22C39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */;
+			targetProxy = F888F408208FB1F500C22C39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2217,6 +2576,102 @@
 			};
 			name = Release;
 		};
+		F888F498208FB1F500C22C39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					"OSS=true",
+					"AppStore=true",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Debug;
+		};
+		F888F499208FB1F500C22C39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
+					"OSS=true",
+					"AppStore=true",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2270,6 +2725,15 @@
 			buildConfigurations = (
 				9199BAA81E89836000F6E9FF /* Debug */,
 				9199BAA91E89836000F6E9FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F888F497208FB1F500C22C39 /* Build configuration list for PBXNativeTarget "Shukofukurou Community" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F888F498208FB1F500C22C39 /* Debug */,
+				F888F499208FB1F500C22C39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

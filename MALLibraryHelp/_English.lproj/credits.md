@@ -15,7 +15,7 @@ Shukofukurou uses the following open source frameworks and classes. Note that th
 * [PFMoveApplication](https://github.com/potionfactory/LetsMove) - Used to move the application to the Applications folder - Licensed under Public Domain
 * [PXSourceList](https://github.com/Perspx/PXSourceList) - Licensed under BSD License
 * [Sparkle](https://github.com/sparkle-project/Sparkle) - Used for automatic software updating and checking - Licensed under MIT License
-* [SSKeychain](https://github.com/soffes/sskeychain) - Used to store account information. Licensed under MIT License
+* [SAMKeychain](https://github.com/soffes/sskeychain) - Used to store account information. Licensed under MIT License
 * [XMLReader](https://github.com/amarcadet/XMLReader) - Used to read XML List files to import. Licensed under MIT License
 * Toolbar icons from [icons8](https://icons8.com/)
 * Season data provided from [Taiga](http://taiga.moe)

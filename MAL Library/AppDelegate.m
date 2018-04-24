@@ -168,7 +168,7 @@
     if (!_aboutWindowController) {
         _aboutWindowController = [PFAboutWindowController new];
     }
-    (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://malupdaterosx.moe/mallibrary/"];
+    (self.aboutWindowController).appURL = [[NSURL alloc] initWithString:@"https://malupdaterosx.moe/shukofukurou/"];
     NSMutableString *copyrightstr = [NSMutableString new];
     NSDictionary *bundleDict = [NSBundle mainBundle].infoDictionary;
     [copyrightstr appendFormat:@"%@ \r\r",bundleDict[@"NSHumanReadableCopyright"]];
@@ -176,7 +176,8 @@
     [copyrightstr appendString:@"Mac App Store version."];
 #else
     if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
-        [copyrightstr appendString:@"Pro version."];
+        [copyrightstr appendString:@"Pro version. Thank you for supporting Shukofukurou's development!"];
+        [copyrightstr appendFormat:@"\rThis copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donation_name"]];
     }
     else {
         [copyrightstr appendString:@"Free Version."];

@@ -679,6 +679,7 @@
 		2D4C22161FA7B1ED00539245 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */,
 				915E8C4D1E8C235D005A49A4 /* AddTitle.xib */,
 				910589F21E981E2400501B9A /* AdvancedPref.xib */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
@@ -969,7 +970,6 @@
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 				F84D051A2086667700502379 /* DonationLicenseManager.h */,
 				F84D051B2086667700502379 /* DonationLicenseManager.m */,
-				F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";

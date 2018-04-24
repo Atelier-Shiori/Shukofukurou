@@ -135,10 +135,12 @@
 - (IBAction)authorize:(id)sender {
     if (!_anilistauthw) {
         _anilistauthw = [AniListAuthWindow new];
+    }
+    else {
         [_anilistauthw.window makeKeyAndOrderFront:self];
+        [_anilistauthw loadAuthorization];
         [_anilistauthw close];
     }
-    [_anilistauthw loadAuthorization];
     _anilistauthorizebtn.enabled = NO;
     [self.view.window beginSheet:_anilistauthw.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
@@ -241,6 +243,9 @@
         case 2:
             _kitsusavebut.enabled = YES;
             _kitsusavebut.keyEquivalent = @"\r";
+            break;
+        case 3:
+            _anilistauthorizebtn.enabled = YES;
             break;
         default:
             break;

@@ -264,6 +264,8 @@
 		F84D05202086720800502379 /* DonationCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; };
 		F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
+		F888F404208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
+		F888F405208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
 		F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F8A85912207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
@@ -586,6 +588,8 @@
 		F84D051F2086720700502379 /* DonationCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationCheck.framework; path = "MAL Library/DonationCheck.framework"; sourceTree = "<group>"; };
 		F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherListScoreFormatter.h; sourceTree = "<group>"; };
 		F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherListScoreFormatter.m; sourceTree = "<group>"; };
+		F888F402208F889D00C22C39 /* AuthWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthWebView.h; sourceTree = "<group>"; };
+		F888F403208F889D00C22C39 /* AuthWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthWebView.m; sourceTree = "<group>"; wrapsLines = 0; };
 		F88CD0F92072BC330093C478 /* AniListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
 		F88CD0FA2072BC330093C478 /* AniListConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
 		F8A85910207023E40026EC0A /* AniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
@@ -833,6 +837,8 @@
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
 				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
 				F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */,
+				F888F402208F889D00C22C39 /* AuthWebView.h */,
+				F888F403208F889D00C22C39 /* AuthWebView.m */,
 				F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */,
 				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
@@ -1405,6 +1411,7 @@
 				F8B5AA922044813400132C51 /* RatingTwentyConvert.m in Sources */,
 				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
+				F888F405208F889D00C22C39 /* AuthWebView.m in Sources */,
 				F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
 				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
@@ -1505,6 +1512,7 @@
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				2DB444BF1FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
+				F888F404208F889D00C22C39 /* AuthWebView.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,

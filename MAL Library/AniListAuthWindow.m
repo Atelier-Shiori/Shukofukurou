@@ -3,14 +3,14 @@
 //  Shukofukurou
 //
 //  Created by 小鳥遊六花 on 4/3/18.
-//  Copyright © 2018 MAL Updater OS X Group. All rights reserved.
+//  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved. Licensed under 3-clause BSD License
 //
 
 #import "AniListAuthWindow.h"
-#import "ClientConstants.h"
+#import "AuthWebView.h"
 
 @interface AniListAuthWindow ()
-@property (strong, nonatomic) WKWebView *webView;
+@property (strong) AuthWebView *awebview;
 @property (strong) IBOutlet NSView *containerview;
 @end
 
@@ -28,61 +28,27 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    WKWebViewConfiguration *webConfiguration = [WKWebViewConfiguration new];
-    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, _containerview.frame.size.width, _containerview.frame.size.height) configuration:webConfiguration];
-    _webView.UIDelegate = self;
-    _webView.navigationDelegate = self;
-    [_containerview  addSubview:_webView];
+    if (!_awebview) {
+        _awebview = [AuthWebView new];
+    }
+    __weak AniListAuthWindow *weakself = self;
+    _awebview.completion = ^(NSString *pin) {
+        weakself.pin = pin;
+        [weakself.window.sheetParent endSheet:weakself.window returnCode:NSModalResponseOK];
+    };
+    _awebview.view.frame = _containerview.frame;
+    [_awebview.view setFrameOrigin:NSMakePoint(0, 0)];
+    [_containerview  addSubview:_awebview.view];
 }
 
-- (NSURL *)authURL {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/api/v2/oauth/authorize?client_id=%@&response_type=code",kanilistclient]];
+
+- (IBAction)cancel:(id)sender {
+    [_awebview resetWebView];
+    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
 }
 
 - (void)loadAuthorization {
-    [_webView loadRequest:[NSURLRequest requestWithURL:[self authURL]]];
-}
-
-- (IBAction)cancel:(id)sender {
-    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
-}
-
-#pragma mark WKWebView Delegate
-- (void)webViewDidClose:(WKWebView *)webView {
-    [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseCancel];
-}
-
-- (void)webView:(WKWebView *)webView
-decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
-decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if ([webView.URL.absoluteString containsString:@"shukofukurouauth://anilistauth/?code="]) {
-        // Save Pin
-        _pin = [webView.URL.absoluteString stringByReplacingOccurrencesOfString:@"shukofukurouauth://anilistauth/?code=" withString:@""];
-        decisionHandler(WKNavigationActionPolicyCancel);
-        [self resetWebView];
-        [self.window.sheetParent endSheet:self.window returnCode:NSModalResponseOK];
-    }
-    else {
-        decisionHandler(WKNavigationActionPolicyAllow);
-    }
-}
-
-- (void)resetWebView {
-    // Clears WebView cookies and cache
-    NSSet *websiteDataTypes
-    = [NSSet setWithArray:@[
-                            WKWebsiteDataTypeDiskCache,
-                            WKWebsiteDataTypeOfflineWebApplicationCache,
-                            WKWebsiteDataTypeMemoryCache,
-                            WKWebsiteDataTypeLocalStorage,
-                            WKWebsiteDataTypeCookies,
-                            WKWebsiteDataTypeSessionStorage,
-                            WKWebsiteDataTypeIndexedDBDatabases,
-                            WKWebsiteDataTypeWebSQLDatabases
-                            ]];
-    NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
-    [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
-    }];
+    [_awebview loadAuthorization];
 }
 
 @end

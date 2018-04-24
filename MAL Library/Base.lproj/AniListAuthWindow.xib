@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AniListAuthWindow">
             <connections>
-                <outlet property="containerview" destination="z5j-H6-4bb" id="v2G-Na-veh"/>
+                <outlet property="containerview" destination="z5j-H6-4bb" id="vhB-bY-ncT"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>

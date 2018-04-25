@@ -267,12 +267,28 @@
             _addchapfield.stringValue = _addtotalchap.stringValue;
             _addvolfield.stringValue = _addtotalvol.stringValue;
         }
-        if([_addstatusfield.title isEqual:@"completed"] && ((_addchapfield.intValue != _addtotalchap.intValue && _addchapfield.intValue != 0)|| (_addvolfield.intValue != _addtotalvol.intValue && _addtotalvol.intValue != 0)) && _selectedfinished) {
+        if ([_addstatusfield.title isEqual:@"completed"] && ((_addchapfield.intValue != _addtotalchap.intValue && _addchapfield.intValue != 0)|| (_addvolfield.intValue != _addtotalvol.intValue && _addtotalvol.intValue != 0)) && _selectedfinished) {
             _addchapfield.stringValue = _addtotalchap.stringValue;
             _addvolfield.stringValue = _addtotalvol.stringValue;
         }
+        int score = 0;
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+            case 2:
+                score = (int)_addmangascorefiled.selectedTag;
+                break;
+            case 3: {
+                NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
+                if ([scoretype isEqualToString:@"POINT_100"] || [scoretype isEqualToString:@"POINT_10_DECIMAL"]) {
+                    score = [AniListScoreConvert convertScoretoScoreRaw:_addmangaadvancescorefield.doubleValue withScoreType:scoretype];
+                }
+                else {
+                    score = [AniListScoreConvert convertScoretoScoreRaw:_addmangascorefiled.selectedTag withScoreType:scoretype];
+                }
+            }
+        }
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [listservice addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:(int)_addmangascorefiled.selectedTag completion:^(id responseData) {
+        [listservice addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:score completion:^(id responseData) {
             [_mw loadlist:@(true) type:1];
             [_mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];

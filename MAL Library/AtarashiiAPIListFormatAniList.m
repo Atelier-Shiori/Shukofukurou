@@ -28,7 +28,7 @@
             aentry.episode_length = ((NSNumber *)entry[@"duration"][@"duration"]).intValue;
             aentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
             aentry.type = [Utility convertAnimeType:entry[@"type"][@"format"]];
-            aentry.status = entry[@"status"][@"status"];
+            aentry.status =  entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
             if ([aentry.status isEqualToString:@"FINISHED"]||[aentry.status isEqualToString:@"CANCELLED"]) {
                 aentry.status = @"finished airing";
             }
@@ -83,7 +83,7 @@
             mentry.volumes = entry[@"volumes"][@"volumes"] != [NSNull null] ? ((NSNumber *)entry[@"volumes"][@"volumes"]).intValue : 0;
             mentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
             mentry.type = [self convertMangaType:entry[@"type"][@"format"]];
-            mentry.status = entry[@"status"][@"status"];
+            mentry.status = entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
             if ([mentry.status isEqualToString:@"FINISHED"]||[mentry.status isEqualToString:@"CANCELLED"]) {
                 mentry.status = @"finished";
             }
@@ -145,7 +145,7 @@
     aobject.duration = title[@"duration"] != [NSNull null] ? ((NSNumber *)title[@"duration"]).intValue : 0;
     aobject.classification = @"";
     aobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
-    NSString *tmpstatus = title[@"status"];
+    NSString *tmpstatus  = title[@"status"] != [NSNull null] ? title[@"status"] : @"NOT_YET_RELEASED";
     if ([tmpstatus isEqualToString:@"FINISHED"]||[tmpstatus isEqualToString:@"CANCELLED"]) {
         tmpstatus = @"finished airing";
     }
@@ -215,7 +215,7 @@
     mobject.chapters = title[@"chapters"] != [NSNull null] ? ((NSNumber *)title[@"chapters"]).intValue : 0;
     mobject.volumes = title[@"volumes"] != [NSNull null] ? ((NSNumber *)title[@"volumes"]).intValue : 0;
     mobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
-    NSString *tmpstatus = title[@"status"];
+    NSString *tmpstatus  = title[@"status"] != [NSNull null] ? title[@"status"] : @"NOT_YET_RELEASED";
     if ([tmpstatus isEqualToString:@"FINISHED"]||[tmpstatus isEqualToString:@"CANCELLED"]) {
         tmpstatus = @"finished";
     }
@@ -270,7 +270,7 @@
             aobject.title = d[@"title"][@"romaji"];
             aobject.other_titles = @{@"synonyms" : d[@"synonyms"] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
-            aobject.status = d[@"status"];
+            aobject.status = d[@"status"] != [NSNull null] ? d[@"status"] : @"NOT_YET_RELEASED";
             if ([aobject.status isEqualToString:@"FINISHED"]||[aobject.status isEqualToString:@"CANCELLED"]) {
                 aobject.status = @"finished airing";
             }
@@ -281,7 +281,7 @@
                 aobject.status = @"not yet aired";
             }
             aobject.episodes = d[@"episodes"] != [NSNull null] ? ((NSNumber *)d[@"episodes"]).intValue : 0;
-            aobject.type = [Utility convertAnimeType: d[@"format"]];
+            aobject.type = d[@"format"] != [NSNull null] ? [self convertMangaType:d[@"format"]] : @"";
             [tmparray addObject:aobject.NSDictionaryRepresentation];
         }
     }
@@ -297,7 +297,7 @@
             mobject.title = d[@"title"][@"romaji"];
             mobject.other_titles = @{@"synonyms" : d[@"synonyms"] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
-            mobject.status = d[@"status"];
+            mobject.status = d[@"status"] != [NSNull null] ? d[@"status"] : @"NOT_YET_RELEASED";
             if ([mobject.status isEqualToString:@"FINISHED"]||[mobject.status isEqualToString:@"CANCELLED"]) {
                 mobject.status = @"finished";
             }
@@ -309,7 +309,7 @@
             }
             mobject.chapters = d[@"chapters"] != [NSNull null] ? ((NSNumber *)d[@"chapters"]).intValue : 0;
             mobject.volumes = d[@"volumes"] != [NSNull null] ? ((NSNumber *)d[@"volumes"]).intValue : 0;
-            mobject.type = [self convertMangaType:d[@"format"]];
+            mobject.type = d[@"format"] != [NSNull null] ? [self convertMangaType:d[@"format"]] : @"";
             [tmparray addObject:mobject.NSDictionaryRepresentation];
         }
     }

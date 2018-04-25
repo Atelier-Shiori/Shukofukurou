@@ -42,4 +42,5 @@
 + (AFHTTPRequestSerializer *)httprequestserializer;
 + (double)calculatedays:(NSArray *)list;
 + (NSString *)dateIntervalToDateString:(double)timeinterval;
++ (NSString *)convertAnimeType:(NSString *)type;
 @end

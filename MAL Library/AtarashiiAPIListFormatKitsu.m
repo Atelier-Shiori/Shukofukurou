@@ -29,7 +29,7 @@
                         if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
                             lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
                         }
-                        lentry.type = metadata[@"attributes"][@"showType"];
+                        lentry.type = [Utility convertAnimeType:metadata[@"attributes"][@"showType"]];
                         NSString *tmpstatus = metadata[@"attributes"][@"status"];
                         if ([tmpstatus isEqualToString:@"finished"]) {
                             lentry.status = @"finished airing";
@@ -86,7 +86,7 @@
                     if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
                         lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
                     }
-                    lentry.type = metadata[@"attributes"][@"mangaType"];
+                    lentry.type = ((NSString *)metadata[@"attributes"][@"mangaType"]).capitalizedString;
                     NSString *tmpstatus = metadata[@"attributes"][@"status"];
                     if ([tmpstatus isEqualToString:@"finished"]) {
                         lentry.status = tmpstatus;
@@ -142,7 +142,7 @@
     aobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     aobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
     aobject.image_url = attributes[@"posterImage"][@"large"] && attributes[@"posterimage"][@"large"] != [NSNull null] ? attributes[@"posterImage"][@"large"] : @"";
-    aobject.type = attributes[@"subtype"];
+    aobject.type = [Utility convertAnimeType:attributes[@"subtype"]];
     aobject.episodes = attributes[@"episodeCount"] != [NSNull null] ? ((NSNumber *)attributes[@"episodeCount"]).intValue : 0;
     aobject.start_date = attributes[@"startDate"];
     aobject.end_date = attributes[@"endDate"];
@@ -192,7 +192,7 @@
     mobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     mobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
     mobject.image_url = attributes[@"posterImage"][@"large"] && attributes[@"posterImage"][@"large"] != [NSNull null] ? attributes[@"posterImage"][@"large"] : @"";
-    mobject.type = attributes[@"subtype"];
+    mobject.type = ((NSString *)attributes[@"subtype"]).capitalizedString;
     mobject.chapters = attributes[@"chapterCount"] != [NSNull null] ? ((NSNumber *)attributes[@"chapterCount"]).intValue : 0;
     mobject.volumes = attributes[@"volumeCount"] != [NSNull null] ? ((NSNumber *)attributes[@"volumeCount"]).intValue : 0;
     mobject.members_score = attributes[@"averageRating"] != [NSNull null] ? ((NSNumber *)attributes[@"averageRating"]).floatValue : 0;
@@ -233,7 +233,7 @@
             aobject.title = d[@"attributes"][@"canonicalTitle"];
             aobject.other_titles = @{@"synonyms" : (d[@"attributes"][@"abbreviatedTitles"] && d[@"attributes"][@"abbreviatedTitles"]  != [NSNull null]) ? d[@"attributes"][@"abbreviatedTitles"] : @[], @"english" : d[@"attributes"][@"titles"][@"en"] ? @[d[@"attributes"][@"titles"][@"en"]] : @[], @"japanese" : d[@"attributes"][@"titles"][@"ja_jp"] ? @[d[@"attributes"][@"titles"][@"ja_jp"]] : @[] };
             aobject.episodes = d[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"episodeCount"]).intValue : 0;
-            aobject.type = d[@"attributes"][@"subtype"];
+            aobject.type = [Utility convertAnimeType:d[@"attributes"][@"subtype"]];
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
                 aobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
             }
@@ -264,7 +264,7 @@
             mobject.other_titles = @{@"synonyms" : (d[@"attributes"][@"abbreviatedTitles"] && d[@"attributes"][@"abbreviatedTitles"]  != [NSNull null]) ? d[@"attributes"][@"abbreviatedTitles"] : @[], @"english" : d[@"attributes"][@"titles"][@"en"] ? @[d[@"attributes"][@"titles"][@"en"]] : @[], @"japanese" : d[@"attributes"][@"titles"][@"ja_jp"] ? @[d[@"attributes"][@"titles"][@"ja_jp"]] : @[] };
             mobject.chapters = d[@"attributes"][@"chapterCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"chapterCount"]).intValue : 0;
             mobject.volumes = d[@"attributes"][@"volumeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"volumeCount"]).intValue : 0;
-            mobject.type = d[@"attributes"][@"subtype"];
+            mobject.type = ((NSString *)d[@"attributes"][@"subtype"]).capitalizedString;
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
                 mobject.image_url = d[@"attributes"][@"medium"] && d[@"attributes"][@"posterimage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterimage"][@"medium"] : @"";
             }

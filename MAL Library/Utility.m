@@ -444,4 +444,17 @@
     dateFormatter.dateFormat = @"YYYY-MM-dd";
     return [dateFormatter stringFromDate:aDate];
 }
+
++ (NSString *)convertAnimeType:(NSString *)type {
+    NSString *tmpstr = type.lowercaseString;
+    if ([tmpstr isEqualToString: @"tv"]||[tmpstr isEqualToString: @"ova"]||[tmpstr isEqualToString: @"ona"]) {
+        tmpstr = tmpstr.uppercaseString;
+    }
+    else {
+        tmpstr = tmpstr.capitalizedString;
+        tmpstr = [tmpstr stringByReplacingOccurrencesOfString:@"_" withString:@" "];
+        tmpstr = [tmpstr stringByReplacingOccurrencesOfString:@"Tv" withString:@"TV"];
+    }
+    return tmpstr;
+}
 @end

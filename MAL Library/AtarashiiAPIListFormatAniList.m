@@ -27,7 +27,7 @@
             aentry.episodes = entry[@"episodes"][@"episodes"] != [NSNull null] ? ((NSNumber *)entry[@"episodes"][@"episodes"]).intValue : 0;
             aentry.episode_length = ((NSNumber *)entry[@"duration"][@"duration"]).intValue;
             aentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
-            aentry.type = [self convertAnimeType:entry[@"type"][@"format"]];
+            aentry.type = [Utility convertAnimeType:entry[@"type"][@"format"]];
             aentry.status = entry[@"status"][@"status"];
             if ([aentry.status isEqualToString:@"FINISHED"]||[aentry.status isEqualToString:@"CANCELLED"]) {
                 aentry.status = @"finished airing";
@@ -138,7 +138,7 @@
         aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && title[@"coverImage"][@"large"] && allowed ?  title[@"coverImage"][@"large"] : @"";
         aobject.synposis = allowed ? title[@"description"] : @"Synopsis not available for adult titles";
     #endif
-    aobject.type = [self convertAnimeType:title[@"format"]];
+    aobject.type = [Utility convertAnimeType:title[@"format"]];
     aobject.episodes = title[@"episodes"] != [NSNull null] ? ((NSNumber *)title[@"episodes"]).intValue : 0;
     aobject.start_date = title[@"startDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"startDate"][@"year"],title[@"startDate"][@"month"],title[@"startDate"][@"day"]] : @"";
     aobject.end_date = title[@"endDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"endDate"][@"year"],title[@"endDate"][@"month"],title[@"endDate"][@"day"]] : @"";
@@ -281,7 +281,7 @@
                 aobject.status = @"not yet aired";
             }
             aobject.episodes = d[@"episodes"] != [NSNull null] ? ((NSNumber *)d[@"episodes"]).intValue : 0;
-            aobject.type = [self convertAnimeType: d[@"format"]];
+            aobject.type = [Utility convertAnimeType: d[@"format"]];
             [tmparray addObject:aobject.NSDictionaryRepresentation];
         }
     }
@@ -409,18 +409,6 @@
 }
 
 #pragma mark helpers
-+ (NSString *)convertAnimeType:(NSString *)type {
-    NSString *tmpstr = type.lowercaseString;
-    if ([tmpstr isEqualToString: @"tv"]||[tmpstr isEqualToString: @"ova"]||[tmpstr isEqualToString: @"ona"]) {
-        tmpstr = tmpstr.uppercaseString;
-    }
-    else {
-        tmpstr = tmpstr.capitalizedString;
-        tmpstr = [tmpstr stringByReplacingOccurrencesOfString:@"_" withString:@" "];
-        tmpstr = [tmpstr stringByReplacingOccurrencesOfString:@"Tv" withString:@"TV"];
-    }
-    return tmpstr;
-}
 
 + (NSString *)convertMangaType:(NSString *)type {
     NSString *tmpstr = type.lowercaseString;

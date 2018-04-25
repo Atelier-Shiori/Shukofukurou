@@ -281,7 +281,7 @@
                 aobject.status = @"not yet aired";
             }
             aobject.episodes = d[@"episodes"] != [NSNull null] ? ((NSNumber *)d[@"episodes"]).intValue : 0;
-            aobject.type = d[@"format"] != [NSNull null] ? [self convertMangaType:d[@"format"]] : @"";
+            aobject.type = d[@"format"] != [NSNull null] ? [Utility convertAnimeType:d[@"format"]] : @"";
             [tmparray addObject:aobject.NSDictionaryRepresentation];
         }
     }

@@ -374,11 +374,12 @@
              break;
         }
         case 2: {
-            [TitleIdConverter getKitsuIdFromAniID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type withType:MALAnime completionHandler:^(int kitsuid) {
+            [TitleIdConverter getserviceTitleIDFromServiceID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type fromServiceID:4 completionHandler:^(int kitsuid) {
                 [self performMALUpdatefromAniDBEntry:entry withMALID:kitsuid];
             } error:^(NSError *error) {
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
             }];
+            break;
         }
         case 3: {
             [TitleIdConverter getMALIDFromServiceID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type withType:MALAnime fromServiceID:4 completionHandler:^(int malid) {

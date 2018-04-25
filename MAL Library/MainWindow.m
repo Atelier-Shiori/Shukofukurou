@@ -210,6 +210,15 @@
             }
             break;
         }
+        case 3: {
+            if (type == AnimeType){
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on AniList", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/anime/%@", d[@"id"]]]];
+            }
+            else {
+                shareItems = @[[NSString stringWithFormat:@"Check out %@ out on AniList", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/manga/%@", d[@"id"]]]];
+            }
+            break;
+        }
         default:
             break;
     }

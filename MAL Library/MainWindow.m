@@ -828,7 +828,9 @@
     [_historyview clearHistory];
     [self loadtitleinfoWithDifferentService:oldserviceid];
     [_searchview clearallsearch];
+    long oldselecteditemindex = [_sourceList selectedRow];
     [self generateSourceList];
+    [self selectsourcelistitemWithSelectedIndex:oldselecteditemindex withOldService:oldserviceid withNewService:[listservice getCurrentServiceID]];
     [self loadmainview];
     [self refreshloginlabel];
     [self initallistload];
@@ -838,6 +840,42 @@
         [self startTimer];
     }
 }
+
+- (void)selectsourcelistitemWithSelectedIndex:(long)selectedindex withOldService:(int)oldservice withNewService:(int)newservice {
+    bool donated = [NSUserDefaults.standardUserDefaults boolForKey:@"donated"];
+    if (oldservice ==  1 && newservice > 1) {
+        if (selectedindex < 4 && donated) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex] byExtendingSelection:false];
+        }
+        else if (selectedindex == 4 && donated) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:2] byExtendingSelection:false];
+        }
+        else if (selectedindex < 3 && !donated) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex] byExtendingSelection:false];
+        }
+        else if (selectedindex == 3 && !donated) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:2] byExtendingSelection:false];
+        }
+        else {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex-1] byExtendingSelection:false];
+        }
+    }
+    else if (oldservice > 1 && newservice == 1) {
+        if (selectedindex < 4 && donated) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex] byExtendingSelection:false];
+        }
+        else if (selectedindex < 3 && !donated) {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex] byExtendingSelection:false];
+        }
+        else {
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex+1] byExtendingSelection:false];
+        }
+    }
+    else {
+         [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex] byExtendingSelection:false];
+    }
+}
+
 - (void)loadtitleinfoWithDifferentService:(int)oldserviceid {
     int currentservice = [listservice getCurrentServiceID];
     if (_infoview.selectedid > 0) {
@@ -1052,14 +1090,18 @@
     int previd;
     int prevtype;
     if (idnum.intValue == _infoview.selectedid && type == _infoview.type) {
-        [self changetoinfoview];
+        if (changeview) {
+            [self changetoinfoview];
+        }
         return;
     }
     else {
         previd = _infoview.selectedid;
         prevtype = _infoview.type;
         _infoview.selectedid = 0;
-        [self changetoinfoview];
+        if (changeview) {
+            [self changetoinfoview];
+        }
     }
     _noinfoview.hidden = YES;
     _progressindicator.hidden = NO;

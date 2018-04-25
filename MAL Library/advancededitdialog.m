@@ -523,6 +523,7 @@
                 default:
                     break;
             }
+            break;
         }
         case 3: {
             [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_kitsufieldsview];
@@ -640,6 +641,7 @@
             else {
                 [_score selectItemWithTag:convertedScore.intValue];
             }
+            break;
         }
     }
 }

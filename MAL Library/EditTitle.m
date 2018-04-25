@@ -424,6 +424,7 @@
                 default:
                     break;
             }
+            break;
         }
         case 3: {
             NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
@@ -450,6 +451,7 @@
                     _minipopoverscore.menu = _AniListThreeScoreMenu;
                 }
             }
+            break;
         }
         default:
             break;

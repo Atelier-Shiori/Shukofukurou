@@ -381,6 +381,7 @@
                     default:
                         break;
                 }
+                break;
             }
             case 3: {
                 NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
@@ -408,6 +409,7 @@
                         _addscorefiled.menu = _AniListThreeScoreMenu;
                     }
                 }
+                break;
             }
             default:
                 break;
@@ -436,6 +438,7 @@
                     default:
                         break;
                 }
+                break;
             }
             case 3: {
                 NSString *scoretype = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-scoreformat"];
@@ -463,6 +466,7 @@
                         _addmangascorefiled.menu = _AniListThreeScoreMenu;
                     }
                 }
+                break;
             }
 
             default:

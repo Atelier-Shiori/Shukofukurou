@@ -39,10 +39,8 @@
 - (void)webView:(WKWebView *)webView
 decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    NSLog(@"%@",webView.URL);
     if ([navigationAction.request.URL.absoluteString containsString:@"shukofukurouauth://anilistauth/?code="]) {
         // Save Pin
-            NSLog(@"got pin");
         decisionHandler(WKNavigationActionPolicyCancel);
         [self resetWebView];
         _completion([navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:@"shukofukurouauth://anilistauth/?code=" withString:@""]);

@@ -347,7 +347,7 @@
         @autoreleasepool {
             NSNumber *characterid = acharacter[@"node"][@"id"];
             NSString *role = ((NSString *)acharacter[@"role"]).lowercaseString.capitalizedString;
-            NSString *charactername = acharacter[@"node"][@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@",acharacter[@"node"][@"name"][@"last"],acharacter[@"node"][@"name"][@"first"]] : acharacter[@"node"][@"name"][@"first"];
+            NSString *charactername = acharacter[@"node"][@"name"][@"last"] != [NSNull null] && ((NSString *)acharacter[@"node"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",acharacter[@"node"][@"name"][@"last"],acharacter[@"node"][@"name"][@"first"]] : acharacter[@"node"][@"name"][@"first"];
             NSString *description = acharacter[@"node"][@"description"] != [NSNull null] ? acharacter[@"node"][@"description"] : @"No character description provided";
             NSString *imageurl = acharacter[@"node"][@"image"] != [NSNull null] && acharacter[@"node"][@"image"][@"large"] ? acharacter[@"node"][@"image"][@"large"] : @"";
             NSMutableArray *castingsarray = [NSMutableArray new];
@@ -363,7 +363,7 @@
     for (NSDictionary *staffmember in staffarray) {
         @autoreleasepool {
             NSNumber *personid = staffmember[@"person"][@"id"];
-            NSString *personname = staffmember[@"person"][@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@",staffmember[@"person"][@"name"][@"last"],staffmember[@"person"][@"name"][@"first"]] : staffmember[@"person"][@"name"][@"first"];
+            NSString *personname = staffmember[@"person"][@"name"][@"last"] != [NSNull null] && ((NSString *)staffmember[@"person"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",staffmember[@"person"][@"name"][@"last"],staffmember[@"person"][@"name"][@"first"]] : staffmember[@"person"][@"name"][@"first"];
             NSString *imageurl = staffmember[@"person"][@"image"] != [NSNull null] && staffmember[@"person"][@"image"][@"large"] ? staffmember[@"person"][@"image"][@"large"] : @"";
             NSString *role = @"";
             [tmpstaffarray addObject:@{@"id" : personid.copy, @"name" : personname.copy, @"image" : imageurl.copy, @"role" : role.copy}];

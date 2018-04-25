@@ -347,7 +347,7 @@
         @autoreleasepool {
             NSNumber *characterid = acharacter[@"node"][@"id"];
             NSString *role = ((NSString *)acharacter[@"role"]).lowercaseString.capitalizedString;
-            NSString *charactername = acharacter[@"node"][@"name"][@"last"] != [NSNull null] && ((NSString *)acharacter[@"node"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",acharacter[@"node"][@"name"][@"last"],acharacter[@"node"][@"name"][@"first"]] : acharacter[@"node"][@"name"][@"first"];
+            NSString *charactername = acharacter[@"node"][@"name"][@"last"] != [NSNull null] && ((NSString *)acharacter[@"node"][@"name"][@"last"]).length > 0 && acharacter[@"node"][@"name"][@"first"] != [NSNull null] && ((NSString *)acharacter[@"node"][@"name"][@"first"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",acharacter[@"node"][@"name"][@"last"],acharacter[@"node"][@"name"][@"first"]] : acharacter[@"node"][@"name"][@"first"] != [NSNull null] && ((NSString *)acharacter[@"node"][@"name"][@"first"]).length > 0 ? acharacter[@"node"][@"name"][@"first"] : acharacter[@"node"][@"name"][@"last"];
             NSString *description = acharacter[@"node"][@"description"] != [NSNull null] ? acharacter[@"node"][@"description"] : @"No character description provided";
             NSString *imageurl = acharacter[@"node"][@"image"] != [NSNull null] && acharacter[@"node"][@"image"][@"large"] ? acharacter[@"node"][@"image"][@"large"] : @"";
             NSMutableArray *castingsarray = [NSMutableArray new];

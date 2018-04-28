@@ -25,7 +25,7 @@
             aentry.entryid = ((NSNumber *)entry[@"entryid"]).intValue;
             aentry.title = entry[@"title"][@"title"][@"title"];
             aentry.episodes = entry[@"episodes"][@"episodes"] != [NSNull null] ? ((NSNumber *)entry[@"episodes"][@"episodes"]).intValue : 0;
-            aentry.episode_length = ((NSNumber *)entry[@"duration"][@"duration"]).intValue;
+            aentry.episode_length = entry[@"duration"] & entry[@"duration"] != [NSNull null] ? ((NSNumber *)entry[@"duration"][@"duration"]).intValue : 0;
             aentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
             aentry.type = [Utility convertAnimeType:entry[@"type"][@"format"]];
             aentry.status =  entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";

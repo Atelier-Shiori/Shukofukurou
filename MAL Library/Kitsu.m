@@ -15,7 +15,11 @@
 #import "ClientConstants.h"
 
 @implementation Kitsu
+#ifdef DEBUG
+NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu DEBUG";
+#else
 NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
+#endif
 
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {

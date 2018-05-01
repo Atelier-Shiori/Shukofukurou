@@ -11,7 +11,11 @@
 #import "Base64Category.h"
 
 @implementation Keychain
+#ifdef DEBUG
+NSString *const kserviceName = @"Shukofukurou DEBUG";
+#else
 NSString *const kserviceName = @"Shukofukurou";
+#endif
 
 + (BOOL)checkaccount {
     if ([Keychain getusername]) {

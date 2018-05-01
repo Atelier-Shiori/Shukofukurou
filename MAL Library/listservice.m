@@ -428,31 +428,32 @@
 }
 
 + (NSString *)retrieveListFileName:(int)type withServiceID:(int)serviceid {
+    NSDictionary *usernames = [self getAllUserNames];
     switch (serviceid) {
         case 1: {
             if (type == 0) {
-                return @"mal-animelist.json";
+                return [NSString stringWithFormat:@"mal-animelist-%@.json",usernames[@"myanimelist"]];
             }
             else if (type == 1) {
-                return @"mal-mangalist.json";
+                return [NSString stringWithFormat:@"mal-mangalist-%@.json",usernames[@"myanimelist"]];
             }
             break;
         }
         case 2: {
             if (type == 0) {
-                return @"kitsu-animelist.json";
+                return [NSString stringWithFormat:@"kitsu-animelist-%@.json",usernames[@"kitsu"]];
             }
             else if (type == 1) {
-                return @"kitsu-mangalist.json";
+                return [NSString stringWithFormat:@"kitsu-mangalist-%@.json",usernames[@"kitsu"]];
             }
             break;
         }
         case 3: {
             if (type == 0) {
-                return @"anilist-animelist.json";
+                return [NSString stringWithFormat:@"anilist-animelist-%@.json",usernames[@"anilist"]];
             }
             else if (type == 1) {
-                return @"anilist-mangalist.json";
+                return [NSString stringWithFormat:@"anilist-mangalist-%@.json",usernames[@"anilist"]];
             }
             break;
         }
@@ -468,15 +469,17 @@
 }
 
 + (id)retrieveHistoryFileName:(int)serviceid {
+    NSDictionary *usernames = [self getAllUserNames];
     switch (serviceid) {
         case 1: {
-            return @"mal-history.json";
+            return [NSString stringWithFormat:@"mal-history-%@.json",usernames[@"myanimelist"]];
         }
         case 2: {
-            return @"kitsu-history.json";
+            return [NSString stringWithFormat:@"kitsu-history-%@.json",usernames[@"kitsu"]];
         }
         case 3: {
-            return @"anilist-history.json";
+            return [NSString stringWithFormat:@"anilist-history-%@.json",usernames[@"anilist"]];
+
         }
         default: {
             break;
@@ -505,6 +508,12 @@
             break;
     }
     return @"";
+}
+
++ (NSDictionary *)getAllUserNames {
+    NSString *kitsuusername = [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
+    NSString *anilistusername = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
+    return @{ @"myanimelist" : [Keychain getusername] ? [Keychain getusername] : [NSNull null], @"kitsu" : kitsuusername && kitsuusername.length > 0 ? kitsuusername : [NSNull null], @"anilist" : anilistusername && anilistusername.length > 0 ? anilistusername : [NSNull null] };
 }
 
 + (NSString *)currentservicename {

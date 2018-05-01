@@ -15,7 +15,12 @@
 #import "Utility.h"
 
 @implementation AniList
+#ifdef DEBUG
+NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList DEBUG";
+#else
 NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
+#endif
+
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Retrieves list

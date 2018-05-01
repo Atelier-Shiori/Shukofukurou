@@ -84,3 +84,8 @@ MAL Library.xcodeproj/project.xcworkspace/xcuserdata/*./UserInterfaceState.xcuse
 
 MAL Library/DonationCheck.framework/**
 MAL Library/DonationCheck.framework/Versions/A/**
+MAL Library/SKProduct+LocalizedPrice.h
+MAL Library/SKProduct+LocalizedPrice.m
+MAL Library/TipJar.h
+MAL Library/TipJar.m
+MAL Library/TipJar.xib

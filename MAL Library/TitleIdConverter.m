@@ -80,6 +80,7 @@ static BOOL importing;
         lookingupid = false;
     }];
 }
+
 + (void)getMALIDFromKitsuId:(int)kitsuid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int malid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (lookingupid && !importing)  {
         return;
@@ -213,6 +214,7 @@ static BOOL importing;
         }];
     }];
 }
+
 + (void)getAniIDFromKitsuID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     if (lookingupid && !importing)  {
         return;
@@ -667,6 +669,7 @@ static BOOL importing;
         lookingupid = false;
     }
 }
+
 + (int)findTitle:(NSString *)title withType:(NSString *)titletype withResponseObject:(id)responseObject {
     for (NSDictionary *d in responseObject) {
         if ([titletype caseInsensitiveCompare:d[@"type"]] != NSOrderedSame && titletype && titletype.length > 0) {
@@ -707,6 +710,7 @@ static BOOL importing;
     }
     return -1;
 }
+
 + (void)KitsuFindAniId:(int)malid withTitle:(NSString *)title withTitleType:(NSString *)titletype withTitleid:(int)titleid withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     [self getAniIDFromMALListID:malid withTitle:title titletype:titletype withType:type completionHandler:^(int anilistid) {
         [self savetitleidtomapping:titleid withNewID:anilistid withType:type fromService:2 toService:3];

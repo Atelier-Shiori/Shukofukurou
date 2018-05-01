@@ -52,6 +52,17 @@
                                     <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="Hzg-dp-o6L"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Leave a Tip…" id="n5o-hp-D42">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="tipjar:" target="Voe-Tx-rLC" id="9aN-o3-cvh"/>
+                                    <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="poB-iS-7bx">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                 <connections>

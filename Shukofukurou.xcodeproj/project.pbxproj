@@ -261,6 +261,10 @@
 		F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
 		F84D051D2086667700502379 /* DonationLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D051B2086667700502379 /* DonationLicenseManager.m */; };
 		F84D05202086720800502379 /* DonationCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; };
+		F84D643E2098F877003225F9 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D643D2098F877003225F9 /* StoreKit.framework */; };
+		F84D64422098FAA7003225F9 /* TipJar.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D64402098FAA7003225F9 /* TipJar.m */; };
+		F84D64432098FAA7003225F9 /* TipJar.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84D64412098FAA7003225F9 /* TipJar.xib */; };
+		F84D644720990110003225F9 /* SKProduct+LocalizedPrice.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D644620990110003225F9 /* SKProduct+LocalizedPrice.m */; };
 		F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F87EF5612098D22E000AD86E /* ShukofukurouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F87EF5602098D22E000AD86E /* ShukofukurouTests.m */; };
@@ -749,6 +753,12 @@
 		F84D051A2086667700502379 /* DonationLicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DonationLicenseManager.h; sourceTree = "<group>"; };
 		F84D051B2086667700502379 /* DonationLicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DonationLicenseManager.m; sourceTree = "<group>"; };
 		F84D051F2086720700502379 /* DonationCheck.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationCheck.framework; path = "MAL Library/DonationCheck.framework"; sourceTree = "<group>"; };
+		F84D643D2098F877003225F9 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		F84D643F2098FAA7003225F9 /* TipJar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TipJar.h; sourceTree = "<group>"; };
+		F84D64402098FAA7003225F9 /* TipJar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TipJar.m; sourceTree = "<group>"; };
+		F84D64412098FAA7003225F9 /* TipJar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipJar.xib; sourceTree = "<group>"; };
+		F84D644520990110003225F9 /* SKProduct+LocalizedPrice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SKProduct+LocalizedPrice.h"; sourceTree = "<group>"; };
+		F84D644620990110003225F9 /* SKProduct+LocalizedPrice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "SKProduct+LocalizedPrice.m"; sourceTree = "<group>"; };
 		F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherListScoreFormatter.h; sourceTree = "<group>"; };
 		F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherListScoreFormatter.m; sourceTree = "<group>"; };
 		F87EF55E2098D22E000AD86E /* ShukofukurouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShukofukurouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -809,6 +819,7 @@
 				913A11851E8F206A00450B66 /* Crashlytics.framework in Frameworks */,
 				913A11861E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
 				2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
+				F84D643E2098F877003225F9 /* StoreKit.framework in Frameworks */,
 				913A11881E8F206A00450B66 /* Fabric.framework in Frameworks */,
 				913A118B1E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
 			);
@@ -945,6 +956,7 @@
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F84D643D2098F877003225F9 /* StoreKit.framework */,
 				F8ABAAA92087C33200752627 /* SAMKeychain.framework */,
 				9199BB011E8984E300F6E9FF /* PXSourceList.framework */,
 				F84D051F2086720700502379 /* DonationCheck.framework */,
@@ -995,6 +1007,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				F84D64442098FAAE003225F9 /* TipJAr */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -1200,6 +1213,18 @@
 			name = about;
 			sourceTree = "<group>";
 		};
+		F84D64442098FAAE003225F9 /* TipJAr */ = {
+			isa = PBXGroup;
+			children = (
+				F84D643F2098FAA7003225F9 /* TipJar.h */,
+				F84D64402098FAA7003225F9 /* TipJar.m */,
+				F84D64412098FAA7003225F9 /* TipJar.xib */,
+				F84D644520990110003225F9 /* SKProduct+LocalizedPrice.h */,
+				F84D644620990110003225F9 /* SKProduct+LocalizedPrice.m */,
+			);
+			name = TipJAr;
+			sourceTree = "<group>";
+		};
 		F87EF55F2098D22E000AD86E /* ShukofukurouTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1348,6 +1373,9 @@
 					913A115F1E8F206A00450B66 = {
 						DevelopmentTeam = 9HDZTER525;
 						SystemCapabilities = {
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -1443,6 +1471,7 @@
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
+				F84D64432098FAA7003225F9 /* TipJar.xib in Resources */,
 				F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */,
 				2D4E01101FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				2D4E01141FA3B1C90053A82B /* CharacterView.xib in Resources */,
@@ -1679,10 +1708,12 @@
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
 				F8B5AA922044813400132C51 /* RatingTwentyConvert.m in Sources */,
+				F84D644720990110003225F9 /* SKProduct+LocalizedPrice.m in Sources */,
 				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
 				F888F405208F889D00C22C39 /* AuthWebView.m in Sources */,
 				F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
+				F84D64422098FAA7003225F9 /* TipJar.m in Sources */,
 				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,

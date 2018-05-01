@@ -48,6 +48,12 @@
                                     <action selector="showaboutwindow:" target="Voe-Tx-rLC" id="eea-qa-mpp"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Leave a Tip…" id="Pfs-Wc-KOe">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="tipjar:" target="Voe-Tx-rLC" id="32t-Wd-rD4"/>
+                                </connections>
+                            </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                 <connections>

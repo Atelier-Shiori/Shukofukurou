@@ -22,6 +22,7 @@
 #import "listservice.h"
 #import "InfoView.h"
 #if defined(AppStore)
+#import "TipJar.h"
 #else
 #import "PFMoveApplication.h"
 #import "DonationLicenseManager.h"
@@ -32,6 +33,7 @@
 @property PFAboutWindowController *aboutWindowController;
 @property (strong) IBOutlet NSMenuItem *malexportmenu;
 #if defined(AppStore)
+@property (strong) TipJar *tipjar;
 #else
 @property (strong) DonationLicenseManager *dlmanager;
 #endif
@@ -358,7 +360,7 @@
     return _messageswindow;
 }
 - (IBAction)reportbugs:(id)sender {
-    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/MAL-Library/issues"]];
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/shukofukurou/issues"]];
 }
 
 - (void)refreshUIServiceChange:(int)selected {
@@ -389,6 +391,51 @@
         default:
             break;
     }
+}
+- (IBAction)unlockprofeatures:(id)sender {
+#if defined(AppStore)
+#else
+    if (!_dlmanager) {
+        _dlmanager = [DonationLicenseManager new];
+    }
+    [_dlmanager.window makeKeyAndOrderFront:self];
+#endif
+}
+
+
+- (IBAction)getfromAppStore:(id)sender {
+#if defined(AppStore)
+#else
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+#endif
+}
+
+- (void)checkaccountinformation {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if ([Kitsu getFirstAccount]) {
+        bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
+        if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
+            [Kitsu saveuserinfoforcurrenttoken];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
+        }
+    }
+    if ([AniList getFirstAccount]) {
+        bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
+        if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
+            [AniList saveuserinfoforcurrenttoken];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
+        }
+    }
+}
+- (IBAction)tipjar:(id)sender {
+#if defined(AppStore)
+    if (!_tipjar) {
+        _tipjar = [TipJar new];
+    }
+    [_tipjar.window makeKeyAndOrderFront:self];
+#else
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://ko-fi.com/N4N0B153"]];
+#endif
 }
 
 #pragma mark - Core Data stack
@@ -558,39 +605,5 @@
     
     return NSTerminateNow;
 }
-- (IBAction)unlockprofeatures:(id)sender {
-#if defined(AppStore)
-#else
-    if (!_dlmanager) {
-        _dlmanager = [DonationLicenseManager new];
-    }
-    [_dlmanager.window makeKeyAndOrderFront:self];
-#endif
-}
 
-
-- (IBAction)getfromAppStore:(id)sender {
-#if defined(AppStore)
-#else
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
-#endif
-}
-
-- (void)checkaccountinformation {
-    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    if ([Kitsu getFirstAccount]) {
-        bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
-        if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
-            [Kitsu saveuserinfoforcurrenttoken];
-            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
-        }
-    }
-    if ([AniList getFirstAccount]) {
-        bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
-        if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
-            [AniList saveuserinfoforcurrenttoken];
-            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
-        }
-    }
-}
 @end

@@ -22,7 +22,10 @@
 #import "listservice.h"
 #import "InfoView.h"
 #if defined(AppStore)
+#if defined(OSS)
+#else
 #import "TipJar.h"
+#endif
 #else
 #import "PFMoveApplication.h"
 #import "DonationLicenseManager.h"
@@ -33,7 +36,10 @@
 @property PFAboutWindowController *aboutWindowController;
 @property (strong) IBOutlet NSMenuItem *malexportmenu;
 #if defined(AppStore)
+#if defined(OSS)
+#else
 @property (strong) TipJar *tipjar;
+#endif
 #else
 @property (strong) DonationLicenseManager *dlmanager;
 #endif
@@ -429,10 +435,13 @@
 }
 - (IBAction)tipjar:(id)sender {
 #if defined(AppStore)
+#if defined(OSS)
+#else
     if (!_tipjar) {
         _tipjar = [TipJar new];
     }
     [_tipjar.window makeKeyAndOrderFront:self];
+#endif
 #else
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://ko-fi.com/N4N0B153"]];
 #endif
@@ -447,11 +456,7 @@
 - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "moe.ateliershiori.test" in the user's Application Support directory.
     NSURL *appSupportURL = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].lastObject;
-#if defined(AppStore)
     return [appSupportURL URLByAppendingPathComponent:@"Shukofukurou"];
-#else
-    return [appSupportURL URLByAppendingPathComponent:@"Shukofukurou Next"];
-#endif
 }
 
 - (NSManagedObjectModel *)managedObjectModel {

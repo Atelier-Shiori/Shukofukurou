@@ -198,10 +198,6 @@
     if ([_minipopoverstatus.title isEqual:@"completed"] && _minipopovertotalep.intValue != 0 && _minipopoverepfield.intValue != _minipopovertotalep.intValue && _selectedaircompleted) {
         _minipopoverepfield.stringValue = _minipopovertotalep.stringValue;
     }
-    NSString *tags = @"";
-    if (((NSArray *)_selecteditem[@"personal_tags"]).count > 0){
-        tags = [(NSArray *)_selecteditem[@"personal_tags"] componentsJoinedByString:@","];
-    }
     NSDictionary * extraparameters = @{};
     int currentservice = [listservice getCurrentServiceID];
     switch (currentservice) {
@@ -235,7 +231,7 @@
     }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withTags:tags withExtraFields:extraparameters completion:^(id responseobject) {
+    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
@@ -280,10 +276,6 @@
         _mangapopoverchapfield.stringValue = _mangapopovertotalchap.stringValue;
         _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
     }
-    NSString *tags = @"";
-    if (((NSArray *)_selecteditem[@"personal_tags"]).count > 0){
-        tags = [(NSArray *)_selecteditem[@"personal_tags"] componentsJoinedByString:@","];
-    }
     NSDictionary * extraparameters = @{};
     int currentservice = [listservice getCurrentServiceID];
     switch ([listservice getCurrentServiceID]) {
@@ -317,7 +309,7 @@
     }
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withTags:tags withExtraFields:extraparameters completion:^(id responseobject) {
+    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
         [_mw loadlist:@(true) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
         [self disableeditbuttons:true];

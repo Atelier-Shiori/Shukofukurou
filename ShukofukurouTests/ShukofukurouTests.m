@@ -234,7 +234,7 @@
             }
         }
         if (match){
-            [MyAnimeList updateAnimeTitleOnList:listid.intValue withEpisode:13 withStatus:@"completed" withScore:8 withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [MyAnimeList updateAnimeTitleOnList:listid.intValue withEpisode:13 withStatus:@"completed" withScore:8 withExtraFields:nil completion:^(id responseObject){
                 [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALAnime useAccount:YES completion:^(id responseObject){
                     NSNumber *watchedepisodes = responseObject[@"watched_episodes"];
                     NSString *watchedstatus = responseObject[@"watched_status"];
@@ -400,7 +400,7 @@
             }
         }
         if (match){
-            [MyAnimeList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:7 withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [MyAnimeList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:7 withExtraFields:nil completion:^(id responseObject){
                 [MyAnimeList retrieveTitleInfo:listid.intValue withType:MALManga useAccount:YES completion:^(id responseObject){
                     NSNumber *readchapters = responseObject[@"chapters_read"];
                     NSNumber *readvolumes = responseObject[@"volumes_read"];
@@ -703,7 +703,7 @@
             }
         }
         if (match){
-            [Kitsu updateAnimeTitleOnList:listid.intValue withEpisode:25 withStatus:@"completed" withScore:20 withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [Kitsu updateAnimeTitleOnList:listid.intValue withEpisode:25 withStatus:@"completed" withScore:20 withExtraFields:nil completion:^(id responseObject){
                 [Kitsu retrieveList:_kitsuusername listType:KitsuAnime completion:^(id responseObject) {
                     NSArray *filtered = [responseObject[@"anime"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title ==[c] %@",title]];
                     if (filtered.count > 0) {
@@ -884,7 +884,7 @@
             }
         }
         if (match){
-            [Kitsu updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:12 withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [Kitsu updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:12 withExtraFields:nil completion:^(id responseObject){
                 [Kitsu retrieveList:_kitsuusername listType:KitsuManga completion:^(id responseObject) {
                     NSArray *filtered = [responseObject[@"manga"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title ==[c] %@",title]];
                     if (filtered.count > 0) {
@@ -1134,7 +1134,7 @@
             }
         }
         if (match){
-            [AniList updateAnimeTitleOnList:listid.intValue withEpisode:25 withStatus:@"completed" withScore:70 withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [AniList updateAnimeTitleOnList:listid.intValue withEpisode:25 withStatus:@"completed" withScore:70 withExtraFields:nil completion:^(id responseObject){
                 [AniList retrieveList:_anilistusername listType:AniListAnime completion:^(id responseObject) {
                     NSArray *filtered = [responseObject[@"anime"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title ==[c] %@",title]];
                     if (filtered.count > 0) {
@@ -1315,7 +1315,7 @@
             }
         }
         if (match){
-            [AniList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:80 withTags:@"" withExtraFields:nil completion:^(id responseObject){
+            [AniList updateMangaTitleOnList:listid.intValue withChapter:20 withVolume:2 withStatus:@"dropped" withScore:80 withExtraFields:nil completion:^(id responseObject){
                 [AniList retrieveList:_anilistusername listType:AniListManga completion:^(id responseObject) {
                     NSArray *filtered = [responseObject[@"manga"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"title ==[c] %@",title]];
                     if (filtered.count > 0) {

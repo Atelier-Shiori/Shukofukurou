@@ -1007,7 +1007,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				F84D64442098FAAE003225F9 /* TipJAr */,
+				F84D64442098FAAE003225F9 /* TipJar */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -1213,7 +1213,7 @@
 			name = about;
 			sourceTree = "<group>";
 		};
-		F84D64442098FAAE003225F9 /* TipJAr */ = {
+		F84D64442098FAAE003225F9 /* TipJar */ = {
 			isa = PBXGroup;
 			children = (
 				F84D643F2098FAA7003225F9 /* TipJar.h */,
@@ -1222,7 +1222,7 @@
 				F84D644520990110003225F9 /* SKProduct+LocalizedPrice.h */,
 				F84D644620990110003225F9 /* SKProduct+LocalizedPrice.m */,
 			);
-			name = TipJAr;
+			name = TipJar;
 			sourceTree = "<group>";
 		};
 		F87EF55F2098D22E000AD86E /* ShukofukurouTests */ = {

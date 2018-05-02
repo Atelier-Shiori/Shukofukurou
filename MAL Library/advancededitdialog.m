@@ -195,70 +195,8 @@
     if ([_status.title isEqual:@"completed"] && _totalepisodes.intValue != 0 && _episodefield.intValue != _totalepisodes.intValue && _selectedaircompleted) {
         _episodefield.stringValue = _totalepisodes.stringValue;
     }
-    NSString *tags = @"";
-    NSMutableDictionary *extrafields = [NSMutableDictionary new];
-    NSDateFormatter *df = [NSDateFormatter new];
-    df.dateFormat = @"yyyy-MM-dd";
+    NSDictionary *extrafields = [self generateExtraFieldsWithType:0];
     int currentlistservice = [listservice getCurrentServiceID];
-    switch (currentlistservice) {
-        case 1: {
-            if (((NSArray *)_tagsfield.objectValue).count > 0){
-                tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
-            }
-            if (@(_setstartdatecheck.state).boolValue) {
-                extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
-            }
-            if (@(_setenddatecheck.state).boolValue) {
-                extrafields[@"end"] = [df stringFromDate:_enddatepicker.dateValue];
-            }
-            extrafields[@"is_rewatching"] = @(_reconsuming.state);
-            break;
-        }
-        case 2: {
-            if (_notesfield.stringValue.length > 0) {
-                extrafields[@"notes"] = _notesfield.stringValue;
-            }
-            else {
-                extrafields[@"notes"] = [NSNull null];
-            }
-            if (@(_setstartdatecheck.state).boolValue) {
-                extrafields[@"startedAt"] = [df stringFromDate:_startdatepicker.dateValue];
-            }
-            if (@(_setenddatecheck.state).boolValue) {
-                extrafields[@"finishedAt"] = [df stringFromDate:_enddatepicker.dateValue];
-            }
-            extrafields[@"private"] = @(_privatecheck.state);
-            extrafields[@"reconsuming"] = @(_reconsuming.state);
-            break;
-        }
-        case 3:{
-            if (_notesfield.stringValue.length > 0) {
-                extrafields[@"notes"] = _notesfield.stringValue;
-            }
-            else {
-                extrafields[@"notes"] = [NSNull null];
-            }
-            if (@(_setstartdatecheck.state).boolValue) {
-                NSString *tmpstr = [df stringFromDate:_startdatepicker.dateValue];
-                extrafields[@"startedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
-            }
-            else {
-                extrafields[@"startedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
-            }
-            if (@(_setenddatecheck.state).boolValue) {
-                NSString *tmpstr = [df stringFromDate:_enddatepicker.dateValue];
-                extrafields[@"completedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
-            }
-            else {
-                extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
-            }
-            extrafields[@"private"] = @(_privatecheck.state);
-            extrafields[@"reconsuming"] = @(_reconsuming.state);
-            break;
-        }
-        default:
-            break;
-    }
     int score = 0;
     switch (currentlistservice) {
         case 1:
@@ -280,7 +218,7 @@
         }
     }
     [_progressindicator startAnimation:nil];
-    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
+    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
@@ -322,70 +260,8 @@
         _chaptersfield.stringValue = _totalchapters.stringValue;
         _totalvolumes.stringValue = _totalvolumes.stringValue;
     }
-    NSString *tags = @"";
-    NSMutableDictionary *extrafields = [NSMutableDictionary new];
-    NSDateFormatter *df = [NSDateFormatter new];
-    df.dateFormat = @"yyyy-MM-dd";
     int currentlistservice = [listservice getCurrentServiceID];
-    switch (currentlistservice) {
-        case 1: {
-            if (((NSArray *)_tagsfield.objectValue).count > 0){
-                tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
-            }
-            if (@(_setstartdatecheck.state).boolValue) {
-                extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
-            }
-            if (@(_setenddatecheck.state).boolValue) {
-                extrafields[@"end"] = [df stringFromDate:_enddatepicker.dateValue];
-            }
-            extrafields[@"is_rereading"] = @(_reconsuming.state);
-            break;
-        }
-        case 2: {
-            if (_notesfield.stringValue.length > 0) {
-                extrafields[@"notes"] = _notesfield.stringValue;
-            }
-            else {
-                extrafields[@"notes"] = [NSNull null];
-            }
-            if (@(_setstartdatecheck.state).boolValue) {
-                extrafields[@"startedAt"] = [df stringFromDate:_startdatepicker.dateValue];
-            }
-            if (@(_setenddatecheck.state).boolValue) {
-                extrafields[@"finishedAt"] = [df stringFromDate:_enddatepicker.dateValue];
-            }
-            extrafields[@"private"] = @(_privatecheck.state);
-            extrafields[@"reconsuming"] = @(_reconsuming.state);
-            break;
-        }
-        case 3:{
-            if (_notesfield.stringValue.length > 0) {
-                extrafields[@"notes"] = _notesfield.stringValue;
-            }
-            else {
-                extrafields[@"notes"] = [NSNull null];
-            }
-            if (@(_setstartdatecheck.state).boolValue) {
-                NSString *tmpstr = [df stringFromDate:_startdatepicker.dateValue];
-                extrafields[@"startedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
-            }
-            else {
-                extrafields[@"startedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
-            }
-            if (@(_setenddatecheck.state).boolValue) {
-                NSString *tmpstr = [df stringFromDate:_enddatepicker.dateValue];
-                extrafields[@"completedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
-            }
-            else {
-                extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
-            }
-            extrafields[@"private"] = @(_privatecheck.state);
-            extrafields[@"reconsuming"] = @(_reconsuming.state);
-            break;
-        }
-        default:
-            break;
-    }
+    NSDictionary *extrafields = [self generateExtraFieldsWithType:1];
     int score = 0;
     switch (currentlistservice) {
         case 1:
@@ -407,7 +283,7 @@
         }
     }
     [_progressindicator startAnimation:nil];
-    [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withTags:tags withExtraFields:extrafields completion:^(id responseobject) {
+    [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
@@ -644,5 +520,78 @@
             break;
         }
     }
+}
+
+- (NSDictionary *)generateExtraFieldsWithType:(int)type {
+    NSMutableDictionary *extrafields = [NSMutableDictionary new];
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateFormat = @"yyyy-MM-dd";
+    NSString *tags = @"";
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            if (((NSArray *)_tagsfield.objectValue).count > 0){
+                tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
+                extrafields[@"tags"] = tags;
+            }
+            if (@(_setstartdatecheck.state).boolValue) {
+                extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                extrafields[@"end"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            if (type == 0) {
+                 extrafields[@"is_rewatching"] = @(_reconsuming.state);
+            }
+            else {
+                extrafields[@"is_rereading"] = @(_reconsuming.state);
+            }
+            break;
+        }
+        case 2: {
+            if (_notesfield.stringValue.length > 0) {
+                extrafields[@"notes"] = _notesfield.stringValue;
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            if (@(_setstartdatecheck.state).boolValue) {
+                extrafields[@"startedAt"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                extrafields[@"finishedAt"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            extrafields[@"private"] = @(_privatecheck.state);
+            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            break;
+        }
+        case 3:{
+            if (_notesfield.stringValue.length > 0) {
+                extrafields[@"notes"] = _notesfield.stringValue;
+            }
+            else {
+                extrafields[@"notes"] = [NSNull null];
+            }
+            if (@(_setstartdatecheck.state).boolValue) {
+                NSString *tmpstr = [df stringFromDate:_startdatepicker.dateValue];
+                extrafields[@"startedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"startedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                NSString *tmpstr = [df stringFromDate:_enddatepicker.dateValue];
+                extrafields[@"completedAt"] = @{@"year" : [tmpstr substringWithRange:NSMakeRange(0, 4)], @"month" : [tmpstr substringWithRange:NSMakeRange(5, 2)], @"day" : [tmpstr substringWithRange:NSMakeRange(8, 2)]};
+            }
+            else {
+                extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
+            }
+            extrafields[@"private"] = @(_privatecheck.state);
+            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            break;
+        }
+        default:
+            break;
+    }
+    return extrafields;
 }
 @end

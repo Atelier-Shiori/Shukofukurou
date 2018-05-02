@@ -248,7 +248,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     }];
 }
 
-+ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id
     // Note: Tags field is ignored.
     AFOAuthCredential *cred = [AniList getFirstAccount];
@@ -275,7 +275,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     }];
 }
 
-+ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id
     // Note: Tags field is ignored.
     AFOAuthCredential *cred = [AniList getFirstAccount];

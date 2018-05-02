@@ -304,14 +304,14 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
     }];
     
 }
-+ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id
     // Note: Tags field is ignored.
     AFOAuthCredential *cred = [Kitsu getFirstAccount];
     if (cred && cred.expired) {
         [Kitsu refreshToken:^(bool success) {
             if (success) {
-                [self updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
+                [self updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             }
             else {
                 errorHandler(nil);
@@ -329,14 +329,14 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
         errorHandler(error);
     }];
 }
-+ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     // Note: Title id is entry id
     // Note: Tags field is ignored.
     AFOAuthCredential *cred = [Kitsu getFirstAccount];
     if (cred && cred.expired) {
         [Kitsu refreshToken:^(bool success) {
             if (success) {
-                [self updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withTags:tags withExtraFields:efields completion:completionHandler error:errorHandler];
+                [self updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             }
             else {
                 errorHandler(nil);

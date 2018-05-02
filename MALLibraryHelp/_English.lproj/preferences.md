@@ -20,7 +20,7 @@ These options affect the main functionality of the application.
 * Reset Title ID Mappings - Allows you to reset the Title ID Mappings used for importing titles and switching services. Use this if the you having issues with Title ID conversion used by service switching and list importing.
 * Show 18+ Content (Non-Mac App Store version) - Enables the viewing of 18+ content. Note that for Kitsu, you need to enable viewing of mature content before Shukofukurou can view this kind of content. On the Mac App Store, this option is always disabled due to rating restrictions. However, you will still be able to manage 18+ on your animelist.
 
-## Login
+## Accounts
 Allows you to login or log out of your account. Credentials are saved in the login Keychain. MyAnimeList Credentials are checked every 24 hours to make sure they are valid. If they become invalid, you will be required to log out and login again.
 
 For Kitsu and AniList, no user credentials are saved. Instead, OAuth is used to retrieve a token, which works the same as a username and password. For AniList, you will be taken to the website to authorize the application.

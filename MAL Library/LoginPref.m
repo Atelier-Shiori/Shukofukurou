@@ -42,11 +42,11 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageNamed:NSImageNameUser];
+    return [NSImage imageNamed:NSImageNameUserAccounts];
 }
 
 - (NSString *)toolbarItemLabel {
-    return NSLocalizedString(@"Login", @"Toolbar item name for the Login preference pane");
+    return NSLocalizedString(@"Accounts", @"Toolbar item name for the Accounts preference pane");
 }
 
 #pragma mark Login Preferences Functions

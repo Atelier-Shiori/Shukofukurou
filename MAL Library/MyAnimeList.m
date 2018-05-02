@@ -258,16 +258,11 @@
     }
 }
 
-+ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         NSMutableDictionary *parameters = [NSMutableDictionary new];
-        if (tags) {
-            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"episodes":@(episode), @"tags":tags}];
-        }
-        else {
-            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"episodes":@(episode)}];
-        }
+        [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"episodes":@(episode)}];
         if (efields) {
             [parameters addEntriesFromDictionary:efields];
         }
@@ -283,16 +278,11 @@
     }
 }
 
-+ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withTags:(NSString *)tags withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
++ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler{
     if ([self verifyAccount]) {
         AFHTTPSessionManager *manager = [Utility httpmanager];
         NSMutableDictionary *parameters = [NSMutableDictionary new];
-        if (tags) {
-            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume),@"tags":tags}];
-        }
-        else {
-            [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume)}];
-        }
+        [parameters addEntriesFromDictionary:@{ @"status":status, @"score":@(score), @"chapters":@(chapter),@"volumes":@(volume)}];
         if (efields) {
             [parameters addEntriesFromDictionary:efields];
         }

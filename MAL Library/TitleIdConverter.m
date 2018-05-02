@@ -199,19 +199,7 @@ static BOOL importing;
         completionHandler(((NSNumber *)responseObject[@"data"][@"Media"][@"id"]).intValue);
         lookingupid = false;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self getserviceTitleIDFromServiceID:titleid withTitle:title titletype:titletype fromServiceID:1 completionHandler:^(int anilistid) {
-            if (anilistid > 0) {
-                [self savetitleidtomapping:titleid withNewID:anilistid withType:type fromService:1 toService:3];
-                completionHandler(anilistid);
-            }
-            else {
-                errorHandler(nil);
-            }
-            lookingupid = false;
-        } error:^(NSError *error) {
             errorHandler(error);
-            lookingupid = false;
-        }];
     }];
 }
 

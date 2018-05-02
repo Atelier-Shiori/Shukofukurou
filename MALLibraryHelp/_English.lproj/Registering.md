@@ -18,6 +18,11 @@ The following features is in the App Store version:
 
 All users who purchase the full version of MAL Library on the Mac App Store will get Shukofukurou 3.0 for $1.99 through the non-App Store version.
 
+## Tip Jar (App Store Version)
+You can tip the developer if you downloaded the Mac App Store version. There is no obligation to do so, but if you want to see future updates, you are free to leave a tip. The tips will be charge through your iTunes Account as an In-App Purchase.
+
+The Tip Jar can be accessed through the application's menu.
+
 ## Registering a Donation Key (Non AppStore Version)
 If you have a donation key, you can register it by going to the Shukofukurou menu and selecting "Add Donation Key." You will be given a dialog to enter the name and key. It needs to be exactly the same as shown on the order. An upgrade key will check for an existing copy of MAL Library from the Mac App Store.
 

@@ -11,13 +11,12 @@ Requires latest SDK (10.13), XCode 9 or later. The C#/Xamarin version is depreca
 
 ## Supporting this Project
 
-You can also support the project by buying the full version from the Mac App Store for $4.99. All future updates are free for 2.x.
+You can also support the project by buying the full version from the Mac App Store for $4.99. All future updates are free for 3.x. The link below is for 2.x, eligable for a free upgrade to 3.x.
 
 [![macappstore](https://malupdaterosx.moe/wp-content/uploads/2018/04/downloadmacappstore.png)](https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12)
 
-Note that for 3.0, binaries are only available as a freenimum application with Donor/Pro features like manga list management, list syncing, profile browser and character browser locked.
 
-For existing users who downloaded from the App Store, the upgrade fee planned to be $1.99 to help cover the cost of development. People who downloaded MAL Library after March 1, 2018 before the release of 3.0 will recieve a free upgrade.. More details coming soon.
+For existing users who downloaded from the App Store, the upgrade fee planned to be $1.99 to help cover the cost of development. People who downloaded MAL Library after March 1, 2018 before the release of 3.0 will recieve a free upgrade through the non-App Store version.
 
 ## How to Compile
 

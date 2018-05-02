@@ -7,6 +7,7 @@
 //
 
 #import "ListExporter.h"
+#import "listservice.h"
 #import "Utility.h"
 #import "AppDelegate.h"
 #import "Keychain.h"
@@ -15,7 +16,7 @@
 - (IBAction)exportAnimeList:(id)sender {
     // Export Anime List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([Utility checkifFileExists:@"mal-animelist.json" appendPath:@""]){
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0 withServiceID:1] appendPath:@""]){
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Anime List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
@@ -55,7 +56,7 @@
 - (IBAction)exportMangaList:(id)sender {
     // Export Manga List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([Utility checkifFileExists:@"mal-mangalist.json" appendPath:@""]){
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:1 withServiceID:1] appendPath:@""]){
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Manga List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];

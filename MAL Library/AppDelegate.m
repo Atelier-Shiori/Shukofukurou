@@ -124,6 +124,18 @@
      forEventClass:kInternetEventClass
      andEventID:kAEGetURL];
     [StreamDataRetriever retrieveStreamData];
+#if defined(AppStore)
+#if defined(OSS)
+#else
+    if (!_tipjar) {
+        // Preload Tipjar Window
+        _tipjar = [TipJar new];
+        [_tipjar showWindow:self];
+        [_tipjar close];
+        [_tipjar fetchAvailableProducts];
+    }
+#endif
+#endif
 }
 
 

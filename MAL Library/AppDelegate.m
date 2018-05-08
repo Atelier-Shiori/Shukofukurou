@@ -424,7 +424,7 @@
 - (IBAction)getfromAppStore:(id)sender {
 #if defined(AppStore)
 #else
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/shukofukurou/id1373973596?ls=1&mt=12"]];
 #endif
 }
 

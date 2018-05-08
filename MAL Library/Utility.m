@@ -256,21 +256,23 @@
 #else
     // Shows Donation Reminder
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:@"surpressreminder"]) {
+    NSString *version = [NSBundle.mainBundle.infoDictionary objectForKey:@"CFBundleVersion"];
+    bool show = !(![defaults valueForKey:@"surpressversion"] || ((NSString *)[defaults valueForKey:@"surpressversion"]).intValue ==  version.integerValue);
+    if (![defaults boolForKey:@"surpressreminder"] || show) {
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:@"Open App Store"];
         [alert addButtonWithTitle:@"Donate"];
         [alert addButtonWithTitle:@"Enter Key"];
         [alert addButtonWithTitle:@"Not Yet"];
         alert.messageText = @"Please Support Shukofukurou";
-        alert.informativeText = @"We noticed that you have been using Shukofukurou for a while. Shukofukurou is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of Shukofukurou, which adds Manga support and more from the Mac App Store or Purchase a License. You can hide this message if you just want to use the free version.";
+        alert.informativeText = @"We noticed that you have been using Shukofukurou for a while. Shukofukurou is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of Shukofukurou, which adds Manga support and more from the Mac App Store or Purchase a License. You can hide this message until the next update.";
         [alert setShowsSuppressionButton:YES];
         // Set Message type to Warning
         alert.alertStyle = NSInformationalAlertStyle;
         long choice = [alert runModal];
         if (choice == NSAlertFirstButtonReturn) {
             // Open App Store Page
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/shukofukurou/id1373973596?ls=1&mt=12"]];
         }
         else if (choice == NSAlertSecondButtonReturn) {
             [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://softwareateliershiori.onfastspring.com/shukofukurou"]];
@@ -279,8 +281,9 @@
             [(AppDelegate *)[NSApplication sharedApplication].delegate unlockprofeatures:self];
         }
         if (alert.suppressionButton.state == NSOnState) {
-            // Suppress this alert from now on
-            [defaults setBool: YES forKey: @"surpressreminder"];
+            // Suppress this alert until the next version
+            [defaults setBool: YES forKey: @"surpressversion"];
+            [defaults setValue:version forKey:@"surpressversion"];
         }
     }
 #endif

@@ -62,12 +62,13 @@
     #else
     PFMoveToApplicationsFolderIfNecessary();
     #endif
-    [Utility donateCheck:self];
+    //[Utility donateCheck:self];
     #endif
     // Load main window
     _mainwindowcontroller = [MainWindow new];
     [_mainwindowcontroller setDelegate:self];
     [_mainwindowcontroller.window makeKeyAndOrderFront:self];
+    [Utility showDonateReminder:self];
     [self showloginnotice];
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self

@@ -8,7 +8,6 @@
 
 #import "AniListImport.h"
 #import "AtarashiiDataObjects.h"
-#import "ClientConstants.h"
 #import "Utility.h"
 
 @implementation AniListImport

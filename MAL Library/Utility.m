@@ -254,23 +254,23 @@
 + (void)showDonateReminder:(AppDelegate*)delegate{
     // Shows Donation Reminder
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults boolForKey:@"surpressreminder"]) {
+    if (![defaults boolForKey:@"surpresseolreminder"]) {
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:@"Open App Store"];
         [alert addButtonWithTitle:@"Not Yet"];
-        alert.messageText = @"Please Support MAL Library";
-        alert.informativeText = @"We noticed that you have been using MAL Library for a while. MAL Library is donationware to substain development of our applications. \r\rIf you find this program helpful, obtain the full version of MAL Library, which adds Manga support and more from the Mac App Store. You can hide this message if you just want to use the free version.";
+        alert.messageText = @"MAL Library End of Life";
+        alert.informativeText = @"With the release of Shukofukurou, MAL Library will only recieve bug fixes and will be supported until the end of this year. You can upgrade to Shukofukurou through the App Store by clicking the Open App Store button.";
         [alert setShowsSuppressionButton:YES];
         // Set Message type to Warning
         alert.alertStyle = NSInformationalAlertStyle;
         long choice = [alert runModal];
         if (choice == NSAlertFirstButtonReturn) {
             // Open App Store Page
-            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/mal-library/id1226620085?ls=1&mt=12"]];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/shukofukurou/id1373973596?ls=1&mt=12"]];
         }
         if (alert.suppressionButton.state == NSOnState) {
             // Suppress this alert from now on
-            [defaults setBool: YES forKey: @"surpressreminder"];
+            [defaults setBool: YES forKey: @"surpresseolreminder"];
         }
     }
 }

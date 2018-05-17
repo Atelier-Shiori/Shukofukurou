@@ -92,8 +92,6 @@
 		2DC28DD01EB8DF64005B7B77 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */; };
 		2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
 		2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
-		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
-		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
@@ -400,8 +398,6 @@
 		2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESCssTokens.m; sourceTree = "<group>"; };
 		2DC64B661EC3D661005A8BCE /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
-		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
-		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
@@ -728,8 +724,6 @@
 				2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */,
 				2D8A47B71F292D1800FC2B35 /* CharacterView.h */,
 				2D8A47B81F292D1800FC2B35 /* CharacterView.m */,
-				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
-				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
 				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
 				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
 				2DC28DC61EB8DF64005B7B77 /* ESCssParser.h */,
@@ -1251,7 +1245,6 @@
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
-				59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2DA42F201EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
@@ -1316,7 +1309,6 @@
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
 				91822A561EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
 				9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
-				59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,

@@ -40,4 +40,5 @@
 + (AFHTTPSessionManager*)httpmanager;
 + (AFJSONRequestSerializer *)jsonrequestserializer;
 + (AFHTTPRequestSerializer *)httprequestserializer;
++ (void)showDonateReminder:(AppDelegate*)delegate;
 @end

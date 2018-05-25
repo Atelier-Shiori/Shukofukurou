@@ -154,10 +154,10 @@
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
         NSViewController *advancedviewController = [AdvancedPref new];
         #if defined(AppStore)
-        NSArray *controllers = @[genview,loginViewController,advancedviewController];
+        NSArray *controllers = @[genview,loginViewController/*,advancedviewController*/];
         #else
         NSViewController *suViewController = [[SoftwareUpdatesPref alloc] init];
-        NSArray *controllers = @[genview,loginViewController,suViewController,advancedviewController];
+        NSArray *controllers = @[genview,loginViewController,suViewController/*,advancedviewController*/];
         #endif
         __preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }

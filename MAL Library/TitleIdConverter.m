@@ -199,7 +199,8 @@ static BOOL importing;
         completionHandler(((NSNumber *)responseObject[@"data"][@"Media"][@"id"]).intValue);
         lookingupid = false;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            errorHandler(error);
+        errorHandler(error);
+        lookingupid = false;
     }];
 }
 

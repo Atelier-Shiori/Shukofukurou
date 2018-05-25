@@ -112,6 +112,9 @@
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self checkaccountinformation];
+    if ([listservice getCurrentServiceID] == 1) {
+        [NSUserDefaults.standardUserDefaults setInteger:@(2) forKey:@"currentservice"];
+    }
     [self refreshUIServiceChange:[listservice getCurrentServiceID]];
     // Load main window
     _mainwindowcontroller = [MainWindow new];

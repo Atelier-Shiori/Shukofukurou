@@ -327,7 +327,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Service" autoenablesItems="NO" id="CWk-2N-5Ar">
                         <items>
-                            <menuItem title="MyAnimeList" tag="1" id="frr-T0-hoW">
+                            <menuItem title="MyAnimeList" tag="1" hidden="YES" id="frr-T0-hoW">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="setService:" target="NCk-PM-EVr" id="5fi-oT-QAw"/>

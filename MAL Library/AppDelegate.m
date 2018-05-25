@@ -113,7 +113,15 @@
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self checkaccountinformation];
     if ([listservice getCurrentServiceID] == 1) {
-        [NSUserDefaults.standardUserDefaults setInteger:@(2) forKey:@"currentservice"];
+        // First time prompt
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:NSLocalizedString(@"Got it",nil)];
+        [alert setMessageText:NSLocalizedString(@"MyAnimeList No Longer Supported, For Now",nil)];
+        alert.informativeText = NSLocalizedString(@"Due to DeNA's disablement of the MyAnimeList APIs, we can no longer support MyAnimeList in Shukofukurou.\r\rWhen the API is enabled, an update will be issued to reenable MyAnimeList supprt..\r\rWe applogize for the inconvience. We highly suggest you to change to a different list service (e.g. Kitsu or AniList) that Shukofukurou supports. You can import MyAnimeList Anime XML Lists once you log in to the desired service.",nil);
+        // Set Message type to Warning
+        alert.alertStyle = NSAlertStyleInformational;
+        [alert runModal];
+        [NSUserDefaults.standardUserDefaults setInteger:2 forKey:@"currentservice"];
     }
     [self refreshUIServiceChange:[listservice getCurrentServiceID]];
     // Load main window

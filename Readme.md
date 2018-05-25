@@ -3,7 +3,9 @@
 
 Formerly known as MAL Library
 
-Shukofukurou an open sourced and native [MyAnimeList](https://myanimelist.net), [Kitsu](https://kitsu.io/), and [AniList](https://anilist.co) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
+Shukofukurou an open sourced and native [Kitsu](https://kitsu.io/), and [AniList](https://anilist.co) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
+
+**Support for [MyAnimeList](https://myanimelist.net) temporarily removed due to the API being disabled indefinately. No ETA stated. An update to reenable MyAnimeList support will be made when the API returns.**
 
 This app is named after the owl, Shuko from Sora no Woto.
 

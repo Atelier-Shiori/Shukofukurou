@@ -26,7 +26,7 @@
                         lentry.title = metadata[@"attributes"][@"canonicalTitle"];
                         lentry.episodes = metadata[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue : 0;
                         lentry.episode_length = metadata[@"attributes"][@"episodeLength"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeLength"]).intValue : 0;
-                        if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
+                        if (metadata[@"attributes"][@"posterImage"] != [NSNull null]) {
                             lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
                         }
                         lentry.type = [Utility convertAnimeType:metadata[@"attributes"][@"showType"]];
@@ -83,7 +83,7 @@
                     lentry.title = metadata[@"attributes"][@"canonicalTitle"];
                     lentry.chapters = metadata[@"attributes"][@"chapterCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"chapterCount"]).intValue : 0;
                     lentry.volumes = metadata[@"attributes"][@"volumeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"volumeCount"]).intValue : 0;
-                    if (metadata[@"attributes"][@"posterImage"][@"medium"]) {
+                    if (metadata[@"attributes"][@"posterImage"] != [NSNull null]) {
                         lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
                     }
                     lentry.type = ((NSString *)metadata[@"attributes"][@"mangaType"]).capitalizedString;

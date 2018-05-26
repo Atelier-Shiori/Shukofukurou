@@ -24,8 +24,8 @@
             aentry.titleid = ((NSNumber *)entry[@"id"][@"id"]).intValue;
             aentry.entryid = ((NSNumber *)entry[@"entryid"]).intValue;
             aentry.title = entry[@"title"][@"title"][@"title"];
-            aentry.episodes = entry[@"episodes"][@"episodes"] != [NSNull null] ? ((NSNumber *)entry[@"episodes"][@"episodes"]).intValue : 0;
-            aentry.episode_length = (entry[@"duration"] && entry[@"duration"] != [NSNull null]) ? ((NSNumber *)entry[@"duration"][@"duration"]).intValue : 0;
+            aentry.episodes = entry[@"episodes"][@"episodes"] && entry[@"episodes"][@"episodes"] != [NSNull null] ? ((NSNumber *)entry[@"episodes"][@"episodes"]).intValue : 0;
+            aentry.episode_length = (entry[@"duration"][@"duration"] && entry[@"duration"][@"duration"] != [NSNull null]) ? ((NSNumber *)entry[@"duration"][@"duration"]).intValue : 0;
             aentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
             aentry.type = [Utility convertAnimeType:entry[@"type"][@"format"]];
             aentry.status =  entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
@@ -79,8 +79,8 @@
             mentry.titleid = ((NSNumber *)entry[@"id"][@"id"]).intValue;
             mentry.entryid = ((NSNumber *)entry[@"entryid"]).intValue;
             mentry.title = entry[@"title"][@"title"][@"title"];
-            mentry.chapters = entry[@"chapters"][@"chapters"] != [NSNull null] ? ((NSNumber *)entry[@"chapters"][@"chapters"]).intValue : 0;
-            mentry.volumes = entry[@"volumes"][@"volumes"] != [NSNull null] ? ((NSNumber *)entry[@"volumes"][@"volumes"]).intValue : 0;
+            mentry.chapters = entry[@"chapters"][@"chapters"] && entry[@"chapters"][@"chapters"] != [NSNull null] ? ((NSNumber *)entry[@"chapters"][@"chapters"]).intValue : 0;
+            mentry.volumes = entry[@"volumes"][@"volumes"] && entry[@"volumes"][@"volumes"] != [NSNull null] ? ((NSNumber *)entry[@"volumes"][@"volumes"]).intValue : 0;
             mentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
             mentry.type = [self convertMangaType:entry[@"type"][@"format"]];
             mentry.status = entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
@@ -132,17 +132,17 @@
     aobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
     #if defined(AppStore)
     aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
-        aobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] : @"Synopsis not available for adult titles";
+        aobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
     #else
     bool allowed = ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"] || !((NSNumber *)title[@"isAdult"]).boolValue);
         aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && title[@"coverImage"][@"large"] && allowed ?  title[@"coverImage"][@"large"] : @"";
-        aobject.synposis = allowed ? title[@"description"] : @"Synopsis not available for adult titles";
+    aobject.synposis = allowed ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
     #endif
     aobject.type = [Utility convertAnimeType:title[@"format"]];
-    aobject.episodes = title[@"episodes"] != [NSNull null] ? ((NSNumber *)title[@"episodes"]).intValue : 0;
+    aobject.episodes = title[@"episodes"] && title[@"episodes"] != [NSNull null] ? ((NSNumber *)title[@"episodes"]).intValue : 0;
     aobject.start_date = title[@"startDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"startDate"][@"year"],title[@"startDate"][@"month"],title[@"startDate"][@"day"]] : @"";
     aobject.end_date = title[@"endDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"endDate"][@"year"],title[@"endDate"][@"month"],title[@"endDate"][@"day"]] : @"";
-    aobject.duration = title[@"duration"] != [NSNull null] ? ((NSNumber *)title[@"duration"]).intValue : 0;
+    aobject.duration = title[@"duration"] && title[@"duration"] != [NSNull null] ? ((NSNumber *)title[@"duration"]).intValue : 0;
     aobject.classification = @"";
     aobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
     NSString *tmpstatus  = title[@"status"] != [NSNull null] ? title[@"status"] : @"NOT_YET_RELEASED";
@@ -205,11 +205,11 @@
     mobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
 #if defined(AppStore)
     mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
-    mobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] : @"Synopsis not available for adult titles";
+    mobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
 #else
     bool allowed = ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"] || !((NSNumber *)title[@"isAdult"]).boolValue);
     mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && title[@"coverImage"][@"large"] && allowed ?  title[@"coverImage"][@"large"] : @"";
-    mobject.synposis = allowed ? title[@"description"] : @"Synopsis not available for adult titles";
+    mobject.synposis = allowed ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
 #endif
     mobject.type = [self convertMangaType:title[@"format"]];
     mobject.chapters = title[@"chapters"] != [NSNull null] ? ((NSNumber *)title[@"chapters"]).intValue : 0;

@@ -59,8 +59,8 @@
             aentry.rewatch_count =  ((NSNumber *)entry[@"rewatch_count"]).intValue;
             aentry.private_entry =  ((NSNumber *)entry[@"private"]).boolValue;
             aentry.personal_comments = entry[@"notes"];
-            aentry.watching_start = entry[@"watching_start"][@"year"] != [NSNull null] && entry[@"watching_start"][@"year"] != [NSNull null] && entry[@"watching_start"][@"year"] != [NSNull null] ? [self convertDate:entry[@"watching_start"]] : @"";
-            aentry.watching_end = entry[@"watching_end"][@"year"] != [NSNull null] && entry[@"watching_end"][@"year"] != [NSNull null] && entry[@"watching_end"][@"year"] != [NSNull null] ? [self convertDate:entry[@"watching_end"]] : @"";
+            aentry.watching_start = entry[@"watching_start"][@"year"] != [NSNull null] && entry[@"watching_start"][@"month"] != [NSNull null] && entry[@"watching_start"][@"day"] != [NSNull null] ? [self convertDate:entry[@"watching_start"]] : @"";
+            aentry.watching_end = entry[@"watching_end"][@"year"] != [NSNull null] && entry[@"watching_end"][@"month"] != [NSNull null] && entry[@"watching_end"][@"day"] != [NSNull null] ? [self convertDate:entry[@"watching_end"]] : @"";
             [tmparray addObject:[aentry NSDictionaryRepresentation]];
         }
     }
@@ -115,8 +115,8 @@
             mentry.reread_count =  ((NSNumber *)entry[@"rewatch_count"]).intValue;
             mentry.private_entry =  ((NSNumber *)entry[@"private"]).boolValue;
             mentry.personal_comments = entry[@"notes"];
-            mentry.reading_start = entry[@"read_start"][@"year"] != [NSNull null] && entry[@"read_start"][@"year"] != [NSNull null] && entry[@"read_start"][@"year"] != [NSNull null] ? [self convertDate:entry[@"read_start"]] : @"";
-            mentry.reading_end = entry[@"read_end"][@"year"] != [NSNull null] && entry[@"read_end"][@"year"] != [NSNull null] && entry[@"read_end"][@"year"] != [NSNull null] ?  [self convertDate:entry[@"read_end"]] : @"";
+            mentry.reading_start = entry[@"read_start"][@"year"] != [NSNull null] && entry[@"read_start"][@"month"] != [NSNull null] && entry[@"read_start"][@"day"] != [NSNull null] ? [self convertDate:entry[@"read_start"]] : @"";
+            mentry.reading_end = entry[@"read_end"][@"year"] != [NSNull null] && entry[@"read_end"][@"month"] != [NSNull null] && entry[@"read_end"][@"day"] != [NSNull null] ?  [self convertDate:entry[@"read_end"]] : @"";
             [tmparray addObject:[mentry NSDictionaryRepresentation]];
         }
     }

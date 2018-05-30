@@ -63,11 +63,11 @@
                                                     <action selector="registerKitsu:" target="-2" id="1il-hv-ApP"/>
                                                 </connections>
                                             </button>
-                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="3kT-YU-OcS">
-                                                <rect key="frame" x="12" y="114" width="115" height="17"/>
+                                            <textField verticalHuggingPriority="750" misplaced="YES" allowsCharacterPickerTouchBarItem="YES" id="3kT-YU-OcS">
+                                                <rect key="frame" x="0.0" y="114" width="127" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Username:" id="t8L-j8-Fpb">
-                                                    <font key="font" metaFont="system"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Username/EMail:" id="t8L-j8-Fpb">
+                                                    <font key="font" metaFont="system" size="12"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>

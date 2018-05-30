@@ -179,7 +179,7 @@
             break;
         case 2:
             _kitsuclearbut.enabled = YES;
-            _kitsuloggedinuser.stringValue = username;
+            _kitsuloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
             _kitsuloggedinview.hidden = NO;
             _kitsuloginview.hidden = YES;
             [_kitsusavebut setEnabled:YES];

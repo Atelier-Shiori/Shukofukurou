@@ -232,12 +232,17 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
     [OAuth2Manager authenticateUsingOAuthWithURLString:kKitsuTokenURL parameters:@{@"grant_type":@"password", @"username":username, @"password":password} success:^(AFOAuthCredential *credential) {
         [AFOAuthCredential storeCredential:credential
                             withIdentifier:kKeychainIdentifier];
-        [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"kitsu-username"];
-        completionHandler(@{@"success":@(true)});
-        [Kitsu getOwnKitsuid:^(int userid) {
-            [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"kitsu-userid"];
-        } error:^(NSError *error) {
-        }];
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+        dispatch_async(queue, ^{
+            [self saveuserinfoforcurrenttoken];
+            [Kitsu getOwnKitsuid:^(int userid) {
+                [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"kitsu-userid"];
+            } error:^(NSError *error) {
+            }];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                completionHandler(@{@"success":@(true)});
+            });
+        });
     }
     failure:^(NSError *error) {
         errorHandler(error);

@@ -40,6 +40,23 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
     }];
 }
 
++ (void)retrieveOwnLisWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    KitsuListRetriever *retriever = [KitsuListRetriever new];
+    [self getOwnKitsuid:^(int userid) {
+        if (userid > -1) {
+            [retriever retrieveKitsuLibrary:userid type:type atPage:0 completionHandler:^(id responseObject) {
+                completionHandler(responseObject);
+            } error:^(NSError *error) {
+                errorHandler(error);
+            }];
+        }
+        else {
+            errorHandler(nil);
+        }
+    } error:^(NSError *error) {
+        errorHandler(error);
+    }];
+}
 #pragma mark Search
 + (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *tmparray = [NSMutableArray new];
@@ -460,7 +477,7 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     }
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/users?filter[slug]=%@", username] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        if (responseObject[@"data"][0]) {
+        if (((NSArray *)responseObject[@"data"]).count > 0) {
             completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);
         }
         else {

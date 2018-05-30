@@ -19,6 +19,26 @@
     return (int)[NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
 }
 
++ (void)retrieveownListWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    switch ([self getCurrentServiceID]) {
+        case 1: {
+            [MyAnimeList retrieveList:[self getCurrentServiceUsername] listType:type completion:completionHandler error:errorHandler];
+            break;
+        }
+        case 2: {
+            [Kitsu retrieveOwnLisWithType:type completion:completionHandler error:errorHandler];
+            break;
+        }
+        case 3: {
+            [AniList retrieveList:[self getCurrentServiceUsername] listType:type completion:completionHandler error:errorHandler];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {

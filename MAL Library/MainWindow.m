@@ -749,7 +749,7 @@
                     return;
                 }
                 else if (!exists || refreshlist){
-                    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALAnime completion:^(id responseObject){
+                    [listservice retrieveownListWithType:MALAnime completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:0] appendpath:@"" replace:TRUE] type:0];
                         [self refreshStatistics];
                         _refreshanime = false;
@@ -772,7 +772,7 @@
                     return;
                 }
                 else if (!exists || refreshlist){
-                    [listservice retrieveList:[listservice getCurrentServiceUsername] listType:MALManga completion:^(id responseObject){
+                    [listservice retrieveownListWithType:MALManga completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:1] appendpath:@"" replace:TRUE] type:1];
                         [self refreshStatistics];
                         _refreshmanga = false;

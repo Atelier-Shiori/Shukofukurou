@@ -384,6 +384,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-87" y="163"/>
         </menu>
         <menu id="lJy-PF-Nc1" userLabel="Standard Rating Menu">
             <items>

@@ -601,7 +601,15 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
             NSDictionary *d = [NSArray arrayWithArray:responseObject[@"data"]][0];
             NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
             [defaults setValue:d[@"id"] forKey:@"kitsu-userid"];
-            [defaults setValue:d[@"attributes"][@"slug"] forKey:@"kitsu-username"];
+            if (d[@"attributes"][@"name"] != [NSNull null]) {
+                [defaults setValue:d[@"attributes"][@"name"] forKey:@"kitsu-username"];
+            }
+            else if (d[@"attributes"][@"slug"] != [NSNull null]) {
+                [defaults setValue:d[@"attributes"][@"slug"] forKey:@"kitsu-username"];
+            }
+            else {
+                [defaults setValue:@"Unknown User" forKey:@"kitsu-username"];
+            }
             NSString *ratingtype = d[@"attributes"][@"ratingSystem"];
             if (ratingtype) {
                 if ([ratingtype isEqualToString:@"simple"]) {

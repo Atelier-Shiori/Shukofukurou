@@ -454,11 +454,13 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
     [manager GET:@"https://kitsu.io/api/edge/users?filter[self]=true" parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        if (responseObject[@"data"][0]) {
-            completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);
-        }
-        else {
-            completionHandler(-1);
+        if (((NSArray *)responseObject[@"data"]).count > 0) {
+            if (responseObject[@"data"][0]) {
+                completionHandler(((NSNumber *)responseObject[@"data"][0][@"id"]).intValue);
+            }
+            else {
+                completionHandler(-1);
+            }
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);

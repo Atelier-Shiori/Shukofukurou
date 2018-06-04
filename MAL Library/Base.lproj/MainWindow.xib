@@ -41,7 +41,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="911" y="501" width="700" height="450"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="697"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
             <value key="minSize" type="size" width="700" height="450"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="450"/>
@@ -331,11 +331,11 @@
                             <action selector="performmodifytitle:" target="-2" id="0rG-d2-5Wq"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="D2F2B7CC-8D28-4977-93C7-65766691DE77" explicitItemIdentifier="viewonmal" label="View on MyAnimeList" paletteLabel="View on MyAnimeList" toolTip="View on MyAnimeList" image="Info" id="Xo3-FI-FWS">
+                    <toolbarItem implicitItemIdentifier="D2F2B7CC-8D28-4977-93C7-65766691DE77" explicitItemIdentifier="viewonmal" label="View on Site" paletteLabel="View on Site" toolTip="View on Site" image="Info" id="Xo3-FI-FWS">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Ilq-I7-AtO">
-                            <rect key="frame" x="37" y="14" width="37" height="25"/>
+                            <rect key="frame" x="15" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Info" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="19N-6E-tNo">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

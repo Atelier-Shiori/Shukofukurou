@@ -228,12 +228,14 @@
             _deletetitleitem.enabled = YES;
             _shareitem.enabled = YES;
             _titleinfoitem.enabled = YES;
+            _incrementitem.enabled = YES;
         }
         else {
             _edittitleitem.enabled = NO;
             _deletetitleitem.enabled = NO;
             _shareitem.enabled = NO;
             _titleinfoitem.enabled = NO;
+            _incrementitem.enabled = NO;
         }
     }
     else {
@@ -242,14 +244,179 @@
             _deletetitleitem.enabled = YES;
             _shareitem.enabled = YES;
             _titleinfoitem.enabled = YES;
+            _incrementitem.enabled = YES;
         }
         else {
             _edittitleitem.enabled = NO;
             _deletetitleitem.enabled = NO;
             _shareitem.enabled = NO;
             _titleinfoitem.enabled = NO;
+            _incrementitem.enabled = NO;
         }
     }
 }
 
+- (IBAction)increment:(id)sender {
+    if (self.currentlist == 0) {
+        if (self.animelistarraycontroller.selectedObjects.count > 0) {
+            [self animeincrement];
+        }
+    }
+    else {
+        if (self.mangalistarraycontroller.selectedObjects.count > 0) {
+            [self mangaincrement];
+        }
+    }
+}
+
+- (void)animeincrement {
+    NSDictionary *d = self.animelistarraycontroller.selectedObjects[0];
+    int currentservice = [listservice getCurrentServiceID];
+    int titleid = -1;
+    switch (currentservice) {
+        case 1:
+            titleid = ((NSNumber *)d[@"id"]).intValue;
+            break;
+        case 2:
+        case 3: {
+            titleid = ((NSNumber *)d[@"entryid"]).intValue;
+            break;
+        }
+        default:
+            break;
+    }
+    
+    bool rewatching = ((NSNumber *)d[@"rewatching"]).boolValue;
+    NSString *airingstatus = d[@"status"];
+    bool selectedaircompleted;
+    bool selectedaired;
+    NSString *watchstatus = d[@"watched_status"];
+    int watchedepisodes = ((NSNumber *)d[@"watched_episodes"]).intValue+1;
+    int episodes = ((NSNumber *)d[@"episodes"]).intValue;
+    if ([airingstatus isEqualToString:@"finished airing"]) {
+        selectedaircompleted = true;
+    }
+    else {
+        selectedaircompleted = false;
+    }
+    if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]) {
+        selectedaired = true;
+    }
+    else {
+        selectedaired = false;
+    }
+    if (!selectedaired && (![watchstatus isEqual:@"plan to watch"] || watchedepisodes > 0)) {
+        // Invalid input, mark it as such
+        NSBeep();
+        return;
+    }
+    else if (selectedaired && [watchstatus isEqual:@"plan to watch"])  {
+        // Invalid input, mark it as such
+        watchstatus = @"watching";
+    }
+    if (watchedepisodes == episodes && episodes != 0 && selectedaircompleted && selectedaired) {
+        watchstatus = @"completed";
+        watchedepisodes = episodes;
+        rewatching = false;
+    }
+    else if (watchedepisodes > episodes && episodes > 0) {
+        NSBeep();
+        return;
+    }
+    NSDictionary * extraparameters = @{};
+    switch (currentservice) {
+        case 2:
+        case 3: {
+            extraparameters = @{@"reconsuming" : @(rewatching)};
+            break;
+        }
+        default:
+            break;
+    }
+    int score = ((NSNumber *)d[@"score"]).intValue;
+    
+    [listservice updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
+        [_mw loadlist:@(true) type:MALAnime];
+    }
+                                  error:^(NSError * error) {
+                                      NSLog(@"%@", error.localizedDescription);
+                                      NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+    }];
+}
+
+- (void)mangaincrement {
+    NSDictionary *d = self.mangalistarraycontroller.selectedObjects[0];
+    int currentservice = [listservice getCurrentServiceID];
+    int titleid = -1;
+    switch (currentservice) {
+        case 1:
+            titleid = ((NSNumber *)d[@"id"]).intValue;
+            break;
+        case 2:
+        case 3: {
+            titleid = ((NSNumber *)d[@"entryid"]).intValue;
+            break;
+        }
+        default:
+            break;
+    }
+    
+    bool rereading = ((NSNumber *)d[@"rereading"]).boolValue;
+    NSString *publishstatus = d[@"status"];
+    bool selectedfinished;
+    bool selectedpublished;
+    NSString *readstatus = d[@"read_status"];
+    int readchapters = ((NSNumber *)d[@"chapters_read"]).intValue+1;
+    int readvolumes = ((NSNumber *)d[@"volumes_read"]).intValue;
+    int chapters = ((NSNumber *)d[@"chapters"]).intValue;
+    int volumes = ((NSNumber *)d[@"volumes"]).intValue;
+    if ([publishstatus isEqualToString:@"finished"]) {
+        selectedfinished = true;
+    }
+    else {
+        selectedfinished = false;
+    }
+    if ([publishstatus isEqualToString:@"finished"]||[publishstatus isEqualToString:@"publishing"]) {
+        selectedpublished = true;
+    }
+    else {
+        selectedpublished = false;
+    }
+    if(!selectedpublished && (![readstatus isEqual:@"plan to read"] || readchapters > 0 || readvolumes > 0))  {
+        // Invalid input, mark it as such
+        NSBeep();
+        return;
+    }
+    else if (selectedpublished && [readstatus isEqual:@"plan to read"])  {
+        // Invalid input, mark it as such
+        readstatus = @"reading";
+    }
+    if (readchapters == chapters && chapters != 0 && selectedpublished && selectedfinished) {
+        readstatus = @"completed";
+        readchapters = chapters;
+        readvolumes = volumes;
+        rereading = false;
+    }
+    else if (readchapters > chapters && chapters > 0) {
+        NSBeep();
+        return;
+    }
+    NSDictionary * extraparameters = @{};
+    switch (currentservice) {
+        case 2:
+        case 3: {
+            extraparameters = @{@"reconsuming" : @(rereading)};
+            break;
+        }
+        default:
+            break;
+    }
+    int score = ((NSNumber *)d[@"score"]).intValue;
+    [listservice updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
+        [_mw loadlist:@(true) type:MALManga];
+    } error:^(NSError *error) {
+        NSLog(@"%@", error.localizedDescription);
+        NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+    }];
+}
 @end

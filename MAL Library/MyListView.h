@@ -17,6 +17,8 @@
 @property (strong) IBOutlet NSToolbarItem *deletetitleitem;
 @property (strong) IBOutlet NSToolbarItem *shareitem;
 @property (strong) IBOutlet NSToolbarItem *titleinfoitem;
+@property (strong) IBOutlet NSToolbarItem *incrementitem;
 
 - (IBAction)deletetitle:(id)sender;
+- (IBAction)increment:(id)sender;
 @end

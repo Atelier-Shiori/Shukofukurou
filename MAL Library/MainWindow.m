@@ -49,7 +49,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -523,11 +523,12 @@
         if ([listservice checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
             [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
-            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
-            [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:3];
-            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:4];
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:5];
-            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:6];
+            [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:4];
+            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:5];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:6];
+            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:7];
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
@@ -535,11 +536,12 @@
             if ([listservice checkAccountForCurrentService]) {
                 [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
                 [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
-                [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2];
-                [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:3];
-                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:4];
-                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:5];
-                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:6];
+                [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
+                [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
+                [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:4];
+                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:5];
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:6];
+                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:7];
             }
         }
     }

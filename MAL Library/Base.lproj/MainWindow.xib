@@ -622,6 +622,21 @@
                             </popUpButtonCell>
                         </popUpButton>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="3455E051-4879-408D-B4C7-BAE84BDC2DB8" explicitItemIdentifier="incrementprogress" label="Increment Progress" paletteLabel="Increment" toolTip="Increment Progress" image="increment" id="glC-Bg-6JC">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="lX4-6f-ogp">
+                            <rect key="frame" x="10" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="increment" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qGB-ik-aab">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="increment:" target="Xk3-JH-b4a" id="77C-fO-790"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -699,6 +714,7 @@
                 <outlet property="animelistfilter" destination="KKI-5U-zIm" id="5xL-g5-CGy"/>
                 <outlet property="deletetitleitem" destination="WJo-Ig-ng6" id="MNY-fm-VYU"/>
                 <outlet property="edittitleitem" destination="7Ap-pp-DuY" id="itg-Y5-qvz"/>
+                <outlet property="incrementitem" destination="glC-Bg-6JC" id="k11-Zh-JCx"/>
                 <outlet property="mw" destination="-2" id="S3J-3L-VdW"/>
                 <outlet property="shareitem" destination="pus-xr-wEI" id="VcF-Gi-jFy"/>
                 <outlet property="titleinfoitem" destination="oYq-IJ-WTb" id="Tfb-vg-I4h"/>
@@ -754,6 +770,7 @@
         <image name="advsearch" width="32" height="32"/>
         <image name="cast" width="32" height="32"/>
         <image name="delete" width="32" height="32"/>
+        <image name="increment" width="37.5" height="37.5"/>
         <image name="reviews" width="32" height="32"/>
         <image name="safari" width="32" height="32"/>
     </resources>

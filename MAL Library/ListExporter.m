@@ -11,8 +11,34 @@
 #import "Utility.h"
 #import "AppDelegate.h"
 #import "Keychain.h"
+#import "ExportProgressWindow.h"
+
+@interface ListExporter ()
+@property ExportProgressWindow *epw;
+@end
 
 @implementation ListExporter
+- (instancetype)init {
+    if (![super init]) {
+        return nil;
+    }
+    _epw = [ExportProgressWindow new];
+    __weak ListExporter *weakself = self;
+    _epw.completion = ^(NSDictionary *list, int listType) {
+        NSSavePanel * sp = [NSSavePanel savePanel];
+        sp.title = @"Export Converted List";
+        sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
+        sp.message = @"Where do you want to export your List?";
+        sp.nameFieldStringValue = listType == MALAnime ? @"animelist.xml" : @"mangalist.xml";
+        [sp beginWithCompletionHandler:^(NSInteger result) {
+            if (result == NSFileHandlingPanelCancelButton) {
+                return;
+            }
+            [weakself writeListXML:list withFileURL:sp.URL withType:listType];
+        }];
+    };
+    return self;
+}
 - (IBAction)exportAnimeList:(id)sender {
     // Export Anime List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
@@ -26,28 +52,11 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-            NSURL *url = sp.URL;
-            // Load List
-            NSError *error;
-            NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
-            NSDictionary *animelist = [Utility loadJSON:@"mal-animelist.json" appendpath:@""];
-            NSArray *list = animelist[@"anime"];
-            // Generate XML from Anime List
-            for (NSDictionary *d in list) {
-                [XMLArray addObject:@{@"series_animedb_id":d[@"id"], @"series_title":d[@"title"],@"series_type":d[@"type"], @"series_episodes":d[@"episodes"], @"my_watched_episodes":d[@"watched_episodes"], @"my_score":d[@"score"], @"my_status":d[@"watched_status"], @"my_tags":[d[@"personal_tags"] componentsJoinedByString:@","], @"update_on_import":@(0)}];
-            }
-            //Write XML to file
-            BOOL wresult = [[self generateAnimeListXML:XMLArray] writeToURL:url
-                                       atomically:YES
-                                         encoding:NSUTF8StringEncoding
-                                            error:&error];
-            if (! wresult) {
-                NSLog(@"Export Failed: %@", error);
-            }
+          [self writeListXML:[Utility loadJSON:@"mal-animelist.json" appendpath:@""] withFileURL:sp.URL withType:MALAnime];
         }];
     }
     else {
-        // USer not logged in, show login notice
+        // User not logged in, show login notice
         AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
         [delegate showloginnotice];
     }
@@ -66,33 +75,77 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-            NSURL *url = sp.URL;
-            // Load List
-            NSError *error;
-            NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
-            NSDictionary *animelist = [Utility loadJSON:@"mal-mangalist.json" appendpath:@""];
-            NSArray *list = animelist[@"manga"];
-            // Generate XML from Manga List
-            for (NSDictionary *d in list) {
-                [XMLArray addObject:@{@"manga_mangadb_id":d[@"id"], @"manga_title":d[@"title"], @"manga_volumes":d[@"volumes"], @"manga_chapters":d[@"chapters"], @"my_read_volumes":d[@"volumes_read"],@"my_read_chapters":d[@"chapters_read"], @"my_score":d[@"score"], @"my_status":d[@"read_status"], @"my_tags":[d[@"personal_tags"] componentsJoinedByString:@","], @"update_on_import":@(0)}];
-            }
-            //Write XML to file
-            BOOL wresult = [[self generateMangaListXML:XMLArray] writeToURL:url
-                                                                 atomically:YES
-                                                                   encoding:NSUTF8StringEncoding
-                                                                      error:&error];
-            if (! wresult) {
-                NSLog(@"Export Failed: %@", error);
-            }
+            [self writeListXML:[Utility loadJSON:@"mal-mangalist.json" appendpath:@""] withFileURL:sp.URL withType:MALManga];
         }];
     }
     else {
-        // USer not logged in, show login notice
+        // User not logged in, show login notice
         AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
         [delegate showloginnotice];
     }
 }
 
+- (IBAction)exportconvertedAnimeList:(id)sender {
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:0 withServiceID:[listservice getCurrentServiceID]] appendPath:@""]){
+        [_epw checklist:MALAnime];
+    }
+    else {
+        // User not logged in, show login notice
+        AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
+        [delegate showloginnotice];
+    }
+}
+
+- (IBAction)exportconvertedMangaList:(id)sender {
+    if ([Utility checkifFileExists:[listservice retrieveListFileName:1 withServiceID:[listservice getCurrentServiceID]] appendPath:@""]){
+        [_epw checklist:MALManga];
+    }
+    else {
+        // User not logged in, show login notice
+        AppDelegate *delegate = (AppDelegate *)[NSApplication sharedApplication].delegate;
+        [delegate showloginnotice];
+    }
+}
+
+- (void)writeListXML:(NSDictionary *)animelist withFileURL:(NSURL *)fileURL withType:(int)type {
+    NSURL *url = fileURL;
+    // Load List
+    NSError *error;
+    NSMutableArray *XMLArray = [[NSMutableArray alloc] init];
+    NSArray *list;
+    if (type == MALAnime) {
+        list = animelist[@"anime"];
+    }
+    else {
+        list = animelist[@"manga"];
+    }
+    // Generate XML from list
+    for (NSDictionary *d in list) {
+        if (type == MALAnime) {
+            [XMLArray addObject:@{@"series_animedb_id":d[@"id"], @"series_title":d[@"title"],@"series_type":d[@"type"], @"series_episodes":d[@"episodes"], @"my_watched_episodes":d[@"watched_episodes"], @"my_score":d[@"score"], @"my_status":d[@"watched_status"], @"my_tags":d[@"personal_tags"] ? [d[@"personal_tags"] componentsJoinedByString:@","] : @"", @"update_on_import":@(0)}];
+        }
+        else {
+            [XMLArray addObject:@{@"manga_mangadb_id":d[@"id"], @"manga_title":d[@"title"], @"manga_volumes":d[@"volumes"], @"manga_chapters":d[@"chapters"], @"my_read_volumes":d[@"volumes_read"],@"my_read_chapters":d[@"chapters_read"], @"my_score":d[@"score"], @"my_status":d[@"read_status"], @"my_tags":d[@"personal_tags"] ? [d[@"personal_tags"] componentsJoinedByString:@","] : @"", @"update_on_import":@(0)}];
+        }
+    }
+    //Write XML to file
+    BOOL wresult;
+    if (type == MALAnime) {
+        wresult = [[self generateAnimeListXML:XMLArray] writeToURL:url
+                                                         atomically:YES
+                                                           encoding:NSUTF8StringEncoding
+                                                              error:&error];
+    }
+    else {
+        wresult = [[self generateMangaListXML:XMLArray] writeToURL:url
+                                                             atomically:YES
+                                                               encoding:NSUTF8StringEncoding
+                                                                  error:&error];
+    }
+    if (! wresult) {
+        NSLog(@"Export Failed: %@", error);
+    }
+}
 - (NSString *)generateAnimeListXML:(NSArray *)a {
     NSString *headerstring = @"<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\n\t<!--\n\tCreated by Shukofukurou\n\tProgrammed by MAL Updater OS X Group Software (James Moy), a division of Moy IT Solutions \n\tNote that not all values are exposed by the API and not all fields will be exported.\n\t--> \n\n\t<myanimelist>";
     NSString *footerstring = @"\n\n\t</myanimelist>";
@@ -102,7 +155,17 @@
     NSMutableString *output = [NSMutableString new];
     [output appendString:headerstring];
     [output appendString:@"\n\n\t<myinfo>"];
-    [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+            [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
+            break;
+        case 2:
+        case 3:
+            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice getCurrentServiceUsername]];
+            break;
+        default:
+            break;
+    }
     [output appendFormat:@"%@<user_export_type>1</user_export_type>",tabformatting];
     [output appendString:@"\n\t</myinfo>"];
     for (NSDictionary *d in a) {
@@ -131,7 +194,17 @@
     NSMutableString *output = [NSMutableString new];
     [output appendString:headerstring];
     [output appendString:@"\n\n\t<myinfo>"];
-    [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+            [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
+            break;
+        case 2:
+        case 3:
+            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice getCurrentServiceUsername]];
+            break;
+        default:
+            break;
+    }
     [output appendFormat:@"%@<user_export_type>2</user_export_type>",tabformatting];
     [output appendString:@"\n\t</myinfo>"];
     for (NSDictionary *d in a) {

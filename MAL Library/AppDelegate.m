@@ -35,6 +35,7 @@
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
 @property (strong) IBOutlet NSMenuItem *malexportmenu;
+@property (strong) IBOutlet NSMenuItem *convertexportmenu;
 #if defined(AppStore)
 #if defined(OSS)
 #else
@@ -399,10 +400,12 @@
         }
         _messagesmenuitem.hidden = true;
         _malexportmenu.hidden = true;
+        _convertexportmenu.hidden = false;
     }
     else {
         _messagesmenuitem.hidden = false;
         _malexportmenu.hidden = false;
+        _convertexportmenu.hidden = true;
     }
     switch (selected) {
         case 1:

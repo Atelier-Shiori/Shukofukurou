@@ -254,6 +254,12 @@
 		91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
 		91DAFC641EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
 		91DAFC651EAE6FA20037A6F2 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		91F71F0B20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
+		91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
+		91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
+		91F71F0E20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */; };
+		91F71F0F20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */; };
+		91F71F1020C7150A00FD5817 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */; };
 		F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */; };
 		F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
@@ -746,6 +752,9 @@
 		91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageswindow.m; sourceTree = "<group>"; };
 		91DAFC611EAE6FA20037A6F2 /* messageview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = messageview.h; sourceTree = "<group>"; };
 		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
+		91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportProgressWindow.h; sourceTree = "<group>"; };
+		91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportProgressWindow.m; sourceTree = "<group>"; };
+		91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportProgressWindow.xib; sourceTree = "<group>"; };
 		F838AE6C2087CF9A0063B63E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationLicenseManager.xib; sourceTree = "<group>"; };
 		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
 		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
@@ -1171,6 +1180,9 @@
 				2D4C22161FA7B1ED00539245 /* XIB */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */,
+				91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */,
+				91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1465,6 +1477,7 @@
 				91B378B31E989C7C000061E6 /* AiringView.xib in Resources */,
 				2D8BF8B41EC4EED30068856A /* ListImport.xib in Resources */,
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
+				91F71F0F20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
 				910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
@@ -1512,6 +1525,7 @@
 				2D371E7F1ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
+				91F71F0E20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
 				2D4E010B1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
@@ -1575,6 +1589,7 @@
 				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
 				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
+				91F71F1020C7150A00FD5817 /* ExportProgressWindow.xib in Resources */,
 				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
 				F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */,
 				F888F482208FB1F500C22C39 /* ProfileViewController.xib in Resources */,
@@ -1731,6 +1746,7 @@
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
 				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
+				91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1818,6 +1834,7 @@
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
 				91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 				2DAB19E51EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
+				91F71F0B20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1878,6 +1895,7 @@
 				F888F434208FB1F500C22C39 /* ReviewView.m in Sources */,
 				F888F435208FB1F500C22C39 /* NSString_stripHtml.m in Sources */,
 				F888F436208FB1F500C22C39 /* ProfileWindowController.m in Sources */,
+				91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 				F888F437208FB1F500C22C39 /* siteimage.m in Sources */,
 				F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */,
 				F888F439208FB1F500C22C39 /* ratingchartview.m in Sources */,

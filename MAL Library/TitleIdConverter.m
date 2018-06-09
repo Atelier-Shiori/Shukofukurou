@@ -115,14 +115,15 @@ static BOOL importing;
         }
         if (lookingupid) {
             lookingupid = false;
-            [self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
+            /*[self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
                 [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
                 completionHandler(malid);
                 lookingupid = false;
             } error:^(NSError *error) {
                 errorHandler(error);
                 lookingupid = false;
-            }];
+            }];*/
+            errorHandler(nil);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);

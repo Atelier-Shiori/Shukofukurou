@@ -411,6 +411,30 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="Export Converted Lists" hidden="YES" id="cxh-a0-EgH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Export Converted Lists" id="Bgb-YL-NAJ">
+                                    <items>
+                                        <menuItem title="Export Converted Anime List…" id="V6f-RR-uaw">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportconvertedAnimeList:" target="Qdg-2P-lTs" id="Gxm-rM-D1n"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export Converted Manga List…" id="S7r-ih-1XE">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportconvertedMangaList:" target="Qdg-2P-lTs" id="YTZ-cu-32O"/>
+                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="b3G-W6-GTt">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="Export List" id="6yC-xo-9wk">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Export List" id="pA4-hy-YwK">

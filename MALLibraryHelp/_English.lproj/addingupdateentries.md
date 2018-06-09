@@ -16,3 +16,6 @@ Choosing to do an Advanced Edit allows you to modify more options, like setting 
 ## Adding titles
 
 By clicking the + button, you can add a title. You can add titles from search view, season browser and airing browser as long the title doesn't exist on your list. Like with updating existing entries, a popover will appear when you add new titles to your list. To modify other fields such as private state, start/end dates, tags, etc., add the title to your list first.
+
+## Increment
+The Increment toolbar button in Anime or Manga list allows you to quicky increment the episodes you watched for anime and chapters you read for Manga by one. Once the Episode or Chapters reach the total numbers of episodes or chapters (if the value is greater than zero), it will be marked as complete. If you increment a planned to watch/read entry, its status will be changed to watching/reading.

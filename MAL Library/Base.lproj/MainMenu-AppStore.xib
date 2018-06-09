@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="convertexportmenu" destination="HLq-mJ-4Y3" id="Koe-pe-QkC"/>
                 <outlet property="importanilist" destination="6SO-xG-9tj" id="cjm-vW-Xfc"/>
                 <outlet property="importkitsumenu" destination="DZO-y4-ZC1" id="tYc-Io-ccR"/>
                 <outlet property="malexportmenu" destination="Qx7-os-8ZY" id="Bxk-7K-42V"/>
@@ -397,6 +398,30 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="importAnilist:" target="mhI-ho-EeA" id="g9j-Iu-nP8"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Export Converted Lists" hidden="YES" id="HLq-mJ-4Y3">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Export Converted Lists" id="4rf-I1-gDy">
+                                    <items>
+                                        <menuItem title="Export Converted Anime List…" id="lmW-2v-xTc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportconvertedAnimeList:" target="O22-er-S4a" id="pBr-pK-FyG"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export Converted Manga List…" id="aTK-y3-79T">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportconvertedMangaList:" target="O22-er-S4a" id="5jp-cW-egd"/>
+                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="TRi-BQ-djn">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
                                             </connections>
                                         </menuItem>
                                     </items>

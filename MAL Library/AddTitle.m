@@ -9,12 +9,14 @@
 #import "AddTitle.h"
 #import "AniListScoreConvert.h"
 #import "MainWindow.h"
-//#import "MyAnimeList.h"
+#import "MyListView.h"
 #import "listservice.h"
 #import "Utility.h"
 
 @interface AddTitle ()
 @property (strong) IBOutlet NSView *popoveraddtitleexistsview;
+@property (strong) MyListView *mlv;
+
 // Anime
 @property (strong) IBOutlet NSView *addtitleview;
 @property (strong) IBOutlet NSTextField *addepifield;
@@ -57,6 +59,7 @@
     [super viewDidLoad];
     // Do view setup here.
     [self.view addSubview:[NSView new]];
+    _mlv = _mw.listview;
 }
 
 - (void)showAddPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type {
@@ -228,6 +231,7 @@
                 }
             }
         }
+        [_mlv setUpdatingState:true];
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [listservice addAnimeTitleToList:_selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:score completion:^(id responseObject) {
             [_mw loadlist:@(true) type:0];
@@ -237,6 +241,7 @@
             [_addpopover close];
             [_animeprogresswheel stopAnimation:self];
             _animeprogresswheel.hidden = true;
+            [_mlv setUpdatingState:false];
         }error:^(NSError * error) {
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
@@ -245,6 +250,7 @@
             [_addfield setEnabled:true];
             [_animeprogresswheel stopAnimation:self];
             _animeprogresswheel.hidden = true;
+            [_mlv setUpdatingState:false];
         }];
     }
     else {
@@ -287,6 +293,7 @@
                 }
             }
         }
+        [_mlv setUpdatingState:true];
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
         [listservice addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:score completion:^(id responseData) {
             [_mw loadlist:@(true) type:1];
@@ -296,6 +303,7 @@
             [_addpopover close];
             _mangaprogresswheel.hidden = true;
             [_mangaprogresswheel stopAnimation:self];
+            [_mlv setUpdatingState:false];
         }error:^(NSError * error) {
             NSLog(@"%@",error);
             NSData *errordata = error.userInfo [@"com.alamofire.serialization.response.error.data" ];
@@ -304,7 +312,7 @@
             [_addmangabtn setEnabled:true];
             _mangaprogresswheel.hidden = true;
             [_mangaprogresswheel stopAnimation:self];
-
+            [_mlv setUpdatingState:false];
         }];
     }
 }

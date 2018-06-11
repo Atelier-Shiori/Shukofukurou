@@ -21,4 +21,5 @@
 
 - (IBAction)deletetitle:(id)sender;
 - (IBAction)increment:(id)sender;
+- (void)setUpdatingState:(bool)updating;
 @end

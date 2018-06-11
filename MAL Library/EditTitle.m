@@ -10,6 +10,7 @@
 #import "EditTitle.h"
 #import "NSTextFieldNumber.h"
 #import "MainWindow.h"
+#import "MyListView.h"
 #import "listservice.h"
 @interface EditTitle ()
 
@@ -22,6 +23,7 @@
 @property (strong) IBOutlet NSView *segmentview;
 @property (strong) IBOutlet NSTextField *advancedscorefield;
 @property (strong) IBOutlet NSNumberFormatter *advancedscoreformat;
+@property (strong) MyListView *mlv;
 
 // Anime
 @property (strong) IBOutlet NSView *animeeditview;
@@ -54,8 +56,10 @@
     [super viewDidLoad];
     // Do view setup here.
     [_segmentview addSubview:_animeeditview];
+    _mlv= _mw.listview;
     [self view];
 }
+
 
 - (void)showEditPopover:(NSDictionary *)d showRelativeToRec:(NSRect)rect ofView:(NSView *)view preferredEdge:(NSRectEdge)rectedge type:(int)type{
     _selecteditem = d;
@@ -229,6 +233,7 @@
             break;
         }
     }
+    [_mlv setUpdatingState:true];
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
     [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
@@ -237,6 +242,7 @@
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
         [_minipopoverindicator stopAnimation:nil];
+        [_mlv setUpdatingState:false];
         [_minieditpopover close];
         [self cleanup];
     }
@@ -244,6 +250,7 @@
      [self disableeditbuttons:true];
      _minieditpopover.behavior = NSPopoverBehaviorTransient;
       _minipopoverindicator.hidden = true;
+      [_mlv setUpdatingState:false];
       [_minipopoverindicator stopAnimation:nil];
       NSLog(@"%@", error.localizedDescription);
       NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
@@ -307,6 +314,7 @@
             break;
         }
     }
+    [_mlv setUpdatingState:true];
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
     [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
@@ -316,12 +324,14 @@
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
         [_minipopoverindicator stopAnimation:nil];
+        [_mlv setUpdatingState:false];
         [_minieditpopover close];
         [self cleanup];
     }error:^(NSError * error) {
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
+        [_mlv setUpdatingState:false];
         [_minipopoverindicator stopAnimation:nil];
         NSLog(@"%@", error.localizedDescription);
         NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);

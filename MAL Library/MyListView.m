@@ -11,7 +11,7 @@
 #import "EditTitle.h"
 
 @interface MyListView ()
-
+@property bool updating;
 @end
 
 @implementation MyListView
@@ -176,11 +176,14 @@
         }
     }
     _deletetitleitem.enabled = NO;
+    [self setUpdatingState:true];
     [listservice removeTitleFromList:selid.intValue withType:self.currentlist completion:^(id responseobject) {
         [_mw loadlist:@(true) type:self.currentlist];
+        [self setUpdatingState:false];
     }error:^(NSError *error) {
         NSLog(@"%@",error);
         _deletetitleitem.enabled = YES;
+        [self setUpdatingState:false];
     }];
 }
 
@@ -223,7 +226,7 @@
 
 - (void)setToolbarButtonState{
     if (self.currentlist == 0) {
-        if (self.animelistarraycontroller.selectedObjects.count > 0) {
+        if (self.animelistarraycontroller.selectedObjects.count > 0 && !_updating) {
             _edittitleitem.enabled = YES;
             _deletetitleitem.enabled = YES;
             _shareitem.enabled = YES;
@@ -239,7 +242,7 @@
         }
     }
     else {
-        if (self.mangalistarraycontroller.selectedObjects.count > 0) {
+        if (self.mangalistarraycontroller.selectedObjects.count > 0 && !_updating) {
             _edittitleitem.enabled = YES;
             _deletetitleitem.enabled = YES;
             _shareitem.enabled = YES;
@@ -334,11 +337,13 @@
             break;
     }
     int score = ((NSNumber *)d[@"score"]).intValue;
-    
+    [self setUpdatingState:true];
     [listservice updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
         [_mw loadlist:@(true) type:MALAnime];
+        [self setUpdatingState:false];
     }
                                   error:^(NSError * error) {
+                                      [self setUpdatingState:false];
                                       NSLog(@"%@", error.localizedDescription);
                                       NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
     }];
@@ -412,11 +417,18 @@
             break;
     }
     int score = ((NSNumber *)d[@"score"]).intValue;
+    [self setUpdatingState:true];
     [listservice updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
         [_mw loadlist:@(true) type:MALManga];
+        [self setUpdatingState:false];
     } error:^(NSError *error) {
+        [self setUpdatingState:false];
         NSLog(@"%@", error.localizedDescription);
         NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
     }];
+}
+- (void)setUpdatingState:(bool)updating {
+    _updating = updating;
+    [self setToolbarButtonState];
 }
 @end

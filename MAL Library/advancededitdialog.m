@@ -11,10 +11,11 @@
 #import "listservice.h"
 #import "AppDelegate.h"
 #import "MainWindow.h"
+#import "MyListView.h"
 
 @interface advancededitdialog ()
 @property (strong) IBOutlet NSView *editview;
-
+@property (strong) MyListView *mlv;
 @end
 
 @implementation advancededitdialog
@@ -28,6 +29,7 @@
 - (void)awakeFromNib {
     [_segmentfield addSubview:[NSView new]];
     [_listservicefields addSubview:[NSView new]];
+    _mlv = [self mw].listview;
 }
 
 - (void)windowDidLoad {
@@ -217,16 +219,19 @@
             break;
         }
     }
+    [_mlv setUpdatingState:true];
     [_progressindicator startAnimation:nil];
     [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
+        [_mlv setUpdatingState:false];
         [self updateissuccessful];
         _selecteditem = nil;
     }
                                   error:^(NSError * error) {
                                       [self disableeditbuttons:true];
+                                      [_mlv setUpdatingState:false];
                                       _progressindicator.hidden = true;
                                       [_progressindicator stopAnimation:nil];
                                       NSLog(@"%@", error.localizedDescription);
@@ -282,17 +287,20 @@
             break;
         }
     }
+    [_mlv setUpdatingState:true];
     [_progressindicator startAnimation:nil];
     [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
+        [_mlv setUpdatingState:false];
         [self updateissuccessful];
         _selecteditem = nil;
     }error:^(NSError * error) {
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
+        [_mlv setUpdatingState:false];
         NSLog(@"%@", error.localizedDescription);
         NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
         //_mangapopoverstatustext.stringValue = @"Error";

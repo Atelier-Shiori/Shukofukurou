@@ -122,7 +122,7 @@
     // Generate XML from list
     for (NSDictionary *d in list) {
         if (type == MALAnime) {
-            [XMLArray addObject:@{@"series_animedb_id":d[@"id"], @"series_title":d[@"title"],@"series_type":d[@"type"], @"series_episodes":d[@"episodes"], @"my_watched_episodes":d[@"watched_episodes"], @"my_score":d[@"score"], @"my_status":d[@"watched_status"], @"my_tags":d[@"personal_tags"] ? [d[@"personal_tags"] componentsJoinedByString:@","] : @"", @"update_on_import":@(0)}];
+            [XMLArray addObject:@{@"series_animedb_id":d[@"id"], @"series_title":d[@"title"],@"series_type":d[@"type"], @"series_episodes":d[@"episodes"], @"my_watched_episodes":d[@"watched_episodes"], @"my_score":d[@"score"], @"my_status":d[@"watched_status"], @"my_tags":d[@"personal_tags"] ? [d[@"personal_tags"] componentsJoinedByString:@","] : @"", @"update_on_import":@(0), @"my_start_date" : d[@"watching_start"] && ((NSString *)d[@"watching_start"]).length > 0 ? d[@"watching_start"] : @"0000-00-00",  @"my_finish_date" : d[@"watching_end"] && ((NSString *)d[@"watching_end"]).length > 0 ? d[@"watching_end"] : @"0000-00-00", @"my_comments" : d[@"personal_comments"] && d[@"personal_comments"] != [NSNull null] ? d[@"personal_comments"] : @"", @"my_times_rewatched" : d[@"rewatch_count"] ? d[@"rewatch_count"]  : @(0), @"my_rewatching" : d[@"rewatching"]}];
         }
         else {
             [XMLArray addObject:@{@"manga_mangadb_id":d[@"id"], @"manga_title":d[@"title"], @"manga_volumes":d[@"volumes"], @"manga_chapters":d[@"chapters"], @"my_read_volumes":d[@"volumes_read"],@"my_read_chapters":d[@"chapters_read"], @"my_score":d[@"score"], @"my_status":d[@"read_status"], @"my_tags":d[@"personal_tags"] ? [d[@"personal_tags"] componentsJoinedByString:@","] : @"", @"update_on_import":@(0)}];
@@ -174,10 +174,21 @@
         [output appendFormat:@"%@<series_title><![CDATA[%@]]></series_title>",tabformatting,d[@"series_title"]];
         [output appendFormat:@"%@<series_type>%@</series_type>",tabformatting,d[@"series_type"]];
         [output appendFormat:@"%@<series_episodes>%@</series_episodes>",tabformatting,d[@"series_episodes"]];
+        [output appendFormat:@"%@<my_id></my_id>",tabformatting];
         [output appendFormat:@"%@<my_watched_episodes>%@</my_watched_episodes>",tabformatting,d[@"my_watched_episodes"]];
+        [output appendFormat:@"%@<my_start_date>%@</my_start_date>", tabformatting, d[@"my_start_date"]];
+        [output appendFormat:@"%@<my_finish_date>%@</my_finish_date>", tabformatting, d[@"my_finish_date"]];
+        [output appendFormat:@"%@<my_rated></my_rated>",tabformatting];
         [output appendFormat:@"%@<my_score>%@</my_score>",tabformatting,d[@"my_score"]];
+        [output appendFormat:@"%@<my_dvd></my_dvd>", tabformatting];
+        [output appendFormat:@"%@<my_storage></my_storage>", tabformatting];
         [output appendFormat:@"%@<my_status>%@</my_status>",tabformatting,d[@"my_status"]];
+        [output appendFormat:@"%@<my_comments><![CDATA[%@]]></my_comments>",tabformatting, d[@"my_comments"]];
+        [output appendFormat:@"%@<my_times_watched>%i</my_times_watched>",tabformatting, ((NSNumber *)d[@"my_comments"]).intValue];
+        [output appendFormat:@"%@<my_rewatch_value></my_rewatch_value>",tabformatting];
         [output appendFormat:@"%@<my_tags><![CDATA[%@]]></my_tags>",tabformatting,d[@"my_tags"]];
+        [output appendFormat:@"%@<my_rewatching>%i</my_rewatching>",tabformatting,((NSNumber *)d[@"my_rewatching"]).intValue];
+        [output appendFormat:@"%@<my_rewatching_ep>0</my_rewatching_ep>", tabformatting];
         [output appendFormat:@"%@<update_on_import>%@</update_on_import>",tabformatting,d[@"update_on_import"]];
         [output appendString:animeendtag];
     }

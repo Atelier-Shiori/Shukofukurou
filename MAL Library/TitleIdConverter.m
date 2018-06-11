@@ -40,6 +40,9 @@ static BOOL importing;
         default:
             break;
     }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
+    }
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/mappings?filter[externalSite]=myanimelist/%@&filter[external_id]=%i",typestr, malid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (((NSArray *)responseObject[@"data"]).count > 0) {
             NSDictionary *mapping = responseObject[@"data"][0];
@@ -102,6 +105,9 @@ static BOOL importing;
         default:
             break;
     }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
+    }
     NSString *filterstr = [NSString stringWithFormat:@"myanimelist/%@", typestr];
     [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/%i?include=mappings&fields[anime]=id",typestr ,kitsuid] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         for (NSDictionary *map in responseObject[@"included"]) {
@@ -152,6 +158,9 @@ static BOOL importing;
         default:
             break;
     }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
+    }
     NSDictionary *parameters = @{@"query": @"query ($id: Int!, $type: MediaType) {\n  Media(id: $id, type: $type) {\n    id\n    idMal\n  }\n}", @"variables" : @{@"id":@(titleid), @"type" : typestr}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             [self savetitleidtomapping:titleid withNewID:((NSNumber *)responseObject[@"data"][@"Media"][@"idMal"]).intValue withType:type fromService:3 toService:1];
@@ -194,6 +203,9 @@ static BOOL importing;
         default:
             break;
     }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
+    }
     NSDictionary *parameters = @{@"query": @"query ($id: Int!, $type: MediaType) {\n  Media(idMal: $id, type: $type) {\n    id\n    idMal\n  }\n}", @"variables" : @{@"id":@(titleid), @"type" : typestr}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self savetitleidtomapping:titleid withNewID:((NSNumber *)responseObject[@"data"][@"Media"][@"id"]).intValue withType:type fromService:1 toService:3];
@@ -213,6 +225,9 @@ static BOOL importing;
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
+    }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
     }
     lookingupid = false;
     [self getMALIDFromKitsuId:titleid withTitle:title titletype:titletype  withType:type completionHandler:^(int malid) {
@@ -243,6 +258,9 @@ static BOOL importing;
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
+    }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
     }
     lookingupid = false;
     [self getMALIDFromAniListID:titleid withTitle:titletype titletype:titletype withType:type completionHandler:^(int malid) {
@@ -282,6 +300,9 @@ static BOOL importing;
         completionHandler(tmpid);
         return;
     }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
+    }
     lookingupid = true;
     [self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
         if (malid > 0) {
@@ -306,6 +327,9 @@ static BOOL importing;
     if (tmpid > 0) {
         completionHandler(tmpid);
         return;
+    }
+    if (importing) {
+        [NSThread sleepForTimeInterval:0.5f];
     }
     lookingupid = true;
     [listservice searchTitle:title withType:MALAnime completion:^(id responseObject) {

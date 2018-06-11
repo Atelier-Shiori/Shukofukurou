@@ -26,6 +26,7 @@
 @property (strong) IBOutlet NSArrayController *faillistcontroller;
 @property (strong) IBOutlet NSTableView *tb;
 @property (strong) IBOutlet NSTextField *progresslabel;
+@property dispatch_queue_t queue;
 @end
 
 @implementation ExportProgressWindow
@@ -43,6 +44,7 @@
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     AppDelegate *del = NSApplication.sharedApplication.delegate;
     _mw = [del getMainWindowController];
+    _queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
 }
 
 - (void)checklist:(int)type {
@@ -64,29 +66,35 @@
     [TitleIdConverter setImportStatus:true];
     
     // Start Conversion
-    [self performentryconversion];
+    dispatch_async(_queue, ^{
+        [self performentryconversion];
+    });
 }
 
 - (void)performentryconversion {
     // Update UI
     if (_position == (int)_origlist.count) {
-        // Finish callback.
-        [NSApp endSheet:self.window returnCode:0];
-        [self.window close];
-        if (((NSArray *)_faillistcontroller.arrangedObjects).count > 0) {
-            [_tb reloadData];
-            [NSApp beginSheet:_failwindow
-               modalForWindow:_mw.window modalDelegate:self
-               didEndSelector:nil
-                  contextInfo:nil];
-        }
-        else {
-            [self performcompletion];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Finish callback.
+            [NSApp endSheet:self.window returnCode:0];
+            [self.window close];
+            if (((NSArray *)_faillistcontroller.arrangedObjects).count > 0) {
+                [_tb reloadData];
+                [NSApp beginSheet:_failwindow
+                   modalForWindow:_mw.window modalDelegate:self
+                   didEndSelector:nil
+                      contextInfo:nil];
+            }
+            else {
+                [self performcompletion];
+            }
+        });
         return;
     }
-    _progress.doubleValue = _position;
-    _progresslabel.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progress.doubleValue/_progress.maxValue*100)];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _progress.doubleValue = _position;
+        _progresslabel.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progress.doubleValue/_progress.maxValue*100)];
+        });
     // Convert entries and ids to MyAnimeList format
     _currententry = [[NSMutableDictionary alloc] initWithDictionary:_origlist[_position]];
     switch ([listservice getCurrentServiceID]) {
@@ -112,7 +120,6 @@
     } error:^(NSError *error) {
         [_faillistcontroller addObject:_currententry.copy];
         _position++;
-        sleep(1);
         [self performentryconversion];
     }];
 }

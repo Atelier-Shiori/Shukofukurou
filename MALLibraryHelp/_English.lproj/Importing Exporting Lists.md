@@ -55,4 +55,12 @@ Note: To overwrite entries, check "Replace existing entries"
 6. Click import to start the import. If there is any titles that couldn't be imported, it will show a list.
 
 ## Export
+You can export lists for backup or use on other services.
+
+### MyAnimeList XML Export (MyAnimeList only)
 You can export your list to MyAnimeList XML compatible format. Note that some information that is not exposed by the API **will not** exported. However, your progress, status, personal tags and scores will be exported.
+
+### Export Converted Lists
+You can export converted MyAnimeList XML Anime or Manga lists from AniList or Kitsu with this option. Note that not all titles will be exported if the title does not exist on MyAnimeList.
+
+Note that scores will be converted to a 1-10 scale and privacy settings will not apply.

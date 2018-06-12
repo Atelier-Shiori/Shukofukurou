@@ -257,9 +257,6 @@
 		91F71F0B20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
 		91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
 		91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
-		91F71F0E20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */; };
-		91F71F0F20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */; };
-		91F71F1020C7150A00FD5817 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */; };
 		F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */; };
 		F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
@@ -274,6 +271,9 @@
 		F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
 		F87EF5612098D22E000AD86E /* ShukofukurouTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F87EF5602098D22E000AD86E /* ShukofukurouTests.m */; };
+		F8813A5820CF159400D974A1 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8813A5C20CF159400D974A1 /* ExportProgressWindow.xib */; };
+		F8813A5920CF159400D974A1 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8813A5C20CF159400D974A1 /* ExportProgressWindow.xib */; };
+		F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8813A5C20CF159400D974A1 /* ExportProgressWindow.xib */; };
 		F888F404208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
 		F888F405208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
 		F888F40A208FB1F500C22C39 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
@@ -754,7 +754,6 @@
 		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
 		91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportProgressWindow.h; sourceTree = "<group>"; };
 		91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportProgressWindow.m; sourceTree = "<group>"; };
-		91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExportProgressWindow.xib; sourceTree = "<group>"; };
 		F838AE6C2087CF9A0063B63E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationLicenseManager.xib; sourceTree = "<group>"; };
 		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
 		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
@@ -773,6 +772,7 @@
 		F87EF55E2098D22E000AD86E /* ShukofukurouTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShukofukurouTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F87EF5602098D22E000AD86E /* ShukofukurouTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShukofukurouTests.m; sourceTree = "<group>"; };
 		F87EF5622098D22E000AD86E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8813A5B20CF159400D974A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ExportProgressWindow.xib; sourceTree = "<group>"; };
 		F888F402208F889D00C22C39 /* AuthWebView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuthWebView.h; sourceTree = "<group>"; };
 		F888F403208F889D00C22C39 /* AuthWebView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuthWebView.m; sourceTree = "<group>"; wrapsLines = 0; };
 		F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -891,6 +891,9 @@
 		2D4C22161FA7B1ED00539245 /* XIB */ = {
 			isa = PBXGroup;
 			children = (
+				9169BC472062C3F700C534B8 /* advancededitdialog.xib */,
+				F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */,
+				F8813A5C20CF159400D974A1 /* ExportProgressWindow.xib */,
 				915E8C4D1E8C235D005A49A4 /* AddTitle.xib */,
 				910589F21E981E2400501B9A /* AdvancedPref.xib */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
@@ -1022,7 +1025,6 @@
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
 				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
 				F8F9E0302061920E0083912B /* advancededitdialog.m */,
-				9169BC472062C3F700C534B8 /* advancededitdialog.xib */,
 				910589E81E981E1A00501B9A /* AdvancedPref.h */,
 				910589E91E981E1A00501B9A /* AdvancedPref.m */,
 				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
@@ -1035,7 +1037,6 @@
 				F8A85911207023E40026EC0A /* AniList.m */,
 				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
 				F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */,
-				F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */,
 				F88CD0F92072BC330093C478 /* AniListConstants.h */,
 				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
 				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
@@ -1182,7 +1183,6 @@
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 				91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */,
 				91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */,
-				91F71F0A20C7150A00FD5817 /* ExportProgressWindow.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1477,7 +1477,7 @@
 				91B378B31E989C7C000061E6 /* AiringView.xib in Resources */,
 				2D8BF8B41EC4EED30068856A /* ListImport.xib in Resources */,
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
-				91F71F0F20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */,
+				F8813A5920CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
 				910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
@@ -1525,7 +1525,7 @@
 				2D371E7F1ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
-				91F71F0E20C7150A00FD5817 /* ExportProgressWindow.xib in Resources */,
+				F8813A5820CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
 				2D4E010B1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
@@ -1589,7 +1589,7 @@
 				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
 				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
-				91F71F1020C7150A00FD5817 /* ExportProgressWindow.xib in Resources */,
+				F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
 				F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */,
 				F888F482208FB1F500C22C39 /* ProfileViewController.xib in Resources */,
@@ -2250,6 +2250,14 @@
 				F84BB9FE2074128B0056F5B0 /* Base */,
 			);
 			name = AniListAuthWindow.xib;
+			sourceTree = "<group>";
+		};
+		F8813A5C20CF159400D974A1 /* ExportProgressWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F8813A5B20CF159400D974A1 /* Base */,
+			);
+			name = ExportProgressWindow.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

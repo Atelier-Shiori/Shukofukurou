@@ -26,6 +26,7 @@
 @property (strong) IBOutlet NSArrayController *faillistcontroller;
 @property (strong) IBOutlet NSTableView *tb;
 @property (strong) IBOutlet NSTextField *progresslabel;
+@property bool ready;
 @property dispatch_queue_t queue;
 @end
 
@@ -62,18 +63,39 @@
     _progress.doubleValue = _position;
     _progress.maxValue = _origlist.count;
     _type = type;
+    _ready = true;
     
     [TitleIdConverter setImportStatus:true];
     
     // Start Conversion
-    dispatch_async(_queue, ^{
-        [self performentryconversion];
-    });
+    [self performentryconversion];
 }
 
 - (void)performentryconversion {
     // Update UI
-    if (_position == (int)_origlist.count) {
+    dispatch_async(_queue, ^{
+        while (_position <= (int)_origlist.count-1) {
+            if (_ready) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    _progress.doubleValue = _position;
+                    _progresslabel.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progress.doubleValue/_progress.maxValue*100)];
+                    });
+                // Convert entries and ids to MyAnimeList format
+                _currententry = [[NSMutableDictionary alloc] initWithDictionary:_origlist[_position]];
+                _ready = false;
+                switch ([listservice getCurrentServiceID]) {
+                    case 2:
+                        [self convertKitsuEntrytoMAL];
+                        break;
+                    case 3:
+                        [self convertAniListEntrytoMAL];
+                        break;
+                    default:
+                        break;
+                }
+                _position++;
+            }
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             // Finish callback.
             [NSApp endSheet:self.window returnCode:0];
@@ -89,24 +111,8 @@
                 [self performcompletion];
             }
         });
-        return;
-    }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        _progress.doubleValue = _position;
-        _progresslabel.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progress.doubleValue/_progress.maxValue*100)];
-        });
-    // Convert entries and ids to MyAnimeList format
-    _currententry = [[NSMutableDictionary alloc] initWithDictionary:_origlist[_position]];
-    switch ([listservice getCurrentServiceID]) {
-        case 2:
-            [self convertKitsuEntrytoMAL];
-            break;
-        case 3:
-            [self convertAniListEntrytoMAL];
-            break;
-        default:
-            break;
-    }
+    });
+    
 }
 - (void)convertKitsuEntrytoMAL {
     // Converts Kitsu entries to MyAnimeList
@@ -115,12 +121,10 @@
         _currententry[@"id"] = @(malid);
         _currententry[@"score"] = @([RatingTwentyConvert translateKitsuTwentyScoreToMAL:((NSNumber *)_currententry[@"score"]).intValue]);
         [_tmplist addObject:_currententry.copy];
-        _position++;
-        [self performentryconversion];
+        _ready = true;
     } error:^(NSError *error) {
         [_faillistcontroller addObject:_currententry.copy];
-        _position++;
-        [self performentryconversion];
+        _ready = true;
     }];
 }
 
@@ -131,12 +135,10 @@
         _currententry[@"id"] = @(malid);
         _currententry[@"score"] = @((((NSNumber *)_currententry[@"score"]).intValue)/10);
         [_tmplist addObject:_currententry.copy];
-        _position++;
-        [self performentryconversion];
+        _ready = true;
     } error:^(NSError *error) {
         [_faillistcontroller addObject:_currententry.copy];
-        _position++;
-        [self performentryconversion];
+        _ready = true;
     }];
 }
 

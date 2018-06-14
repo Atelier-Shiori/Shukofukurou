@@ -116,21 +116,11 @@ static BOOL importing;
                 [self savetitleidtomapping:kitsuid withNewID:malid.intValue withType:type fromService:2 toService:1];
                 completionHandler(malid.intValue);
                 lookingupid = false;
-                break;
+                return;
             }
         }
-        if (lookingupid) {
-            lookingupid = false;
-            /*[self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
-                [self savetitleidtomapping:kitsuid withNewID:malid withType:type fromService:2 toService:1];
-                completionHandler(malid);
-                lookingupid = false;
-            } error:^(NSError *error) {
-                errorHandler(error);
-                lookingupid = false;
-            }];*/
-            errorHandler(nil);
-        }
+        lookingupid = false;
+        errorHandler(nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
         lookingupid = false;
@@ -167,19 +157,8 @@ static BOOL importing;
             completionHandler(((NSNumber *)responseObject[@"data"][@"Media"][@"idMal"]).intValue);
             lookingupid = false;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
-            if (malid > 0) {
-                [self savetitleidtomapping:titleid withNewID:malid withType:MALAnime fromService:3 toService:1];
-                completionHandler(malid);
-            }
-            else {
-                errorHandler(nil);
-            }
             lookingupid = false;
-        } error:^(NSError *error) {
             errorHandler(error);
-            lookingupid = false;
-        }];
     }];
 }
 + (void)getAniIDFromMALListID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int anilistid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -234,20 +213,8 @@ static BOOL importing;
         lookingupid = false;
         [self KitsuFindAniId:malid withTitle:title withTitleType:titletype withTitleid:titleid withType:type completionHandler:completionHandler error:errorHandler];
     } error:^(NSError *error) {
+        errorHandler(error);
         lookingupid = false;
-        [self retrieveMALIDwithTitle:title withMediaType:type withType:titletype completionHandler:^(int malid) {
-            if (malid > 0) {
-                [self KitsuFindAniId:malid withTitle:title withTitleType:titletype withTitleid:titleid withType:type completionHandler:completionHandler error:errorHandler];
-                lookingupid = false;
-            }
-            else {
-                errorHandler(nil);
-                lookingupid = false;
-            }
-        } error:^(NSError *error) {
-            errorHandler(error);
-            lookingupid = false;
-        }];
     }];;
 }
 + (void)getKitsuIdFromAniID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype withType:(int)type completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -270,21 +237,8 @@ static BOOL importing;
             completionHandler(kitsuid);
             lookingupid = false;
         } error:^(NSError *error) {
-            lookingupid = true;
-            [Kitsu searchTitle:title withType:type completion:^(id responseObject) {
-                int newid = [self findTitle:title withType:titletype withResponseObject:responseObject];
-                if (newid > 0) {
-                    [self savetitleidtomapping:titleid withNewID:newid withType:type fromService:3 toService:2];
-                    completionHandler(newid);
-                }
-                else {
-                    errorHandler(nil);
-                }
-                lookingupid = false;
-            } error:^(NSError *error) {
-                errorHandler(error);
-                lookingupid = false;
-            }];
+            errorHandler(error);
+            lookingupid = false;
         }];
     } error:^(NSError *error) {
         errorHandler(error);

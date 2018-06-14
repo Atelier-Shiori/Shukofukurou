@@ -223,7 +223,7 @@
 #endif
 #else
     if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
-        [copyrightstr appendString:@"Pro version. Thank you for supporting Shukofukurou's development!¥"];
+        [copyrightstr appendString:@"Pro version. Thank you for supporting Shukofukurou's development!"];
         [copyrightstr appendFormat:@"\rThis copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donation_name"]];
     }
     else {

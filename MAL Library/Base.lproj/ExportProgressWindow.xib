@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ExportProgressWindow">
             <connections>
+                <outlet property="cancelbtn" destination="eTV-FH-hwo" id="LPh-3L-0AA"/>
                 <outlet property="faillistcontroller" destination="h6b-Dg-D9d" id="heb-ex-05J"/>
                 <outlet property="failwindow" destination="ZCf-XN-hKE" id="fXZ-gm-TgT"/>
                 <outlet property="progress" destination="HhS-E0-qns" id="eFv-Ag-H3T"/>
@@ -49,12 +50,26 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eTV-FH-hwo">
+                        <rect key="frame" x="313" y="10" width="105" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qVV-Kf-KS3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                        </buttonCell>
+                        <connections>
+                            <action selector="performcancel:" target="-2" id="5ME-bE-tm9"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="7J1-WR-Jad"/>
             </connections>
-            <point key="canvasLocation" x="-19" y="158"/>
+            <point key="canvasLocation" x="-19" y="157.5"/>
         </window>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="ZCf-XN-hKE">
             <windowStyleMask key="styleMask" titled="YES"/>
@@ -102,7 +117,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="" width="377" minWidth="40" maxWidth="1000" id="VlQ-56-Uh3">
+                                        <tableColumn identifier="" editable="NO" width="377" minWidth="40" maxWidth="1000" id="VlQ-56-Uh3">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>

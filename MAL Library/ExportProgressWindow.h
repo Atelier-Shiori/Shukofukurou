@@ -10,5 +10,6 @@
 
 @interface ExportProgressWindow : NSWindowController
 @property (nonatomic, copy, nullable) void (^completion)(NSDictionary * _Nonnull list, int listType);
+@property (strong) IBOutlet NSButton *cancelbtn;
 - (void)checklist:(int)type;
 @end

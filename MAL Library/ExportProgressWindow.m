@@ -27,6 +27,7 @@
 @property (strong) IBOutlet NSTableView *tb;
 @property (strong) IBOutlet NSTextField *progresslabel;
 @property bool ready;
+@property bool cancel;
 @property dispatch_queue_t queue;
 @end
 
@@ -74,7 +75,7 @@
 - (void)performentryconversion {
     // Update UI
     dispatch_async(_queue, ^{
-        while (_position <= (int)_origlist.count-1) {
+        while (_position <= (int)_origlist.count-1 && !_cancel) {
             if (_ready) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     _progress.doubleValue = _position;
@@ -95,6 +96,13 @@
                 }
                 _position++;
             }
+        }
+        if (_cancel) {
+            sleep(3);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self performCancel];
+            });
+            return;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
             // Finish callback.
@@ -212,6 +220,26 @@
     _currententry = nil;
     // Perform completion
     _completion(final, _type);
+}
+
+- (void)performCancel {
+    [self clearfailedlist];
+    // Cleanup
+    [TitleIdConverter setImportStatus:false];
+    _tmplist = nil;
+    _origlist = nil;
+    _position = 0;
+    _currententry = nil;
+    _cancelbtn.enabled = true;
+    _cancel = false;
+    [NSApp endSheet:self.window returnCode:0];
+    [self.window close];
+    [Utility showsheetmessage:@"Export Canceled" explaination:@"The list export have been canceled." window:_mw.window];
+}
+
+- (IBAction)performcancel:(id)sender {
+    _cancelbtn.enabled = false;
+    _cancel = true;
 }
 
 @end

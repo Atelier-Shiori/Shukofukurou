@@ -646,25 +646,31 @@ static BOOL importing;
         bool found = false;
         if (d[@"other_titles"][@"english"]) {
             for (NSString *ntitle in d[@"other_titles"][@"english"]) {
-                if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
-                    found = true;
-                    break;
+                if ([ntitle isKindOfClass:[NSString class]]) {
+                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
+                        found = true;
+                        break;
+                    }
                 }
             }
         }
         if (d[@"other_titles"][@"japanese"] && !found) {
             for (NSString *ntitle in d[@"other_titles"][@"japanese"]) {
-                if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
-                    found = true;
-                    break;
+                if ([ntitle isKindOfClass:[NSString class]]) {
+                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
+                        found = true;
+                        break;
+                    }
                 }
             }
         }
         if (d[@"other_titles"][@"synonyms"] && !found) {
             for (NSString *ntitle in d[@"other_titles"][@"synonyms"]) {
-                if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
-                    found = true;
-                    break;
+                if ([ntitle isKindOfClass:[NSString class]]) {
+                    if ([title caseInsensitiveCompare:ntitle] == NSOrderedSame) {
+                        found = true;
+                        break;
+                    }
                 }
             }
         }

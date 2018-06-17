@@ -138,7 +138,7 @@
     aobject.titleid = ((NSNumber *)title[@"id"]).intValue;
     aobject.title = attributes[@"canonicalTitle"];
     // Create other titles
-    aobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] ? @[attributes[@"titles"][@"en"]] : @[], @"japanese" : attributes[@"titles"][@"ja_jp"] ? @[attributes[@"titles"][@"ja_jp"]] : @[] };
+    aobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] && attributes[@"titles"][@"en"] != [NSNull null] ? @[attributes[@"titles"][@"en"]] : attributes[@"titles"][@"en_jp"] && attributes[@"titles"][@"en_jp"] != [NSNull null] ? @[attributes[@"titles"][@"en_jp"]] : @[], @"japanese" : attributes[@"titles"][@"ja_jp"] && attributes[@"titles"][@"ja_jp"] != [NSNull null] ?  @[attributes[@"titles"][@"ja_jp"]] : @[] };
     aobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     aobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
     aobject.image_url = attributes[@"posterImage"][@"large"] && attributes[@"posterimage"][@"large"] != [NSNull null] ? attributes[@"posterImage"][@"large"] : @"";
@@ -188,7 +188,7 @@
     mobject.titleid = ((NSNumber *)title[@"id"]).intValue;
     mobject.title = attributes[@"canonicalTitle"];
     // Create other titles
-    mobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] ? @[attributes[@"titles"][@"en"]] : @[attributes[@"titles"][@"en_jp"]] , @"japanese" : attributes[@"titles"][@"ja_jp"] ?  @[attributes[@"titles"][@"ja_jp"]] : @[] };
+    mobject.other_titles = @{@"synonyms" : (attributes[@"abbreviatedTitles"] && attributes[@"abbreviatedTitles"]  != [NSNull null]) ? attributes[@"abbreviatedTitles"] : @[], @"english" : attributes[@"titles"][@"en"] && attributes[@"titles"][@"en"] != [NSNull null] ? @[attributes[@"titles"][@"en"]] : attributes[@"titles"][@"en_jp"] && attributes[@"titles"][@"en_jp"] != [NSNull null] ? @[attributes[@"titles"][@"en_jp"]] : @[], @"japanese" : attributes[@"titles"][@"ja_jp"] && attributes[@"titles"][@"ja_jp"] != [NSNull null] ?  @[attributes[@"titles"][@"ja_jp"]] : @[] };
     mobject.rank = attributes[@"ratingRank"] != [NSNull null] ? ((NSNumber *)attributes[@"ratingRank"]).intValue : 0;
     mobject.popularity_rank = attributes[@"popularityRank"] != [NSNull null] ? ((NSNumber *)attributes[@"popularityRank"]).intValue : 0;
     mobject.image_url = attributes[@"posterImage"][@"large"] && attributes[@"posterImage"][@"large"] != [NSNull null] ? attributes[@"posterImage"][@"large"] : @"";

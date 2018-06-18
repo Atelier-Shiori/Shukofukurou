@@ -26,7 +26,9 @@
             aentry.title = entry[@"title"][@"title"][@"title"];
             aentry.episodes = entry[@"episodes"][@"episodes"] && entry[@"episodes"][@"episodes"] != [NSNull null] ? ((NSNumber *)entry[@"episodes"][@"episodes"]).intValue : 0;
             aentry.episode_length = (entry[@"duration"][@"duration"] && entry[@"duration"][@"duration"] != [NSNull null]) ? ((NSNumber *)entry[@"duration"][@"duration"]).intValue : 0;
-            aentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
+            if (entry[@"image_url"][@"coverImage"] != [NSNull null]) {
+                aentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
+            }
             aentry.type = entry[@"type"][@"format"] != [NSNull null] ? [Utility convertAnimeType:entry[@"type"][@"format"]] : @"";
             aentry.status =  entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
             if ([aentry.status isEqualToString:@"FINISHED"]||[aentry.status isEqualToString:@"CANCELLED"]) {
@@ -81,7 +83,9 @@
             mentry.title = entry[@"title"][@"title"][@"title"];
             mentry.chapters = entry[@"chapters"][@"chapters"] && entry[@"chapters"][@"chapters"] != [NSNull null] ? ((NSNumber *)entry[@"chapters"][@"chapters"]).intValue : 0;
             mentry.volumes = entry[@"volumes"][@"volumes"] && entry[@"volumes"][@"volumes"] != [NSNull null] ? ((NSNumber *)entry[@"volumes"][@"volumes"]).intValue : 0;
-            mentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
+            if (entry[@"image_url"][@"coverImage"] != [NSNull null]) {
+                mentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
+            }
             mentry.type = entry[@"type"][@"format"] != [NSNull null] ? [self convertMangaType:entry[@"type"][@"format"]] : @"";
             mentry.status = entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
             if ([mentry.status isEqualToString:@"FINISHED"]||[mentry.status isEqualToString:@"CANCELLED"]) {
@@ -131,11 +135,15 @@
     aobject.other_titles = @{@"synonyms" : title[@"synonyms"] && title[@"synonyms"] != [NSNull null] ? title[@"synonyms"] : @[]  , @"english" : title[@"title"][@"english"] != [NSNull null] && title[@"title"][@"english"] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] && title[@"title"][@"native"] ? @[title[@"title"][@"native"]] : @[] };
     aobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
     #if defined(AppStore)
-    aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
-        aobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
+    if (title[@"coverImage"] != [NSNull null]) {
+        aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
+    }
+    aobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
     #else
     bool allowed = ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"] || !((NSNumber *)title[@"isAdult"]).boolValue);
+    if (title[@"coverImage"] != [NSNull null]) {
         aobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && title[@"coverImage"][@"large"] && allowed ?  title[@"coverImage"][@"large"] : @"";
+    }
     aobject.synposis = allowed ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
     #endif
     aobject.type = title[@"format"] != [NSNull null] ? [Utility convertAnimeType:title[@"format"]] : @"";
@@ -204,11 +212,15 @@
     mobject.other_titles = @{@"synonyms" : title[@"synonyms"] && title[@"synonyms"] != [NSNull null] ? title[@"synonyms"] : @[] , @"english" : title[@"title"][@"english"] != [NSNull null] && title[@"title"][@"english"] ? @[title[@"title"][@"english"]] : @[], @"japanese" : title[@"title"][@"native"] != [NSNull null] && title[@"title"][@"native"] ? @[title[@"title"][@"native"]] : @[] };
     mobject.popularity_rank = title[@"popularity"] != [NSNull null] ? ((NSNumber *)title[@"popularity"]).intValue : 0;
 #if defined(AppStore)
-    mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
+    if (title[@"coverImage"] != [NSNull null]) {
+        mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"coverImage"][@"large"] : @"";
+    }
     mobject.synposis = !((NSNumber *)title[@"isAdult"]).boolValue ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
 #else
     bool allowed = ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"] || !((NSNumber *)title[@"isAdult"]).boolValue);
-    mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && title[@"coverImage"][@"large"] && allowed ?  title[@"coverImage"][@"large"] : @"";
+    if (title[@"coverImage"] != [NSNull null]) {
+        mobject.image_url = title[@"coverImage"][@"large"] && title[@"coverImage"] != [NSNull null] && title[@"coverImage"][@"large"] && allowed ?  title[@"coverImage"][@"large"] : @"";
+    }
     mobject.synposis = allowed ? title[@"description"] != [NSNull null] ? title[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
 #endif
     mobject.type = title[@"format"] != [NSNull null] ? [self convertMangaType:title[@"format"]] : @"";
@@ -269,7 +281,9 @@
             aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             aobject.title = d[@"title"][@"romaji"];
             aobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
-            aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            if (d[@"coverImage"] != [NSNull null]) {
+                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            }
             aobject.status = d[@"status"] != [NSNull null] ? d[@"status"] : @"NOT_YET_RELEASED";
             if ([aobject.status isEqualToString:@"FINISHED"]||[aobject.status isEqualToString:@"CANCELLED"]) {
                 aobject.status = @"finished airing";
@@ -296,7 +310,9 @@
             mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             mobject.title = d[@"title"][@"romaji"];
             mobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[]  , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
-            mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            if (d[@"coverImage"] != [NSNull null]) {
+                mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            }
             mobject.status = d[@"status"] != [NSNull null] ? d[@"status"] : @"NOT_YET_RELEASED";
             if ([mobject.status isEqualToString:@"FINISHED"]||[mobject.status isEqualToString:@"CANCELLED"]) {
                 mobject.status = @"finished";

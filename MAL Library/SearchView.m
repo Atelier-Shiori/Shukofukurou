@@ -8,7 +8,6 @@
 
 #import "SearchView.h"
 #import "MainWindow.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 
 @interface SearchView ()
@@ -75,6 +74,7 @@
             if (_searchtb.selectedRow >-1){
                 NSDictionary *d = _searcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
+                [self savesearch];
                 [_mw loadinfo:idnum type:AnimeSearch changeView:YES];
             }
         }
@@ -84,9 +84,23 @@
             if (_mangasearchtb.selectedRow >-1){
                 NSDictionary *d = _mangasearcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
+                [self savesearch];
                 [_mw loadinfo:idnum type:MangaSearch changeView:YES];
             }
         }
+    }
+}
+
+- (void)savesearch {
+    switch (_currentsearch){
+        case AnimeSearch:
+            _AnimeSearchTerm = _searchtitlefield.stringValue;
+            break;
+        case MangaSearch:
+            _MangaSearchTerm = _searchtitlefield.stringValue;
+            break;
+        default:
+            break;
     }
 }
 

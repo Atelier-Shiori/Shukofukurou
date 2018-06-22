@@ -225,6 +225,7 @@
 }
 
 - (void)setToolbarButtonState{
+    [self view];
     if (self.currentlist == 0) {
         if (self.animelistarraycontroller.selectedObjects.count > 0 && !_updating) {
             _edittitleitem.enabled = YES;

@@ -309,7 +309,7 @@
 
 - (void)refreshloginlabel{
     if ([listservice checkAccountForCurrentService]) {
-        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@",[listservice getCurrentServiceUsername]];
+        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@ (%@)",[listservice getCurrentServiceUsername], [listservice currentservicename]];
     }
     else {
         _loggedinuser.stringValue = @"Not logged in.";
@@ -681,6 +681,7 @@
 #pragma mark Anime List
 - (IBAction)refreshlist:(id)sender {
     [_appdel.servicemenucontrol enableservicemenuitems:NO];
+    [_listview setUpdatingState:true];
     switch ([listservice getCurrentServiceID]) {
         case 1: {
             [self performlistRefresh];
@@ -724,14 +725,17 @@
     else if ([identifier isEqualToString:@"history"]){
         [self loadlist:@(true) type:2];
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
+        [_listview setUpdatingState:false];
     }
     else if ([identifier isEqualToString:@"seasons"]){
         [_seasonview performseasonindexretrieval];
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
+        [_listview setUpdatingState:false];
     }
     else if ([identifier isEqualToString:@"airing"]){
         [_airingview loadAiring:@(true)];
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
+        [_listview setUpdatingState:false];
     }
 }
 - (void)loadlist:(NSNumber *)refresh type:(int)type {
@@ -751,14 +755,21 @@
                     return;
                 }
                 else if (!exists || refreshlist){
+                    [_listview setUpdatingState:true];
+                    [self showProgressWheel:false];
+                    [_appdel.servicemenucontrol enableservicemenuitems:NO];
                     [listservice retrieveownListWithType:MALAnime completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:0] appendpath:@"" replace:TRUE] type:0];
                         [self refreshStatistics];
                         _refreshanime = false;
+                        [_listview setUpdatingState:false];
+                        [self showProgressWheel:true];
                         [self enableservicemenuitems];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
                         _refreshanime = false;
+                        [self showProgressWheel:true];
+                        [_listview setUpdatingState:false];
                         [self enableservicemenuitems];
                     }];
                 }
@@ -774,14 +785,21 @@
                     return;
                 }
                 else if (!exists || refreshlist){
+                    [_listview setUpdatingState:true];
+                    [self showProgressWheel:false];
+                    [_appdel.servicemenucontrol enableservicemenuitems:NO];
                     [listservice retrieveownListWithType:MALManga completion:^(id responseObject){
                         [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:1] appendpath:@"" replace:TRUE] type:1];
                         [self refreshStatistics];
                         _refreshmanga = false;
+                        [self showProgressWheel:true];
+                        [_listview setUpdatingState:false];
                         [self enableservicemenuitems];
                     }error:^(NSError *error){
                         NSLog(@"%@", error.userInfo);
                         _refreshmanga = false;
+                        [self showProgressWheel:true];
+                        [_listview setUpdatingState:false];
                         [self enableservicemenuitems];
                     }];
                 }
@@ -1201,6 +1219,7 @@
 }
 - (void)enableservicemenuitems {
     [_appdel.servicemenucontrol enableservicemenuitems:!_refreshmanga && !_refreshanime];
+    [_listview setUpdatingState:_refreshmanga && _refreshanime];
     [self showProgressWheel:!_refreshmanga &&! _refreshanime];
 }
 

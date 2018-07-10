@@ -242,7 +242,6 @@
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
         [_minipopoverindicator stopAnimation:nil];
-        [_mlv setUpdatingState:false];
         [_minieditpopover close];
         [self cleanup];
     }
@@ -324,7 +323,6 @@
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
         [_minipopoverindicator stopAnimation:nil];
-        [_mlv setUpdatingState:false];
         [_minieditpopover close];
         [self cleanup];
     }error:^(NSError * error) {
@@ -475,13 +473,24 @@
     if (!_mw.ade) {
         _mw.ade = [advancededitdialog new];
     }
-    [_mw.ade window];
+    [_mw.ade.window makeKeyAndOrderFront:self];
     [_mw.ade setupeditwindow:_selecteditem.copy type:_selectedtype];
+    [_mw.ade.window close];
     [_minieditpopover close];
+    [_mlv setUpdatingState:true];
     [_mw.window beginSheet:_mw.ade.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             [_mw loadlist:@(true) type:_selectedtype];
             [_mw loadlist:@(true) type:2];
+        }
+        else {
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(queue, ^{
+                sleep(1);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [_mlv setUpdatingState:false];
+                });
+            });
         }
     }];
 }

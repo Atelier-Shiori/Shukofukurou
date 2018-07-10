@@ -18,6 +18,7 @@
 @property bool selectedfinished;
 @property bool selectedpublished;
 @property (strong) NSDictionary *selecteditem;
+@property (strong) IBOutlet NSTextField *repeattimes;
 
 // MyAnimeList fields
 @property (strong) IBOutlet NSView *malfieldsview;

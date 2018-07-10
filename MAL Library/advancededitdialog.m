@@ -71,6 +71,7 @@
         [_status selectItemWithTitle:d[@"watched_status"]];
         [self setScoreMenu:d];
         _reconsuming.state = ((NSNumber *)d[@"rewatching"]).boolValue;
+        _repeattimes.integerValue = ((NSNumber *)d[@"rewatch_count"]).integerValue;
         if (!_privatecheck.hidden) {
             _privatecheck.state = ((NSNumber *)d[@"private"]).boolValue;
             if (d[@"personal_comments"] != [NSNull null]) {
@@ -141,6 +142,7 @@
         [_status selectItemWithTitle:d[@"read_status"]];
         [self setScoreMenu:d];
         _reconsuming.state = ((NSNumber *)d[@"rereading"]).boolValue;
+        _repeattimes.integerValue = ((NSNumber *)d[@"reread_count"]).integerValue;
         if (!_privatecheck.hidden) {
             _privatecheck.state = ((NSNumber *)d[@"private"]).boolValue;
             if (d[@"personal_comments"] != [NSNull null]) {
@@ -548,10 +550,12 @@
                 extrafields[@"end"] = [df stringFromDate:_enddatepicker.dateValue];
             }
             if (type == 0) {
-                 extrafields[@"is_rewatching"] = @(_reconsuming.state);
+                extrafields[@"is_rewatching"] = @(_reconsuming.state);
+                extrafields[@"rewatch_count"] = @(_repeattimes.intValue);
             }
             else {
                 extrafields[@"is_rereading"] = @(_reconsuming.state);
+                extrafields[@"reread_count"] = @(_repeattimes.intValue);
             }
             break;
         }
@@ -570,6 +574,7 @@
             }
             extrafields[@"private"] = @(_privatecheck.state);
             extrafields[@"reconsuming"] = @(_reconsuming.state);
+            extrafields[@"reconsumeCount"] = @(_repeattimes.intValue);
             break;
         }
         case 3:{
@@ -595,6 +600,7 @@
             }
             extrafields[@"private"] = @(_privatecheck.state);
             extrafields[@"reconsuming"] = @(_reconsuming.state);
+            extrafields[@"reconsumeCount"] = @(_repeattimes.intValue);
             break;
         }
         default:

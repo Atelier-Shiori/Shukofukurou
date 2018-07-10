@@ -184,7 +184,7 @@
         [output appendFormat:@"%@<my_storage></my_storage>", tabformatting];
         [output appendFormat:@"%@<my_status>%@</my_status>",tabformatting,[self fixstatus:d[@"my_status"]]];
         [output appendFormat:@"%@<my_comments><![CDATA[%@]]></my_comments>",tabformatting, d[@"my_comments"]];
-        [output appendFormat:@"%@<my_times_watched>%i</my_times_watched>",tabformatting, ((NSNumber *)d[@"my_comments"]).intValue];
+        [output appendFormat:@"%@<my_times_watched>%i</my_times_watched>",tabformatting, ((NSNumber *)d[@"rewatch_count"]).intValue];
         [output appendFormat:@"%@<my_rewatch_value></my_rewatch_value>",tabformatting];
         [output appendFormat:@"%@<my_tags><![CDATA[%@]]></my_tags>",tabformatting,d[@"my_tags"]];
         [output appendFormat:@"%@<my_rewatching>%i</my_rewatching>",tabformatting,((NSNumber *)d[@"my_rewatching"]).intValue];

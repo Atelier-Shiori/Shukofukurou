@@ -124,7 +124,7 @@
         [alert runModal];
         [NSUserDefaults.standardUserDefaults setInteger:3 forKey:@"currentservice"];
     }
-    [self refreshUIServiceChange:2];
+    [self refreshUIServiceChange:3];
     // Load main window
     _mainwindowcontroller = [MainWindow new];
     [_mainwindowcontroller setDelegate:self];

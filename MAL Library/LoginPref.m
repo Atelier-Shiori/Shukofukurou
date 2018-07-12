@@ -196,6 +196,7 @@
         default:
             break;
     }
+    [self showServiceMenuReminder:serviceid];
     if ([listservice getCurrentServiceID] == serviceid) {
         if (serviceid == 2) {
             [Kitsu getUserRatingType:^(int scoretype) {
@@ -380,5 +381,34 @@
     [_mw loadlist:@(1) type:0];
     [_mw loadlist:@(1) type:1];
     [_mw loadlist:@(1) type:2];
+}
+
+- (void)showServiceMenuReminder:(int)service {
+    NSAlert *alert = [NSAlert new];
+    NSString *servicename = @"";
+    switch (service) {
+        case 1:
+            servicename = @"MyAnimeList";
+            break;
+        case 2:
+            servicename = @"Kitsu";
+            break;
+        case 3:
+            servicename = @"AniList";
+            break;
+        default:
+            break;
+    }
+    alert.messageText = [NSString stringWithFormat:@"To use %@, you can select it from the Service menu", servicename];
+    alert.informativeText = @"The service menu allows you to switch between services you wish to automatically update your list with.\n\nThis menu can be accessed by clicking the Services menu on the menubar and selecting the desired service to switch to.";
+    alert.showsSuppressionButton = true;
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if (![defaults boolForKey:@"showServiceMenuReminder"]) {
+        [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
+            if (alert.suppressionButton.state == 1) {
+                [defaults setBool:true forKey:@"showServiceMenuReminder"];
+            }
+        }];
+    }
 }
 @end

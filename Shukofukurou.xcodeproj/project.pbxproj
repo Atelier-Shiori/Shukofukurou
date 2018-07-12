@@ -112,6 +112,8 @@
 		9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		911E4F4A2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */; };
 		911E4F4B2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */; };
+		91332AC420F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
+		91332AC520F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
 		913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
 		913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		913A11621E8F206A00450B66 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
@@ -642,6 +644,8 @@
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
 		911E4F492058213C00EF38D4 /* datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = datamodel.xcdatamodel; sourceTree = "<group>"; };
+		91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListSeasonListGenerator.h; sourceTree = "<group>"; };
+		91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListSeasonListGenerator.m; sourceTree = "<group>"; };
 		913A11AA1E8F206A00450B66 /* Shukofukurou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shukofukurou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A11AB1E8F206A00450B66 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "MAL Library/Info-AppStore.plist"; sourceTree = SOURCE_ROOT; };
 		913A11AD1E8F212600450B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-AppStore.xib"; sourceTree = "<group>"; };
@@ -1019,6 +1023,8 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */,
+				91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */,
 				F84D64442098FAAE003225F9 /* TipJar */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
@@ -1669,6 +1675,7 @@
 				F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */,
 				2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */,
+				91332AC520F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */,
 				2DAA9FC31EB6524A00F562BD /* messagecomposer.m in Sources */,
 				91DAFC5E1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 				2D371E751ECF8AF500F47138 /* ListStatistics.m in Sources */,
@@ -1757,6 +1764,7 @@
 				F84D051D2086667700502379 /* DonationLicenseManager.m in Sources */,
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
 				2DAA9FC21EB6524A00F562BD /* messagecomposer.m in Sources */,
+				91332AC420F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */,
 				2DC28DCB1EB8DF64005B7B77 /* ESCssParser.m in Sources */,
 				F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */,
 				2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */,

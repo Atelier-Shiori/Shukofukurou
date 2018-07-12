@@ -374,14 +374,17 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="E2N-f0-9rS">
                             <rect key="frame" x="0.0" y="14" width="100" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" title="Item 1" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="GlN-Ls-SAC" id="8vA-ud-3Uw">
+                            <popUpButtonCell key="cell" type="roundTextured" title="Winter" bezelStyle="texturedRounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="GlN-Ls-SAC" id="8vA-ud-3Uw">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="UoY-W6-XGV">
                                     <items>
-                                        <menuItem title="Item 1" state="on" id="GlN-Ls-SAC"/>
-                                        <menuItem title="Item 2" id="xmg-ZC-uCW"/>
-                                        <menuItem title="Item 3" id="UDo-CC-gSn"/>
+                                        <menuItem title="Winter" state="on" id="GlN-Ls-SAC"/>
+                                        <menuItem title="Spring" id="xmg-ZC-uCW"/>
+                                        <menuItem title="Summer" id="UDo-CC-gSn"/>
+                                        <menuItem title="Fall" id="muL-Xf-63m">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
@@ -770,7 +773,7 @@
         <image name="advsearch" width="32" height="32"/>
         <image name="cast" width="32" height="32"/>
         <image name="delete" width="32" height="32"/>
-        <image name="increment" width="37.5" height="37.5"/>
+        <image name="increment" width="24" height="24"/>
         <image name="reviews" width="32" height="32"/>
         <image name="safari" width="32" height="32"/>
     </resources>

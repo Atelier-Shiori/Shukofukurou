@@ -13,6 +13,7 @@
     self = [super init];
     if (self) {
         self.titleid = 0;
+        self.titleidMal = 0;
         self.title = @"";
         self.other_titles = @{};
         self.rank = 0;
@@ -49,7 +50,7 @@
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{ @"id" : @(_titleid), @"title" : _title.copy, @"other_titles" : _other_titles.copy, @"rank" : @(_rank), @"popularity_rank" : @(_popularity_rank), @"image_url" : _image_url.copy, @"type" : _type.copy, @"episodes" : @(_episodes), @"status" : _status.copy, @"start_date" : _start_date.copy, @"end_date" : _end_date.copy, @"broadcast" : _broadcast.copy, @"duration" : @(_duration), @"classification" : _classification.copy, @"members_score" : @(_members_score), @"members_count" : @(_members_count), @"favorited_count" : @(_favorited_count), @"synopsis" : _synposis.copy, @"background" : _background.copy, @"producers" : _producers.copy, @"genres" : _genres.copy, @"manga_adaptations" : _manga_adaptations.copy, @"prequels" : _prequels.copy, @"sequels" : _sequels.copy, @"side_stories" : _side_stories.copy, @"parent_story" : _parent_story.copy, @"character_anime" : _character_anime.copy, @"spin_offs" : _spin_offs.copy, @"opening_theme" : _opening_theme.copy, @"ending_theme" : _ending_theme.copy, @"recommendations" : _recommendations.copy, @"mappings" : _mappings.copy };
+    return @{ @"id" : @(_titleid), @"idMal" : @(_titleidMal), @"title" : _title.copy, @"other_titles" : _other_titles.copy, @"rank" : @(_rank), @"popularity_rank" : @(_popularity_rank), @"image_url" : _image_url.copy, @"type" : _type.copy, @"episodes" : @(_episodes), @"status" : _status.copy, @"start_date" : _start_date.copy, @"end_date" : _end_date.copy, @"broadcast" : _broadcast.copy, @"duration" : @(_duration), @"classification" : _classification.copy, @"members_score" : @(_members_score), @"members_count" : @(_members_count), @"favorited_count" : @(_favorited_count), @"synopsis" : _synposis.copy, @"background" : _background.copy, @"producers" : _producers.copy, @"genres" : _genres.copy, @"manga_adaptations" : _manga_adaptations.copy, @"prequels" : _prequels.copy, @"sequels" : _sequels.copy, @"side_stories" : _side_stories.copy, @"parent_story" : _parent_story.copy, @"character_anime" : _character_anime.copy, @"spin_offs" : _spin_offs.copy, @"opening_theme" : _opening_theme.copy, @"ending_theme" : _ending_theme.copy, @"recommendations" : _recommendations.copy, @"mappings" : _mappings.copy };
 }
 @end
 
@@ -58,6 +59,7 @@
     self = [super init];
     if (self) {
         self.titleid = 0;
+        self.titleidMal = 0;
         self.title = @"";
         self.other_titles = @{};
         self.rank = 0;
@@ -81,7 +83,7 @@
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{ @"id" : @(_titleid), @"title" : _title.copy, @"other_titles" : _other_titles.copy, @"rank" : @(_rank), @"popularity_rank" : @(_popularity_rank), @"image_url" : _image_url.copy, @"type" : _type.copy, @"chapters" : @(_chapters), @"volumes": @(_volumes), @"status" : _status.copy, @"members_score" : @(_members_score), @"members_count" : @(_members_count), @"favorited_count" : @(_favorited_count), @"synopsis" : _synposis.copy, @"genres" : _genres.copy, @"anime_adaptations" : _anime_adaptations.copy, @"related_manga" : _related_manga.copy, @"alternate_versions" : _alternative_versions.copy, @"mappings" : _mappings.copy};
+    return @{ @"id" : @(_titleid), @"idMal" : @(_titleidMal), @"title" : _title.copy, @"other_titles" : _other_titles.copy, @"rank" : @(_rank), @"popularity_rank" : @(_popularity_rank), @"image_url" : _image_url.copy, @"type" : _type.copy, @"chapters" : @(_chapters), @"volumes": @(_volumes), @"status" : _status.copy, @"members_score" : @(_members_score), @"members_count" : @(_members_count), @"favorited_count" : @(_favorited_count), @"synopsis" : _synposis.copy, @"genres" : _genres.copy, @"anime_adaptations" : _anime_adaptations.copy, @"related_manga" : _related_manga.copy, @"alternate_versions" : _alternative_versions.copy, @"mappings" : _mappings.copy};
 }
 @end
 

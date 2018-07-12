@@ -424,6 +424,28 @@
     return personobj.NSDictionaryRepresentation;
 }
 
++ (NSArray *)normalizeSeasonData:(NSArray *)seasonData {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *d in seasonData) {
+        @autoreleasepool {
+            if (((NSNumber *)d[@"isAdult"]).boolValue) {
+                continue;
+            }
+            AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
+            aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
+            aobject.titleidMal = d[@"idMal"] != [NSNull null] ? ((NSNumber *)d[@"idMal"]).intValue : 0;
+            aobject.title = d[@"title"][@"romaji"];
+            aobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
+            if (d[@"coverImage"] != [NSNull null]) {
+                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            }
+            aobject.type = d[@"format"] != [NSNull null] ? [Utility convertAnimeType:d[@"format"]] : @"";
+            [tmparray addObject:aobject.NSDictionaryRepresentation];
+        }
+    }
+    return tmparray;
+}
+
 #pragma mark helpers
 
 + (NSString *)convertMangaType:(NSString *)type {

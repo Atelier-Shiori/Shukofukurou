@@ -10,6 +10,7 @@
 
 @interface AtarashiiAnimeObject : NSObject
 @property int titleid;
+@property int titleidMal;
 @property (strong) NSString *title;
 @property (strong) NSDictionary *other_titles;
 @property int rank;
@@ -68,6 +69,7 @@
 
 @interface AtarashiiMangaObject : NSObject
 @property int titleid;
+@property int titleidMal;
 @property (strong) NSString *title;
 @property (strong) NSDictionary *other_titles;
 @property int rank;

@@ -728,7 +728,6 @@
         [_listview setUpdatingState:false];
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        [_seasonview performseasonindexretrieval];
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
         [_listview setUpdatingState:false];
     }
@@ -1037,10 +1036,9 @@
     }
     else if ([identifier isEqualToString:@"seasons"]){
         NSDictionary *d = (_seasonview.seasonarraycontroller).selectedObjects[0];
-        d = d[@"id"];
         switch ([listservice getCurrentServiceID]) {
             case 1: {
-                [listservice retrieveTitleInfo:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
+                [listservice retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
                     [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
                 }error:^(NSError *error){
                     NSLog(@"Error: %@", error);
@@ -1048,7 +1046,7 @@
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                         [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
                     }error:^(NSError *error){
@@ -1058,13 +1056,11 @@
                 break;
             }
             case 3: {
-                [TitleIdConverter getAniIDFromMALListID:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:@"" withType:AniListAnime completionHandler:^(int anilistid) {
-                    [listservice retrieveTitleInfo:anilistid withType:AniListAnime useAccount:NO completion:^(id responseObject) {
-                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
-                    } error:^(NSError *error) {
-                        NSLog(@"Error: %@", error);
-                    }];
-                } error:^(NSError *error) {}];
+                [listservice retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:AniListAnime useAccount:NO completion:^(id responseObject) {
+                    [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
+                } error:^(NSError *error) {
+                    NSLog(@"Error: %@", error);
+                }];
                 break;
             }
             default:

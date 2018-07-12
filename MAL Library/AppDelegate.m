@@ -122,7 +122,7 @@
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
         [alert runModal];
-        [NSUserDefaults.standardUserDefaults setInteger:2 forKey:@"currentservice"];
+        [NSUserDefaults.standardUserDefaults setInteger:3 forKey:@"currentservice"];
     }
     [self refreshUIServiceChange:2];
     // Load main window

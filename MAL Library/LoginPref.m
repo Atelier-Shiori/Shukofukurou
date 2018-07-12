@@ -400,7 +400,7 @@
             break;
     }
     alert.messageText = [NSString stringWithFormat:@"To use %@, you can select it from the Service menu", servicename];
-    alert.informativeText = @"The service menu allows you to switch between services you wish to automatically update your list with.\n\nThis menu can be accessed by clicking the Services menu on the menubar and selecting the desired service to switch to.";
+    alert.informativeText = @"The service menu allows you to switch between services you wish to manage your list with.\n\nThis menu can be accessed by clicking the Services menu on the menubar and selecting the desired service to switch to.";
     alert.showsSuppressionButton = true;
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     if (![defaults boolForKey:@"showServiceMenuReminder"]) {

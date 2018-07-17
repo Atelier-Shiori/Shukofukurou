@@ -116,7 +116,7 @@
             else {
                 mentry.read_status = ((NSString *)entry[@"read_status"]).lowercaseString;
             }
-            mentry.reread_count =  ((NSNumber *)entry[@"rewatch_count"]).intValue;
+            mentry.reread_count =  ((NSNumber *)entry[@"reread_count"]).intValue;
             mentry.private_entry =  ((NSNumber *)entry[@"private"]).boolValue;
             mentry.personal_comments = entry[@"notes"];
             mentry.reading_start = entry[@"read_start"][@"year"] != [NSNull null] && entry[@"read_start"][@"month"] != [NSNull null] && entry[@"read_start"][@"day"] != [NSNull null] ? [self convertDate:entry[@"read_start"]] : @"";

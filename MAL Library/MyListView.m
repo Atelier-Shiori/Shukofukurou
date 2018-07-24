@@ -9,6 +9,7 @@
 #import "MyListView.h"
 #import "listservice.h"
 #import "EditTitle.h"
+#import "AtarashiiListCoreData.h"
 
 @interface MyListView ()
 @property bool updating;
@@ -178,7 +179,18 @@
     _deletetitleitem.enabled = NO;
     [self setUpdatingState:true];
     [listservice removeTitleFromList:selid.intValue withType:self.currentlist completion:^(id responseobject) {
-        [_mw loadlist:@(true) type:self.currentlist];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData removeSingleEntrywithUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:self.currentlist withId:selid.intValue withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData removeSingleEntrywithUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:self.currentlist withId:selid.intValue withIdType:1];
+                break;
+            default:
+                break;
+        }
+        [_mw loadlist:@(false) type:self.currentlist];
         [self setUpdatingState:false];
     }error:^(NSError *error) {
         NSLog(@"%@",error);
@@ -340,7 +352,17 @@
     int score = ((NSNumber *)d[@"score"]).intValue;
     [self setUpdatingState:true];
     [listservice updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        [_mw loadlist:@(true) type:MALAnime];
+        NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching)};
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:titleid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:0 withId:titleid withIdType:1];
+                break;
+        }
+        [_mw loadlist:@(false) type:MALAnime];
         [self setUpdatingState:false];
     }
                                   error:^(NSError * error) {
@@ -420,7 +442,17 @@
     int score = ((NSNumber *)d[@"score"]).intValue;
     [self setUpdatingState:true];
     [listservice updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
-        [_mw loadlist:@(true) type:MALManga];
+        NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading)};
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:titleid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:1 withId:titleid withIdType:1];
+                break;
+        }
+        [_mw loadlist:@(false) type:MALManga];
         [self setUpdatingState:false];
     } error:^(NSError *error) {
         [self setUpdatingState:false];

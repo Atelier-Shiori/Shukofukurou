@@ -161,7 +161,7 @@
         GeneralPref *genview =[[GeneralPref alloc] init];
         [genview setMainWindowController:_mainwindowcontroller];
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
-        NSViewController *advancedviewController = [AdvancedPref new];
+//        NSViewController *advancedviewController = [AdvancedPref new];
         #if defined(AppStore)
         NSArray *controllers = @[genview,loginViewController/*,advancedviewController*/];
         #else

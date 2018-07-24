@@ -53,7 +53,7 @@
 - (void)checklist:(int)type {
     // Initalize Translation
     [NSApp beginSheet:self.window modalForWindow:_mw.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
-    NSDictionary *list = [Utility loadJSON:[AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type] appendpath:@""];
+    NSDictionary *list = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
     if (type == MALAnime) {
         _origlist = list[@"anime"];
     }

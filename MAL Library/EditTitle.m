@@ -504,7 +504,7 @@
     [_mlv setUpdatingState:true];
     [_mw.window beginSheet:_mw.ade.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
-            [_mw loadlist:@(true) type:_selectedtype];
+            [_mw loadlist:@(false) type:_selectedtype];
             [_mw loadlist:@(true) type:2];
         }
         else {

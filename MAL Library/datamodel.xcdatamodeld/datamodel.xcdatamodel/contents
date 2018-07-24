@@ -8,6 +8,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personal_comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="personal_tags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="private" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rewatch_count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="rewatching" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -32,6 +33,7 @@
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="image_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personal_comments" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="personal_tags" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="private" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="read_status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="reading_end" optional="YES" attributeType="String" syncable="YES"/>
@@ -57,8 +59,8 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AnimeListEntries" positionX="0" positionY="180" width="128" height="375"/>
-        <element name="MangaListEntries" positionX="-27" positionY="54" width="128" height="390"/>
+        <element name="AnimeListEntries" positionX="0" positionY="180" width="128" height="390"/>
+        <element name="MangaListEntries" positionX="-27" positionY="54" width="128" height="405"/>
         <element name="Titleidmappings" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

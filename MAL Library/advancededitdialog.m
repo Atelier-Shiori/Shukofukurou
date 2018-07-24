@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "MainWindow.h"
 #import "MyListView.h"
+#import "AtarashiiListCoreData.h"
 
 @interface advancededitdialog ()
 @property (strong) IBOutlet NSView *editview;
@@ -224,6 +225,17 @@
     [_mlv setUpdatingState:true];
     [_progressindicator startAnimation:nil];
     [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:1];
+                break;
+            default:
+                break;
+        }
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
@@ -292,6 +304,17 @@
     [_mlv setUpdatingState:true];
     [_progressindicator startAnimation:nil];
     [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:1];
+                break;
+            default:
+                break;
+        }
         [self disableeditbuttons:true];
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
@@ -607,5 +630,50 @@
             break;
     }
     return extrafields;
+}
+- (NSDictionary *)generatelistentrywithScore:(int)score withType:(int)type {
+    NSMutableDictionary *nfields = [NSMutableDictionary new];
+    NSDateFormatter *df = [NSDateFormatter new];
+    df.dateFormat = @"yyyy-MM-dd";
+    nfields[@"score"] = @(score);
+    if (((NSArray *)_tagsfield.objectValue).count > 0 && [listservice getCurrentServiceID] == 1){
+        nfields[@"personal_tags"] = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
+    }
+    if ([listservice getCurrentServiceID] == 2 && [listservice getCurrentServiceID] == 3) {
+        if (_notesfield.stringValue.length > 0) {
+            nfields[@"personal_comments"] = _notesfield.stringValue;
+        }
+        else {
+            nfields[@"personal_comments"] = @"";
+        }
+        nfields[@"private"] = @(_privatecheck.state);
+    }
+    switch (type) {
+        case 0: {
+            [nfields addEntriesFromDictionary:@{@"watched_episodes" : @(_episodefield.intValue), @"watched_status" : _status.title}];
+            if (@(_setstartdatecheck.state).boolValue) {
+                nfields[@"watching_start"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                nfields[@"watching_end"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            nfields[@"rewatching"] = @(_reconsuming.state);
+            nfields[@"rewatch_count"] = @(_repeattimes.intValue);
+            break;
+        }
+        case 1: {
+            [nfields addEntriesFromDictionary:@{@"chapters_read" : @(_chaptersfield.intValue), @"volumes_read" : @(_volumesfield.intValue), @"read_status" : _status.title}];
+            if (@(_setstartdatecheck.state).boolValue) {
+                nfields[@"reading_start"] = [df stringFromDate:_startdatepicker.dateValue];
+            }
+            if (@(_setenddatecheck.state).boolValue) {
+                nfields[@"reading_end"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
+            nfields[@"rereading"] = @(_reconsuming.state);
+            nfields[@"reread_count"] = @(_repeattimes.intValue);
+            break;
+        }
+    }
+    return nfields;
 }
 @end

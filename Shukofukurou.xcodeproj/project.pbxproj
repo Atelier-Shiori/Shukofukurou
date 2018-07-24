@@ -169,6 +169,9 @@
 		913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */; };
+		91521F6A21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */; };
+		91521F6B21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */; };
+		91521F6C21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */; };
 		915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
 		915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
 		915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
@@ -649,6 +652,9 @@
 		913A11AA1E8F206A00450B66 /* Shukofukurou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shukofukurou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		913A11AB1E8F206A00450B66 /* Info-AppStore.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-AppStore.plist"; path = "MAL Library/Info-AppStore.plist"; sourceTree = SOURCE_ROOT; };
 		913A11AD1E8F212600450B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-AppStore.xib"; sourceTree = "<group>"; };
+		91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiListCoreData.h; sourceTree = "<group>"; };
+		91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiListCoreData.m; sourceTree = "<group>"; };
+		91521F6D2107770C001FCBBB /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
 		915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
 		915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearch.m; sourceTree = "<group>"; };
 		915E8C461E8C1AEC005A49A4 /* AddTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTitle.h; sourceTree = "<group>"; };
@@ -1189,6 +1195,8 @@
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 				91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */,
 				91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */,
+				91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */,
+				91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1691,6 +1699,7 @@
 				2D88CA6B1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
+				91521F6B21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				911E4F4B2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */,
@@ -1780,6 +1789,7 @@
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				2DA42F1F1EB79B200006FB9F /* HTMLtoBBCode.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
+				91521F6A21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
 				2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */,
 				91999D081E8C81580026D3E9 /* SeasonView.m in Sources */,
@@ -1881,6 +1891,7 @@
 				F888F41E208FB1F500C22C39 /* datamodel.xcdatamodeld in Sources */,
 				F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */,
 				F888F420208FB1F500C22C39 /* XMLReader.m in Sources */,
+				91521F6C21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				F888F421208FB1F500C22C39 /* ProfileViewController.m in Sources */,
 				F888F422208FB1F500C22C39 /* LoginPref.m in Sources */,
 				F888F423208FB1F500C22C39 /* ESCssParser.m in Sources */,
@@ -2832,9 +2843,10 @@
 		911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				91521F6D2107770C001FCBBB /* datamodel 2.xcdatamodel */,
 				911E4F492058213C00EF38D4 /* datamodel.xcdatamodel */,
 			);
-			currentVersion = 911E4F492058213C00EF38D4 /* datamodel.xcdatamodel */;
+			currentVersion = 91521F6D2107770C001FCBBB /* datamodel 2.xcdatamodel */;
 			path = datamodel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

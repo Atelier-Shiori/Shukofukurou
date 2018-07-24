@@ -15,6 +15,7 @@
 #import "TitleIdConverter.h"
 #import "XMLReader.h"
 #import "RatingTwentyConvert.h"
+#import "AtarashiiListCoreData.h"
 
 @interface ListImport ()
 @property (strong) NSArray *listimport;
@@ -145,13 +146,29 @@
                        if (d[@"anime"]) {
                            _importlisttype = MALAnime;
                            _listimport = d[@"anime"];
-                           _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
+                           switch ([listservice getCurrentServiceID]) {
+                               case 1:
+                                   _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                   break;
+                               case 2:
+                               case 3:
+                                   _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                   break;
+                           }
                        }
                        else if (d[@"manga"]) {
                            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
                            _importlisttype = MALManga;
                            _listimport = d[@"manga"];
-                           _existinglist = [Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""][@"manga"];
+                               switch ([listservice getCurrentServiceID]) {
+                                   case 1:
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga][@"manga"];
+                                       break;
+                                   case 2:
+                                   case 3:
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga][@"manga"];
+                                       break;
+                               }
                            }
                            else {
                                [Utility showsheetmessage:@"Unable to import list." explaination:@"Manga import requires a donation key." window:_del.mainwindowcontroller.window];
@@ -336,7 +353,15 @@
                                }
                                _listtype = @"anidb";
                                _importlisttype = MALAnime;
-                               _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
+                               switch ([listservice getCurrentServiceID]) {
+                                   case 1:
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                       break;
+                                   case 2:
+                                   case 3:
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                       break;
+                               }
                                [self importsetup];
                                [self performAniDBListImport];
                            }
@@ -479,7 +504,15 @@
         _listtype = @"kitsu";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-        _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                break;
+            case 2:
+            case 3:
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                break;
+        }
         [self importsetup];
         [self performKitsuImport];
     } error:^(NSError *error) {
@@ -585,7 +618,15 @@
         _listtype = @"anilist";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-        _existinglist = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""][@"anime"];
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                break;
+            case 2:
+            case 3:
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                break;
+        }
         [self importsetup];
         [self performAnilistImport];
     } error:^(NSError *error) {
@@ -834,5 +875,4 @@
         [self incrementProgress:d withTitle:title];
     }];
 }
-
 @end

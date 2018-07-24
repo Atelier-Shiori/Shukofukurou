@@ -745,9 +745,9 @@
         bool exists = false;
         switch (type) {
             case 0:
-                exists = [self hasListEntriesWithType:0];//[Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""];
+                exists = [self hasListEntriesWithType:0];
                 if (exists && !refreshlist){
-                    list = [self retrieveEntriesWithType:0];//[Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""];
+                    list = [self retrieveEntriesWithType:0];
                     [_listview populateList:list type:0];
                     [self refreshStatistics];
                     _refreshanime = false;
@@ -776,9 +776,9 @@
                 }
                 break;
             case 1:
-                exists = [self hasListEntriesWithType:1];//[Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""];
+                exists = [self hasListEntriesWithType:1];
                 if (exists && !refreshlist){
-                    list = [self retrieveEntriesWithType:1];//[Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""];
+                    list = [self retrieveEntriesWithType:1];
                     [_listview populateList:list type:1];
                     [self refreshStatistics];
                     _refreshmanga = false;

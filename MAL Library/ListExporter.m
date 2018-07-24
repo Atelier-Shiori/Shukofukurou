@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "Keychain.h"
 #import "ExportProgressWindow.h"
+#import "AtarashiiListCoreData.h"
 
 @interface ListExporter ()
 @property ExportProgressWindow *epw;
@@ -42,7 +43,7 @@
 - (IBAction)exportAnimeList:(id)sender {
     // Export Anime List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:0 withServiceID:1] appendPath:@""]){
+    if ([listservice checkAccountForCurrentService]) {
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Anime List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
@@ -52,7 +53,7 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-          [self writeListXML:[Utility loadJSON:@"mal-animelist.json" appendpath:@""] withFileURL:sp.URL withType:MALAnime];
+          [self writeListXML:[AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime] withFileURL:sp.URL withType:MALAnime];
         }];
     }
     else {
@@ -65,7 +66,7 @@
 - (IBAction)exportMangaList:(id)sender {
     // Export Manga List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:1 withServiceID:1] appendPath:@""]){
+    if ([listservice checkAccountForCurrentService]) {
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Manga List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
@@ -75,7 +76,7 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-            [self writeListXML:[Utility loadJSON:@"mal-mangalist.json" appendpath:@""] withFileURL:sp.URL withType:MALManga];
+            [self writeListXML:[AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga] withFileURL:sp.URL withType:MALManga];
         }];
     }
     else {
@@ -86,7 +87,7 @@
 }
 
 - (IBAction)exportconvertedAnimeList:(id)sender {
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:0 withServiceID:[listservice getCurrentServiceID]] appendPath:@""]){
+    if ([listservice checkAccountForCurrentService]) {
         [_epw checklist:MALAnime];
     }
     else {
@@ -97,7 +98,7 @@
 }
 
 - (IBAction)exportconvertedMangaList:(id)sender {
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:1 withServiceID:[listservice getCurrentServiceID]] appendPath:@""]){
+    if ([listservice checkAccountForCurrentService]) {
         [_epw checklist:MALManga];
     }
     else {

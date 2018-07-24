@@ -13,6 +13,7 @@
 #import "TitleIdConverter.h"
 #import "listservice.h"
 #import "RatingTwentyConvert.h"
+#import "AtarashiiListCoreData.h"
 
 @interface ExportProgressWindow ()
 @property (strong) NSMutableArray *tmplist;
@@ -52,7 +53,7 @@
 - (void)checklist:(int)type {
     // Initalize Translation
     [NSApp beginSheet:self.window modalForWindow:_mw.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
-    NSDictionary *list = [Utility loadJSON:[listservice retrieveListFileName:type] appendpath:@""];
+    NSDictionary *list = [Utility loadJSON:[AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type] appendpath:@""];
     if (type == MALAnime) {
         _origlist = list[@"anime"];
     }

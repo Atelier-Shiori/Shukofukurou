@@ -24,6 +24,7 @@
 #import "AiringView.h"
 #import "NSTableViewAction.h"
 #import "servicemenucontroller.h"
+#import "AtarashiiListCoreData.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -744,9 +745,9 @@
         bool exists = false;
         switch (type) {
             case 0:
-                exists = [Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""];
+                exists = [self hasListEntriesWithType:0];//[Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""];
                 if (exists && !refreshlist){
-                    list = [Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""];
+                    list = [self retrieveEntriesWithType:0];//[Utility loadJSON:[listservice retrieveListFileName:0] appendpath:@""];
                     [_listview populateList:list type:0];
                     [self refreshStatistics];
                     _refreshanime = false;
@@ -758,7 +759,8 @@
                     [self showProgressWheel:false];
                     [_appdel.servicemenucontrol enableservicemenuitems:NO];
                     [listservice retrieveownListWithType:MALAnime completion:^(id responseObject){
-                        [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:0] appendpath:@"" replace:TRUE] type:0];
+                        [self saveEntriesWithDictionary:responseObject withType:0];
+                        [_listview populateList:[self retrieveEntriesWithType:0] type:0];
                         [self refreshStatistics];
                         _refreshanime = false;
                         [_listview setUpdatingState:false];
@@ -774,9 +776,9 @@
                 }
                 break;
             case 1:
-                exists = [Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""];
-                list = [Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""];
+                exists = [self hasListEntriesWithType:1];//[Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""];
                 if (exists && !refreshlist){
+                    list = [self retrieveEntriesWithType:1];//[Utility loadJSON:[listservice retrieveListFileName:1] appendpath:@""];
                     [_listview populateList:list type:1];
                     [self refreshStatistics];
                     _refreshmanga = false;
@@ -788,7 +790,8 @@
                     [self showProgressWheel:false];
                     [_appdel.servicemenucontrol enableservicemenuitems:NO];
                     [listservice retrieveownListWithType:MALManga completion:^(id responseObject){
-                        [_listview populateList:[Utility saveJSON:responseObject withFilename:[listservice retrieveListFileName:1] appendpath:@"" replace:TRUE] type:1];
+                        [self saveEntriesWithDictionary:responseObject withType:1];
+                        [_listview populateList:[self retrieveEntriesWithType:1] type:1];
                         [self refreshStatistics];
                         _refreshmanga = false;
                         [self showProgressWheel:true];
@@ -811,6 +814,49 @@
         }
     }
 }
+
+- (bool)hasListEntriesWithType:(int)type {
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+            return [AtarashiiListCoreData hasListEntriesWithUserName:[listservice getCurrentServiceUsername] withService:0 withType:type];
+        case 2:
+        case 3:
+            return [AtarashiiListCoreData hasListEntriesWithUserID:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+        default:
+            return false;
+    }
+}
+
+- (void)saveEntriesWithDictionary:(NSDictionary *)data withType:(int)type {
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:type];
+            break;
+        case 2:
+        case 3:
+            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+            break;
+        default:
+            break;
+    }
+}
+
+- (NSDictionary *)retrieveEntriesWithType:(int)type {
+    switch ([listservice getCurrentServiceID]) {
+        case 1:
+            return [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:type];
+        case 2:
+        case 3:
+            return [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+        default:
+            return false;
+    }
+}
+
+- (void)clearallentriesForService:(int)service {
+    [AtarashiiListCoreData removeAllEntrieswithService:service];
+}
+
 - (void)refreshStatistics {
     ListStatistics *ls = _appdel.liststatswindow;
     if (ls){
@@ -818,8 +864,9 @@
     }
 }
 - (void)clearlist:(int)service {
-    [Utility deleteFile:[listservice retrieveListFileName:0 withServiceID:service] appendpath:@""];
-    [Utility deleteFile:[listservice retrieveListFileName:1 withServiceID:service] appendpath:@""];
+    //[Utility deleteFile:[listservice retrieveListFileName:0 withServiceID:service] appendpath:@""];
+    //[Utility deleteFile:[listservice retrieveListFileName:1 withServiceID:service] appendpath:@""];
+    [self clearallentriesForService:service];
     [_historyview clearHistory:service];
     if ([listservice getCurrentServiceID] == service) {
         //Clears List

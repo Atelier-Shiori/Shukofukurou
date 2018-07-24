@@ -19,6 +19,5 @@
 + (void)updateSingleEntry:(NSDictionary *)parameters withUserName:(NSString *)username withService:(int)service withType:(int)type withId:(int)Id withIdType:(int)idtype;
 + (void)removeSingleEntrywithUserId:(int)userid withService:(int)service withType:(int)type withId:(int)Id withIdType:(int)idtype;
 + (void)removeSingleEntrywithUserName:(NSString *)username withService:(int)service withType:(int)type withId:(int)Id withIdType:(int)idtype;
-+ (void)removeAllEntriesForUserId:(int)userid withService:(int)service;
-+ (void)removeAllEntriesForUserNane:(NSString *)userName withService:(int)service;
++ (void)removeAllEntrieswithService:(int)service;
 @end

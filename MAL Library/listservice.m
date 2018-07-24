@@ -549,4 +549,17 @@
     }
     return @"";
 }
+
++ (int)getCurrentUserID {
+    switch ([self getCurrentServiceID]) {
+        case 1:
+            return -1;
+        case 2:
+            return (int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"];
+        case 3:
+            return (int)[NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"];
+        default:
+            return -1;
+    }
+}
 @end

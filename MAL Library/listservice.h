@@ -45,4 +45,5 @@
 + (NSString *)getCurrentServiceUsername;
 + (NSDictionary *)getAllUserNames;
 + (NSString *)currentservicename;
++ (int)getCurrentUserID;
 @end

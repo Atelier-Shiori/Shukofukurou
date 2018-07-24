@@ -13,6 +13,7 @@
 #import "Utility.h"
 #import "listservice.h"
 #import "AniListAuthWindow.h"
+#import "AtarashiiDataObjects.h"
 
 @implementation LoginPref
 

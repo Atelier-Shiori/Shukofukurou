@@ -12,6 +12,8 @@
 #import "MainWindow.h"
 #import "MyListView.h"
 #import "listservice.h"
+#import "AtarashiiListCoreData.h"
+
 @interface EditTitle ()
 
 // Common
@@ -237,7 +239,18 @@
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
     [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        [_mw loadlist:@(true) type:_selectedtype];
+        NSDictionary *updatedfields = @{@"watched_episodes" : @(_minipopoverepfield.intValue), @"watched_status" : _minipopoverstatus.title, @"score" : @(score), @"rewatching" : @(rewatching)};
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:_selectededitid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:0 withId:_selectededitid withIdType:1];
+                break;
+        }
+        [_mw loadlist:@(false) type:_selectedtype];
+        [_mw loadlist:@(true) type:2];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
@@ -317,8 +330,19 @@
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
     [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        [_mw loadlist:@(true) type:_selectedtype];
+        NSDictionary *updatedfields = @{@"chapters_read" : @(_mangapopoverchapfield.intValue), @"volumes_read" : @(_mangapopovervolfield.intValue), @"read_status" : _minipopoverstatus.title, @"score" : @(score), @"rereading" : @(rereading)};
+        switch ([listservice getCurrentServiceID]) {
+            case 1:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:_selectededitid withIdType:0];
+                break;
+            case 2:
+            case 3:
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:1 withId:_selectededitid withIdType:1];
+                break;
+        }
+        [_mw loadlist:@(false) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
+        
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;

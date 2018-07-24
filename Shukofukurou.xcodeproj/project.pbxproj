@@ -110,8 +110,6 @@
 		910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
 		9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
 		9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		911E4F4A2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */; };
-		911E4F4B2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */; };
 		91332AC420F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
 		91332AC520F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
 		913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
@@ -205,6 +203,9 @@
 		91822A601EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */; };
 		91822A611EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */; };
 		9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
+		9188B9592107A986009D8E1F /* datamodel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 9188B9582107A985009D8E1F /* datamodel.xcdatamodel */; };
+		9188B95A2107A986009D8E1F /* datamodel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 9188B9582107A985009D8E1F /* datamodel.xcdatamodel */; };
+		9188B95B2107A986009D8E1F /* datamodel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 9188B9582107A985009D8E1F /* datamodel.xcdatamodel */; };
 		918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D361E89FF8B0037898E /* Fabric.framework */; };
 		918C0D391E89FF920037898E /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D381E89FF920037898E /* Crashlytics.framework */; };
 		91999D001E8C73300026D3E9 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
@@ -301,7 +302,6 @@
 		F888F41B208FB1F500C22C39 /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
 		F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
 		F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
-		F888F41E208FB1F500C22C39 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */; };
 		F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F888F420208FB1F500C22C39 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
 		F888F421208FB1F500C22C39 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
@@ -646,7 +646,6 @@
 		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
-		911E4F492058213C00EF38D4 /* datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = datamodel.xcdatamodel; sourceTree = "<group>"; };
 		91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListSeasonListGenerator.h; sourceTree = "<group>"; };
 		91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListSeasonListGenerator.m; sourceTree = "<group>"; };
 		913A11AA1E8F206A00450B66 /* Shukofukurou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shukofukurou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -654,7 +653,6 @@
 		913A11AD1E8F212600450B66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = "Base.lproj/MainMenu-AppStore.xib"; sourceTree = "<group>"; };
 		91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiListCoreData.h; sourceTree = "<group>"; };
 		91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiListCoreData.m; sourceTree = "<group>"; };
-		91521F6D2107770C001FCBBB /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
 		915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
 		915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedSearch.m; sourceTree = "<group>"; };
 		915E8C461E8C1AEC005A49A4 /* AddTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTitle.h; sourceTree = "<group>"; };
@@ -693,6 +691,7 @@
 		91822A5E1EAEAC77005E33DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messageview.xib; sourceTree = "<group>"; };
 		91822A621EAEAC88005E33DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RecommendedTitleView.xib; sourceTree = "<group>"; };
 		9188226E1E8C90A700C7FEF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InfoView.xib; sourceTree = "<group>"; };
+		9188B9582107A985009D8E1F /* datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = datamodel.xcdatamodel; path = datamodel.xcdatamodeld/datamodel.xcdatamodel; sourceTree = "<group>"; };
 		918C0D361E89FF8B0037898E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		918C0D381E89FF920037898E /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		918C0D401E8A00ED0037898E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -1066,7 +1065,6 @@
 				2D8A47B81F292D1800FC2B35 /* CharacterView.m */,
 				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
 				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
-				911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */,
 				F84D051A2086667700502379 /* DonationLicenseManager.h */,
 				F84D051B2086667700502379 /* DonationLicenseManager.m */,
 				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
@@ -1081,6 +1079,7 @@
 				9199BAB21E89842400F6E9FF /* GeneralPref.m */,
 				91D094BF1E983095009454F8 /* HistoryView.h */,
 				91D094C01E983095009454F8 /* HistoryView.m */,
+				9188B9582107A985009D8E1F /* datamodel.xcdatamodel */,
 				2DA42F1D1EB79B200006FB9F /* HTMLtoBBCode.h */,
 				2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */,
 				2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */,
@@ -1702,7 +1701,6 @@
 				91521F6B21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
-				911E4F4B2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */,
 				F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */,
 				2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */,
 				2DA863F21F89B2F300D2876A /* ProfileViewController.m in Sources */,
@@ -1758,6 +1756,7 @@
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
+				9188B95A2107A986009D8E1F /* datamodel.xcdatamodel in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
 				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
@@ -1783,7 +1782,6 @@
 				9199BADD1E89842400F6E9FF /* PFMoveApplication.m in Sources */,
 				91D094C21E983095009454F8 /* HistoryView.m in Sources */,
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
-				911E4F4A2058213C00EF38D4 /* datamodel.xcdatamodeld in Sources */,
 				F8B5AA952044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
@@ -1848,6 +1846,7 @@
 				2D88CA6A1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */,
 				916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */,
+				9188B9592107A986009D8E1F /* datamodel.xcdatamodel in Sources */,
 				2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
 				91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
@@ -1888,7 +1887,7 @@
 				F888F41B208FB1F500C22C39 /* NSTextFieldNumber.m in Sources */,
 				F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */,
 				F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */,
-				F888F41E208FB1F500C22C39 /* datamodel.xcdatamodeld in Sources */,
+				9188B95B2107A986009D8E1F /* datamodel.xcdatamodel in Sources */,
 				F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */,
 				F888F420208FB1F500C22C39 /* XMLReader.m in Sources */,
 				91521F6C21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
@@ -2838,20 +2837,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		911E4F482058213C00EF38D4 /* datamodel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				91521F6D2107770C001FCBBB /* datamodel 2.xcdatamodel */,
-				911E4F492058213C00EF38D4 /* datamodel.xcdatamodel */,
-			);
-			currentVersion = 91521F6D2107770C001FCBBB /* datamodel 2.xcdatamodel */;
-			path = datamodel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9199BA8E1E89836000F6E9FF /* Project object */;
 }

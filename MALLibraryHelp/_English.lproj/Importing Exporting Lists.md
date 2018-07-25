@@ -23,6 +23,7 @@ Watched Episodes|Y|Y|Y|Y
 Watched Status|Y|-*|Y|Y
 Score|Y|N|Y|Y
 Tags|Y|N|N|N
+Custom Lists|N|N|N|N
 
 (*) Only completed, plan to watch and watching status. The XML does not contain state/watch status information nor score.
 

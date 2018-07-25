@@ -19,3 +19,8 @@ By clicking the + button, you can add a title. You can add titles from search vi
 
 ## Increment
 The Increment toolbar button in Anime or Manga list allows you to quicky increment the episodes you watched for anime and chapters you read for Manga by one. Once the Episode or Chapters reach the total numbers of episodes or chapters (if the value is greater than zero), it will be marked as complete. If you increment a planned to watch/read entry, its status will be changed to watching/reading.
+
+## Custom Lists (AniList)
+The Modify Custom Lists button allows you to add or remove titles from your custom lists. The custom lists feature allows you to organize titles into different lists besides watch/read status. Currently, you cannot add or remove custom lists within Shukofukurou. You can view your custom lists by clicking the custom list button on the tab bar. To leave a custom list, click on any of the status tabs.
+
+**Note:** Viewing and managing custom lists are only available for people who donated or download the application off the Mac App Store.

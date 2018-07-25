@@ -10,7 +10,6 @@
 #import "MainWindow.h"
 #import "AppDelegate.h"
 #import "Keychain.h"
-//#import "MyAnimeList.h"
 #import "listservice.h"
 #import "Utility.h"
 #import "MyListScoreFormatter.h"
@@ -52,6 +51,21 @@
     [self.animescorecol bind:@"value" toObject:self.animelistarraycontroller
                  withKeyPath:@"arrangedObjects.score" options:bindingOptions];
     [self.mangascorecol bind:@"value" toObject:self.mangalistarraycontroller withKeyPath:@"arrangedObjects.score" options:bindingOptions];
+    // Set block for Custom List Popover
+    __weak ListView *weakself = self;
+    _customlistpopoverviewcontroller.actionblock = ^(NSString *customlistname) {
+        if (_currentlist == MALAnime) {
+            weakself.currentcustomlistanime = customlistname;
+            [weakself performfilter:0];
+            [weakself setToolTipForType:0 shouldReset:false];
+        }
+        else {
+            weakself.currentcustomlistmanga = customlistname;
+            [weakself performfilter:1];
+            [weakself setToolTipForType:1 shouldReset:false];
+        }
+    };
+    
 }
 
 - (void)loadList:(int)list {
@@ -116,6 +130,7 @@
             [_animelisttb deselectAll:self];
         }
         [self performfilter:type];
+        [self populateCustomLists:0];
     }
     else {
         // Populates list
@@ -162,6 +177,7 @@
             [_mangalisttb deselectAll:self];
         }
         [self performfilter:type];
+        [self populateCustomLists:1];
     }
 }
 
@@ -261,6 +277,9 @@
 
 - (void)filterStatusAsTabs:(NSButton *)btn{
     if (_currentlist == 0) {
+        // Clear Custom List
+        _currentcustomlistanime = @"";
+        [self setToolTipForType:0 shouldReset:true];
         if (_watchingfilter != btn) {
             _watchingfilter.state = 0;
         }
@@ -293,6 +312,9 @@
         }
     }
     else {
+        // Clear Custom List
+        _currentcustomlistmanga = @"";
+        [self setToolTipForType:0 shouldReset:true];
         if (_readingfilter != btn) {
             _readingfilter.state = 0;
         }
@@ -331,52 +353,68 @@
     NSMutableArray *predicateformat = [NSMutableArray new];
     NSMutableArray *predicateobjects = [NSMutableArray new];
     bool titlefilterused = false;
+    NSArray *filterstatus;
     if (_animelistfilter.stringValue.length > 0) {
         [predicateformat addObject: @"(title CONTAINS [cd] %@)"];
         [predicateobjects addObject: _animelistfilter.stringValue];
         titlefilterused = true;
     }
-    NSArray *filterstatus = [self obtainfilterstatus:type];
-    if (type == 0) {
-        
-        for (int i=0; i < filterstatus.count; i++) {
-            NSDictionary *d = filterstatus[i];
-            if (filterstatus.count == 1) {
-                [predicateformat addObject:@"(watched_status ==[cd] %@)"];
-                
-            }
-            else if (i == filterstatus.count-1) {
-                [predicateformat addObject:@"watched_status ==[cd] %@)"];
-            }
-            else if (i == 0) {
-                [predicateformat addObject:@"(watched_status ==[cd] %@ OR "];
-            }
-            else {
-                [predicateformat addObject:@"watched_status ==[cd] %@ OR "];
-            }
-            [predicateobjects addObject:d.allKeys[0]];
+    if ((_currentcustomlistanime.length > 0 && type == 0) ||( _currentcustomlistmanga.length > 0 && type == 1)) {
+        [predicateformat addObject: @"(custom_lists CONTAINS [cd] %@)"];
+        switch (type) {
+            case 0:
+                [predicateobjects addObject: [NSString stringWithFormat:@"%@[true]",_currentcustomlistanime]];
+                break;
+            case 1:
+                [predicateobjects addObject: [NSString stringWithFormat:@"%@[true]",_currentcustomlistmanga]];
+                break;
+            default:
+                break;
         }
     }
     else {
-        for (int i=0; i < filterstatus.count; i++) {
-            NSDictionary *d = filterstatus[i];
-            if (filterstatus.count == 1) {
-                [predicateformat addObject:@"(read_status ==[cd] %@)"];
-                
+        filterstatus = [self obtainfilterstatus:type];
+        if (type == 0) {
+            
+            for (int i=0; i < filterstatus.count; i++) {
+                NSDictionary *d = filterstatus[i];
+                if (filterstatus.count == 1) {
+                    [predicateformat addObject:@"(watched_status ==[cd] %@)"];
+                    
+                }
+                else if (i == filterstatus.count-1) {
+                    [predicateformat addObject:@"watched_status ==[cd] %@)"];
+                }
+                else if (i == 0) {
+                    [predicateformat addObject:@"(watched_status ==[cd] %@ OR "];
+                }
+                else {
+                    [predicateformat addObject:@"watched_status ==[cd] %@ OR "];
+                }
+                [predicateobjects addObject:d.allKeys[0]];
             }
-            else if (i == filterstatus.count-1) {
-                [predicateformat addObject:@"read_status ==[cd] %@)"];
+        }
+        else {
+            for (int i=0; i < filterstatus.count; i++) {
+                NSDictionary *d = filterstatus[i];
+                if (filterstatus.count == 1) {
+                    [predicateformat addObject:@"(read_status ==[cd] %@)"];
+                    
+                }
+                else if (i == filterstatus.count-1) {
+                    [predicateformat addObject:@"read_status ==[cd] %@)"];
+                }
+                else if (i == 0) {
+                    [predicateformat addObject:@"(read_status ==[cd] %@ OR "];
+                }
+                else {
+                    [predicateformat addObject:@"read_status ==[cd] %@ OR "];
+                }
+                [predicateobjects addObject:d.allKeys[0]];
             }
-            else if (i == 0) {
-                [predicateformat addObject:@"(read_status ==[cd] %@ OR "];
-            }
-            else {
-                [predicateformat addObject:@"read_status ==[cd] %@ OR "];
-            }
-            [predicateobjects addObject:d.allKeys[0]];
         }
     }
-    if (predicateformat.count ==0 || filterstatus.count == 0) {
+    if ((predicateformat.count ==0 || filterstatus.count == 0) && !((_currentcustomlistanime.length > 0 && type == 0) ||( _currentcustomlistmanga.length > 0 && type == 1))) {
         // Empty filter predicate
         if (type == 0) {
             _animelistarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"watched_status == %@",@""];
@@ -522,5 +560,71 @@
     a = [_mangalistarraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];
     [_mangalisttb reloadData];
+}
+
+- (void)populateCustomLists:(int)type {
+    
+    NSMutableArray *array;
+    if (type == MALAnime) {
+        array = [_animelistarraycontroller mutableArrayValueForKey:@"content"];
+    }
+    else {
+        array = [_mangalistarraycontroller mutableArrayValueForKey:@"content"];
+    }
+    if (array.count > 0) {
+        NSDictionary *data = array[0];
+        NSString *customliststr = data[@"custom_lists"] != [NSNull null] ? [[(NSString *)data[@"custom_lists"] stringByReplacingOccurrencesOfString:@"[true]" withString:@""] stringByReplacingOccurrencesOfString:@"[false]" withString:@""] : @"";
+        NSMutableArray *finalcustomlist = [NSMutableArray new];
+        if (customliststr.length > 0) {
+            NSArray *lists = [customliststr componentsSeparatedByString:@","];
+            for (NSString *listname in lists) {
+                [finalcustomlist addObject:@{@"name" : listname.copy, @"count" : @([array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"custom_lists CONTAINS[c] %@", [NSString stringWithFormat:@"%@[true]",listname]]].count)}];
+            }
+        }
+        if (type == MALAnime) {
+            _animecustomlists = finalcustomlist.copy;
+        }
+        else {
+            _mangacustomlists = finalcustomlist.copy;
+        }
+    }
+}
+- (IBAction)togglecustomlistpopover:(id)sender {
+    NSButton *btn = (NSButton *)sender;
+    // Show Popover
+    [_customlistpopover showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMaxYEdge];
+    // Populate Custom List Popover
+    switch (btn.tag) {
+        case 0:
+            [_customlistpopoverviewcontroller populateandshowCustomLists:_animecustomlists];
+            break;
+        case 1:
+            [_customlistpopoverviewcontroller populateandshowCustomLists:_mangacustomlists];
+            break;
+        default:
+            return;
+    }
+}
+- (void)setToolTipForType:(int)type shouldReset:(bool)reset {
+    switch (type) {
+        case 0: {
+            if (reset) {
+                _animecustomlistbtn.toolTip = @"Custom Lists";
+            }
+            else {
+                _animecustomlistbtn.toolTip = [NSString stringWithFormat:@"Custom Lists - Current: %@", _currentcustomlistanime];
+            }
+            break;
+        }
+        case 1: {
+            if (reset) {
+                _mangacustomlistbtn.toolTip = @"Custom Lists";
+            }
+            else {
+                _mangacustomlistbtn.toolTip = [NSString stringWithFormat:@"Custom Lists - Current: %@", _currentcustomlistmanga];
+            }
+            break;
+        }
+    }
 }
 @end

@@ -35,6 +35,9 @@
 - (void)filterStatusAsTabs:(NSButton *)btn{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (self.currentlist == 0) {
+        // Clear Custom List
+        self.currentcustomlistanime = @"";
+        [self setToolTipForType:0 shouldReset:true];
         if (self.watchingfilter != btn) {
             [defaults setValue:@(0) forKey:@"watchingfilter"];
         }
@@ -67,6 +70,9 @@
         }
     }
     else {
+        // Clear Custom List
+        self.currentcustomlistmanga = @"";
+        [self setToolTipForType:1 shouldReset:true];
         if (self.readingfilter != btn) {
             [defaults setValue:@(0) forKey:@"readingfilter"];
         }

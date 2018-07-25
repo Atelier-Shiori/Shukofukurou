@@ -508,6 +508,8 @@
     _ohistoryvc.view.appearance = [NSAppearance appearanceNamed:appearancename];;
     _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
     _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
+    _listview.customlistpopoverviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
+    _listview.customlistpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     [self.window setFrame:self.window.frame display:false];
 }
 

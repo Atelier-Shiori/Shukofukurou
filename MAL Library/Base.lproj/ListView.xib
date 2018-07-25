@@ -8,15 +8,19 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ListView">
             <connections>
+                <outlet property="animecustomlistbtn" destination="Sql-kd-s00" id="opN-0C-7Jh"/>
                 <outlet property="animelistarraycontroller" destination="hZg-UC-ATg" id="3OZ-jP-GiR"/>
                 <outlet property="animelisttb" destination="etv-3f-0Uh" id="vFX-RV-BNA"/>
                 <outlet property="animelistview" destination="pfO-Zc-dit" id="CA3-6g-TFJ"/>
                 <outlet property="animescorecol" destination="CPD-Wd-FF0" id="d65-Tj-8g5"/>
                 <outlet property="completedfilter" destination="ahz-wi-lKe" id="Uwo-EW-sOI"/>
+                <outlet property="customlistpopover" destination="rPB-KT-LXT" id="BOz-hm-6D6"/>
+                <outlet property="customlistpopoverviewcontroller" destination="SjI-NT-6kl" id="wqf-RO-bcv"/>
                 <outlet property="droppedfilter" destination="eQD-fk-uzw" id="Xqw-4e-xyJ"/>
                 <outlet property="filterbarview" destination="zwH-Mn-Icd" id="EsH-1Y-dhf"/>
                 <outlet property="filterbarview2" destination="T41-us-5RD" id="3QU-qJ-wxa"/>
                 <outlet property="mangacompletedfilter" destination="w88-lF-lUJ" id="ftQ-XU-PnI"/>
+                <outlet property="mangacustomlistbtn" destination="Pf8-4G-Ii3" id="M7M-9h-Eb7"/>
                 <outlet property="mangadroppedfilter" destination="byB-Cc-JM3" id="sAC-AZ-SNc"/>
                 <outlet property="mangalistarraycontroller" destination="Ckb-CV-hJI" id="m6G-pb-vfn"/>
                 <outlet property="mangalisttb" destination="3rR-dz-UWg" id="kRY-Xn-lvn"/>
@@ -160,11 +164,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
-                        <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
+                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="B5h-dx-wLN">
-                        <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
+                        <rect key="frame" x="-15" y="15" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="QGW-Oe-htQ">
@@ -236,11 +240,33 @@
                                 <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.completedfilter" id="PUe-pQ-Meq"/>
                             </connections>
                         </button>
+                        <button toolTip="Custom Lists" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sql-kd-s00">
+                            <rect key="frame" x="540" y="3" width="22" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="customlist" imagePosition="below" alignment="center" alternateImage="customlist" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJb-lE-k2a">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system" size="12"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="togglecustomlistpopover:" target="-2" id="IK4-0M-cAg"/>
+                                <binding destination="vm0-rJ-Ss3" name="hidden" keyPath="values.currentservice" id="Ov4-Hh-wqF">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">CustomListShouldShowValueTransformer</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
                     </subviews>
                 </visualEffectView>
             </subviews>
             <point key="canvasLocation" x="309" y="458"/>
         </customView>
+        <viewController id="SjI-NT-6kl" userLabel="Popover View Controller" customClass="CustomListsPopover"/>
+        <popover behavior="t" id="rPB-KT-LXT">
+            <connections>
+                <outlet property="contentViewController" destination="SjI-NT-6kl" id="9He-or-XtU"/>
+            </connections>
+        </popover>
         <arrayController objectClassName="NSDictionary" editable="NO" id="hZg-UC-ATg">
             <declaredKeys>
                 <string>allValues</string>
@@ -265,11 +291,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" ambiguous="YES" id="JM6-04-Bb0">
-                        <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="565" height="252"/>
+                                <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -409,11 +435,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="L75-cp-VFK">
-                        <rect key="frame" x="0.0" y="259" width="564" height="16"/>
+                        <rect key="frame" x="0.0" y="260" width="564" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ejw-DP-Ces">
-                        <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
+                        <rect key="frame" x="-15" y="23" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" id="0LX-NX-GMd">
@@ -485,10 +511,29 @@
                                 <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.mcompletedfilter" id="yaW-gD-fRj"/>
                             </connections>
                         </button>
+                        <button toolTip="Custom Lists" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pf8-4G-Ii3">
+                            <rect key="frame" x="540" y="3" width="22" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="customlist" imagePosition="below" alignment="center" alternateImage="customlist" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8J5-sX-LZl">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system" size="12"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="togglecustomlistpopover:" target="-2" id="f4b-Hy-6XP"/>
+                                <binding destination="vm0-rJ-Ss3" name="hidden" keyPath="values.currentservice" id="hgN-8H-yeR">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">CustomListShouldShowValueTransformer</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
                     </subviews>
                 </visualEffectView>
             </subviews>
-            <point key="canvasLocation" x="302" y="629"/>
+            <point key="canvasLocation" x="317" y="626"/>
         </customView>
     </objects>
+    <resources>
+        <image name="customlist" width="12" height="12"/>
+    </resources>
 </document>

@@ -50,7 +50,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -305,6 +305,8 @@
     _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
     _infoview.othertitlepopover.appearance = [NSAppearance appearanceNamed:appearancename];
+    _listview.customlistpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+    _listview.customlistpopoverviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
     [_w setFrame:_w.frame display:false];
 }
 

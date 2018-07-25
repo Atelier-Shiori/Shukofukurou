@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CustomListsPopover.h"
+
 @interface ListView : NSViewController <NSTableViewDelegate>
 
 @property int currentlist;
@@ -40,9 +42,20 @@
 @property (strong) NSString * animelisttitlefilterstring;
 @property (strong) NSString * mangalisttitlefilterstring;
 
+// Custom Lists
+@property (strong) NSArray *animecustomlists;
+@property (strong) NSArray *mangacustomlists;
+@property (strong) IBOutlet NSPopover *customlistpopover;
+@property (strong) IBOutlet CustomListsPopover *customlistpopoverviewcontroller;
+@property (strong) NSString *currentcustomlistanime;
+@property (strong) NSString *currentcustomlistmanga;
+@property (strong) IBOutlet NSButton *mangacustomlistbtn;
+@property (strong) IBOutlet NSButton *animecustomlistbtn;
+
 - (void)loadList:(int)list;
 - (IBAction)filterperform:(id)sender;
 - (void)populateList:(id)object type:(int)type;
 - (void)removeAllFilterBindings;
 - (void)clearalllists;
+- (void)setToolTipForType:(int)type shouldReset:(bool)reset;
 @end

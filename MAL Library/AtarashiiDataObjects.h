@@ -64,6 +64,7 @@
 @property int rewatch_count;
 @property (strong) NSString *personal_comments;
 @property bool private_entry;
+@property (strong) NSString * custom_lists;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
@@ -111,6 +112,7 @@
 @property int reread_count;
 @property (strong) NSString *personal_comments;
 @property bool private_entry;
+@property (strong) NSString * custom_lists;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

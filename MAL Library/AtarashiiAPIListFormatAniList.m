@@ -63,6 +63,7 @@
             aentry.personal_comments = entry[@"notes"];
             aentry.watching_start = entry[@"watching_start"][@"year"] != [NSNull null] && entry[@"watching_start"][@"month"] != [NSNull null] && entry[@"watching_start"][@"day"] != [NSNull null] ? [self convertDate:entry[@"watching_start"]] : @"";
             aentry.watching_end = entry[@"watching_end"][@"year"] != [NSNull null] && entry[@"watching_end"][@"month"] != [NSNull null] && entry[@"watching_end"][@"day"] != [NSNull null] ? [self convertDate:entry[@"watching_end"]] : @"";
+            aentry.custom_lists = [self generateCustomListStringWithArray:entry[@"customLists"]];
             [tmparray addObject:[aentry NSDictionaryRepresentation]];
         }
     }
@@ -121,6 +122,7 @@
             mentry.personal_comments = entry[@"notes"];
             mentry.reading_start = entry[@"read_start"][@"year"] != [NSNull null] && entry[@"read_start"][@"month"] != [NSNull null] && entry[@"read_start"][@"day"] != [NSNull null] ? [self convertDate:entry[@"read_start"]] : @"";
             mentry.reading_end = entry[@"read_end"][@"year"] != [NSNull null] && entry[@"read_end"][@"month"] != [NSNull null] && entry[@"read_end"][@"day"] != [NSNull null] ?  [self convertDate:entry[@"read_end"]] : @"";
+            mentry.custom_lists = [self generateCustomListStringWithArray:entry[@"customLists"]];
             [tmparray addObject:[mentry NSDictionaryRepresentation]];
         }
     }
@@ -466,5 +468,15 @@
         tmpday = [@"0" stringByAppendingString:tmpday];
     }
     return [NSString stringWithFormat:@"%@-%@-%@", tmpyear, tmpmonth, tmpday];
+}
++ (NSString *)generateCustomListStringWithArray:(NSArray *)clists {
+    NSMutableArray *customlists = [NSMutableArray new];
+    for (NSDictionary *clist in clists) {
+        NSString *clistname = clist[@"name"];
+        bool enabled = ((NSNumber *)clist[@"enabled"]).boolValue;
+        NSString *finalstring = [NSString stringWithFormat:@"%@[%@]",clistname, enabled ? @"true" : @"false"];
+        [customlists addObject:finalstring];
+    }
+    return [customlists componentsJoinedByString:@","];
 }
 @end

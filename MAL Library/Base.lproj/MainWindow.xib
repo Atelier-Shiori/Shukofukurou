@@ -640,6 +640,21 @@
                             <action selector="increment:" target="Xk3-JH-b4a" id="77C-fO-790"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="E56AA064-8F74-4913-902B-15C487320618" explicitItemIdentifier="editCustomLists" label="Modify Custom Lists" paletteLabel="Modify Custom Lists" toolTip="Modify Custom Lists" image="editcustomlists" id="uRg-E5-6YT">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="Bzk-kL-NTF">
+                            <rect key="frame" x="34" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="editcustomlists" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vdK-M0-G0X">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="modifyCustomLists:" target="Xk3-JH-b4a" id="Lo9-JU-eQp"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -715,6 +730,7 @@
         <viewController nibName="ListView" id="Xk3-JH-b4a" customClass="MyListView">
             <connections>
                 <outlet property="animelistfilter" destination="KKI-5U-zIm" id="5xL-g5-CGy"/>
+                <outlet property="customlistmodifyitem" destination="uRg-E5-6YT" id="SdW-Cy-TnS"/>
                 <outlet property="deletetitleitem" destination="WJo-Ig-ng6" id="MNY-fm-VYU"/>
                 <outlet property="edittitleitem" destination="7Ap-pp-DuY" id="itg-Y5-qvz"/>
                 <outlet property="incrementitem" destination="glC-Bg-6JC" id="k11-Zh-JCx"/>
@@ -773,6 +789,7 @@
         <image name="advsearch" width="32" height="32"/>
         <image name="cast" width="32" height="32"/>
         <image name="delete" width="32" height="32"/>
+        <image name="editcustomlists" width="24" height="24"/>
         <image name="increment" width="24" height="24"/>
         <image name="reviews" width="32" height="32"/>
         <image name="safari" width="32" height="32"/>

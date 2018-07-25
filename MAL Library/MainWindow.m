@@ -50,7 +50,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -527,11 +527,17 @@
             [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
             [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
             [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
-            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
-            [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:4];
-            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:5];
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:6];
-            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:7];
+            if ([listservice getCurrentServiceID] == 3) {
+                [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:3];
+            }
+            else {
+                indexoffset = -1;
+            }
+            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:4+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:5+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:6+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:7+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:8+indexoffset];
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
@@ -540,11 +546,17 @@
                 [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
                 [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
                 [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
-                [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3];
-                [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:4];
-                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:5];
-                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:6];
-                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:7];
+                if ([listservice getCurrentServiceID] == 3) {
+                    [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:3];
+                }
+                else {
+                    indexoffset = -1;
+                }
+                [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:4+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:5+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:6+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:7+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:8+indexoffset];
             }
         }
     }

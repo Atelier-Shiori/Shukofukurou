@@ -20,6 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here
+    self.customlistmodifyviewcontroller.mw = self.mw;
 }
 
 - (void)loadList:(int)list {
@@ -251,6 +252,7 @@
             _shareitem.enabled = YES;
             _titleinfoitem.enabled = YES;
             _incrementitem.enabled = YES;
+            _customlistmodifyitem.enabled = YES;
         }
         else {
             _edittitleitem.enabled = NO;
@@ -258,6 +260,7 @@
             _shareitem.enabled = NO;
             _titleinfoitem.enabled = NO;
             _incrementitem.enabled = NO;
+            _customlistmodifyitem.enabled = NO;
         }
     }
     else {
@@ -267,6 +270,7 @@
             _shareitem.enabled = YES;
             _titleinfoitem.enabled = YES;
             _incrementitem.enabled = YES;
+            _customlistmodifyitem.enabled = YES;
         }
         else {
             _edittitleitem.enabled = NO;
@@ -274,6 +278,7 @@
             _shareitem.enabled = NO;
             _titleinfoitem.enabled = NO;
             _incrementitem.enabled = NO;
+            _customlistmodifyitem.enabled = NO;
         }
     }
 }
@@ -465,6 +470,57 @@
         NSLog(@"%@", error.localizedDescription);
         NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
     }];
+}
+- (IBAction)modifyCustomLists:(id)sender {
+    NSDictionary *d;
+    NSNumber *selid;
+    if (self.currentlist == 0) {
+        if (self.animelistarraycontroller.selectedObjects.count > 0) {
+            d = self.animelistarraycontroller.selectedObjects[0];
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    selid = d[@"id"];
+                    break;
+                case 2:
+                case 3:
+                    selid = d[@"entryid"];
+                    break;
+                default:
+                    break;
+            }
+        }
+        else {
+            NSLog(@"Invalid Selection, aborting delete.");
+            return;
+        }
+    }
+    else {
+        if (self.mangalistarraycontroller.selectedObjects.count > 0) {
+            d = self.mangalistarraycontroller.selectedObjects[0];
+            switch ([listservice getCurrentServiceID]) {
+                case 1:
+                    selid = d[@"id"];
+                    break;
+                case 2:
+                case 3:
+                    selid = d[@"entryid"];
+                    break;
+                default:
+                    break;
+            }
+        }
+        else {
+            NSLog(@"Invalid Selection, aborting delete.");
+            return;
+        }
+    }
+    if (self.currentlist == 0){
+        [self.customlistmodifypopover showRelativeToRect:[self.animelisttb frameOfCellAtColumn:0 row:self.animelisttb.selectedRow] ofView:self.animelisttb preferredEdge:0];
+    }
+    else {
+        [self.customlistmodifypopover showRelativeToRect:[self.mangalisttb frameOfCellAtColumn:0 row:self.mangalisttb.selectedRow] ofView:self.mangalisttb preferredEdge:0];
+    }
+    [self.customlistmodifyviewcontroller populateCustomLists:d withCurrentType:self.currentlist withSelectedId:selid.intValue];
 }
 - (void)setUpdatingState:(bool)updating {
     _updating = updating;

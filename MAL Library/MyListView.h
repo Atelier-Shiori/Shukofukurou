@@ -18,8 +18,10 @@
 @property (strong) IBOutlet NSToolbarItem *shareitem;
 @property (strong) IBOutlet NSToolbarItem *titleinfoitem;
 @property (strong) IBOutlet NSToolbarItem *incrementitem;
+@property (strong) IBOutlet NSToolbarItem *customlistmodifyitem;
 
 - (IBAction)deletetitle:(id)sender;
 - (IBAction)increment:(id)sender;
 - (void)setUpdatingState:(bool)updating;
+- (IBAction)modifyCustomLists:(id)sender ;
 @end

@@ -326,6 +326,27 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     }];
 }
 
++ (void)modifyCustomLists:(int)titleid withCustomLists:(NSArray *)customlists completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    // Note: Title id is entry id
+    // Note; Type field is ignored
+    AFOAuthCredential *cred = [AniList getFirstAccount];
+    if (cred && cred.expired) {
+        errorHandler(nil);
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    manager.requestSerializer = [Utility jsonrequestserializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    NSDictionary *parameters = @{@"query" : kAnilistModifyCustomLists, @"variables" : @{@"id" : @(titleid), @"custom_lists" : customlists }};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(nil);
+        NSString* ErrorResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        NSLog(@"%@",ErrorResponse);
+    }];
+}
+
 #pragma mark Characters
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *characterarray = [NSMutableArray new];

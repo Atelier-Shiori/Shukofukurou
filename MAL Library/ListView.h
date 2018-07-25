@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "CustomListsPopover.h"
+#import "CustomListModify.h"
 
 @interface ListView : NSViewController <NSTableViewDelegate>
 
@@ -51,6 +52,8 @@
 @property (strong) NSString *currentcustomlistmanga;
 @property (strong) IBOutlet NSButton *mangacustomlistbtn;
 @property (strong) IBOutlet NSButton *animecustomlistbtn;
+@property (strong) IBOutlet NSPopover *customlistmodifypopover;
+@property (strong) IBOutlet CustomListModify *customlistmodifyviewcontroller;
 
 - (void)loadList:(int)list;
 - (IBAction)filterperform:(id)sender;

@@ -14,6 +14,8 @@
                 <outlet property="animelistview" destination="pfO-Zc-dit" id="CA3-6g-TFJ"/>
                 <outlet property="animescorecol" destination="CPD-Wd-FF0" id="d65-Tj-8g5"/>
                 <outlet property="completedfilter" destination="ahz-wi-lKe" id="Uwo-EW-sOI"/>
+                <outlet property="customlistmodifypopover" destination="C8v-Sj-5Rs" id="xph-DI-ou3"/>
+                <outlet property="customlistmodifyviewcontroller" destination="55m-4C-HJb" id="sjt-WB-oAf"/>
                 <outlet property="customlistpopover" destination="rPB-KT-LXT" id="BOz-hm-6D6"/>
                 <outlet property="customlistpopoverviewcontroller" destination="SjI-NT-6kl" id="wqf-RO-bcv"/>
                 <outlet property="droppedfilter" destination="eQD-fk-uzw" id="Xqw-4e-xyJ"/>
@@ -265,6 +267,16 @@
         <popover behavior="t" id="rPB-KT-LXT">
             <connections>
                 <outlet property="contentViewController" destination="SjI-NT-6kl" id="9He-or-XtU"/>
+            </connections>
+        </popover>
+        <viewController id="55m-4C-HJb" userLabel="Popover View Controller" customClass="CustomListModify">
+            <connections>
+                <outlet property="popover" destination="C8v-Sj-5Rs" id="fBN-ed-gQr"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="C8v-Sj-5Rs">
+            <connections>
+                <outlet property="contentViewController" destination="55m-4C-HJb" id="5Dt-ld-b5j"/>
             </connections>
         </popover>
         <arrayController objectClassName="NSDictionary" editable="NO" id="hZg-UC-ATg">

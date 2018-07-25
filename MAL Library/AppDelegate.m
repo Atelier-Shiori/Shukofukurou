@@ -10,6 +10,8 @@
 #import "Preferences.h"
 #import "Keychain.h"
 #import "PFAboutWindowController.h"
+#import "MyListView.h"
+#import "ListView.h"
 #if defined(OSS)
 #else
 #import <Fabric/Fabric.h>
@@ -103,6 +105,7 @@
         if (weakself.liststatswindow) {
             [weakself.liststatswindow.window close];
         }
+        [weakself.mainwindowcontroller.listview resetcustomlists];
         [weakself refreshUIServiceChange:selected];
         [weakself.mainwindowcontroller changeservice:previousservice];
         if (weakself.pwc) {

@@ -627,4 +627,10 @@
         }
     }
 }
+- (void)resetcustomlists {
+    _currentcustomlistanime = @"";
+    _currentcustomlistmanga = @"";
+    [self setToolTipForType:0 shouldReset:true];
+    [self setToolTipForType:1 shouldReset:true];
+}
 @end

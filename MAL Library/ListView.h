@@ -61,4 +61,5 @@
 - (void)removeAllFilterBindings;
 - (void)clearalllists;
 - (void)setToolTipForType:(int)type shouldReset:(bool)reset;
+- (void)resetcustomlists;
 @end

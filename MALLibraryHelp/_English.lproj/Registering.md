@@ -11,6 +11,7 @@ The following features is in the App Store version:
 * Managing Manga lists and viewing information of Manga titles
 * List Statistics (Manga)
 * Importing and Exporting of Manga lists.
+* Using custom lists on AniList.
 * Viewing source material information in Anime Information view
 * Viewing cast information of an anime title.
 * Viewing profiles and lists from different users.

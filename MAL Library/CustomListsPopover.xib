@@ -65,7 +65,7 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
-                                    <action selector="doubleclickaction:" target="-2" id="gPJ-pX-0Ff"/>
+                                    <action trigger="doubleAction" selector="doubleclickaction:" target="-2" id="cHW-XT-WtG"/>
                                     <outlet property="delegate" destination="-2" id="bYc-PM-d5i"/>
                                 </connections>
                             </tableView>

@@ -527,7 +527,7 @@
             [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
             [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
             [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
-            if ([listservice getCurrentServiceID] == 3) {
+            if ([listservice getCurrentServiceID] == 3 && [NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
                 [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:3];
             }
             else {

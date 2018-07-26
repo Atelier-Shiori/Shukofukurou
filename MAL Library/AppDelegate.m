@@ -485,7 +485,11 @@
 - (NSURL *)applicationDocumentsDirectory {
     // The directory the application uses to store the Core Data store file. This code uses a directory named "moe.ateliershiori.test" in the user's Application Support directory.
     NSURL *appSupportURL = [[NSFileManager defaultManager] URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask].lastObject;
+#if defined(BETA)
+    return [appSupportURL URLByAppendingPathComponent:@"Shukofukurou Next"];
+#else
     return [appSupportURL URLByAppendingPathComponent:@"Shukofukurou"];
+#endif
 }
 
 - (NSManagedObjectModel *)managedObjectModel {

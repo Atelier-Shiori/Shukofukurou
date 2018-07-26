@@ -278,6 +278,160 @@
 		91F71F0B20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
 		91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
 		91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
+		91F8E39B210A46CA007137A7 /* DonationLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D051B2086667700502379 /* DonationLicenseManager.m */; };
+		91F8E39C210A46CA007137A7 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
+		91F8E39D210A46CA007137A7 /* messagecomposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAA9FC01EB6524A00F562BD /* messagecomposer.m */; };
+		91F8E39E210A46CA007137A7 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
+		91F8E39F210A46CA007137A7 /* ESCssParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC71EB8DF64005B7B77 /* ESCssParser.m */; };
+		91F8E3A0210A46CA007137A7 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
+		91F8E3A1210A46CA007137A7 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
+		91F8E3A2210A46CA007137A7 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */; };
+		91F8E3A3210A46CA007137A7 /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
+		91F8E3A4210A46CA007137A7 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
+		91F8E3A5210A46CA007137A7 /* ESCssTokens.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DCA1EB8DF64005B7B77 /* ESCssTokens.m */; };
+		91F8E3A6210A46CA007137A7 /* CustomListModify.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E962108E89C00AA8F90 /* CustomListModify.m */; };
+		91F8E3A7210A46CA007137A7 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		91F8E3A8210A46CA007137A7 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
+		91F8E3A9210A46CA007137A7 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502BB1E8C576B00565D30 /* ListView.m */; };
+		91F8E3AA210A46CA007137A7 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
+		91F8E3AB210A46CA007137A7 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
+		91F8E3AC210A46CA007137A7 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABA1E89842400F6E9FF /* MainWindow.m */; };
+		91F8E3AD210A46CA007137A7 /* HTMLtoBBCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA42F1E1EB79B200006FB9F /* HTMLtoBBCode.m */; };
+		91F8E3AE210A46CA007137A7 /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
+		91F8E3AF210A46CA007137A7 /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */; };
+		91F8E3B0210A46CA007137A7 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */; };
+		91F8E3B1210A46CA007137A7 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
+		91F8E3B2210A46CA007137A7 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
+		91F8E3B3210A46CA007137A7 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB71E89842400F6E9FF /* LoginPref.m */; };
+		91F8E3B4210A46CA007137A7 /* ListStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E721ECF8AF500F47138 /* ListStatistics.m */; };
+		91F8E3B5210A46CA007137A7 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
+		91F8E3B6210A46CA007137A7 /* StringDatetoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */; };
+		91F8E3B7210A46CA007137A7 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACD1E89842400F6E9FF /* Utility.m */; };
+		91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABC1E89842400F6E9FF /* MSWeakTimer.m */; };
+		91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
+		91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
+		91F8E3BB210A46CA007137A7 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
+		91F8E3BC210A46CA007137A7 /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
+		91F8E3BD210A46CA007137A7 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
+		91F8E3BE210A46CA007137A7 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB21E89842400F6E9FF /* GeneralPref.m */; };
+		91F8E3BF210A46CA007137A7 /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
+		91F8E3C0210A46CA007137A7 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
+		91F8E3C1210A46CA007137A7 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
+		91F8E3C2210A46CA007137A7 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
+		91F8E3C3210A46CA007137A7 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
+		91F8E3C4210A46CA007137A7 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */; };
+		91F8E3C5210A46CA007137A7 /* messageview.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC621EAE6FA20037A6F2 /* messageview.m */; };
+		91F8E3C6210A46CA007137A7 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
+		91F8E3C7210A46CA007137A7 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
+		91F8E3C8210A46CA007137A7 /* CustomListsPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */; };
+		91F8E3C9210A46CA007137A7 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
+		91F8E3CA210A46CA007137A7 /* NSTextFieldCellMiddleAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */; };
+		91F8E3CB210A46CA007137A7 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */; };
+		91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
+		91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */; };
+		91F8E3CE210A46CA007137A7 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
+		91F8E3CF210A46CA007137A7 /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
+		91F8E3D0210A46CA007137A7 /* ESCssTokenizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC28DC81EB8DF64005B7B77 /* ESCssTokenizer.m */; };
+		91F8E3D1210A46CA007137A7 /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
+		91F8E3D2210A46CA007137A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
+		91F8E3D3210A46CA007137A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
+		91F8E3D4210A46CA007137A7 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
+		91F8E3D5210A46CA007137A7 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
+		91F8E3D6210A46CA007137A7 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
+		91F8E3D7210A46CA007137A7 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
+		91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
+		91F8E3D9210A46CA007137A7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
+		91F8E3DA210A46CA007137A7 /* CustomListShouldShowValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */; };
+		91F8E3DB210A46CA007137A7 /* NSString+HTMLtoNSAttributedString.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */; };
+		91F8E3DC210A46CA007137A7 /* ReviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C0601C1EAD309C0099E433 /* ReviewView.m */; };
+		91F8E3DD210A46CA007137A7 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
+		91F8E3DE210A46CA007137A7 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */; };
+		91F8E3DF210A46CA007137A7 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */; };
+		91F8E3E0210A46CA007137A7 /* ImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */; };
+		91F8E3E1210A46CA007137A7 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
+		91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E791ECF8B4F00F47138 /* ratingchartview.m */; };
+		91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
+		91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
+		91F8E3E5210A46CA007137A7 /* ProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863E81F895F9B00D2876A /* ProfileWindowController.m */; };
+		91F8E3E6210A46CA007137A7 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
+		91F8E3E7210A46CA007137A7 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D101E8C88280026D3E9 /* InfoView.m */; };
+		91F8E3E8210A46CA007137A7 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
+		91F8E3E9210A46CA007137A7 /* servicemenucontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D88CA691FE815B600AD142E /* servicemenucontroller.m */; };
+		91F8E3EA210A46CA007137A7 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
+		91F8E3EB210A46CA007137A7 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
+		91F8E3EC210A46CA007137A7 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
+		91F8E3ED210A46CA007137A7 /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
+		91F8E3EE210A46CA007137A7 /* messageswindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91DAFC5B1EAE6C9F0037A6F2 /* messageswindow.m */; };
+		91F8E3EF210A46CA007137A7 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
+		91F8E3F0210A46CA007137A7 /* ExportProgressWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */; };
+		91F8E3F2210A46CA007137A7 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		91F8E3F3210A46CA007137A7 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		91F8E3F4210A46CA007137A7 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
+		91F8E3F5210A46CA007137A7 /* DonationCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; };
+		91F8E3F6210A46CA007137A7 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
+		91F8E3F7210A46CA007137A7 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
+		91F8E3F8210A46CA007137A7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
+		91F8E3F9210A46CA007137A7 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
+		91F8E3FA210A46CA007137A7 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF21E89844C00F6E9FF /* MASPreferences.framework */; };
+		91F8E3FB210A46CA007137A7 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		91F8E3FC210A46CA007137A7 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		91F8E3FD210A46CA007137A7 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D381E89FF920037898E /* Crashlytics.framework */; };
+		91F8E3FE210A46CA007137A7 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
+		91F8E3FF210A46CA007137A7 /* DonationCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; };
+		91F8E400210A46CA007137A7 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
+		91F8E401210A46CA007137A7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D361E89FF8B0037898E /* Fabric.framework */; };
+		91F8E402210A46CA007137A7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
+		91F8E403210A46CA007137A7 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
+		91F8E405210A46CA007137A7 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */; };
+		91F8E406210A46CA007137A7 /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5F1EAEAC77005E33DB /* messageview.xib */; };
+		91F8E407210A46CA007137A7 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
+		91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */; };
+		91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
+		91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */; };
+		91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
+		91F8E40C210A46CA007137A7 /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5B1EAEAC70005E33DB /* messageswindow.xib */; };
+		91F8E40D210A46CA007137A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
+		91F8E40E210A46CA007137A7 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAB01E89842400F6E9FF /* dsa_pub.pem */; };
+		91F8E40F210A46CA007137A7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
+		91F8E410210A46CA007137A7 /* SearchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D041E8C7DFE0026D3E9 /* SearchView.xib */; };
+		91F8E411210A46CA007137A7 /* ListStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E821ECFA3E400F47138 /* ListStatistics.xib */; };
+		91F8E412210A46CA007137A7 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE41E89843300F6E9FF /* LoginView.xib */; };
+		91F8E413210A46CA007137A7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE61E89843300F6E9FF /* MainWindow.xib */; };
+		91F8E414210A46CA007137A7 /* ExportProgressWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8813A5C20CF159400D974A1 /* ExportProgressWindow.xib */; };
+		91F8E415210A46CA007137A7 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
+		91F8E416210A46CA007137A7 /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */; };
+		91F8E417210A46CA007137A7 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE21E89843300F6E9FF /* GeneralPref.xib */; };
+		91F8E418210A46CA007137A7 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */; };
+		91F8E419210A46CA007137A7 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
+		91F8E41A210A46CA007137A7 /* ListImport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8B61EC4EED30068856A /* ListImport.xib */; };
+		91F8E41B210A46CA007137A7 /* ImportPrompt.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8BA1EC4EED80068856A /* ImportPrompt.xib */; };
+		91F8E41C210A46CA007137A7 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
+		91F8E41D210A46CA007137A7 /* RecommendedTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */; };
+		91F8E41E210A46CA007137A7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAA11E89836000F6E9FF /* MainMenu.xib */; };
+		91F8E41F210A46CA007137A7 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
+		91F8E420210A46CA007137A7 /* NotLoggedIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C91E8C65A900565D30 /* NotLoggedIn.xib */; };
+		91F8E421210A46CA007137A7 /* SoftwareUpdateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */; };
+		91F8E422210A46CA007137A7 /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
+		91F8E423210A46CA007137A7 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
+		91F8E424210A46CA007137A7 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
+		91F8E425210A46CA007137A7 /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */; };
+		91F8E426210A46CA007137A7 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
+		91F8E427210A46CA007137A7 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E8E2108BCFE00AA8F90 /* CustomListsPopover.xib */; };
+		91F8E428210A46CA007137A7 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E972108E89C00AA8F90 /* CustomListModify.xib */; };
+		91F8E429210A46CA007137A7 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
+		91F8E42A210A46CA007137A7 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01161FA3B1C90053A82B /* CharacterView.xib */; };
+		91F8E42B210A46CA007137A7 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
+		91F8E42C210A46CA007137A7 /* SeasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D0C1E8C86A40026D3E9 /* SeasonView.xib */; };
+		91F8E42D210A46CA007137A7 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
+		91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */; };
+		91F8E42F210A46CA007137A7 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C61E8C65A500565D30 /* ListView.xib */; };
+		91F8E431210A46CA007137A7 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F8E432210A46CA007137A7 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F8E433210A46CA007137A7 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F8E434210A46CA007137A7 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F8E435210A46CA007137A7 /* DonationCheck.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F8E436210A46CA007137A7 /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F8E437210A46CA007137A7 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */; };
 		F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
@@ -478,6 +632,13 @@
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "MAL Library (AppStore)";
 		};
+		91F8E399210A46CA007137A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
+			remoteInfo = MALLibraryHelp;
+		};
 		F87EF5632098D22E000AD86E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
@@ -545,6 +706,33 @@
 				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91F8E430210A46CA007137A7 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				91F8E431210A46CA007137A7 /* AFNetworking.framework in Embed Frameworks */,
+				91F8E432210A46CA007137A7 /* SAMKeychain.framework in Embed Frameworks */,
+				91F8E433210A46CA007137A7 /* PXSourceList.framework in Embed Frameworks */,
+				91F8E434210A46CA007137A7 /* MASPreferences.framework in Embed Frameworks */,
+				91F8E435210A46CA007137A7 /* DonationCheck.framework in Embed Frameworks */,
+				91F8E436210A46CA007137A7 /* CocoaOniguruma.framework in Embed Frameworks */,
+				91F8E437210A46CA007137A7 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91F8E439210A46CA007137A7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		F888F48F208FB1F500C22C39 /* Embed Frameworks */ = {
@@ -786,6 +974,8 @@
 		91DAFC621EAE6FA20037A6F2 /* messageview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = messageview.m; sourceTree = "<group>"; };
 		91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExportProgressWindow.h; sourceTree = "<group>"; };
 		91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportProgressWindow.m; sourceTree = "<group>"; };
+		91F8E43D210A46CA007137A7 /* Shukofukurou Next.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou Next.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		91F8E43E210A46CA007137A7 /* Shukofukurou Next-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shukofukurou Next-Info.plist"; path = "/Volumes/MacStorage/Shukofukurou/MAL Library/Shukofukurou Next-Info.plist"; sourceTree = "<absolute>"; };
 		F838AE6C2087CF9A0063B63E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationLicenseManager.xib; sourceTree = "<group>"; };
 		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
 		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
@@ -888,6 +1078,31 @@
 				918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */,
 				9199BAFC1E89847D00F6E9FF /* Sparkle.framework in Frameworks */,
 				91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		91F8E3F1210A46CA007137A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91F8E3F2210A46CA007137A7 /* CocoaOniguruma.framework in Frameworks */,
+				91F8E3F3210A46CA007137A7 /* MASPreferences.framework in Frameworks */,
+				91F8E3F4210A46CA007137A7 /* AFNetworking.framework in Frameworks */,
+				91F8E3F5210A46CA007137A7 /* DonationCheck.framework in Frameworks */,
+				91F8E3F6210A46CA007137A7 /* AFNetworking.framework in Frameworks */,
+				91F8E3F7210A46CA007137A7 /* CocoaOniguruma.framework in Frameworks */,
+				91F8E3F8210A46CA007137A7 /* Sparkle.framework in Frameworks */,
+				91F8E3F9210A46CA007137A7 /* MASPreferences.framework in Frameworks */,
+				91F8E3FA210A46CA007137A7 /* MASPreferences.framework in Frameworks */,
+				91F8E3FB210A46CA007137A7 /* PXSourceList.framework in Frameworks */,
+				91F8E3FC210A46CA007137A7 /* SAMKeychain.framework in Frameworks */,
+				91F8E3FD210A46CA007137A7 /* Crashlytics.framework in Frameworks */,
+				91F8E3FE210A46CA007137A7 /* PXSourceList.framework in Frameworks */,
+				91F8E3FF210A46CA007137A7 /* DonationCheck.framework in Frameworks */,
+				91F8E400210A46CA007137A7 /* SAMKeychain.framework in Frameworks */,
+				91F8E401210A46CA007137A7 /* Fabric.framework in Frameworks */,
+				91F8E402210A46CA007137A7 /* Sparkle.framework in Frameworks */,
+				91F8E403210A46CA007137A7 /* PXSourceList.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,6 +1259,7 @@
 				2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */,
 				F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */,
 				F87EF55E2098D22E000AD86E /* ShukofukurouTests.xctest */,
+				91F8E43D210A46CA007137A7 /* Shukofukurou Next.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1195,6 +1411,7 @@
 				2D88CA691FE815B600AD142E /* servicemenucontroller.m */,
 				F888F49B208FB1F600C22C39 /* Shukofukurou (Open Source)-Info.plist */,
 				F888F49C208FB20C00C22C39 /* Shukofukurou Open Source.entitlements */,
+				91F8E43E210A46CA007137A7 /* Shukofukurou Next-Info.plist */,
 				2DAB19E71EF9F2C400420182 /* siteimage.h */,
 				2DAB19E81EF9F2C400420182 /* siteimage.m */,
 				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
@@ -1370,6 +1587,27 @@
 			productReference = 9199BA961E89836000F6E9FF /* Shukofukurou.app */;
 			productType = "com.apple.product-type.application";
 		};
+		91F8E397210A46CA007137A7 /* Shukofukurou Next */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91F8E43A210A46CA007137A7 /* Build configuration list for PBXNativeTarget "Shukofukurou Next" */;
+			buildPhases = (
+				91F8E39A210A46CA007137A7 /* Sources */,
+				91F8E3F1210A46CA007137A7 /* Frameworks */,
+				91F8E404210A46CA007137A7 /* Resources */,
+				91F8E430210A46CA007137A7 /* Embed Frameworks */,
+				91F8E438210A46CA007137A7 /* ShellScript */,
+				91F8E439210A46CA007137A7 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				91F8E398210A46CA007137A7 /* PBXTargetDependency */,
+			);
+			name = "Shukofukurou Next";
+			productName = "MAL Library";
+			productReference = 91F8E43D210A46CA007137A7 /* Shukofukurou Next.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F87EF55D2098D22E000AD86E /* ShukofukurouTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F87EF5652098D22E000AD86E /* Build configuration list for PBXNativeTarget "ShukofukurouTests" */;
@@ -1445,6 +1683,9 @@
 						DevelopmentTeam = 9HDZTER525;
 						ProvisioningStyle = Automatic;
 					};
+					91F8E397210A46CA007137A7 = {
+						DevelopmentTeam = 9HDZTER525;
+					};
 					F87EF55D2098D22E000AD86E = {
 						CreatedOnToolsVersion = 9.2;
 						DevelopmentTeam = 9HDZTER525;
@@ -1483,6 +1724,7 @@
 				2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */,
 				F888F406208FB1F500C22C39 /* Shukofukurou Community */,
 				F87EF55D2098D22E000AD86E /* ShukofukurouTests */,
+				91F8E397210A46CA007137A7 /* Shukofukurou Next */,
 			);
 		};
 /* End PBXProject section */
@@ -1602,6 +1844,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		91F8E404210A46CA007137A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91F8E405210A46CA007137A7 /* ShukofukurouHelp.help in Resources */,
+				91F8E406210A46CA007137A7 /* messageview.xib in Resources */,
+				91F8E407210A46CA007137A7 /* HistoryView.xib in Resources */,
+				91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */,
+				91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */,
+				91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */,
+				91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */,
+				91F8E40C210A46CA007137A7 /* messageswindow.xib in Resources */,
+				91F8E40D210A46CA007137A7 /* Assets.xcassets in Resources */,
+				91F8E40E210A46CA007137A7 /* dsa_pub.pem in Resources */,
+				91F8E40F210A46CA007137A7 /* Credits.rtf in Resources */,
+				91F8E410210A46CA007137A7 /* SearchView.xib in Resources */,
+				91F8E411210A46CA007137A7 /* ListStatistics.xib in Resources */,
+				91F8E412210A46CA007137A7 /* LoginView.xib in Resources */,
+				91F8E413210A46CA007137A7 /* MainWindow.xib in Resources */,
+				91F8E414210A46CA007137A7 /* ExportProgressWindow.xib in Resources */,
+				91F8E415210A46CA007137A7 /* EULA.rtf in Resources */,
+				91F8E416210A46CA007137A7 /* ProfileWindowController.xib in Resources */,
+				91F8E417210A46CA007137A7 /* GeneralPref.xib in Resources */,
+				91F8E418210A46CA007137A7 /* ProfileViewController.xib in Resources */,
+				91F8E419210A46CA007137A7 /* ReviewView.xib in Resources */,
+				91F8E41A210A46CA007137A7 /* ListImport.xib in Resources */,
+				91F8E41B210A46CA007137A7 /* ImportPrompt.xib in Resources */,
+				91F8E41C210A46CA007137A7 /* AniListAuthWindow.xib in Resources */,
+				91F8E41D210A46CA007137A7 /* RecommendedTitleView.xib in Resources */,
+				91F8E41E210A46CA007137A7 /* MainMenu.xib in Resources */,
+				91F8E41F210A46CA007137A7 /* ratingchartview.xib in Resources */,
+				91F8E420210A46CA007137A7 /* NotLoggedIn.xib in Resources */,
+				91F8E421210A46CA007137A7 /* SoftwareUpdateView.xib in Resources */,
+				91F8E422210A46CA007137A7 /* ReviewWindow.xib in Resources */,
+				91F8E423210A46CA007137A7 /* advancededitdialog.xib in Resources */,
+				91F8E424210A46CA007137A7 /* AddTitle.xib in Resources */,
+				91F8E425210A46CA007137A7 /* StreamPopup.xib in Resources */,
+				91F8E426210A46CA007137A7 /* InfoView.xib in Resources */,
+				91F8E427210A46CA007137A7 /* CustomListsPopover.xib in Resources */,
+				91F8E428210A46CA007137A7 /* CustomListModify.xib in Resources */,
+				91F8E429210A46CA007137A7 /* PFAboutWindow.xib in Resources */,
+				91F8E42A210A46CA007137A7 /* CharacterView.xib in Resources */,
+				91F8E42B210A46CA007137A7 /* AiringView.xib in Resources */,
+				91F8E42C210A46CA007137A7 /* SeasonView.xib in Resources */,
+				91F8E42D210A46CA007137A7 /* messagecomposer.xib in Resources */,
+				91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */,
+				91F8E42F210A46CA007137A7 /* ListView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F87EF55C2098D22E000AD86E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1689,6 +1981,19 @@
 			shellScript = "./MAL\\ Library/Fabric.framework/run edf1f68ef4cfd794c1422ddd2479104d63a34c60 ade433e882a67945940f2ec881e3037340dd4257128bf5ded4a841135d3800ad";
 		};
 		917897F21E89FE8400C155DF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./MAL\\ Library/Fabric.framework/run edf1f68ef4cfd794c1422ddd2479104d63a34c60 ade433e882a67945940f2ec881e3037340dd4257128bf5ded4a841135d3800ad";
+		};
+		91F8E438210A46CA007137A7 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1898,6 +2203,99 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		91F8E39A210A46CA007137A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				91F8E39B210A46CA007137A7 /* DonationLicenseManager.m in Sources */,
+				91F8E39C210A46CA007137A7 /* Keychain.m in Sources */,
+				91F8E39D210A46CA007137A7 /* messagecomposer.m in Sources */,
+				91F8E39E210A46CA007137A7 /* AniListSeasonListGenerator.m in Sources */,
+				91F8E39F210A46CA007137A7 /* ESCssParser.m in Sources */,
+				91F8E3A0210A46CA007137A7 /* OtherListScoreFormatter.m in Sources */,
+				91F8E3A1210A46CA007137A7 /* CharacterView.m in Sources */,
+				91F8E3A2210A46CA007137A7 /* datamodel.xcdatamodeld in Sources */,
+				91F8E3A3210A46CA007137A7 /* imagecachetransformer.m in Sources */,
+				91F8E3A4210A46CA007137A7 /* Base64Category.m in Sources */,
+				91F8E3A5210A46CA007137A7 /* ESCssTokens.m in Sources */,
+				91F8E3A6210A46CA007137A7 /* CustomListModify.m in Sources */,
+				91F8E3A7210A46CA007137A7 /* PFMoveApplication.m in Sources */,
+				91F8E3A8210A46CA007137A7 /* HistoryView.m in Sources */,
+				91F8E3A9210A46CA007137A7 /* ListView.m in Sources */,
+				91F8E3AA210A46CA007137A7 /* MyListScoreFormatter.m in Sources */,
+				91F8E3AB210A46CA007137A7 /* Kitsu.m in Sources */,
+				91F8E3AC210A46CA007137A7 /* MainWindow.m in Sources */,
+				91F8E3AD210A46CA007137A7 /* HTMLtoBBCode.m in Sources */,
+				91F8E3AE210A46CA007137A7 /* NSTextFieldNumber.m in Sources */,
+				91F8E3AF210A46CA007137A7 /* AtarashiiListCoreData.m in Sources */,
+				91F8E3B0210A46CA007137A7 /* AniListScoreConvert.m in Sources */,
+				91F8E3B1210A46CA007137A7 /* XMLReader.m in Sources */,
+				91F8E3B2210A46CA007137A7 /* SeasonView.m in Sources */,
+				91F8E3B3210A46CA007137A7 /* LoginPref.m in Sources */,
+				91F8E3B4210A46CA007137A7 /* ListStatistics.m in Sources */,
+				91F8E3B5210A46CA007137A7 /* SearchView.m in Sources */,
+				91F8E3B6210A46CA007137A7 /* StringDatetoDate.m in Sources */,
+				91F8E3B7210A46CA007137A7 /* Utility.m in Sources */,
+				91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */,
+				91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */,
+				91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */,
+				91F8E3BB210A46CA007137A7 /* AniList.m in Sources */,
+				91F8E3BC210A46CA007137A7 /* TitleIdConverter.m in Sources */,
+				91F8E3BD210A46CA007137A7 /* PFAboutWindowController.m in Sources */,
+				91F8E3BE210A46CA007137A7 /* GeneralPref.m in Sources */,
+				91F8E3BF210A46CA007137A7 /* TypeNumtoStringType.m in Sources */,
+				91F8E3C0210A46CA007137A7 /* AniListAuthWindow.m in Sources */,
+				91F8E3C1210A46CA007137A7 /* ReviewWindow.m in Sources */,
+				91F8E3C2210A46CA007137A7 /* ListExporter.m in Sources */,
+				91F8E3C3210A46CA007137A7 /* AFHTTPSessionManager+Synchronous.m in Sources */,
+				91F8E3C4210A46CA007137A7 /* NSTableViewAction.m in Sources */,
+				91F8E3C5210A46CA007137A7 /* messageview.m in Sources */,
+				91F8E3C6210A46CA007137A7 /* MyListView.m in Sources */,
+				91F8E3C7210A46CA007137A7 /* AddTitle.m in Sources */,
+				91F8E3C8210A46CA007137A7 /* CustomListsPopover.m in Sources */,
+				91F8E3C9210A46CA007137A7 /* RatingTwentyConvert.m in Sources */,
+				91F8E3CA210A46CA007137A7 /* NSTextFieldCellMiddleAligned.m in Sources */,
+				91F8E3CB210A46CA007137A7 /* MyAnimeList.m in Sources */,
+				91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */,
+				91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */,
+				91F8E3CE210A46CA007137A7 /* EditTitle.m in Sources */,
+				91F8E3CF210A46CA007137A7 /* AdvancedPref.m in Sources */,
+				91F8E3D0210A46CA007137A7 /* ESCssTokenizer.m in Sources */,
+				91F8E3D1210A46CA007137A7 /* RecommendedTitleView.m in Sources */,
+				91F8E3D2210A46CA007137A7 /* AppDelegate.m in Sources */,
+				91F8E3D3210A46CA007137A7 /* main.m in Sources */,
+				91F8E3D4210A46CA007137A7 /* AniListConstants.m in Sources */,
+				91F8E3D5210A46CA007137A7 /* AtarashiiDataObjects.m in Sources */,
+				91F8E3D6210A46CA007137A7 /* AtarashiiAPIListFormatKitsu.m in Sources */,
+				91F8E3D7210A46CA007137A7 /* AiringView.m in Sources */,
+				91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */,
+				91F8E3D9210A46CA007137A7 /* ProfileViewController.m in Sources */,
+				91F8E3DA210A46CA007137A7 /* CustomListShouldShowValueTransformer.m in Sources */,
+				91F8E3DB210A46CA007137A7 /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				91F8E3DC210A46CA007137A7 /* ReviewView.m in Sources */,
+				91F8E3DD210A46CA007137A7 /* StreamPopup.m in Sources */,
+				91F8E3DE210A46CA007137A7 /* NSString_stripHtml.m in Sources */,
+				91F8E3DF210A46CA007137A7 /* SoftwareUpdatesPref.m in Sources */,
+				91F8E3E0210A46CA007137A7 /* ImportPrompt.m in Sources */,
+				91F8E3E1210A46CA007137A7 /* KitsuListRetriever.m in Sources */,
+				91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */,
+				91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */,
+				91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */,
+				91F8E3E5210A46CA007137A7 /* ProfileWindowController.m in Sources */,
+				91F8E3E6210A46CA007137A7 /* CharactersBrowser.m in Sources */,
+				91F8E3E7210A46CA007137A7 /* InfoView.m in Sources */,
+				91F8E3E8210A46CA007137A7 /* siteimage.m in Sources */,
+				91F8E3E9210A46CA007137A7 /* servicemenucontroller.m in Sources */,
+				91F8E3EA210A46CA007137A7 /* listservice.m in Sources */,
+				91F8E3EB210A46CA007137A7 /* AtarashiiAPIListFormatAniList.m in Sources */,
+				91F8E3EC210A46CA007137A7 /* OtherHistoryView.m in Sources */,
+				91F8E3ED210A46CA007137A7 /* ListImport.m in Sources */,
+				91F8E3EE210A46CA007137A7 /* messageswindow.m in Sources */,
+				91F8E3EF210A46CA007137A7 /* StreamDataRetriever.m in Sources */,
+				91F8E3F0210A46CA007137A7 /* ExportProgressWindow.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F87EF55A2098D22E000AD86E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2013,6 +2411,11 @@
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* Shukofukurou (AppStore) */;
 			targetProxy = 2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */;
+		};
+		91F8E398210A46CA007137A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */;
+			targetProxy = 91F8E399210A46CA007137A7 /* PBXContainerItemProxy */;
 		};
 		F87EF5642098D22E000AD86E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -2666,6 +3069,106 @@
 			};
 			name = Release;
 		};
+		91F8E43B210A46CA007137A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					"BETA=1",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		91F8E43C210A46CA007137A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = "BETA=1";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
+				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		F87EF5662098D22E000AD86E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2860,6 +3363,15 @@
 			buildConfigurations = (
 				9199BAA81E89836000F6E9FF /* Debug */,
 				9199BAA91E89836000F6E9FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91F8E43A210A46CA007137A7 /* Build configuration list for PBXNativeTarget "Shukofukurou Next" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				91F8E43B210A46CA007137A7 /* Debug */,
+				91F8E43C210A46CA007137A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

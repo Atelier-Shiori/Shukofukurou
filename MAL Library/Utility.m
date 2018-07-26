@@ -48,7 +48,11 @@
 + (NSString *)retrieveApplicationSupportDirectory:(NSString*)append{
     NSFileManager *filemanager = [NSFileManager defaultManager];
     NSError *error;
+#if defined(BETA)
+    NSString *bundlename = @"Shukofukurou Next";
+#else
     NSString *bundlename = [NSBundle mainBundle].infoDictionary[@"CFBundleName"];
+#endif
     append = [NSString stringWithFormat:@"%@/%@", bundlename, append];
     NSURL *path = [filemanager URLForDirectory:NSApplicationSupportDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:true error:&error];
     NSString *dir = [NSString stringWithFormat:@"%@/%@",path.path,append];

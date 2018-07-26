@@ -86,6 +86,8 @@
 - (void)populateList:(id)object type:(int)type {
     NSNumber *selectedAnimeID = nil;
     if (type == 0) {
+        // Save Scroll orgin
+        NSPoint scrollOrigin = _animelisttb.superview.bounds.origin;
         // Populates list
         if (_animelisttb.selectedRow >= 0) {
             selectedAnimeID = _animelistarraycontroller.selectedObjects[0][@"id"];
@@ -112,6 +114,8 @@
         }
         [self populatefiltercounts:list type:type];
         [_animelisttb reloadData];
+        // Set Orginal Scroll Position
+        [_animelisttb.superview setBoundsOrigin:scrollOrigin];
         if (selectedAnimeID != nil) {
             for (NSUInteger index = 0; index < a.count; index++) {
                 if ([_animelistarraycontroller mutableArrayValueForKey:@"content"][index][@"id"] == selectedAnimeID) {
@@ -133,6 +137,8 @@
         [self populateCustomLists:0];
     }
     else {
+        // Save Scroll orgin
+        NSPoint scrollOrigin = _mangalisttb.superview.bounds.origin;
         // Populates list
         if (_mangalisttb.selectedRow >= 0) {
             selectedAnimeID = _mangalistarraycontroller.selectedObjects[0][@"id"];
@@ -159,6 +165,8 @@
         }
         [self populatefiltercounts:list type:type];
         [_mangalisttb reloadData];
+        // Set Orginal Scroll Position
+        [_mangalisttb.superview setBoundsOrigin:scrollOrigin];
         if (selectedAnimeID != nil) {
             for (NSUInteger index = 0; index < a.count; index++) {
                 if ([_mangalistarraycontroller mutableArrayValueForKey:@"content"][index][@"id"] == selectedAnimeID) {

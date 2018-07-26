@@ -153,9 +153,14 @@ static BOOL importing;
     }
     NSDictionary *parameters = @{@"query": @"query ($id: Int!, $type: MediaType) {\n  Media(id: $id, type: $type) {\n    id\n    idMal\n  }\n}", @"variables" : @{@"id":@(titleid), @"type" : typestr}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"][@"Media"][@"idMal"] != [NSNull null]) {
             [self savetitleidtomapping:titleid withNewID:((NSNumber *)responseObject[@"data"][@"Media"][@"idMal"]).intValue withType:type fromService:3 toService:1];
             completionHandler(((NSNumber *)responseObject[@"data"][@"Media"][@"idMal"]).intValue);
-            lookingupid = false;
+        }
+        else {
+            errorHandler(nil);
+        }
+        lookingupid = false;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             lookingupid = false;
             errorHandler(error);

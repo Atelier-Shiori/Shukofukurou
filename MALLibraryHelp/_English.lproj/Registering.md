@@ -16,6 +16,7 @@ The following features is in the App Store version:
 * Viewing cast information of an anime title.
 * Viewing profiles and lists from different users.
 * Syncing Lists between Kitsu and MyAnimeList
+* Airing Notifications
 
 All users who purchase the full version of MAL Library on the Mac App Store will get Shukofukurou 3.0 for $1.99 through the non-App Store version.
 

@@ -66,11 +66,12 @@
     _progress.maxValue = _origlist.count;
     _type = type;
     _ready = true;
-    
-    [TitleIdConverter setImportStatus:true];
-    
-    // Start Conversion
-    [self performentryconversion];
+    [TitleIdConverter prepopulateTitleIdMappingsFromList:type completionHandler:^(bool success) {
+        [TitleIdConverter setImportStatus:true];
+        
+        // Start Conversion
+        [self performentryconversion];
+    }];
 }
 
 - (void)performentryconversion {

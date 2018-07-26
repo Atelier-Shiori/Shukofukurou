@@ -302,6 +302,15 @@ static BOOL importing;
     }];
 }
 
++ (void)prepopulateTitleIdMappingsFromList:(int)type completionHandler:(void (^)(bool success)) completionHandler {
+    [listservice retrieveTitleIdsWithlistType:type completion:^(id responseObject) {
+        [self populateTitleMappings:responseObject type:type];
+        completionHandler(true);
+    } error:^(NSError *error) {
+        completionHandler(false);
+    }];
+}
+
 #pragma mark Helpers
 + (int)lookupTitleID:(int)titleid withType:(int)type fromService:(int)fromservice toService:(int)toservice {
     NSManagedObject *mapping = [self retrieveexistingmapping:titleid withType:type withService:fromservice];
@@ -694,5 +703,24 @@ static BOOL importing;
         errorHandler(error);
         lookingupid = false;
     }];
+}
+
++ (void)populateTitleMappings:(NSArray *)mappings type:(int)type {
+    NSString *typestr = type == 0 ? @"anime" : @"manga";
+    NSString *currentservicestr = [listservice currentservicename].lowercaseString;
+    for (NSDictionary *mapping in mappings) {
+        if (mapping[[NSString stringWithFormat:@"myanimelist/%@", typestr]]) {
+            [self checkandaddFromService:[listservice getCurrentServiceID] toService:1 withSourceId:((NSNumber *)mapping[[NSString stringWithFormat:@"%@/%@", currentservicestr, typestr]]).intValue withTargetId:((NSNumber *)mapping[[NSString stringWithFormat:@"myanimelist/%@", typestr]]).intValue withType:type];
+        }
+        if (mapping[[NSString stringWithFormat:@"anilist/%@", typestr]] && [listservice getCurrentServiceID] != 3) {
+            [self checkandaddFromService:[listservice getCurrentServiceID] toService:3 withSourceId:((NSNumber *)mapping[[NSString stringWithFormat:@"%@/%@",currentservicestr, typestr]]).intValue withTargetId:((NSNumber *)mapping[[NSString stringWithFormat:@"anilist/%@", typestr]]).intValue withType:type];
+        }
+    }
+}
+
++ (void)checkandaddFromService:(int)fromservice toService:(int)toservice withSourceId:(int)sourceid withTargetId:(int)targetId withType:(int)type {
+    if (([self lookupTitleID:sourceid withType:type fromService:fromservice toService:toservice] != targetId)) {
+        [self savetitleidtomapping:sourceid withNewID:targetId withType:type fromService:fromservice toService:toservice];
+    }
 }
 @end

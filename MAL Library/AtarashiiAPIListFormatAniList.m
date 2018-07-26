@@ -479,4 +479,21 @@
     }
     return [customlists componentsJoinedByString:@","];
 }
++ (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray {
+    // Converts AniList output into a cleaner array of ids
+    NSString *typestr = @"";
+    if (type == 0) {
+        typestr = @"anime";
+    }
+    else {
+        typestr = @"manga";
+    }
+    NSMutableArray *tmplist = [NSMutableArray new];
+    for (NSDictionary *identry in idarray) {
+        if (identry[@"idMal"] != [NSNull null]) {
+            [tmplist addObject:@{[NSString stringWithFormat:@"anilist/%@",typestr] : identry[@"id"][@"id"], [NSString stringWithFormat:@"myanimelist/%@",typestr] : identry[@"id"][@"idMal"]}];
+        }
+    }
+    return tmplist.copy;
+}
 @end

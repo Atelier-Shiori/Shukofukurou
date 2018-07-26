@@ -325,6 +325,25 @@
     }
 }
 
++ (void)retrieveTitleIdsWithlistType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    switch ([self getCurrentServiceID]) {
+        case 1: {
+            break;
+        }
+        case 2: {
+            [Kitsu retrieveTitleIdsWithlistType:type completion:completionHandler error:errorHandler];
+            break;
+        }
+        case 3: {
+            [AniList retrieveTitleIdsWithlistType:type completion:completionHandler error:errorHandler];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
 + (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {

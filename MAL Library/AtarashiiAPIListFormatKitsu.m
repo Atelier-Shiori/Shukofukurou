@@ -366,6 +366,42 @@
     }
     return nil;
 }
-
-
++ (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray {
+    // Converts AniList output into a cleaner array of ids
+    NSString *typestr = @"";
+    if (type == 0) {
+        typestr = @"anime";
+    }
+    else {
+        typestr = @"manga";
+    }
+    NSArray *mediaarray = [idarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type ==[c] %@", typestr]];
+    NSArray *mappingsarray = [idarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type ==[c] %@", @"mappings"]];
+    NSMutableArray *tmplist = [NSMutableArray new];
+    for (NSDictionary *media in mediaarray) {
+        int titleidnum = ((NSNumber *)media[@"id"]).intValue;
+        NSMutableDictionary *iddict = [NSMutableDictionary new];
+         iddict[[NSString stringWithFormat:@"kitsu/%@",typestr]] = @(titleidnum);
+        if (media[@"relationships"][@"mappings"][@"data"] && media[@"relationships"][@"mappings"][@"data"] != [NSNull null]) {
+            for (NSDictionary *rmap in media[@"relationships"][@"mappings"][@"data"]) {
+                int mapid = ((NSNumber *)rmap[@"id"]).intValue;
+                NSArray *existingmap = [mappingsarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id ==[c] %@", @(mapid).stringValue]];
+                if (existingmap.count > 0) {
+                    NSString *site = existingmap[0][@"attributes"][@"externalSite"];
+                    NSString *externalid = existingmap[0][@"attributes"][@"externalId"];
+                    /*if ([site isEqualToString:@"anilist"]) {
+                        if (([externalid containsString:@"anime"] && type == 0) || ([externalid containsString:@"manga"] && type == 1)) {
+                            iddict[[NSString stringWithFormat:@"anilist/%@",typestr]] = @([[externalid stringByReplacingOccurrencesOfString:@"anime/" withString:@""] stringByReplacingOccurrencesOfString:@"manga/" withString:@""].intValue);
+                        }
+                    }
+                    else */if (([site isEqualToString:@"myanimelist/anime"] && type == 0) || ([site isEqualToString:@"myanimelist/manga"] && type == 1)) {
+                        iddict[site] = @(externalid.intValue);
+                    }
+                }
+            }
+        }
+        [tmplist addObject:iddict.copy];
+    }
+    return tmplist.copy;
+}
 @end

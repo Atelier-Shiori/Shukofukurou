@@ -32,4 +32,5 @@ FOUNDATION_EXPORT NSString *const kAnilistUpdateMangaListEntrySimple;
 FOUNDATION_EXPORT NSString *const kAnilistUpdateAnimeListEntryAdvanced;
 FOUNDATION_EXPORT NSString *const kAnilistUpdateMangaListEntryAdvanced;
 FOUNDATION_EXPORT NSString *const kAnilistModifyCustomLists;
+FOUNDATION_EXPORT NSString *const kAnilistRetrieveListTitleIdsOnly;
 @end

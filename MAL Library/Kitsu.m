@@ -401,6 +401,44 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
         errorHandler(error);
     }];
 }
+#pragma mark Title List IDs
++ (void)retrieveTitleIdsWithlistType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    // Retrieves list
+    [self retrieveTitleIds:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"] withArray:tmparray withType:type page:0 completion:completionHandler error:errorHandler];
+}
++ (void)retrieveTitleIds:(int)userid withArray:(NSMutableArray *)tmparray withType:(int)type page:(int)page completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *))errorHandler  {
+    AFOAuthCredential *cred = [Kitsu getFirstAccount];
+    if (cred && cred.expired) {
+        [Kitsu refreshToken:^(bool success) {
+            if (success) {
+                [self retrieveTitleIds:userid withArray:tmparray withType:type page:page completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    manager.requestSerializer = [Utility jsonrequestserializer];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    NSString *typestr = type == KitsuAnime ? @"anime" : @"manga";
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/library-entries?filter[userId]=%ifilter[kind]=%@&include=%@,%@.mappings&fields[library-entries]=%@&fields[%@]=mappings&fields[mappings]=externalSite,externalId&page[limit]=500&page[offset]=%i",userid,typestr,typestr,typestr,typestr,typestr,page] parameters:@{} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"included"]){
+            [tmparray addObjectsFromArray:responseObject[@"included"]];
+        }
+        if (responseObject[@"links"][@"next"]) {
+            int nextPage = page+500;
+            [self retrieveTitleIds:userid withArray:tmparray withType:type page:nextPage completion:completionHandler error:errorHandler];
+        }
+        else {
+            completionHandler([AtarashiiAPIListFormatKitsu generateIDArrayWithType:type withIdArray:tmparray]);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
 #pragma mark Characters
 + (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     /*AFHTTPSessionManager *manager = [Utility jsonmanager];

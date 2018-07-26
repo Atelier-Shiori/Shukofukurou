@@ -26,7 +26,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     // Retrieves list
     [self getAniListUserid:username completion:^(int userid) {
         NSMutableArray *tmparray = [NSMutableArray new];
-        [self retrievelist:userid withArray:tmparray withType:type page:0 completion:completionHandler error:errorHandler];
+        [self retrievelist:userid withArray:tmparray withType:type page:1 completion:completionHandler error:errorHandler];
     } error:^(NSError *error) {
             errorHandler(error);
     }];
@@ -410,6 +410,42 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
         errorHandler(error);
     }];
 }
+
+#pragma mark Title ID Retrieval
++ (void)retrieveTitleIdsWithlistType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    // Retrieves list
+    [self retrieveTitleIds:(int)[NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"] withArray:tmparray withType:type page:1 completion:completionHandler error:errorHandler];
+}
+
++ (void)retrieveTitleIds:(int)userid withArray:(NSMutableArray *)tmparray withType:(int)type page:(int)page completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *))errorHandler  {
+    // Retrieve List of AniList and MAL Ids
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    AFOAuthCredential *cred = [AniList getFirstAccount];
+    if (cred && cred.expired) {
+        errorHandler(nil);
+        return;
+    }
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    }
+    NSDictionary *parameters = @{@"query" : kAnilistRetrieveListTitleIdsOnly, @"variables" : @{@"id":@(userid), @"page" : @(page), @"type" : type == AniListAnime ? @"ANIME" : @"MANGA"}};
+    
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionTask *task, id responseObject) {
+        bool nextpage = false;
+        [tmparray addObjectsFromArray:responseObject[@"data"][@"List"][@"mediaList"]];
+        nextpage = ((NSNumber *)responseObject[@"data"][@"List"][@"pageInfo"][@"hasNextPage"]).boolValue;
+        if (nextpage) {
+            int newpagenum = page+1;
+            [self retrieveTitleIds:userid withArray:tmparray withType:type page:newpagenum completion:completionHandler error:errorHandler];
+            return;
+        }
+        completionHandler([AtarashiiAPIListFormatAniList generateIDArrayWithType:type withIdArray:tmparray]);
+    } failure:^(NSURLSessionTask *operation, NSError *error) {
+        errorHandler(error);
+    }];
+}
+
 
 #pragma mark helpers
 + (AFOAuthCredential *)getFirstAccount {

@@ -18,4 +18,5 @@
 + (NSArray *)KitsuMangaSearchtoAtarashii:(NSDictionary *)data;
 + (NSArray *)KitsuReactionstoAtarashii:(NSDictionary *)data withType:(int)type;
 + (NSDictionary *)KitsuUsertoAtarashii:(NSDictionary *)userinfo;
++ (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray;
 @end

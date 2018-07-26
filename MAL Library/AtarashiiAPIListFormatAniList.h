@@ -20,4 +20,5 @@
 + (NSDictionary *)generateStaffList:(NSArray *)staffarray withCharacterArray:(NSArray *)characterarray;
 + (NSDictionary *)AniListPersontoAtarashii:(NSDictionary *)person;
 + (NSArray *)normalizeSeasonData:(NSArray *)seasonData;
++ (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray;
 @end

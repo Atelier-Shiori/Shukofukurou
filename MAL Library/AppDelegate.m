@@ -116,6 +116,16 @@
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self checkaccountinformation];
+#if defined(BETA)
+    // Show Beta Notice
+    NSAlert *alert = [[NSAlert alloc] init] ;
+    [alert addButtonWithTitle:NSLocalizedString(@"Got it",nil)];
+    [alert setMessageText:NSLocalizedString(@"You are running the Prerelease version of Shukofukurou.",nil)];
+    alert.informativeText = NSLocalizedString(@"This is a prerelease version of Shukofukurou meant to test new features or changes. This release may or may not have all the features that will be in the final release. These releases allows users to test and share feedback back to the developer.\r\rThis release will run independently from the stable release, but you do not need to login again. Note that you need to add the license details to unlock the donor features. There is no Mac App Store migration currently, but you are free to test the free version for the time being.",nil);
+    // Set Message type to Warning
+    alert.alertStyle = NSAlertStyleInformational;
+    [alert runModal];
+#endif
     if ([listservice getCurrentServiceID] == 1) {
         // First time prompt
         NSAlert *alert = [[NSAlert alloc] init] ;

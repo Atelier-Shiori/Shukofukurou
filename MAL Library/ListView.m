@@ -576,7 +576,7 @@
         NSString *customliststr = data[@"custom_lists"] != [NSNull null] ? [[(NSString *)data[@"custom_lists"] stringByReplacingOccurrencesOfString:@"[true]" withString:@""] stringByReplacingOccurrencesOfString:@"[false]" withString:@""] : @"";
         NSMutableArray *finalcustomlist = [NSMutableArray new];
         if (customliststr.length > 0) {
-            NSArray *lists = [customliststr componentsSeparatedByString:@","];
+            NSArray *lists = [customliststr componentsSeparatedByString:@"||"];
             for (NSString *listname in lists) {
                 [finalcustomlist addObject:@{@"name" : listname.copy, @"count" : @([array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"custom_lists CONTAINS[c] %@", [NSString stringWithFormat:@"%@[true]",listname]]].count)}];
             }

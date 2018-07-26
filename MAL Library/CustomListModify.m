@@ -32,7 +32,7 @@
     [a removeAllObjects];
     NSString *cliststr = entry[@"custom_lists"];
     if (cliststr.length > 0) {
-        NSArray *customlist = [cliststr componentsSeparatedByString:@","];
+        NSArray *customlist = [cliststr componentsSeparatedByString:@"||"];
         // Process String
         for (NSString *clistentry in customlist) {
             bool enabled = [clistentry containsString:@"[true]"];
@@ -86,6 +86,11 @@
         NSString *finalstring = [NSString stringWithFormat:@"%@[%@]",clistname, enabled ? @"true" : @"false"];
         [customlists addObject:finalstring];
     }
-    return [customlists componentsJoinedByString:@","];
+    return [customlists componentsJoinedByString:@"||"];
+}
+- (IBAction)managecustomlists:(id)sender {
+    // There is no APIs to manage custom lists, so open the web browser where the user can manage their custom lists
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://anilist.co/settings/lists"]];
+    [_popover close];
 }
 @end

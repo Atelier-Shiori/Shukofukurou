@@ -477,7 +477,7 @@
         NSString *finalstring = [NSString stringWithFormat:@"%@[%@]",clistname, enabled ? @"true" : @"false"];
         [customlists addObject:finalstring];
     }
-    return [customlists componentsJoinedByString:@","];
+    return [customlists componentsJoinedByString:@"||"];
 }
 + (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray {
     // Converts AniList output into a cleaner array of ids

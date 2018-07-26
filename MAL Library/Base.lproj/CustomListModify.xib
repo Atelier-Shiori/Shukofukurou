@@ -34,7 +34,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="" editable="NO" width="186" minWidth="40" maxWidth="1000" id="FbR-Bx-Gl5">
+                                    <tableColumn identifier="" editable="NO" width="214" minWidth="40" maxWidth="1000" id="FbR-Bx-Gl5">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -54,7 +54,7 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="" width="48" minWidth="40" maxWidth="1000" id="fpa-v3-skd">
+                                    <tableColumn identifier="" width="20" minWidth="20" maxWidth="1000" id="fpa-v3-skd">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -78,11 +78,11 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="HnP-pv-KRm">
-                        <rect key="frame" x="1" y="119" width="238" height="15"/>
+                        <rect key="frame" x="-8" y="-15" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="UXy-1D-dQl">
-                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <rect key="frame" x="-15" y="-8" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -97,8 +97,19 @@
                         <action selector="saveaction:" target="-2" id="65d-hn-L4a"/>
                     </connections>
                 </button>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ohb-33-fSz">
+                    <rect key="frame" x="-1" y="190" width="167" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Manage Custom Lists" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QEx-bb-9jQ">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="managecustomlists:" target="-2" id="ArQ-QY-xle"/>
+                    </connections>
+                </button>
             </subviews>
-            <point key="canvasLocation" x="-83" y="105"/>
+            <point key="canvasLocation" x="-83" y="104.5"/>
         </visualEffectView>
         <arrayController automaticallyPreparesContent="YES" id="M7F-GO-gwu">
             <declaredKeys>

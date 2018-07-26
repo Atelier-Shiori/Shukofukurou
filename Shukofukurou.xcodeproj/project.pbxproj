@@ -116,15 +116,9 @@
 		91244E8F2108BCFE00AA8F90 /* CustomListsPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */; };
 		91244E902108BCFE00AA8F90 /* CustomListsPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */; };
 		91244E912108BCFE00AA8F90 /* CustomListsPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */; };
-		91244E922108BCFE00AA8F90 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E8E2108BCFE00AA8F90 /* CustomListsPopover.xib */; };
-		91244E932108BCFE00AA8F90 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E8E2108BCFE00AA8F90 /* CustomListsPopover.xib */; };
-		91244E942108BCFE00AA8F90 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E8E2108BCFE00AA8F90 /* CustomListsPopover.xib */; };
 		91244E982108E89C00AA8F90 /* CustomListModify.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E962108E89C00AA8F90 /* CustomListModify.m */; };
 		91244E992108E89C00AA8F90 /* CustomListModify.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E962108E89C00AA8F90 /* CustomListModify.m */; };
 		91244E9A2108E89C00AA8F90 /* CustomListModify.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E962108E89C00AA8F90 /* CustomListModify.m */; };
-		91244E9B2108E89C00AA8F90 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E972108E89C00AA8F90 /* CustomListModify.xib */; };
-		91244E9C2108E89C00AA8F90 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E972108E89C00AA8F90 /* CustomListModify.xib */; };
-		91244E9D2108E89C00AA8F90 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E972108E89C00AA8F90 /* CustomListModify.xib */; };
 		91244EA3210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */; };
 		91244EA4210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */; };
 		91244EA5210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */; };
@@ -416,8 +410,6 @@
 		91F8E424210A46CA007137A7 /* AddTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C4D1E8C235D005A49A4 /* AddTitle.xib */; };
 		91F8E425210A46CA007137A7 /* StreamPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */; };
 		91F8E426210A46CA007137A7 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
-		91F8E427210A46CA007137A7 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E8E2108BCFE00AA8F90 /* CustomListsPopover.xib */; };
-		91F8E428210A46CA007137A7 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91244E972108E89C00AA8F90 /* CustomListModify.xib */; };
 		91F8E429210A46CA007137A7 /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		91F8E42A210A46CA007137A7 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01161FA3B1C90053A82B /* CharacterView.xib */; };
 		91F8E42B210A46CA007137A7 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
@@ -432,6 +424,14 @@
 		91F8E435210A46CA007137A7 /* DonationCheck.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91F8E436210A46CA007137A7 /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91F8E437210A46CA007137A7 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91F8E43F210A4BBB007137A7 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */; };
+		91F8E440210A4BBB007137A7 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */; };
+		91F8E441210A4BBB007137A7 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */; };
+		91F8E442210A4BBB007137A7 /* CustomListsPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */; };
+		91F8E445210A4BC1007137A7 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E44A210A4BC1007137A7 /* CustomListModify.xib */; };
+		91F8E446210A4BC1007137A7 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E44A210A4BC1007137A7 /* CustomListModify.xib */; };
+		91F8E447210A4BC1007137A7 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E44A210A4BC1007137A7 /* CustomListModify.xib */; };
+		91F8E448210A4BC1007137A7 /* CustomListModify.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91F8E44A210A4BC1007137A7 /* CustomListModify.xib */; };
 		F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */; };
 		F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
@@ -853,10 +853,8 @@
 		91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListShouldShowValueTransformer.m; sourceTree = "<group>"; };
 		91244E8C2108BCFE00AA8F90 /* CustomListsPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListsPopover.h; sourceTree = "<group>"; };
 		91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListsPopover.m; sourceTree = "<group>"; };
-		91244E8E2108BCFE00AA8F90 /* CustomListsPopover.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomListsPopover.xib; sourceTree = "<group>"; };
 		91244E952108E89C00AA8F90 /* CustomListModify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListModify.h; sourceTree = "<group>"; };
 		91244E962108E89C00AA8F90 /* CustomListModify.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListModify.m; sourceTree = "<group>"; };
-		91244E972108E89C00AA8F90 /* CustomListModify.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomListModify.xib; sourceTree = "<group>"; };
 		91244EA2210901A000AA8F90 /* datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = datamodel.xcdatamodel; sourceTree = "<group>"; };
 		91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListSeasonListGenerator.h; sourceTree = "<group>"; };
 		91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListSeasonListGenerator.m; sourceTree = "<group>"; };
@@ -976,6 +974,8 @@
 		91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExportProgressWindow.m; sourceTree = "<group>"; };
 		91F8E43D210A46CA007137A7 /* Shukofukurou Next.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou Next.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F8E43E210A46CA007137A7 /* Shukofukurou Next-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shukofukurou Next-Info.plist"; path = "/Volumes/MacStorage/Shukofukurou/MAL Library/Shukofukurou Next-Info.plist"; sourceTree = "<absolute>"; };
+		91F8E443210A4BBB007137A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CustomListsPopover.xib; sourceTree = "<group>"; };
+		91F8E449210A4BC1007137A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CustomListModify.xib; sourceTree = "<group>"; };
 		F838AE6C2087CF9A0063B63E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DonationLicenseManager.xib; sourceTree = "<group>"; };
 		F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListAuthWindow.h; sourceTree = "<group>"; };
 		F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListAuthWindow.m; sourceTree = "<group>"; };
@@ -1440,10 +1440,10 @@
 				91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */,
 				91244E8C2108BCFE00AA8F90 /* CustomListsPopover.h */,
 				91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */,
-				91244E8E2108BCFE00AA8F90 /* CustomListsPopover.xib */,
+				91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */,
 				91244E952108E89C00AA8F90 /* CustomListModify.h */,
 				91244E962108E89C00AA8F90 /* CustomListModify.m */,
-				91244E972108E89C00AA8F90 /* CustomListModify.xib */,
+				91F8E44A210A4BC1007137A7 /* CustomListModify.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1782,8 +1782,8 @@
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
 				2D8BF8B81EC4EED80068856A /* ImportPrompt.xib in Resources */,
-				91244E932108BCFE00AA8F90 /* CustomListsPopover.xib in Resources */,
-				91244E9C2108E89C00AA8F90 /* CustomListModify.xib in Resources */,
+				91F8E440210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
+				91F8E446210A4BC1007137A7 /* CustomListModify.xib in Resources */,
 				913A119C1E8F206A00450B66 /* PFAboutWindow.xib in Resources */,
 				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
 				2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */,
@@ -1832,8 +1832,8 @@
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				2D4E01171FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
-				91244E922108BCFE00AA8F90 /* CustomListsPopover.xib in Resources */,
-				91244E9B2108E89C00AA8F90 /* CustomListModify.xib in Resources */,
+				91F8E43F210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
+				91F8E445210A4BC1007137A7 /* CustomListModify.xib in Resources */,
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
 				2D4E01131FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
@@ -1882,8 +1882,8 @@
 				91F8E424210A46CA007137A7 /* AddTitle.xib in Resources */,
 				91F8E425210A46CA007137A7 /* StreamPopup.xib in Resources */,
 				91F8E426210A46CA007137A7 /* InfoView.xib in Resources */,
-				91F8E427210A46CA007137A7 /* CustomListsPopover.xib in Resources */,
-				91F8E428210A46CA007137A7 /* CustomListModify.xib in Resources */,
+				91F8E442210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
+				91F8E448210A4BC1007137A7 /* CustomListModify.xib in Resources */,
 				91F8E429210A46CA007137A7 /* PFAboutWindow.xib in Resources */,
 				91F8E42A210A46CA007137A7 /* CharacterView.xib in Resources */,
 				91F8E42B210A46CA007137A7 /* AiringView.xib in Resources */,
@@ -1925,13 +1925,13 @@
 				F888F479208FB1F500C22C39 /* EULA.rtf in Resources */,
 				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
 				F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */,
-				91244E9D2108E89C00AA8F90 /* CustomListModify.xib in Resources */,
+				91F8E447210A4BC1007137A7 /* CustomListModify.xib in Resources */,
 				F888F47C208FB1F500C22C39 /* messageview.xib in Resources */,
 				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
 				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
 				F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
-				91244E942108BCFE00AA8F90 /* CustomListsPopover.xib in Resources */,
+				91F8E441210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
 				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
 				F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */,
 				F888F482208FB1F500C22C39 /* ProfileViewController.xib in Resources */,
@@ -2701,6 +2701,22 @@
 				91B378B81E989C83000061E6 /* Base */,
 			);
 			name = HistoryView.xib;
+			sourceTree = "<group>";
+		};
+		91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91F8E443210A4BBB007137A7 /* Base */,
+			);
+			name = CustomListsPopover.xib;
+			sourceTree = "<group>";
+		};
+		91F8E44A210A4BC1007137A7 /* CustomListModify.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				91F8E449210A4BC1007137A7 /* Base */,
+			);
+			name = CustomListModify.xib;
 			sourceTree = "<group>";
 		};
 		F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */ = {

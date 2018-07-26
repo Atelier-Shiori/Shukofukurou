@@ -247,7 +247,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="customlist" imagePosition="below" alignment="center" alternateImage="customlist" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJb-lE-k2a">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="12"/>
+                                <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
                             <connections>
                                 <action selector="togglecustomlistpopover:" target="-2" id="IK4-0M-cAg"/>
@@ -271,7 +271,7 @@
         </popover>
         <viewController id="55m-4C-HJb" userLabel="Popover View Controller" customClass="CustomListModify">
             <connections>
-                <outlet property="popover" destination="C8v-Sj-5Rs" id="fBN-ed-gQr"/>
+                <outlet property="popover" destination="C8v-Sj-5Rs" id="syQ-cd-r6l"/>
             </connections>
         </viewController>
         <popover behavior="t" id="C8v-Sj-5Rs">
@@ -528,7 +528,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="customlist" imagePosition="below" alignment="center" alternateImage="customlist" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8J5-sX-LZl">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system" size="12"/>
+                                <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
                             <connections>
                                 <action selector="togglecustomlistpopover:" target="-2" id="f4b-Hy-6XP"/>

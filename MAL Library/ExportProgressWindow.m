@@ -62,6 +62,7 @@
     }
     _tmplist = [NSMutableArray new];
     _position = 0;
+    _progresslabel.stringValue = @"0%";
     _progress.doubleValue = _position;
     _progress.maxValue = _origlist.count;
     _type = type;

@@ -16,7 +16,7 @@
 - (id)transformedValue:(id)value {
     if (!value) return nil;
     
-    if (![NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) return @NO;
+    if (![NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) return @YES;
     
     if ([value respondsToSelector:@selector(integerValue)]) {
         int service = [value intValue];

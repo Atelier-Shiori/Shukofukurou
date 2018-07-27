@@ -68,7 +68,7 @@
         _episodefield.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
         _episodestepper.intValue = ((NSNumber *)d[@"watched_episodes"]).intValue;
         _totalepisodes.intValue = ((NSNumber *)d[@"episodes"]).intValue;
-        _tagsfield.stringValue = ((NSArray *)d[@"personal_tags"]).count > 0 ? [((NSArray *)d[@"personal_tags"]) componentsJoinedByString:@","] : @"";
+        _tagsfield.stringValue = d[@"personal_tags"] != [NSNull null] ? [((NSArray *)d[@"personal_tags"]) componentsJoinedByString:@","] : @"";
         [_status selectItemWithTitle:d[@"watched_status"]];
         [self setScoreMenu:d];
         _reconsuming.state = ((NSNumber *)d[@"rewatching"]).boolValue;

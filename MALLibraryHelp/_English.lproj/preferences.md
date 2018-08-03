@@ -20,6 +20,9 @@ These options affect the main functionality of the application.
 * Reset Title ID Mappings - Allows you to reset the Title ID Mappings used for importing titles and switching services. Use this if the you having issues with Title ID conversion used by service switching and list importing.
 * Show 18+ Content (Non-Mac App Store version) - Enables the viewing of 18+ content. Note that for Kitsu, you need to enable viewing of mature content before Shukofukurou can view this kind of content. On the Mac App Store, this option is always disabled due to rating restrictions. However, you will still be able to manage 18+ on your animelist.
 
+### Export
+* Set Update on Import: You can chose which status you want to set the Update on Import value to enabled. If checked, it will change the update_on_import value to 1. This means that when you import the MyAnimeList XML, the entry will be imported.
+
 ## Accounts
 Allows you to login or log out of your account. Credentials are saved in the login Keychain. MyAnimeList Credentials are checked every 24 hours to make sure they are valid. If they become invalid, you will be required to log out and login again.
 

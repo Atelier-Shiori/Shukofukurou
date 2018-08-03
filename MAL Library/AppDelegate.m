@@ -79,6 +79,12 @@
     defaultValues[@"currentservice"] = @(1);
     defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
     defaultValues[@"showadult"] = @NO;
+    // Export
+    defaultValues[@"updateonimportcurrent"] = @YES;
+    defaultValues[@"updateonimportcompleted"] = @NO;
+    defaultValues[@"updateonimportonhold"] = @NO;
+    defaultValues[@"updateonimportdropped"] = @NO;
+    defaultValues[@"updateonimportplanned"] = @NO;
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];

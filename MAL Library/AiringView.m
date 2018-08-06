@@ -7,6 +7,8 @@
 //
 
 #import "AiringView.h"
+#import "AniListConstants.h"
+#import "AtarashiiAPIListFormatAniList.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
 #import "NSTableViewAction.h"
@@ -42,17 +44,43 @@
         return;
     }
     else if (!exists || refreshlist) {
-        AFHTTPSessionManager *manager = [Utility jsonmanager];
-        
-        [manager GET:[NSString stringWithFormat:@"%@/2.1/anime/schedule",[[NSUserDefaults standardUserDefaults] valueForKey:@"malapiurl"]] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-            [self populateAiring:[Utility saveJSON:[self processAiring:responseObject] withFilename:@"airing.json" appendpath:@"" replace:TRUE]];
+        [self retrieveAiringSchedule:^(id responseobject) {
+            [self populateAiring:[Utility saveJSON:[self processAiring:responseobject] withFilename:@"airing.json" appendpath:@"" replace:TRUE]];
             [[NSUserDefaults standardUserDefaults] setValue:[NSDate date] forKey:@"airschdaterefreshed"];
-        } failure:^(NSURLSessionTask *operation, NSError *error) {
-            NSLog(@"%@", error.userInfo);
+        } error:^(NSError * error) {
+            NSLog(@"Can't retrieve airing data.");
         }];
     }
     
 }
+
+- (void)retrieveAiringSchedule:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    [self doRetrieveAiringSchedule:1 withArray:tmparray completion:completionHandler error:errorHandler];
+}
+
+- (void)doRetrieveAiringSchedule: (int)page withArray:(NSMutableArray *)array completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler{
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    
+    NSDictionary *parameters = @{@"query" : kAniListAiring, @"variables" : @{@"page" : @(page)}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] != [NSNull null]) {
+            NSDictionary *dpage = responseObject[@"data"][@"Page"];
+            [array addObjectsFromArray:dpage[@"media"]];
+            if (((NSNumber *)dpage[@"pageInfo"][@"hasNextPage"]).boolValue) {
+                int newpage = page + 1;
+                [self doRetrieveAiringSchedule:newpage withArray:array completion:completionHandler error:errorHandler];
+            }
+            else {
+                completionHandler([AtarashiiAPIListFormatAniList normalizeAiringData:array.copy]);
+            }
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
+
 - (void)populateAiring:(id)airing {
     // Populates history
     NSNumber *selectedAnimeID = nil;
@@ -89,23 +117,20 @@
             NSDictionary *d = _airingarraycontroller.selectedObjects[0];
             switch ([listservice getCurrentServiceID]) {
                 case 1: {
-                    NSNumber *idnum = @([NSString stringWithFormat:@"%@",d[@"id"]].integerValue);
+                    NSNumber *idnum = d[@"idMal"];
                     [_mw loadinfo:idnum type:0 changeView:YES];
                     break;
                 }
                 case 2: {
-                    [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:d[@"type"] withType:KitsuAnime completionHandler:^(int kitsuid) {
+                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
                         [_mw loadinfo:@(kitsuid) type:0 changeView:YES];
                     } error:^(NSError *error) {
-                        
+                        [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
                     }];
                     break;
                 }
                 case 3: {
-                    [TitleIdConverter getAniIDFromMALListID:[NSString stringWithFormat:@"%@",d[@"id"]].intValue  withTitle:d[@"title"] titletype:d[@"type"] withType:MALAnime completionHandler:^(int anilistid) {
-                        [_mw loadinfo:@(anilistid) type:0 changeView:YES];
-                    } error:^(NSError *error) {
-                    }];
+                    [_mw loadinfo:d[@"id"] type:0 changeView:YES];
                 }
                 default:
                     break;

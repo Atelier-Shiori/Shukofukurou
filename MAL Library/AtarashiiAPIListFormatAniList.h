@@ -21,4 +21,5 @@
 + (NSDictionary *)AniListPersontoAtarashii:(NSDictionary *)person;
 + (NSArray *)normalizeSeasonData:(NSArray *)seasonData;
 + (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray;
++ (NSDictionary *)normalizeAiringData:(NSArray *)airdata;
 @end

@@ -69,6 +69,7 @@
     }
     return @{@"anime" : tmparray, @"statistics" : @{@"days" : @([Utility calculatedays:tmparray])}};
 }
+
 + (id)AniListtoAtarashiiMangaList:(id)data {
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *entry in data) {
@@ -128,6 +129,7 @@
     }
     return @{@"manga" : tmparray, @"statistics" : @{@"days" : @(0)}};
 }
+
 + (NSDictionary *)AniListAnimeInfotoAtarashii:(NSDictionary *)data {
     AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
     NSDictionary *title = data[@"data"][@"Media"];
@@ -205,6 +207,7 @@
 
     return aobject.NSDictionaryRepresentation;
 }
+
 + (NSDictionary *)AniListMangaInfotoAtarashii:(NSDictionary *)data {
     AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
     NSDictionary *title = data[@"data"][@"Media"];
@@ -265,6 +268,7 @@
     
     return mobject.NSDictionaryRepresentation;
 }
+
 + (NSArray *)AniListAnimeSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"][@"Page"][@"media"];
     NSMutableArray *tmparray = [NSMutableArray new];
@@ -303,6 +307,7 @@
     }
     return tmparray;
 }
+
 + (NSArray *)AniListMangaSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"][@"Page"][@"media"];
     NSMutableArray *tmparray = [NSMutableArray new];
@@ -333,6 +338,7 @@
     }
     return tmparray;
 }
+
 + (NSArray *)AniListReviewstoAtarashii:(NSArray *)reviews withType:(int)type {
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *review in reviews) {
@@ -352,12 +358,14 @@
     }
     return tmparray;
 }
+
 + (NSDictionary *)AniListUserProfiletoAtarashii:(NSDictionary *)userdata {
     AtarashiiUserObject *uobject = [AtarashiiUserObject new];
     uobject.avatar_url = userdata[@"avatar"][@"large"];
     uobject.extradict = @{@"about" : userdata[@"about"], @"following" : userdata[@"isFollowing"], @"scoreFormat" : userdata[@"mediaListOptions"][@"scoreFormat"]};
     return uobject.NSDictionaryRepresentation;
 }
+
 + (NSDictionary *)generateStaffList:(NSArray *)staffarray withCharacterArray:(NSArray *)characterarray {
     // Generate character list
     NSMutableArray *tmpcharacterarray = [NSMutableArray new];
@@ -445,7 +453,81 @@
             [tmparray addObject:aobject.NSDictionaryRepresentation];
         }
     }
-    return tmparray;
+    return tmparray.copy;
+}
+
++ (NSDictionary *)normalizeAiringData:(NSArray *)airdata {
+    NSMutableArray *sundayarray = [NSMutableArray new];
+    NSMutableArray *mondayarray = [NSMutableArray new];
+    NSMutableArray *tuesdayarray = [NSMutableArray new];
+    NSMutableArray *wednesdayarray = [NSMutableArray new];
+    NSMutableArray *thursdayarray = [NSMutableArray new];
+    NSMutableArray *fridayarray = [NSMutableArray new];
+    NSMutableArray *saturdayarray = [NSMutableArray new];
+    NSMutableArray *unknownarray = [NSMutableArray new];
+    for (NSDictionary *d in airdata) {
+        @autoreleasepool {
+            if (((NSNumber *)d[@"isAdult"]).boolValue) {
+                continue;
+            }
+            AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
+            aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
+            aobject.titleidMal = d[@"idMal"] != [NSNull null] ? ((NSNumber *)d[@"idMal"]).intValue : 0;
+            aobject.title = d[@"title"][@"romaji"];
+            aobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
+            if (d[@"coverImage"] != [NSNull null]) {
+                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+            }
+            aobject.episodes = d[@"episodes"] && d[@"episodes"] != [NSNull null] ? ((NSNumber *)d[@"episodes"]).intValue : 0;
+            aobject.type = d[@"format"] != [NSNull null] ? [Utility convertAnimeType:d[@"format"]] : @"";
+#if defined(AppStore)
+            //aobject.synposis = !((NSNumber *)d[@"isAdult"]).boolValue ? d[@"description"] != [NSNull null] ? d[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
+#else
+            //bool allowed = ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"] || !((NSNumber *)d[@"isAdult"]).boolValue);
+            //aobject.synposis = allowed ? d[@"description"] != [NSNull null] ? d[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
+#endif
+            aobject.status = @"currently airing";
+            if (d[@"nextAiringEpisode"] != [NSNull null]) {
+                switch ([self getDayFromDateInterval:((NSNumber *)d[@"nextAiringEpisode"][@"airingAt"]).intValue]) {
+                    case 1:
+                        //Sunday
+                        [sundayarray addObject:[aobject NSDictionaryRepresentation]];
+                        break;
+                    case 2:
+                        //Monday
+                        [mondayarray addObject:[aobject NSDictionaryRepresentation]];
+                        break;
+                    case 3:
+                        //Tuesday
+                        [tuesdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        break;
+                    case 4:
+                        //Wednesday
+                        [wednesdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        break;
+                    case 5:
+                        //Thursday
+                        [thursdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        break;
+                    case 6:
+                        //Friday
+                        [fridayarray addObject:[aobject NSDictionaryRepresentation]];
+                        break;
+                    case 7:
+                        //Saturday
+                        [saturdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        break;
+                    default:
+                        break;
+                        
+                }
+            }
+            else {
+                [unknownarray addObject:[aobject NSDictionaryRepresentation]];
+            }
+        }
+    }
+    return @{@"monday": mondayarray.copy, @"tuesday" : tuesdayarray.copy, @"wednesday" : wednesdayarray.copy, @"thursday" : thursdayarray.copy, @"friday" : fridayarray.copy, @"saturday" : saturdayarray.copy, @"sunday" : sundayarray.copy, @"other" : @[], @"unknown" : unknownarray.copy};
 }
 
 #pragma mark helpers
@@ -469,6 +551,7 @@
     }
     return [NSString stringWithFormat:@"%@-%@-%@", tmpyear, tmpmonth, tmpday];
 }
+
 + (NSString *)generateCustomListStringWithArray:(NSArray *)clists {
     NSMutableArray *customlists = [NSMutableArray new];
     for (NSDictionary *clist in clists) {
@@ -479,6 +562,7 @@
     }
     return [customlists componentsJoinedByString:@"||"];
 }
+
 + (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray {
     // Converts AniList output into a cleaner array of ids
     NSString *typestr = @"";
@@ -495,5 +579,11 @@
         }
     }
     return tmplist.copy;
+}
+
++ (long)getDayFromDateInterval:(int)dateinterval {
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:dateinterval];
+    NSDateComponents *component = [NSCalendar.currentCalendar components:NSCalendarUnitWeekday fromDate:date];
+    return component.weekday;
 }
 @end

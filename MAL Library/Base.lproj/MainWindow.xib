@@ -485,7 +485,7 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="NYk-EC-2qY"/>
-                                        <menuItem title="Other" id="yZq-JL-LMj">
+                                        <menuItem title="Other" hidden="YES" id="yZq-JL-LMj">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                         </menuItem>
                                         <menuItem title="Unknown" id="5Or-Bk-b6b">

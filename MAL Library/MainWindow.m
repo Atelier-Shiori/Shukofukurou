@@ -1132,11 +1132,15 @@
         NSDictionary *d = (_airingview.airingarraycontroller).selectedObjects[0];
         switch ([listservice getCurrentServiceID]) {
             case 1: {
-                [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                [listservice retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
+                    [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                }error:^(NSError *error){
+                    NSLog(@"Error: %@", error);
+                }];
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:d[@"type"] withType:KitsuAnime completionHandler:^(int kitsuid) {
+                [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                         [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                     }error:^(NSError *error){
@@ -1146,17 +1150,11 @@
                 break;
             }
             case 3: {
-                [TitleIdConverter getAniIDFromMALListID:[NSString stringWithFormat:@"%@",d[@"id"]].intValue withTitle:d[@"title"] titletype:d[@"type"] withType:AniListAnime completionHandler:^(int anilistid) {
-                    [listservice retrieveTitleInfo:anilistid withType:AniListAnime useAccount:NO completion:^(id responseObject) {
-                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
-                    } error:^(NSError *error) {
-                        NSLog(@"Error: %@", error);
-                    }];
-                } error:^(NSError *error) {}];
+                [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                 break;
             }
             default:
-                 break;
+                break;
         }
     }
 

@@ -1,6 +1,0 @@
-framework module DonationCheck {
-  umbrella header "DonationCheck.h"
-
-  export *
-  module * { export * }
-}

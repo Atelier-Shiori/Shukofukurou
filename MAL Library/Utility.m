@@ -244,6 +244,8 @@
             [Utility showDonateReminder:delegate];
             [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donation_license"];
+            [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donation_name"];
             [[NSApplication sharedApplication] terminate:nil];
         }
     }

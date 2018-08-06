@@ -16,6 +16,8 @@
 
 @class ProfileWindowController;
 @class servicemenucontroller;
+@class ListImport;
+@class ListExporter;
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
@@ -32,6 +34,11 @@
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
+
+// List Import/Export
+@property (strong) IBOutlet ListImport *ListImporterController;
+@property (strong) IBOutlet ListExporter *ListExporterController;
+
 
 // Core Data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;

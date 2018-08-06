@@ -16,6 +16,9 @@
 #else
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#if defined(BETA)
+#import <DonationCheck/MigrateAppStoreLicense.h>
+#endif
 #endif
 #import "Utility.h"
 #import "StreamDataRetriever.h"
@@ -104,7 +107,25 @@
     #else
     PFMoveToApplicationsFolderIfNecessary();
     #endif
+#if defined(BETA)
+    if (![NSUserDefaults.standardUserDefaults valueForKey:@"donation_license"] && ![NSUserDefaults.standardUserDefaults valueForKey:@"donation_name"]) {
+        [MigrateAppStoreLicense validateShukofukurou:^(bool success, id responseObject, NSString *path) {
+            if (success) {
+                [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
+            }
+            else {
+                if (!success && responseObject) {
+                    [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
+                }
+                else {
+                [Utility donateCheck:self];
+                }
+            }
+        }];
+    }
+#else
     [Utility donateCheck:self];
+#endif
     #endif
     __weak AppDelegate *weakself = self;
     _servicemenucontrol.actionblock = ^(int selected, int previousservice) {
@@ -127,7 +148,7 @@
     NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:NSLocalizedString(@"Got it",nil)];
     [alert setMessageText:NSLocalizedString(@"You are running the Prerelease version of Shukofukurou.",nil)];
-    alert.informativeText = NSLocalizedString(@"This is a prerelease version of Shukofukurou meant to test new features or changes. This release may or may not have all the features that will be in the final release. These releases allows users to test and share feedback back to the developer.\r\rThis release will run independently from the stable release, but you do not need to login again. Note that you need to add the license details to unlock the donor features. There is no Mac App Store migration currently, but you are free to test the free version for the time being.",nil);
+    alert.informativeText = NSLocalizedString(@"This is a prerelease version of Shukofukurou meant to test new features or changes. This release may or may not have all the features that will be in the final release. These releases allows users to test and share feedback back to the developer.\r\rThis release will run independently from the stable release, but you do not need to login again. Note that you need to add the license details to unlock the donor features. If you normally use the Mac App Store version, these features should unlock automatically.",nil);
     // Set Message type to Warning
     alert.alertStyle = NSAlertStyleInformational;
     [alert runModal];

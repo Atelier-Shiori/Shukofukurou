@@ -14,6 +14,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
+                <outlet property="ListExporterController" destination="O22-er-S4a" id="Qau-6P-KRx"/>
+                <outlet property="ListImporterController" destination="mhI-ho-EeA" id="lr9-8s-TCB"/>
                 <outlet property="convertexportmenu" destination="HLq-mJ-4Y3" id="Koe-pe-QkC"/>
                 <outlet property="importanilist" destination="6SO-xG-9tj" id="cjm-vW-Xfc"/>
                 <outlet property="importkitsumenu" destination="DZO-y4-ZC1" id="tYc-Io-ccR"/>

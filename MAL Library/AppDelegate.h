@@ -14,6 +14,11 @@
 #import "messageswindow.h"
 #import "ListStatistics.h"
 
+#ifdef defined(AppStore)
+#else
+#import <Patreon/Patreon.h>
+#endif
+
 @class ProfileWindowController;
 @class servicemenucontroller;
 @class ListImport;
@@ -39,6 +44,11 @@
 @property (strong) IBOutlet ListImport *ListImporterController;
 @property (strong) IBOutlet ListExporter *ListExporterController;
 
+// Patreon
+#if defined(AppStore)
+#else
+@property (strong) PatreonManager *pamanager;
+#endif
 
 // Core Data
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;

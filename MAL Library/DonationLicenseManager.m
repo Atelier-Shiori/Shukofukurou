@@ -131,4 +131,9 @@
     [mw loadmainview];
 #endif
 }
+- (IBAction)becomepatron:(id)sender {
+        [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://www.patreon.com/bePatron?c=677182"]];
+}
+
+
 @end

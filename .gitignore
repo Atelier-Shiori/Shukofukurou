@@ -89,3 +89,8 @@ MAL Library/SKProduct+LocalizedPrice.m
 MAL Library/TipJar.h
 MAL Library/TipJar.m
 MAL Library/TipJar.xib
+MAL Library/Patreon.framework/**
+MAL Library/PatreonConstants.h
+MAL Library/PatreonConstants.m
+MAL Library/AppDelegate+Patreon.h
+MAL Library/AppDelegate+Patreon.m

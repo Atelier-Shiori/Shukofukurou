@@ -104,6 +104,14 @@
 		2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
+		91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
+		91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
+		91044F90211B240600DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
+		91044F91211B240600DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
+		91044F92211B251900DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
+		91044F93211B251900DBEF57 /* Patreon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		91044F94211B252100DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
+		91044F95211B252100DBEF57 /* Patreon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
@@ -204,6 +212,10 @@
 		916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		916D7FE2206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
+		917CEC78211B2B1200259AA7 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
+		917CEC79211B2B1200259AA7 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
+		917CEC7C211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */; };
+		917CEC7D211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */; };
 		91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91822A561EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */; };
@@ -703,6 +715,7 @@
 				9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */,
 				F8ABAAA82087C22600752627 /* DonationCheck.framework in Embed Frameworks */,
 				2DB59D141EB7D4B700FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
+				91044F95211B252100DBEF57 /* Patreon.framework in Embed Frameworks */,
 				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -720,6 +733,7 @@
 				91F8E434210A46CA007137A7 /* MASPreferences.framework in Embed Frameworks */,
 				91F8E435210A46CA007137A7 /* DonationCheck.framework in Embed Frameworks */,
 				91F8E436210A46CA007137A7 /* CocoaOniguruma.framework in Embed Frameworks */,
+				91044F93211B251900DBEF57 /* Patreon.framework in Embed Frameworks */,
 				91F8E437210A46CA007137A7 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -846,6 +860,9 @@
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
+		91044F8B211B23BF00DBEF57 /* AppDelegate+Patreon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Patreon.h"; sourceTree = "<group>"; };
+		91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Patreon.m"; sourceTree = "<group>"; };
+		91044F8F211B240600DBEF57 /* Patreon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Patreon.framework; path = "MAL Library/Patreon.framework"; sourceTree = "<group>"; };
 		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
 		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
 		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
@@ -893,6 +910,10 @@
 		916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatAniList.m; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
+		917CEC76211B2B1200259AA7 /* PatreonConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatreonConstants.h; sourceTree = "<group>"; };
+		917CEC77211B2B1200259AA7 /* PatreonConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatreonConstants.m; sourceTree = "<group>"; };
+		917CEC7A211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShouldHidePatreonMenuValueTransformer.h; sourceTree = "<group>"; };
+		917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShouldHidePatreonMenuValueTransformer.m; sourceTree = "<group>"; };
 		91822A491EAE99E6005E33DB /* RecommendedTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendedTitleView.h; sourceTree = "<group>"; };
 		91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendedTitleView.m; sourceTree = "<group>"; };
 		91822A541EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTextFieldCellMiddleAligned.h; sourceTree = "<group>"; };
@@ -1061,6 +1082,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */,
+				91044F90211B240600DBEF57 /* Patreon.framework in Frameworks */,
 				91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */,
 				9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */,
 				F84D05202086720800502379 /* DonationCheck.framework in Frameworks */,
@@ -1073,6 +1095,7 @@
 				F8ABAAAC2087C33800752627 /* SAMKeychain.framework in Frameworks */,
 				918C0D391E89FF920037898E /* Crashlytics.framework in Frameworks */,
 				9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */,
+				91044F94211B252100DBEF57 /* Patreon.framework in Frameworks */,
 				F8ABAAA72087C22600752627 /* DonationCheck.framework in Frameworks */,
 				F8ABAAAA2087C33300752627 /* SAMKeychain.framework in Frameworks */,
 				918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */,
@@ -1086,6 +1109,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91F8E3F2210A46CA007137A7 /* CocoaOniguruma.framework in Frameworks */,
+				91044F91211B240600DBEF57 /* Patreon.framework in Frameworks */,
 				91F8E3F3210A46CA007137A7 /* MASPreferences.framework in Frameworks */,
 				91F8E3F4210A46CA007137A7 /* AFNetworking.framework in Frameworks */,
 				91F8E3F5210A46CA007137A7 /* DonationCheck.framework in Frameworks */,
@@ -1098,6 +1122,7 @@
 				91F8E3FC210A46CA007137A7 /* SAMKeychain.framework in Frameworks */,
 				91F8E3FD210A46CA007137A7 /* Crashlytics.framework in Frameworks */,
 				91F8E3FE210A46CA007137A7 /* PXSourceList.framework in Frameworks */,
+				91044F92211B251900DBEF57 /* Patreon.framework in Frameworks */,
 				91F8E3FF210A46CA007137A7 /* DonationCheck.framework in Frameworks */,
 				91F8E400210A46CA007137A7 /* SAMKeychain.framework in Frameworks */,
 				91F8E401210A46CA007137A7 /* Fabric.framework in Frameworks */,
@@ -1220,6 +1245,7 @@
 				9199BB011E8984E300F6E9FF /* PXSourceList.framework */,
 				F84D051F2086720700502379 /* DonationCheck.framework */,
 				9199BAF21E89844C00F6E9FF /* MASPreferences.framework */,
+				91044F8F211B240600DBEF57 /* Patreon.framework */,
 				2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */,
 				918C0D401E8A00ED0037898E /* Cocoa.framework */,
 			);
@@ -1294,6 +1320,10 @@
 				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
 				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
+				917CEC7A211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.h */,
+				917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */,
+				917CEC76211B2B1200259AA7 /* PatreonConstants.h */,
+				917CEC77211B2B1200259AA7 /* PatreonConstants.m */,
 				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				F888F402208F889D00C22C39 /* AuthWebView.h */,
 				F888F403208F889D00C22C39 /* AuthWebView.m */,
@@ -1444,6 +1474,8 @@
 				91244E952108E89C00AA8F90 /* CustomListModify.h */,
 				91244E962108E89C00AA8F90 /* CustomListModify.m */,
 				91F8E44A210A4BC1007137A7 /* CustomListModify.xib */,
+				91044F8B211B23BF00DBEF57 /* AppDelegate+Patreon.h */,
+				91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -2137,6 +2169,7 @@
 				91521F6A21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
 				2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */,
+				917CEC7C211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
 				91999D081E8C81580026D3E9 /* SeasonView.m in Sources */,
 				9199BAD61E89842400F6E9FF /* LoginPref.m in Sources */,
 				2D371E741ECF8AF500F47138 /* ListStatistics.m in Sources */,
@@ -2145,6 +2178,7 @@
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
+				91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
 				F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */,
 				F8A85912207023E40026EC0A /* AniList.m in Sources */,
 				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
@@ -2196,6 +2230,7 @@
 				2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */,
 				916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */,
+				917CEC78211B2B1200259AA7 /* PatreonConstants.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
 				91DAFC5D1EAE6C9F0037A6F2 /* messageswindow.m in Sources */,
 				2DAB19E51EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
@@ -2230,6 +2265,7 @@
 				91F8E3AF210A46CA007137A7 /* AtarashiiListCoreData.m in Sources */,
 				91F8E3B0210A46CA007137A7 /* AniListScoreConvert.m in Sources */,
 				91F8E3B1210A46CA007137A7 /* XMLReader.m in Sources */,
+				917CEC7D211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
 				91F8E3B2210A46CA007137A7 /* SeasonView.m in Sources */,
 				91F8E3B3210A46CA007137A7 /* LoginPref.m in Sources */,
 				91F8E3B4210A46CA007137A7 /* ListStatistics.m in Sources */,
@@ -2238,6 +2274,7 @@
 				91F8E3B7210A46CA007137A7 /* Utility.m in Sources */,
 				91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */,
 				91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */,
+				91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
 				91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */,
 				91F8E3BB210A46CA007137A7 /* AniList.m in Sources */,
 				91F8E3BC210A46CA007137A7 /* TitleIdConverter.m in Sources */,
@@ -2289,6 +2326,7 @@
 				91F8E3EA210A46CA007137A7 /* listservice.m in Sources */,
 				91F8E3EB210A46CA007137A7 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				91F8E3EC210A46CA007137A7 /* OtherHistoryView.m in Sources */,
+				917CEC79211B2B1200259AA7 /* PatreonConstants.m in Sources */,
 				91F8E3ED210A46CA007137A7 /* ListImport.m in Sources */,
 				91F8E3EE210A46CA007137A7 /* messageswindow.m in Sources */,
 				91F8E3EF210A46CA007137A7 /* StreamDataRetriever.m in Sources */,
@@ -3028,6 +3066,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
@@ -3064,6 +3104,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3122,6 +3164,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -3163,6 +3207,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",

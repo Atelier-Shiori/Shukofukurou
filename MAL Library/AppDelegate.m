@@ -34,6 +34,8 @@
 #else
 #import "PFMoveApplication.h"
 #import "DonationLicenseManager.h"
+#import "PatreonConstants.h"
+#import "AppDelegate+Patreon.h"
 #endif
 
 @interface AppDelegate ()
@@ -70,6 +72,7 @@
     defaultValues[@"donated"] = @(1);
     #else
     defaultValues[@"donated"] = @(0);
+    defaultValues[@"activepatron"] = @(0);
     #endif
     defaultValues[@"NSApplicationCrashOnExceptions"] = @YES;
     defaultValues[@"readingfilter"] = @(1);
@@ -107,8 +110,13 @@
     #else
     PFMoveToApplicationsFolderIfNecessary();
     #endif
+#if defined(AppStore)
+#else
+    _pamanager = [PatreonManager new];
+    [_pamanager setClientID:kPatreonclientid withClientSecret:kPatreonclientsecret withTargetCampaignId:kPatreoncampaignid];
+#endif
 #if defined(BETA)
-    if (![NSUserDefaults.standardUserDefaults valueForKey:@"donation_license"] && ![NSUserDefaults.standardUserDefaults valueForKey:@"donation_name"]) {
+    if ((![NSUserDefaults.standardUserDefaults valueForKey:@"donation_license"] && ![NSUserDefaults.standardUserDefaults valueForKey:@"donation_name"]) || (![NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && ![NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"])) {
         [MigrateAppStoreLicense validateShukofukurou:^(bool success, id responseObject, NSString *path) {
             if (success) {
                 [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
@@ -118,13 +126,13 @@
                     [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
                 }
                 else {
-                [Utility donateCheck:self];
+                    [self checkdonationstatus];
                 }
             }
         }];
     }
 #else
-    [Utility donateCheck:self];
+    [self checkdonationstatus];
 #endif
     #endif
     __weak AppDelegate *weakself = self;
@@ -262,7 +270,10 @@
     [copyrightstr appendString:@"Mac App Store version."];
 #endif
 #else
-    if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) {
+                [copyrightstr appendString:@"Pro version. Thank you for supporting Shukofukurou's development through Patreon!"];
+    }
+    else if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
         [copyrightstr appendString:@"Pro version. Thank you for supporting Shukofukurou's development!"];
         [copyrightstr appendFormat:@"\rThis copy is registered to: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"donation_name"]];
     }
@@ -512,6 +523,40 @@
     [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"http://ko-fi.com/N4N0B153"]];
 #endif
 }
+
+- (void)checkdonationstatus {
+    // Checks Donation Key and Patreon status
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) {
+        if ([_pamanager getFirstAccount]) {
+            [self checkPatreonAccount];
+        }
+        else {
+            [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"donated"];
+            [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"activepatron"];
+            [NSUserDefaults.standardUserDefaults setObject:nil forKey:@"patreongraceperiod"];
+            [Utility donateCheck:self];
+        }
+    }
+    else {
+        [Utility donateCheck:self];
+    }
+}
+
+#pragma mark Patreon
+#if defined(AppStore)
+#else
+- (IBAction)authorizepatreon:(id)sender {
+    [self authorizePatreonAccount];
+}
+
+- (IBAction)deauthorizepatron:(id)sender {
+    [self deauthorizePatreonAccount];
+}
+
+- (IBAction)becomepatreon:(id)sender {
+    [self openpledgepage];
+}
+#endif
 
 #pragma mark - Core Data stack
 

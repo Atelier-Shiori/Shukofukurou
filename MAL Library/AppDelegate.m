@@ -528,6 +528,7 @@
     // Checks Donation Key and Patreon status
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) {
         if ([_pamanager getFirstAccount]) {
+            NSLog(@"Checking Pledges");
             [self checkPatreonAccount];
         }
         else {

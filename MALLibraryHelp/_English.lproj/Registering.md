@@ -33,7 +33,17 @@ Donation keys may be used on many macs you own and applicable for updates in the
 There are other options besides inputting;
 * Purchase - Allows you to obtain a donation license to unlock features exclusive to donors.
 * Upgrade - This option will check your eligibility for a free upgrade key. The copy of MAL Library downloaded on or after March 1, 2018 is applicable. Otherwise, you will recieve an option to obtain an ubgrade key.
-*  Lookup License Key-  This option allows you to lookup your donation key.
+* Lookup License Key-  This option allows you to lookup your donation key.
+* Become a Patreon - You can become a Patreon to support development monthly and unlock donor features. See Registering by Authorizing a Patreon Account for more details.
+
+## Registering by Authorizing a Patreon Account (Non AppStore Version)
+By supporting us on Patreon, you can help support development of Shukofukurou and other applications monthly. You can use your Patreon account to unlock donor features as long you have an active pledge. Note that you cannot authorize a Patreon account if you already registered a donation key. If you decide to discontinue the pledge, you will lose access to donor features automatically.
+
+To authorize a Patreon account, go to the Shukofukurou menu > Patreon and select "Authorize Patreon Account…" Login into your Patreon account and allow the application. If Patreon prompts you to authorize a device by email, follow the instructions and then click the "Start Over" button to return to the login page.
+
+If Shukofukurou detects an active pledge, it will unlock the features. If it does not, it will ask if you want to make a pledge. Otherwise, it will not unlock any features.
+
+At any time, you may deauthorize your Patreon account by going to Shukofukurou > Patreon > "Deauthorize Patreon Account…" Note that there is no device limit with this option and you may authorize as many Macs you want with Patreon.
 
 ## Notice
 If you are developing a fork, please set up your own Atarashii-API server. The default API server is only for official copies of Shukofukurou, MAL Updater OS X and Hachidori. By doing so, you are pirating the software and violating the terms of service.

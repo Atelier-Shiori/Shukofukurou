@@ -525,6 +525,8 @@
 }
 
 - (void)checkdonationstatus {
+#if defined(AppStore)
+#else
     // Checks Donation Key and Patreon status
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) {
         if ([_pamanager getFirstAccount]) {
@@ -541,6 +543,7 @@
     else {
         [Utility donateCheck:self];
     }
+#endif
 }
 
 #pragma mark Patreon

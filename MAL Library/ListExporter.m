@@ -20,25 +20,27 @@
 
 @implementation ListExporter
 - (instancetype)init {
-    if (![super init]) {
+    if (self = [super init]) {
+        self.epw = [ExportProgressWindow new];
+        __weak ListExporter *weakself = self;
+        self.epw.completion = ^(NSDictionary *list, int listType) {
+            NSSavePanel * sp = [NSSavePanel savePanel];
+            sp.title = @"Export Converted List";
+            sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
+            sp.message = @"Where do you want to export your List?";
+            sp.nameFieldStringValue = listType == MALAnime ? @"animelist.xml" : @"mangalist.xml";
+            [sp beginWithCompletionHandler:^(NSInteger result) {
+                if (result == NSFileHandlingPanelCancelButton) {
+                    return;
+                }
+                [weakself writeListXML:list withFileURL:sp.URL withType:listType];
+            }];
+        };
+        return self;
+    }
+    else {
         return nil;
     }
-    _epw = [ExportProgressWindow new];
-    __weak ListExporter *weakself = self;
-    _epw.completion = ^(NSDictionary *list, int listType) {
-        NSSavePanel * sp = [NSSavePanel savePanel];
-        sp.title = @"Export Converted List";
-        sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
-        sp.message = @"Where do you want to export your List?";
-        sp.nameFieldStringValue = listType == MALAnime ? @"animelist.xml" : @"mangalist.xml";
-        [sp beginWithCompletionHandler:^(NSInteger result) {
-            if (result == NSFileHandlingPanelCancelButton) {
-                return;
-            }
-            [weakself writeListXML:list withFileURL:sp.URL withType:listType];
-        }];
-    };
-    return self;
 }
 - (IBAction)exportAnimeList:(id)sender {
     // Export Anime List to MyAnimeList XML Format

@@ -39,11 +39,13 @@ There are other options besides inputting;
 ## Registering by Authorizing a Patreon Account (Non AppStore Version)
 By supporting us on Patreon, you can help support development of Shukofukurou and other applications monthly. You can use your Patreon account to unlock donor features as long you have an active pledge. Note that you cannot authorize a Patreon account if you already registered a donation key. If you decide to discontinue the pledge, you will lose access to donor features automatically.
 
+Currently, it's limited to one Mac/one user.
+
 To authorize a Patreon account, go to the Shukofukurou menu > Patreon and select "Authorize Patreon Account…" Login into your Patreon account and allow the application. If Patreon prompts you to authorize a device by email, follow the instructions and then click the "Start Over" button to return to the login page.
 
 If Shukofukurou detects an active pledge, it will unlock the features. If it does not, it will ask if you want to make a pledge. Otherwise, it will not unlock any features.
 
-At any time, you may deauthorize your Patreon account by going to Shukofukurou > Patreon > "Deauthorize Patreon Account…" Note that there is no device limit with this option and you may authorize as many Macs you want with Patreon.
+At any time, you may deauthorize your Patreon account by going to Shukofukurou > Patreon > "Deauthorize Patreon Account…"
 
 ## Notice
 If you are developing a fork, please set up your own Atarashii-API server. The default API server is only for official copies of Shukofukurou, MAL Updater OS X and Hachidori. By doing so, you are pirating the software and violating the terms of service.

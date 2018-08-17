@@ -633,8 +633,10 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
         }
     }
     else {
-        // Remove Account
-        [self removeAccount];
+            if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
+                // Remove Account
+                [self removeAccount];
+            }
     }
 }
 @end

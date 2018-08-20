@@ -131,7 +131,7 @@
         _volumesfield.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _volumestepper.intValue = ((NSNumber *)d[@"volumes_read"]).intValue;
         _totalvolumes.intValue = ((NSNumber *)d[@"volumes"]).intValue;
-        _tagsfield.stringValue = ((NSArray *)d[@"personal_tags"]).count > 0 ? [((NSArray *)d[@"personal_tags"]) componentsJoinedByString:@","] : @"";
+        _tagsfield.stringValue = d[@"personal_tags"] != [NSNull null] ? [((NSArray *)d[@"personal_tags"]) componentsJoinedByString:@","] : @"";
         if (((NSNumber *)d[@"volumes"]).intValue > 0) {
             _volumesformatter.maximum = d[@"volumes"];
         }

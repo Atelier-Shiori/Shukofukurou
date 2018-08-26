@@ -711,14 +711,19 @@ static BOOL importing;
 }
 
 + (void)populateTitleMappings:(NSArray *)mappings type:(int)type {
-    NSString *typestr = type == 0 ? @"anime" : @"manga";
+    NSString *typestr = type == MALAnime ? @"anime" : @"manga";
     NSString *currentservicestr = [listservice currentservicename].lowercaseString;
     for (NSDictionary *mapping in mappings) {
-        if (mapping[[NSString stringWithFormat:@"myanimelist/%@", typestr]]) {
-            [self checkandaddFromService:[listservice getCurrentServiceID] toService:1 withSourceId:((NSNumber *)mapping[[NSString stringWithFormat:@"%@/%@", currentservicestr, typestr]]).intValue withTargetId:((NSNumber *)mapping[[NSString stringWithFormat:@"myanimelist/%@", typestr]]).intValue withType:type];
+        @try {
+            if (mapping[[NSString stringWithFormat:@"myanimelist/%@", typestr]]) {
+                [self checkandaddFromService:[listservice getCurrentServiceID] toService:1 withSourceId:((NSNumber *)mapping[[NSString stringWithFormat:@"%@/%@", currentservicestr.lowercaseString, typestr]]).intValue withTargetId:((NSNumber *)mapping[[NSString stringWithFormat:@"myanimelist/%@", typestr]]).intValue withType:type];
+            }
+            if (mapping[[NSString stringWithFormat:@"anilist/%@", typestr]] && [listservice getCurrentServiceID] != 3) {
+                [self checkandaddFromService:[listservice getCurrentServiceID] toService:3 withSourceId:((NSNumber *)mapping[[NSString stringWithFormat:@"%@/%@",currentservicestr.lowercaseString, typestr]]).intValue withTargetId:((NSNumber *)mapping[[NSString stringWithFormat:@"anilist/%@", typestr]]).intValue withType:type];
+            }
         }
-        if (mapping[[NSString stringWithFormat:@"anilist/%@", typestr]] && [listservice getCurrentServiceID] != 3) {
-            [self checkandaddFromService:[listservice getCurrentServiceID] toService:3 withSourceId:((NSNumber *)mapping[[NSString stringWithFormat:@"%@/%@",currentservicestr, typestr]]).intValue withTargetId:((NSNumber *)mapping[[NSString stringWithFormat:@"anilist/%@", typestr]]).intValue withType:type];
+        @catch (NSException *ex) {
+            NSLog(@"Error Importing Mapping: %@. Exception: %@", mapping, ex);
         }
     }
 }

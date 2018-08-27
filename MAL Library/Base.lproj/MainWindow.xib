@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,7 +37,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="mainwindow" animationBehavior="default" id="F0z-JX-Cv5">
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="mainwindow" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="911" y="501" width="700" height="450"/>
@@ -569,7 +569,7 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
                             <rect key="frame" x="0.0" y="14" width="43" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">
@@ -667,7 +667,7 @@
             </connections>
             <point key="canvasLocation" x="-442" y="-289"/>
         </window>
-        <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="K71-hX-Lqz" userLabel="ProgressView">
+        <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="K71-hX-Lqz" userLabel="ProgressView">
             <rect key="frame" x="0.0" y="0.0" width="549" height="434"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -693,12 +693,12 @@
             </subviews>
             <point key="canvasLocation" x="138.5" y="168"/>
         </visualEffectView>
-        <popover appearance="vibrantLight" behavior="t" id="TrX-YX-OCN" userLabel="Mini Edit Popover">
+        <popover behavior="t" id="TrX-YX-OCN" userLabel="Mini Edit Popover">
             <connections>
                 <outlet property="contentViewController" destination="w9r-Zw-PrM" id="2D7-0N-AUJ"/>
             </connections>
         </popover>
-        <popover appearance="vibrantLight" behavior="t" id="XPV-h5-bEU">
+        <popover behavior="t" id="XPV-h5-bEU">
             <connections>
                 <outlet property="contentViewController" destination="WWH-Kx-8dQ" id="2bd-C4-isX"/>
             </connections>
@@ -711,7 +711,7 @@
             </connections>
         </viewController>
         <userDefaultsController representsSharedInstance="YES" id="2F9-Ng-hjJ"/>
-        <popover appearance="vibrantLight" behavior="t" id="o05-dg-F2u" userLabel="AdvancedSearchPopover">
+        <popover behavior="t" id="o05-dg-F2u" userLabel="AdvancedSearchPopover">
             <connections>
                 <outlet property="contentViewController" destination="aSh-hJ-Fpb" id="hnQ-yd-vZ7"/>
             </connections>

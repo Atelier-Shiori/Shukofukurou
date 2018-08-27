@@ -14,7 +14,8 @@ These options affect the main functionality of the application.
 * Refresh List Automatically - This allows Shukofukurou to refresh your list periodically.
 
 ### General
-* Appearance - Sets the appearance of the main window. Possible options are light or dark.
+* Appearance - Sets the appearance of the main window. Possible options are light or dark. 
+**Note: This setting is disabled on macOS 10.14 or later as Shukofukurou will use the current appearence**
 * Clear Image Cache - Clears the poster image cache.
 * Stream Region - Sets the stream version for aviliable legal steams for a given title from Because.moe. Stream information is only
 * Reset Title ID Mappings - Allows you to reset the Title ID Mappings used for importing titles and switching services. Use this if the you having issues with Title ID conversion used by service switching and list importing.

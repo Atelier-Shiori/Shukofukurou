@@ -28,8 +28,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    [self.view setWantsLayer:YES];
-    self.view.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    if (@available(macOS 10.14, *)) {
+        return;
+    }
+    else {
+        [self.view setWantsLayer:YES];
+        self.view.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    }
 }
 
 - (void)loadReview:(NSDictionary *)review type:(int)type {
@@ -98,6 +103,7 @@
     [_reviewtext.textStorage setAttributedString: [(NSString *)review[@"review"] convertHTMLtoAttStr]];
     [_reviewtext scrollToBeginningOfDocument:self];
     [_reviewtext scrollToBeginningOfDocument:self];
+    _reviewtext.textColor = NSColor.controlTextColor;
     if (((NSString *)review[@"avatar_url"]).length > 0) {
         _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@.jpg",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];
     }

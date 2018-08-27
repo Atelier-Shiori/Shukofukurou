@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -178,7 +178,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <visualEffectView appearanceType="vibrantLight" fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="T41-us-5RD">
+                <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="T41-us-5RD">
                     <rect key="frame" x="0.0" y="275" width="564" height="25"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
@@ -251,6 +251,11 @@
                             </buttonCell>
                             <connections>
                                 <action selector="togglecustomlistpopover:" target="-2" id="IK4-0M-cAg"/>
+                                <binding destination="vm0-rJ-Ss3" name="hidden" keyPath="values.currentservice" id="Ov4-Hh-wqF">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">CustomListShouldShowValueTransformer</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="vm0-rJ-Ss3" name="hidden2" keyPath="values.donated" previousBinding="Ov4-Hh-wqF" id="7hu-h1-poC">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -258,11 +263,6 @@
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="vm0-rJ-Ss3" name="hidden" keyPath="values.currentservice" id="Ov4-Hh-wqF">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">CustomListShouldShowValueTransformer</string>
                                     </dictionary>
                                 </binding>
                             </connections>
@@ -468,7 +468,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <visualEffectView appearanceType="vibrantLight" fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zwH-Mn-Icd">
+                <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zwH-Mn-Icd">
                     <rect key="frame" x="0.0" y="275" width="564" height="25"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
@@ -541,6 +541,11 @@
                             </buttonCell>
                             <connections>
                                 <action selector="togglecustomlistpopover:" target="-2" id="f4b-Hy-6XP"/>
+                                <binding destination="vm0-rJ-Ss3" name="hidden" keyPath="values.currentservice" id="hgN-8H-yeR">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">CustomListShouldShowValueTransformer</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="vm0-rJ-Ss3" name="hidden2" keyPath="values.donated" previousBinding="hgN-8H-yeR" id="nAr-Gq-kii">
                                     <dictionary key="options">
                                         <integer key="NSMultipleValuesPlaceholder" value="-1"/>
@@ -548,11 +553,6 @@
                                         <integer key="NSNotApplicablePlaceholder" value="-1"/>
                                         <integer key="NSNullPlaceholder" value="-1"/>
                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                    </dictionary>
-                                </binding>
-                                <binding destination="vm0-rJ-Ss3" name="hidden" keyPath="values.currentservice" id="hgN-8H-yeR">
-                                    <dictionary key="options">
-                                        <string key="NSValueTransformerName">CustomListShouldShowValueTransformer</string>
                                     </dictionary>
                                 </binding>
                             </connections>

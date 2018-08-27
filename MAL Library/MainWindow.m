@@ -285,29 +285,35 @@
 }
 
 - (void)setAppearance {
-    NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
-    NSString *appearancename;
-    if ([appearence isEqualToString:@"Light"]){
-        appearancename = NSAppearanceNameVibrantLight;
-        _w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+    if (@available(macOS 10.14, *)) {
+        // Do not set appearence on macOS Versions >= 10.14
+        return;
     }
-    else{
-        appearancename = NSAppearanceNameVibrantDark;
-        _w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    else {
+        NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
+        NSString *appearancename;
+        if ([appearence isEqualToString:@"Light"]){
+            appearancename = NSAppearanceNameVibrantLight;
+            _w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        }
+        else{
+            appearancename = NSAppearanceNameVibrantDark;
+            _w.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+        }
+        _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
+        _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
+        [_infoview.cbrowser setAppearance];
+        _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
+        _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
+        _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
+        _advsearchpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+        _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+        _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+        _infoview.othertitlepopover.appearance = [NSAppearance appearanceNamed:appearancename];
+        _listview.customlistpopover.appearance = [NSAppearance appearanceNamed:appearancename];
+        _listview.customlistpopoverviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
+        [_w setFrame:_w.frame display:false];
     }
-    _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
-    _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
-    [_infoview.cbrowser setAppearance];
-    _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
-    _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
-    _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
-    _advsearchpopover.appearance = [NSAppearance appearanceNamed:appearancename];
-    _minieditpopover.appearance = [NSAppearance appearanceNamed:appearancename];
-    _addpopover.appearance = [NSAppearance appearanceNamed:appearancename];
-    _infoview.othertitlepopover.appearance = [NSAppearance appearanceNamed:appearancename];
-    _listview.customlistpopover.appearance = [NSAppearance appearanceNamed:appearancename];
-    _listview.customlistpopoverviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
-    [_w setFrame:_w.frame display:false];
 }
 
 - (void)refreshloginlabel{

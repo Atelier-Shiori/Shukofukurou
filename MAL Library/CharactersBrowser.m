@@ -384,19 +384,25 @@
 }
 
 - (void)setAppearance {
-    NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
-    NSString *appearancename;
-    if ([appearence isEqualToString:@"Light"]){
-        appearancename = NSAppearanceNameVibrantLight;
-        self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+    if (@available(macOS 10.14, *)) {
+        // Do not set appearence on macOS Versions >= 10.14
+        return;
     }
-    else{
-        appearancename = NSAppearanceNameVibrantDark;
-        self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    else {
+        NSString * appearence = [[NSUserDefaults standardUserDefaults] valueForKey:@"appearance"];
+        NSString *appearancename;
+        if ([appearence isEqualToString:@"Light"]){
+            appearancename = NSAppearanceNameVibrantLight;
+            self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameAqua];
+        }
+        else{
+            appearancename = NSAppearanceNameVibrantDark;
+            self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+        }
+        _noselectionview.appearance = [NSAppearance appearanceNamed:appearancename];
+        _characterviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
+        [self.window setFrame:self.window.frame display:false];
     }
-    _noselectionview.appearance = [NSAppearance appearanceNamed:appearancename];
-    _characterviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
-    [self.window setFrame:self.window.frame display:false];
 }
 
 @end

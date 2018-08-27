@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="12106.1" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12106.1"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -10,12 +11,17 @@
                 <outlet property="popovertitle" destination="GSf-Wd-jA5" id="gUX-Az-Vas"/>
                 <outlet property="recommendedarraycontroller" destination="aFM-4d-7Ul" id="7Th-Lu-z8i"/>
                 <outlet property="tb" destination="M0R-jy-JH2" id="5dP-Vg-91g"/>
-                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="view" destination="eoK-c9-Wmd" id="4e0-Ry-ZFB"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
+        <arrayController objectClassName="NSDictionary" editable="NO" id="aFM-4d-7Ul">
+            <declaredKeys>
+                <string>allValues</string>
+            </declaredKeys>
+        </arrayController>
+        <customView id="eoK-c9-Wmd">
             <rect key="frame" x="0.0" y="0.0" width="335" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -81,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSf-Wd-jA5">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GSf-Wd-jA5">
                     <rect key="frame" x="8" y="272" width="320" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="ewQ-Wl-g3X">
@@ -91,12 +97,7 @@
                     </textFieldCell>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="59.5" y="183"/>
+            <point key="canvasLocation" x="183" y="183"/>
         </customView>
-        <arrayController objectClassName="NSDictionary" editable="NO" id="aFM-4d-7Ul">
-            <declaredKeys>
-                <string>allValues</string>
-            </declaredKeys>
-        </arrayController>
     </objects>
 </document>

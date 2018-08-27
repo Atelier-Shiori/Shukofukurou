@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,7 +22,7 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <arrayController id="zaK-zz-Lgw"/>
-        <visualEffectView appearanceType="vibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="DDw-61-OZz">
+        <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="DDw-61-OZz">
             <rect key="frame" x="0.0" y="0.0" width="739" height="382"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
@@ -43,7 +43,7 @@
             <point key="canvasLocation" x="291.5" y="252"/>
         </visualEffectView>
         <viewController nibName="ReviewView" id="HBl-yU-Uya" customClass="ReviewView"/>
-        <window title="Reviews" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" frameAutosaveName="ReviewWindow" animationBehavior="default" id="Joy-JH-lT6">
+        <window title="Reviews" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="ReviewWindow" animationBehavior="default" id="Joy-JH-lT6">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="283" y="305" width="764" height="452"/>
@@ -62,7 +62,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <clipView key="contentView" focusRingType="none" ambiguous="YES" id="2J4-uc-fGW">
                                     <rect key="frame" x="0.0" y="0.0" width="764" height="135"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="reviewtb" headerView="8Cw-Y7-TxY" id="O6F-JO-YqY" customClass="NSTableViewAction">
                                             <rect key="frame" x="0.0" y="0.0" width="764" height="112"/>

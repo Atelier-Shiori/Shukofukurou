@@ -16,6 +16,7 @@
 
 @interface GeneralPref ()
 @property (strong) IBOutlet NSButton *showadultoption;
+@property (strong) IBOutlet NSPopUpButton *appearencepopupbtn;
 
 @end
 
@@ -31,6 +32,9 @@
     _showadultoption.hidden = YES;
 #endif
 #endif
+    if (@available(macOS 10.14, *)) {
+        _appearencepopupbtn.enabled = NO;
+    }
 }
 
 #pragma mark -

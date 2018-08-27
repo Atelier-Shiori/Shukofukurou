@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="GeneralPref">
             <connections>
+                <outlet property="appearencepopupbtn" destination="E6z-dd-cd3" id="0kl-Au-1QB"/>
                 <outlet property="showadultoption" destination="mxh-lr-r76" id="bzb-3p-DAd"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -73,7 +74,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y7y-Jr-ZTa">
-                    <rect key="frame" x="49" y="111" width="178" height="17"/>
+                    <rect key="frame" x="49" y="120" width="178" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Exporting" id="b93-Gc-2nd">
                         <font key="font" metaFont="systemBold"/>
@@ -91,7 +92,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xPr-6i-p7F">
-                    <rect key="frame" x="41" y="90" width="190" height="17"/>
+                    <rect key="frame" x="41" y="99" width="190" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Set Update on Import:" id="gl1-Oc-Twi">
                         <font key="font" metaFont="system"/>
@@ -220,7 +221,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbq-Z7-VyM">
-                    <rect key="frame" x="235" y="88" width="161" height="18"/>
+                    <rect key="frame" x="235" y="97" width="161" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Watching/Reading" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="S2G-iF-Gv1">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -231,7 +232,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OvH-0T-87s">
-                    <rect key="frame" x="235" y="68" width="161" height="18"/>
+                    <rect key="frame" x="235" y="77" width="161" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Completed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="70Q-ZC-uEr">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -242,7 +243,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Br8-95-1gw">
-                    <rect key="frame" x="235" y="48" width="161" height="18"/>
+                    <rect key="frame" x="235" y="57" width="161" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="On-hold" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="gwW-yF-xKb">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -253,7 +254,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVh-du-rQs">
-                    <rect key="frame" x="235" y="29" width="161" height="18"/>
+                    <rect key="frame" x="235" y="38" width="161" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Dropped" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="uff-2G-sNl">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -264,7 +265,7 @@
                     </connections>
                 </button>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iCV-rr-EGf">
-                    <rect key="frame" x="235" y="10" width="152" height="18"/>
+                    <rect key="frame" x="235" y="19" width="152" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Plan to watch/read" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="fUX-fW-8XZ">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -275,7 +276,7 @@
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="126" y="219"/>
+            <point key="canvasLocation" x="370" y="190"/>
         </customView>
         <userDefaultsController representsSharedInstance="YES" id="MdS-ya-WtK"/>
     </objects>

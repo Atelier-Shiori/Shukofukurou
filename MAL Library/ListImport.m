@@ -115,7 +115,7 @@
 }
 #pragma mark MyAnimeList Import
 - (IBAction)importMALList:(id)sender{
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""] && [Utility checkifFileExists:[listservice retrieveListFileName:1] appendPath:@""]) {
+    if ([listservice checkAccountForCurrentService]) {
         NSOpenPanel * op = [NSOpenPanel openPanel];
         op.allowedFileTypes = @[@"xml", @"Extended Markup Language file"];
         op.message = @"Please select a MAL XML List to import.";
@@ -321,7 +321,7 @@
 
 #pragma mark Anidb Import
 - (IBAction)importAniDBList:(id)sender {
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
+    if ([listservice checkAccountForCurrentService]) {
         NSOpenPanel * op = [NSOpenPanel openPanel];
         op.allowedFileTypes = @[@"XML", @"Extended Markup File file"];
         op.message = @"Please select the exported AniDB XML List file to import.";
@@ -472,7 +472,7 @@
 
 #pragma mark Kitsu Import
 - (IBAction)importKitsu:(id)sender {
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
+    if ([listservice checkAccountForCurrentService]) {
         if (!_importprompt){
             _importprompt = [ImportPrompt new];
         }
@@ -587,7 +587,7 @@
 
 #pragma mark AniList Import
 - (IBAction)importAnilist:(id)sender {
-    if ([Utility checkifFileExists:[listservice retrieveListFileName:0] appendPath:@""]) {
+    if ([listservice checkAccountForCurrentService]) {
         if (!_importprompt){
             _importprompt = [ImportPrompt new];
         }

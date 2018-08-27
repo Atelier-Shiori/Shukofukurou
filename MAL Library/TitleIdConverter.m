@@ -308,12 +308,19 @@ static BOOL importing;
 }
 
 + (void)prepopulateTitleIdMappingsFromList:(int)type completionHandler:(void (^)(bool success)) completionHandler {
-    [listservice retrieveTitleIdsWithlistType:type completion:^(id responseObject) {
-        [self populateTitleMappings:responseObject type:type];
+    bool shouldimportmappings = [self shouldimportmappings:type];
+    if (shouldimportmappings) {
+        [listservice retrieveTitleIdsWithlistType:type completion:^(id responseObject) {
+            [self populateTitleMappings:responseObject type:type];
+            [self setshouldimportmappings:type alreadyImported:true];
+            completionHandler(true);
+        } error:^(NSError *error) {
+            completionHandler(false);
+        }];
+    }
+    else {
         completionHandler(true);
-    } error:^(NSError *error) {
-        completionHandler(false);
-    }];
+    }
 }
 
 #pragma mark Helpers
@@ -732,5 +739,74 @@ static BOOL importing;
     if (([self lookupTitleID:sourceid withType:type fromService:fromservice toService:toservice] != targetId)) {
         [self savetitleidtomapping:sourceid withNewID:targetId withType:type fromService:fromservice toService:toservice];
     }
+}
++ (bool)shouldimportmappings:(int)type {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    bool shouldimport = false;
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            return false;
+        }
+        case 2: {
+            if (type == MALAnime) {
+                shouldimport = ![defaults boolForKey:@"KitsuMappingsImportAnime"];
+            }
+            else {
+                shouldimport = ![defaults boolForKey:@"KitsuMappingsImportManga"];
+            }
+            break;
+        }
+        case 3: {
+            if (type == MALAnime) {
+                shouldimport = ![defaults boolForKey:@"AniListMappingsImportAnime"];
+            }
+            else {
+                shouldimport = ![defaults boolForKey:@"AniListMappingsImportManga"];
+            }
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    return shouldimport;
+}
+
++ (void)setshouldimportmappings:(int)type alreadyImported:(bool)imported {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    switch ([listservice getCurrentServiceID]) {
+        case 1: {
+            return;
+        }
+        case 2: {
+            if (type == MALAnime) {
+                [defaults setBool:imported forKey:@"KitsuMappingsImportAnime"];
+            }
+            else {
+                [defaults setBool:imported forKey:@"KitsuMappingsImportManga"];
+            }
+            break;
+        }
+        case 3: {
+            if (type == MALAnime) {
+                [defaults setBool:imported forKey:@"AniListMappingsImportAnime"];
+            }
+            else {
+                [defaults setBool:imported forKey:@"AniListMappingsImportManga"];
+            }
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
++ (void)resetshouldimportmappings {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [defaults setBool:NO forKey:@"KitsuMappingsImportAnime"];
+    [defaults setBool:NO forKey:@"KitsuMappingsImportManga"];
+    [defaults setBool:NO forKey:@"AniListMappingsImportAnime"];
+    [defaults setBool:NO forKey:@"AniListMappingsImportManga"];
 }
 @end

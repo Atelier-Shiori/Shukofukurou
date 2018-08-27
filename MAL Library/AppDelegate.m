@@ -91,6 +91,11 @@
     defaultValues[@"updateonimportonhold"] = @NO;
     defaultValues[@"updateonimportdropped"] = @NO;
     defaultValues[@"updateonimportplanned"] = @NO;
+    // Mappings Imported
+    defaultValues[@"KitsuMappingsImportAnime"] = @NO;
+    defaultValues[@"KitsuMappingsImportManga"] = @NO;
+    defaultValues[@"AniListMappingsImportAnime"] = @NO;
+    defaultValues[@"AniListMappingsImportManga"] = @NO;
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];

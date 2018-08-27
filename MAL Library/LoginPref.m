@@ -323,6 +323,22 @@
         [_mw loadmainview];
         [_mw refreshloginlabel];
     }
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    switch (service) {
+        case 1: {
+            break;
+        }
+        case 2: {
+            [defaults setBool:NO forKey:@"KitsuMappingsImportAnime"];
+            [defaults setBool:NO forKey:@"KitsuMappingsImportManga"];
+            break;
+        }
+        case 3: {
+            [defaults setBool:NO forKey:@"AniListMappingsImportAnime"];
+            [defaults setBool:NO forKey:@"AniListMappingsImportManga"];
+            break;
+        }
+    }
     //Disable Clearbut
     switch (service) {
         case 1:

@@ -12,6 +12,7 @@
 #import "ProfileWindowController.h"
 #import "Utility.h"
 #import "StreamDataRetriever.h"
+#import "TitleIdConverter.h"
 
 @interface GeneralPref ()
 @property (strong) IBOutlet NSButton *showadultoption;
@@ -115,5 +116,6 @@
         [moc save:&error];
     }
     [moc reset];
+    [TitleIdConverter resetshouldimportmappings];
 }
 @end

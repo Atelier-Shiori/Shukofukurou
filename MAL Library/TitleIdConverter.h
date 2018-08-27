@@ -19,5 +19,6 @@
 + (void)getserviceTitleIDFromServiceID:(int)titleid withTitle:(NSString *)title titletype:(NSString *)titletype fromServiceID:(int)fromservice completionHandler:(void (^)(int kitsuid)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 + (void)prepopulateTitleIdMappingsFromList:(int)type completionHandler:(void (^)(bool success)) completionHandler;
 + (void)setImportStatus:(bool)isImporting;
-
++ (void)setshouldimportmappings:(int)type alreadyImported:(bool)imported;
++ (void)resetshouldimportmappings;
 @end

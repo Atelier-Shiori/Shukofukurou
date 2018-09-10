@@ -130,6 +130,9 @@
 		91244EA3210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */; };
 		91244EA4210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */; };
 		91244EA5210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */; };
+		9129254B2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
+		9129254C2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
+		9129254D2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
 		91332AC420F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
 		91332AC520F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
 		913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
@@ -873,6 +876,8 @@
 		91244E952108E89C00AA8F90 /* CustomListModify.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListModify.h; sourceTree = "<group>"; };
 		91244E962108E89C00AA8F90 /* CustomListModify.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListModify.m; sourceTree = "<group>"; };
 		91244EA2210901A000AA8F90 /* datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = datamodel.xcdatamodel; sourceTree = "<group>"; };
+		912925492146D01C0011D760 /* IsAiringValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IsAiringValueTransformer.h; sourceTree = "<group>"; };
+		9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IsAiringValueTransformer.m; sourceTree = "<group>"; };
 		91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListSeasonListGenerator.h; sourceTree = "<group>"; };
 		91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListSeasonListGenerator.m; sourceTree = "<group>"; };
 		913A11AA1E8F206A00450B66 /* Shukofukurou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shukofukurou.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1476,6 +1481,8 @@
 				2D4C22161FA7B1ED00539245 /* XIB */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				912925492146D01C0011D760 /* IsAiringValueTransformer.h */,
+				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -2139,6 +2146,7 @@
 				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
 				91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
+				9129254C2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2199,6 +2207,7 @@
 				9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
+				9129254B2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				2DC28DCD1EB8DF64005B7B77 /* ESCssTokenizer.m in Sources */,
@@ -2369,6 +2378,7 @@
 				F888F41B208FB1F500C22C39 /* NSTextFieldNumber.m in Sources */,
 				F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */,
 				F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */,
+				9129254D2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
 				F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */,
 				F888F420208FB1F500C22C39 /* XMLReader.m in Sources */,
 				91521F6C21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,

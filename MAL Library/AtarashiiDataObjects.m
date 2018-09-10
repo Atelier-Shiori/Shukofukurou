@@ -12,39 +12,39 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.titleid = 0;
-        self.titleidMal = 0;
-        self.title = @"";
-        self.other_titles = @{};
-        self.rank = 0;
-        self.popularity_rank = 0;
-        self.image_url = @"";
-        self.type = @"";
-        self.episodes = 0;
-        self.status = @"";
-        self.start_date = @"";
-        self.end_date = @"";
-        self.broadcast = @"";
-        self.duration = 0;
-        self.classification = @"";
-        self.members_score = 0;
-        self.members_count = 0;
-        self.favorited_count = 0;
-        self.synposis = @"";
-        self.background = @"";
-        self.producers = @[];
-        self.genres = @[];
-        self.manga_adaptations = @[];
-        self.prequels = @[];
-        self.sequels = @[];
-        self.side_stories = @[];
-        self.parent_story = @[];
-        self.character_anime = @[];
-        self.spin_offs = @[];
-        self.opening_theme = @[];
-        self.ending_theme = @[];
-        self.recommendations = @[];
-        self.mappings = @{};
+        _titleid = 0;
+        _titleidMal = 0;
+        _title = @"";
+        _other_titles = @{};
+        _rank = 0;
+        _popularity_rank = 0;
+        _image_url = @"";
+        _type = @"";
+        _episodes = 0;
+        _status = @"";
+        _start_date = @"";
+        _end_date = @"";
+        _broadcast = @"";
+        _duration = 0;
+        _classification = @"";
+        _members_score = 0;
+        _members_count = 0;
+        _favorited_count = 0;
+        _synposis = @"";
+        _background = @"";
+        _producers = @[];
+        _genres = @[];
+        _manga_adaptations = @[];
+        _prequels = @[];
+        _sequels = @[];
+        _side_stories = @[];
+        _parent_story = @[];
+        _character_anime = @[];
+        _spin_offs = @[];
+        _opening_theme = @[];
+        _ending_theme = @[];
+        _recommendations = @[];
+        _mappings = @{};
     }
     return self;
 }
@@ -58,26 +58,26 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.titleid = 0;
-        self.titleidMal = 0;
-        self.title = @"";
-        self.other_titles = @{};
-        self.rank = 0;
-        self.popularity_rank = 0;
-        self.image_url = @"";
-        self.type = @"";
-        self.chapters = 0;
-        self.volumes = 0;
-        self.status = @"";
-        self.members_score = 0;
-        self.members_count = 0;
-        self.favorited_count = 0;
-        self.synposis = @"";
-        self.genres = @[];
-        self.anime_adaptations = @[];
-        self.related_manga = @[];
-        self.alternative_versions = @[];
-        self.mappings = @{};
+        _titleid = 0;
+        _titleidMal = 0;
+        _title = @"";
+        _other_titles = @{};
+        _rank = 0;
+        _popularity_rank = 0;
+        _image_url = @"";
+        _type = @"";
+        _chapters = 0;
+        _volumes = 0;
+        _status = @"";
+        _members_score = 0;
+        _members_count = 0;
+        _favorited_count = 0;
+        _synposis = @"";
+        _genres = @[];
+        _anime_adaptations = @[];
+        _related_manga = @[];
+        _alternative_versions = @[];
+        _mappings = @{};
     }
     return self;
 }
@@ -91,24 +91,24 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.titleid = 0;
-        self.title = @"";
-        self.entryid = 0;
-        self.episodes = 0;
-        self.episode_length = 0;
-        self.image_url = @"";
-        self.type = @"";
-        self.status = @"";
-        self.watched_status = @"";
-        self.watched_episodes = 0;
-        self.score = 0;
-        self.score_type = 0;
-        self.watching_start = @"";
-        self.watching_end = @"";
-        self.rewatching = false;
-        self.rewatch_count = 0;
-        self.personal_comments = @"";
-        self.custom_lists = @"";
+        _titleid = 0;
+        _title = @"";
+        _entryid = 0;
+        _episodes = 0;
+        _episode_length = 0;
+        _image_url = @"";
+        _type = @"";
+        _status = @"";
+        _watched_status = @"";
+        _watched_episodes = 0;
+        _score = 0;
+        _score_type = 0;
+        _watching_start = @"";
+        _watching_end = @"";
+        _rewatching = false;
+        _rewatch_count = 0;
+        _personal_comments = @"";
+        _custom_lists = @"";
     }
     return self;
 }
@@ -122,25 +122,25 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.titleid = 0;
-        self.title = @"";
-        self.entryid = 0;
-        self.chapters = 0;
-        self.volumes = 0;
-        self.image_url = @"";
-        self.type = @"";
-        self.status = @"";
-        self.read_status = @"";
-        self.chapters_read = 0;
-        self.volumes_read = 0;
-        self.score = 0;
-        self.score_type = 0;
-        self.reading_start = @"";
-        self.reading_end = @"";
-        self.rereading = false;
-        self.reread_count = 0;
-        self.personal_comments = @"";
-        self.custom_lists = @"";
+        _titleid = 0;
+        _title = @"";
+        _entryid = 0;
+        _chapters = 0;
+        _volumes = 0;
+        _image_url = @"";
+        _type = @"";
+        _status = @"";
+        _read_status = @"";
+        _chapters_read = 0;
+        _volumes_read = 0;
+        _score = 0;
+        _score_type = 0;
+        _reading_start = @"";
+        _reading_end = @"";
+        _rereading = false;
+        _reread_count = 0;
+        _personal_comments = @"";
+        _custom_lists = @"";
     }
     return self;
 }
@@ -230,11 +230,11 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.username = @"";
-        self.date = @"";
-        self.avatar_url = @"";
-        self.review = @"";
-        self.actual_username = @"";
+        _username = @"";
+        _date = @"";
+        _avatar_url = @"";
+        _review = @"";
+        _actual_username = @"";
     }
     return self;
 }
@@ -253,23 +253,23 @@
 - (id)init {
     self = [super init];
     if (self) {
-        self.avatar_url = @"";
-        self.last_online = @"";
-        self.gender = @"";
-        self.birthday = @"";
-        self.location = @"";
-        self.website = @"";
-        self.join_date = @"";
-        self.access_rank = @"";
-        self.anime_list_views = 0;
-        self.manga_list_views = 0;
-        self.forum_posts = 0;
-        self.reviews = 0;
-        self.recommendations = 0;
-        self.blog_posts = 0;
-        self.clubs = 0;
-        self.comments = 0;
-        self.extradict = @{};
+        _avatar_url = @"";
+        _last_online = @"";
+        _gender = @"";
+        _birthday = @"";
+        _location = @"";
+        _website = @"";
+        _join_date = @"";
+        _access_rank = @"";
+        _anime_list_views = 0;
+        _manga_list_views = 0;
+        _forum_posts = 0;
+        _reviews = 0;
+        _recommendations = 0;
+        _blog_posts = 0;
+        _clubs = 0;
+        _comments = 0;
+        _extradict = @{};
     }
     return self;
 }

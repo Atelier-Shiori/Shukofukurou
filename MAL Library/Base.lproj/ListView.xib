@@ -75,6 +75,11 @@
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
                                             </binding>
+                                            <binding destination="hZg-UC-ATg" name="fontBold" keyPath="arrangedObjects.status" id="xPz-zP-YI9">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">IsAiringValueTransformer</string>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="Episodes" editable="NO" width="60" minWidth="60" maxWidth="60" id="RuF-sM-oAM">
@@ -338,6 +343,11 @@
                                             <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.title" id="lhF-oB-Ehs">
                                                 <dictionary key="options">
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="Ckb-CV-hJI" name="fontBold" keyPath="arrangedObjects.status" id="OSp-vA-c1x">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">IsAiringValueTransformer</string>
                                                 </dictionary>
                                             </binding>
                                         </connections>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,7 +41,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="911" y="501" width="700" height="450"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <value key="minSize" type="size" width="700" height="450"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="450"/>
@@ -150,11 +150,11 @@
                                     </subviews>
                                     <nil key="backgroundColor"/>
                                 </clipView>
-                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="aWC-kE-Os8">
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="aWC-kE-Os8">
                                     <rect key="frame" x="-8" y="-15" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
-                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="QrW-EX-OOi">
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="QrW-EX-OOi">
                                     <rect key="frame" x="-15" y="-8" width="15" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
@@ -193,7 +193,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="oy7-1E-hIx">
-                            <rect key="frame" x="3" y="14" width="37" height="25"/>
+                            <rect key="frame" x="6" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MGU-x1-Vgp">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -208,7 +208,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="JFQ-Ed-xex">
-                            <rect key="frame" x="0.0" y="14" width="37" height="25"/>
+                            <rect key="frame" x="1" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Cjg-Sm-kaj">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -226,7 +226,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="5Kh-s4-JUv">
-                            <rect key="frame" x="7" y="14" width="37" height="25"/>
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nDf-tg-WuL">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -241,7 +241,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="qu3-vd-lac">
-                            <rect key="frame" x="7" y="14" width="37" height="25"/>
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iOh-ub-Yx5">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -256,7 +256,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="KBV-vc-2rK">
-                            <rect key="frame" x="7" y="14" width="37" height="25"/>
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="iTv-CB-3Xb">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -271,7 +271,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="lbL-Ll-Zly">
-                            <rect key="frame" x="13" y="14" width="37" height="25"/>
+                            <rect key="frame" x="16" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="delete" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dcf-Xg-Cx1">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -320,7 +320,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="MhQ-07-zJu">
-                            <rect key="frame" x="6" y="14" width="37" height="25"/>
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Edit" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Dx-bw-1r7">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -335,7 +335,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Ilq-I7-AtO">
-                            <rect key="frame" x="15" y="14" width="37" height="25"/>
+                            <rect key="frame" x="18" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Info" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="19N-6E-tNo">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -398,7 +398,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="q83-46-NSs">
-                            <rect key="frame" x="6" y="14" width="37" height="25"/>
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Edit" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1FY-3s-pVT">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -413,7 +413,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="UWC-UR-Whe">
-                            <rect key="frame" x="0.0" y="14" width="37" height="25"/>
+                            <rect key="frame" x="1" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mf8-Db-1HJ">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -428,7 +428,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Sun-KJ-zJg">
-                            <rect key="frame" x="0.0" y="14" width="37" height="25"/>
+                            <rect key="frame" x="1" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSShareTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Frs-yX-5H8">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -444,7 +444,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="zKh-eH-mHX">
-                            <rect key="frame" x="27" y="14" width="37" height="25"/>
+                            <rect key="frame" x="31" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="advsearch" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y0O-hv-e07">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -504,7 +504,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="7u9-GC-NUg">
-                            <rect key="frame" x="7" y="14" width="37" height="25"/>
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Fem-g0-HNl">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -519,7 +519,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="FwH-Do-1LO">
-                            <rect key="frame" x="18" y="14" width="37" height="25"/>
+                            <rect key="frame" x="21" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="reviews" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ATW-lp-8wC">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -534,7 +534,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Zpy-tB-eoy">
-                            <rect key="frame" x="15" y="14" width="37" height="25"/>
+                            <rect key="frame" x="18" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="cast" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kf1-sT-QLm">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -549,7 +549,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="wCj-68-RQc">
-                            <rect key="frame" x="38" y="14" width="37" height="25"/>
+                            <rect key="frame" x="43" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Info" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KBG-bq-W7W">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -630,7 +630,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="lX4-6f-ogp">
-                            <rect key="frame" x="10" y="14" width="37" height="25"/>
+                            <rect key="frame" x="12" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="increment" imagePosition="below" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qGB-ik-aab">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -645,7 +645,7 @@
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Bzk-kL-NTF">
-                            <rect key="frame" x="34" y="14" width="37" height="25"/>
+                            <rect key="frame" x="39" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="editcustomlists" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vdK-M0-G0X">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

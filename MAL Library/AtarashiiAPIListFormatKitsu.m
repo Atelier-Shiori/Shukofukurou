@@ -180,6 +180,17 @@
         mappings[d[@"attributes"][@"externalSite"]] = d[@"attributes"][@"externalId"];
     }
     aobject.mappings = mappings;
+    // Generate relationships
+    NSDictionary *mediaRelationships = [self generateRelatedArrays:data];
+    if (mediaRelationships) {
+        aobject.manga_adaptations = mediaRelationships[@"manga_adaptations"];
+        aobject.prequels = mediaRelationships[@"prequels"];
+        aobject.sequels = mediaRelationships[@"sequels"];
+        aobject.side_stories = mediaRelationships[@"side_stories"];
+        aobject.parent_story = mediaRelationships[@"parent_story"];
+        aobject.character_anime = mediaRelationships[@"character_anime"];
+        aobject.spin_offs = mediaRelationships[@"spin_offs"];
+    }
     return aobject.NSDictionaryRepresentation;
 }
 
@@ -224,6 +235,12 @@
         mappings[d[@"attributes"][@"externalSite"]] = d[@"attributes"][@"externalId"];
     }
     mobject.mappings = mappings;
+    // Generate relationships
+    NSDictionary *mediaRelationships = [self generateRelatedArrays:data];
+    if (mediaRelationships) {
+        mobject.anime_adaptations = mediaRelationships[@"anime_adaptations"];
+        mobject.alternative_versions = mediaRelationships[@"alternative_versions"];
+    }
     return mobject.NSDictionaryRepresentation;
 }
 
@@ -270,7 +287,7 @@
             mobject.volumes = d[@"attributes"][@"volumeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"volumeCount"]).intValue : 0;
             mobject.type = ((NSString *)d[@"attributes"][@"subtype"]).capitalizedString;
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
-                mobject.image_url = d[@"attributes"][@"medium"] && d[@"attributes"][@"posterimage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterimage"][@"medium"] : @"";
+                mobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
             }
             NSString *tmpstatus = d[@"attributes"][@"status"];
             if ([tmpstatus isEqualToString:@"finished"]) {
@@ -403,5 +420,59 @@
         [tmplist addObject:iddict.copy];
     }
     return tmplist.copy;
+}
++ (NSDictionary *)generateRelatedArrays:(NSDictionary *)data {
+    if (data[@"included"] && data[@"included"] != [NSNull null]) {
+        NSArray *relationshipsArray = [(NSArray *)data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type ==[c] %@", @"mediaRelationships"]];
+        NSArray *animeArray = [(NSArray *)data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type ==[c] %@", @"anime"]];
+        NSArray *mangaArray = [(NSArray *)data[@"included"] filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type ==[c] %@", @"manga"]];
+        NSMutableArray *manga_adaptations = [NSMutableArray new];
+        NSMutableArray *prequels = [NSMutableArray new];
+        NSMutableArray *sequels = [NSMutableArray new];
+        NSMutableArray *side_stories = [NSMutableArray new];
+        NSMutableArray *parent_story = [NSMutableArray new];
+        NSMutableArray *character_anime = [NSMutableArray new];
+        NSMutableArray *spin_offs = [NSMutableArray new];
+        NSMutableArray *anime_adaptations = [NSMutableArray new];
+        NSMutableArray *alternative_versions = [NSMutableArray new];
+        for (NSDictionary *relation in relationshipsArray) {
+            @autoreleasepool {
+                NSString *role = relation[@"attributes"][@"role"];
+                NSString *type = relation[@"relationships"][@"destination"][@"data"][@"type"];
+                NSNumber *destid = relation[@"relationships"][@"destination"][@"data"][@"id"];
+                NSArray *title = [[type isEqualToString:@"anime"] ? animeArray : mangaArray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"type ==[c] %@ AND id == %@", type, destid]];
+                if (title.count > 0) {
+                    NSDictionary *entry = title[0];
+                    NSDictionary *finalentry = @{ [type isEqualToString:@"anime"] ? @"anime_id" : @"manga_id" : destid, @"title" : entry[@"attributes"][@"canonicalTitle"] };
+                    if ([role isEqualToString:@"adaptation"]) {
+                        [[type isEqualToString:@"anime"] ? anime_adaptations : manga_adaptations addObject:finalentry.copy];
+                    }
+                    else if ([role isEqualToString:@"prequel"]) {
+                        [prequels addObject:finalentry.copy];
+                    }
+                    else if ([role isEqualToString:@"sequel"]) {
+                        [sequels addObject:finalentry.copy];
+                    }
+                    else if ([role isEqualToString:@"side_story"]) {
+                        [side_stories addObject:finalentry.copy];
+                    }
+                    else if ([role isEqualToString:@"parent_story"]) {
+                        [parent_story addObject:finalentry.copy];
+                    }
+                    else if ([role isEqualToString:@"character"] && [type isEqualToString:@"anime"]) {
+                        [character_anime addObject:finalentry.copy];
+                    }
+                    else if ([role isEqualToString:@"spinoff"]) {
+                        [spin_offs addObject:finalentry.copy];
+                    }
+                    else if ([role isEqualToString:@"alternate_version"]) {
+                        [alternative_versions addObject:finalentry.copy];
+                    }
+                }
+            }
+        }
+        return @{@"manga_adaptations" : manga_adaptations.copy, @"prequels" : prequels.copy, @"sequels" : sequels.copy, @"side_stories" : side_stories.copy, @"parent_story" : parent_story.copy, @"character_anime" : character_anime.copy, @"spin_offs" : spin_offs.copy, @"anime_adaptations" : anime_adaptations.copy, @"alternative_versions" : alternative_versions.copy};
+    }
+    return nil;
 }
 @end

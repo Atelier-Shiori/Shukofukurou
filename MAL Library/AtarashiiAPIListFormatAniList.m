@@ -392,7 +392,9 @@
             NSString *personname = staffmember[@"person"][@"name"][@"last"] != [NSNull null] && ((NSString *)staffmember[@"person"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",staffmember[@"person"][@"name"][@"last"],staffmember[@"person"][@"name"][@"first"]] : staffmember[@"person"][@"name"][@"first"];
             NSString *imageurl = staffmember[@"person"][@"image"] != [NSNull null] && staffmember[@"person"][@"image"][@"large"] ? staffmember[@"person"][@"image"][@"large"] : @"";
             NSString *role = @"";
-            [tmpstaffarray addObject:@{@"id" : personid.copy, @"name" : personname.copy, @"image" : imageurl.copy, @"role" : role.copy}];
+            if ([tmpstaffarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name ==[c] %@", personname]].count == 0) {
+                [tmpstaffarray addObject:@{@"id" : personid.copy, @"name" : personname.copy, @"image" : imageurl.copy, @"role" : role.copy}];
+            }
         }
     }
     NSDictionary *finaldict = @{@"Characters" : tmpcharacterarray.copy, @"Staff" : tmpstaffarray.copy};
@@ -412,7 +414,7 @@
         @autoreleasepool {
             AtarrashiiStaffObject *srole = [AtarrashiiStaffObject new];
             srole.position = staffrole[@"staffRole"];
-            srole.anime = @{@"id" : staffrole[@"id"], @"title" : staffrole[@"node"][@"title"][@"romaji"], @"image_url" : staffrole[@"node"][@"coverImage"] != [NSNull null] && staffrole[@"node"][@"coverImage"][@"large"] ? staffrole[@"node"][@"coverImage"][@"large"] : @""};
+            srole.anime = @{@"id" : staffrole[@"node"][@"id"], @"title" : staffrole[@"node"][@"title"][@"romaji"], @"image_url" : staffrole[@"node"][@"coverImage"] != [NSNull null] && staffrole[@"node"][@"coverImage"][@"large"] ? staffrole[@"node"][@"coverImage"][@"large"] : @""};
             [staffroles addObject:srole.NSDictionaryRepresentation];
         }
     }

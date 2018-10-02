@@ -189,7 +189,7 @@
         [_minipopoverstatus selectItemWithTitle:@"completed"];
         rewatching = false;
     }
-    if(!_selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)) {
+    if (!_selectedaired && (![_minipopoverstatus.title isEqual:@"plan to watch"] ||_minipopoverepfield.intValue > 0)) {
         // Invalid input, mark it as such
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;

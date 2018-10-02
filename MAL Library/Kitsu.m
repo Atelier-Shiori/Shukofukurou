@@ -129,7 +129,7 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
         }
     }
 #endif
-    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/%i?include=categories,mappings%@", type == KitsuAnime ? @"anime" : @"manga", titleid, type == KitsuAnime ? @",animeProductions,animeProductions.producer" : @""] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/%@/%i?include=categories,mappings%@", type == KitsuAnime ? @"anime" : @"manga", titleid, type == KitsuAnime ? @",animeProductions,animeProductions.producer,mediaRelationships,mediaRelationships.destination" : @",mediaRelationships,mediaRelationships.destination"] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (type == KitsuAnime) {
             completionHandler([AtarashiiAPIListFormatKitsu KitsuAnimeInfotoAtarashii:responseObject]);
         }

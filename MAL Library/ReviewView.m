@@ -7,7 +7,7 @@
 //
 
 #import "ReviewView.h"
-#import "NSString+HTMLtoNSAttributedString.h"
+#import "NSTextView+SetHTMLAttributedText.h"
 #import "Utility.h"
 #import "AppDelegate.h"
 #import "ProfileWindowController.h"
@@ -100,10 +100,11 @@
             }
         }
     }
-    [_reviewtext.textStorage setAttributedString: [(NSString *)review[@"review"] convertHTMLtoAttStr]];
-    [_reviewtext scrollToBeginningOfDocument:self];
-    [_reviewtext scrollToBeginningOfDocument:self];
-    _reviewtext.textColor = NSColor.controlTextColor;
+    [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading review..." completion:^(NSAttributedString * _Nonnull astr) {
+        [_reviewtext scrollToBeginningOfDocument:self];
+        [_reviewtext scrollToBeginningOfDocument:self];
+        _reviewtext.textColor = NSColor.controlTextColor;
+    }];
     if (((NSString *)review[@"avatar_url"]).length > 0) {
         _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@.jpg",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];
     }

@@ -216,7 +216,7 @@
     self = [super init];
     if (self) {
         _position = @"";
-        _manga = @[];
+        _manga = @{};
     }
     return self;
 }

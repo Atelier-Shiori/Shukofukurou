@@ -152,7 +152,7 @@
 
 @interface AtarashiiPublishedMangaObject : NSObject
 @property (strong) NSString *position;
-@property (strong) NSArray *manga;
+@property (strong) NSDictionary *manga;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

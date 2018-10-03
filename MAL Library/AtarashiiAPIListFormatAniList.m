@@ -410,15 +410,26 @@
     personobj.native_name = person[@"name"][@"native"] && person[@"name"][@"native"] != [NSNull null] ? person[@"name"][@"native"] : @"";
     personobj.more_details = person[@"description"] != [NSNull null] ? person[@"description"] : @"";
     NSMutableArray *staffroles = [NSMutableArray new];
+    NSMutableArray *mangaroles = [NSMutableArray new];
     for (NSDictionary *staffrole in person[@"staffMedia"][@"edges"]) {
         @autoreleasepool {
-            AtarrashiiStaffObject *srole = [AtarrashiiStaffObject new];
-            srole.position = staffrole[@"staffRole"];
-            srole.anime = @{@"id" : staffrole[@"node"][@"id"], @"title" : staffrole[@"node"][@"title"][@"romaji"], @"image_url" : staffrole[@"node"][@"coverImage"] != [NSNull null] && staffrole[@"node"][@"coverImage"][@"large"] ? staffrole[@"node"][@"coverImage"][@"large"] : @""};
-            [staffroles addObject:srole.NSDictionaryRepresentation];
+            NSString *type = staffrole[@"node"][@"type"];
+            if ([type isEqualToString:@"ANIME"]) {
+                AtarrashiiStaffObject *srole = [AtarrashiiStaffObject new];
+                srole.position = staffrole[@"staffRole"];
+                srole.anime = @{@"id" : staffrole[@"node"][@"id"], @"title" : staffrole[@"node"][@"title"][@"romaji"], @"image_url" : staffrole[@"node"][@"coverImage"] != [NSNull null] && staffrole[@"node"][@"coverImage"][@"large"] ? staffrole[@"node"][@"coverImage"][@"large"] : @""};
+                [staffroles addObject:srole.NSDictionaryRepresentation];
+            }
+            else {
+                AtarashiiPublishedMangaObject *pmrole = [AtarashiiPublishedMangaObject new];
+                pmrole.position = staffrole[@"staffRole"];
+                pmrole.manga = @{@"id" : staffrole[@"node"][@"id"], @"title" : staffrole[@"node"][@"title"][@"romaji"], @"image_url" : staffrole[@"node"][@"coverImage"] != [NSNull null] && staffrole[@"node"][@"coverImage"][@"large"] ? staffrole[@"node"][@"coverImage"][@"large"] : @""};
+                [mangaroles addObject:pmrole.NSDictionaryRepresentation];
+            }
         }
     }
     personobj.anime_staff_positions = staffroles;
+    personobj.published_manga = mangaroles;
     NSMutableArray *characterroles = [NSMutableArray new];
     for (NSDictionary *characterrole in person[@"characters"][@"edges"]) {
         @autoreleasepool {

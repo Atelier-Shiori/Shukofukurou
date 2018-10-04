@@ -11,7 +11,6 @@
 #import "MainWindow.h"
 #import "MSWeakTimer.h"
 #import "MainWindow.h"
-#import "messageswindow.h"
 #import "ListStatistics.h"
 
 #ifdef defined(AppStore)
@@ -27,7 +26,6 @@
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 @property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
 @property (strong) NSWindowController *_preferencesWindowController;
-@property (strong) messageswindow *messageswindow;
 @property (strong) ListStatistics *liststatswindow;
 @property (strong) ProfileWindowController *pwc;
 
@@ -60,7 +58,6 @@
 - (void)showloginnotice;
 - (void)showloginpref;
 - (void)clearMessages;
-- (messageswindow *)getMessagesWindow;
 - (ProfileWindowController *)getProfileWindow;
 - (IBAction)unlockprofeatures:(id)sender;
 @end

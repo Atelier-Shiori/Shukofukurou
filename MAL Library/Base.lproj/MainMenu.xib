@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -20,7 +20,6 @@
                 <outlet property="importanilist" destination="LhM-Wm-9AK" id="pdr-7y-cxx"/>
                 <outlet property="importkitsumenu" destination="Yfh-DT-TKI" id="YoT-kG-iZP"/>
                 <outlet property="malexportmenu" destination="6yC-xo-9wk" id="hcS-EX-hyk"/>
-                <outlet property="messagesmenuitem" destination="PzU-Ui-J4l" id="6kL-cJ-B1O"/>
                 <outlet property="servicemenucontrol" destination="Soe-9M-Amc" id="6H8-R2-elv"/>
             </connections>
         </customObject>
@@ -420,12 +419,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Tools" id="8oo-dc-4uA">
                         <items>
-                            <menuItem title="View Messages" id="PzU-Ui-J4l">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="showmessagewindow:" target="Voe-Tx-rLC" id="IJy-8e-aIf"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Profile Browser" id="cFN-IX-zoM">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>

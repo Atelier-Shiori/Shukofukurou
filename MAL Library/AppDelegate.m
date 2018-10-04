@@ -82,7 +82,7 @@
     defaultValues[@"malapiurl"] = @"https://malapi.malupdaterosx.moe";
 #endif
     defaultValues[@"stream_region"] = @(0);
-    defaultValues[@"currentservice"] = @(1);
+    defaultValues[@"currentservice"] = @(3);
     defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
     defaultValues[@"showadult"] = @NO;
     // Export
@@ -166,18 +166,6 @@
     alert.alertStyle = NSAlertStyleInformational;
     [alert runModal];
 #endif
-    if ([listservice getCurrentServiceID] == 1) {
-        // First time prompt
-        NSAlert *alert = [[NSAlert alloc] init] ;
-        [alert addButtonWithTitle:NSLocalizedString(@"Got it",nil)];
-        [alert setMessageText:NSLocalizedString(@"MyAnimeList No Longer Supported, For Now",nil)];
-        alert.informativeText = NSLocalizedString(@"Due to DeNA's disablement of the MyAnimeList APIs, we can no longer support MyAnimeList in Shukofukurou.\r\rWhen the API is enabled, Shukofukurou may need to be changed to support the new API.\r\rWe applogize for the inconvience. We highly suggest you to change to a different list service (e.g. AniList or Kitsu) that Shukofukurou supports. You can import MyAnimeList Anime XML Lists once you log in to the desired service.",nil);
-        // Set Message type to Warning
-        alert.alertStyle = NSAlertStyleInformational;
-        [alert runModal];
-        [NSUserDefaults.standardUserDefaults setInteger:3 forKey:@"currentservice"];
-    }
-    [self refreshUIServiceChange:3];
     // Load main window
     _mainwindowcontroller = [MainWindow new];
     [_mainwindowcontroller setDelegate:self];
@@ -351,21 +339,6 @@
     }
 }
 
-- (IBAction)showmessagewindow:(id)sender {
-    if ([listservice getCurrentServiceID] == 1) {
-        if ([Keychain checkaccount]) {
-            if (!_messageswindow){
-                _messageswindow = [messageswindow new];
-            }
-            [_messageswindow.window makeKeyAndOrderFront:self];
-            [_messageswindow loadmessagelist:1 refresh:false inital:true];
-        }
-        else {
-            [self showloginnotice];
-        }
-    }
-}
-
 - (IBAction)viewListStats:(id)sender {
     switch ([listservice getCurrentServiceID]) {
         case 1: {
@@ -417,10 +390,6 @@
     if ([Utility checkifFileExists:@"messages.json" appendPath:@""]) {
         [Utility deleteFile:@"messages.json" appendpath:@""];
     }
-    if (_messageswindow){
-        [_messageswindow.window close];
-        [_messageswindow cleartableview];
-    }
     if (_liststatswindow){
         [_liststatswindow.window close];
     }
@@ -439,21 +408,12 @@
     }
     return pwc;
 }
-- (messageswindow *)getMessagesWindow {
-    if (!_messageswindow){
-        _messageswindow = [messageswindow new];
-    }
-    return _messageswindow;
-}
 - (IBAction)reportbugs:(id)sender {
     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/shukofukurou/issues"]];
 }
 
 - (void)refreshUIServiceChange:(int)selected {
     if (selected != 1) {
-        if (_messageswindow) {
-            [_messageswindow cleartableview];
-        }
         _messagesmenuitem.hidden = true;
         _malexportmenu.hidden = true;
         _convertexportmenu.hidden = false;

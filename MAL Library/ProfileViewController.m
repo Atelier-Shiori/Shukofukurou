@@ -9,8 +9,6 @@
 #import "ProfileViewController.h"
 #import "listservice.h"
 #import "AppDelegate.h"
-#import "messageswindow.h"
-#import "messagecomposer.h"
 #import "Keychain.h"
 #import "Utility.h"
 
@@ -109,13 +107,6 @@
     }
     _profiledetails.string = details;
     _profiledetails.textColor = NSColor.controlTextColor;
-}
-- (IBAction)sendprivatemessage:(id)sender {
-    if ([Keychain checkaccount]){
-        messagecomposer *mc = [[(AppDelegate *)NSApplication.sharedApplication.delegate getMessagesWindow] getMessageComposerWindow];
-        [mc.window makeKeyAndOrderFront:self];
-        [mc setToUsername:_usernamelabel.stringValue];
-    }
 }
 - (IBAction)viewuserhomepage:(id)sender {
     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:_homepageurl]];

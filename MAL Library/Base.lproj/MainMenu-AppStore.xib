@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -20,7 +20,6 @@
                 <outlet property="importanilist" destination="6SO-xG-9tj" id="cjm-vW-Xfc"/>
                 <outlet property="importkitsumenu" destination="DZO-y4-ZC1" id="tYc-Io-ccR"/>
                 <outlet property="malexportmenu" destination="Qx7-os-8ZY" id="Bxk-7K-42V"/>
-                <outlet property="messagesmenuitem" destination="60c-At-yy4" id="icl-wA-8qr"/>
                 <outlet property="servicemenucontrol" destination="NCk-PM-EVr" id="J8r-TZ-Al1"/>
             </connections>
         </customObject>
@@ -356,12 +355,6 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Tools" autoenablesItems="NO" id="pvD-sQ-h6q">
                         <items>
-                            <menuItem title="View Messages" id="60c-At-yy4">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="showmessagewindow:" target="Voe-Tx-rLC" id="OAp-c5-Sqc"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Profile Browser" id="YJf-L3-vAI">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>

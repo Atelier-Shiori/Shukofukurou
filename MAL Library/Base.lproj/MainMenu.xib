@@ -393,10 +393,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Service" autoenablesItems="NO" id="aod-zG-HhS">
                         <items>
-                            <menuItem title="MyAnimeList" tag="1" hidden="YES" id="DDy-su-2bd">
+                            <menuItem title="AniList" tag="3" id="EDO-26-kV2">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="setService:" target="Soe-9M-Amc" id="Boz-mS-MyY"/>
+                                    <action selector="setService:" target="Soe-9M-Amc" id="OO2-HG-Rdm"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Kitsu" tag="2" id="Xpj-88-rLY">
@@ -405,10 +405,10 @@
                                     <action selector="setService:" target="Soe-9M-Amc" id="DaX-0J-jFG"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="AniList" tag="3" id="EDO-26-kV2">
+                            <menuItem title="MyAnimeList" tag="1" hidden="YES" id="DDy-su-2bd">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="setService:" target="Soe-9M-Amc" id="OO2-HG-Rdm"/>
+                                    <action selector="setService:" target="Soe-9M-Amc" id="Boz-mS-MyY"/>
                                 </connections>
                             </menuItem>
                         </items>

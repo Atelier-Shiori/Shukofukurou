@@ -329,10 +329,10 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Service" autoenablesItems="NO" id="CWk-2N-5Ar">
                         <items>
-                            <menuItem title="MyAnimeList" tag="1" hidden="YES" id="frr-T0-hoW">
+                            <menuItem title="AniList" tag="3" id="ZDE-SI-S69">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="setService:" target="NCk-PM-EVr" id="5fi-oT-QAw"/>
+                                    <action selector="setService:" target="NCk-PM-EVr" id="UBz-K3-QFY"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Kitsu" tag="2" id="sCe-nQ-b6W">
@@ -341,10 +341,10 @@
                                     <action selector="setService:" target="NCk-PM-EVr" id="zhV-5q-vKY"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="AniList" tag="3" id="ZDE-SI-S69">
+                            <menuItem title="MyAnimeList" tag="1" hidden="YES" id="frr-T0-hoW">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="setService:" target="NCk-PM-EVr" id="UBz-K3-QFY"/>
+                                    <action selector="setService:" target="NCk-PM-EVr" id="5fi-oT-QAw"/>
                                 </connections>
                             </menuItem>
                         </items>

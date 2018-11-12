@@ -155,6 +155,7 @@
         }
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
+    [self refreshUIServiceChange:[listservice getCurrentServiceID]];
     [self checkaccountinformation];
 #if defined(BETA)
     // Show Beta Notice

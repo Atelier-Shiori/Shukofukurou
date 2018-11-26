@@ -17,6 +17,7 @@ typedef NS_ENUM(unsigned int, InfoType) {
     MangaType = 1
 };
 @property (strong) IBOutlet MainWindow *mw;
+@property bool forcerefresh;
 @property (getter=getSelectedId, setter=setSelectedId:) int selectedid;
 @property (getter=getSelectedInfo) NSDictionary *selectedinfo;
 @property (getter=getType, setter=setType:) int type;

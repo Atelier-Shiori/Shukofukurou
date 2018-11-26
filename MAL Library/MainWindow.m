@@ -25,6 +25,7 @@
 #import "NSTableViewAction.h"
 #import "servicemenucontroller.h"
 #import "AtarashiiListCoreData.h"
+#import "TitleInfoCache.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -41,6 +42,11 @@
         return nil;
     return self;
 }
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)awakeFromNib
 {
     // Register queue
@@ -107,7 +113,13 @@
     if (autorefreshlist.boolValue){
         [self startTimer];
     }
-    
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"TitleCacheToggled" object:nil];
+}
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"TitleCacheToggled"]) {
+        [self createToolbar];
+    }
 }
 
 - (void)generateSourceList {
@@ -483,10 +495,10 @@
             }
         }
         else if ([identifier isEqualToString:@"titleinfo"]){
-            if (_infoview.selectedid > 0){
+            if (_infoview.selectedid > 0 && !_infoview.forcerefresh){
                 [self replaceMainViewWithView:_infoview.view];
             }
-            else{
+            else {
                 [self replaceMainViewWithView:_progressview];
             }
         }
@@ -620,16 +632,23 @@
             else{
                 indexoffset = -1;
             }
+            bool showrefresh = [NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"];
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
             if (_infoview.type == MALAnime && [[NSUserDefaults standardUserDefaults] boolForKey:@"donated"]) {
                 [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"web" atIndex:5+indexoffset];
+                if (showrefresh) {
+                    [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:6+indexoffset];
+                }
             }
             else {
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:3+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"web" atIndex:4+indexoffset];
+                if (showrefresh) {
+                    [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:5+indexoffset];
+                }
             }
         }
     }
@@ -758,6 +777,11 @@
     else if ([identifier isEqualToString:@"airing"]){
         [_airingview loadAiring:@(true)];
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
+        [_listview setUpdatingState:false];
+    }
+    else if ([identifier isEqualToString:@"titleinfo"]) {
+        [self loadinfo:@(_infoview.selectedid) type:_infoview.type changeView:NO forcerefresh:YES];
+        [self loadmainview];
         [_listview setUpdatingState:false];
     }
 }
@@ -980,7 +1004,7 @@
                     case 2: {
                         // MAL > Kitsu Title ID
                         [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int kitsuid) {
-                            [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO];
+                            [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO forcerefresh:NO];
                         } error:^(NSError *error) {
                             [self resetTitleInfoView];
                         }];
@@ -988,7 +1012,7 @@
                     }
                     case 3: {
                         [TitleIdConverter getAniIDFromMALListID:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int anilistid) {
-                            [self loadinfo:@(anilistid) type:_infoview.type changeView:NO];
+                            [self loadinfo:@(anilistid) type:_infoview.type changeView:NO forcerefresh:NO];
                         } error:^(NSError *error) {
                             [self resetTitleInfoView];
                         }];
@@ -1003,7 +1027,7 @@
             case 2: {
                 if (currentservice == 3 ) {
                     [TitleIdConverter getAniIDFromKitsuID:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int anilistid) {
-                        [self loadinfo:@(anilistid) type:_infoview.type changeView:NO];
+                        [self loadinfo:@(anilistid) type:_infoview.type changeView:NO forcerefresh:NO];
                     } error:^(NSError *error) {
                         [self resetTitleInfoView];
                     }];
@@ -1013,10 +1037,10 @@
                     switch (currentservice) {
                         case 1: { // MyAnimeList > "myanimelist/anime" for anime or "myanimelist/manga" for manga
                             if (_infoview.type == 0 && mappings[@"myanimelist/anime"]) {
-                                 [self loadinfo:mappings[@"myanimelist/anime"] type:_infoview.type  changeView:NO];
+                                 [self loadinfo:mappings[@"myanimelist/anime"] type:_infoview.type  changeView:NO forcerefresh:NO];
                             }
                             else if (_infoview.type == 1 && mappings[@"myanimelist/manga"]) {
-                                [self loadinfo:mappings[@"myanimelist/manga"] type:_infoview.type  changeView:NO];
+                                [self loadinfo:mappings[@"myanimelist/manga"] type:_infoview.type  changeView:NO forcerefresh:NO];
                             }
                             else {
                                 [self resetTitleInfoView];
@@ -1036,7 +1060,7 @@
                 switch (currentservice) {
                     case 1: {
                         [TitleIdConverter getMALIDFromAniListID:tmpselectedid withTitle:_selecteditem[@"title"] titletype:_selecteditem[@"type"] withType:_infoview.type completionHandler:^(int malid) {
-                            [self loadinfo:@(malid) type:_infoview.type changeView:NO];
+                            [self loadinfo:@(malid) type:_infoview.type changeView:NO forcerefresh:NO];
                         } error:^(NSError *error) {
                             [self resetTitleInfoView];
                         }];
@@ -1044,7 +1068,7 @@
                     }
                     case 2: {
                         [TitleIdConverter getKitsuIdFromAniID:tmpselectedid withTitle:_selecteditem[@"title"] titletype:_selecteditem[@"type"] withType:_infoview.type completionHandler:^(int kitsuid) {
-                            [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO];
+                            [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO forcerefresh:NO];
                         } error:^(NSError *error) {
                             [self resetTitleInfoView];
                         }];
@@ -1172,19 +1196,24 @@
 }
 
 #pragma mark Title Information View
-- (void)loadinfo:(NSNumber *) idnum type:(int)type changeView:(bool)changeview {
+- (void)loadinfo:(NSNumber *)idnum type:(int)type changeView:(bool)changeview forcerefresh:(bool)forcerefresh {
     int previd;
     int prevtype;
-    if (idnum.intValue == _infoview.selectedid && type == _infoview.type) {
+    if (idnum.intValue == _infoview.selectedid && type == _infoview.type && !forcerefresh) {
         if (changeview) {
             [self changetoinfoview];
         }
         return;
     }
     else {
-        previd = _infoview.selectedid;
-        prevtype = _infoview.type;
-        _infoview.selectedid = 0;
+        if (!forcerefresh) {
+            previd = _infoview.selectedid;
+            prevtype = _infoview.type;
+            _infoview.selectedid = 0;
+        }
+        else {
+            _infoview.forcerefresh = forcerefresh;
+        }
         if (changeview) {
             [self changetoinfoview];
         }
@@ -1192,9 +1221,19 @@
     _noinfoview.hidden = YES;
     _progressindicator.hidden = NO;
     [_progressindicator startAnimation:nil];
+    if ([self loadfromcache:idnum.intValue withType:type forcerefresh:forcerefresh]) {
+        [_appdel.servicemenucontrol enableservicemenuitems:YES];
+        return;
+    }
     [listservice retrieveTitleInfo:idnum.intValue withType:type useAccount:NO completion:^(id responseObject){
-        _infoview.selectedid = idnum.intValue;
-        _infoview.type = type;
+        if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
+            [TitleInfoCache saveTitleInfoWithTitleID:idnum.intValue  withServiceID:[listservice getCurrentServiceID] withType:type withResponseObject:responseObject];
+        }
+        if (!_infoview.forcerefresh) {
+            _infoview.selectedid = idnum.intValue;
+            _infoview.type = type;
+        }
+        _infoview.forcerefresh = false;
         [_progressindicator stopAnimation:nil];
         if (type == MALAnime) {
             [_infoview populateAnimeInfoView:responseObject];
@@ -1202,8 +1241,10 @@
         else {
             [_infoview populateMangaInfoView:responseObject];
         }
+        [_appdel.servicemenucontrol enableservicemenuitems:YES];
     }error:^(NSError *error){
         NSLog(@"Error: %@", error);
+        _infoview.forcerefresh = false;
         [_progressindicator stopAnimation:nil];
         _infoview.selectedid = previd;
         _infoview.type = prevtype;
@@ -1212,7 +1253,27 @@
             _progressindicator.hidden = YES;
         }
         [self loadmainview];
+        [_appdel.servicemenucontrol enableservicemenuitems:YES];
     }];
+}
+
+- (bool)loadfromcache:(int)titleid withType:(int)type forcerefresh:(bool)forcerefresh{
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !forcerefresh) {
+        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type ignoreLastUpdated:NO];
+        if (titleinfo) {
+            _infoview.selectedid = titleid;
+            _infoview.type = type;
+            [_progressindicator stopAnimation:nil];
+            if (type == MALAnime) {
+                [_infoview populateAnimeInfoView:titleinfo];
+            }
+            else {
+                [_infoview populateMangaInfoView:titleinfo];
+            }
+            return true;
+        }
+    }
+    return false;
 }
 
 - (void)changetoinfoview {

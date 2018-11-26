@@ -109,6 +109,7 @@
 		598B454C21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454D21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
+		598B454F21AC5C3400F28180 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
@@ -1226,6 +1227,13 @@
 			name = AtarashiiDataFormatters;
 			sourceTree = "<group>";
 		};
+		598B455021AC5D0D00F28180 /* Collection View Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Collection View Cell";
+			sourceTree = "<group>";
+		};
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,6 +1291,7 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				598B455021AC5D0D00F28180 /* Collection View Cell */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -2291,6 +2300,7 @@
 				91F8E3D7210A46CA007137A7 /* AiringView.m in Sources */,
 				91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */,
 				91F8E3D9210A46CA007137A7 /* ProfileViewController.m in Sources */,
+				598B454F21AC5C3400F28180 /* IsAiringValueTransformer.m in Sources */,
 				91F8E3DA210A46CA007137A7 /* CustomListShouldShowValueTransformer.m in Sources */,
 				91F8E3DB210A46CA007137A7 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				91F8E3DC210A46CA007137A7 /* ReviewView.m in Sources */,

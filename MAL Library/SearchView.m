@@ -75,7 +75,7 @@
                 NSDictionary *d = _searcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
                 [self savesearch];
-                [_mw loadinfo:idnum type:AnimeSearch changeView:YES];
+                [_mw loadinfo:idnum type:AnimeSearch changeView:YES forcerefresh:NO];
             }
         }
     }
@@ -85,7 +85,7 @@
                 NSDictionary *d = _mangasearcharraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
                 [self savesearch];
-                [_mw loadinfo:idnum type:MangaSearch changeView:YES];
+                [_mw loadinfo:idnum type:MangaSearch changeView:YES forcerefresh:NO];
             }
         }
     }

@@ -86,7 +86,7 @@
             else {
                 typenum = 1;
             }
-            [_mw loadinfo:idnum type:typenum changeView:YES];
+            [_mw loadinfo:idnum type:typenum changeView:YES forcerefresh:NO];
         }
     }
 }

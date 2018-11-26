@@ -13,6 +13,7 @@
 #import "Utility.h"
 #import "StreamDataRetriever.h"
 #import "TitleIdConverter.h"
+#import "TitleInfoCache.h"
 
 @interface GeneralPref ()
 @property (strong) IBOutlet NSButton *showadultoption;
@@ -121,5 +122,11 @@
     }
     [moc reset];
     [TitleIdConverter resetshouldimportmappings];
+}
+- (IBAction)cachetitletoggle:(id)sender {
+    NSButton *btn = (NSButton *)sender;
+    if (btn.state == 0) {
+        [TitleInfoCache cleanupcacheShouldRemoveAll:YES];
+    }
 }
 @end

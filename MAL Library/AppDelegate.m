@@ -307,7 +307,7 @@
         [self clearInfoView:surpressidconversion];
         url = [url stringByReplacingOccurrencesOfString:@"anime/" withString:@""];
         [_servicemenucontrol setServiceWithServiceId:service];
-        [_mainwindowcontroller loadinfo:@(url.intValue) type:0 changeView:YES];
+        [_mainwindowcontroller loadinfo:@(url.intValue) type:0 changeView:YES forcerefresh:NO];
     }
     else if ([url containsString:@"manga/"]) {
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] objectForKey:@"donated"]).boolValue) {
@@ -315,7 +315,7 @@
             [self clearInfoView:surpressidconversion];
             [_servicemenucontrol setServiceWithServiceId:service];
             url = [url stringByReplacingOccurrencesOfString:@"manga/" withString:@""];
-            [_mainwindowcontroller loadinfo:@(url.intValue) type:1 changeView:YES];
+            [_mainwindowcontroller loadinfo:@(url.intValue) type:1 changeView:YES forcerefresh:NO];
         }
     }
     else if ([url containsString:@"profile/"]||[url containsString:@"user/"]||[url containsString:@"users/"]) {

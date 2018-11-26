@@ -230,13 +230,13 @@
                 switch ([listservice getCurrentServiceID]) {
                     case 1:
                     case 3:
-                        [_mw loadinfo:d[@"id"] type:loadtype changeView:YES];
+                        [_mw loadinfo:d[@"id"] type:loadtype changeView:YES forcerefresh:NO];
                         [_mw.window makeKeyAndOrderFront:self];
                         break;
                     case 2: {
                         [MyAnimeList retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:loadtype useAccount:NO completion:^(id responseObject) {
                             [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"id"]).intValue withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:loadtype completionHandler:^(int kitsuid) {
-                                [_mw loadinfo:@(kitsuid) type:loadtype changeView:YES];
+                                [_mw loadinfo:@(kitsuid) type:loadtype changeView:YES forcerefresh:NO];
                                 [_mw.window makeKeyAndOrderFront:self];
                             } error:^(NSError *error) {}];
                         } error:^(NSError *error) {

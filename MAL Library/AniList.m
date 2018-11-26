@@ -16,9 +16,9 @@
 
 @implementation AniList
 #ifdef DEBUG
-NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList DEBUG";
+NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList DEBUG";
 #else
-NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
+NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
 #endif
 
 #pragma mark List

@@ -464,7 +464,7 @@
             if (_animelisttb.selectedRow >-1) {
                 NSDictionary *d = _animelistarraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
-                [[self _mw] loadinfo:idnum type:0 changeView:YES];
+                [[self _mw] loadinfo:idnum type:0 changeView:YES forcerefresh:NO];
                 [[self _mw].window makeKeyAndOrderFront:self];
             }
         }
@@ -474,7 +474,7 @@
             if (_mangalisttb.selectedRow >-1) {
                 NSDictionary *d = _mangalistarraycontroller.selectedObjects[0];
                 NSNumber *idnum = d[@"id"];
-                [[self _mw] loadinfo:idnum type:_currentlist changeView:YES];
+                [[self _mw] loadinfo:idnum type:_currentlist changeView:YES forcerefresh:NO];
                 [[self _mw].window makeKeyAndOrderFront:self];
             }
         }
@@ -535,7 +535,7 @@
                 idnum = d[@"id"];
         }
     }
-    [[self _mw] loadinfo:idnum type:_currentlist changeView:YES];
+    [[self _mw] loadinfo:idnum type:_currentlist changeView:YES forcerefresh:NO];
 }
 
 - (void)removeAllFilterBindings {

@@ -53,7 +53,7 @@
                 typenum = 1;
             }
             MainWindow *mwc = ((AppDelegate *)NSApplication.sharedApplication.delegate).mainwindowcontroller;
-            [mwc loadinfo:idnum type:typenum changeView:YES];
+            [mwc loadinfo:idnum type:typenum changeView:YES forcerefresh:NO];
             [mwc.window makeKeyAndOrderFront:self];
         }
     }

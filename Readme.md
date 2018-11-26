@@ -5,11 +5,11 @@ Formerly known as MAL Library
 
 Shukofukurou an open sourced and native [Kitsu](https://kitsu.io/), and [AniList](https://anilist.co) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
 
-**Support for [MyAnimeList](https://myanimelist.net) temporarily removed due to the API being disabled indefinately. No ETA stated. An update to reenable MyAnimeList support will be made when the API returns.**
-
 This app is named after the owl, Shuko from Sora no Woto.
 
-Requires latest SDK (10.13), XCode 9 or later. The C#/Xamarin version is deprecated, but still aviliable in the c-sharp-old branch.
+Requires latest SDK (10.14), XCode 10 or later with a 10.11 macOS Deployment Target. The C#/Xamarin version is deprecated, but still aviliable in the c-sharp-old branch.
+
+iOS version of Shukofukurou is available [here](https://github.com/Atelier-Shiori/Shukofukurou-iOS), which uses mostly the same backend code.
 
 ## Supporting this Project
 
@@ -28,7 +28,7 @@ Warning: This won't work if you don't have a Developer ID installed. If you don'
 2. Type 'xcodebuild' to build
 
 # About Self-Built Copies
-These restrictions only apply on officially distributed versions of MAL Library. To create an unofficial version without restrictions, build the App Store scheme. There is no software updates if you build your own as this is an unofficial copy. Do not create issues for self-built copies as they won't be supported. Also, you must use a different Atarashii-API server as the one specified in the application is only for official copies.
+These restrictions only apply on officially distributed versions of Shukofukurou. To create an unofficial version without restrictions, build the App Store scheme. There is no software updates if you build your own as this is an unofficial copy. Do not create issues for self-built copies as they won't be supported. 
 
 There will be a community scheme to allow users to build unofficial copies. However, you must enter your own client keys.
 

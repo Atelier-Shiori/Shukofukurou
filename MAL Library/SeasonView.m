@@ -34,7 +34,7 @@
     if (_seasontableview.selectedRow >= 0) {
         if (_seasontableview.selectedRow > -1) {
             NSDictionary *d = _seasonarraycontroller.selectedObjects[0];
-            [_mw loadinfo:d[@"id"] type:0 changeView:YES];
+            [_mw loadinfo:d[@"id"] type:0 changeView:YES forcerefresh:NO];
         }
     }
 }

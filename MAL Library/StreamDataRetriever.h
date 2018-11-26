@@ -6,7 +6,7 @@
 //  Copyright © 2017-2018 MAL Updater OS X Group and Moy IT Solutions. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <AppKit/AppKit.h>
 
 @interface StreamDataRetriever : NSObject
 typedef NS_ENUM(unsigned int, StreamLocality) {
@@ -17,4 +17,6 @@ typedef NS_ENUM(unsigned int, StreamLocality) {
 };
 + (void)retrieveStreamData;
 + (void)performrestrieveStreamData;
++ (NSDictionary *)retrieveSitesForTitle:(NSString *)title;
++ (void)removeAllStreamEntries;
 @end

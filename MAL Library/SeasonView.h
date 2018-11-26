@@ -16,6 +16,7 @@
 @property (strong) IBOutlet NSArrayController *seasonarraycontroller;
 @property (strong) IBOutlet NSToolbarItem *addtitleitem;
 
+- (void)performreload:(bool)refresh completion:(void (^)(bool success)) completionHandler;
 - (IBAction)seasondoubleclick:(id)sender;
 - (IBAction)yearchange:(id)sender;
 - (IBAction)seasonchange:(id)sender;

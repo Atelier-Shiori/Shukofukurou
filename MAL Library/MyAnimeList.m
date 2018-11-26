@@ -12,7 +12,6 @@
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
 #import "Base64Category.h"
-#import "AFHTTPSessionManager+Synchronous.h"
 
 @implementation MyAnimeList
 #pragma mark MyAnimeList Functions

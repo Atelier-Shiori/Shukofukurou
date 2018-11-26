@@ -53,7 +53,7 @@
                     NSDictionary *voiceactor = [self findPerson:casting[@"relationships"][@"person"][@"data"][@"id"]];
                     if (voiceactor) {
                         if ([castingsarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", voiceactor[@"id"]]].count == 0) {
-                            [castingsarray addObject:@{@"id" : voiceactor[@"id"], @"name" : voiceactor[@"attributes"][@"name"], @"image" : voiceactor[@"attributes"][@"image"] , @"language" : casting[@"attributes"][@"language"]}];
+                            [castingsarray addObject:@{@"id" : voiceactor[@"id"], @"name" : voiceactor[@"attributes"][@"name"], @"image" : voiceactor[@"attributes"][@"image"] , @"language" : casting[@"attributes"][@"language"] && casting[@"attributes"][@"language"] != [NSNull null] ? casting[@"attributes"][@"language"] : @""}];
                         }
                        
                     }

@@ -272,6 +272,7 @@
             }
         }
     }
+    [_airingview fetchnewAiringData];
 }
 - (void)performtimerlistrefresh {
     [_appdel.servicemenucontrol enableservicemenuitems:NO];
@@ -749,8 +750,10 @@
         [_listview setUpdatingState:false];
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        [_appdel.servicemenucontrol enableservicemenuitems:YES];
-        [_listview setUpdatingState:false];
+        [_appdel.servicemenucontrol enableservicemenuitems:NO];
+        [_seasonview performreload:YES completion:^(bool success) {
+            [_appdel.servicemenucontrol enableservicemenuitems:YES];
+        }];
     }
     else if ([identifier isEqualToString:@"airing"]){
         [_airingview loadAiring:@(true)];
@@ -920,6 +923,8 @@
     [self loadmainview];
     [self refreshloginlabel];
     [self initallistload];
+    [_seasonview performreload:NO completion:^(bool success) {
+    }];
     NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
         [self stopTimer];

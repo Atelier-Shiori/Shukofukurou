@@ -13,6 +13,9 @@
 + (bool)hasListEntriesWithUserName:(NSString *)username withService:(int)service withType:(int)type;
 + (NSDictionary *)retrieveEntriesForUserId:(int)userid withService:(int)service withType:(int)type;
 + (NSDictionary *)retrieveEntriesForUserName:(NSString *)username withService:(int)service withType:(int)type;
++ (NSDictionary *)retrieveSingleEntryForTitleID:(int)titleid withService:(int)service withType:(int)type;
++ (NSArray *)retrieveEntriesForUserId:(int)userid withService:(int)service withType:(int)type withPredicate:(NSPredicate *)filterpredicate;
++ (NSArray *)retrieveEntriesForUserName:(NSString *)username withService:(int)service withType:(int)type withPredicate:(NSPredicate *)filterpredicate;
 + (void)insertorupdateentriesWithDictionary:(NSDictionary *)data withUserId:(int)userid withService:(int)service withType:(int)type;
 + (void)insertorupdateentriesWithDictionary:(NSDictionary *)data withUserName:(NSString *)username withService:(int)service withType:(int)type;
 + (void)updateSingleEntry:(NSDictionary *)parameters withUserId:(int)userid withService:(int)service withType:(int)type withId:(int)Id withIdType:(int)idtype;

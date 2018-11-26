@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface AniListSeasonListGenerator : NSObject
-+ (void)retrieveSeasonDataWithSeason:(NSString *)season withYear:(int)year completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
++ (void)retrieveSeasonDataWithSeason:(NSString *)season withYear:(int)year refresh:(bool)refresh completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 @end

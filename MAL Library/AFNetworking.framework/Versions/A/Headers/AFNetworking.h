@@ -40,6 +40,7 @@ FOUNDATION_EXPORT const unsigned char AFNetworkingVersionString[];
 #import <AFNetworking/AFSecurityPolicy.h>
 #import <AFNetworking/AFOAuth2Manager.h>
 #import <AFNetworking/AFOAuthCredential.h>
+#import <AFNetworking/AFHTTPSessionManager+Synchronous.h>
 
 #if !TARGET_OS_WATCH
 #import <AFNetworking/AFNetworkReachabilityManager.h>

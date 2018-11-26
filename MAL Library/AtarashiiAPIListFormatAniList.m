@@ -27,7 +27,8 @@
             aentry.episodes = entry[@"episodes"][@"episodes"] && entry[@"episodes"][@"episodes"] != [NSNull null] ? ((NSNumber *)entry[@"episodes"][@"episodes"]).intValue : 0;
             aentry.episode_length = (entry[@"duration"][@"duration"] && entry[@"duration"][@"duration"] != [NSNull null]) ? ((NSNumber *)entry[@"duration"][@"duration"]).intValue : 0;
             if (entry[@"image_url"][@"coverImage"] != [NSNull null]) {
-                aentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
+                aentry.image_url = (entry[@"image_url"][@"coverImage"][@"medium"] && entry[@"image_url"][@"coverImage"][@"medium"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"medium"] : @"";
+                
             }
             aentry.type = entry[@"type"][@"format"] != [NSNull null] ? [Utility convertAnimeType:entry[@"type"][@"format"]] : @"";
             aentry.status =  entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
@@ -86,7 +87,7 @@
             mentry.chapters = entry[@"chapters"][@"chapters"] && entry[@"chapters"][@"chapters"] != [NSNull null] ? ((NSNumber *)entry[@"chapters"][@"chapters"]).intValue : 0;
             mentry.volumes = entry[@"volumes"][@"volumes"] && entry[@"volumes"][@"volumes"] != [NSNull null] ? ((NSNumber *)entry[@"volumes"][@"volumes"]).intValue : 0;
             if (entry[@"image_url"][@"coverImage"] != [NSNull null]) {
-                mentry.image_url = (entry[@"image_url"][@"coverImage"][@"large"] && entry[@"image_url"][@"coverImage"][@"large"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"large"] : @"";
+                mentry.image_url = (entry[@"image_url"][@"coverImage"][@"medium"] && entry[@"image_url"][@"coverImage"][@"medium"] != [NSNull null] ) ? entry[@"image_url"][@"coverImage"][@"medium"] : @"";
             }
             mentry.type = entry[@"type"][@"format"] != [NSNull null] ? [self convertMangaType:entry[@"type"][@"format"]] : @"";
             mentry.status = entry[@"status"][@"status"] != [NSNull null] ? entry[@"status"][@"status"] : @"NOT_YET_RELEASED";
@@ -156,6 +157,9 @@
     aobject.end_date = title[@"endDate"] != [NSNull null] ? [NSString stringWithFormat:@"%@-%@-%@",title[@"endDate"][@"year"],title[@"endDate"][@"month"],title[@"endDate"][@"day"]] : @"";
     aobject.duration = title[@"duration"] && title[@"duration"] != [NSNull null] ? ((NSNumber *)title[@"duration"]).intValue : 0;
     aobject.classification = @"";
+    aobject.hashtag = title[@"hashtag"] != [NSNull null] ? title[@"hashtag"] : @"";
+    aobject.season = title[@"season"] != [NSNull null] ? ((NSString *)title[@"season"]).capitalizedString : @"Unknown";
+    aobject.source = title[@"source"] != [NSNull null] ? [(NSString *)title[@"source"] stringByReplacingOccurrencesOfString:@"_" withString:@" "].capitalizedString : @"";
     aobject.members_score = title[@"averageScore"] != [NSNull null] ? ((NSNumber *)title[@"averageScore"]).floatValue : 0;
     NSString *tmpstatus  = title[@"status"] != [NSNull null] ? title[@"status"] : @"NOT_YET_RELEASED";
     if ([tmpstatus isEqualToString:@"FINISHED"]||[tmpstatus isEqualToString:@"CANCELLED"]) {
@@ -173,6 +177,13 @@
         [genres addObject:genre];
     }
     aobject.genres = genres;
+    NSMutableArray *studiosarray = [NSMutableArray new];
+    if (title[@"studios"] != [NSNull null]) {
+        for (NSDictionary *studio in title[@"studios"][@"edges"]) {
+            [studiosarray addObject:studio[@"node"][@"name"]];
+        }
+    }
+    aobject.producers = studiosarray;
     if (title[@"idMal"]) {
         aobject.mappings = @{@"myanimelist/anime" : title[@"idMal"]};
     }
@@ -288,7 +299,7 @@
             aobject.title = d[@"title"][@"romaji"];
             aobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             if (d[@"coverImage"] != [NSNull null]) {
-                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"medium"] : @"";
             }
             aobject.status = d[@"status"] != [NSNull null] ? d[@"status"] : @"NOT_YET_RELEASED";
             if ([aobject.status isEqualToString:@"FINISHED"]||[aobject.status isEqualToString:@"CANCELLED"]) {
@@ -318,7 +329,7 @@
             mobject.title = d[@"title"][@"romaji"];
             mobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[]  , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             if (d[@"coverImage"] != [NSNull null]) {
-                mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+                mobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"medium"] : @"";
             }
             mobject.status = d[@"status"] != [NSNull null] ? d[@"status"] : @"NOT_YET_RELEASED";
             if ([mobject.status isEqualToString:@"FINISHED"]||[mobject.status isEqualToString:@"CANCELLED"]) {
@@ -378,7 +389,7 @@
             NSString *imageurl = acharacter[@"node"][@"image"] != [NSNull null] && acharacter[@"node"][@"image"][@"large"] ? acharacter[@"node"][@"image"][@"large"] : @"";
             NSMutableArray *castingsarray = [NSMutableArray new];
             for (NSDictionary *va in acharacter[@"voiceActors"]) {
-                [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", va[@"name"][@"last"], va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"large"] ? va[@"image"][@"large"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
+                [castingsarray addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] && ((NSString *)va[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",va[@"name"][@"last"],va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
             }
             [tmpcharacterarray addObject:@{@"id" : characterid.copy, @"name" : charactername.copy, @"role" : role.copy, @"image" : imageurl.copy, @"description" : description.copy,  @"actors" : castingsarray.copy}];
         }
@@ -390,7 +401,7 @@
         @autoreleasepool {
             NSNumber *personid = staffmember[@"person"][@"id"];
             NSString *personname = staffmember[@"person"][@"name"][@"last"] != [NSNull null] && ((NSString *)staffmember[@"person"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",staffmember[@"person"][@"name"][@"last"],staffmember[@"person"][@"name"][@"first"]] : staffmember[@"person"][@"name"][@"first"];
-            NSString *imageurl = staffmember[@"person"][@"image"] != [NSNull null] && staffmember[@"person"][@"image"][@"large"] ? staffmember[@"person"][@"image"][@"large"] : @"";
+            NSString *imageurl = staffmember[@"person"][@"image"] != [NSNull null] && staffmember[@"person"][@"image"][@"medium"] ? staffmember[@"person"][@"image"][@"medium"] : @"";
             NSString *role = @"";
             if ([tmpstaffarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name ==[c] %@", personname]].count == 0) {
                 [tmpstaffarray addObject:@{@"id" : personid.copy, @"name" : personname.copy, @"image" : imageurl.copy, @"role" : role.copy}];
@@ -405,10 +416,12 @@
 + (NSDictionary *)AniListPersontoAtarashii:(NSDictionary *)person {
     AtarashiiPersonObject *personobj = [AtarashiiPersonObject new];
     personobj.personid = ((NSNumber *)person[@"id"]).intValue;
-    personobj.name = person[@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", person[@"name"][@"last"], person[@"name"][@"first"]] : person[@"name"][@"first"];
+    personobj.name = person[@"name"][@"last"] != [NSNull null] && ((NSString *)person[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",person[@"name"][@"last"],person[@"name"][@"first"]] : person[@"name"][@"first"];
     personobj.image_url = person[@"image"] != [NSNull null] && person[@"image"][@"large"] ? person[@"image"][@"large"] : @"";
     personobj.native_name = person[@"name"][@"native"] && person[@"name"][@"native"] != [NSNull null] ? person[@"name"][@"native"] : @"";
     personobj.more_details = person[@"description"] != [NSNull null] ? person[@"description"] : @"";
+    personobj.favorited_count = person[@"favourites"] != [NSNull null] ? ((NSNumber *)person[@"favourites"]).intValue : 0;
+    personobj.language = person[@"language"] != [NSNull null] ? ((NSString *)person[@"language"]).capitalizedString : @"";
     NSMutableArray *staffroles = [NSMutableArray new];
     NSMutableArray *mangaroles = [NSMutableArray new];
     for (NSDictionary *staffrole in person[@"staffMedia"][@"edges"]) {
@@ -434,9 +447,10 @@
     for (NSDictionary *characterrole in person[@"characters"][@"edges"]) {
         @autoreleasepool {
             AtarashiiVoiceActingRoleObject *vaobj = [AtarashiiVoiceActingRoleObject new];
-            vaobj.characterid = ((NSNumber *)characterrole[@"id"]).intValue;
-            vaobj.name = characterrole[@"node"][@"name"][@"last"] != [NSNull null] ? [NSString stringWithFormat:@"%@, %@", characterrole[@"node"][@"name"][@"last"], characterrole[@"node"][@"name"][@"first"]] : characterrole[@"node"][@"name"][@"first"];
+            vaobj.characterid = ((NSNumber *)characterrole[@"node"][@"id"]).intValue;
+            vaobj.name = characterrole[@"node"][@"name"][@"last"] != [NSNull null] && ((NSString *)characterrole[@"node"][@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",characterrole[@"node"][@"name"][@"last"],characterrole[@"node"][@"name"][@"first"]] : characterrole[@"node"][@"name"][@"first"];
             vaobj.image_url = characterrole[@"node"][@"image"] != [NSNull null] && characterrole[@"node"][@"image"][@"large"] ? characterrole[@"node"][@"image"][@"large"] : @"";
+            vaobj.main_role = [(NSString *)characterrole[@"role"] isEqualToString:@"MAIN"];
             for (NSDictionary *anime in characterrole[@"media"]) {
                 vaobj.anime = @{@"id" : anime[@"id"], @"title" : anime[@"title"][@"romaji"]};
                 [characterroles addObject:vaobj.NSDictionaryRepresentation];
@@ -447,7 +461,62 @@
     return personobj.NSDictionaryRepresentation;
 }
 
-+ (NSArray *)normalizeSeasonData:(NSArray *)seasonData {
++ (NSDictionary *)AniListCharactertoAtarashii:(NSDictionary *)person {
+    AtarashiiPersonObject *personobj = [AtarashiiPersonObject new];
+    personobj.personid = ((NSNumber *)person[@"id"]).intValue;
+    personobj.name = person[@"name"][@"last"] != [NSNull null] && ((NSString *)person[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",person[@"name"][@"last"],person[@"name"][@"first"]] : person[@"name"][@"first"];
+    personobj.image_url = person[@"image"] != [NSNull null] && person[@"image"][@"large"] ? person[@"image"][@"large"] : @"";
+    personobj.native_name = person[@"name"][@"native"] && person[@"name"][@"native"] != [NSNull null] ? person[@"name"][@"native"] : @"";
+    personobj.more_details = person[@"description"] != [NSNull null] ? person[@"description"] : @"";
+    personobj.favorited_count = person[@"favourites"] != [NSNull null] ? ((NSNumber *)person[@"favourites"]).intValue : 0;
+    NSMutableArray *voiceactors = [NSMutableArray new];
+    NSMutableArray *animeappearences = [NSMutableArray new];
+    NSMutableArray *mangaappearences = [NSMutableArray new];
+    if (person[@"media"][@"edges"] && person[@"media"][@"edges"] != [NSNull null]) {
+        for (NSDictionary *media in person[@"media"][@"edges"]) {
+            NSDictionary *mediainfo = @{@"id" : media[@"node"][@"id"], @"title" : media[@"node"][@"title"][@"romaji"], @"image" :  media[@"node"][@"coverImage"] != [NSNull null] && media[@"node"][@"coverImage"][@"medium"] ? media[@"node"][@"coverImage"][@"medium"] : @"", @"role" : ((NSString *)media[@"characterRole"]).capitalizedString};
+            if ([(NSString *)media[@"node"][@"type"] isEqualToString:@"ANIME"]) {
+                [animeappearences addObject:mediainfo];
+                for (NSDictionary *va in media[@"voiceActors"]) {
+                    @autoreleasepool {
+                        if ([voiceactors filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@", va[@"id"]]].count == 0) {
+                               [voiceactors addObject:@{@"id" : va[@"id"], @"name" : va[@"name"][@"last"] != [NSNull null] && ((NSString *)va[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",va[@"name"][@"last"],va[@"name"][@"first"]] : va[@"name"][@"first"], @"image" : va[@"image"] != [NSNull null] && va[@"image"][@"medium"] ? va[@"image"][@"medium"] : @"" , @"language" : ((NSString *)va[@"language"]).lowercaseString.capitalizedString}];
+                        }
+                    }
+                }
+            }
+            else {
+                [mangaappearences addObject:mediainfo];
+            }
+        }
+    }
+    personobj.appeared_anime = animeappearences.copy;
+    personobj.appeared_manga = mangaappearences.copy;
+    personobj.voice_actors = voiceactors;
+    return personobj.NSDictionaryRepresentation;
+}
+
++ (NSArray *)normalizePersonSearchData:(id)searchdata {
+    // Generate staff list
+    NSMutableArray *tmpstaffarray = [NSMutableArray new];
+    if (searchdata[@"data"][@"Page"] != [NSNull null] && searchdata[@"data"][@"Page"]) {
+        NSArray *dataarray = searchdata[@"data"][@"Page"][@"staff"] ? searchdata[@"data"][@"Page"][@"staff"] : searchdata[@"data"][@"Page"][@"characters"];
+        for (NSDictionary *staffmember in dataarray) {
+            @autoreleasepool {
+                NSNumber *personid = staffmember[@"id"];
+                NSString *personname = staffmember[@"name"][@"last"] != [NSNull null] && ((NSString *)staffmember[@"name"][@"last"]).length > 0 ? [NSString stringWithFormat:@"%@, %@",staffmember[@"name"][@"last"],staffmember[@"name"][@"first"]] : staffmember[@"name"][@"first"];
+                NSString *imageurl = staffmember[@"image"] != [NSNull null] && staffmember[@"image"][@"medium"] ? staffmember[@"image"][@"medium"] : @"";
+                NSString *role = @"";
+                if ([tmpstaffarray filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name ==[c] %@", personname]].count == 0) {
+                    [tmpstaffarray addObject:@{@"id" : personid.copy, @"name" : personname.copy, @"image" : imageurl.copy, @"role" : role.copy}];
+                }
+            }
+        }
+    }
+    return tmpstaffarray.copy;
+}
+
++ (NSArray *)normalizeSeasonData:(NSArray *)seasonData withSeason:(NSString *)season withYear:(int)year {
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *d in seasonData) {
         @autoreleasepool {
@@ -460,24 +529,21 @@
             aobject.title = d[@"title"][@"romaji"];
             aobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             if (d[@"coverImage"] != [NSNull null]) {
-                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"medium"] : @"";
             }
             aobject.type = d[@"format"] != [NSNull null] ? [Utility convertAnimeType:d[@"format"]] : @"";
-            [tmparray addObject:aobject.NSDictionaryRepresentation];
+            NSMutableDictionary *finaldict = [[NSMutableDictionary alloc] initWithDictionary:aobject.NSDictionaryRepresentation];
+            finaldict[@"year"] = @(year);
+            finaldict[@"season"] = season;
+            finaldict[@"service"] = @(3);
+            [tmparray addObject:finaldict.copy];
         }
     }
     return tmparray.copy;
 }
 
-+ (NSDictionary *)normalizeAiringData:(NSArray *)airdata {
-    NSMutableArray *sundayarray = [NSMutableArray new];
-    NSMutableArray *mondayarray = [NSMutableArray new];
-    NSMutableArray *tuesdayarray = [NSMutableArray new];
-    NSMutableArray *wednesdayarray = [NSMutableArray new];
-    NSMutableArray *thursdayarray = [NSMutableArray new];
-    NSMutableArray *fridayarray = [NSMutableArray new];
-    NSMutableArray *saturdayarray = [NSMutableArray new];
-    NSMutableArray *unknownarray = [NSMutableArray new];
++ (NSArray *)normalizeAiringData:(NSArray *)airdata {
+    NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *d in airdata) {
         @autoreleasepool {
             if (((NSNumber *)d[@"isAdult"]).boolValue) {
@@ -489,46 +555,41 @@
             aobject.title = d[@"title"][@"romaji"];
             aobject.other_titles = @{@"synonyms" : d[@"synonyms"] && d[@"synonyms"] != [NSNull null] ? d[@"synonyms"] : @[] , @"english" : d[@"title"][@"english"] != [NSNull null] && d[@"title"][@"english"] ? @[d[@"title"][@"english"]] : @[], @"japanese" : d[@"title"][@"native"] != [NSNull null] && d[@"title"][@"native"] ? @[d[@"title"][@"native"]] : @[] };
             if (d[@"coverImage"] != [NSNull null]) {
-                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"large"] : @"";
+                aobject.image_url = d[@"coverImage"] != [NSNull null] ? d[@"coverImage"][@"medium"] : @"";
             }
             aobject.episodes = d[@"episodes"] && d[@"episodes"] != [NSNull null] ? ((NSNumber *)d[@"episodes"]).intValue : 0;
             aobject.type = d[@"format"] != [NSNull null] ? [Utility convertAnimeType:d[@"format"]] : @"";
-#if defined(AppStore)
-            //aobject.synposis = !((NSNumber *)d[@"isAdult"]).boolValue ? d[@"description"] != [NSNull null] ? d[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
-#else
-            //bool allowed = ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"] || !((NSNumber *)d[@"isAdult"]).boolValue);
-            //aobject.synposis = allowed ? d[@"description"] != [NSNull null] ? d[@"description"] : @"No synopsis available" : @"Synopsis not available for adult titles";
-#endif
             aobject.status = @"currently airing";
+            NSMutableDictionary *finaldictionary = [[NSMutableDictionary alloc] initWithDictionary:[aobject NSDictionaryRepresentation]];
             if (d[@"nextAiringEpisode"] != [NSNull null]) {
                 switch ([self getDayFromDateInterval:((NSNumber *)d[@"nextAiringEpisode"][@"airingAt"]).intValue]) {
                     case 1:
                         //Sunday
-                        [sundayarray addObject:[aobject NSDictionaryRepresentation]];
+                        finaldictionary[@"day"] = @"sunday";
                         break;
                     case 2:
                         //Monday
-                        [mondayarray addObject:[aobject NSDictionaryRepresentation]];
+                        finaldictionary[@"day"] = @"monday";
                         break;
                     case 3:
                         //Tuesday
-                        [tuesdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        finaldictionary[@"day"] = @"tuesday";
                         break;
                     case 4:
                         //Wednesday
-                        [wednesdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        finaldictionary[@"day"] = @"wednesday";
                         break;
                     case 5:
                         //Thursday
-                        [thursdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        finaldictionary[@"day"] = @"thursday";
                         break;
                     case 6:
                         //Friday
-                        [fridayarray addObject:[aobject NSDictionaryRepresentation]];
+                        finaldictionary[@"day"] = @"friday";
                         break;
                     case 7:
                         //Saturday
-                        [saturdayarray addObject:[aobject NSDictionaryRepresentation]];
+                        finaldictionary[@"day"] = @"saturday";
                         break;
                     default:
                         break;
@@ -536,11 +597,12 @@
                 }
             }
             else {
-                [unknownarray addObject:[aobject NSDictionaryRepresentation]];
+               finaldictionary[@"day"] = @"unknown";
             }
+            [tmparray addObject:finaldictionary.copy];
         }
     }
-    return @{@"monday": mondayarray.copy, @"tuesday" : tuesdayarray.copy, @"wednesday" : wednesdayarray.copy, @"thursday" : thursdayarray.copy, @"friday" : fridayarray.copy, @"saturday" : saturdayarray.copy, @"sunday" : sundayarray.copy, @"other" : @[], @"unknown" : unknownarray.copy};
+    return tmparray.copy;
 }
 
 #pragma mark helpers

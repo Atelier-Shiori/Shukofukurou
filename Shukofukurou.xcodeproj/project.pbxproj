@@ -24,8 +24,6 @@
 		2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E821ECFA3E400F47138 /* ListStatistics.xib */; };
 		2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
 		2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D371E861ECFA3E700F47138 /* ratingchartview.xib */; };
-		2D42FA971F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
-		2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
 		2D4E01071FA3B1A10053A82B /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */; };
 		2D4E01081FA3B1A10053A82B /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */; };
 		2D4E010B1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */; };
@@ -95,6 +93,22 @@
 		597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
+		598B452C21AC392C00F28180 /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B452A21AC392C00F28180 /* TitleInfoCache.m */; };
+		598B452D21AC392C00F28180 /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B452A21AC392C00F28180 /* TitleInfoCache.m */; };
+		598B452E21AC392C00F28180 /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B452A21AC392C00F28180 /* TitleInfoCache.m */; };
+		598B452F21AC392C00F28180 /* TitleInfoCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B452A21AC392C00F28180 /* TitleInfoCache.m */; };
+		598B453221AC393600F28180 /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453021AC393600F28180 /* TrendingRetriever.m */; };
+		598B453321AC393600F28180 /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453021AC393600F28180 /* TrendingRetriever.m */; };
+		598B453421AC393600F28180 /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453021AC393600F28180 /* TrendingRetriever.m */; };
+		598B453521AC393600F28180 /* TrendingRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453021AC393600F28180 /* TrendingRetriever.m */; };
+		598B453821AC3AE800F28180 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453621AC3AE700F28180 /* TitleIdEnumerator.m */; };
+		598B453921AC3AE800F28180 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453621AC3AE700F28180 /* TitleIdEnumerator.m */; };
+		598B453A21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453621AC3AE700F28180 /* TitleIdEnumerator.m */; };
+		598B453B21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B453621AC3AE700F28180 /* TitleIdEnumerator.m */; };
+		598B454B21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
+		598B454C21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
+		598B454D21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
+		598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
@@ -312,7 +326,6 @@
 		91F8E3C0210A46CA007137A7 /* AniListAuthWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */; };
 		91F8E3C1210A46CA007137A7 /* ReviewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 91C060111EAD2CDC0099E433 /* ReviewWindow.m */; };
 		91F8E3C2210A46CA007137A7 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
-		91F8E3C3210A46CA007137A7 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
 		91F8E3C4210A46CA007137A7 /* NSTableViewAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */; };
 		91F8E3C6210A46CA007137A7 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		91F8E3C7210A46CA007137A7 /* AddTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C471E8C1AEC005A49A4 /* AddTitle.m */; };
@@ -505,7 +518,6 @@
 		F888F447208FB1F500C22C39 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
 		F888F448208FB1F500C22C39 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
 		F888F449208FB1F500C22C39 /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
-		F888F44A208FB1F500C22C39 /* AFHTTPSessionManager+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */; };
 		F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
 		F888F44D208FB1F500C22C39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
@@ -767,8 +779,6 @@
 		2D371E791ECF8B4F00F47138 /* ratingchartview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ratingchartview.m; sourceTree = "<group>"; };
 		2D371E811ECFA3E400F47138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListStatistics.xib; sourceTree = "<group>"; };
 		2D371E851ECFA3E700F47138 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ratingchartview.xib; sourceTree = "<group>"; };
-		2D42FA951F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AFHTTPSessionManager+Synchronous.h"; sourceTree = "<group>"; };
-		2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AFHTTPSessionManager+Synchronous.m"; sourceTree = "<group>"; };
 		2D4E01091FA3B1A10053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfileViewController.xib; sourceTree = "<group>"; };
 		2D4E010D1FA3B1A70053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ProfileWindowController.xib; sourceTree = "<group>"; };
 		2D4E01111FA3B1C10053A82B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharactersBrowser.xib; sourceTree = "<group>"; };
@@ -830,6 +840,15 @@
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
+		598B452A21AC392C00F28180 /* TitleInfoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
+		598B452B21AC392C00F28180 /* TitleInfoCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleInfoCache.h; sourceTree = "<group>"; };
+		598B453021AC393600F28180 /* TrendingRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrendingRetriever.m; sourceTree = "<group>"; };
+		598B453121AC393600F28180 /* TrendingRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendingRetriever.h; sourceTree = "<group>"; };
+		598B453621AC3AE700F28180 /* TitleIdEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleIdEnumerator.m; sourceTree = "<group>"; };
+		598B453721AC3AE800F28180 /* TitleIdEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleIdEnumerator.h; sourceTree = "<group>"; };
+		598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
+		598B454921AC4BCE00F28180 /* AiringSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringSchedule.h; sourceTree = "<group>"; };
+		598B454A21AC4BCE00F28180 /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		91044F8B211B23BF00DBEF57 /* AppDelegate+Patreon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Patreon.h"; sourceTree = "<group>"; };
@@ -1264,8 +1283,6 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */,
-				597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
@@ -1275,10 +1292,10 @@
 				910589E91E981E1A00501B9A /* AdvancedPref.m */,
 				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
 				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
-				2D42FA951F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.h */,
-				2D42FA961F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m */,
 				91D094CD1E9876D8009454F8 /* AiringView.h */,
 				91D094CE1E9876D8009454F8 /* AiringView.m */,
+				598B454921AC4BCE00F28180 /* AiringSchedule.h */,
+				598B454A21AC4BCE00F28180 /* AiringSchedule.m */,
 				F8A85910207023E40026EC0A /* AniList.h */,
 				F8A85911207023E40026EC0A /* AniList.m */,
 				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
@@ -1334,6 +1351,8 @@
 				9199BAA41E89836000F6E9FF /* Info.plist */,
 				91999D0F1E8C88280026D3E9 /* InfoView.h */,
 				91999D101E8C88280026D3E9 /* InfoView.m */,
+				912925492146D01C0011D760 /* IsAiringValueTransformer.h */,
+				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
 				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
@@ -1379,6 +1398,8 @@
 				91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */,
 				9199BAC11E89842400F6E9FF /* NSTextFieldNumber.h */,
 				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
+				597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */,
+				597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */,
 				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
 				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
 				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
@@ -1429,6 +1450,12 @@
 				F84D64442098FAAE003225F9 /* TipJar */,
 				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
 				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
+				598B453721AC3AE800F28180 /* TitleIdEnumerator.h */,
+				598B453621AC3AE700F28180 /* TitleIdEnumerator.m */,
+				598B452B21AC392C00F28180 /* TitleInfoCache.h */,
+				598B452A21AC392C00F28180 /* TitleInfoCache.m */,
+				598B453121AC393600F28180 /* TrendingRetriever.h */,
+				598B453021AC393600F28180 /* TrendingRetriever.m */,
 				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
 				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
 				9199BACC1E89842400F6E9FF /* Utility.h */,
@@ -1436,8 +1463,6 @@
 				2D4C22161FA7B1ED00539245 /* XIB */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
-				912925492146D01C0011D760 /* IsAiringValueTransformer.h */,
-				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -2031,6 +2056,7 @@
 				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				91244E992108E89C00AA8F90 /* CustomListModify.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
+				598B453921AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				91D094C41E983098009454F8 /* HistoryView.m in Sources */,
 				2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */,
@@ -2057,6 +2083,7 @@
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
+				598B453321AC393600F28180 /* TrendingRetriever.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
 				2D8A41FA1E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				F8F0482120767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
@@ -2086,9 +2113,9 @@
 				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
-				2D42FA981F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
+				598B452D21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */,
@@ -2096,6 +2123,7 @@
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
+				598B454C21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
 				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
@@ -2124,6 +2152,7 @@
 				2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
+				598B452C21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				91521F6A21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
 				2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */,
@@ -2139,6 +2168,7 @@
 				91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
 				F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */,
 				F8A85912207023E40026EC0A /* AniList.m in Sources */,
+				598B453821AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
@@ -2146,7 +2176,6 @@
 				F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */,
 				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */,
-				2D42FA971F2511D700FDEA60 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
 				2D7877761F87E44000AD40F1 /* MyListView.m in Sources */,
 				915E8C491E8C1AEC005A49A4 /* AddTitle.m in Sources */,
@@ -2156,6 +2185,7 @@
 				9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
+				598B453221AC393600F28180 /* TrendingRetriever.m in Sources */,
 				9129254B2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,
@@ -2181,6 +2211,7 @@
 				F888F404208F889D00C22C39 /* AuthWebView.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
+				598B454B21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
 				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,
@@ -2213,12 +2244,14 @@
 				91F8E3A9210A46CA007137A7 /* ListView.m in Sources */,
 				91F8E3AA210A46CA007137A7 /* MyListScoreFormatter.m in Sources */,
 				91F8E3AB210A46CA007137A7 /* Kitsu.m in Sources */,
+				598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				91F8E3AC210A46CA007137A7 /* MainWindow.m in Sources */,
 				91F8E3AE210A46CA007137A7 /* NSTextFieldNumber.m in Sources */,
 				91F8E3AF210A46CA007137A7 /* AtarashiiListCoreData.m in Sources */,
 				91F8E3B0210A46CA007137A7 /* AniListScoreConvert.m in Sources */,
 				91F8E3B1210A46CA007137A7 /* XMLReader.m in Sources */,
 				917CEC7D211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
+				598B453B21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				91F8E3B2210A46CA007137A7 /* SeasonView.m in Sources */,
 				91F8E3B3210A46CA007137A7 /* LoginPref.m in Sources */,
 				91F8E3B4210A46CA007137A7 /* ListStatistics.m in Sources */,
@@ -2237,7 +2270,6 @@
 				91F8E3C0210A46CA007137A7 /* AniListAuthWindow.m in Sources */,
 				91F8E3C1210A46CA007137A7 /* ReviewWindow.m in Sources */,
 				91F8E3C2210A46CA007137A7 /* ListExporter.m in Sources */,
-				91F8E3C3210A46CA007137A7 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				91F8E3C4210A46CA007137A7 /* NSTableViewAction.m in Sources */,
 				91F8E3C6210A46CA007137A7 /* MyListView.m in Sources */,
 				91F8E3C7210A46CA007137A7 /* AddTitle.m in Sources */,
@@ -2251,6 +2283,7 @@
 				91F8E3CF210A46CA007137A7 /* AdvancedPref.m in Sources */,
 				91F8E3D1210A46CA007137A7 /* RecommendedTitleView.m in Sources */,
 				91F8E3D2210A46CA007137A7 /* AppDelegate.m in Sources */,
+				598B452F21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				91F8E3D3210A46CA007137A7 /* main.m in Sources */,
 				91F8E3D4210A46CA007137A7 /* AniListConstants.m in Sources */,
 				91F8E3D5210A46CA007137A7 /* AtarashiiDataObjects.m in Sources */,
@@ -2271,6 +2304,7 @@
 				91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */,
 				91F8E3E5210A46CA007137A7 /* ProfileWindowController.m in Sources */,
 				91F8E3E6210A46CA007137A7 /* CharactersBrowser.m in Sources */,
+				598B453521AC393600F28180 /* TrendingRetriever.m in Sources */,
 				91F8E3E7210A46CA007137A7 /* InfoView.m in Sources */,
 				91F8E3E8210A46CA007137A7 /* siteimage.m in Sources */,
 				91F8E3E9210A46CA007137A7 /* servicemenucontroller.m in Sources */,
@@ -2297,6 +2331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F888F40A208FB1F500C22C39 /* OtherListScoreFormatter.m in Sources */,
+				598B453421AC393600F28180 /* TrendingRetriever.m in Sources */,
 				F888F40B208FB1F500C22C39 /* Kitsu.m in Sources */,
 				F888F40C208FB1F500C22C39 /* Keychain.m in Sources */,
 				F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */,
@@ -2333,6 +2368,7 @@
 				F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */,
 				F888F42B208FB1F500C22C39 /* TitleIdConverter.m in Sources */,
 				F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */,
+				598B453A21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				F888F42D208FB1F500C22C39 /* NotLoggedIn.m in Sources */,
 				F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */,
 				F888F42F208FB1F500C22C39 /* GeneralPref.m in Sources */,
@@ -2349,7 +2385,9 @@
 				F888F43B208FB1F500C22C39 /* AniList.m in Sources */,
 				F888F43C208FB1F500C22C39 /* ImportPrompt.m in Sources */,
 				F888F43D208FB1F500C22C39 /* StringDatetoDate.m in Sources */,
+				598B452E21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				F888F43E208FB1F500C22C39 /* StreamDataRetriever.m in Sources */,
+				598B454D21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				F888F43F208FB1F500C22C39 /* advancededitdialog.m in Sources */,
 				F888F440208FB1F500C22C39 /* ReviewWindow.m in Sources */,
 				F888F441208FB1F500C22C39 /* NSTableViewAction.m in Sources */,
@@ -2361,7 +2399,6 @@
 				F888F447208FB1F500C22C39 /* CharacterView.m in Sources */,
 				F888F448208FB1F500C22C39 /* EditTitle.m in Sources */,
 				F888F449208FB1F500C22C39 /* AdvancedPref.m in Sources */,
-				F888F44A208FB1F500C22C39 /* AFHTTPSessionManager+Synchronous.m in Sources */,
 				F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */,
 				F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */,
 				F888F44D208FB1F500C22C39 /* main.m in Sources */,
@@ -2837,7 +2874,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = Shukofukurou;
 			};
@@ -2881,7 +2918,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = Shukofukurou;
 			};
@@ -3018,7 +3055,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3068,7 +3105,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3122,7 +3159,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3172,7 +3209,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3273,7 +3310,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3321,7 +3358,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3409,9 +3446,10 @@
 		91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */,
 				91244EA2210901A000AA8F90 /* datamodel.xcdatamodel */,
 			);
-			currentVersion = 91244EA2210901A000AA8F90 /* datamodel.xcdatamodel */;
+			currentVersion = 598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */;
 			path = datamodel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -11,14 +11,14 @@
 #import "AtarashiiAPIListFormatAniList.h"
 #import "ClientConstants.h"
 #import <AFNetworking/AFNetworking.h>
-#import "AFHTTPSessionManager+Synchronous.h"
+#import <AFNetworking/AFHTTPSessionManager+Synchronous.h>
 #import "Utility.h"
 
 @implementation AniList
 #ifdef DEBUG
-NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList DEBUG";
+NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList DEBUG";
 #else
-NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
+NSString *const kAniListKeychainIdentifier = @"Hiyoko - AniList";
 #endif
 
 #pragma mark List
@@ -109,6 +109,16 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     }];
 }
 
++ (void)searchPeople:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    NSDictionary *parameters = @{@"query" : type == AniListCharacter ? kAnilistCharacterSearch : kAniListStaffSearch, @"variables" : @{@"query" : searchterm}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler([AtarashiiAPIListFormatAniList normalizePersonSearchData:responseObject]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 #pragma mark Title Information
 + (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -169,10 +179,11 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
         [AFOAuthCredential storeCredential:credential
                             withIdentifier:kAniListKeychainIdentifier];
         
-        [self getOwnAnilistid:^(int userid, NSString *username, NSString *scoreformat) {
+        [self getOwnAnilistid:^(int userid, NSString *username, NSString *scoreformat, NSString *avatar) {
             [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"anilist-username"];
             [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"anilist-userid"];
             [[NSUserDefaults standardUserDefaults] setValue:scoreformat forKey:@"anilist-scoreformat"];
+            [[NSUserDefaults standardUserDefaults] setValue:avatar forKey:@"anilist-avatar"];
             completionHandler(@{@"success":@(true)});
         } error:^(NSError *error) {
             
@@ -411,6 +422,17 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     }];
 }
 
++ (void)retrieveCharacterDetails:(int)characterid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    manager.requestSerializer = [Utility jsonrequestserializer];
+    NSDictionary *parameters = @{@"query" : kAniListcharacterpage , @"variables" : @{@"id" : @(characterid)}};
+    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        completionHandler([AtarashiiAPIListFormatAniList AniListCharactertoAtarashii:responseObject[@"data"][@"Character"]]);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 #pragma mark Title ID Retrieval
 + (void)retrieveTitleIdsWithlistType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *tmparray = [NSMutableArray new];
@@ -467,7 +489,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     return @{@"user" : userd, @"media" : mediad};
 }
 
-+ (void)getOwnAnilistid:(void (^)(int userid, NSString *username, NSString *scoreformat)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)getOwnAnilistid:(void (^)(int userid, NSString *username, NSString *scoreformat, NSString *avatar)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFOAuthCredential *cred = [AniList getFirstAccount];
     if (cred && cred.expired) {
         errorHandler(nil);
@@ -478,10 +500,10 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     [manager POST:@"https://graphql.anilist.co" parameters:@{@"query" : kAnilistCurrentUsernametoUserId, @"variables" : @{}} progress:nil success:^(NSURLSessionTask *task, id responseObject) {
         if (responseObject[@"data"][@"Viewer"] != [NSNull null]) {
             NSDictionary *d = responseObject[@"data"][@"Viewer"];
-            completionHandler(((NSNumber *)d[@"id"]).intValue,d[@"name"], d[@"mediaListOptions"][@"scoreFormat"]);
+            completionHandler(((NSNumber *)d[@"id"]).intValue,d[@"name"], d[@"mediaListOptions"][@"scoreFormat"], d[@"avatar"] != [NSNull null] && d[@"avatar"][@"large"] ? d[@"avatar"][@"large"] : @"");
         }
         else {
-            completionHandler(-1,@"",@"");
+            completionHandler(-1,@"",@"",@"");
         }
     } failure:^(NSURLSessionTask *operation, NSError *error) {
         errorHandler(error);
@@ -626,6 +648,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
             [defaults setValue:d[@"id"] forKey:@"anilist-userid"];
             [defaults setValue:d[@"name"] forKey:@"anilist-username"];
             [defaults setValue:d[@"mediaListOptions"][@"scoreFormat"] forKey:@"anilist-scoreformat"];
+            [defaults setValue:d[@"avatar"] != [NSNull null] && d[@"avatar"][@"large"] ? d[@"avatar"][@"large"] : @"" forKey:@"anilist-avatar"];
         }
         else {
             // Remove Account, invalid token
@@ -633,10 +656,8 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
         }
     }
     else {
-            if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
-                // Remove Account
-                [self removeAccount];
-            }
+        // Remove Account
+        [self removeAccount];
     }
 }
 @end

@@ -12,45 +12,48 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _titleid = 0;
-        _titleidMal = 0;
-        _title = @"";
-        _other_titles = @{};
-        _rank = 0;
-        _popularity_rank = 0;
-        _image_url = @"";
-        _type = @"";
-        _episodes = 0;
-        _status = @"";
-        _start_date = @"";
-        _end_date = @"";
-        _broadcast = @"";
-        _duration = 0;
-        _classification = @"";
-        _members_score = 0;
-        _members_count = 0;
-        _favorited_count = 0;
-        _synposis = @"";
-        _background = @"";
-        _producers = @[];
-        _genres = @[];
-        _manga_adaptations = @[];
-        _prequels = @[];
-        _sequels = @[];
-        _side_stories = @[];
-        _parent_story = @[];
-        _character_anime = @[];
-        _spin_offs = @[];
-        _opening_theme = @[];
-        _ending_theme = @[];
-        _recommendations = @[];
-        _mappings = @{};
+        self.titleid = 0;
+        self.titleidMal = 0;
+        self.title = @"";
+        self.other_titles = @{};
+        self.rank = 0;
+        self.popularity_rank = 0;
+        self.image_url = @"";
+        self.type = @"";
+        self.episodes = 0;
+        self.status = @"";
+        self.start_date = @"";
+        self.end_date = @"";
+        self.broadcast = @"";
+        self.duration = 0;
+        self.classification = @"";
+        self.hashtag = @"";
+        self.source = @"";
+        self.season = @"";
+        self.members_score = 0;
+        self.members_count = 0;
+        self.favorited_count = 0;
+        self.synposis = @"";
+        self.background = @"";
+        self.producers = @[];
+        self.genres = @[];
+        self.manga_adaptations = @[];
+        self.prequels = @[];
+        self.sequels = @[];
+        self.side_stories = @[];
+        self.parent_story = @[];
+        self.character_anime = @[];
+        self.spin_offs = @[];
+        self.opening_theme = @[];
+        self.ending_theme = @[];
+        self.recommendations = @[];
+        self.mappings = @{};
     }
     return self;
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{ @"id" : @(_titleid), @"idMal" : @(_titleidMal), @"title" : _title.copy, @"other_titles" : _other_titles.copy, @"rank" : @(_rank), @"popularity_rank" : @(_popularity_rank), @"image_url" : _image_url.copy, @"type" : _type.copy, @"episodes" : @(_episodes), @"status" : _status.copy, @"start_date" : _start_date.copy, @"end_date" : _end_date.copy, @"broadcast" : _broadcast.copy, @"duration" : @(_duration), @"classification" : _classification.copy, @"members_score" : @(_members_score), @"members_count" : @(_members_count), @"favorited_count" : @(_favorited_count), @"synopsis" : _synposis.copy, @"background" : _background.copy, @"producers" : _producers.copy, @"genres" : _genres.copy, @"manga_adaptations" : _manga_adaptations.copy, @"prequels" : _prequels.copy, @"sequels" : _sequels.copy, @"side_stories" : _side_stories.copy, @"parent_story" : _parent_story.copy, @"character_anime" : _character_anime.copy, @"spin_offs" : _spin_offs.copy, @"opening_theme" : _opening_theme.copy, @"ending_theme" : _ending_theme.copy, @"recommendations" : _recommendations.copy, @"mappings" : _mappings.copy };
+    return @{ @"id" : @(_titleid), @"idMal" : @(_titleidMal), @"title" : _title.copy, @"other_titles" : _other_titles.copy, @"rank" : @(_rank), @"popularity_rank" : @(_popularity_rank), @"image_url" : _image_url.copy, @"type" : _type.copy, @"episodes" : @(_episodes), @"status" : _status.copy, @"start_date" : _start_date.copy, @"end_date" : _end_date.copy, @"broadcast" : _broadcast.copy, @"duration" : @(_duration), @"classification" : _classification.copy, @"hashtag" : _hashtag.copy, @"source" : _source.copy, @"season" : _season.copy, @"members_score" : @(_members_score), @"members_count" : @(_members_count), @"favorited_count" : @(_favorited_count), @"synopsis" : _synposis.copy, @"background" : _background.copy, @"producers" : _producers.copy, @"genres" : _genres.copy, @"manga_adaptations" : _manga_adaptations.copy, @"prequels" : _prequels.copy, @"sequels" : _sequels.copy, @"side_stories" : _side_stories.copy, @"parent_story" : _parent_story.copy, @"character_anime" : _character_anime.copy, @"spin_offs" : _spin_offs.copy, @"opening_theme" : _opening_theme.copy, @"ending_theme" : _ending_theme.copy, @"recommendations" : _recommendations.copy, @"mappings" : _mappings.copy };
 }
 @end
 
@@ -58,26 +61,26 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _titleid = 0;
-        _titleidMal = 0;
-        _title = @"";
-        _other_titles = @{};
-        _rank = 0;
-        _popularity_rank = 0;
-        _image_url = @"";
-        _type = @"";
-        _chapters = 0;
-        _volumes = 0;
-        _status = @"";
-        _members_score = 0;
-        _members_count = 0;
-        _favorited_count = 0;
-        _synposis = @"";
-        _genres = @[];
-        _anime_adaptations = @[];
-        _related_manga = @[];
-        _alternative_versions = @[];
-        _mappings = @{};
+        self.titleid = 0;
+        self.titleidMal = 0;
+        self.title = @"";
+        self.other_titles = @{};
+        self.rank = 0;
+        self.popularity_rank = 0;
+        self.image_url = @"";
+        self.type = @"";
+        self.chapters = 0;
+        self.volumes = 0;
+        self.status = @"";
+        self.members_score = 0;
+        self.members_count = 0;
+        self.favorited_count = 0;
+        self.synposis = @"";
+        self.genres = @[];
+        self.anime_adaptations = @[];
+        self.related_manga = @[];
+        self.alternative_versions = @[];
+        self.mappings = @{};
     }
     return self;
 }
@@ -91,24 +94,24 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _titleid = 0;
-        _title = @"";
-        _entryid = 0;
-        _episodes = 0;
-        _episode_length = 0;
-        _image_url = @"";
-        _type = @"";
-        _status = @"";
-        _watched_status = @"";
-        _watched_episodes = 0;
-        _score = 0;
-        _score_type = 0;
-        _watching_start = @"";
-        _watching_end = @"";
-        _rewatching = false;
-        _rewatch_count = 0;
-        _personal_comments = @"";
-        _custom_lists = @"";
+        self.titleid = 0;
+        self.title = @"";
+        self.entryid = 0;
+        self.episodes = 0;
+        self.episode_length = 0;
+        self.image_url = @"";
+        self.type = @"";
+        self.status = @"";
+        self.watched_status = @"";
+        self.watched_episodes = 0;
+        self.score = 0;
+        self.score_type = 0;
+        self.watching_start = @"";
+        self.watching_end = @"";
+        self.rewatching = false;
+        self.rewatch_count = 0;
+        self.personal_comments = @"";
+        self.custom_lists = @"";
     }
     return self;
 }
@@ -122,25 +125,25 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _titleid = 0;
-        _title = @"";
-        _entryid = 0;
-        _chapters = 0;
-        _volumes = 0;
-        _image_url = @"";
-        _type = @"";
-        _status = @"";
-        _read_status = @"";
-        _chapters_read = 0;
-        _volumes_read = 0;
-        _score = 0;
-        _score_type = 0;
-        _reading_start = @"";
-        _reading_end = @"";
-        _rereading = false;
-        _reread_count = 0;
-        _personal_comments = @"";
-        _custom_lists = @"";
+        self.titleid = 0;
+        self.title = @"";
+        self.entryid = 0;
+        self.chapters = 0;
+        self.volumes = 0;
+        self.image_url = @"";
+        self.type = @"";
+        self.status = @"";
+        self.read_status = @"";
+        self.chapters_read = 0;
+        self.volumes_read = 0;
+        self.score = 0;
+        self.score_type = 0;
+        self.reading_start = @"";
+        self.reading_end = @"";
+        self.rereading = false;
+        self.reread_count = 0;
+        self.personal_comments = @"";
+        self.custom_lists = @"";
     }
     return self;
 }
@@ -165,15 +168,19 @@
         _image_url = @"";
         _more_details = @"";
         _favorited_count = 0;
+        _language = @"";
         _voice_acting_roles = @[];
+        _voice_actors = @[];
         _anime_staff_positions = @[];
         _published_manga = @[];
+        _appeared_anime = @[];
+        _appeared_manga = @[];
     }
     return self;
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{@"id" : @(_personid), @"name" : _name.copy, @"alternate_names" : _alternate_names.copy, @"family_name" : _familyname.copy, @"native_name" : _native_name, @"birthdate" : _birthdate.copy, @"website_url" : _website_url.copy, @"image_url" : _image_url.copy, @"more_details" : _more_details.copy, @"favorited_count" : @(_favorited_count), @"voice_acting_roles" : _voice_acting_roles.copy, @"anime_staff_positions" : _anime_staff_positions.copy, @"published_manga" : _published_manga.copy};
+    return @{@"id" : @(_personid), @"name" : _name.copy, @"alternate_names" : _alternate_names.copy, @"family_name" : _familyname.copy, @"native_name" : _native_name, @"birthdate" : _birthdate.copy, @"website_url" : _website_url.copy, @"image_url" : _image_url.copy, @"more_details" : _more_details.copy, @"favorited_count" : @(_favorited_count), @"language" : _language.copy, @"voice_acting_roles" : _voice_acting_roles.copy, @"anime_staff_positions" : _anime_staff_positions.copy, @"published_manga" : _published_manga.copy, @"appeared_anime" : _appeared_anime.copy, @"appeared_manga" : _appeared_manga.copy, @"actors" : _voice_actors.copy};
 }
 @end
 
@@ -186,12 +193,13 @@
         _image_url = @"";
         _main_role = false;
         _anime = @{};
+        _manga = @{};
     }
     return self;
 }
 
 - (NSDictionary *)NSDictionaryRepresentation {
-    return @{@"id" : @(_characterid), @"name" : _name.copy, @"image_url" : _image_url.copy, @"main_role" : @(_main_role), @"anime" : _anime.copy};
+    return @{@"id" : @(_characterid), @"name" : _name.copy, @"image_url" : _image_url.copy, @"main_role" : @(_main_role), @"anime" : _anime.copy, @"manga": _manga.copy};
 }
 @end
 
@@ -230,11 +238,11 @@
 - (id)init {
     self = [super init];
     if (self) {
-        _username = @"";
-        _date = @"";
-        _avatar_url = @"";
-        _review = @"";
-        _actual_username = @"";
+        self.username = @"";
+        self.date = @"";
+        self.avatar_url = @"";
+        self.review = @"";
+        self.actual_username = @"";
     }
     return self;
 }
@@ -249,27 +257,43 @@
 }
 @end
 
+@implementation AtarashiiEpisodeObject
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.episodeTitle = @"";
+        self.airDate = @"";
+        self.thumbnail = @"";
+        self.synopsis = @"";
+    }
+    return self;
+}
+- (NSDictionary *)NSDictionaryRepresentation {
+    return @{@"titleId" : @(_titleId), @"episodeId" : @(_episodeId), @"episodeTitle" : _episodeTitle, @"episodeNumber" : @(_episodeNumber), @"airDate" : _airDate, @"episodeLength" : @(_episodeLength), @"thumbnail" : _thumbnail, @"synopsis" : _synopsis};
+}
+@end
+
 @implementation AtarashiiUserObject
 - (id)init {
     self = [super init];
     if (self) {
-        _avatar_url = @"";
-        _last_online = @"";
-        _gender = @"";
-        _birthday = @"";
-        _location = @"";
-        _website = @"";
-        _join_date = @"";
-        _access_rank = @"";
-        _anime_list_views = 0;
-        _manga_list_views = 0;
-        _forum_posts = 0;
-        _reviews = 0;
-        _recommendations = 0;
-        _blog_posts = 0;
-        _clubs = 0;
-        _comments = 0;
-        _extradict = @{};
+        self.avatar_url = @"";
+        self.last_online = @"";
+        self.gender = @"";
+        self.birthday = @"";
+        self.location = @"";
+        self.website = @"";
+        self.join_date = @"";
+        self.access_rank = @"";
+        self.anime_list_views = 0;
+        self.manga_list_views = 0;
+        self.forum_posts = 0;
+        self.reviews = 0;
+        self.recommendations = 0;
+        self.blog_posts = 0;
+        self.clubs = 0;
+        self.comments = 0;
+        self.extradict = @{};
     }
     return self;
 }

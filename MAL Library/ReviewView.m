@@ -100,10 +100,11 @@
             }
         }
     }
+    __weak ReviewView *weakSelf = self;
     [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading review..." completion:^(NSAttributedString * _Nonnull astr) {
-        [_reviewtext scrollToBeginningOfDocument:self];
-        [_reviewtext scrollToBeginningOfDocument:self];
-        _reviewtext.textColor = NSColor.controlTextColor;
+        [weakSelf.reviewtext scrollToBeginningOfDocument:weakSelf];
+        [weakSelf.reviewtext scrollToBeginningOfDocument:weakSelf];
+        weakSelf.reviewtext.textColor = NSColor.controlTextColor;
     }];
     if (((NSString *)review[@"avatar_url"]).length > 0) {
         _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@.jpg",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];

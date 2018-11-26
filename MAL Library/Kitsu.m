@@ -8,7 +8,7 @@
 
 #import "Kitsu.h"
 #import <AFNetworking/AFNetworking.h>
-#import "AFHTTPSessionManager+Synchronous.h"
+#import <AFNetworking/AFHTTPSessionManager+Synchronous.h>
 #import "AtarashiiAPIListFormatKitsu.h"
 #import "KitsuListRetriever.h"
 #import "Utility.h"
@@ -189,6 +189,57 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
         else {
             completionHandler([AtarashiiAPIListFormatKitsu KitsuReactionstoAtarashii:@{@"data" : dataarray, @"included" : includearray} withType:type]);
         }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
++ (void)retrieveLimitedReviewsForTitle:(int)titleid withType:(int)type withPageOffset:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+#if defined(AppStore) // Do not provide authorization as Mac App Store rating does not allow adult content. Exclude all adult content
+#else
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+        AFOAuthCredential *cred = [Kitsu getFirstAccount];
+        if (cred && cred.expired) {
+            [Kitsu refreshToken:^(bool success) {
+                if (success) {
+                    [self retrieveLimitedReviewsForTitle:titleid withType:type withPageOffset:offset completion:completionHandler error:errorHandler];
+                }
+                else {
+                    errorHandler(nil);
+                }
+            }];
+            return;
+        }
+        if (cred) {
+            [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+        }
+    }
+#endif
+    NSString *reviewurl = @"";
+    if (type == KitsuAnime) {
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[animeId]=%i&include=anime,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar,slug&sort=-upVotesCount&fields[anime]=episodeCount&page[limit]=20&page[offset]=%i", titleid,offset];
+    }
+    else {
+        reviewurl = [NSString stringWithFormat:@"https://kitsu.io/api/edge/media-reactions/?filter[mangaId]=%i&include=manga,libraryEntry,user&fields[libraryEntries]=progress,status,ratingTwenty&fields[users]=name,avatar,slug&fields[manga]=chapterCount&sort=-upVotesCount&page[limit]=20&page[offset]=%i", titleid, offset];
+    }
+    [manager GET:reviewurl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSArray *dataarray = @[];
+        NSArray *includearray = @[];
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            dataarray = responseObject[@"data"];
+            includearray = responseObject[@"included"];
+        }
+        NSDictionary *page;
+        if (responseObject[@"links"][@"next"]) {
+            int newoffset = offset + 20;
+            page = @{@"nextOffset" : @(newoffset), @"nextPage" : @YES};
+            
+        }
+        else {
+            page = @{@"nextOffset" : [NSNull null], @"nextPage" : @NO};
+        }
+        completionHandler(@{@"pageInfo" : page, @"data" : [AtarashiiAPIListFormatKitsu KitsuReactionstoAtarashii:@{@"data" : dataarray, @"included" : includearray} withType:type]});
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
     }];
@@ -460,6 +511,44 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 + (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
 }
 
+#pragma mark Episodes
++ (void)retrieveEpisodesList:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    [self retrieveEpisodesList:titleid withDataArray:tmparray withPageOffet:0 completion:completionHandler error:errorHandler];
+}
+
++ (void)retrieveEpisodesList:(int)titleid withDataArray:(NSMutableArray *)darray withPageOffet:(int)offset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/anime/%i/episodes?fields[episodes]=titles,canonicalTitle,seasonNumber,number,thumbnail,airdate&page[limit]=20&page[offset]=%i", titleid, offset] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            [darray addObjectsFromArray:responseObject[@"data"]];
+        }
+        if (responseObject[@"links"][@"next"]) {
+            int newoffset = offset + 20;
+            [self retrieveEpisodesList:titleid withDataArray:darray withPageOffet:newoffset completion:completionHandler error:errorHandler];
+        }
+        else {
+            completionHandler([AtarashiiAPIListFormatKitsu KitsuEpisodesListtoAtarashii:@{@"data":darray} withTitleId:titleid]);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
++ (void)retrieveEpisodeDetails:(int)episodeId completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    AFHTTPSessionManager *manager = [Utility jsonmanager];
+    [manager GET:[NSString stringWithFormat:@"https://kitsu.io/api/edge/episodes/%i", episodeId] parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"] && responseObject[@"data"] != [NSNull null]) {
+            completionHandler([AtarashiiAPIListFormatKitsu KitsuEpisodeDetailtoAtarashii:responseObject]);
+        }
+        else {
+            errorHandler(nil);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(error);
+    }];
+}
+
 #pragma mark helpers
 + (AFOAuthCredential *)getFirstAccount {
     return [AFOAuthCredential retrieveCredentialWithIdentifier:kKeychainIdentifier];
@@ -641,6 +730,7 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
             NSDictionary *d = [NSArray arrayWithArray:responseObject[@"data"]][0];
             NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
             [defaults setValue:d[@"id"] forKey:@"kitsu-userid"];
+            // Set Display Name
             if (d[@"attributes"][@"name"] != [NSNull null]) {
                 [defaults setValue:d[@"attributes"][@"name"] forKey:@"kitsu-username"];
             }
@@ -650,6 +740,7 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
             else {
                 [defaults setValue:@"Unknown User" forKey:@"kitsu-username"];
             }
+            // Set Rating System
             NSString *ratingtype = d[@"attributes"][@"ratingSystem"];
             if (ratingtype) {
                 if ([ratingtype isEqualToString:@"simple"]) {
@@ -665,6 +756,13 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
             else {
                  [defaults setInteger:ratingSimple forKey:@"kitsu-ratingsystem"];
             }
+            // Set Avatar
+            if (d[@"attributes"][@"avatar"] != [NSNull null]) {
+                [defaults setValue:d[@"attributes"][@"avatar"][@"large"] forKey:@"kitsu-avatar"];
+            }
+            else {
+                [defaults setValue:@"" forKey:@"kitsu-avatar"];
+            }
         }
         else {
             // Remove Account, invalid token
@@ -672,10 +770,8 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
         }
     }
     else {
-        if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"]) {
-            // Remove Account
-            [self removeAccount];
-        }
+        // Remove Account
+        [self removeAccount];
     }
 }
 @end

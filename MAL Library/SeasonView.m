@@ -34,52 +34,40 @@
     if (_seasontableview.selectedRow >= 0) {
         if (_seasontableview.selectedRow > -1) {
             NSDictionary *d = _seasonarraycontroller.selectedObjects[0];
-            switch ([listservice getCurrentServiceID]) {
-                case 1: {
-                    NSNumber *idnum = d[@"idMal"];
-                    [_mw loadinfo:idnum type:0 changeView:YES];
-                    break;
-                }
-                case 2: {
-                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
-                        [_mw loadinfo:@(kitsuid) type:0 changeView:YES];
-                    } error:^(NSError *error) {
-                        [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
-                    }];
-                    break;
-                }
-                case 3: {
-                    [_mw loadinfo:d[@"id"] type:0 changeView:YES];
-                }
-                default:
-                    break;
-            }
+            [_mw loadinfo:d[@"id"] type:0 changeView:YES];
         }
     }
 }
 
 - (IBAction)yearchange:(id)sender {
-    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
+    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title refresh:NO];
 }
 
 - (IBAction)seasonchange:(id)sender {
-    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
+    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title refresh:NO];
 }
+
 - (void)populateseasonpopups{
     [self populateyearpopup];
 }
+- (void)performreload:(bool)refresh completion:(void (^)(bool success)) completionHandler {
+    [self loadseasondata:_seasonyrpicker.title.intValue forSeason:_seasonpicker.title refresh:refresh completion:completionHandler];
+}
 
-- (void)loadseasondata:(int)year forSeason:(NSString *)season{
+- (void)loadseasondata:(int)year forSeason:(NSString *)season refresh:(bool)refresh {
+    [self loadseasondata:year forSeason:season refresh:refresh completion:^(bool success) {}];
+}
+
+- (void)loadseasondata:(int)year forSeason:(NSString *)season refresh:(bool)refresh completion:(void (^)(bool success)) completionHandler {
     if (_seasonyrpicker.itemArray.count > 0){
-        if ([Utility checkifFileExists:[NSString stringWithFormat:@"%i-%@.json",year,season] appendPath:@"/anilistseasondata/"]){
+        [AniListSeasonListGenerator retrieveSeasonDataWithSeason:season withYear:year refresh:refresh completion:^(id responseObject) {
             NSMutableArray *sarray = [_seasonarraycontroller mutableArrayValueForKey:@"content"];
             NSNumber *selectedAnimeID = nil;
             if (_seasontableview.selectedRow >= 0) {
                 selectedAnimeID = _seasonarraycontroller.selectedObjects[0][@"id"];
             }
             [sarray removeAllObjects];
-            NSArray *a =  [Utility loadJSON:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/anilistseasondata/"];
-            a = [a sortedArrayUsingDescriptors:_seasonarraycontroller.sortDescriptors];
+            NSArray *a = [responseObject sortedArrayUsingDescriptors:_seasonarraycontroller.sortDescriptors];
             [_seasonarraycontroller addObjects:a];
             [_seasontableview reloadData];
             [_seasontableview deselectAll:self];
@@ -91,10 +79,11 @@
                     }
                 }
             }
-        }
-        else {
-            [self performseasondataretrieval:year forSeason:season loaddata:true];
-        }
+            completionHandler(true);
+        } error:^(NSError *error) {
+            NSLog(@"Can't Retrieve Season Data: %@", error.localizedDescription);
+            completionHandler(false);
+        }];
     }
 }
 
@@ -108,18 +97,7 @@
         currentyear++;
     }
     [_seasonyrpicker selectItemAtIndex:_seasonyrpicker.itemArray.count-1];
-    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title];
-}
-
-- (void)performseasondataretrieval:(int)year forSeason:(NSString *)season loaddata:(bool)loaddata {
-    [AniListSeasonListGenerator retrieveSeasonDataWithSeason:season withYear:year completion:^(id responseObject) {
-        [Utility saveJSON:responseObject withFilename:[NSString stringWithFormat:@"%i-%@.json",year,season] appendpath:@"/anilistseasondata/" replace:true];
-        if (loaddata){
-            [self loadseasondata:year forSeason:season];
-        }
-    } error:^(NSError *error) {
-         NSLog(@"Error: %@", error);
-    }];
+    [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title refresh:NO];
 }
 
 - (void)tableViewSelectionDidChange:(NSNotification *)notification {

@@ -19,7 +19,9 @@
 + (NSDictionary *)AniListUserProfiletoAtarashii:(NSDictionary *)userdata;
 + (NSDictionary *)generateStaffList:(NSArray *)staffarray withCharacterArray:(NSArray *)characterarray;
 + (NSDictionary *)AniListPersontoAtarashii:(NSDictionary *)person;
-+ (NSArray *)normalizeSeasonData:(NSArray *)seasonData;
++ (NSDictionary *)AniListCharactertoAtarashii:(NSDictionary *)person;
++ (NSArray *)normalizePersonSearchData:(id)searchdata;
++ (NSArray *)normalizeSeasonData:(NSArray *)seasonData withSeason:(NSString *)season withYear:(int)year;
 + (NSArray *)generateIDArrayWithType:(int)type withIdArray:(NSArray *)idarray;
-+ (NSDictionary *)normalizeAiringData:(NSArray *)airdata;
++ (NSArray *)normalizeAiringData:(NSArray *)airdata;
 @end

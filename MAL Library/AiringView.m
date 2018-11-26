@@ -7,7 +7,7 @@
 //
 
 #import "AiringView.h"
-#import "AniListConstants.h"
+#import "AiringSchedule.h"
 #import "AtarashiiAPIListFormatAniList.h"
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
@@ -33,50 +33,34 @@
     [self filterTitles];
 }
 
-- (void)loadAiring:(NSNumber *)refresh {
-    id list;
-    bool refreshlist = refresh.boolValue;
-    bool exists = [Utility checkifFileExists:@"airing.json" appendPath:@""];
-    list = [Utility loadJSON:@"airing.json" appendpath:@""];
-    NSDate *refresheddate = [[NSUserDefaults standardUserDefaults] valueForKey:@"airschdaterefreshed"];
-    if (exists && !refreshlist && refresheddate.timeIntervalSinceNow > -2592000) {
-        [self populateAiring:list];
-        return;
-    }
-    else if (!exists || refreshlist) {
-        [self retrieveAiringSchedule:^(id responseobject) {
-            [self populateAiring:[Utility saveJSON:[self processAiring:responseobject] withFilename:@"airing.json" appendpath:@"" replace:TRUE]];
-            [[NSUserDefaults standardUserDefaults] setValue:[NSDate date] forKey:@"airschdaterefreshed"];
-        } error:^(NSError * error) {
-            NSLog(@"Can't retrieve airing data.");
-        }];
-    }
-    
-}
-
-- (void)retrieveAiringSchedule:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler {
-    NSMutableArray *tmparray = [NSMutableArray new];
-    [self doRetrieveAiringSchedule:1 withArray:tmparray completion:completionHandler error:errorHandler];
-}
-
-- (void)doRetrieveAiringSchedule: (int)page withArray:(NSMutableArray *)array completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler{
-    AFHTTPSessionManager *manager = [Utility jsonmanager];
-    
-    NSDictionary *parameters = @{@"query" : kAniListAiring, @"variables" : @{@"page" : @(page)}};
-    [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        if (responseObject[@"data"] != [NSNull null]) {
-            NSDictionary *dpage = responseObject[@"data"][@"Page"];
-            [array addObjectsFromArray:dpage[@"media"]];
-            if (((NSNumber *)dpage[@"pageInfo"][@"hasNextPage"]).boolValue) {
-                int newpage = page + 1;
-                [self doRetrieveAiringSchedule:newpage withArray:array completion:completionHandler error:errorHandler];
-            }
-            else {
-                completionHandler([AtarashiiAPIListFormatAniList normalizeAiringData:array.copy]);
-            }
+- (void)fetchnewAiringData {
+    [AiringSchedule autofetchAiringScheduleWithCompletionHandler:^(bool success, bool refreshed) {
+        if (success && refreshed) {
+            [self repopulateAiringData];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        errorHandler(error);
+    }];
+}
+
+- (void)loadAiring:(NSNumber *)refresh {
+    NSDate *refresheddate = [[NSUserDefaults standardUserDefaults] valueForKey:@"airschdaterefreshed"];
+    bool shouldrefresh = !refresheddate && refresh && refresheddate.timeIntervalSinceNow < -2592000;
+    [self retrieveAiringSchedule:shouldrefresh completion:^(id responseobject) {
+        [self populateAiring:responseobject];
+    } error:^(NSError * error) {
+        NSLog(@"Can't retrieve airing data.");
+    }];
+}
+
+- (void)repopulateAiringData {
+    [self populateAiring:[AiringSchedule retrieveAiringData]];
+}
+
+- (void)retrieveAiringSchedule:(bool)refresh completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler {
+    
+    [AiringSchedule retrieveAiringScheduleShouldRefresh:refresh completionhandler:^(bool success, bool refreshed) {
+        if (success) {
+            completionHandler([AiringSchedule retrieveAiringData]);
+        }
     }];
 }
 
@@ -111,6 +95,7 @@
     [self.airingtb reloadData];
     [self.airingtb deselectAll:self];
 }
+
 - (IBAction)airingdoubleclick:(id)sender {
     if (_airingtb.selectedRow >=0) {
         if (_airingtb.selectedRow >-1) {
@@ -138,6 +123,7 @@
         }
     }
 }
+
 - (IBAction)changedayfilter:(id)sender {
     [self filterTitles];
 }

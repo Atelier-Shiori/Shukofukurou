@@ -305,6 +305,39 @@
     return tmparray;
 }
 
++ (NSArray *)KitsuEpisodesListtoAtarashii:(NSDictionary *)data withTitleId:(int)titleid {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *episodeEntry in data[@"data"]) {
+        if (episodeEntry[@"attributes"][@"airdate"] == [NSNull null]) {
+            // Skip unaired episodes
+            continue;
+        }
+        @autoreleasepool {
+            AtarashiiEpisodeObject *episode = [AtarashiiEpisodeObject new];
+            episode.titleId = titleid;
+            episode.episodeId = ((NSNumber *)episodeEntry[@"id"]).intValue;
+            episode.episodeTitle = episodeEntry[@"attributes"][@"canonicalTitle"];
+            episode.episodeNumber = ((NSNumber *)episodeEntry[@"attributes"][@"number"]).intValue;
+            episode.thumbnail = episodeEntry[@"attributes"][@"thumbnail"] != [NSNull null] ? episodeEntry[@"attributes"][@"thumbnail"][@"original"] : @"";
+            episode.airDate = episodeEntry[@"attributes"][@"airdate"] != [NSNull null] ? episodeEntry[@"attributes"][@"airdate"] : @"";
+            [tmparray addObject:episode.NSDictionaryRepresentation];
+        }
+    }
+    return tmparray;
+}
+
++ (NSDictionary *)KitsuEpisodeDetailtoAtarashii:(NSDictionary *)data {
+    AtarashiiEpisodeObject *episode = [AtarashiiEpisodeObject new];
+    episode.episodeId = ((NSNumber *)data[@"data"][@"id"]).intValue;
+    episode.episodeTitle = data[@"data"][@"attributes"][@"canonicalTitle"];
+    episode.episodeNumber = ((NSNumber *)data[@"data"][@"attributes"][@"number"]).intValue;
+    episode.thumbnail = data[@"data"][@"attributes"][@"thumbnail"]  != [NSNull null] ? data[@"data"][@"attributes"][@"thumbnail"][@"original"] : @"";
+    episode.airDate = data[@"data"][@"attributes"][@"airdate"] != [NSNull null] ? data[@"data"][@"attributes"][@"airdate"] : @"";
+    episode.synopsis = data[@"data"][@"attributes"][@"synopsis"] != [NSNull null] ? data[@"data"][@"attributes"][@"synopsis"] : @"";
+    episode.episodeLength = data[@"data"][@"attributes"][@"length"] != [NSNull null] ? ((NSNumber *)data[@"data"][@"attributes"][@"length"]).intValue : -1;
+    return episode.NSDictionaryRepresentation;
+}
+
 + (NSArray *)KitsuReactionstoAtarashii:(NSDictionary *)data withType:(int)type {
     NSMutableArray *reactionsarray = [NSMutableArray new];
     NSArray *dataarray = data[@"data"];
@@ -474,5 +507,29 @@
         return @{@"manga_adaptations" : manga_adaptations.copy, @"prequels" : prequels.copy, @"sequels" : sequels.copy, @"side_stories" : side_stories.copy, @"parent_story" : parent_story.copy, @"character_anime" : character_anime.copy, @"spin_offs" : spin_offs.copy, @"anime_adaptations" : anime_adaptations.copy, @"alternative_versions" : alternative_versions.copy};
     }
     return nil;
+}
++ (NSArray *)normalizeSeasonData:(NSArray *)seasonData withSeason:(NSString *)season withYear:(int)year {
+    NSMutableArray *tmparray = [NSMutableArray new];
+    for (NSDictionary *d in seasonData) {
+        @autoreleasepool {
+            if (((NSNumber *)d[@"nsfw"]).boolValue) {
+                continue;
+            }
+            AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
+            aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
+            aobject.title = d[@"attributes"][@"canonicalTitle"];
+            aobject.other_titles =  @{@"synonyms" : (d[@"attributes"][@"abbreviatedTitles"] && d[@"attributes"][@"abbreviatedTitles"]  != [NSNull null]) ? d[@"attributes"][@"abbreviatedTitles"] : @[], @"english" : d[@"attributes"][@"titles"][@"en"] && d[@"attributes"][@"titles"][@"en"] != [NSNull null] ? @[d[@"attributes"][@"titles"][@"en"]] : d[@"attributes"][@"titles"][@"en_jp"] && d[@"attributes"][@"titles"][@"en_jp"] != [NSNull null] ? @[d[@"attributes"][@"titles"][@"en_jp"]] : @[], @"japanese" : d[@"attributes"][@"titles"][@"ja_jp"] && d[@"attributes"][@"titles"][@"ja_jp"] != [NSNull null] ?  @[d[@"attributes"][@"titles"][@"ja_jp"]] : @[] };
+            if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
+                aobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
+            }
+            aobject.type = [Utility convertAnimeType:d[@"attributes"][@"showType"]];
+            NSMutableDictionary *finaldict = [[NSMutableDictionary alloc] initWithDictionary:aobject.NSDictionaryRepresentation];
+            finaldict[@"year"] = @(year);
+            finaldict[@"season"] = season;
+            finaldict[@"service"] = @(2);
+            [tmparray addObject:finaldict.copy];
+        }
+    }
+    return tmparray.copy;
 }
 @end

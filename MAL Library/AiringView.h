@@ -15,6 +15,7 @@
 @property (strong) IBOutlet NSTableViewAction *airingtb;
 @property (strong) IBOutlet NSPopUpButton *day;
 @property (strong) IBOutlet NSToolbarItem *addtitleitem;
+- (void)fetchnewAiringData;
 - (void)loadAiring:(NSNumber *)refresh;
 
 @end

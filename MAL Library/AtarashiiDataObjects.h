@@ -24,6 +24,9 @@
 @property (strong) NSString *broadcast;
 @property int duration;
 @property (strong) NSString *classification;
+@property (strong) NSString *hashtag;
+@property (strong) NSString *source;
+@property (strong) NSString *season;
 @property double members_score;
 @property int members_count;
 @property int favorited_count;
@@ -126,11 +129,15 @@
 @property (strong) NSString *birthdate;
 @property (strong) NSString *image_url;
 @property (strong) NSString *website_url;
+@property (strong) NSString *language;
 @property (strong) NSString *more_details;
 @property int favorited_count;
 @property (strong) NSArray *voice_acting_roles;
+@property (strong) NSArray *voice_actors;
 @property (strong) NSArray *anime_staff_positions;
 @property (strong) NSArray *published_manga;
+@property (strong) NSArray *appeared_anime;
+@property (strong) NSArray *appeared_manga;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
@@ -140,6 +147,7 @@
 @property (strong) NSString *image_url;
 @property bool main_role;
 @property (strong) NSDictionary *anime;
+@property (strong) NSDictionary *manga;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
@@ -170,6 +178,18 @@
 @property (strong) NSString *avatar_url;
 @property (strong) NSString *review;
 @property (strong) NSString *actual_username;
+- (NSDictionary *)NSDictionaryRepresentation;
+@end
+
+@interface AtarashiiEpisodeObject : NSObject
+@property int titleId;
+@property int episodeId;
+@property (strong) NSString *episodeTitle;
+@property int episodeNumber;
+@property (strong) NSString *airDate;
+@property int episodeLength;
+@property (strong) NSString *thumbnail;
+@property (strong) NSString *synopsis;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

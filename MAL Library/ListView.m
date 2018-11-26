@@ -64,6 +64,7 @@
             [weakself performfilter:1];
             [weakself setToolTipForType:1 shouldReset:false];
         }
+        [weakself.customlistpopover close];
     };
     
 }

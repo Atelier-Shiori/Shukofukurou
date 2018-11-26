@@ -3,7 +3,7 @@ title: Registering
 description: About Registering
 keywords: app store version, app store
 ---
-While Shukofukurou is free and open source software, substaining development costs from hosting the Atarashii-API and maintaining the Apple Developer Program costs money and we rely on donations to keep the application running and distribute a free version. The free version only have the core features found in most Anime tracking programs such as Anime List managmeent, searching and viewing of Anime Titles, Anime Statistics, Messages, Viewing Reviews, and Importing lists from AniDB, Kitsu and Anilist. We reserve certain features that take a lot of effort to develop for people who donated to the project so they can recieve some thing in return.
+While Shukofukurou is free and open source software, substaining development costs such as hosting costs and maintaining the Apple Developer Program costs money and we rely on donations to keep the application running and distribute a free version. The free version only have the core features found in most Anime tracking programs such as Anime List managmeent, searching and viewing of Anime Titles, Anime Statistics, Messages, Viewing Reviews, and Importing lists from AniDB, Kitsu and Anilist. We reserve certain features that take a lot of effort to develop for people who donated to the project so they can recieve some thing in return.
 
 This only applies if you didn't download Shukofukurou from the Mac App Store or register the application with a donation key. The extra features are usually reserved for people who decide to donate to the project.
 
@@ -13,10 +13,11 @@ The following features is in the App Store version:
 * Importing and Exporting of Manga lists.
 * Using custom lists on AniList.
 * Viewing source material information in Anime Information view
-* Viewing cast information of an anime title.
+* Viewing character and staff information.
 * Viewing profiles and lists from different users.
-* Syncing Lists between Kitsu and MyAnimeList
+* Syncing Lists between services.
 * Airing Notifications
+* Episode Details
 
 All users who purchase the full version of MAL Library on the Mac App Store will get Shukofukurou 3.0 for $1.99 through the non-App Store version.
 
@@ -46,6 +47,3 @@ To authorize a Patreon account, go to the Shukofukurou menu > Patreon and select
 If Shukofukurou detects an active pledge, it will unlock the features. If it does not, it will ask if you want to make a pledge. Otherwise, it will not unlock any features.
 
 At any time, you may deauthorize your Patreon account by going to Shukofukurou > Patreon > "Deauthorize Patreon Account…"
-
-## Notice
-If you are developing a fork, please set up your own Atarashii-API server. The default API server is only for official copies of Shukofukurou, MAL Updater OS X and Hachidori. By doing so, you are pirating the software and violating the terms of service.

@@ -15,7 +15,7 @@ Shukofukurou Help            | Command (⌘)-?
 
 ## Messages Composer
 
-The commands here are applicable with creating messaages and making forum posts.
+The commands here are applicable with creating messaages, reviews, social posts, and forum posts.
 
 ### Font 
 

@@ -1221,7 +1221,8 @@
     _noinfoview.hidden = YES;
     _progressindicator.hidden = NO;
     [_progressindicator startAnimation:nil];
-    if ([self loadfromcache:idnum.intValue withType:type forcerefresh:forcerefresh]) {
+    // Check for cache title information
+    if ([self loadfromcache:idnum.intValue withType:type forcerefresh:forcerefresh ignoreLastUpdated:NO]) {
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
         return;
     }
@@ -1244,22 +1245,25 @@
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
     }error:^(NSError *error){
         NSLog(@"Error: %@", error);
-        _infoview.forcerefresh = false;
-        [_progressindicator stopAnimation:nil];
-        _infoview.selectedid = previd;
-        _infoview.type = prevtype;
-        if (_infoview.selectedid == 0) {
-            _noinfoview.hidden = NO;
-            _progressindicator.hidden = YES;
+        if (![self loadfromcache:idnum.intValue withType:type forcerefresh:forcerefresh ignoreLastUpdated:YES]) {
+            // Load previous data or no title view
+            _infoview.forcerefresh = false;
+            [_progressindicator stopAnimation:nil];
+            _infoview.selectedid = previd;
+            _infoview.type = prevtype;
+            if (_infoview.selectedid == 0) {
+                _noinfoview.hidden = NO;
+                _progressindicator.hidden = YES;
+            }
         }
         [self loadmainview];
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
     }];
 }
 
-- (bool)loadfromcache:(int)titleid withType:(int)type forcerefresh:(bool)forcerefresh{
+- (bool)loadfromcache:(int)titleid withType:(int)type forcerefresh:(bool)forcerefresh ignoreLastUpdated:(bool)ignorelastupdated {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !forcerefresh) {
-        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type ignoreLastUpdated:NO];
+        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type ignoreLastUpdated:ignorelastupdated];
         if (titleinfo) {
             _infoview.selectedid = titleid;
             _infoview.type = type;

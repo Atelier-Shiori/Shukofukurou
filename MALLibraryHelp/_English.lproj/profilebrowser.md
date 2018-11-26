@@ -9,7 +9,6 @@ In Shukofukurou, you can view profiles of other users including lists. This opti
 In the Profile Browser, you can
 * View basic information on a user
 * View a user's anime and manga list
-* View a user's history. (MyAnimeList only)
 * View a user's list statistics.
 
 To access the Profile Browser, click on the Tools menu on the menu bar and select "Profile Browser." In the Profile View, enter a username on the search bar and press enter. Then it will load the user's profile and lists.

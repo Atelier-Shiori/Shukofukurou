@@ -94,20 +94,14 @@
         }
     }
     // Stream Check
-    if (![_steampopupviewcontroller checkifdataexists:_infoviewtitle.stringValue]){
-        bool found = false;
-        for (NSString *t in othertitles) {
-            if ((found = [_steampopupviewcontroller checkifdataexists:t])){
-                _streambutton.hidden = false;
-                break;
-            }
+    NSMutableArray *tmptitles = [NSMutableArray new];
+    [tmptitles addObject:_infoviewtitle.stringValue];
+    [tmptitles addObjectsFromArray:othertitles];
+    for (NSString *t in tmptitles) {
+        if ([_steampopupviewcontroller checkifdataexists:t]){
+            _streambutton.hidden = false;
+            break;
         }
-        if (!found) {
-            _streambutton.hidden = true;
-        }
-    }
-    else {
-        _streambutton.hidden = false;
     }
     [titles appendString:[Utility appendstringwithArray:othertitles]];
     _infoviewalttitles.stringValue = titles;
@@ -170,9 +164,18 @@
         }
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
+    if (((NSString *)d[@"season"]).length > 0) {
+        [details appendString:[NSString stringWithFormat:@"Aired Season: %@\n", d[@"season"]]];
+    }
+    if (((NSString *)d[@"source"]).length > 0) {
+        [details appendString:[NSString stringWithFormat:@"Source: %@\n", d[@"source"]]];
+    }
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
     if (producers) {
         [details appendString:[NSString stringWithFormat:@"Producers: %@\n", producers]];
+    }
+    if (((NSString *)d[@"hashtag"]).length > 0) {
+        [details appendString:[NSString stringWithFormat:@"Hashtag: %@\n", d[@"hashtag"]]];
     }
     if (d[@"classification"] != nil && ((NSString *)d[@"classification"]).length > 0) {
         [details appendString:[NSString stringWithFormat:@"Classification: %@\n", d[@"classification"]]];

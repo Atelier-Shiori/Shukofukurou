@@ -11,6 +11,7 @@
 #import "Utility.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
+#import "StreamDataRetriever.h"
 
 @interface StreamPopup ()
 @property (strong) IBOutlet NSTableViewAction *tb;
@@ -26,21 +27,10 @@
 }
 
 - (bool)checkifdataexists:(NSString *)title {
-    NSDictionary *data = [Utility loadJSON:@"streamdata.json" appendpath:@""];
-    if (data[@"shows"]) {
-        NSArray *shows = data[@"shows"];
-        for (NSDictionary *d in shows) {
-            if ([(NSString *)d[@"name"] isEqualToString:[self sanitizetitle:title]]) {
-                [self loadTitles:[self convertNSDictionaryData:d[@"sites"]]];
-                return true;
-            }
-            else if (d[@"alt"]) {
-                if ([(NSString *)d[@"alt"] isEqualToString:title]) {
-                    [self loadTitles:[self convertNSDictionaryData:d[@"sites"]]];
-                    return true;
-                }
-            }
-        }
+    NSDictionary * data = [StreamDataRetriever retrieveSitesForTitle:title];
+    if (data.count > 0) {
+        [self loadTitles:[self convertNSDictionaryData:data]];
+        return true;
     }
     NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
     [a removeAllObjects];

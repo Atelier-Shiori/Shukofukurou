@@ -5,7 +5,7 @@ keyword: overview
 order: -.INF
 ---
 
-Shukofukurou is a native MyAnimeList, Kitsu, and AniList tracker. While you don't need to login, to use the list management functions, you need to add an account. Shukofukurou will prompt you to login at start up.
+Shukofukurou is a native Kitsu, and AniList tracker. While you don't need to login, to use the list management functions, you need to add an account. Shukofukurou will prompt you to login at start up.
 
 ## Main Window
 Here are the functionality available:
@@ -22,6 +22,7 @@ Here are the functionality available:
 * Title Info - Shows title of a selected anime or manga. It will show a placeholder if nothing loaded. From there, you can also view reviews, sites to stream anime, related titles and cast information
 * Seasons - Browse through a list of titles that aired in a given season and year.
 * Airing - Browse through shows that are currently airing by day.
+* Trending - Browse trending, highest rated, newly added and popular titles.
 
 ## Service Menu
 The service menu allows you to switch between list services. If you have a title loaded in Title Information, Shukofukurou will atempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.

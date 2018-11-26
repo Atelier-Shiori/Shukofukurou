@@ -6,7 +6,6 @@ order: .INF
 Shukofukurou uses the following open source frameworks and classes. Note that this applications license do not apply to these classes/libraries/frameworks. 
 
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking) - Used to create HTTP requests - Licensed under MIT License
-* [Atarashii API](https://bitbucket.org/ratan12/atarashii-api) - Not included, but MAL Updater OS X uses this unofficial MAL API to make update functionality possible. Licensed under Apache Public License 2.0
 * [CocoaOniguruma](http://limechat.net/cocoaoniguruma/) - Used for regular expressions and parsing - Licensed under BSD License.
 * [ESCssParser](https://github.com/tracy-e/ESCssParser) - Licensed under MIT License
 * [PFAboutWindow](https://github.com/perfaram/PFAboutWindow) - Licensed under MIT License

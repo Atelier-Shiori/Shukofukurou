@@ -9,12 +9,13 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindow;
+@class TitleCollectionView;
 
-@interface SeasonView : NSViewController <NSTableViewDelegate>
+@interface SeasonView : NSViewController <NSCollectionViewDelegate, NSCollectionViewDataSource>
 @property (strong) IBOutlet MainWindow *mw;
-@property (strong) IBOutlet NSTableView *seasontableview;
 @property (strong) IBOutlet NSArrayController *seasonarraycontroller;
 @property (strong) IBOutlet NSToolbarItem *addtitleitem;
+@property (strong) IBOutlet TitleCollectionView *collectionview;
 
 - (void)performreload:(bool)refresh completion:(void (^)(bool success)) completionHandler;
 - (IBAction)seasondoubleclick:(id)sender;

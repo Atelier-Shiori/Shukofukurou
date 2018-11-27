@@ -26,6 +26,7 @@
 #import "servicemenucontroller.h"
 #import "AtarashiiListCoreData.h"
 #import "TitleInfoCache.h"
+#import "TitleCollectionView.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -1131,29 +1132,22 @@
         [_addtitlecontroller showAddPopover:_infoview.selectedinfo showRelativeToRec:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge type:_infoview.type];
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        NSDictionary *d = (_seasonview.seasonarraycontroller).selectedObjects[0];
+        NSIndexPath *selected = _seasonview.collectionview.selectionIndexPaths.anyObject;
+        NSCollectionViewItem *collectionitem = [_seasonview.collectionview itemAtIndexPath:selected];
+        NSDictionary *d = (_seasonview.seasonarraycontroller).arrangedObjects[selected.item];
         switch ([listservice getCurrentServiceID]) {
             case 1: {
                 [listservice retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
-                    [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
+                    [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:0];
                 }error:^(NSError *error){
                     NSLog(@"Error: %@", error);
                 }];
                 break;
             }
-            case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
-                    [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
-                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
-                    }error:^(NSError *error){
-                        NSLog(@"Error: %@", error);
-                    }];
-                } error:^(NSError *error) {}];
-                break;
-            }
+            case 2:
             case 3: {
                 [listservice retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:AniListAnime useAccount:NO completion:^(id responseObject) {
-                    [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_seasonview.seasontableview frameOfCellAtColumn:0 row:(_seasonview.seasontableview).selectedRow] ofView:_seasonview.seasontableview preferredEdge:0 type:0];
+                    [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:0];
                 } error:^(NSError *error) {
                     NSLog(@"Error: %@", error);
                 }];
@@ -1177,7 +1171,7 @@
             case 2: {
                 [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
-                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                        //[_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                     }error:^(NSError *error){
                         NSLog(@"Error: %@", error);
                     }];
@@ -1185,7 +1179,7 @@
                 break;
             }
             case 3: {
-                [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                //[_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                 break;
             }
             default:

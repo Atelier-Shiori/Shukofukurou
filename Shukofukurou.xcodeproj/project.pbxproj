@@ -90,6 +90,22 @@
 		2DB59D161EB7D4BE00FDC36E /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
 		2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
+		593A793421AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
+		593A793521AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
+		593A793621AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
+		593A793721AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
+		593A793C21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
+		593A793D21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
+		593A793E21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
+		593A793F21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
+		593A794821ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */; };
+		593A794921ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */; };
+		593A794A21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */; };
+		593A794B21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */; };
+		593A795421ADAF410083FA86 /* TitleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795321ADAF410083FA86 /* TitleCollectionView.m */; };
+		593A795521ADAF410083FA86 /* TitleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795321ADAF410083FA86 /* TitleCollectionView.m */; };
+		593A795621ADAF410083FA86 /* TitleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795321ADAF410083FA86 /* TitleCollectionView.m */; };
+		593A795721ADAF410083FA86 /* TitleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795321ADAF410083FA86 /* TitleCollectionView.m */; };
 		597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
@@ -838,6 +854,13 @@
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
 		2DC64B661EC3D661005A8BCE /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		593A792B21AC91A60083FA86 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
+		593A793321AD927C0083FA86 /* TitleCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
+		593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleCollectionCell.xib; sourceTree = "<group>"; };
+		593A794621ADACFF0083FA86 /* TitleCollectionCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCellView.h; sourceTree = "<group>"; };
+		593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCellView.m; sourceTree = "<group>"; };
+		593A795221ADAF410083FA86 /* TitleCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionView.h; sourceTree = "<group>"; };
+		593A795321ADAF410083FA86 /* TitleCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionView.m; sourceTree = "<group>"; };
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
@@ -1230,6 +1253,11 @@
 		598B455021AC5D0D00F28180 /* Collection View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				593A792B21AC91A60083FA86 /* TitleCollectionCell.h */,
+				593A793321AD927C0083FA86 /* TitleCollectionCell.m */,
+				593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */,
+				593A794621ADACFF0083FA86 /* TitleCollectionCellView.h */,
+				593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */,
 			);
 			name = "Collection View Cell";
 			sourceTree = "<group>";
@@ -1472,6 +1500,8 @@
 				2D4C22161FA7B1ED00539245 /* XIB */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				593A795221ADAF410083FA86 /* TitleCollectionView.h */,
+				593A795321ADAF410083FA86 /* TitleCollectionView.m */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1787,6 +1817,7 @@
 				2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B21EC4ED800068856A /* ReviewWindow.xib in Resources */,
 				2D4E010C1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
+				593A793D21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
 				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
 				91822A591EAEAC70005E33DB /* messageswindow.xib in Resources */,
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
@@ -1837,6 +1868,7 @@
 				2D4E010F1FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */,
+				593A793C21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
 				91822A581EAEAC70005E33DB /* messageswindow.xib in Resources */,
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
@@ -1887,6 +1919,7 @@
 				91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */,
 				91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */,
 				91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */,
+				593A793F21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
 				91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */,
 				91F8E40C210A46CA007137A7 /* messageswindow.xib in Resources */,
 				91F8E40D210A46CA007137A7 /* Assets.xcassets in Resources */,
@@ -1951,6 +1984,7 @@
 				F888F472208FB1F500C22C39 /* Credits.rtf in Resources */,
 				F888F473208FB1F500C22C39 /* SearchView.xib in Resources */,
 				F888F474208FB1F500C22C39 /* AiringView.xib in Resources */,
+				593A793E21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
 				F888F475208FB1F500C22C39 /* ListImport.xib in Resources */,
 				F888F476208FB1F500C22C39 /* LoginView.xib in Resources */,
 				F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */,
@@ -2091,6 +2125,7 @@
 				F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
+				593A793521AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
 				913A116D1E8F206A00450B66 /* PFAboutWindowController.m in Sources */,
 				598B453321AC393600F28180 /* TrendingRetriever.m in Sources */,
 				913A116E1E8F206A00450B66 /* GeneralPref.m in Sources */,
@@ -2130,12 +2165,14 @@
 				2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
+				593A795521ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
 				598B454C21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
 				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
+				593A794921ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 				9129254C2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
 			);
@@ -2159,6 +2196,7 @@
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
 				F8B5AA952044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */,
+				593A793421AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
 				598B452C21AC392C00F28180 /* TitleInfoCache.m in Sources */,
@@ -2196,6 +2234,8 @@
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				598B453221AC393600F28180 /* TrendingRetriever.m in Sources */,
 				9129254B2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
+				593A794821ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
+				593A795421ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
@@ -2260,6 +2300,7 @@
 				91F8E3B0210A46CA007137A7 /* AniListScoreConvert.m in Sources */,
 				91F8E3B1210A46CA007137A7 /* XMLReader.m in Sources */,
 				917CEC7D211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
+				593A794B21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				598B453B21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				91F8E3B2210A46CA007137A7 /* SeasonView.m in Sources */,
 				91F8E3B3210A46CA007137A7 /* LoginPref.m in Sources */,
@@ -2301,6 +2342,7 @@
 				91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */,
 				91F8E3D9210A46CA007137A7 /* ProfileViewController.m in Sources */,
 				598B454F21AC5C3400F28180 /* IsAiringValueTransformer.m in Sources */,
+				593A793721AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
 				91F8E3DA210A46CA007137A7 /* CustomListShouldShowValueTransformer.m in Sources */,
 				91F8E3DB210A46CA007137A7 /* NSString+HTMLtoNSAttributedString.m in Sources */,
 				91F8E3DC210A46CA007137A7 /* ReviewView.m in Sources */,
@@ -2308,6 +2350,7 @@
 				91F8E3DE210A46CA007137A7 /* NSString_stripHtml.m in Sources */,
 				91F8E3DF210A46CA007137A7 /* SoftwareUpdatesPref.m in Sources */,
 				91F8E3E0210A46CA007137A7 /* ImportPrompt.m in Sources */,
+				593A795721ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				91F8E3E1210A46CA007137A7 /* KitsuListRetriever.m in Sources */,
 				91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */,
 				91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */,
@@ -2350,6 +2393,7 @@
 				F888F411208FB1F500C22C39 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */,
 				597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
+				593A794A21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				F888F413208FB1F500C22C39 /* Base64Category.m in Sources */,
 				F888F414208FB1F500C22C39 /* RecommendedTitleView.m in Sources */,
 				F888F415208FB1F500C22C39 /* HistoryView.m in Sources */,
@@ -2392,6 +2436,7 @@
 				F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */,
 				F888F439208FB1F500C22C39 /* ratingchartview.m in Sources */,
 				F888F43A208FB1F500C22C39 /* NSTextFieldCellMiddleAligned.m in Sources */,
+				593A795621ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				F888F43B208FB1F500C22C39 /* AniList.m in Sources */,
 				F888F43C208FB1F500C22C39 /* ImportPrompt.m in Sources */,
 				F888F43D208FB1F500C22C39 /* StringDatetoDate.m in Sources */,
@@ -2420,6 +2465,7 @@
 				F888F454208FB1F500C22C39 /* AdvancedSearch.m in Sources */,
 				F888F455208FB1F500C22C39 /* StreamPopup.m in Sources */,
 				F888F456208FB1F500C22C39 /* KitsuListRetriever.m in Sources */,
+				593A793621AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
 				F888F457208FB1F500C22C39 /* InfoView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,106 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SeasonView">
             <connections>
+                <outlet property="collectionview" destination="TMj-5K-v2z" id="y52-wc-Pv2"/>
                 <outlet property="seasonarraycontroller" destination="QNQ-5A-Omf" id="FP7-90-VVs"/>
-                <outlet property="seasontableview" destination="IIp-eM-cOA" id="2Kf-Ex-fi4"/>
-                <outlet property="view" destination="yeh-AM-TSu" id="7MG-0A-iJm"/>
+                <outlet property="view" destination="31f-Hb-kDm" id="e1r-lF-7WH"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView identifier="seasonview" id="yeh-AM-TSu" userLabel="seasonview">
-            <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ha-k6-Tic">
-                    <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" focusRingType="none" ambiguous="YES" id="gKI-UV-hrp">
-                        <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="seasontb" headerView="pKH-GC-Xs5" id="IIp-eM-cOA" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="562" height="378"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <size key="intercellSpacing" width="3" height="2"/>
-                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                <tableColumns>
-                                    <tableColumn identifier="title" editable="NO" width="488" minWidth="40" maxWidth="1000" id="zCN-Bb-DAE">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="l2P-sb-ovn">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="QNQ-5A-Omf" name="value" keyPath="arrangedObjects.title" id="dYb-mV-eYC">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
-                                    <tableColumn identifier="type" editable="NO" width="68" minWidth="40" maxWidth="1000" id="5Rh-0z-hsV">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Type">
-                                            <font key="font" metaFont="smallSystem"/>
-                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                        </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="oI6-eZ-8Ge">
-                                            <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
-                                        <connections>
-                                            <binding destination="QNQ-5A-Omf" name="value" keyPath="arrangedObjects.type" id="yhG-Hc-ndz">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
-                                        </connections>
-                                    </tableColumn>
-                                </tableColumns>
-                                <connections>
-                                    <action trigger="doubleAction" selector="seasondoubleclick:" target="-2" id="aIq-RU-UlQ"/>
-                                    <outlet property="delegate" destination="-2" id="ryK-1a-naN"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                    </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ZpS-nf-Ykv">
-                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="u5A-Em-ifM">
-                        <rect key="frame" x="-15" y="15" width="15" height="0.0"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </scroller>
-                    <tableHeaderView key="headerView" id="pKH-GC-Xs5">
-                        <rect key="frame" x="0.0" y="0.0" width="562" height="23"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </tableHeaderView>
-                </scrollView>
-            </subviews>
-            <point key="canvasLocation" x="96" y="783.5"/>
-        </customView>
         <arrayController objectClassName="NSDictionary" editable="NO" id="QNQ-5A-Omf">
             <declaredKeys>
                 <string>allValues</string>
             </declaredKeys>
         </arrayController>
+        <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" id="31f-Hb-kDm">
+            <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEW-Su-Nir">
+                    <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+                    <clipView key="contentView" id="329-bk-Aau">
+                        <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView selectable="YES" id="TMj-5K-v2z" customClass="TitleCollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="OLi-dU-gtw">
+                                    <size key="itemSize" width="105" height="161"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="cGi-4P-Nqu"/>
+                                    <outlet property="delegate" destination="-2" id="lDs-Dk-6AJ"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="VxP-si-6FX">
+                        <rect key="frame" x="-100" y="-100" width="540" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="juE-Ol-Kqm">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="AEW-Su-Nir" secondAttribute="trailing" id="ABx-8p-U89"/>
+                <constraint firstItem="AEW-Su-Nir" firstAttribute="top" secondItem="31f-Hb-kDm" secondAttribute="top" id="E8K-84-aja"/>
+                <constraint firstItem="AEW-Su-Nir" firstAttribute="leading" secondItem="31f-Hb-kDm" secondAttribute="leading" id="HNP-su-plo"/>
+                <constraint firstAttribute="bottom" secondItem="AEW-Su-Nir" secondAttribute="bottom" id="jx4-Hf-wgu"/>
+            </constraints>
+            <point key="canvasLocation" x="91" y="211.5"/>
+        </visualEffectView>
     </objects>
 </document>

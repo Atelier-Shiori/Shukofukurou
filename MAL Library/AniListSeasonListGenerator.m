@@ -153,10 +153,10 @@
             else {
                 newdict[@"other_titles"] =  @{@"synonyms" : @[]  , @"english" : @[], @"japanese" : @[] };
             }
-            [finalarray addObject:newdict.copy];
+            [finalarray addObject:newdict];
         }
     }
-    return finalarray.copy;
+    return finalarray;
 }
 
 + (NSManagedObject *)retrieveExistingEntry:(int)titleid withSeason:(NSString *)season withYear:(int)year {

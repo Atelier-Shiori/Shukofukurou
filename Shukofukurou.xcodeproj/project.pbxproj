@@ -857,6 +857,7 @@
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
 		2DC64B661EC3D661005A8BCE /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		5924225821ADFC3100A13B95 /* Shukofukurou Next.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou Next.entitlements"; sourceTree = "<group>"; };
 		593A792B21AC91A60083FA86 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
 		593A793321AD927C0083FA86 /* TitleCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
 		593A794621ADACFF0083FA86 /* TitleCollectionCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCellView.h; sourceTree = "<group>"; };
@@ -1299,6 +1300,7 @@
 		9199BA8D1E89836000F6E9FF = {
 			isa = PBXGroup;
 			children = (
+				5924225821ADFC3100A13B95 /* Shukofukurou Next.entitlements */,
 				5970A98F214AA9A300450626 /* Shukofukurou.entitlements */,
 				9199BA981E89836000F6E9FF /* MAL Library */,
 				2D60A1201E9B322A0034C3AA /* MAL LibraryUITests */,
@@ -1758,6 +1760,11 @@
 					};
 					91F8E397210A46CA007137A7 = {
 						DevelopmentTeam = 9HDZTER525;
+						SystemCapabilities = {
+							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+						};
 					};
 					F87EF55D2098D22E000AD86E = {
 						CreatedOnToolsVersion = 9.2;
@@ -3188,6 +3195,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3242,6 +3250,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MAL\\ Library",

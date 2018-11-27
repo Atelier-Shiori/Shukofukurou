@@ -92,10 +92,6 @@
 		593A793521AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
 		593A793621AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
 		593A793721AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
-		593A793C21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
-		593A793D21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
-		593A793E21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
-		593A793F21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */; };
 		593A794821ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */; };
 		593A794921ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */; };
 		593A794A21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */; };
@@ -108,18 +104,22 @@
 		593A796221ADC6FE0083FA86 /* TrendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795F21ADC6FE0083FA86 /* TrendingView.m */; };
 		593A796321ADC6FE0083FA86 /* TrendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795F21ADC6FE0083FA86 /* TrendingView.m */; };
 		593A796421ADC6FE0083FA86 /* TrendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795F21ADC6FE0083FA86 /* TrendingView.m */; };
-		593A796521ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
-		593A796621ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
-		593A796721ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
-		593A796821ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
-		593A798121ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
-		593A798221ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
-		593A798321ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
-		593A798421ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
 		593A798721ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
 		593A798821ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
 		593A798921ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
 		593A798A21ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
+		593A798B21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799021ADEE050083FA86 /* TitleCollectionCell.xib */; };
+		593A798C21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799021ADEE050083FA86 /* TitleCollectionCell.xib */; };
+		593A798D21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799021ADEE050083FA86 /* TitleCollectionCell.xib */; };
+		593A798E21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799021ADEE050083FA86 /* TitleCollectionCell.xib */; };
+		593A799121ADEE0C0083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799621ADEE0C0083FA86 /* HeaderView.xib */; };
+		593A799221ADEE0C0083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799621ADEE0C0083FA86 /* HeaderView.xib */; };
+		593A799321ADEE0C0083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799621ADEE0C0083FA86 /* HeaderView.xib */; };
+		593A799421ADEE0C0083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799621ADEE0C0083FA86 /* HeaderView.xib */; };
+		593A799721ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
+		593A799821ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
+		593A799921ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
+		593A799A21ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
 		597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
@@ -859,17 +859,17 @@
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 		593A792B21AC91A60083FA86 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
 		593A793321AD927C0083FA86 /* TitleCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
-		593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleCollectionCell.xib; sourceTree = "<group>"; };
 		593A794621ADACFF0083FA86 /* TitleCollectionCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCellView.h; sourceTree = "<group>"; };
 		593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCellView.m; sourceTree = "<group>"; };
 		593A795221ADAF410083FA86 /* TitleCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionView.h; sourceTree = "<group>"; };
 		593A795321ADAF410083FA86 /* TitleCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionView.m; sourceTree = "<group>"; };
 		593A795E21ADC6FE0083FA86 /* TrendingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingView.h; sourceTree = "<group>"; };
 		593A795F21ADC6FE0083FA86 /* TrendingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingView.m; sourceTree = "<group>"; };
-		593A796021ADC6FE0083FA86 /* TrendingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingView.xib; sourceTree = "<group>"; };
-		593A798021ADE7D30083FA86 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		593A798521ADE8370083FA86 /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		593A798621ADE8370083FA86 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		593A798F21ADEE050083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleCollectionCell.xib; sourceTree = "<group>"; };
+		593A799521ADEE0C0083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HeaderView.xib; sourceTree = "<group>"; };
+		593A799B21ADEE140083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TrendingView.xib; sourceTree = "<group>"; };
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
@@ -1259,10 +1259,10 @@
 			children = (
 				593A792B21AC91A60083FA86 /* TitleCollectionCell.h */,
 				593A793321AD927C0083FA86 /* TitleCollectionCell.m */,
-				593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */,
+				593A799021ADEE050083FA86 /* TitleCollectionCell.xib */,
 				593A794621ADACFF0083FA86 /* TitleCollectionCellView.h */,
 				593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */,
-				593A798021ADE7D30083FA86 /* HeaderView.xib */,
+				593A799621ADEE0C0083FA86 /* HeaderView.xib */,
 				593A798521ADE8370083FA86 /* HeaderView.h */,
 				593A798621ADE8370083FA86 /* HeaderView.m */,
 			);
@@ -1511,7 +1511,7 @@
 				593A795321ADAF410083FA86 /* TitleCollectionView.m */,
 				593A795E21ADC6FE0083FA86 /* TrendingView.h */,
 				593A795F21ADC6FE0083FA86 /* TrendingView.m */,
-				593A796021ADC6FE0083FA86 /* TrendingView.xib */,
+				593A799C21ADEE140083FA86 /* TrendingView.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1826,7 +1826,7 @@
 				2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B21EC4ED800068856A /* ReviewWindow.xib in Resources */,
 				2D4E010C1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
-				593A793D21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
+				593A798C21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */,
 				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
 				91822A611EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
@@ -1849,9 +1849,9 @@
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				2D4E01081FA3B1A10053A82B /* ProfileViewController.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
-				593A798221ADE7D30083FA86 /* HeaderView.xib in Resources */,
+				593A799221ADEE0C0083FA86 /* HeaderView.xib in Resources */,
 				9169BC452062C3F700C534B8 /* advancededitdialog.xib in Resources */,
-				593A796621ADC6FE0083FA86 /* TrendingView.xib in Resources */,
+				593A799821ADEE140083FA86 /* TrendingView.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
 				2D8BF8B81EC4EED80068856A /* ImportPrompt.xib in Resources */,
@@ -1876,7 +1876,7 @@
 				2D4E010F1FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */,
-				593A793C21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
+				593A798B21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
@@ -1899,10 +1899,10 @@
 				2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */,
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
-				593A798121ADE7D30083FA86 /* HeaderView.xib in Resources */,
+				593A799121ADEE0C0083FA86 /* HeaderView.xib in Resources */,
 				2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */,
 				9169BC442062C3F700C534B8 /* advancededitdialog.xib in Resources */,
-				593A796521ADC6FE0083FA86 /* TrendingView.xib in Resources */,
+				593A799721ADEE140083FA86 /* TrendingView.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				2D4E01171FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
@@ -1926,7 +1926,7 @@
 				91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */,
 				91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */,
 				91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */,
-				593A793F21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
+				593A798E21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */,
 				91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */,
 				91F8E40D210A46CA007137A7 /* Assets.xcassets in Resources */,
 				91F8E40E210A46CA007137A7 /* dsa_pub.pem in Resources */,
@@ -1949,10 +1949,10 @@
 				91F8E41F210A46CA007137A7 /* ratingchartview.xib in Resources */,
 				91F8E420210A46CA007137A7 /* NotLoggedIn.xib in Resources */,
 				91F8E421210A46CA007137A7 /* SoftwareUpdateView.xib in Resources */,
-				593A798421ADE7D30083FA86 /* HeaderView.xib in Resources */,
+				593A799421ADEE0C0083FA86 /* HeaderView.xib in Resources */,
 				91F8E422210A46CA007137A7 /* ReviewWindow.xib in Resources */,
 				91F8E423210A46CA007137A7 /* advancededitdialog.xib in Resources */,
-				593A796821ADC6FE0083FA86 /* TrendingView.xib in Resources */,
+				593A799A21ADEE140083FA86 /* TrendingView.xib in Resources */,
 				91F8E424210A46CA007137A7 /* AddTitle.xib in Resources */,
 				91F8E425210A46CA007137A7 /* StreamPopup.xib in Resources */,
 				91F8E426210A46CA007137A7 /* InfoView.xib in Resources */,
@@ -1980,7 +1980,7 @@
 			files = (
 				F888F468208FB1F500C22C39 /* ShukofukurouHelp.help in Resources */,
 				F888F46A208FB1F500C22C39 /* EditTitle.xib in Resources */,
-				593A796721ADC6FE0083FA86 /* TrendingView.xib in Resources */,
+				593A799921ADEE140083FA86 /* TrendingView.xib in Resources */,
 				F888F46B208FB1F500C22C39 /* ReviewView.xib in Resources */,
 				F888F46C208FB1F500C22C39 /* ReviewWindow.xib in Resources */,
 				F888F46D208FB1F500C22C39 /* ProfileWindowController.xib in Resources */,
@@ -1990,7 +1990,7 @@
 				F888F472208FB1F500C22C39 /* Credits.rtf in Resources */,
 				F888F473208FB1F500C22C39 /* SearchView.xib in Resources */,
 				F888F474208FB1F500C22C39 /* AiringView.xib in Resources */,
-				593A793E21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
+				593A798D21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */,
 				F888F475208FB1F500C22C39 /* ListImport.xib in Resources */,
 				F888F476208FB1F500C22C39 /* LoginView.xib in Resources */,
 				F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */,
@@ -2005,7 +2005,7 @@
 				F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				91F8E441210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
 				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
-				593A798321ADE7D30083FA86 /* HeaderView.xib in Resources */,
+				593A799321ADEE0C0083FA86 /* HeaderView.xib in Resources */,
 				F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */,
 				F888F482208FB1F500C22C39 /* ProfileViewController.xib in Resources */,
 				F888F483208FB1F500C22C39 /* ratingchartview.xib in Resources */,
@@ -2606,6 +2606,30 @@
 				2D8BF8B91EC4EED80068856A /* Base */,
 			);
 			name = ImportPrompt.xib;
+			sourceTree = "<group>";
+		};
+		593A799021ADEE050083FA86 /* TitleCollectionCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				593A798F21ADEE050083FA86 /* Base */,
+			);
+			name = TitleCollectionCell.xib;
+			sourceTree = "<group>";
+		};
+		593A799621ADEE0C0083FA86 /* HeaderView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				593A799521ADEE0C0083FA86 /* Base */,
+			);
+			name = HeaderView.xib;
+			sourceTree = "<group>";
+		};
+		593A799C21ADEE140083FA86 /* TrendingView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				593A799B21ADEE140083FA86 /* Base */,
+			);
+			name = TrendingView.xib;
 			sourceTree = "<group>";
 		};
 		910589F21E981E2400501B9A /* AdvancedPref.xib */ = {

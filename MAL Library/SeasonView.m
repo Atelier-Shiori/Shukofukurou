@@ -22,10 +22,14 @@
 @end
 
 @implementation SeasonView
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
 
 - (instancetype)init {
     return [super initWithNibName:@"SeasonView" bundle:nil];
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
@@ -34,6 +38,15 @@
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
     _seasonarraycontroller.sortDescriptors = @[sort];
     [_addtitleitem setEnabled:NO];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"ServiceChanged" object:nil];
+    [self populateseasonpopups];
+}
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"ServiceChanged"]) {
+        [self performreload:NO completion:^(bool success) {
+        }];
+    }
 }
 
 #pragma mark NSCollectionViewDataSource
@@ -60,8 +73,7 @@
 - (void)collectionView:(NSCollectionView *)collectionView didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths {
     [_addtitleitem setEnabled:YES];
 }
-- (void)collectionView:(NSCollectionView *)collectionView
-didDeselectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths {
+- (void)collectionView:(NSCollectionView *)collectionView didDeselectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths {
     [_addtitleitem setEnabled:NO];
 }
 
@@ -73,14 +85,6 @@ didDeselectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths {
         [_mw loadinfo:d[@"id"] type:0 changeView:YES forcerefresh:NO];
     }
 }
-/*- (IBAction)seasondoubleclick:(id)sender {
-    if (_seasontableview.selectedRow >= 0) {
-        if (_seasontableview.selectedRow > -1) {
-            NSDictionary *d = _seasonarraycontroller.selectedObjects[0];
-            [_mw loadinfo:d[@"id"] type:0 changeView:YES forcerefresh:NO];
-        }
-    }
-}*/
 
 - (IBAction)yearchange:(id)sender {
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title refresh:NO];

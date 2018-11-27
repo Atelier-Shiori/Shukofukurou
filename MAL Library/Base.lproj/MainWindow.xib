@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -30,6 +30,7 @@
                 <outlet property="sourceList" destination="tEv-Dd-bgp" id="SSj-Vb-fUB"/>
                 <outlet property="splitview" destination="juR-gi-pJh" id="sMv-gK-xur"/>
                 <outlet property="toolbar" destination="6eG-p3-l2S" id="wTZ-w8-9cJ"/>
+                <outlet property="trendingview" destination="aeO-w6-I5I" id="CcH-yW-TX6"/>
                 <outlet property="viewonsitetoolbaritem" destination="Xo3-FI-FWS" id="IPh-md-hhb"/>
                 <outlet property="w" destination="F0z-JX-Cv5" id="rtl-lI-YpK"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
@@ -250,6 +251,21 @@
                         </button>
                         <connections>
                             <action selector="showaddpopover:" target="-2" id="CS3-hB-7dd"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C4CA307B-ECB7-4105-9654-3674D3EA5EAA" explicitItemIdentifier="AddTitleTrending" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="epp-TI-5SG">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="Xc0-5x-7z3">
+                            <rect key="frame" x="9" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vsE-fk-Tby">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="showaddpopover:" target="-2" id="JoD-Dz-EQm"/>
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A1F35638-FA53-4287-A620-A3B4964133B5" explicitItemIdentifier="AddTitleSearch" label="Add Title" paletteLabel="Add Title" toolTip="Add Title" image="NSAddTemplate" id="2dK-au-ShY">
@@ -656,6 +672,26 @@
                             <action selector="modifyCustomLists:" target="Xk3-JH-b4a" id="Lo9-JU-eQp"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A62B128C-C137-4EF2-B533-0E90B118430F" explicitItemIdentifier="trendtype" label="Trending Type" paletteLabel="Trending Type" sizingBehavior="auto" id="Eqk-Og-510">
+                        <nil key="toolTip"/>
+                        <segmentedControl key="view" verticalHuggingPriority="750" id="80C-bc-uot">
+                            <rect key="frame" x="0.0" y="14" width="134" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="yTh-I5-ND0">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="Anime"/>
+                                    <segment label="Manga" selected="YES" tag="1"/>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <binding destination="2F9-Ng-hjJ" name="selectedIndex" keyPath="values.selectedtrending" id="SmY-Rl-KZQ"/>
+                            </connections>
+                        </segmentedControl>
+                        <connections>
+                            <action selector="trendingchanged:" target="aeO-w6-I5I" id="uKu-CK-mXp"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -777,6 +813,13 @@
                 <outlet property="addtitleitem" destination="1Ql-ns-YSb" id="XfB-FA-nb8"/>
                 <outlet property="day" destination="kRz-ix-xG0" id="aVY-3J-Gii"/>
                 <outlet property="mw" destination="-2" id="9rJ-Z0-zC2"/>
+            </connections>
+        </viewController>
+        <viewController id="aeO-w6-I5I" customClass="TrendingView">
+            <connections>
+                <outlet property="addtitleitem" destination="epp-TI-5SG" id="4HK-gE-bsL"/>
+                <outlet property="mw" destination="-2" id="Sg5-yb-8XX"/>
+                <outlet property="trendingtype" destination="80C-bc-uot" id="7uW-k8-xiM"/>
             </connections>
         </viewController>
     </objects>

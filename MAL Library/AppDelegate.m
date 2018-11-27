@@ -85,6 +85,8 @@
     defaultValues[@"currentservice"] = @(3);
     defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
     defaultValues[@"showadult"] = @NO;
+    defaultValues[@"cachetitleinfo"] = @YES;
+    defaultValues[@"selectedtrending"] = @(0);
     // Export
     defaultValues[@"updateonimportcurrent"] = @YES;
     defaultValues[@"updateonimportcompleted"] = @NO;

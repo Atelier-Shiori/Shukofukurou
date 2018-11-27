@@ -25,6 +25,7 @@
 @class AdvancedSearch;
 @class HistoryView;
 @class AiringView;
+@class TrendingView;
 
 @interface MainWindow : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
 @property (strong)IBOutlet NSWindow *w;
@@ -71,6 +72,10 @@
 
 // Airing View
 @property (strong) IBOutlet AiringView *airingview;
+
+// Trending View
+@property (strong) IBOutlet TrendingView *trendingview;
+
 
 //Advanced Edit Dialog
 @property (strong) advancededitdialog *ade;

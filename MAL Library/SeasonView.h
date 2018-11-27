@@ -18,7 +18,6 @@
 @property (strong) IBOutlet TitleCollectionView *collectionview;
 
 - (void)performreload:(bool)refresh completion:(void (^)(bool success)) completionHandler;
-- (IBAction)seasondoubleclick:(id)sender;
 - (IBAction)yearchange:(id)sender;
 - (IBAction)seasonchange:(id)sender;
 - (void)populateyearpopup;

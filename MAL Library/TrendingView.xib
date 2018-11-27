@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TrendingView">
+            <connections>
+                <outlet property="collectionview" destination="c5K-9L-9fd" id="cM3-FE-r7S"/>
+                <outlet property="loadingindicator" destination="leI-24-Bul" id="gFr-o1-Pxo"/>
+                <outlet property="loadingview" destination="tWL-Ap-adl" id="mrS-BS-dwT"/>
+                <outlet property="view" destination="pek-Rh-WXI" id="1UK-JH-kXb"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" id="pek-Rh-WXI">
+            <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-u4-dS9">
+                    <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+                    <clipView key="contentView" id="3AP-dM-XJY">
+                        <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView selectable="YES" id="c5K-9L-9fd" customClass="TitleCollectionView">
+                                <rect key="frame" x="0.0" y="0.0" width="562" height="401"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="Os7-Qb-3rv">
+                                    <size key="itemSize" width="105" height="161"/>
+                                    <edgeInsets key="sectionInset" left="10" right="10" top="10" bottom="10"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="0Rb-ar-r9f"/>
+                                    <outlet property="delegate" destination="-2" id="8zj-Dq-15n"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Vty-Ki-Lmt">
+                        <rect key="frame" x="-100" y="-100" width="540" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="bPz-q9-MTU">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <visualEffectView hidden="YES" appearanceType="inheritedVibrantLight" fixedFrame="YES" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="tWL-Ap-adl">
+                    <rect key="frame" x="217" y="148" width="128" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="leI-24-Bul">
+                            <rect key="frame" x="48" y="33" width="32" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </progressIndicator>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fjB-08-f8r">
+                            <rect key="frame" x="9" y="91" width="109" height="17"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loading..." id="mow-ev-ENU">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="xLo-u4-dS9" secondAttribute="bottom" id="8qr-lo-dQt"/>
+                <constraint firstItem="xLo-u4-dS9" firstAttribute="top" secondItem="pek-Rh-WXI" secondAttribute="top" id="D87-h5-rce"/>
+                <constraint firstItem="xLo-u4-dS9" firstAttribute="leading" secondItem="pek-Rh-WXI" secondAttribute="leading" id="EFF-nT-yhd"/>
+                <constraint firstAttribute="trailing" secondItem="xLo-u4-dS9" secondAttribute="trailing" id="SYR-ef-JEQ"/>
+            </constraints>
+            <point key="canvasLocation" x="91" y="211.5"/>
+        </visualEffectView>
+    </objects>
+</document>

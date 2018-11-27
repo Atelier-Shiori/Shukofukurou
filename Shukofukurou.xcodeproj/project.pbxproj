@@ -12,8 +12,6 @@
 		2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
 		2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
 		2D185EBB1ECCB01F00E1A594 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */; };
-		2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
-		2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
 		2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
 		2D371E741ECF8AF500F47138 /* ListStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E721ECF8AF500F47138 /* ListStatistics.m */; };
@@ -106,6 +104,22 @@
 		593A795521ADAF410083FA86 /* TitleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795321ADAF410083FA86 /* TitleCollectionView.m */; };
 		593A795621ADAF410083FA86 /* TitleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795321ADAF410083FA86 /* TitleCollectionView.m */; };
 		593A795721ADAF410083FA86 /* TitleCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795321ADAF410083FA86 /* TitleCollectionView.m */; };
+		593A796121ADC6FE0083FA86 /* TrendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795F21ADC6FE0083FA86 /* TrendingView.m */; };
+		593A796221ADC6FE0083FA86 /* TrendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795F21ADC6FE0083FA86 /* TrendingView.m */; };
+		593A796321ADC6FE0083FA86 /* TrendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795F21ADC6FE0083FA86 /* TrendingView.m */; };
+		593A796421ADC6FE0083FA86 /* TrendingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A795F21ADC6FE0083FA86 /* TrendingView.m */; };
+		593A796521ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
+		593A796621ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
+		593A796721ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
+		593A796821ADC6FE0083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A796021ADC6FE0083FA86 /* TrendingView.xib */; };
+		593A798121ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
+		593A798221ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
+		593A798321ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
+		593A798421ADE7D30083FA86 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A798021ADE7D30083FA86 /* HeaderView.xib */; };
+		593A798721ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
+		593A798821ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
+		593A798921ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
+		593A798A21ADE8370083FA86 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A798621ADE8370083FA86 /* HeaderView.m */; };
 		597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
@@ -247,10 +261,6 @@
 		91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91822A561EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */; };
 		91822A571EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */; };
-		91822A581EAEAC70005E33DB /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5B1EAEAC70005E33DB /* messageswindow.xib */; };
-		91822A591EAEAC70005E33DB /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5B1EAEAC70005E33DB /* messageswindow.xib */; };
-		91822A5C1EAEAC77005E33DB /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5F1EAEAC77005E33DB /* messageview.xib */; };
-		91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5F1EAEAC77005E33DB /* messageview.xib */; };
 		91822A601EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */; };
 		91822A611EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */; };
 		9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9188226F1E8C90A700C7FEF1 /* InfoView.xib */; };
@@ -404,13 +414,11 @@
 		91F8E402210A46CA007137A7 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF41E89844C00F6E9FF /* Sparkle.framework */; };
 		91F8E403210A46CA007137A7 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		91F8E405210A46CA007137A7 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */; };
-		91F8E406210A46CA007137A7 /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5F1EAEAC77005E33DB /* messageview.xib */; };
 		91F8E407210A46CA007137A7 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */; };
 		91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
 		91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */; };
 		91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
-		91F8E40C210A46CA007137A7 /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5B1EAEAC70005E33DB /* messageswindow.xib */; };
 		91F8E40D210A46CA007137A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
 		91F8E40E210A46CA007137A7 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAB01E89842400F6E9FF /* dsa_pub.pem */; };
 		91F8E40F210A46CA007137A7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
@@ -441,7 +449,6 @@
 		91F8E42A210A46CA007137A7 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01161FA3B1C90053A82B /* CharacterView.xib */; };
 		91F8E42B210A46CA007137A7 /* AiringView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B51E989C7C000061E6 /* AiringView.xib */; };
 		91F8E42C210A46CA007137A7 /* SeasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91999D0C1E8C86A40026D3E9 /* SeasonView.xib */; };
-		91F8E42D210A46CA007137A7 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */; };
 		91F8E42F210A46CA007137A7 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C61E8C65A500565D30 /* ListView.xib */; };
 		91F8E431210A46CA007137A7 /* AFNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -560,13 +567,11 @@
 		F888F464208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		F888F466208FB1F500C22C39 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		F888F468208FB1F500C22C39 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */; };
-		F888F469208FB1F500C22C39 /* messagecomposer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */; };
 		F888F46A208FB1F500C22C39 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
 		F888F46B208FB1F500C22C39 /* ReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */; };
 		F888F46C208FB1F500C22C39 /* ReviewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8AF1EC4ED800068856A /* ReviewWindow.xib */; };
 		F888F46D208FB1F500C22C39 /* ProfileWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */; };
 		F888F46E208FB1F500C22C39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
-		F888F46F208FB1F500C22C39 /* messageswindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5B1EAEAC70005E33DB /* messageswindow.xib */; };
 		F888F470208FB1F500C22C39 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAB01E89842400F6E9FF /* dsa_pub.pem */; };
 		F888F471208FB1F500C22C39 /* RecommendedTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */; };
 		F888F472208FB1F500C22C39 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAAF1E89842400F6E9FF /* Credits.rtf */; };
@@ -579,7 +584,6 @@
 		F888F479208FB1F500C22C39 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
 		F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE21E89843300F6E9FF /* GeneralPref.xib */; };
 		F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */; };
-		F888F47C208FB1F500C22C39 /* messageview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91822A5F1EAEAC77005E33DB /* messageview.xib */; };
 		F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */; };
 		F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */; };
 		F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01161FA3B1C90053A82B /* CharacterView.xib */; };
@@ -788,7 +792,6 @@
 		2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagecachetransformer.m; sourceTree = "<group>"; };
 		2D159FCE1F96507800734250 /* OtherHistoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherHistoryView.h; sourceTree = "<group>"; };
 		2D159FCF1F96507800734250 /* OtherHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherHistoryView.m; sourceTree = "<group>"; };
-		2D20C4F01EB8FF6000B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messagecomposer.xib; sourceTree = "<group>"; };
 		2D20C4F41EB8FF7600B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewView.xib; sourceTree = "<group>"; };
 		2D371E711ECF8AF500F47138 /* ListStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListStatistics.h; sourceTree = "<group>"; };
 		2D371E721ECF8AF500F47138 /* ListStatistics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListStatistics.m; sourceTree = "<group>"; };
@@ -861,6 +864,12 @@
 		593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCellView.m; sourceTree = "<group>"; };
 		593A795221ADAF410083FA86 /* TitleCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionView.h; sourceTree = "<group>"; };
 		593A795321ADAF410083FA86 /* TitleCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionView.m; sourceTree = "<group>"; };
+		593A795E21ADC6FE0083FA86 /* TrendingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrendingView.h; sourceTree = "<group>"; };
+		593A795F21ADC6FE0083FA86 /* TrendingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrendingView.m; sourceTree = "<group>"; };
+		593A796021ADC6FE0083FA86 /* TrendingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrendingView.xib; sourceTree = "<group>"; };
+		593A798021ADE7D30083FA86 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		593A798521ADE8370083FA86 /* HeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		593A798621ADE8370083FA86 /* HeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
@@ -935,8 +944,6 @@
 		91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendedTitleView.m; sourceTree = "<group>"; };
 		91822A541EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSTextFieldCellMiddleAligned.h; sourceTree = "<group>"; };
 		91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSTextFieldCellMiddleAligned.m; sourceTree = "<group>"; };
-		91822A5A1EAEAC70005E33DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messageswindow.xib; sourceTree = "<group>"; };
-		91822A5E1EAEAC77005E33DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/messageview.xib; sourceTree = "<group>"; };
 		91822A621EAEAC88005E33DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/RecommendedTitleView.xib; sourceTree = "<group>"; };
 		9188226E1E8C90A700C7FEF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InfoView.xib; sourceTree = "<group>"; };
 		918C0D361E89FF8B0037898E /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
@@ -1198,9 +1205,6 @@
 				913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */,
 				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
 				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
-				2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */,
-				91822A5B1EAEAC70005E33DB /* messageswindow.xib */,
-				91822A5F1EAEAC77005E33DB /* messageview.xib */,
 				916502C91E8C65A900565D30 /* NotLoggedIn.xib */,
 				2D4E010A1FA3B1A10053A82B /* ProfileViewController.xib */,
 				2D4E010E1FA3B1A70053A82B /* ProfileWindowController.xib */,
@@ -1258,6 +1262,9 @@
 				593A793B21AD9E390083FA86 /* TitleCollectionCell.xib */,
 				593A794621ADACFF0083FA86 /* TitleCollectionCellView.h */,
 				593A794721ADACFF0083FA86 /* TitleCollectionCellView.m */,
+				593A798021ADE7D30083FA86 /* HeaderView.xib */,
+				593A798521ADE8370083FA86 /* HeaderView.h */,
+				593A798621ADE8370083FA86 /* HeaderView.m */,
 			);
 			name = "Collection View Cell";
 			sourceTree = "<group>";
@@ -1502,6 +1509,9 @@
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 				593A795221ADAF410083FA86 /* TitleCollectionView.h */,
 				593A795321ADAF410083FA86 /* TitleCollectionView.m */,
+				593A795E21ADC6FE0083FA86 /* TrendingView.h */,
+				593A795F21ADC6FE0083FA86 /* TrendingView.m */,
+				593A796021ADC6FE0083FA86 /* TrendingView.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1812,14 +1822,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D96A5231ECBB65A00942B28 /* ShukofukurouHelp.help in Resources */,
-				2D20C4EF1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
 				913A118D1E8F206A00450B66 /* EditTitle.xib in Resources */,
 				2D20C4F31EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B21EC4ED800068856A /* ReviewWindow.xib in Resources */,
 				2D4E010C1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
 				593A793D21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
 				913A118E1E8F206A00450B66 /* Assets.xcassets in Resources */,
-				91822A591EAEAC70005E33DB /* messageswindow.xib in Resources */,
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
 				91822A611EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
 				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
@@ -1833,7 +1841,6 @@
 				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
-				91822A5D1EAEAC77005E33DB /* messageview.xib in Resources */,
 				F84D64432098FAA7003225F9 /* TipJar.xib in Resources */,
 				F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */,
 				2D4E01101FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
@@ -1842,7 +1849,9 @@
 				913A11991E8F206A00450B66 /* SoftwareUpdateView.xib in Resources */,
 				2D4E01081FA3B1A10053A82B /* ProfileViewController.xib in Resources */,
 				2D371E841ECFA3E700F47138 /* ratingchartview.xib in Resources */,
+				593A798221ADE7D30083FA86 /* HeaderView.xib in Resources */,
 				9169BC452062C3F700C534B8 /* advancededitdialog.xib in Resources */,
+				593A796621ADC6FE0083FA86 /* TrendingView.xib in Resources */,
 				913A119A1E8F206A00450B66 /* AddTitle.xib in Resources */,
 				913A119B1E8F206A00450B66 /* InfoView.xib in Resources */,
 				2D8BF8B81EC4EED80068856A /* ImportPrompt.xib in Resources */,
@@ -1863,14 +1872,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D185EBB1ECCB01F00E1A594 /* ShukofukurouHelp.help in Resources */,
-				91822A5C1EAEAC77005E33DB /* messageview.xib in Resources */,
 				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
 				2D4E010F1FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */,
 				593A793C21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
-				91822A581EAEAC70005E33DB /* messageswindow.xib in Resources */,
 				9199BAA01E89836000F6E9FF /* Assets.xcassets in Resources */,
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
@@ -1892,8 +1899,10 @@
 				2D371E831ECFA3E700F47138 /* ratingchartview.xib in Resources */,
 				916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */,
 				9199BAED1E89843300F6E9FF /* SoftwareUpdateView.xib in Resources */,
+				593A798121ADE7D30083FA86 /* HeaderView.xib in Resources */,
 				2D8BF8B11EC4ED800068856A /* ReviewWindow.xib in Resources */,
 				9169BC442062C3F700C534B8 /* advancededitdialog.xib in Resources */,
+				593A796521ADC6FE0083FA86 /* TrendingView.xib in Resources */,
 				915E8C4B1E8C235D005A49A4 /* AddTitle.xib in Resources */,
 				2D4E01171FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				9188226D1E8C90A700C7FEF1 /* InfoView.xib in Resources */,
@@ -1903,7 +1912,6 @@
 				2D4E01131FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
-				2D20C4EE1EB8FF6000B241B9 /* messagecomposer.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
 			);
@@ -1914,14 +1922,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				91F8E405210A46CA007137A7 /* ShukofukurouHelp.help in Resources */,
-				91F8E406210A46CA007137A7 /* messageview.xib in Resources */,
 				91F8E407210A46CA007137A7 /* HistoryView.xib in Resources */,
 				91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */,
 				91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */,
 				91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */,
 				593A793F21AD9E390083FA86 /* TitleCollectionCell.xib in Resources */,
 				91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */,
-				91F8E40C210A46CA007137A7 /* messageswindow.xib in Resources */,
 				91F8E40D210A46CA007137A7 /* Assets.xcassets in Resources */,
 				91F8E40E210A46CA007137A7 /* dsa_pub.pem in Resources */,
 				91F8E40F210A46CA007137A7 /* Credits.rtf in Resources */,
@@ -1943,8 +1949,10 @@
 				91F8E41F210A46CA007137A7 /* ratingchartview.xib in Resources */,
 				91F8E420210A46CA007137A7 /* NotLoggedIn.xib in Resources */,
 				91F8E421210A46CA007137A7 /* SoftwareUpdateView.xib in Resources */,
+				593A798421ADE7D30083FA86 /* HeaderView.xib in Resources */,
 				91F8E422210A46CA007137A7 /* ReviewWindow.xib in Resources */,
 				91F8E423210A46CA007137A7 /* advancededitdialog.xib in Resources */,
+				593A796821ADC6FE0083FA86 /* TrendingView.xib in Resources */,
 				91F8E424210A46CA007137A7 /* AddTitle.xib in Resources */,
 				91F8E425210A46CA007137A7 /* StreamPopup.xib in Resources */,
 				91F8E426210A46CA007137A7 /* InfoView.xib in Resources */,
@@ -1954,7 +1962,6 @@
 				91F8E42A210A46CA007137A7 /* CharacterView.xib in Resources */,
 				91F8E42B210A46CA007137A7 /* AiringView.xib in Resources */,
 				91F8E42C210A46CA007137A7 /* SeasonView.xib in Resources */,
-				91F8E42D210A46CA007137A7 /* messagecomposer.xib in Resources */,
 				91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */,
 				91F8E42F210A46CA007137A7 /* ListView.xib in Resources */,
 			);
@@ -1972,13 +1979,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F888F468208FB1F500C22C39 /* ShukofukurouHelp.help in Resources */,
-				F888F469208FB1F500C22C39 /* messagecomposer.xib in Resources */,
 				F888F46A208FB1F500C22C39 /* EditTitle.xib in Resources */,
+				593A796721ADC6FE0083FA86 /* TrendingView.xib in Resources */,
 				F888F46B208FB1F500C22C39 /* ReviewView.xib in Resources */,
 				F888F46C208FB1F500C22C39 /* ReviewWindow.xib in Resources */,
 				F888F46D208FB1F500C22C39 /* ProfileWindowController.xib in Resources */,
 				F888F46E208FB1F500C22C39 /* Assets.xcassets in Resources */,
-				F888F46F208FB1F500C22C39 /* messageswindow.xib in Resources */,
 				F888F470208FB1F500C22C39 /* dsa_pub.pem in Resources */,
 				F888F471208FB1F500C22C39 /* RecommendedTitleView.xib in Resources */,
 				F888F472208FB1F500C22C39 /* Credits.rtf in Resources */,
@@ -1993,13 +1999,13 @@
 				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
 				F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */,
 				91F8E447210A4BC1007137A7 /* CustomListModify.xib in Resources */,
-				F888F47C208FB1F500C22C39 /* messageview.xib in Resources */,
 				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
 				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
 				F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				91F8E441210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
 				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
+				593A798321ADE7D30083FA86 /* HeaderView.xib in Resources */,
 				F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */,
 				F888F482208FB1F500C22C39 /* ProfileViewController.xib in Resources */,
 				F888F483208FB1F500C22C39 /* ratingchartview.xib in Resources */,
@@ -2111,6 +2117,7 @@
 				91521F6B21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				2D8A47B41F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
+				593A798821ADE8370083FA86 /* HeaderView.m in Sources */,
 				F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */,
 				2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */,
 				2DA863F21F89B2F300D2876A /* ProfileViewController.m in Sources */,
@@ -2159,6 +2166,7 @@
 				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
+				593A796221ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				598B452D21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
@@ -2216,6 +2224,7 @@
 				F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */,
 				F8A85912207023E40026EC0A /* AniList.m in Sources */,
 				598B453821AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
+				593A796121ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
@@ -2260,6 +2269,7 @@
 				F888F404208F889D00C22C39 /* AuthWebView.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
+				593A798721ADE8370083FA86 /* HeaderView.m in Sources */,
 				598B454B21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				2D8A47B31F290E2200FC2B35 /* CharactersBrowser.m in Sources */,
 				91999D121E8C88280026D3E9 /* InfoView.m in Sources */,
@@ -2279,6 +2289,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				593A798A21ADE8370083FA86 /* HeaderView.m in Sources */,
 				91F8E39B210A46CA007137A7 /* DonationLicenseManager.m in Sources */,
 				91F8E39C210A46CA007137A7 /* Keychain.m in Sources */,
 				91F8E39E210A46CA007137A7 /* AniListSeasonListGenerator.m in Sources */,
@@ -2356,6 +2367,7 @@
 				91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */,
 				91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */,
 				91F8E3E5210A46CA007137A7 /* ProfileWindowController.m in Sources */,
+				593A796421ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				91F8E3E6210A46CA007137A7 /* CharactersBrowser.m in Sources */,
 				598B453521AC393600F28180 /* TrendingRetriever.m in Sources */,
 				91F8E3E7210A46CA007137A7 /* InfoView.m in Sources */,
@@ -2434,6 +2446,7 @@
 				91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 				F888F437208FB1F500C22C39 /* siteimage.m in Sources */,
 				F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */,
+				593A798921ADE8370083FA86 /* HeaderView.m in Sources */,
 				F888F439208FB1F500C22C39 /* ratingchartview.m in Sources */,
 				F888F43A208FB1F500C22C39 /* NSTextFieldCellMiddleAligned.m in Sources */,
 				593A795621ADAF410083FA86 /* TitleCollectionView.m in Sources */,
@@ -2460,6 +2473,7 @@
 				F888F44E208FB1F500C22C39 /* AiringView.m in Sources */,
 				F888F450208FB1F500C22C39 /* OtherHistoryView.m in Sources */,
 				F888F451208FB1F500C22C39 /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				593A796321ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				F888F452208FB1F500C22C39 /* imagecachetransformer.m in Sources */,
 				F888F453208FB1F500C22C39 /* SoftwareUpdatesPref.m in Sources */,
 				F888F454208FB1F500C22C39 /* AdvancedSearch.m in Sources */,
@@ -2506,14 +2520,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2D20C4F11EB8FF6000B241B9 /* messagecomposer.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2D20C4F01EB8FF6000B241B9 /* Base */,
-			);
-			name = messagecomposer.xib;
-			sourceTree = "<group>";
-		};
 		2D20C4F51EB8FF7600B241B9 /* ReviewView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -2673,22 +2679,6 @@
 			);
 			name = PFAboutWindow.xib;
 			path = PFAboutWindow;
-			sourceTree = "<group>";
-		};
-		91822A5B1EAEAC70005E33DB /* messageswindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				91822A5A1EAEAC70005E33DB /* Base */,
-			);
-			name = messageswindow.xib;
-			sourceTree = "<group>";
-		};
-		91822A5F1EAEAC77005E33DB /* messageview.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				91822A5E1EAEAC77005E33DB /* Base */,
-			);
-			name = messageview.xib;
 			sourceTree = "<group>";
 		};
 		91822A631EAEAC88005E33DB /* RecommendedTitleView.xib */ = {

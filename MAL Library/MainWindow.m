@@ -22,6 +22,7 @@
 #import "AdvancedSearch.h"
 #import "HistoryView.h"
 #import "AiringView.h"
+#import "TrendingView.h"
 #import "NSTableViewAction.h"
 #import "servicemenucontroller.h"
 #import "AtarashiiListCoreData.h"
@@ -57,7 +58,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists", @"trending"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -75,6 +76,7 @@
     (_seasonview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_notloggedin.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_airingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
+    (_trendingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     self.window.titleVisibility = NSWindowTitleHidden;
     
     // Fix window size
@@ -170,7 +172,9 @@
     seasonsItem.icon = [NSImage imageNamed:@"seasons"];
     PXSourceListItem *airingItem = [PXSourceListItem itemWithTitle:@"Airing" identifier:@"airing"];
     airingItem.icon = [NSImage imageNamed:@"airing"];
-    discoverItem.children = @[titleinfoItem,seasonsItem, airingItem];
+    PXSourceListItem *trendingItem = [PXSourceListItem itemWithTitle:@"Trending" identifier:@"trending"];
+    trendingItem.icon = [NSImage imageNamed:@"trending"];
+    discoverItem.children = @[titleinfoItem,seasonsItem, airingItem, trendingItem];
     
     // Populate Source List
     [self.sourceListItems addObject:libraryItem];
@@ -513,6 +517,9 @@
                 [_airingview loadAiring:@(false)];
             }
         }
+        else if ([identifier isEqualToString:@"trending"]){
+            [self replaceMainViewWithView:_trendingview.view];
+        }
         else{
             // Fallback
             [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:1]byExtendingSelection:false];
@@ -663,9 +670,6 @@
         [_toolbar insertItemWithItemIdentifier:@"yearselect" atIndex:1+indexoffset];
         [_toolbar insertItemWithItemIdentifier:@"seasonselect" atIndex:2+indexoffset];
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3+indexoffset];
-        if (((NSArray *)_seasonview.seasonarraycontroller.content).count == 0) {
-            [_seasonview populateseasonpopups];
-        }
     }
     else if ([identifier isEqualToString:@"airing"]){
         if ([listservice checkAccountForCurrentService]) {
@@ -676,6 +680,15 @@
         }
         [_toolbar insertItemWithItemIdentifier:@"airingdayselect" atIndex:1+indexoffset];
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:2+indexoffset];
+    }
+    else if ([identifier isEqualToString:@"trending"]) {
+        [_toolbar insertItemWithItemIdentifier:@"AddTitleTrending" atIndex:0];
+        [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:1];
+        if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"trendtype" atIndex:3];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:4];
+        }
     }
 }
 #pragma mark -
@@ -784,6 +797,9 @@
         [self loadinfo:@(_infoview.selectedid) type:_infoview.type changeView:NO forcerefresh:YES];
         [self loadmainview];
         [_listview setUpdatingState:false];
+    }
+    else if ([identifier isEqualToString:@"trending"]) {
+        [_trendingview refresh];
     }
 }
 - (void)loadlist:(NSNumber *)refresh type:(int)type {
@@ -948,8 +964,7 @@
     [self loadmainview];
     [self refreshloginlabel];
     [self initallistload];
-    [_seasonview performreload:NO completion:^(bool success) {
-    }];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"ServiceChanged" object:nil];
     NSNumber * autorefreshlist = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshautomatically"];
     if (autorefreshlist.boolValue){
         [self stopTimer];
@@ -1157,7 +1172,7 @@
                 break;
         }
     }
-    if ([identifier isEqualToString:@"airing"]){
+    else if ([identifier isEqualToString:@"airing"]){
         NSDictionary *d = (_airingview.airingarraycontroller).selectedObjects[0];
         switch ([listservice getCurrentServiceID]) {
             case 1: {
@@ -1171,7 +1186,7 @@
             case 2: {
                 [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
                     [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
-                        //[_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                     }error:^(NSError *error){
                         NSLog(@"Error: %@", error);
                     }];
@@ -1179,12 +1194,22 @@
                 break;
             }
             case 3: {
-                //[_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                [_addtitlecontroller showAddPopover:d showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                 break;
             }
             default:
                 break;
         }
+    }
+    else if ([identifier isEqualToString:@"trending"]){
+        NSIndexPath *selected = _trendingview.collectionview.selectionIndexPaths.anyObject;
+        NSCollectionViewItem *collectionitem = [_trendingview.collectionview itemAtIndexPath:selected];
+        NSDictionary *d = _trendingview.items[_trendingview.items.allKeys[selected.section]][selected.item];
+        [listservice retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:AniListAnime useAccount:NO completion:^(id responseObject) {
+            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:0];
+        } error:^(NSError *error) {
+            NSLog(@"Error: %@", error);
+        }];
     }
 
 }

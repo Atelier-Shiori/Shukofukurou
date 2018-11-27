@@ -17,6 +17,8 @@
 @interface SeasonView ()
 @property (strong) IBOutlet NSPopUpButton *seasonyrpicker;
 @property (strong) IBOutlet NSPopUpButton *seasonpicker;
+@property (strong) IBOutlet NSVisualEffectView *loadingview;
+@property (strong) IBOutlet NSProgressIndicator *loadingindicator;
 @end
 
 @implementation SeasonView
@@ -101,6 +103,7 @@ didDeselectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths {
 
 - (void)loadseasondata:(int)year forSeason:(NSString *)season refresh:(bool)refresh completion:(void (^)(bool success)) completionHandler {
     if (_seasonyrpicker.itemArray.count > 0){
+        [self showloading:YES];
         [AniListSeasonListGenerator retrieveSeasonDataWithSeason:season withYear:year refresh:refresh completion:^(id responseObject) {
             NSMutableArray *sarray = [_seasonarraycontroller mutableArrayValueForKey:@"content"];
             [sarray removeAllObjects];
@@ -109,9 +112,11 @@ didDeselectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths {
             [_seasonarraycontroller addObjects:a];
             [_collectionview reloadData];
             [_collectionview deselectAll:self];
+            [self showloading:NO];
             completionHandler(true);
         } error:^(NSError *error) {
             NSLog(@"Can't Retrieve Season Data: %@", error.localizedDescription);
+            [self showloading:NO];
             completionHandler(false);
         }];
     }
@@ -128,5 +133,16 @@ didDeselectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths {
     }
     [_seasonyrpicker selectItemAtIndex:_seasonyrpicker.itemArray.count-1];
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title refresh:NO];
+}
+
+- (void)showloading:(bool)loading {
+    if (loading) {
+        _loadingview.hidden = NO;
+        [_loadingindicator startAnimation:self];
+    }
+    else {
+        _loadingview.hidden = YES;
+        [_loadingindicator stopAnimation:self];
+    }
 }
 @end

@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    _loadingview.wantsLayer = YES;
+    _loadingview.layer.cornerRadius = 15.0;
     [_collectionview registerClass:[TitleCollectionCell class] forItemWithIdentifier:@"TitleCollectionCell"];
     _collectionview.backgroundColors = @[[NSColor clearColor]];
     [_addtitleitem setEnabled:NO];

@@ -1205,8 +1205,8 @@
         NSIndexPath *selected = _trendingview.collectionview.selectionIndexPaths.anyObject;
         NSCollectionViewItem *collectionitem = [_trendingview.collectionview itemAtIndexPath:selected];
         NSDictionary *d = _trendingview.items[_trendingview.items.allKeys[selected.section]][selected.item];
-        [listservice retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:AniListAnime useAccount:NO completion:^(id responseObject) {
-            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:0];
+        [listservice retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:(int)_trendingview.trendingtype.selectedSegment useAccount:NO completion:^(id responseObject) {
+            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:(int)_trendingview.trendingtype.selectedSegment];
         } error:^(NSError *error) {
             NSLog(@"Error: %@", error);
         }];

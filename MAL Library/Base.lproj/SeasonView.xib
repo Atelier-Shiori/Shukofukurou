@@ -37,6 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="OLi-dU-gtw">
                                     <size key="itemSize" width="105" height="161"/>
+                                    <edgeInsets key="sectionInset" left="10" right="10" top="0.0" bottom="0.0"/>
                                 </collectionViewFlowLayout>
                                 <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <connections>

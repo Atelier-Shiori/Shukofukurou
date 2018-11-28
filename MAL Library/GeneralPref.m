@@ -124,9 +124,9 @@
     [TitleIdConverter resetshouldimportmappings];
 }
 - (IBAction)cachetitletoggle:(id)sender {
-    NSButton *btn = (NSButton *)sender;
-    if (btn.state == 0) {
+    if (![NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
         [TitleInfoCache cleanupcacheShouldRemoveAll:YES];
     }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"TitleCacheToggled" object:nil];
 }
 @end

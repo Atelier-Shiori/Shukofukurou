@@ -47,6 +47,7 @@
     }
     [NSUserDefaults.standardUserDefaults setInteger:tag forKey:@"currentservice"];
     [self setmenuitemvaluefromdefaults];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"ServiceChanged" object:nil];
     if (_actionblock) {
         _actionblock(tag, previousservice);
     }

@@ -555,6 +555,12 @@
     return @{ @"myanimelist" : [Keychain getusername] ? [Keychain getusername] : [NSNull null], @"kitsu" : kitsuusername && kitsuusername.length > 0 ? kitsuusername : [NSNull null], @"anilist" : anilistusername && anilistusername.length > 0 ? anilistusername : [NSNull null] };
 }
 
++ (NSDictionary *)getAllUserID {
+    int kitsuid = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"];
+    int anilistid = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"];
+    return @{ @"kitsu" : kitsuid > 0 ? @(kitsuid) : [NSNull null], @"anilist" :  anilistid > 0 ? @(anilistid) : [NSNull null]};
+}
+
 + (NSString *)currentservicename {
     switch ([self getCurrentServiceID]) {
         case 1:

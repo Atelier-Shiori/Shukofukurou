@@ -368,6 +368,7 @@
         default:
             break;
     }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"UserLoggedOut" object:nil];
 }
 
 - (NSString *)serviceidtoservicename:(int)serviceid {

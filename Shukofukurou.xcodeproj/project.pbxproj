@@ -120,6 +120,18 @@
 		593A799821ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
 		593A799921ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
 		593A799A21ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
+		5972404F21B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
+		5972405021B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
+		5972405121B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
+		5972405221B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
+		5972405321B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
+		5972405421B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
+		5972405521B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
+		5972405621B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
+		5972405921B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
+		5972405A21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
+		5972405B21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
+		5972405C21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
 		597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
@@ -150,10 +162,6 @@
 		91044F93211B251900DBEF57 /* Patreon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91044F94211B252100DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
 		91044F95211B252100DBEF57 /* Patreon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
-		910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
-		910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
-		910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
 		9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
 		9109116E1E89923D00C95E76 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		91244E892108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */; };
@@ -363,7 +371,6 @@
 		91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */; };
 		91F8E3CE210A46CA007137A7 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
-		91F8E3CF210A46CA007137A7 /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		91F8E3D1210A46CA007137A7 /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91F8E3D2210A46CA007137A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		91F8E3D3210A46CA007137A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
@@ -416,7 +423,6 @@
 		91F8E405210A46CA007137A7 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */; };
 		91F8E407210A46CA007137A7 /* HistoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91B378B91E989C83000061E6 /* HistoryView.xib */; };
 		91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */; };
-		91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
 		91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */ = {isa = PBXBuildFile; fileRef = F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */; };
 		91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */; };
 		91F8E40D210A46CA007137A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9199BA9F1E89836000F6E9FF /* Assets.xcassets */; };
@@ -541,7 +547,6 @@
 		F888F446208FB1F500C22C39 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
 		F888F447208FB1F500C22C39 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
 		F888F448208FB1F500C22C39 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
-		F888F449208FB1F500C22C39 /* AdvancedPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 910589E91E981E1A00501B9A /* AdvancedPref.m */; };
 		F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
 		F888F44D208FB1F500C22C39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
@@ -580,7 +585,6 @@
 		F888F475208FB1F500C22C39 /* ListImport.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D8BF8B61EC4EED30068856A /* ListImport.xib */; };
 		F888F476208FB1F500C22C39 /* LoginView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE41E89843300F6E9FF /* LoginView.xib */; };
 		F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE61E89843300F6E9FF /* MainWindow.xib */; };
-		F888F478208FB1F500C22C39 /* AdvancedPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 910589F21E981E2400501B9A /* AdvancedPref.xib */; };
 		F888F479208FB1F500C22C39 /* EULA.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 91D3D8A21E89C1850046C4CC /* EULA.rtf */; };
 		F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9199BAE21E89843300F6E9FF /* GeneralPref.xib */; };
 		F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */ = {isa = PBXBuildFile; fileRef = 913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */; };
@@ -872,6 +876,11 @@
 		593A799521ADEE0C0083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HeaderView.xib; sourceTree = "<group>"; };
 		593A799B21ADEE140083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TrendingView.xib; sourceTree = "<group>"; };
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
+		5972404C21B57D7600599AAC /* NotificationPreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationPreferencesController.h; sourceTree = "<group>"; };
+		5972404D21B57D7600599AAC /* NotificationPreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesController.m; sourceTree = "<group>"; };
+		5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationPreferencesController.xib; sourceTree = "<group>"; };
+		5972405721B5816C00599AAC /* AiringNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
+		5972405821B5816C00599AAC /* AiringNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
 		598B452A21AC392C00F28180 /* TitleInfoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
@@ -888,9 +897,6 @@
 		91044F8B211B23BF00DBEF57 /* AppDelegate+Patreon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Patreon.h"; sourceTree = "<group>"; };
 		91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Patreon.m"; sourceTree = "<group>"; };
 		91044F8F211B240600DBEF57 /* Patreon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Patreon.framework; path = "MAL Library/Patreon.framework"; sourceTree = "<group>"; };
-		910589E81E981E1A00501B9A /* AdvancedPref.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvancedPref.h; sourceTree = "<group>"; };
-		910589E91E981E1A00501B9A /* AdvancedPref.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvancedPref.m; sourceTree = "<group>"; };
-		910589F11E981E2400501B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AdvancedPref.xib; sourceTree = "<group>"; };
 		91244E872108BB3000AA8F90 /* CustomListShouldShowValueTransformer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListShouldShowValueTransformer.h; sourceTree = "<group>"; };
 		91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomListShouldShowValueTransformer.m; sourceTree = "<group>"; };
 		91244E8C2108BCFE00AA8F90 /* CustomListsPopover.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomListsPopover.h; sourceTree = "<group>"; };
@@ -1188,7 +1194,6 @@
 				F84BB9FF2074128B0056F5B0 /* AniListAuthWindow.xib */,
 				F8813A5C20CF159400D974A1 /* ExportProgressWindow.xib */,
 				915E8C4D1E8C235D005A49A4 /* AddTitle.xib */,
-				910589F21E981E2400501B9A /* AdvancedPref.xib */,
 				915E8C501E8C2362005A49A4 /* AdvancedSearch.xib */,
 				91B378B51E989C7C000061E6 /* AiringView.xib */,
 				2D4E01121FA3B1C10053A82B /* CharactersBrowser.xib */,
@@ -1328,14 +1333,14 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
+				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
+				5972405821B5816C00599AAC /* AiringNotificationManager.m */,
 				598B455021AC5D0D00F28180 /* Collection View Cell */,
 				91D3D89D1E89C0020046C4CC /* about */,
 				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
 				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
 				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
 				F8F9E0302061920E0083912B /* advancededitdialog.m */,
-				910589E81E981E1A00501B9A /* AdvancedPref.h */,
-				910589E91E981E1A00501B9A /* AdvancedPref.m */,
 				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
 				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
 				91D094CD1E9876D8009454F8 /* AiringView.h */,
@@ -1514,6 +1519,9 @@
 				593A795E21ADC6FE0083FA86 /* TrendingView.h */,
 				593A795F21ADC6FE0083FA86 /* TrendingView.m */,
 				593A799C21ADEE140083FA86 /* TrendingView.xib */,
+				5972404C21B57D7600599AAC /* NotificationPreferencesController.h */,
+				5972404D21B57D7600599AAC /* NotificationPreferencesController.m */,
+				5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1844,7 +1852,6 @@
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
 				F8813A5920CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
-				910589F01E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
@@ -1871,6 +1878,7 @@
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
+				5972405421B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1881,7 +1889,6 @@
 				2D185EBB1ECCB01F00E1A594 /* ShukofukurouHelp.help in Resources */,
 				91B378B61E989C83000061E6 /* HistoryView.xib in Resources */,
 				2D4E010F1FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
-				910589EF1E981E2400501B9A /* AdvancedPref.xib in Resources */,
 				F838AE6B2087CF990063B63E /* DonationLicenseManager.xib in Resources */,
 				593A798B21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */,
 				915E8C5B1E8C2B4D005A49A4 /* EditTitle.xib in Resources */,
@@ -1921,6 +1928,7 @@
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
+				5972405321B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1931,7 +1939,6 @@
 				91F8E405210A46CA007137A7 /* ShukofukurouHelp.help in Resources */,
 				91F8E407210A46CA007137A7 /* HistoryView.xib in Resources */,
 				91F8E408210A46CA007137A7 /* CharactersBrowser.xib in Resources */,
-				91F8E409210A46CA007137A7 /* AdvancedPref.xib in Resources */,
 				91F8E40A210A46CA007137A7 /* DonationLicenseManager.xib in Resources */,
 				593A798E21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */,
 				91F8E40B210A46CA007137A7 /* EditTitle.xib in Resources */,
@@ -1971,6 +1978,7 @@
 				91F8E42C210A46CA007137A7 /* SeasonView.xib in Resources */,
 				91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */,
 				91F8E42F210A46CA007137A7 /* ListView.xib in Resources */,
+				5972405621B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2001,11 +2009,11 @@
 				F888F475208FB1F500C22C39 /* ListImport.xib in Resources */,
 				F888F476208FB1F500C22C39 /* LoginView.xib in Resources */,
 				F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */,
-				F888F478208FB1F500C22C39 /* AdvancedPref.xib in Resources */,
 				F888F479208FB1F500C22C39 /* EULA.rtf in Resources */,
 				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
 				F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */,
 				91F8E447210A4BC1007137A7 /* CustomListModify.xib in Resources */,
+				5972405521B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
 				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
 				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
@@ -2170,8 +2178,8 @@
 				F84D64422098FAA7003225F9 /* TipJar.m in Sources */,
 				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
-				910589EC1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */,
+				5972405021B57D7600599AAC /* NotificationPreferencesController.m in Sources */,
 				2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
 				593A796221ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				598B452D21AC392C00F28180 /* TitleInfoCache.m in Sources */,
@@ -2182,6 +2190,7 @@
 				2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
 				593A795521ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				913A117A1E8F206A00450B66 /* SoftwareUpdatesPref.m in Sources */,
+				5972405A21B5816C00599AAC /* AiringNotificationManager.m in Sources */,
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
 				598B454C21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
@@ -2253,7 +2262,6 @@
 				593A794821ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				593A795421ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
-				910589EB1E981E1A00501B9A /* AdvancedPref.m in Sources */,
 				91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
@@ -2265,6 +2273,7 @@
 				2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				91244E892108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m in Sources */,
 				915E8C601E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m in Sources */,
+				5972404F21B57D7600599AAC /* NotificationPreferencesController.m in Sources */,
 				91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */,
 				2DAB19DF1EF9D16800420182 /* StreamPopup.m in Sources */,
 				2D6ECA341F2E9B20003C455E /* NSString_stripHtml.m in Sources */,
@@ -2272,6 +2281,7 @@
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				2DB444BF1FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
+				5972405921B5816C00599AAC /* AiringNotificationManager.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				F888F404208F889D00C22C39 /* AuthWebView.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
@@ -2296,6 +2306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5972405C21B5816C00599AAC /* AiringNotificationManager.m in Sources */,
 				593A798A21ADE8370083FA86 /* HeaderView.m in Sources */,
 				91F8E39B210A46CA007137A7 /* DonationLicenseManager.m in Sources */,
 				91F8E39C210A46CA007137A7 /* Keychain.m in Sources */,
@@ -2307,6 +2318,7 @@
 				91F8E3A4210A46CA007137A7 /* Base64Category.m in Sources */,
 				91F8E3A6210A46CA007137A7 /* CustomListModify.m in Sources */,
 				91F8E3A7210A46CA007137A7 /* PFMoveApplication.m in Sources */,
+				5972405221B57D7600599AAC /* NotificationPreferencesController.m in Sources */,
 				91F8E3A8210A46CA007137A7 /* HistoryView.m in Sources */,
 				91F8E3A9210A46CA007137A7 /* ListView.m in Sources */,
 				91F8E3AA210A46CA007137A7 /* MyListScoreFormatter.m in Sources */,
@@ -2348,7 +2360,6 @@
 				91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */,
 				91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */,
 				91F8E3CE210A46CA007137A7 /* EditTitle.m in Sources */,
-				91F8E3CF210A46CA007137A7 /* AdvancedPref.m in Sources */,
 				91F8E3D1210A46CA007137A7 /* RecommendedTitleView.m in Sources */,
 				91F8E3D2210A46CA007137A7 /* AppDelegate.m in Sources */,
 				598B452F21AC392C00F28180 /* TitleInfoCache.m in Sources */,
@@ -2412,6 +2423,7 @@
 				F888F411208FB1F500C22C39 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */,
 				597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
+				5972405B21B5816C00599AAC /* AiringNotificationManager.m in Sources */,
 				593A794A21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				F888F413208FB1F500C22C39 /* Base64Category.m in Sources */,
 				F888F414208FB1F500C22C39 /* RecommendedTitleView.m in Sources */,
@@ -2473,9 +2485,9 @@
 				F888F446208FB1F500C22C39 /* OtherUserListScoreFormatter.m in Sources */,
 				F888F447208FB1F500C22C39 /* CharacterView.m in Sources */,
 				F888F448208FB1F500C22C39 /* EditTitle.m in Sources */,
-				F888F449208FB1F500C22C39 /* AdvancedPref.m in Sources */,
 				F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */,
 				F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */,
+				5972405121B57D7600599AAC /* NotificationPreferencesController.m in Sources */,
 				F888F44D208FB1F500C22C39 /* main.m in Sources */,
 				F888F44E208FB1F500C22C39 /* AiringView.m in Sources */,
 				F888F450208FB1F500C22C39 /* OtherHistoryView.m in Sources */,
@@ -2637,14 +2649,6 @@
 				593A799B21ADEE140083FA86 /* Base */,
 			);
 			name = TrendingView.xib;
-			sourceTree = "<group>";
-		};
-		910589F21E981E2400501B9A /* AdvancedPref.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				910589F11E981E2400501B9A /* Base */,
-			);
-			name = AdvancedPref.xib;
 			sourceTree = "<group>";
 		};
 		913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */ = {

@@ -12,6 +12,7 @@
 #import "PFAboutWindowController.h"
 #import "MyListView.h"
 #import "ListView.h"
+#import "AiringNotificationManager.h"
 #if defined(OSS)
 #else
 #import <Fabric/Fabric.h>
@@ -98,6 +99,9 @@
     defaultValues[@"KitsuMappingsImportManga"] = @NO;
     defaultValues[@"AniListMappingsImportAnime"] = @NO;
     defaultValues[@"AniListMappingsImportManga"] = @NO;
+    // Air Notifications
+    defaultValues[@"airingnotification_service"] = @(3);
+    defaultValues[@"airnotificationsenabled"] = @NO;
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
@@ -110,6 +114,8 @@
     [Fabric with:@[[Crashlytics class]]];
     #endif
     [Utility checkandclearimagecache];
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
+    _airingnotificationmanager = [AiringNotificationManager new];
     // Ask to move application
     #if defined(AppStore)
     #else
@@ -199,18 +205,23 @@
     // Insert code here to tear down your application
 }
 
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
+     shouldPresentNotification:(NSUserNotification *)notification {
+    return YES;
+}
+
 - (NSWindowController *)preferencesWindowController {
     if (__preferencesWindowController == nil)
     {
         GeneralPref *genview =[[GeneralPref alloc] init];
         [genview setMainWindowController:_mainwindowcontroller];
         NSViewController *loginViewController = [[LoginPref alloc] initwithAppDelegate:self];
-//        NSViewController *advancedviewController = [AdvancedPref new];
+        NotificationPreferencesController *notifypref = [NotificationPreferencesController new];
         #if defined(AppStore)
-        NSArray *controllers = @[genview,loginViewController/*,advancedviewController*/];
+        NSArray *controllers = @[genview,loginViewController,notifypref];
         #else
         NSViewController *suViewController = [[SoftwareUpdatesPref alloc] init];
-        NSArray *controllers = @[genview,loginViewController,suViewController/*,advancedviewController*/];
+        NSArray *controllers = @[genview,loginViewController,notifypref,suViewController];
         #endif
         __preferencesWindowController = [[MASPreferencesWindowController alloc] initWithViewControllers:controllers];
     }

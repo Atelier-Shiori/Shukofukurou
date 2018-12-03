@@ -22,8 +22,9 @@
 @class servicemenucontroller;
 @class ListImport;
 @class ListExporter;
+@class AiringNotificationManager;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, NSUserNotificationCenterDelegate>
 @property (strong,getter=getMainWindowController) MainWindow *mainwindowcontroller;
 @property (strong) NSWindowController *_preferencesWindowController;
 @property (strong) ListStatistics *liststatswindow;
@@ -41,6 +42,8 @@
 // List Import/Export
 @property (strong) IBOutlet ListImport *ListImporterController;
 @property (strong) IBOutlet ListExporter *ListExporterController;
+
+@property (strong) AiringNotificationManager *airingnotificationmanager;
 
 // Patreon
 #if defined(AppStore)

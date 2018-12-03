@@ -124,10 +124,6 @@
 		5972405021B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
 		5972405121B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
 		5972405221B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
-		5972405321B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
-		5972405421B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
-		5972405521B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
-		5972405621B57D7600599AAC /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */; };
 		5972405921B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
 		5972405A21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
 		5972405B21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
@@ -154,6 +150,10 @@
 		598B454F21AC5C3400F28180 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
+		59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
+		59F356A321B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
+		59F356A421B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
+		59F356A521B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
 		91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
 		91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
 		91044F90211B240600DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
@@ -878,7 +878,6 @@
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
 		5972404C21B57D7600599AAC /* NotificationPreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationPreferencesController.h; sourceTree = "<group>"; };
 		5972404D21B57D7600599AAC /* NotificationPreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesController.m; sourceTree = "<group>"; };
-		5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationPreferencesController.xib; sourceTree = "<group>"; };
 		5972405721B5816C00599AAC /* AiringNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5972405821B5816C00599AAC /* AiringNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
@@ -894,6 +893,7 @@
 		598B454A21AC4BCE00F28180 /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
+		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
 		91044F8B211B23BF00DBEF57 /* AppDelegate+Patreon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Patreon.h"; sourceTree = "<group>"; };
 		91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Patreon.m"; sourceTree = "<group>"; };
 		91044F8F211B240600DBEF57 /* Patreon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Patreon.framework; path = "MAL Library/Patreon.framework"; sourceTree = "<group>"; };
@@ -1521,7 +1521,7 @@
 				593A799C21ADEE140083FA86 /* TrendingView.xib */,
 				5972404C21B57D7600599AAC /* NotificationPreferencesController.h */,
 				5972404D21B57D7600599AAC /* NotificationPreferencesController.m */,
-				5972404E21B57D7600599AAC /* NotificationPreferencesController.xib */,
+				59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1878,7 +1878,7 @@
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
-				5972405421B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
+				59F356A321B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1928,7 +1928,7 @@
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
-				5972405321B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
+				59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1978,7 +1978,7 @@
 				91F8E42C210A46CA007137A7 /* SeasonView.xib in Resources */,
 				91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */,
 				91F8E42F210A46CA007137A7 /* ListView.xib in Resources */,
-				5972405621B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
+				59F356A521B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2013,7 +2013,7 @@
 				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
 				F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */,
 				91F8E447210A4BC1007137A7 /* CustomListModify.xib in Resources */,
-				5972405521B57D7600599AAC /* NotificationPreferencesController.xib in Resources */,
+				59F356A421B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
 				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
 				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
@@ -2649,6 +2649,14 @@
 				593A799B21ADEE140083FA86 /* Base */,
 			);
 			name = TrendingView.xib;
+			sourceTree = "<group>";
+		};
+		59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59F356A621B5D534008C79ED /* Base */,
+			);
+			name = NotificationPreferencesController.xib;
 			sourceTree = "<group>";
 		};
 		913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */ = {

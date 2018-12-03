@@ -96,7 +96,6 @@
         }
     }
     [moc save:nil];
-    [moc reset];
 }
 
 @end

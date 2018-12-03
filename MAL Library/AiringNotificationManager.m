@@ -77,7 +77,7 @@
 - (void)toggletimer {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"airnotificationsenabled"] && !_timeractive) {
         NSLog(@"Air Notification refresh timer enabled");
-        _refreshtimer = [MSWeakTimer scheduledTimerWithTimeInterval:500 target:self selector:@selector(firetimer) userInfo:nil repeats:YES dispatchQueue:_notificationQueue];
+        _refreshtimer = [MSWeakTimer scheduledTimerWithTimeInterval:900 target:self selector:@selector(firetimer) userInfo:nil repeats:YES dispatchQueue:_notificationQueue];
         _timeractive = true;
     }
     else {
@@ -100,6 +100,7 @@
             if (success) {
                 [self checkForNewNotifications:^(bool success) {
                     if (success) {
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"AirNotifyRefreshed" object:nil];
                         completionHandler(true);
                     }
                     else {
@@ -113,6 +114,7 @@
         }];
     }
     else {
+        [NSNotificationCenter.defaultCenter postNotificationName:@"AirNotifyRefreshed" object:nil];
         completionHandler(true);
     }
 }
@@ -163,7 +165,7 @@
         NSLog(@"Adding New Entries");
         for (NSDictionary *entry in list) {
             int anilistid = [titleidenum findTargetIdFromSourceId:((NSNumber *)entry[@"id"]).intValue];
-            if (![self retrieveNotificationItem:anilistid withService:service] && anilistid > 0) {
+            if (![self retrieveNotificationItem:anilistid isAniListID:YES withService:service] && anilistid > 0) {
                     [self addNotifyingTitle:entry withAniListID:anilistid withService:service];
             }
             else if (![self retrieveIgnoredNotificationItem:((NSNumber *)entry[@"id"]).intValue withService:service] && anilistid == 0) {
@@ -200,7 +202,19 @@
             return;
         }
     }
-    NSDictionary *parameters = @{@"query" : kAniListNextEpisode, @"variables" : @{@"id": (NSNumber *)[notifyobj valueForKey:@"anilistid"]}};
+    NSNumber *titleid = (NSNumber *)[notifyobj valueForKey:@"anilistid"];
+    if (!titleid) {
+        if (notificationList.count == position+1) {
+            [self setNotifications];
+            completionHandler(true);
+        }
+        else {
+            int newPosition = position + 1;
+            [self performNewNotificationCheck:notificationList withPosition:newPosition completionHandler:completionHandler];
+        }
+        return;
+    }
+    NSDictionary *parameters = @{@"query" : kAniListNextEpisode, @"variables" : @{@"id": titleid}};
     [sessionmanager POST:@"https://graphql.anilist.co/" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [self.managedObjectContext performBlockAndWait:^{
             NSDictionary *animeinfo = responseObject[@"data"][@"Media"];
@@ -280,7 +294,7 @@
 
 - (void)addNotifyingTitle:(NSDictionary *)titleInfo withAniListID:(int)anilistid withService:(int)service {
     [_managedObjectContext performBlockAndWait:^{
-        NSManagedObject *notifyobj = [self retrieveNotificationItem:anilistid withService:service];
+        NSManagedObject *notifyobj = [self retrieveNotificationItem:anilistid isAniListID:YES withService:service];
         if (!notifyobj) {
             notifyobj = [NSEntityDescription insertNewObjectForEntityForName:@"Notifications" inManagedObjectContext:self.managedObjectContext];
         }
@@ -308,7 +322,7 @@
 }
 
 - (void)removeNotifyingTitle:(int)titleid withService:(int)service {
-    __block NSManagedObject *notifyobj = [self retrieveNotificationItem:titleid withService:service];
+    __block NSManagedObject *notifyobj = [self retrieveNotificationItem:titleid isAniListID:NO withService:service];
     if (notifyobj) {
         [_managedObjectContext performBlockAndWait:^{
             int anilistid = ((NSNumber *)[notifyobj valueForKey:@"anilistid"]).intValue;
@@ -368,12 +382,18 @@
     [self removeAllPrendingNotifications];
 }
 
-- (NSManagedObject *)retrieveNotificationItem:(int)titleid withService:(int)service {
+- (NSManagedObject *)retrieveNotificationItem:(int)titleid isAniListID:(bool)isAniListID withService:(int)service {
     __block NSArray *notifications = @[];
     [_managedObjectContext performBlockAndWait:^{
         NSFetchRequest *fetchRequest = [NSFetchRequest new];
         fetchRequest.entity = [NSEntityDescription entityForName:@"Notifications" inManagedObjectContext:self.managedObjectContext];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"service == %i AND servicetitleid == %i", service, titleid];
+        NSPredicate *predicate;
+        if (!isAniListID) {
+            predicate = [NSPredicate predicateWithFormat:@"service == %i AND servicetitleid == %i", service, titleid];
+        }
+        else {
+            predicate = [NSPredicate predicateWithFormat:@"service == %i AND anilistid == %i", service, titleid];
+        }
         fetchRequest.predicate = predicate;
         NSError *error = nil;
         notifications = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];

@@ -447,7 +447,6 @@ static BOOL importing;
                 break;
         }
         [moc save:nil];
-        [moc reset];
     }
     else {
         // Create new mapping
@@ -495,7 +494,6 @@ static BOOL importing;
             break;
     }
     [moc save:nil];
-    [moc reset];
 }
 + (void)findCurrentServiceTitleIDWithMALID:(int)malid type:(int)type completionHandler:(void (^)(int currentserviceid, int currentservice)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     [MyAnimeList retrieveTitleInfo:malid withType:type useAccount:NO completion:^(id responseObject) {

@@ -76,7 +76,6 @@
             }
         }
         [moc save:&error];
-        [moc reset];
     }
 }
 

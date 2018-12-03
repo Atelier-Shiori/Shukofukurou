@@ -9,17 +9,18 @@
         <customObject id="-2" userLabel="File's Owner" customClass="NotificationPreferencesController">
             <connections>
                 <outlet property="arraycontroller" destination="F4x-dp-geq" id="GcG-Kx-rG9"/>
+                <outlet property="tableview" destination="jF5-zq-ogX" id="kca-Vr-GxY"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="248"/>
+        <customView autoresizesSubviews="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="283"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-Tg-OaH">
-                    <rect key="frame" x="118" y="211" width="182" height="18"/>
+                    <rect key="frame" x="91" y="246" width="182" height="18"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="check" title="Enable Airing Notifications" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Y4L-Qx-O0b">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -31,8 +32,20 @@
                         <binding destination="06i-wS-slx" name="value" keyPath="values.airnotificationsenabled" id="oOi-8l-1iM"/>
                     </connections>
                 </button>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XS5-BM-Tfb">
+                    <rect key="frame" x="29" y="225" width="231" height="17"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Air Notification List Source:" id="OCs-hG-JLG">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled]" id="za7-Uf-pL6"/>
+                    </connections>
+                </textField>
                 <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oyA-Dv-AVX">
-                    <rect key="frame" x="291" y="183" width="134" height="25"/>
+                    <rect key="frame" x="264" y="218" width="134" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <popUpButtonCell key="cell" type="push" title="AniList" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="3" imageScaling="proportionallyDown" inset="2" selectedItem="hUE-wT-OMI" id="313-f2-BWU">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -51,7 +64,7 @@
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kh3-9H-UCU">
-                    <rect key="frame" x="120" y="163" width="121" height="17"/>
+                    <rect key="frame" x="93" y="200" width="121" height="17"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Notifying Titles" id="cBd-gj-Ijm">
                         <font key="font" metaFont="system"/>
@@ -63,20 +76,20 @@
                     </connections>
                 </textField>
                 <scrollView focusRingType="none" fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNG-wL-hBc">
-                    <rect key="frame" x="122" y="20" width="300" height="135"/>
+                    <rect key="frame" x="93" y="57" width="300" height="135"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" id="TC1-Bj-JJk">
-                        <rect key="frame" x="1" y="0.0" width="298" height="134"/>
+                        <rect key="frame" x="1" y="1" width="298" height="133"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="1mZ-iW-V0G" id="jF5-zq-ogX">
-                                <rect key="frame" x="0.0" y="0.0" width="302" height="109"/>
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" id="jF5-zq-ogX">
+                                <rect key="frame" x="0.0" y="0.0" width="298" height="133"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn editable="NO" width="246" minWidth="40" maxWidth="1000" id="orQ-UZ-IEB">
+                                    <tableColumn editable="NO" width="225" minWidth="40" maxWidth="1000" id="orQ-UZ-IEB">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -89,16 +102,16 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="F4x-dp-geq" name="value" keyPath="arrangedObjects.title" id="Ylb-4B-UXE">
+                                            <binding destination="F4x-dp-geq" name="value" keyPath="arrangedObjects.title" id="VY0-IX-UgM">
                                                 <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <bool key="NSCreatesSortDescriptor" value="NO"/>
                                                     <bool key="NSValidatesImmediately" value="YES"/>
                                                 </dictionary>
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn width="50" minWidth="40" maxWidth="1000" id="tBt-ry-5dT">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Enable">
+                                    <tableColumn editable="NO" width="67" minWidth="40" maxWidth="1000" id="tBt-ry-5dT">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Enabled">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -106,15 +119,13 @@
                                         <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tSp-4X-YSa">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
-                                            <connections>
-                                                <action selector="enablestatechanged:" target="-2" id="9iW-u5-iRh"/>
-                                            </connections>
                                         </buttonCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="F4x-dp-geq" name="value" keyPath="arrangedObjects.enabled" id="cfr-to-UD4">
+                                            <binding destination="F4x-dp-geq" name="value" keyPath="arrangedObjects.enabled" id="83s-cW-4SL">
                                                 <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <bool key="NSConditionallySetsEnabled" value="NO"/>
+                                                    <bool key="NSCreatesSortDescriptor" value="NO"/>
                                                     <bool key="NSValidatesImmediately" value="YES"/>
                                                 </dictionary>
                                             </binding>
@@ -122,40 +133,41 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
+                                    <action trigger="doubleAction" selector="enablestatechanged:" target="-2" id="Eck-I8-s56"/>
+                                    <binding destination="F4x-dp-geq" name="content" keyPath="arrangedObjects" id="V28-Bm-dMB"/>
                                     <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled" id="eC8-nE-eYC"/>
+                                    <binding destination="F4x-dp-geq" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="V28-Bm-dMB" id="DYv-fT-aKF"/>
                                 </connections>
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="I1A-Th-6P9">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="I1A-Th-6P9">
                         <rect key="frame" x="1" y="118" width="298" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="m3H-E0-TVP">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="m3H-E0-TVP">
                         <rect key="frame" x="224" y="17" width="15" height="102"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="1mZ-iW-V0G">
-                        <rect key="frame" x="0.0" y="0.0" width="302" height="25"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </tableHeaderView>
                 </scrollView>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XS5-BM-Tfb">
-                    <rect key="frame" x="56" y="188" width="231" height="17"/>
+                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Hx-mr-6os">
+                    <rect key="frame" x="91" y="14" width="331" height="37"/>
                     <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Air Notification List Source:" id="OCs-hG-JLG">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                    <textFieldCell key="cell" selectable="YES" title="To change which titles to enable notifications for, double click on the title." id="AFv-kD-g1A">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
-                    <connections>
-                        <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled]" id="za7-Uf-pL6"/>
-                    </connections>
                 </textField>
             </subviews>
-            <point key="canvasLocation" x="-671" y="126"/>
+            <point key="canvasLocation" x="-671" y="143.5"/>
         </customView>
-        <arrayController mode="entity" entityName="Notifications" usesLazyFetching="YES" automaticallyPreparesContent="YES" automaticallyRearrangesObjects="YES" id="F4x-dp-geq"/>
+        <arrayController mode="entity" entityName="Notifications" automaticallyPreparesContent="YES" selectsInsertedObjects="NO" automaticallyRearrangesObjects="YES" id="F4x-dp-geq">
+            <declaredKeys>
+                <string>title</string>
+                <string>Key</string>
+            </declaredKeys>
+        </arrayController>
         <userDefaultsController representsSharedInstance="YES" id="06i-wS-slx"/>
     </objects>
 </document>

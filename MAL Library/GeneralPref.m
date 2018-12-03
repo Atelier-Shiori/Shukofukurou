@@ -40,7 +40,7 @@
 
 #pragma mark -
 #pragma mark MASPreferencesViewController
-- (NSString *)identifier {
+- (NSString *)viewIdentifier {
     return @"GeneralPreferences";
 }
 
@@ -120,7 +120,6 @@
         }
         [moc save:&error];
     }
-    [moc reset];
     [TitleIdConverter resetshouldimportmappings];
 }
 - (IBAction)cachetitletoggle:(id)sender {

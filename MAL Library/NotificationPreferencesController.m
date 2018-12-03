@@ -12,6 +12,7 @@
 
 @interface NotificationPreferencesController ()
 @property (strong) IBOutlet NSArrayController *arraycontroller;
+@property (strong) IBOutlet NSTableView *tableview;
 
 @end
 
@@ -21,6 +22,10 @@
     return [super initWithNibName:@"NotificationPreferencesController" bundle:nil];
 }
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)awakeFromNib {
     _arraycontroller.managedObjectContext = ((AppDelegate *)NSApplication.sharedApplication.delegate).managedObjectContext;
 }
@@ -28,6 +33,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AirNotifyRefreshed" object:nil];
+}
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"AirNotifyRefreshed"]) {
+        [_arraycontroller fetchWithRequest:_arraycontroller.defaultFetchRequest merge:YES error:nil];
+    }
 }
 
 - (IBAction)toggleairnotifications:(id)sender {
@@ -40,7 +52,7 @@
 
 #pragma mark -
 #pragma mark MASPreferencesViewController
-- (NSString *)identifier {
+- (NSString *)viewIdentifier {
     return @"AirNotificationPreferences";
 }
 
@@ -53,8 +65,9 @@
 }
 - (IBAction)enablestatechanged:(id)sender {
     if (_arraycontroller.selectedObjects.count > 0) {
-        [_arraycontroller.managedObjectContext save:nil];
         NSManagedObject *selected = [_arraycontroller selectedObjects][0];
+        [selected setValue:@(!((NSNumber *)[selected valueForKey:@"enabled"]).boolValue) forKey:@"enabled"];
+        [_arraycontroller.managedObjectContext save:nil];
         NSLog(@"%@", [selected valueForKey:@"title"]);
         if (((NSNumber *)[selected valueForKey:@"enabled"]).boolValue) {
             [[AiringNotificationManager sharedAiringNotificationManager] setNotification:selected];

@@ -10,6 +10,7 @@
 #import "listservice.h"
 #import "EditTitle.h"
 #import "AtarashiiListCoreData.h"
+#import "AiringNotificationManager.h"
 
 @interface MyListView ()
 @property bool updating;
@@ -31,6 +32,11 @@
 - (void)populateList:(id)object type:(int)type {
     [super populateList:object type:type];
     [self setToolbarButtonState];
+    if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice getCurrentServiceID] && type == 0) {
+        [[AiringNotificationManager sharedAiringNotificationManager] checknotifications:^(bool success) {
+            NSLog(@"Done fetching new air notifications");
+        }];
+    }
 }
 
 - (void)filterStatusAsTabs:(NSButton *)btn{
@@ -141,7 +147,7 @@
 }
 
 - (void)deletetitle {
-    NSDictionary *d;
+    __block NSDictionary *d;
     NSNumber *selid;
     if (self.currentlist == 0) {
         if (self.animelistarraycontroller.selectedObjects.count > 0) {
@@ -199,6 +205,9 @@
         }
         [_mw loadlist:@(false) type:self.currentlist];
         [self setUpdatingState:false];
+        if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice getCurrentServiceID] && self.currentlist == 0) {
+            [[AiringNotificationManager sharedAiringNotificationManager] removeNotifyingTitle:((NSNumber *)d[@"id"]).intValue withService:[listservice getCurrentServiceID]];
+        }
     }error:^(NSError *error) {
         NSLog(@"%@",error);
         _deletetitleitem.enabled = YES;

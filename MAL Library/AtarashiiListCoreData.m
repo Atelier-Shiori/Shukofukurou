@@ -316,7 +316,6 @@
         }
     }
     [moc save:&error];
-    [moc reset];
 }
 + (bool)entryNeedsUpdatingWithEntry:(NSDictionary *)entry withExistingEntry:(NSManagedObject *)existingEntry withType:(int)type {
     bool same = false;

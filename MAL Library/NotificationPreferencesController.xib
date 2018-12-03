@@ -28,8 +28,8 @@
                     </buttonCell>
                     <connections>
                         <action selector="toggleairnotifications:" target="-2" id="9Ik-iN-zKs"/>
-                        <binding destination="06i-wS-slx" name="enabled" keyPath="values.donated" id="w7a-sg-UkZ"/>
                         <binding destination="06i-wS-slx" name="value" keyPath="values.airnotificationsenabled" id="oOi-8l-1iM"/>
+                        <binding destination="06i-wS-slx" name="enabled" keyPath="values.donated" id="w7a-sg-UkZ"/>
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XS5-BM-Tfb">
@@ -59,8 +59,8 @@
                     </popUpButtonCell>
                     <connections>
                         <action selector="notificationlistservicechanged:" target="-2" id="Tjv-0R-Qh1"/>
-                        <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled" id="Itm-9K-VD2"/>
                         <binding destination="06i-wS-slx" name="selectedTag" keyPath="values.airingnotification_service" id="IoB-zS-tSz"/>
+                        <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled" id="Itm-9K-VD2"/>
                     </connections>
                 </popUpButton>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kh3-9H-UCU">
@@ -116,7 +116,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
-                                        <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" inset="2" id="tSp-4X-YSa">
+                                        <buttonCell key="dataCell" type="check" bezelStyle="regularSquare" imagePosition="left" enabled="NO" inset="2" id="tSp-4X-YSa">
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
@@ -135,8 +135,8 @@
                                 <connections>
                                     <action trigger="doubleAction" selector="enablestatechanged:" target="-2" id="Eck-I8-s56"/>
                                     <binding destination="F4x-dp-geq" name="content" keyPath="arrangedObjects" id="V28-Bm-dMB"/>
-                                    <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled" id="eC8-nE-eYC"/>
                                     <binding destination="F4x-dp-geq" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="V28-Bm-dMB" id="DYv-fT-aKF"/>
+                                    <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled" id="eC8-nE-eYC"/>
                                 </connections>
                             </tableView>
                         </subviews>

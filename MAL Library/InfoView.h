@@ -40,4 +40,5 @@ typedef NS_ENUM(unsigned int, InfoType) {
 - (IBAction)openpeoplebrowser:(id)sender;
 - (IBAction)searchsite:(id)sender;
 - (void)infoPopulationDidAbort;
+- (IBAction)showEpisodesDetailWindow:(id)sender;
 @end

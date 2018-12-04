@@ -11,6 +11,7 @@
 #import "Utility.h"
 #import "NSString+HTMLtoNSAttributedString.h"
 #import "RecommendedTitleView.h"
+#import "EpisodeDetailsWindowController.h"
 #import "StreamPopup.h"
 #import "listservice.h"
 
@@ -33,6 +34,8 @@
 @property (strong) IBOutlet NSView *synopsisareaview;
 @property (strong) IBOutlet NSView *blankbackground;
 @property (strong) IBOutlet NSView *blanksynopsis;
+
+@property (strong) EpisodeDetailsWindowController *episodedetail;
 
 @end
 
@@ -597,5 +600,13 @@
         }
     }
     return false;
+}
+
+- (IBAction)showEpisodesDetailWindow:(id)sender {
+    if (!_episodedetail) {
+        _episodedetail = [EpisodeDetailsWindowController new];
+    }
+    [_episodedetail.window makeKeyAndOrderFront:self];
+    [_episodedetail loadEpisodeData:_selectedid];
 }
 @end

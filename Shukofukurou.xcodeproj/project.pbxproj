@@ -154,6 +154,22 @@
 		59F356A321B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
 		59F356A421B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
 		59F356A521B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
+		59F356C321B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */; };
+		59F356C421B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */; };
+		59F356C521B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */; };
+		59F356C621B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */; };
+		59F356C721B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */; };
+		59F356C821B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */; };
+		59F356C921B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */; };
+		59F356CA21B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */; };
+		59F356CE21B6E386008C79ED /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */; };
+		59F356CF21B6E386008C79ED /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */; };
+		59F356D021B6E386008C79ED /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */; };
+		59F356D121B6E386008C79ED /* EpisodeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */; };
+		59F356D621B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */; };
+		59F356D721B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */; };
+		59F356D821B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */; };
+		59F356D921B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */; };
 		91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
 		91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
 		91044F90211B240600DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
@@ -894,6 +910,12 @@
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
+		59F356C021B6E09B008C79ED /* EpisodeDetailsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailsWindowController.h; sourceTree = "<group>"; };
+		59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailsWindowController.m; sourceTree = "<group>"; };
+		59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EpisodeDetailsWindowController.xib; path = Base.lproj/EpisodeDetailsWindowController.xib; sourceTree = "<group>"; };
+		59F356CB21B6E386008C79ED /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
+		59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailViewController.m; sourceTree = "<group>"; };
+		59F356DA21B7162C008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EpisodeDetailViewController.xib; sourceTree = "<group>"; };
 		91044F8B211B23BF00DBEF57 /* AppDelegate+Patreon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+Patreon.h"; sourceTree = "<group>"; };
 		91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+Patreon.m"; sourceTree = "<group>"; };
 		91044F8F211B240600DBEF57 /* Patreon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Patreon.framework; path = "MAL Library/Patreon.framework"; sourceTree = "<group>"; };
@@ -1522,6 +1544,12 @@
 				5972404C21B57D7600599AAC /* NotificationPreferencesController.h */,
 				5972404D21B57D7600599AAC /* NotificationPreferencesController.m */,
 				59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */,
+				59F356C021B6E09B008C79ED /* EpisodeDetailsWindowController.h */,
+				59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */,
+				59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */,
+				59F356CB21B6E386008C79ED /* EpisodeDetailViewController.h */,
+				59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */,
+				59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1846,6 +1874,7 @@
 				913A118F1E8F206A00450B66 /* dsa_pub.pem in Resources */,
 				91822A611EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
 				913A11901E8F206A00450B66 /* Credits.rtf in Resources */,
+				59F356C821B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */,
 				913A11911E8F206A00450B66 /* SearchView.xib in Resources */,
 				91B378B31E989C7C000061E6 /* AiringView.xib in Resources */,
 				2D8BF8B41EC4EED30068856A /* ListImport.xib in Resources */,
@@ -1879,6 +1908,7 @@
 				2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
 				59F356A321B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
+				59F356D721B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1896,6 +1926,7 @@
 				9199BAD21E89842400F6E9FF /* dsa_pub.pem in Resources */,
 				9199BAD11E89842400F6E9FF /* Credits.rtf in Resources */,
 				91999D021E8C7DFE0026D3E9 /* SearchView.xib in Resources */,
+				59F356C721B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */,
 				2D371E7F1ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
@@ -1929,6 +1960,7 @@
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
 				59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
+				59F356D621B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1946,6 +1978,7 @@
 				91F8E40E210A46CA007137A7 /* dsa_pub.pem in Resources */,
 				91F8E40F210A46CA007137A7 /* Credits.rtf in Resources */,
 				91F8E410210A46CA007137A7 /* SearchView.xib in Resources */,
+				59F356CA21B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */,
 				91F8E411210A46CA007137A7 /* ListStatistics.xib in Resources */,
 				91F8E412210A46CA007137A7 /* LoginView.xib in Resources */,
 				91F8E413210A46CA007137A7 /* MainWindow.xib in Resources */,
@@ -1979,6 +2012,7 @@
 				91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */,
 				91F8E42F210A46CA007137A7 /* ListView.xib in Resources */,
 				59F356A521B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
+				59F356D921B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2008,6 +2042,7 @@
 				593A798D21ADEE050083FA86 /* TitleCollectionCell.xib in Resources */,
 				F888F475208FB1F500C22C39 /* ListImport.xib in Resources */,
 				F888F476208FB1F500C22C39 /* LoginView.xib in Resources */,
+				59F356D821B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */,
 				F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */,
 				F888F479208FB1F500C22C39 /* EULA.rtf in Resources */,
 				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
@@ -2016,6 +2051,7 @@
 				59F356A421B5D534008C79ED /* NotificationPreferencesController.xib in Resources */,
 				F888F47D208FB1F500C22C39 /* AniListAuthWindow.xib in Resources */,
 				F888F47E208FB1F500C22C39 /* CharactersBrowser.xib in Resources */,
+				59F356C921B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
 				F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				91F8E441210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
@@ -2156,6 +2192,7 @@
 				91244E902108BCFE00AA8F90 /* CustomListsPopover.m in Sources */,
 				91C0601F1EAD309C0099E433 /* ReviewView.m in Sources */,
 				2D6ECA351F2E9B20003C455E /* NSString_stripHtml.m in Sources */,
+				59F356CF21B6E386008C79ED /* EpisodeDetailViewController.m in Sources */,
 				2DA863EB1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
@@ -2199,6 +2236,7 @@
 				593A794921ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 				9129254C2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
+				59F356C421B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2246,6 +2284,7 @@
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
 				F84BB9EA2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */,
+				59F356CE21B6E386008C79ED /* EpisodeDetailViewController.m in Sources */,
 				91C060131EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */,
 				9164FFD21E8D697600EA34D9 /* NSTableViewAction.m in Sources */,
@@ -2276,6 +2315,7 @@
 				5972404F21B57D7600599AAC /* NotificationPreferencesController.m in Sources */,
 				91C0601E1EAD309C0099E433 /* ReviewView.m in Sources */,
 				2DAB19DF1EF9D16800420182 /* StreamPopup.m in Sources */,
+				59F356C321B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
 				2D6ECA341F2E9B20003C455E /* NSString_stripHtml.m in Sources */,
 				597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
@@ -2341,6 +2381,7 @@
 				91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */,
 				91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */,
 				91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
+				59F356D121B6E386008C79ED /* EpisodeDetailViewController.m in Sources */,
 				91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */,
 				91F8E3BB210A46CA007137A7 /* AniList.m in Sources */,
 				91F8E3BC210A46CA007137A7 /* TitleIdConverter.m in Sources */,
@@ -2356,6 +2397,7 @@
 				91F8E3C8210A46CA007137A7 /* CustomListsPopover.m in Sources */,
 				91F8E3C9210A46CA007137A7 /* RatingTwentyConvert.m in Sources */,
 				91F8E3CA210A46CA007137A7 /* NSTextFieldCellMiddleAligned.m in Sources */,
+				59F356C621B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
 				91F8E3CB210A46CA007137A7 /* MyAnimeList.m in Sources */,
 				91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */,
 				91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */,
@@ -2417,6 +2459,7 @@
 				598B453421AC393600F28180 /* TrendingRetriever.m in Sources */,
 				F888F40B208FB1F500C22C39 /* Kitsu.m in Sources */,
 				F888F40C208FB1F500C22C39 /* Keychain.m in Sources */,
+				59F356C521B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
 				F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */,
 				91244E8B2108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m in Sources */,
 				F888F410208FB1F500C22C39 /* ListImport.m in Sources */,
@@ -2435,6 +2478,7 @@
 				91244E9A2108E89C00AA8F90 /* CustomListModify.m in Sources */,
 				F888F419208FB1F500C22C39 /* servicemenucontroller.m in Sources */,
 				F888F41A208FB1F500C22C39 /* MainWindow.m in Sources */,
+				59F356D021B6E386008C79ED /* EpisodeDetailViewController.m in Sources */,
 				F888F41B208FB1F500C22C39 /* NSTextFieldNumber.m in Sources */,
 				F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */,
 				F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */,
@@ -2657,6 +2701,14 @@
 				59F356A621B5D534008C79ED /* Base */,
 			);
 			name = NotificationPreferencesController.xib;
+			sourceTree = "<group>";
+		};
+		59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59F356DA21B7162C008C79ED /* Base */,
+			);
+			name = EpisodeDetailViewController.xib;
 			sourceTree = "<group>";
 		};
 		913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */ = {

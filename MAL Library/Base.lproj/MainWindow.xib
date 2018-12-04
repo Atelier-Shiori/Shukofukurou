@@ -561,6 +561,21 @@
                             <action selector="openpeoplebrowser:" target="4iy-i9-GZD" id="KJ2-cr-xxa"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="36D82FD2-D4AA-40D9-A16D-0E3BE95DE907" explicitItemIdentifier="viewepisodes" label="View Episodes" paletteLabel="View Episodes" toolTip="View Episodes" image="episodes" id="44R-yq-ILU">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="10C-F5-8ES">
+                            <rect key="frame" x="23" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="episodes" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aQN-b7-KF1">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="showEpisodesDetailWindow:" target="4iy-i9-GZD" id="aSN-E7-VNg"/>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="A69A937D-77C2-463E-AC5B-FF5A5D0C6168" explicitItemIdentifier="viewtitleinfo" label="View Title Information" paletteLabel="View Title Information" toolTip="View Title Information" image="Info" id="oYq-IJ-WTb">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
@@ -701,7 +716,7 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-442" y="-289"/>
+            <point key="canvasLocation" x="-686" y="-332"/>
         </window>
         <visualEffectView appearanceType="inheritedVibrantLight" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" id="K71-hX-Lqz" userLabel="ProgressView">
             <rect key="frame" x="0.0" y="0.0" width="549" height="434"/>
@@ -834,6 +849,7 @@
         <image name="cast" width="32" height="32"/>
         <image name="delete" width="32" height="32"/>
         <image name="editcustomlists" width="24" height="24"/>
+        <image name="episodes" width="32" height="32"/>
         <image name="increment" width="24" height="24"/>
         <image name="reviews" width="32" height="32"/>
         <image name="safari" width="32" height="32"/>

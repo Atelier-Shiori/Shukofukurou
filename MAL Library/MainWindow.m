@@ -58,7 +58,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists", @"trending"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists", @"trending", @"episodes"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -644,7 +644,13 @@
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
             if (_infoview.type == MALAnime && [[NSUserDefaults standardUserDefaults] boolForKey:@"donated"]) {
-                [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
+                int currentservice = [listservice getCurrentServiceID];
+                if (currentservice == 3) {
+                    [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
+                }
+                else {
+                    [_toolbar insertItemWithItemIdentifier:@"viewepisodes" atIndex:3+indexoffset];
+                }
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"web" atIndex:5+indexoffset];
                 if (showrefresh) {
@@ -1262,6 +1268,7 @@
             [_infoview populateMangaInfoView:responseObject];
         }
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"TitleDetailsChanged" object:nil];
     }error:^(NSError *error){
         NSLog(@"Error: %@", error);
         if (![self loadfromcache:idnum.intValue withType:type forcerefresh:forcerefresh ignoreLastUpdated:YES]) {

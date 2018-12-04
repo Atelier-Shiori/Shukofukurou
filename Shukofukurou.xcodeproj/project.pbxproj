@@ -170,6 +170,7 @@
 		59F356D721B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */; };
 		59F356D821B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */; };
 		59F356D921B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */; };
+		59F356DC21B716DF008C79ED /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
 		91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */ = {isa = PBXBuildFile; fileRef = 91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */; };
 		91044F90211B240600DBEF57 /* Patreon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91044F8F211B240600DBEF57 /* Patreon.framework */; };
@@ -2426,6 +2427,7 @@
 				91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */,
 				91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */,
 				91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */,
+				59F356DC21B716DF008C79ED /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				91F8E3E5210A46CA007137A7 /* ProfileWindowController.m in Sources */,
 				593A796421ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				91F8E3E6210A46CA007137A7 /* CharactersBrowser.m in Sources */,

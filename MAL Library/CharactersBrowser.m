@@ -193,11 +193,15 @@
     [self replaceMainViewSubViewWithView:_noselectionview];
     [self startstopanimation:true];
     [AniList retrieveCharacterDetails:idnum completion:^(id responseObject) {
+        self.characterviewcontroller.persontype = PersonCharacter;
         [self startstopanimation:false];
         [_characterviewcontroller populateStaffInformation:responseObject];
         [self replaceMainViewSubViewWithView:_characterviewcontroller.view];
+        [self enabletoolbaritems:YES];
     } error:^(NSError *error) {
         [self startstopanimation:false];
+        [self replaceMainViewSubViewWithView:_noselectionview];
+        [self enabletoolbaritems:NO];
     }];
 }
 
@@ -205,11 +209,15 @@
     [self replaceMainViewSubViewWithView:_noselectionview];
     [self startstopanimation:true];
     [listservice retrievePersonDetails:idnum completion:^(id responseObject){
+        self.characterviewcontroller.persontype = PersonStaff;
         [self startstopanimation:false];
         [_characterviewcontroller populateStaffInformation:responseObject];
         [self replaceMainViewSubViewWithView:_characterviewcontroller.view];
+        [self enabletoolbaritems:YES];
     }error:^(NSError *error) {
         [self startstopanimation:false];
+        [self replaceMainViewSubViewWithView:_noselectionview];
+        [self enabletoolbaritems:NO];
     }];
 }
 

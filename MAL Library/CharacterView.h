@@ -24,7 +24,9 @@ typedef NS_ENUM(unsigned int, ArrayType) {
     actors = 11,
     voiceactingroles = 12,
     staffpositions = 13,
-    publishedmanga = 14
+    publishedmanga = 14,
+    appearedanime = 20,
+    appearedmanga = 21
 };
 - (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title;
 - (void)populateStaffInformation:(NSDictionary *)d;

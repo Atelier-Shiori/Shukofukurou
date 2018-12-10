@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,9 +11,12 @@
                 <outlet property="arraycontroller" destination="xEx-XU-f3O" id="xSS-WT-aqJ"/>
                 <outlet property="charactername" destination="aRD-zy-myb" id="6hH-CB-QdY"/>
                 <outlet property="details" destination="CTX-KG-sxJ" id="v6r-du-udH"/>
+                <outlet property="filteranimeappearences" destination="9JM-hI-T9f" id="pUP-94-V9l"/>
+                <outlet property="filtermangaappearences" destination="qaB-z1-Dgj" id="YpG-JO-Mc5"/>
                 <outlet property="filterpublishedmanga" destination="gQg-PW-uvg" id="xvU-8t-9qC"/>
                 <outlet property="filterstaffpositions" destination="eHf-tF-jv8" id="G8m-5X-Fw4"/>
                 <outlet property="filtervoiceactingroles" destination="MUR-to-f6M" id="GfI-Ge-H86"/>
+                <outlet property="filtervoiceactors" destination="ORx-wD-hth" id="wJc-Z1-3zx"/>
                 <outlet property="popupfilter" destination="hku-1t-nJn" id="2jm-0Y-s8W"/>
                 <outlet property="posterimage" destination="eW7-5D-4qV" id="ZGx-No-Lfb"/>
                 <outlet property="tableview_first_heading" destination="jJW-QB-hhW" id="aqW-HW-VCg"/>
@@ -61,15 +64,15 @@
                     <rect key="frame" x="213" y="223" width="531" height="114"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="wWz-q2-CmN">
-                        <rect key="frame" x="0.0" y="0.0" width="516" height="114"/>
+                        <rect key="frame" x="0.0" y="0.0" width="531" height="114"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView ambiguous="YES" editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="CTX-KG-sxJ">
-                                <rect key="frame" x="0.0" y="0.0" width="531" height="114"/>
+                                <rect key="frame" x="0.0" y="0.0" width="546" height="114"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="516" height="114"/>
+                                <size key="minSize" width="531" height="114"/>
                                 <size key="maxSize" width="1098" height="10000000"/>
                                 <attributedString key="textStorage">
                                     <fragment content="Text">
@@ -84,12 +87,12 @@
                             </textView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Dpx-jx-c2e">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Dpx-jx-c2e">
                         <rect key="frame" x="-100" y="-100" width="87" height="18"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="WyG-Rr-7g6">
-                        <rect key="frame" x="516" y="0.0" width="15" height="114"/>
+                    <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="WyG-Rr-7g6">
+                        <rect key="frame" x="515" y="0.0" width="16" height="114"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
@@ -163,11 +166,11 @@
                         </subviews>
                         <nil key="backgroundColor"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Tre-ek-pwU">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Tre-ek-pwU">
                         <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="6ke-78-1jo">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="6ke-78-1jo">
                         <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -190,6 +193,15 @@
                                             </dictionary>
                                         </binding>
                                     </connections>
+                                </menuItem>
+                                <menuItem title="Voice Actors" id="ORx-wD-hth">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Anime Appearences" id="9JM-hI-T9f">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
+                                </menuItem>
+                                <menuItem title="Manga Appearences" id="qaB-z1-Dgj">
+                                    <modifierMask key="keyEquivalentModifierMask"/>
                                 </menuItem>
                             </items>
                         </menu>

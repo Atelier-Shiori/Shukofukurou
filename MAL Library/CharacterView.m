@@ -31,6 +31,9 @@
 @property (strong) IBOutlet NSMenuItem *filtervoiceactingroles;
 @property (strong) IBOutlet NSMenuItem *filterstaffpositions;
 @property (strong) IBOutlet NSMenuItem *filterpublishedmanga;
+@property (strong) IBOutlet NSMenuItem *filtervoiceactors;
+@property (strong) IBOutlet NSMenuItem *filteranimeappearences;
+@property (strong) IBOutlet NSMenuItem *filtermangaappearences;
 @end
 
 @implementation CharacterView
@@ -94,7 +97,7 @@
     if (d[@"more_details"]) {
         [tmpstr appendFormat:@"%@\n",[(NSString *)d[@"more_details"] stripHtml]];
     }
-    if (d[@"favorited_count"] && [listservice getCurrentServiceID] == 1) {
+    if (d[@"favorited_count"]) {
         [tmpstr appendFormat:@"Favorited: %@\n",d[@"favorited_count"]];
     }
     if (d[@"website_url"]) {
@@ -110,14 +113,32 @@
     _details.string = tmpstr;
     _details.textColor = NSColor.controlTextColor;
     _selectedid = ((NSNumber *)d[@"id"]).intValue;
-    _persontype = PersonStaff;
     [self clearArrayController];
     _tableview_first_heading.stringValue = @"Positions";
-    [self populatetableview:d[@"voice_acting_roles"] type:voiceactingroles];
-    [self populatetableview:d[@"anime_staff_positions"] type:staffpositions];
-    [self populatetableview:d[@"published_manga"] type:publishedmanga];
+    switch (self.persontype) {
+        case PersonStaff:
+            _filtervoiceactors.hidden = true;
+            _filteranimeappearences.hidden = true;
+            _filtermangaappearences.hidden = true;
+            [self populatetableview:d[@"voice_acting_roles"] type:voiceactingroles];
+            [self populatetableview:d[@"anime_staff_positions"] type:staffpositions];
+            [self populatetableview:d[@"published_manga"] type:publishedmanga];
+            _viewonwikipedia.hidden = NO;
+            break;
+        case PersonCharacter:
+            _filterstaffpositions.hidden = true;
+            _filtervoiceactingroles.hidden = true;
+            _filterpublishedmanga.hidden = true;
+            [self populatetableview:d[@"actors"] type:actors];
+            [self populatetableview:d[@"appeared_anime"] type:appearedanime];
+            [self populatetableview:d[@"appeared_manga"] type:appearedmanga];
+            _viewonwikipedia.hidden = YES;
+            break;
+        default:
+            break;
+    }
+
     _popupfilter.hidden = NO;
-    _viewonwikipedia.hidden = NO;
     [self reloadtableview];
     [_popupfilter selectItemAtIndex:[self getNonHiddenFilterIndex]];
     [self filtertableview];
@@ -134,9 +155,13 @@
     for (NSDictionary *d in arraycontent) {
         switch (arraytype) {
             case actors: {
-                [tmparray addObject:@{@"id":d[@"id"],@"image":d[@"image"],@"title":[NSString stringWithFormat:@"%@\n%@",d[@"name"],d[@"language"]]}];
+                [tmparray addObject:@{@"id":d[@"id"],@"image":d[@"image"],@"title":[NSString stringWithFormat:@"%@\n%@",d[@"name"],d[@"language"]], @"type" : @"Voice Actors"}];
                 break;
             }
+            case appearedmanga:
+            case appearedanime:
+                [tmparray addObject:@{@"id":d[@"id"],@"image":d[@"image"],@"title":[NSString stringWithFormat:@"%@\n%@",d[@"title"],d[@"role"]], @"type" : arraytype == appearedanime ? @"Anime Appearences" : @"Manga Appearences"}];
+                break;
             case staffpositions: {
                 [tmparray addObject:@{@"id":d[@"anime"][@"id"],@"image":d[@"anime"][@"image_url"],@"title":[NSString stringWithFormat:@"%@\n%@",d[@"anime"][@"title"],d[@"position"]], @"type":@"Staff Positions"}];
                 break;
@@ -149,7 +174,7 @@
                 else {
                     role = @"Supporting role";
                 }
-                [tmparray addObject:@{@"id":d[@"anime"][@"id"],@"image":d[@"image_url"],@"title":[NSString stringWithFormat:@"%@\n%@\n%@",d[@"name"],d[@"anime"][@"title"],role], @"type":@"Voice Acting Roles"}];
+                [tmparray addObject:@{@"id":d[@"id"],@"image":d[@"image_url"],@"title":[NSString stringWithFormat:@"%@\n%@\n%@",d[@"name"],d[@"anime"][@"title"],role], @"type":@"Voice Acting Roles"}];
                 break;
             }
             case publishedmanga: {
@@ -173,6 +198,15 @@
 - (void)addremovefilter:(int)type hide:(bool)hide {
     switch (type) {
         case actors: {
+            _filtervoiceactors.hidden = hide;
+            break;
+        }
+        case appearedanime: {
+            _filteranimeappearences.hidden = hide;
+            break;
+        }
+        case appearedmanga: {
+            _filtermangaappearences.hidden = hide;
             break;
         }
         case staffpositions: {
@@ -198,9 +232,19 @@
     else if (!_filterstaffpositions.hidden) {
         return 1;
     }
-    else {
+    else if (!_filterpublishedmanga.hidden) {
         return 2;
     }
+    else if (!_filtervoiceactors.hidden) {
+        return 3;
+    }
+    else if (!_filteranimeappearences.hidden) {
+        return 4;
+    }
+    else if (!_filtermangaappearences.hidden) {
+        return 5;
+    }
+    return 0;
 }
 
 - (void)reloadtableview {
@@ -222,16 +266,23 @@
         if (_tb.selectedRow >-1){
             NSDictionary *d = _arraycontroller.selectedObjects[0];
             if (_persontype == PersonCharacter) {
-                // View voice actor directly from the list.
+                if ([(NSString *)d[@"type"] isEqualToString:@"Voice Actors"]) {
                     [_cb retrievestaffinformation:((NSNumber *)d[@"id"]).intValue];
+                }
+                else {
+                    int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Anime Appearences"] ? 0 : 1;
+                    [_mw loadinfo:d[@"id"] type:loadtype changeView:YES forcerefresh:NO];
+                    [_mw.window makeKeyAndOrderFront:self];
+                }
             }
             else {
                 int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Published Manga"] ? 1 : 0;
                 switch ([listservice getCurrentServiceID]) {
                     case 1:
                     case 3:
-                        [_mw loadinfo:d[@"id"] type:loadtype changeView:YES forcerefresh:NO];
-                        [_mw.window makeKeyAndOrderFront:self];
+                        [_cb retrievecharacterinformation:((NSNumber *)d[@"id"]).intValue];
+                        //[_mw loadinfo:d[@"id"] type:loadtype changeView:YES forcerefresh:NO];
+                        //[_mw.window makeKeyAndOrderFront:self];
                         break;
                     case 2: {
                         [MyAnimeList retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:loadtype useAccount:NO completion:^(id responseObject) {

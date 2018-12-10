@@ -12,4 +12,4 @@ Note that you do not need to have Shukofukurou running to be notified. However, 
 ## Preferences
 * Enable Air Notifications - This setting allows you to enable/disable Airing Notifications.
 * Air Notification List Source - This specifies which library Shukofukurou should use to generate air notifications.
-* Notifying Titles - This shows a list of titles you will recieve notifications for. By double clicking, you can enable/disable notifications on a title basis.
+* Notifying Titles - This shows a list of titles you will recieve notifications for. You can enable or disable notifications by checking the check box besides the title.

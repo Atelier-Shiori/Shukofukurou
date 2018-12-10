@@ -78,8 +78,10 @@
                             <action selector="share:" target="-2" id="N3i-Li-V3e"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="2C67DDE0-C1E0-4E3F-8810-19A3594399CD" label="Person Search" paletteLabel="Person Search" sizingBehavior="auto" id="EdN-n2-FjE">
+                    <toolbarItem implicitItemIdentifier="2C67DDE0-C1E0-4E3F-8810-19A3594399CD" label="Person Search" paletteLabel="Person Search" id="EdN-n2-FjE">
                         <nil key="toolTip"/>
+                        <size key="minSize" width="140" height="22"/>
+                        <size key="maxSize" width="140" height="22"/>
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="5kw-5u-ciQ">
                             <rect key="frame" x="0.0" y="14" width="100" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>

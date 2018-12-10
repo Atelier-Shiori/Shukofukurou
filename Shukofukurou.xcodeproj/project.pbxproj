@@ -148,6 +148,14 @@
 		598B454D21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454F21AC5C3400F28180 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
+		59A2FD5421BEBE770092E963 /* CharacterPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */; };
+		59A2FD5521BEBE770092E963 /* CharacterPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */; };
+		59A2FD5621BEBE770092E963 /* CharacterPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */; };
+		59A2FD5721BEBE770092E963 /* CharacterPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */; };
+		59A2FD6221BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */; };
+		59A2FD6321BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */; };
+		59A2FD6421BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */; };
+		59A2FD6521BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
@@ -908,6 +916,9 @@
 		598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
 		598B454921AC4BCE00F28180 /* AiringSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringSchedule.h; sourceTree = "<group>"; };
 		598B454A21AC4BCE00F28180 /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
+		59A2FD5121BEBE770092E963 /* CharacterPopOverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterPopOverViewController.h; sourceTree = "<group>"; };
+		59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterPopOverViewController.m; sourceTree = "<group>"; };
+		59A2FD6621BED4D90092E963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharacterPopOverViewController.xib; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
@@ -1551,6 +1562,9 @@
 				59F356CB21B6E386008C79ED /* EpisodeDetailViewController.h */,
 				59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */,
 				59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */,
+				59A2FD5121BEBE770092E963 /* CharacterPopOverViewController.h */,
+				59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */,
+				59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1887,6 +1901,7 @@
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				F84D64432098FAA7003225F9 /* TipJar.xib in Resources */,
 				F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */,
+				59A2FD6321BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */,
 				2D4E01101FA3B1C10053A82B /* CharactersBrowser.xib in Resources */,
 				2D4E01141FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				913A11981E8F206A00450B66 /* NotLoggedIn.xib in Resources */,
@@ -1939,6 +1954,7 @@
 				2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */,
 				2D8BF8B71EC4EED80068856A /* ImportPrompt.xib in Resources */,
+				59A2FD6221BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */,
 				F84BB9FC2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */,
 				91822A601EAEAC88005E33DB /* RecommendedTitleView.xib in Resources */,
 				9199BAA31E89836000F6E9FF /* MainMenu.xib in Resources */,
@@ -1991,6 +2007,7 @@
 				91F8E419210A46CA007137A7 /* ReviewView.xib in Resources */,
 				91F8E41A210A46CA007137A7 /* ListImport.xib in Resources */,
 				91F8E41B210A46CA007137A7 /* ImportPrompt.xib in Resources */,
+				59A2FD6521BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */,
 				91F8E41C210A46CA007137A7 /* AniListAuthWindow.xib in Resources */,
 				91F8E41D210A46CA007137A7 /* RecommendedTitleView.xib in Resources */,
 				91F8E41E210A46CA007137A7 /* MainMenu.xib in Resources */,
@@ -2044,6 +2061,7 @@
 				F888F475208FB1F500C22C39 /* ListImport.xib in Resources */,
 				F888F476208FB1F500C22C39 /* LoginView.xib in Resources */,
 				59F356D821B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */,
+				59A2FD6421BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */,
 				F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */,
 				F888F479208FB1F500C22C39 /* EULA.rtf in Resources */,
 				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
@@ -2180,6 +2198,7 @@
 				913A11691E8F206A00450B66 /* SearchView.m in Sources */,
 				2DB444BC1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
+				59A2FD5521BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
 				F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
@@ -2249,6 +2268,7 @@
 				2D8A41FC1E9AB46100CE52B2 /* Keychain.m in Sources */,
 				91332AC420F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */,
 				F850FCB52077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */,
+				59A2FD5421BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
 				2D8A47BA1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				91244EA3210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */,
 				2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */,
@@ -2351,6 +2371,7 @@
 				593A798A21ADE8370083FA86 /* HeaderView.m in Sources */,
 				91F8E39B210A46CA007137A7 /* DonationLicenseManager.m in Sources */,
 				91F8E39C210A46CA007137A7 /* Keychain.m in Sources */,
+				59A2FD5721BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
 				91F8E39E210A46CA007137A7 /* AniListSeasonListGenerator.m in Sources */,
 				91F8E3A0210A46CA007137A7 /* OtherListScoreFormatter.m in Sources */,
 				91F8E3A1210A46CA007137A7 /* CharacterView.m in Sources */,
@@ -2503,6 +2524,7 @@
 				F888F42D208FB1F500C22C39 /* NotLoggedIn.m in Sources */,
 				F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */,
 				F888F42F208FB1F500C22C39 /* GeneralPref.m in Sources */,
+				59A2FD5621BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
 				F888F430208FB1F500C22C39 /* AppDelegate.m in Sources */,
 				F888F433208FB1F500C22C39 /* AniListScoreConvert.m in Sources */,
 				F888F434208FB1F500C22C39 /* ReviewView.m in Sources */,
@@ -2695,6 +2717,14 @@
 				593A799B21ADEE140083FA86 /* Base */,
 			);
 			name = TrendingView.xib;
+			sourceTree = "<group>";
+		};
+		59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				59A2FD6621BED4D90092E963 /* Base */,
+			);
+			name = CharacterPopOverViewController.xib;
 			sourceTree = "<group>";
 		};
 		59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */ = {

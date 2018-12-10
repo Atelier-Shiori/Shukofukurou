@@ -12,6 +12,7 @@
 #import "NSString+HTMLtoNSAttributedString.h"
 #import "RecommendedTitleView.h"
 #import "EpisodeDetailsWindowController.h"
+#import "CharacterPopOverViewController.h"
 #import "StreamPopup.h"
 #import "listservice.h"
 
@@ -36,6 +37,8 @@
 @property (strong) IBOutlet NSView *blanksynopsis;
 
 @property (strong) EpisodeDetailsWindowController *episodedetail;
+@property (strong) IBOutlet NSPopover *characterpopover;
+@property (strong) IBOutlet CharacterPopOverViewController *characterpopovervc;
 
 @end
 
@@ -487,6 +490,7 @@
 }
 
 - (IBAction)openpeoplebrowser:(id)sender {
+    /*
     if (!_cbrowser) {
         _cbrowser = [CharactersBrowser new];
     }
@@ -495,6 +499,11 @@
         _cbrowser.window.title = [NSString stringWithFormat:@"People Browser - %@",_infoviewtitle.stringValue];
         _cbrowser.selectedtitle = _infoviewtitle.stringValue;
         [_cbrowser retrievestafflist:self.selectedid];
+    }*/
+    NSButton *btn = (NSButton *)sender;
+    [_characterpopover showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMaxYEdge];
+    if (_characterpopovervc.selectedtitleid != _selectedid) {
+        [_characterpopovervc retrievestafflist:_selectedid];
     }
 }
 

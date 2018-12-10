@@ -8,6 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="CharacterPopOverViewController">
             <connections>
+                <outlet property="progressindicator" destination="iM9-dJ-ovO" id="91K-kA-8E2"/>
                 <outlet property="sourceList" destination="QwC-dB-WbH" id="dxX-ab-O3i"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -126,6 +127,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="iM9-dJ-ovO">
+                    <rect key="frame" x="87" y="120" width="32" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                </progressIndicator>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="8yJ-Qj-1xw" secondAttribute="trailing" id="4c3-AL-yHi"/>

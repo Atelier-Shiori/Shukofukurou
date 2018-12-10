@@ -15,6 +15,7 @@
 @interface CharacterPopOverViewController ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
 @property (strong) NSDictionary *castdict;
+@property (strong) IBOutlet NSProgressIndicator *progressindicator;
 @end
 
 @implementation CharacterPopOverViewController
@@ -108,11 +109,13 @@
 #pragma mark Staff Source List
 
 - (void)retrievestafflist:(int)idnum {
+    [self showprogressindicator:YES];
     [listservice retrieveStaff:idnum completion:^(id responseObject){
         [self generateSourceList:responseObject];
         _selectedtitleid = idnum;
-    }error:^(NSError *error){
-        
+        [self showprogressindicator:NO];
+    } error:^(NSError *error){
+        [self showprogressindicator:NO];
     }];
 }
 
@@ -190,5 +193,18 @@
     type = [type stringByReplacingOccurrencesOfString:@"-" withString:@""];
     int persontype = [type isEqualToString:@"character"] ? 1 : 0;
     [NSNotificationCenter.defaultCenter postNotificationName:@"loadpersondata" object:@{@"person_id" : @(idnum), @"type" : @(persontype)}];
+}
+
+- (void)showprogressindicator:(bool)show {
+        _progressindicator.hidden = !show;
+    if (show) {
+        [_progressindicator startAnimation:self];
+        [_sourceListItems removeAllObjects];
+        [_sourceList reloadData];
+    }
+    else {
+        [_progressindicator stopAnimation:self];
+        
+    }
 }
 @end

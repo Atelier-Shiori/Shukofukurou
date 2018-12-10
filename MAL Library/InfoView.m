@@ -490,16 +490,6 @@
 }
 
 - (IBAction)openpeoplebrowser:(id)sender {
-    /*
-    if (!_cbrowser) {
-        _cbrowser = [CharactersBrowser new];
-    }
-    [_cbrowser.window makeKeyAndOrderFront:self];
-    if (_cbrowser.selectedtitleid != _selectedid) {
-        _cbrowser.window.title = [NSString stringWithFormat:@"People Browser - %@",_infoviewtitle.stringValue];
-        _cbrowser.selectedtitle = _infoviewtitle.stringValue;
-        [_cbrowser retrievestafflist:self.selectedid];
-    }*/
     NSButton *btn = (NSButton *)sender;
     [_characterpopover showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMaxYEdge];
     if (_characterpopovervc.selectedtitleid != _selectedid) {

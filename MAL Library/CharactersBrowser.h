@@ -7,14 +7,12 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <PXSourceList/PXSourceList.h>
 
-@interface CharactersBrowser : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate, NSWindowDelegate>
-@property (strong) IBOutlet PXSourceList *sourceList;
-@property int selectedtitleid;
+@interface CharactersBrowser : NSWindowController <NSWindowDelegate>
 @property (strong) NSString *selectedtitle;
 
-- (void)retrievestafflist:(int)idnum;
+- (void)retrievecharacterinformation:(int)idnum;
+- (void)retrievestaffinformation:(int)idnum;
 - (int)getIndexOfItemWithIdentifier:(NSString *)string;
 - (void)setAppearance;
 @end

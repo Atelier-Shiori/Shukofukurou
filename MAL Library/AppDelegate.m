@@ -38,10 +38,12 @@
 #import "PatreonConstants.h"
 #import "AppDelegate+Patreon.h"
 #endif
+#import "CharactersBrowser.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
 @property PFAboutWindowController *aboutWindowController;
+@property (strong) CharactersBrowser *cbrowser;
 @property (strong) IBOutlet NSMenuItem *malexportmenu;
 @property (strong) IBOutlet NSMenuItem *convertexportmenu;
 #if defined(AppStore)
@@ -106,6 +108,10 @@
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];
     
+}
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -179,6 +185,9 @@
     _mainwindowcontroller = [MainWindow new];
     [_mainwindowcontroller setDelegate:self];
     [_mainwindowcontroller.window makeKeyAndOrderFront:self];
+    // Set Observer for Person Browser
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(loadpersondata:) name:@"loadpersondata" object:nil];
+    
     [self showloginnotice];
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
@@ -441,14 +450,17 @@
         case 1:
             _importkitsumenu.hidden = false;
             _importanilist.hidden = false;
+            _personbrowsermenuitem.hidden = true;
             break;
         case 2:
             _importkitsumenu.hidden = true;
             _importanilist.hidden = false;
+            _personbrowsermenuitem.hidden = true;
             break;
         case 3:
             _importkitsumenu.hidden = false;
             _importanilist.hidden = true;
+            _personbrowsermenuitem.hidden = false;
             break;
         default:
             break;
@@ -540,6 +552,34 @@
     [self openpledgepage];
 }
 #endif
+
+#pragma mark Character Browser
+- (void)openPersonBrowser {
+    if (!_cbrowser) {
+        _cbrowser = [CharactersBrowser new];
+    }
+    [_cbrowser.window makeKeyAndOrderFront:self];
+}
+
+- (IBAction)openCharacterBrowser:(id)sender {
+    [self openPersonBrowser];
+}
+
+- (void)loadpersondata:(NSNotification *)notification {
+    if ([notification.object isKindOfClass:[NSDictionary class]]) {
+        [self openPersonBrowser];
+        NSDictionary *personinfo = notification.object;
+        int personid = ((NSNumber *)personinfo[@"person_id"]).intValue;
+        switch (((NSNumber *)personinfo[@"type"]).intValue) {
+            case 0: // Staff
+                [_cbrowser retrievestaffinformation:personid];
+                break;
+            case 1: // Character
+                [_cbrowser retrievecharacterinformation:personid];
+                break;
+        }
+    }
+}
 
 #pragma mark - Core Data stack
 

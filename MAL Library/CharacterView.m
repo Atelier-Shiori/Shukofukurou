@@ -223,7 +223,7 @@
             NSDictionary *d = _arraycontroller.selectedObjects[0];
             if (_persontype == PersonCharacter) {
                 // View voice actor directly from the list.
-                    [_cb.sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:[_cb getIndexOfItemWithIdentifier:[NSString stringWithFormat:@"staff-%@",d[@"id"]]]]byExtendingSelection:false];
+                    [_cb retrievestaffinformation:((NSNumber *)d[@"id"]).intValue];
             }
             else {
                 int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Published Manga"] ? 1 : 0;

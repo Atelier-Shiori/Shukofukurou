@@ -43,6 +43,7 @@
     [_liststats window];
     [self loadMainView];
     [self setAppearance];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AppAppearenceChanged" object:nil];
 }
 - (void)windowWillClose:(NSNotification *)notification {
     // Cleanup
@@ -55,6 +56,16 @@
 
 - (instancetype)init {
     return [super initWithWindowNibName:@"ProfileWindowController"];
+}
+
+- (void)recieveNotification:(NSNotification *)notification {
+    if ([notification.name isEqualToString:@"AppAppearenceChanged"]) {
+        [self setAppearance];
+    }
+}
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
 }
 
 - (void)awakeFromNib

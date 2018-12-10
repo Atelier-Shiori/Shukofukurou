@@ -35,6 +35,7 @@
 @property (strong) IBOutlet NSMenuItem *importkitsumenu;
 @property (strong) IBOutlet servicemenucontroller* servicemenucontrol;
 @property (strong) IBOutlet NSMenuItem *importanilist;
+@property (strong) IBOutlet NSMenuItem *personbrowsermenuitem;
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;

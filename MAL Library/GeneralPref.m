@@ -53,11 +53,7 @@
 }
 
 - (IBAction)changeappearence:(id)sender {
-    [_mainwindowcontroller setAppearance];
-    AppDelegate *del = (AppDelegate *)NSApplication.sharedApplication.delegate;
-    if (del.pwc) {
-        [[del getProfileWindow] setAppearance];
-    }
+    [NSNotificationCenter.defaultCenter postNotificationName:@"AppAppearenceChanged" object:nil];
 }
 - (void)setMainWindowController:(MainWindow*)mw{
     _mainwindowcontroller = mw;

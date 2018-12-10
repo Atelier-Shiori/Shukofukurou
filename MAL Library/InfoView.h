@@ -7,7 +7,6 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "CharactersBrowser.h"
 
 @class MainWindow;
 
@@ -30,8 +29,6 @@ typedef NS_ENUM(unsigned int, InfoType) {
 // Search Menus
 @property (strong) IBOutlet NSMenuItem *anidbmenuitem;
 @property (strong) IBOutlet NSMenuItem *bakaupdatesmenuitem;
-
-@property (strong) CharactersBrowser *cbrowser;
 
 - (void)populateAnimeInfoView:(id)object;
 - (void)populateMangaInfoView:(id)object;

@@ -117,11 +117,15 @@
         [self startTimer];
     }
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"TitleCacheToggled" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AppAppearenceChanged" object:nil];
 }
 
 - (void)recieveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"TitleCacheToggled"]) {
         [self createToolbar];
+    }
+    else if ([notification.name isEqualToString:@"AppAppearenceChanged"]) {
+        [self setAppearance];
     }
 }
 
@@ -320,7 +324,6 @@
         }
         _progressview.appearance = [NSAppearance appearanceNamed:appearancename];
         _infoview.view.appearance = [NSAppearance appearanceNamed:appearancename];
-        [_infoview.cbrowser setAppearance];
         _notloggedin.view.appearance = [NSAppearance appearanceNamed:appearancename];
         _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
         _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];

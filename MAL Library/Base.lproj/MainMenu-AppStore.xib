@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -20,6 +20,7 @@
                 <outlet property="importanilist" destination="6SO-xG-9tj" id="cjm-vW-Xfc"/>
                 <outlet property="importkitsumenu" destination="DZO-y4-ZC1" id="tYc-Io-ccR"/>
                 <outlet property="malexportmenu" destination="Qx7-os-8ZY" id="Bxk-7K-42V"/>
+                <outlet property="personbrowsermenuitem" destination="ioe-Dd-yoH" id="D33-bh-sat"/>
                 <outlet property="servicemenucontrol" destination="NCk-PM-EVr" id="J8r-TZ-Al1"/>
             </connections>
         </customObject>
@@ -359,11 +360,14 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="viewProfileWindow:" target="Voe-Tx-rLC" id="7cq-2i-uVi"/>
-                                    <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="YCq-Qp-7uf">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                        </dictionary>
-                                    </binding>
+                                    <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="DYF-fI-Bf6"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Person Browser" id="ioe-Dd-yoH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openCharacterBrowser:" target="Voe-Tx-rLC" id="Ogd-Rp-Tqa"/>
+                                    <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="hti-kQ-GEU"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="tc0-c7-CYr"/>

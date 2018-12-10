@@ -12,6 +12,7 @@
 
 @interface CharacterView : NSViewController
 @property (strong) IBOutlet NSTextField *charactername;
+@property (strong) NSString *nativename;
 @property int selectedid;
 @property int persontype;
 @property (weak) CharactersBrowser *cb;
@@ -28,7 +29,6 @@ typedef NS_ENUM(unsigned int, ArrayType) {
     appearedanime = 20,
     appearedmanga = 21
 };
-- (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title;
 - (void)populateStaffInformation:(NSDictionary *)d;
 - (void)cleanup;
 @end

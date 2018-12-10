@@ -26,7 +26,6 @@
 @property (strong) IBOutlet NSPopUpButton *popupfilter;
 @property (strong) IBOutlet NSArrayController *arraycontroller;
 @property (strong) IBOutlet NSTableViewAction *tb;
-@property (strong) IBOutlet NSButton *viewonwikipedia;
 @property (strong) IBOutlet NSButton *viewhomepage;
 @property (strong) IBOutlet NSMenuItem *filtervoiceactingroles;
 @property (strong) IBOutlet NSMenuItem *filterstaffpositions;
@@ -44,49 +43,20 @@
     _mw = ((AppDelegate *)[NSApplication sharedApplication].delegate).mainwindowcontroller;
 }
 
-- (void)populateCharacterInfo:(NSDictionary *)d withTitle:(NSString *)title {
-    _charactername.stringValue = d[@"name"];
-    _posterimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image"]]]];
-    switch ([listservice getCurrentServiceID]) {
-        case 1:
-        case 2:{
-            _details.string = [NSString stringWithFormat:@"%@ character from %@. View more details on MyAnimeList.", d[@"role"], title];
-            break;
-        }
-        case 3: {
-            NSMutableString *details = [NSMutableString new];
-            [details appendFormat:@"%@ Role\n\n", d[@"role"]];
-            [details appendString:d[@"description"]];
-            _details.string = details;
-            break;
-        }
-        default:
-            break;
-    }
-    _details.textColor = NSColor.controlTextColor;
-    _selectedid = ((NSNumber *)d[@"id"]).intValue;
-    _persontype = PersonCharacter;
-    [self clearArrayController];
-    _tableview_first_heading.stringValue = @"Voice Actors";
-    if (d[@"actors"]) {
-        [self populatetableview:d[@"actors"] type:actors];
-    }
-    _popupfilter.hidden = YES;
-    _viewhomepage.hidden = YES;
-    _viewonwikipedia.hidden = YES;
-    [self reloadtableview];
-    
-}
-
 - (void)populateStaffInformation:(NSDictionary *)d {
     NSMutableString *tmpstr = [NSMutableString new];
     _charactername.stringValue = d[@"name"];
     _posterimage.image = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
     if (d[@"native_name"]) {
         [tmpstr appendFormat:@"Native name: %@\n",d[@"native_name"]];
+        _nativename = d[@"native_name"];
     }
     else if (d[@"given_name"] && d[@"family_name"]) {
         [tmpstr appendFormat:@"%@, %@\n",d[@"family_name"], d[@"given_name"]];
+        _nativename = [NSString stringWithFormat:@"%@ %@\n",d[@"family_name"], d[@"given_name"]];
+    }
+    else {
+        _nativename = @"";
     }
     if (((NSArray *)d[@"alternate_names"]).count > 0 ) {
         [tmpstr appendFormat:@"Other Names: %@\n",[Utility appendstringwithArray:d[@"alternate_names"]]];
@@ -123,7 +93,6 @@
             [self populatetableview:d[@"voice_acting_roles"] type:voiceactingroles];
             [self populatetableview:d[@"anime_staff_positions"] type:staffpositions];
             [self populatetableview:d[@"published_manga"] type:publishedmanga];
-            _viewonwikipedia.hidden = NO;
             break;
         case PersonCharacter:
             _filterstaffpositions.hidden = true;
@@ -132,7 +101,6 @@
             [self populatetableview:d[@"actors"] type:actors];
             [self populatetableview:d[@"appeared_anime"] type:appearedanime];
             [self populatetableview:d[@"appeared_manga"] type:appearedmanga];
-            _viewonwikipedia.hidden = YES;
             break;
         default:
             break;
@@ -301,10 +269,7 @@
         }
     }
 }
-- (IBAction)viewonwikipedia:(id)sender {
-    // Views person profile on Wikipedia
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://en.wikipedia.org/w/index.php?search=%@",[Utility urlEncodeString:[Utility convertNameFormat:_charactername.stringValue]]]]];
-}
+
 - (IBAction)openhomepage:(id)sender {
         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:_personhomepage]];
 }

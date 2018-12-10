@@ -28,6 +28,10 @@
                             <segment label="Staff" width="97" selected="YES" tag="1"/>
                         </segments>
                     </segmentedCell>
+                    <connections>
+                        <action selector="searchtypechanged:" target="-2" id="tpa-Vv-p5D"/>
+                        <binding destination="hS1-CT-SVp" name="selectedIndex" keyPath="values.selectedpersonsearchtype" id="aLW-4d-Ra7"/>
+                    </connections>
                 </segmentedControl>
                 <scrollView focusRingType="none" borderType="none" autohidesScrollers="YES" horizontalLineScroll="72" horizontalPageScroll="10" verticalLineScroll="72" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rtQ-Zk-TzW">
                     <rect key="frame" x="0.0" y="0.0" width="244" height="235"/>
@@ -92,6 +96,11 @@
                                         </prototypeCellViews>
                                     </tableColumn>
                                 </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="doubleaction:" target="-2" id="fRH-a0-Fh0"/>
+                                    <outlet property="dataSource" destination="-2" id="U85-om-L1a"/>
+                                    <outlet property="delegate" destination="-2" id="Uaa-NL-LJi"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <nil key="backgroundColor"/>
@@ -117,6 +126,7 @@
             </constraints>
             <point key="canvasLocation" x="22" y="154"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="hS1-CT-SVp"/>
     </objects>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>

@@ -8,6 +8,7 @@
 
 #import "CharactersBrowser.h"
 #import "CharacterView.h"
+#import "PersonSearchPopoverViewController.h"
 #import "listservice.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
@@ -22,6 +23,10 @@
 @property (strong) IBOutlet NSToolbarItem *toolbarviewonmal;
 @property (strong) IBOutlet NSToolbarItem *toolbarshare;
 @property (strong) IBOutlet NSTextField *noselectionheader;
+@property (strong) IBOutlet NSPopover *personsearchpopover;
+@property (strong) IBOutlet NSSearchField *searchfield;
+@property (strong) IBOutlet PersonSearchPopoverViewController *personsearchpopovervc;
+@property (strong) IBOutlet NSToolbarItem *webtoolbaritem;
 @end
 
 @implementation CharactersBrowser
@@ -83,6 +88,12 @@
     _selectedtitle = nil;
     [self setDefaultView];
 }
+- (IBAction)search:(id)sender {
+    if (_searchfield.stringValue.length > 0) {
+        [_personsearchpopover showRelativeToRect:_searchfield.visibleRect ofView:_searchfield preferredEdge:NSMaxYEdge];
+    }
+    [_personsearchpopovervc performsearch:_searchfield.stringValue];
+}
 
 #pragma mark -
 #pragma mark Main View functions
@@ -101,6 +112,7 @@
 - (void)enabletoolbaritems:(bool)enable {
     _toolbarshare.enabled = enable;
     _toolbarviewonmal.enabled = enable;
+    _webtoolbaritem.enabled = enable;
 }
 
 - (void)startstopanimation:(bool)enable {
@@ -241,6 +253,43 @@
         _characterviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
         [self.window setFrame:self.window.frame display:false];
     }
+}
+- (IBAction)openwebinfo:(id)sender {
+    NSMenuItem *siteitem = (NSMenuItem *)sender;
+    NSURL *openurl;
+    switch (siteitem.tag) {
+        case 2: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.animenewsnetwork.com/search?q=%@",[Utility urlEncodeString:_characterviewcontroller.charactername.stringValue]]];
+        }
+            break;
+        case 5: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"http://tvtropes.org/pmwiki/search_result.php?q=%@",[Utility urlEncodeString:_characterviewcontroller.charactername.stringValue]]];
+            break;
+        }
+        case 6: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en.wikipedia.org/wiki/Special:Search?search=%@",[Utility urlEncodeString:_characterviewcontroller.charactername.stringValue]]];
+            break;
+        }
+        case 7: {
+            NSString *tmptitle;
+            if (_characterviewcontroller.nativename.length > 0) {
+                tmptitle = _characterviewcontroller.nativename;
+            }
+            else {
+                tmptitle = _characterviewcontroller.charactername.stringValue;
+            }
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://dic.pixiv.net/search?query=%@",[Utility urlEncodeString:tmptitle]]];
+            break;
+        }
+        case 8: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en-dic.pixiv.net/search?query=%@",[Utility urlEncodeString:_characterviewcontroller.charactername.stringValue]]];
+            break;
+        }
+        default: {
+            return;
+        }
+    }
+    [[NSWorkspace sharedWorkspace] openURL:openurl];
 }
 
 @end

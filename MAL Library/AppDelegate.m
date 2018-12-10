@@ -104,6 +104,8 @@
     // Air Notifications
     defaultValues[@"airingnotification_service"] = @(3);
     defaultValues[@"airnotificationsenabled"] = @NO;
+    // Person Browser
+    defaultValues[@"selectedpersonsearchtype"] = @(0);
     //Register Dictionary
     [[NSUserDefaults standardUserDefaults]
      registerDefaults:defaultValues];

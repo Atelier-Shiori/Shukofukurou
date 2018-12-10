@@ -11,9 +11,13 @@
                 <outlet property="mainview" destination="pB0-ph-hYq" id="mQs-2a-ppZ"/>
                 <outlet property="noselectionheader" destination="HHQ-0f-C2B" id="Vv1-PC-EXz"/>
                 <outlet property="noselectionview" destination="O72-QL-3LZ" id="kw6-pb-3Wp"/>
+                <outlet property="personsearchpopover" destination="g09-1S-o6s" id="g4E-Aj-D1O"/>
+                <outlet property="personsearchpopovervc" destination="q9o-Rp-qni" id="fCh-bj-fS8"/>
                 <outlet property="progresswheel" destination="nZC-Z6-VPS" id="mIA-nL-QZ3"/>
+                <outlet property="searchfield" destination="5kw-5u-ciQ" id="7j8-Mi-ffc"/>
                 <outlet property="toolbarshare" destination="wjh-o9-YDc" id="CC2-Wy-Q8O"/>
                 <outlet property="toolbarviewonmal" destination="Yxu-S9-byG" id="KfM-mn-xlX"/>
+                <outlet property="webtoolbaritem" destination="J5Y-x7-7cY" id="Ayd-f6-aNO"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -77,19 +81,70 @@
                     <toolbarItem implicitItemIdentifier="2C67DDE0-C1E0-4E3F-8810-19A3594399CD" label="Person Search" paletteLabel="Person Search" sizingBehavior="auto" id="EdN-n2-FjE">
                         <nil key="toolTip"/>
                         <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" id="5kw-5u-ciQ">
-                            <rect key="frame" x="0.0" y="14" width="135" height="22"/>
+                            <rect key="frame" x="0.0" y="14" width="100" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="g2I-Ch-z7K">
+                            <searchFieldCell key="cell" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsWholeSearchString="YES" id="g2I-Ch-z7K">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
+                            <connections>
+                                <action selector="search:" target="-2" id="Uca-6z-XDh"/>
+                                <outlet property="delegate" destination="-2" id="QPb-bz-ZTV"/>
+                            </connections>
                         </searchField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="93042D83-7C96-4BAA-B1F5-DDCDDC77E64D" explicitItemIdentifier="web" label="Web" paletteLabel="Web" toolTip="Web" image="safari" id="J5Y-x7-7cY">
+                        <size key="minSize" width="35" height="28"/>
+                        <size key="maxSize" width="43" height="28"/>
+                        <popUpButton key="view" verticalHuggingPriority="750" id="8Mj-hs-i9J">
+                            <rect key="frame" x="0.0" y="14" width="43" height="28"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Ykq-1E-oDR">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="menu"/>
+                                <menu key="menu" id="mUw-4M-3TY">
+                                    <items>
+                                        <menuItem state="on" image="safari" hidden="YES" id="oIl-lv-gae"/>
+                                        <menuItem title="Anime News Network" tag="2" id="Fst-SD-cDC">
+                                            <connections>
+                                                <action selector="openwebinfo:" target="-2" id="umO-pe-tT4"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Pixiv Encyclopedia (English)" tag="8" id="ENp-sH-OUm">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openwebinfo:" target="-2" id="FXX-60-dee"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="TVTropes" tag="5" id="JpF-z3-2pE">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openwebinfo:" target="-2" id="2Ea-Xd-u5A"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Wikipedia" tag="6" id="RL5-Za-326">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openwebinfo:" target="-2" id="OUk-cZ-8LW"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="ピクシブ百科事典" tag="7" id="Q8q-5N-DhM">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="openwebinfo:" target="-2" id="7GI-dF-w6x"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </popUpButtonCell>
+                        </popUpButton>
                     </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Yxu-S9-byG"/>
                     <toolbarItem reference="wjh-o9-YDc"/>
+                    <toolbarItem reference="J5Y-x7-7cY"/>
                     <toolbarItem reference="ANg-qF-UPD"/>
                     <toolbarItem reference="EdN-n2-FjE"/>
                 </defaultToolbarItems>
@@ -120,8 +175,12 @@
             </subviews>
             <point key="canvasLocation" x="1" y="870"/>
         </visualEffectView>
-        <viewController id="q9o-Rp-qni" userLabel="Popover View Controller"/>
-        <popover id="g09-1S-o6s">
+        <viewController id="q9o-Rp-qni" userLabel="Popover View Controller" customClass="PersonSearchPopoverViewController">
+            <connections>
+                <outlet property="popover" destination="g09-1S-o6s" id="rJQ-aB-KQF"/>
+            </connections>
+        </viewController>
+        <popover behavior="t" id="g09-1S-o6s">
             <connections>
                 <outlet property="contentViewController" destination="q9o-Rp-qni" id="fkh-um-EeH"/>
             </connections>
@@ -130,5 +189,6 @@
     <resources>
         <image name="Info" width="32" height="32"/>
         <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="safari" width="32" height="32"/>
     </resources>
 </document>

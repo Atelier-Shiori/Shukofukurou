@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CharactersBrowser : NSWindowController <NSWindowDelegate>
+@interface CharactersBrowser : NSWindowController <NSWindowDelegate, NSSearchFieldDelegate>
 @property (strong) NSString *selectedtitle;
 
 - (void)retrievecharacterinformation:(int)idnum;

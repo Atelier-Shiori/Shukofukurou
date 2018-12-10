@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonSearchPopoverViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate>
 @property (strong) IBOutlet NSTableView *tableview;
-
+@property (weak) IBOutlet NSPopover *popover;
+- (void)performsearch:(NSString *)searchterm;
 @end
 
 NS_ASSUME_NONNULL_END

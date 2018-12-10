@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NotificationPreferencesController : NSViewController <MASPreferencesViewController>
+@interface NotificationPreferencesController : NSViewController <MASPreferencesViewController, NSTableViewDelegate, NSTableViewDataSource>
 
 @end
 

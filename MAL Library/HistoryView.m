@@ -86,7 +86,7 @@
             else {
                 typenum = 1;
             }
-            [_mw loadinfo:idnum type:typenum changeView:YES forcerefresh:NO];
+            [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : idnum, @"type" : @(typenum)}];
         }
     }
 }

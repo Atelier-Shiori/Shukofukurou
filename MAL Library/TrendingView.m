@@ -126,7 +126,7 @@ viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind)kind
     NSIndexPath *indexpath = _collectionview.selectionIndexPaths.anyObject;
     if (indexpath) {
         NSDictionary *d = _items[_items.allKeys[indexpath.section]][indexpath.item];
-        [_mw loadinfo:d[@"id"] type:(int)_trendingtype.selectedSegment changeView:YES forcerefresh:NO];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : d[@"id"], @"type" : @((int)_trendingtype.selectedSegment)}];
     }
 }
 

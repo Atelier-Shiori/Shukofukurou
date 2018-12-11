@@ -84,7 +84,7 @@
     NSIndexPath *indexpath = _collectionview.selectionIndexPaths.anyObject;
     if (indexpath) {
         NSDictionary *d = _seasonarraycontroller.selectedObjects[indexpath.item];
-        [_mw loadinfo:d[@"id"] type:0 changeView:YES forcerefresh:NO];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : d[@"id"], @"type" : @(0)}];
     }
 }
 

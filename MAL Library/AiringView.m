@@ -102,20 +102,19 @@
             NSDictionary *d = _airingarraycontroller.selectedObjects[0];
             switch ([listservice getCurrentServiceID]) {
                 case 1: {
-                    NSNumber *idnum = d[@"idMal"];
-                    [_mw loadinfo:idnum type:0 changeView:YES forcerefresh:NO];
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : d[@"idMal"], @"type" : @(0)}];
                     break;
                 }
                 case 2: {
                     [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
-                        [_mw loadinfo:@(kitsuid) type:0 changeView:YES forcerefresh:NO];
+                        [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : @(kitsuid), @"type" : @(0)}];
                     } error:^(NSError *error) {
                         [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
                     }];
                     break;
                 }
                 case 3: {
-                    [_mw loadinfo:d[@"id"] type:0 changeView:YES forcerefresh:NO];
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : d[@"id"], @"type" : @(0)}];
                 }
                 default:
                     break;

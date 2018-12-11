@@ -239,8 +239,7 @@
                 }
                 else {
                     int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Anime Appearences"] ? 0 : 1;
-                    [_mw loadinfo:d[@"id"] type:loadtype changeView:YES forcerefresh:NO];
-                    [_mw.window makeKeyAndOrderFront:self];
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : d[@"id"], @"type" : @(loadtype)}];
                 }
             }
             else {
@@ -249,14 +248,11 @@
                     case 1:
                     case 3:
                         [_cb retrievecharacterinformation:((NSNumber *)d[@"id"]).intValue];
-                        //[_mw loadinfo:d[@"id"] type:loadtype changeView:YES forcerefresh:NO];
-                        //[_mw.window makeKeyAndOrderFront:self];
                         break;
                     case 2: {
                         [MyAnimeList retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:loadtype useAccount:NO completion:^(id responseObject) {
                             [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"id"]).intValue withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:loadtype completionHandler:^(int kitsuid) {
-                                [_mw loadinfo:@(kitsuid) type:loadtype changeView:YES forcerefresh:NO];
-                                [_mw.window makeKeyAndOrderFront:self];
+                                [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : @(kitsuid), @"type" : @(loadtype)}];
                             } error:^(NSError *error) {}];
                         } error:^(NSError *error) {
                             

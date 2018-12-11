@@ -132,6 +132,7 @@
         if ([notification.object isKindOfClass:[NSDictionary class]]) {
             NSDictionary *notifyobject = notification.object;
             [self loadinfo:notifyobject[@"id"] type:((NSNumber *)notifyobject[@"type"]).intValue changeView:YES forcerefresh:NO];
+            [self.window makeKeyAndOrderFront:self];
         }
     }
 }

@@ -118,6 +118,7 @@
     }
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"TitleCacheToggled" object:nil];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AppAppearenceChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"LoadTitleInfo" object:nil];
 }
 
 - (void)recieveNotification:(NSNotification *)notification {
@@ -126,6 +127,12 @@
     }
     else if ([notification.name isEqualToString:@"AppAppearenceChanged"]) {
         [self setAppearance];
+    }
+    else if ([notification.name isEqualToString:@"LoadTitleInfo"]) {
+        if ([notification.object isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *notifyobject = notification.object;
+            [self loadinfo:notifyobject[@"id"] type:((NSNumber *)notifyobject[@"type"]).intValue changeView:YES forcerefresh:NO];
+        }
     }
 }
 

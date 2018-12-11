@@ -186,13 +186,15 @@
 
 - (void)loadperson {
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
-    NSString *tmpstring = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
-    OnigRegexp *regex = [OnigRegexp compile:@"(character|staff)-"];
-    NSString *type = [regex search:tmpstring].strings[0];
-    int idnum = [tmpstring stringByReplacingOccurrencesOfString:type withString:@""].intValue;
-    type = [type stringByReplacingOccurrencesOfString:@"-" withString:@""];
-    int persontype = [type isEqualToString:@"character"] ? 1 : 0;
-    [NSNotificationCenter.defaultCenter postNotificationName:@"loadpersondata" object:@{@"person_id" : @(idnum), @"type" : @(persontype)}];
+    if (selectedIndexes) {
+        NSString *tmpstring = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
+        OnigRegexp *regex = [OnigRegexp compile:@"(character|staff)-"];
+        NSString *type = [regex search:tmpstring].strings[0];
+        int idnum = [tmpstring stringByReplacingOccurrencesOfString:type withString:@""].intValue;
+        type = [type stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        int persontype = [type isEqualToString:@"character"] ? 1 : 0;
+        [NSNotificationCenter.defaultCenter postNotificationName:@"loadpersondata" object:@{@"person_id" : @(idnum), @"type" : @(persontype)}];
+    }
 }
 
 - (void)showprogressindicator:(bool)show {

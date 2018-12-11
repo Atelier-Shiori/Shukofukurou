@@ -13,6 +13,7 @@
 #import "RecommendedTitleView.h"
 #import "EpisodeDetailsWindowController.h"
 #import "CharacterPopOverViewController.h"
+#import "RelatedViewController.h"
 #import "StreamPopup.h"
 #import "listservice.h"
 
@@ -39,6 +40,8 @@
 @property (strong) EpisodeDetailsWindowController *episodedetail;
 @property (strong) IBOutlet NSPopover *characterpopover;
 @property (strong) IBOutlet CharacterPopOverViewController *characterpopovervc;
+@property (strong) IBOutlet RelatedViewController *relatedpopovervc;
+@property (strong) IBOutlet NSPopover *relatedpopover;
 
 @end
 
@@ -243,13 +246,9 @@
         _recommendedtitlebutton.hidden = YES;
     }
     if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
-        if (d[@"manga_adaptations"]) {
-            if (((NSArray *)d[@"manga_adaptations"]).count > 0){
-                _sourcematerialbutton.hidden = NO;
-            }
-            else {
-                _sourcematerialbutton.hidden = YES;
-            }
+        [_relatedpopovervc generateRelated:d withType:_type];
+        if ([_relatedpopovervc hasRelatedTitles]) {
+            _sourcematerialbutton.hidden = NO;
         }
         else {
             _sourcematerialbutton.hidden = YES;
@@ -437,12 +436,8 @@
 }
 
 - (IBAction)showadaptationspopover:(id)sender {
-    if (_otherpopoverviewcontroller.selectedid == 0) {
-        [_otherpopoverviewcontroller viewDidLoad];
-    }
-    _otherpopoverviewcontroller.popovertitle.stringValue = @"Manga Adaptations";
-    [_otherpopoverviewcontroller loadTitles:_selectedinfo[@"manga_adaptations"] selectedid:_selectedid type:1];
-    [_othertitlepopover showRelativeToRect:_sourcematerialbutton.bounds ofView:_sourcematerialbutton preferredEdge:NSMaxYEdge];
+    [_relatedpopover showRelativeToRect:_sourcematerialbutton.bounds ofView:_sourcematerialbutton preferredEdge:NSMaxYEdge];
+    [_relatedpopovervc.sourceList reloadData];
 }
 
 - (IBAction)viewstreams:(id)sender {

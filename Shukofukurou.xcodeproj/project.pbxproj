@@ -120,6 +120,27 @@
 		593A799821ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
 		593A799921ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
 		593A799A21ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
+		596BABBD21C00886005C3451 /* RelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BABBB21C00886005C3451 /* RelatedViewController.m */; };
+		596BABBE21C00886005C3451 /* RelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BABBB21C00886005C3451 /* RelatedViewController.m */; };
+		596BABBF21C00886005C3451 /* RelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BABBB21C00886005C3451 /* RelatedViewController.m */; };
+		596BABC021C00886005C3451 /* RelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BABBB21C00886005C3451 /* RelatedViewController.m */; };
+		596BABC121C00886005C3451 /* RelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABBC21C00886005C3451 /* RelatedViewController.xib */; };
+		596BABC221C00886005C3451 /* RelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABBC21C00886005C3451 /* RelatedViewController.xib */; };
+		596BABC321C00886005C3451 /* RelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABBC21C00886005C3451 /* RelatedViewController.xib */; };
+		596BABC421C00886005C3451 /* RelatedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABBC21C00886005C3451 /* RelatedViewController.xib */; };
+		596BABCB21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */; };
+		596BABCC21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */; };
+		596BABCD21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */; };
+		596BABCE21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */; };
+		596BABD521C017A4005C3451 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
+		596BABD721C0180B005C3451 /* DonationLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D051B2086667700502379 /* DonationLicenseManager.m */; };
+		596BABD821C0180B005C3451 /* DonationLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D051B2086667700502379 /* DonationLicenseManager.m */; };
+		596BABDA21C018E0005C3451 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; };
+		596BABDB21C018E0005C3451 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; };
+		596BABDC21C018E0005C3451 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
+		596BABDD21C018E0005C3451 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
+		596BABDE21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */; };
+		596BABDF21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */; };
 		5972404F21B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
 		5972405021B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
 		5972405121B57D7600599AAC /* NotificationPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972404D21B57D7600599AAC /* NotificationPreferencesController.m */; };
@@ -160,10 +181,6 @@
 		59A2FD6C21BED5D80092E963 /* PersonSearchPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD6921BED5D80092E963 /* PersonSearchPopoverViewController.m */; };
 		59A2FD6D21BED5D80092E963 /* PersonSearchPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD6921BED5D80092E963 /* PersonSearchPopoverViewController.m */; };
 		59A2FD6E21BED5D80092E963 /* PersonSearchPopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD6921BED5D80092E963 /* PersonSearchPopoverViewController.m */; };
-		59A2FD6F21BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6A21BED5D80092E963 /* PersonSearchPopoverViewController.xib */; };
-		59A2FD7021BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6A21BED5D80092E963 /* PersonSearchPopoverViewController.xib */; };
-		59A2FD7121BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6A21BED5D80092E963 /* PersonSearchPopoverViewController.xib */; };
-		59A2FD7221BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59A2FD6A21BED5D80092E963 /* PersonSearchPopoverViewController.xib */; };
 		59A2FD7C21BEE4510092E963 /* imagetexttableviewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */; };
 		59A2FD7D21BEE4510092E963 /* imagetexttableviewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */; };
 		59A2FD7E21BEE4510092E963 /* imagetexttableviewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */; };
@@ -912,6 +929,10 @@
 		593A798F21ADEE050083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleCollectionCell.xib; sourceTree = "<group>"; };
 		593A799521ADEE0C0083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HeaderView.xib; sourceTree = "<group>"; };
 		593A799B21ADEE140083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TrendingView.xib; sourceTree = "<group>"; };
+		596BABBA21C00886005C3451 /* RelatedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedViewController.h; sourceTree = "<group>"; };
+		596BABBB21C00886005C3451 /* RelatedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedViewController.m; sourceTree = "<group>"; };
+		596BABBC21C00886005C3451 /* RelatedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedViewController.xib; sourceTree = "<group>"; };
+		596BABCF21C016B2005C3451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PersonSearchPopoverViewController.xib; sourceTree = "<group>"; };
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
 		5972404C21B57D7600599AAC /* NotificationPreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationPreferencesController.h; sourceTree = "<group>"; };
 		5972404D21B57D7600599AAC /* NotificationPreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesController.m; sourceTree = "<group>"; };
@@ -933,7 +954,6 @@
 		59A2FD6621BED4D90092E963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharacterPopOverViewController.xib; sourceTree = "<group>"; };
 		59A2FD6821BED5D80092E963 /* PersonSearchPopoverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonSearchPopoverViewController.h; sourceTree = "<group>"; };
 		59A2FD6921BED5D80092E963 /* PersonSearchPopoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSearchPopoverViewController.m; sourceTree = "<group>"; };
-		59A2FD6A21BED5D80092E963 /* PersonSearchPopoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonSearchPopoverViewController.xib; sourceTree = "<group>"; };
 		59A2FD7A21BEE4510092E963 /* imagetexttableviewcell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imagetexttableviewcell.h; sourceTree = "<group>"; };
 		59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = imagetexttableviewcell.m; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
@@ -941,7 +961,7 @@
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
 		59F356C021B6E09B008C79ED /* EpisodeDetailsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailsWindowController.h; sourceTree = "<group>"; };
 		59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailsWindowController.m; sourceTree = "<group>"; };
-		59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = EpisodeDetailsWindowController.xib; path = Base.lproj/EpisodeDetailsWindowController.xib; sourceTree = "<group>"; };
+		59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EpisodeDetailsWindowController.xib; sourceTree = "<group>"; };
 		59F356CB21B6E386008C79ED /* EpisodeDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailViewController.h; sourceTree = "<group>"; };
 		59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailViewController.m; sourceTree = "<group>"; };
 		59F356DA21B7162C008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/EpisodeDetailViewController.xib; sourceTree = "<group>"; };
@@ -1251,6 +1271,7 @@
 				2D4E01161FA3B1C90053A82B /* CharacterView.xib */,
 				F838AE6D2087CF9A0063B63E /* DonationLicenseManager.xib */,
 				915E8C5D1E8C2B4D005A49A4 /* EditTitle.xib */,
+				91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */,
 				9199BAE21E89843300F6E9FF /* GeneralPref.xib */,
 				91B378B91E989C83000061E6 /* HistoryView.xib */,
 				2D8BF8BA1EC4EED80068856A /* ImportPrompt.xib */,
@@ -1260,6 +1281,7 @@
 				916502C61E8C65A500565D30 /* ListView.xib */,
 				9199BAE41E89843300F6E9FF /* LoginView.xib */,
 				913A11AC1E8F212600450B66 /* MainMenu-AppStore.xib */,
+				91F8E44A210A4BC1007137A7 /* CustomListModify.xib */,
 				9199BAA11E89836000F6E9FF /* MainMenu.xib */,
 				9199BAE61E89843300F6E9FF /* MainWindow.xib */,
 				916502C91E8C65A900565D30 /* NotLoggedIn.xib */,
@@ -1273,6 +1295,13 @@
 				91999D0C1E8C86A40026D3E9 /* SeasonView.xib */,
 				9199BAE81E89843300F6E9FF /* SoftwareUpdateView.xib */,
 				2D4E011A1FA3B1D50053A82B /* StreamPopup.xib */,
+				593A799C21ADEE140083FA86 /* TrendingView.xib */,
+				59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */,
+				59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */,
+				59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */,
+				59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */,
+				596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */,
+				596BABBC21C00886005C3451 /* RelatedViewController.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -1311,9 +1340,240 @@
 			name = AtarashiiDataFormatters;
 			sourceTree = "<group>";
 		};
+		596BABD121C0171F005C3451 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
+				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
+				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
+				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
+				598B453721AC3AE800F28180 /* TitleIdEnumerator.h */,
+				598B453621AC3AE700F28180 /* TitleIdEnumerator.m */,
+				598B452B21AC392C00F28180 /* TitleInfoCache.h */,
+				598B452A21AC392C00F28180 /* TitleInfoCache.m */,
+				598B453121AC393600F28180 /* TrendingRetriever.h */,
+				598B453021AC393600F28180 /* TrendingRetriever.m */,
+				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
+				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
+				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
+				9199BACC1E89842400F6E9FF /* Utility.h */,
+				9199BACD1E89842400F6E9FF /* Utility.m */,
+				2D88CA681FE815B600AD142E /* servicemenucontroller.h */,
+				2D88CA691FE815B600AD142E /* servicemenucontroller.m */,
+				917CEC7A211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.h */,
+				917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */,
+				2DAB19E71EF9F2C400420182 /* siteimage.h */,
+				2DAB19E81EF9F2C400420182 /* siteimage.m */,
+				2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */,
+				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
+				F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */,
+				F8B5AA902044813400132C51 /* RatingTwentyConvert.m */,
+				917CEC76211B2B1200259AA7 /* PatreonConstants.h */,
+				917CEC77211B2B1200259AA7 /* PatreonConstants.m */,
+				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
+				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
+				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
+				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
+				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
+				F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */,
+				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
+				9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */,
+				2D6ECA321F2E9B20003C455E /* NSString_stripHtml.h */,
+				2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */,
+				915E8C5E1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.h */,
+				915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */,
+				9164FFD01E8D697600EA34D9 /* NSTableViewAction.h */,
+				9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */,
+				91822A541EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.h */,
+				91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */,
+				9199BAC11E89842400F6E9FF /* NSTextFieldNumber.h */,
+				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
+				597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */,
+				597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */,
+				9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */,
+				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
+				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
+				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
+				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
+				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
+				2D71422A1FE2E32C001FA9E9 /* listservice.h */,
+				2D71422B1FE2E32C001FA9E9 /* listservice.m */,
+				9168F92C1E89861300CCB5B3 /* Keychain.h */,
+				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
+				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
+				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
+				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
+				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
+				919DE8FE20504D7B007DCFBC /* KitsuRetrievers */,
+				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
+				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
+				2D94612B1EC38CC8004E171B /* ListImport.h */,
+				2D94612C1EC38CC8004E171B /* ListImport.m */,
+				912925492146D01C0011D760 /* IsAiringValueTransformer.h */,
+				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
+				2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */,
+				2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */,
+				F84D051A2086667700502379 /* DonationLicenseManager.h */,
+				F84D051B2086667700502379 /* DonationLicenseManager.m */,
+				91244E872108BB3000AA8F90 /* CustomListShouldShowValueTransformer.h */,
+				91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */,
+				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
+				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
+				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
+				F8A85910207023E40026EC0A /* AniList.h */,
+				F8A85911207023E40026EC0A /* AniList.m */,
+				598B454921AC4BCE00F28180 /* AiringSchedule.h */,
+				598B454A21AC4BCE00F28180 /* AiringSchedule.m */,
+				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
+				5972405821B5816C00599AAC /* AiringNotificationManager.m */,
+				91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */,
+				91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */,
+				F88CD0F92072BC330093C478 /* AniListConstants.h */,
+				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
+				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
+				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
+				91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */,
+				91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */,
+				9168F9291E89858900CCB5B3 /* Base64Category.h */,
+				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
+			);
+			name = Backend;
+			sourceTree = "<group>";
+		};
+		596BABD221C0172E005C3451 /* Window Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F84D64442098FAAE003225F9 /* TipJar */,
+				91D3D89D1E89C0020046C4CC /* about */,
+				59F356C021B6E09B008C79ED /* EpisodeDetailsWindowController.h */,
+				59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */,
+				91C060101EAD2CDC0099E433 /* ReviewWindow.h */,
+				91C060111EAD2CDC0099E433 /* ReviewWindow.m */,
+				2DA863E71F895F9B00D2876A /* ProfileWindowController.h */,
+				2DA863E81F895F9B00D2876A /* ProfileWindowController.m */,
+				9199BAB91E89842400F6E9FF /* MainWindow.h */,
+				9199BABA1E89842400F6E9FF /* MainWindow.m */,
+				2D371E711ECF8AF500F47138 /* ListStatistics.h */,
+				2D371E721ECF8AF500F47138 /* ListStatistics.m */,
+				2D8BF8A81EC4D6DC0068856A /* ImportPrompt.h */,
+				2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */,
+				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
+				F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */,
+				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
+				F8F9E0302061920E0083912B /* advancededitdialog.m */,
+				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
+				2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */,
+				91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */,
+				91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */,
+			);
+			name = "Window Controllers";
+			sourceTree = "<group>";
+		};
+		596BABD321C01738005C3451 /* Popover Views */ = {
+			isa = PBXGroup;
+			children = (
+				59A2FD5121BEBE770092E963 /* CharacterPopOverViewController.h */,
+				59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */,
+				2DAB19DC1EF9D16800420182 /* StreamPopup.h */,
+				2DAB19DD1EF9D16800420182 /* StreamPopup.m */,
+				596BABBA21C00886005C3451 /* RelatedViewController.h */,
+				596BABBB21C00886005C3451 /* RelatedViewController.m */,
+				59A2FD6821BED5D80092E963 /* PersonSearchPopoverViewController.h */,
+				59A2FD6921BED5D80092E963 /* PersonSearchPopoverViewController.m */,
+				91822A491EAE99E6005E33DB /* RecommendedTitleView.h */,
+				91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */,
+				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
+				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
+				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
+				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
+				91244E952108E89C00AA8F90 /* CustomListModify.h */,
+				91244E962108E89C00AA8F90 /* CustomListModify.m */,
+				91244E8C2108BCFE00AA8F90 /* CustomListsPopover.h */,
+				91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */,
+				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
+				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
+			);
+			name = "Popover Views";
+			sourceTree = "<group>";
+		};
+		596BABD421C01747005C3451 /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				593A795E21ADC6FE0083FA86 /* TrendingView.h */,
+				593A795F21ADC6FE0083FA86 /* TrendingView.m */,
+				91999CFD1E8C73300026D3E9 /* SearchView.h */,
+				91999CFE1E8C73300026D3E9 /* SearchView.m */,
+				91999D051E8C81580026D3E9 /* SeasonView.h */,
+				91999D061E8C81580026D3E9 /* SeasonView.m */,
+				91C0601C1EAD309C0099E433 /* ReviewView.m */,
+				2DA863EE1F89B2F300D2876A /* ProfileViewController.h */,
+				2DA863EF1F89B2F300D2876A /* ProfileViewController.m */,
+				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
+				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
+				91D094BF1E983095009454F8 /* HistoryView.h */,
+				91D094C01E983095009454F8 /* HistoryView.m */,
+				91D094CD1E9876D8009454F8 /* AiringView.h */,
+				91D094CE1E9876D8009454F8 /* AiringView.m */,
+				2D8A47B71F292D1800FC2B35 /* CharacterView.h */,
+				2D8A47B81F292D1800FC2B35 /* CharacterView.m */,
+				91999D0F1E8C88280026D3E9 /* InfoView.h */,
+				91999D101E8C88280026D3E9 /* InfoView.m */,
+				916502BA1E8C576B00565D30 /* ListView.h */,
+				916502BB1E8C576B00565D30 /* ListView.m */,
+				2D7877741F87E44000AD40F1 /* MyListView.h */,
+				2D7877751F87E44000AD40F1 /* MyListView.m */,
+				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
+				916502C01E8C606E00565D30 /* NotLoggedIn.m */,
+			);
+			name = "Main Views";
+			sourceTree = "<group>";
+		};
+		596BABD621C017BD005C3451 /* Other Views */ = {
+			isa = PBXGroup;
+			children = (
+				59F356CB21B6E386008C79ED /* EpisodeDetailViewController.h */,
+				59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */,
+				2D371E781ECF8B4F00F47138 /* ratingchartview.h */,
+				2D371E791ECF8B4F00F47138 /* ratingchartview.m */,
+				F888F402208F889D00C22C39 /* AuthWebView.h */,
+				F888F403208F889D00C22C39 /* AuthWebView.m */,
+			);
+			name = "Other Views";
+			sourceTree = "<group>";
+		};
+		596BABD921C01821005C3451 /* Preference Views */ = {
+			isa = PBXGroup;
+			children = (
+				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
+				9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */,
+				5972404C21B57D7600599AAC /* NotificationPreferencesController.h */,
+				5972404D21B57D7600599AAC /* NotificationPreferencesController.m */,
+				9199BAC51E89842400F6E9FF /* Preferences.h */,
+				9199BAB11E89842400F6E9FF /* GeneralPref.h */,
+				9199BAB21E89842400F6E9FF /* GeneralPref.m */,
+				9199BAB61E89842400F6E9FF /* LoginPref.h */,
+				9199BAB71E89842400F6E9FF /* LoginPref.m */,
+			);
+			name = "Preference Views";
+			sourceTree = "<group>";
+		};
+		596BABE021C01A2B005C3451 /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				F888F49C208FB20C00C22C39 /* Shukofukurou Open Source.entitlements */,
+				916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */,
+				5924225821ADFC3100A13B95 /* Shukofukurou Next.entitlements */,
+				5970A98F214AA9A300450626 /* Shukofukurou.entitlements */,
+			);
+			name = Entitlements;
+			sourceTree = "<group>";
+		};
 		598B455021AC5D0D00F28180 /* Collection View Cell */ = {
 			isa = PBXGroup;
 			children = (
+				593A795221ADAF410083FA86 /* TitleCollectionView.h */,
+				593A795321ADAF410083FA86 /* TitleCollectionView.m */,
 				593A792B21AC91A60083FA86 /* TitleCollectionCell.h */,
 				593A793321AD927C0083FA86 /* TitleCollectionCell.m */,
 				593A799021ADEE050083FA86 /* TitleCollectionCell.xib */,
@@ -1365,8 +1625,6 @@
 		9199BA8D1E89836000F6E9FF = {
 			isa = PBXGroup;
 			children = (
-				5924225821ADFC3100A13B95 /* Shukofukurou Next.entitlements */,
-				5970A98F214AA9A300450626 /* Shukofukurou.entitlements */,
 				9199BA981E89836000F6E9FF /* MAL Library */,
 				2D60A1201E9B322A0034C3AA /* MAL LibraryUITests */,
 				2D96A5181ECBA8B800942B28 /* MALLibraryHelp */,
@@ -1393,208 +1651,28 @@
 		9199BA981E89836000F6E9FF /* MAL Library */ = {
 			isa = PBXGroup;
 			children = (
-				59A2FD7921BEE38E0092E963 /* TableViewCells */,
-				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
-				5972405821B5816C00599AAC /* AiringNotificationManager.m */,
-				598B455021AC5D0D00F28180 /* Collection View Cell */,
-				91D3D89D1E89C0020046C4CC /* about */,
-				915E8C461E8C1AEC005A49A4 /* AddTitle.h */,
-				915E8C471E8C1AEC005A49A4 /* AddTitle.m */,
-				F8F9E02F2061920E0083912B /* advancededitdialog.h */,
-				F8F9E0302061920E0083912B /* advancededitdialog.m */,
-				915E8C411E8C0ACC005A49A4 /* AdvancedSearch.h */,
-				915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */,
-				91D094CD1E9876D8009454F8 /* AiringView.h */,
-				91D094CE1E9876D8009454F8 /* AiringView.m */,
-				598B454921AC4BCE00F28180 /* AiringSchedule.h */,
-				598B454A21AC4BCE00F28180 /* AiringSchedule.m */,
-				F8A85910207023E40026EC0A /* AniList.h */,
-				F8A85911207023E40026EC0A /* AniList.m */,
-				F84BB9E72073DE4B0056F5B0 /* AniListAuthWindow.h */,
-				F84BB9E82073DE4B0056F5B0 /* AniListAuthWindow.m */,
-				F88CD0F92072BC330093C478 /* AniListConstants.h */,
-				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
-				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
-				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
-				91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */,
-				91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */,
 				2D8A41F71E9AB41600CE52B2 /* AppDelegate.h */,
 				2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */,
 				91044F8B211B23BF00DBEF57 /* AppDelegate+Patreon.h */,
 				91044F8C211B23BF00DBEF57 /* AppDelegate+Patreon.m */,
-				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
-				91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */,
-				91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */,
-				F888F402208F889D00C22C39 /* AuthWebView.h */,
-				F888F403208F889D00C22C39 /* AuthWebView.m */,
-				9168F9291E89858900CCB5B3 /* Base64Category.h */,
-				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
-				2D8A47B01F290E2200FC2B35 /* CharactersBrowser.h */,
-				2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */,
-				2D8A47B71F292D1800FC2B35 /* CharacterView.h */,
-				2D8A47B81F292D1800FC2B35 /* CharacterView.m */,
-				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
-				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
-				91244E952108E89C00AA8F90 /* CustomListModify.h */,
-				91244E962108E89C00AA8F90 /* CustomListModify.m */,
-				91F8E44A210A4BC1007137A7 /* CustomListModify.xib */,
-				91244E872108BB3000AA8F90 /* CustomListShouldShowValueTransformer.h */,
-				91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */,
-				91244E8C2108BCFE00AA8F90 /* CustomListsPopover.h */,
-				91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */,
-				91F8E444210A4BBB007137A7 /* CustomListsPopover.xib */,
+				596BABD121C0171F005C3451 /* Backend */,
+				598B455021AC5D0D00F28180 /* Collection View Cell */,
 				91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */,
-				F84D051A2086667700502379 /* DonationLicenseManager.h */,
-				F84D051B2086667700502379 /* DonationLicenseManager.m */,
-				915E8C561E8C24B3005A49A4 /* EditTitle.h */,
-				915E8C571E8C24B3005A49A4 /* EditTitle.m */,
-				91F71F0820C7150A00FD5817 /* ExportProgressWindow.h */,
-				91F71F0920C7150A00FD5817 /* ExportProgressWindow.m */,
+				596BABE021C01A2B005C3451 /* Entitlements */,
 				9199BAEF1E89843B00F6E9FF /* Frameworks */,
-				9199BAB11E89842400F6E9FF /* GeneralPref.h */,
-				9199BAB21E89842400F6E9FF /* GeneralPref.m */,
-				91D094BF1E983095009454F8 /* HistoryView.h */,
-				91D094C01E983095009454F8 /* HistoryView.m */,
-				2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */,
-				2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */,
-				2D8BF8A81EC4D6DC0068856A /* ImportPrompt.h */,
-				2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */,
 				913A11AB1E8F206A00450B66 /* Info-AppStore.plist */,
 				9199BAA41E89836000F6E9FF /* Info.plist */,
-				91999D0F1E8C88280026D3E9 /* InfoView.h */,
-				91999D101E8C88280026D3E9 /* InfoView.m */,
-				912925492146D01C0011D760 /* IsAiringValueTransformer.h */,
-				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
-				9168F92C1E89861300CCB5B3 /* Keychain.h */,
-				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
-				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
-				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
-				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
-				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
-				919DE8FE20504D7B007DCFBC /* KitsuRetrievers */,
-				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
-				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
-				2D94612B1EC38CC8004E171B /* ListImport.h */,
-				2D94612C1EC38CC8004E171B /* ListImport.m */,
-				2D71422A1FE2E32C001FA9E9 /* listservice.h */,
-				2D71422B1FE2E32C001FA9E9 /* listservice.m */,
-				2D371E711ECF8AF500F47138 /* ListStatistics.h */,
-				2D371E721ECF8AF500F47138 /* ListStatistics.m */,
-				916502BA1E8C576B00565D30 /* ListView.h */,
-				916502BB1E8C576B00565D30 /* ListView.m */,
-				9199BAB61E89842400F6E9FF /* LoginPref.h */,
-				9199BAB71E89842400F6E9FF /* LoginPref.m */,
-				9199BAB81E89842400F6E9FF /* main.m */,
-				9199BAB91E89842400F6E9FF /* MainWindow.h */,
-				9199BABA1E89842400F6E9FF /* MainWindow.m */,
-				916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */,
-				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
-				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
-				9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */,
-				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
-				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
-				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
-				2D7877741F87E44000AD40F1 /* MyListView.h */,
-				2D7877751F87E44000AD40F1 /* MyListView.m */,
-				916502BF1E8C606E00565D30 /* NotLoggedIn.h */,
-				916502C01E8C606E00565D30 /* NotLoggedIn.m */,
-				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
-				9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */,
-				2D6ECA321F2E9B20003C455E /* NSString_stripHtml.h */,
-				2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */,
-				915E8C5E1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.h */,
-				915E8C5F1E8C34F1005A49A4 /* NSString+HTMLtoNSAttributedString.m */,
-				9164FFD01E8D697600EA34D9 /* NSTableViewAction.h */,
-				9164FFD11E8D697600EA34D9 /* NSTableViewAction.m */,
-				91822A541EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.h */,
-				91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */,
-				9199BAC11E89842400F6E9FF /* NSTextFieldNumber.h */,
-				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
-				597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */,
-				597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */,
-				2D159FCE1F96507800734250 /* OtherHistoryView.h */,
-				2D159FCF1F96507800734250 /* OtherHistoryView.m */,
-				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
-				F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */,
-				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
-				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
-				917CEC76211B2B1200259AA7 /* PatreonConstants.h */,
-				917CEC77211B2B1200259AA7 /* PatreonConstants.m */,
-				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
-				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
-				9199BAC51E89842400F6E9FF /* Preferences.h */,
-				2DA863EE1F89B2F300D2876A /* ProfileViewController.h */,
-				2DA863EF1F89B2F300D2876A /* ProfileViewController.m */,
-				2DA863E71F895F9B00D2876A /* ProfileWindowController.h */,
-				2DA863E81F895F9B00D2876A /* ProfileWindowController.m */,
-				2D371E781ECF8B4F00F47138 /* ratingchartview.h */,
-				2D371E791ECF8B4F00F47138 /* ratingchartview.m */,
-				F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */,
-				F8B5AA902044813400132C51 /* RatingTwentyConvert.m */,
-				91822A491EAE99E6005E33DB /* RecommendedTitleView.h */,
-				91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */,
+				596BABD421C01747005C3451 /* Main Views */,
+				596BABD621C017BD005C3451 /* Other Views */,
+				596BABD321C01738005C3451 /* Popover Views */,
+				596BABD921C01821005C3451 /* Preference Views */,
 				91999D0E1E8C87F10026D3E9 /* Resources */,
-				91C0601C1EAD309C0099E433 /* ReviewView.m */,
-				91C060101EAD2CDC0099E433 /* ReviewWindow.h */,
-				91C060111EAD2CDC0099E433 /* ReviewWindow.m */,
-				91999CFD1E8C73300026D3E9 /* SearchView.h */,
-				91999CFE1E8C73300026D3E9 /* SearchView.m */,
-				91999D051E8C81580026D3E9 /* SeasonView.h */,
-				91999D061E8C81580026D3E9 /* SeasonView.m */,
-				2D88CA681FE815B600AD142E /* servicemenucontroller.h */,
-				2D88CA691FE815B600AD142E /* servicemenucontroller.m */,
-				917CEC7A211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.h */,
-				917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */,
 				F888F49B208FB1F600C22C39 /* Shukofukurou (Open Source)-Info.plist */,
 				91F8E43E210A46CA007137A7 /* Shukofukurou Next-Info.plist */,
-				F888F49C208FB20C00C22C39 /* Shukofukurou Open Source.entitlements */,
-				2DAB19E71EF9F2C400420182 /* siteimage.h */,
-				2DAB19E81EF9F2C400420182 /* siteimage.m */,
-				9199BAC61E89842400F6E9FF /* SoftwareUpdatesPref.h */,
-				9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */,
-				2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */,
-				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
-				2DAB19DC1EF9D16800420182 /* StreamPopup.h */,
-				2DAB19DD1EF9D16800420182 /* StreamPopup.m */,
-				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
-				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
 				9199BA9C1E89836000F6E9FF /* Supporting Files */,
-				F84D64442098FAAE003225F9 /* TipJar */,
-				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
-				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
-				598B453721AC3AE800F28180 /* TitleIdEnumerator.h */,
-				598B453621AC3AE700F28180 /* TitleIdEnumerator.m */,
-				598B452B21AC392C00F28180 /* TitleInfoCache.h */,
-				598B452A21AC392C00F28180 /* TitleInfoCache.m */,
-				598B453121AC393600F28180 /* TrendingRetriever.h */,
-				598B453021AC393600F28180 /* TrendingRetriever.m */,
-				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
-				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
-				9199BACC1E89842400F6E9FF /* Utility.h */,
-				9199BACD1E89842400F6E9FF /* Utility.m */,
+				59A2FD7921BEE38E0092E963 /* TableViewCells */,
+				596BABD221C0172E005C3451 /* Window Controllers */,
 				2D4C22161FA7B1ED00539245 /* XIB */,
-				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
-				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
-				593A795221ADAF410083FA86 /* TitleCollectionView.h */,
-				593A795321ADAF410083FA86 /* TitleCollectionView.m */,
-				593A795E21ADC6FE0083FA86 /* TrendingView.h */,
-				593A795F21ADC6FE0083FA86 /* TrendingView.m */,
-				593A799C21ADEE140083FA86 /* TrendingView.xib */,
-				5972404C21B57D7600599AAC /* NotificationPreferencesController.h */,
-				5972404D21B57D7600599AAC /* NotificationPreferencesController.m */,
-				59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */,
-				59F356C021B6E09B008C79ED /* EpisodeDetailsWindowController.h */,
-				59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */,
-				59F356C221B6E09B008C79ED /* EpisodeDetailsWindowController.xib */,
-				59F356CB21B6E386008C79ED /* EpisodeDetailViewController.h */,
-				59F356CC21B6E386008C79ED /* EpisodeDetailViewController.m */,
-				59F356DB21B7162C008C79ED /* EpisodeDetailViewController.xib */,
-				59A2FD5121BEBE770092E963 /* CharacterPopOverViewController.h */,
-				59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */,
-				59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */,
-				59A2FD6821BED5D80092E963 /* PersonSearchPopoverViewController.h */,
-				59A2FD6921BED5D80092E963 /* PersonSearchPopoverViewController.m */,
-				59A2FD6A21BED5D80092E963 /* PersonSearchPopoverViewController.xib */,
 			);
 			path = "MAL Library";
 			sourceTree = "<group>";
@@ -1602,6 +1680,7 @@
 		9199BA9C1E89836000F6E9FF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9199BAB81E89842400F6E9FF /* main.m */,
 				9199BA9D1E89836000F6E9FF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1928,7 +2007,7 @@
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
 				913A11951E8F206A00450B66 /* EULA.rtf in Resources */,
 				913A11961E8F206A00450B66 /* GeneralPref.xib in Resources */,
-				59A2FD7021BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */,
+				596BABCC21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */,
 				913A11AE1E8F212600450B66 /* MainMenu-AppStore.xib in Resources */,
 				F84D64432098FAA7003225F9 /* TipJar.xib in Resources */,
 				F84BB9FD2074128B0056F5B0 /* AniListAuthWindow.xib in Resources */,
@@ -1951,6 +2030,7 @@
 				913A119D1E8F206A00450B66 /* SeasonView.xib in Resources */,
 				2D371E801ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				91B378B71E989C83000061E6 /* HistoryView.xib in Resources */,
+				596BABC221C00886005C3451 /* RelatedViewController.xib in Resources */,
 				913A119E1E8F206A00450B66 /* AdvancedSearch.xib in Resources */,
 				2D4E01181FA3B1D50053A82B /* StreamPopup.xib in Resources */,
 				913A119F1E8F206A00450B66 /* ListView.xib in Resources */,
@@ -1982,7 +2062,7 @@
 				2D4E010B1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
 				9199BAEA1E89843300F6E9FF /* GeneralPref.xib in Resources */,
 				2D4E01071FA3B1A10053A82B /* ProfileViewController.xib in Resources */,
-				59A2FD6F21BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */,
+				596BABCB21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */,
 				2D20C4F21EB8FF7600B241B9 /* ReviewView.xib in Resources */,
 				2D8BF8B31EC4EED30068856A /* ListImport.xib in Resources */,
 				2D8BF8B71EC4EED80068856A /* ImportPrompt.xib in Resources */,
@@ -2005,6 +2085,7 @@
 				917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */,
 				2D4E01131FA3B1C90053A82B /* CharacterView.xib in Resources */,
 				91B378B21E989C7C000061E6 /* AiringView.xib in Resources */,
+				596BABC121C00886005C3451 /* RelatedViewController.xib in Resources */,
 				91999D0A1E8C86A40026D3E9 /* SeasonView.xib in Resources */,
 				915E8C4E1E8C2362005A49A4 /* AdvancedSearch.xib in Resources */,
 				916502C41E8C65A500565D30 /* ListView.xib in Resources */,
@@ -2036,7 +2117,7 @@
 				91F8E416210A46CA007137A7 /* ProfileWindowController.xib in Resources */,
 				91F8E417210A46CA007137A7 /* GeneralPref.xib in Resources */,
 				91F8E418210A46CA007137A7 /* ProfileViewController.xib in Resources */,
-				59A2FD7221BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */,
+				596BABCE21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */,
 				91F8E419210A46CA007137A7 /* ReviewView.xib in Resources */,
 				91F8E41A210A46CA007137A7 /* ListImport.xib in Resources */,
 				91F8E41B210A46CA007137A7 /* ImportPrompt.xib in Resources */,
@@ -2059,6 +2140,7 @@
 				91F8E429210A46CA007137A7 /* PFAboutWindow.xib in Resources */,
 				91F8E42A210A46CA007137A7 /* CharacterView.xib in Resources */,
 				91F8E42B210A46CA007137A7 /* AiringView.xib in Resources */,
+				596BABC421C00886005C3451 /* RelatedViewController.xib in Resources */,
 				91F8E42C210A46CA007137A7 /* SeasonView.xib in Resources */,
 				91F8E42E210A46CA007137A7 /* AdvancedSearch.xib in Resources */,
 				91F8E42F210A46CA007137A7 /* ListView.xib in Resources */,
@@ -2096,6 +2178,7 @@
 				59F356D821B7162C008C79ED /* EpisodeDetailViewController.xib in Resources */,
 				59A2FD6421BED4D90092E963 /* CharacterPopOverViewController.xib in Resources */,
 				F888F477208FB1F500C22C39 /* MainWindow.xib in Resources */,
+				596BABC321C00886005C3451 /* RelatedViewController.xib in Resources */,
 				F888F479208FB1F500C22C39 /* EULA.rtf in Resources */,
 				F888F47A208FB1F500C22C39 /* GeneralPref.xib in Resources */,
 				F888F47B208FB1F500C22C39 /* MainMenu-AppStore.xib in Resources */,
@@ -2107,7 +2190,7 @@
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
 				F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				91F8E441210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
-				59A2FD7121BED5D80092E963 /* PersonSearchPopoverViewController.xib in Resources */,
+				596BABCD21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */,
 				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
 				593A799321ADEE0C0083FA86 /* HeaderView.xib in Resources */,
 				F888F481208FB1F500C22C39 /* SoftwareUpdateView.xib in Resources */,
@@ -2216,6 +2299,7 @@
 				F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */,
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
 				2D88CA6B1FE815B600AD142E /* servicemenucontroller.m in Sources */,
+				596BABBE21C00886005C3451 /* RelatedViewController.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
 				91521F6B21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
@@ -2258,6 +2342,7 @@
 				2D8BF8AC1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
+				596BABDE21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
 				F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
 				913A11711E8F206A00450B66 /* NSTableViewAction.m in Sources */,
@@ -2268,6 +2353,7 @@
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
 				F888F405208F889D00C22C39 /* AuthWebView.m in Sources */,
 				F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
+				596BABD721C0180B005C3451 /* DonationLicenseManager.m in Sources */,
 				F84D64422098FAA7003225F9 /* TipJar.m in Sources */,
 				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
@@ -2277,6 +2363,7 @@
 				593A796221ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				598B452D21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
+				596BABDA21C018E0005C3451 /* PFMoveApplication.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
@@ -2289,6 +2376,7 @@
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
 				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
+				596BABDC21C018E0005C3451 /* PatreonConstants.m in Sources */,
 				593A794921ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				91F71F0C20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 				9129254C2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
@@ -2393,6 +2481,7 @@
 				2D88CA6A1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */,
 				916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */,
+				596BABBD21C00886005C3451 /* RelatedViewController.m in Sources */,
 				2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */,
 				917CEC78211B2B1200259AA7 /* PatreonConstants.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
@@ -2498,6 +2587,7 @@
 				91F8E3E9210A46CA007137A7 /* servicemenucontroller.m in Sources */,
 				91F8E3EA210A46CA007137A7 /* listservice.m in Sources */,
 				91F8E3EB210A46CA007137A7 /* AtarashiiAPIListFormatAniList.m in Sources */,
+				596BABC021C00886005C3451 /* RelatedViewController.m in Sources */,
 				91F8E3EC210A46CA007137A7 /* OtherHistoryView.m in Sources */,
 				917CEC79211B2B1200259AA7 /* PatreonConstants.m in Sources */,
 				91F8E3ED210A46CA007137A7 /* ListImport.m in Sources */,
@@ -2553,16 +2643,21 @@
 				F888F421208FB1F500C22C39 /* ProfileViewController.m in Sources */,
 				F888F422208FB1F500C22C39 /* LoginPref.m in Sources */,
 				F888F424208FB1F500C22C39 /* listservice.m in Sources */,
+				596BABD521C017A4005C3451 /* AniListSeasonListGenerator.m in Sources */,
 				F888F425208FB1F500C22C39 /* MyListView.m in Sources */,
 				F888F426208FB1F500C22C39 /* SearchView.m in Sources */,
 				91244E912108BCFE00AA8F90 /* CustomListsPopover.m in Sources */,
 				F888F428208FB1F500C22C39 /* AtarashiiAPIListFormatKitsu.m in Sources */,
+				596BABBF21C00886005C3451 /* RelatedViewController.m in Sources */,
 				F888F429208FB1F500C22C39 /* Utility.m in Sources */,
 				F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */,
 				F888F42B208FB1F500C22C39 /* TitleIdConverter.m in Sources */,
+				596BABDD21C018E0005C3451 /* PatreonConstants.m in Sources */,
 				F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */,
 				598B453A21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
+				596BABDF21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
 				F888F42D208FB1F500C22C39 /* NotLoggedIn.m in Sources */,
+				596BABDB21C018E0005C3451 /* PFMoveApplication.m in Sources */,
 				F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */,
 				F888F42F208FB1F500C22C39 /* GeneralPref.m in Sources */,
 				59A2FD5621BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
@@ -2571,6 +2666,7 @@
 				F888F434208FB1F500C22C39 /* ReviewView.m in Sources */,
 				F888F435208FB1F500C22C39 /* NSString_stripHtml.m in Sources */,
 				F888F436208FB1F500C22C39 /* ProfileWindowController.m in Sources */,
+				596BABD821C0180B005C3451 /* DonationLicenseManager.m in Sources */,
 				91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 				F888F437208FB1F500C22C39 /* siteimage.m in Sources */,
 				F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */,
@@ -2759,6 +2855,14 @@
 				593A799B21ADEE140083FA86 /* Base */,
 			);
 			name = TrendingView.xib;
+			sourceTree = "<group>";
+		};
+		596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				596BABCF21C016B2005C3451 /* Base */,
+			);
+			name = PersonSearchPopoverViewController.xib;
 			sourceTree = "<group>";
 		};
 		59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */ = {

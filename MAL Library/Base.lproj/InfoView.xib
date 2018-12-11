@@ -24,6 +24,8 @@
                 <outlet property="otherpopoverviewcontroller" destination="ApP-RB-RnN" id="ltK-MX-AO9"/>
                 <outlet property="othertitlepopover" destination="5H7-SL-XOC" id="FhQ-yu-655"/>
                 <outlet property="recommendedtitlebutton" destination="XRL-x8-3ss" id="qMw-yJ-pbG"/>
+                <outlet property="relatedpopover" destination="0Ta-P7-rg0" id="hW0-h0-Wh0"/>
+                <outlet property="relatedpopovervc" destination="cDa-A8-wTS" id="YO4-qa-RFr"/>
                 <outlet property="sourcematerialbutton" destination="Eiq-GX-sEZ" id="M8n-Gp-tl1"/>
                 <outlet property="steampopupviewcontroller" destination="aHu-zv-cNN" id="2yN-v3-ENp"/>
                 <outlet property="streambutton" destination="xFn-74-hEP" id="xea-Hb-Aaq"/>
@@ -154,7 +156,7 @@
                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eiq-GX-sEZ">
                             <rect key="frame" x="5" y="35" width="169" height="32"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="push" title="Adaptations" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O4W-Kh-9SM">
+                            <buttonCell key="cell" type="push" title="Related Titles" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="O4W-Kh-9SM">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -322,6 +324,12 @@
         <popover behavior="t" id="dVW-Ue-a39">
             <connections>
                 <outlet property="contentViewController" destination="IV0-Nm-IH3" id="gi3-Jp-cLB"/>
+            </connections>
+        </popover>
+        <viewController id="cDa-A8-wTS" userLabel="Popover View Controller" customClass="RelatedViewController"/>
+        <popover id="0Ta-P7-rg0">
+            <connections>
+                <outlet property="contentViewController" destination="cDa-A8-wTS" id="4lb-oT-xuh"/>
             </connections>
         </popover>
     </objects>

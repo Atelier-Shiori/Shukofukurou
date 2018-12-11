@@ -3,11 +3,11 @@
 
 Formerly known as MAL Library
 
-Shukofukurou an open sourced and native  [AniList](https://anilist.co), and [Kitsu](https://kitsu.io/) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
+Shukofukurou an open sourced and native [AniList](https://anilist.co), and [Kitsu](https://kitsu.io/) library manager, a complete rewrite of MAL Client OSX written in Objective-C.
 
 This app is named after the owl, Shuko from Sora no Woto.
 
-Requires latest SDK (10.14), XCode 10 or later with a 10.11 macOS Deployment Target. The C#/Xamarin version is deprecated, but still aviliable in the c-sharp-old branch.
+Requires latest SDK (10.14), XCode 10 or later with a 10.11 macOS Deployment Target.
 
 iOS version of Shukofukurou is available [here](https://github.com/Atelier-Shiori/Shukofukurou-iOS), which uses mostly the same backend code.
 

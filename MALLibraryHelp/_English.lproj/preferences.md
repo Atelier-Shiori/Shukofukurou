@@ -33,6 +33,9 @@ For Kitsu and AniList, no user credentials are saved. Instead, OAuth is used to 
 ### Note
 * If you are having trouble logging into Kitsu, use your profile name instead.
 
+## Air Notifications
+See "About Airing Notifications."
+
 ## Software Updates (Non-Appstore Version)
 This section manages how updates are checked and installed.
 

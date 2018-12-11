@@ -7,7 +7,9 @@ Shukofukurou can notify you about episodes that started airing that are on your 
 
 Note that you do not need to have Shukofukurou running to be notified. However, you need to run the program once in a while to referesh the notifications recieved. You can also fetch for new airing notifications manually by refreshing the anime list for the list source you use for Airing Notifications.
 
-**Note: If you use a list source other than AniList, you may not recieve notifications from some titles since they may not be included in AniList's database.**
+**Note:** If you use a list source other than AniList, you may not recieve notifications from some titles since they may not be included in AniList's database.
+
+**Note:** Enabling Air Notifications is only available for people who donated or download the application off the Mac App Store.
 
 ## Preferences
 * Enable Air Notifications - This setting allows you to enable/disable Airing Notifications.

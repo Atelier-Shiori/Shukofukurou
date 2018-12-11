@@ -7,7 +7,6 @@ Shukofukurou uses the following open source frameworks and classes. Note that th
 
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking) - Used to create HTTP requests - Licensed under MIT License
 * [CocoaOniguruma](http://limechat.net/cocoaoniguruma/) - Used for regular expressions and parsing - Licensed under BSD License.
-* [ESCssParser](https://github.com/tracy-e/ESCssParser) - Licensed under MIT License
 * [PFAboutWindow](https://github.com/perfaram/PFAboutWindow) - Licensed under MIT License
 * [MASPreferences](https://github.com/shpakovski/MASPreferences) - Preferences UI - Licensed under the BSD License
 * [MSWeakTimer](https://github.com/mindsnacks/MSWeakTimer) - Licensed under MIT License

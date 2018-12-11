@@ -12,8 +12,8 @@ The following features is in the App Store version:
 * List Statistics (Manga)
 * Importing and Exporting of Manga lists.
 * Using custom lists on AniList.
-* Viewing source material information in Anime Information view
-* Viewing character and staff information.
+* Viewing related titles
+* Viewing, searching and browsing characters and staff using the People Browser.
 * Viewing profiles and lists from different users.
 * Syncing Lists between services.
 * Airing Notifications
@@ -22,7 +22,7 @@ The following features is in the App Store version:
 All users who purchase the full version of MAL Library on the Mac App Store will get Shukofukurou 3.0 for $1.99 through the non-App Store version.
 
 ## Tip Jar (App Store Version)
-You can tip the developer if you downloaded the Mac App Store version. There is no obligation to do so, but if you want to see future updates, you are free to leave a tip. The tips will be charge through your iTunes Account as an In-App Purchase.
+You can tip the developer if you downloaded the Mac App Store version. There is no obligation to do so, but if you want to support further development of our apps, you are free to leave a tip. The tips will be charge through your iTunes Account as an In-App Purchase.
 
 The Tip Jar can be accessed through the application's menu.
 
@@ -38,7 +38,7 @@ There are other options besides inputting;
 * Become a Patreon - You can become a Patreon to support development monthly and unlock donor features. See Registering by Authorizing a Patreon Account for more details.
 
 ## Registering by Authorizing a Patreon Account (Non AppStore Version)
-By supporting us on Patreon, you can help support development of Shukofukurou and other applications monthly. You can use your Patreon account to unlock donor features as long you have an active pledge. Note that you cannot authorize a Patreon account if you already registered a donation key. If you decide to discontinue the pledge, you will lose access to donor features automatically.
+By supporting us on Patreon, you can help support development of Shukofukurou and other applications monthly while recieving free access to full versions of our apps, including future updates. You can use your Patreon account to unlock donor features as long you have an active pledge. Note that you cannot authorize a Patreon account if you already registered a donation key. If you decide to discontinue the pledge, you will lose access to donor features automatically.
 
 Currently, it's limited to one Mac/one user.
 

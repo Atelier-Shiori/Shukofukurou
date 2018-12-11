@@ -1232,8 +1232,8 @@
 
 #pragma mark Title Information View
 - (void)loadinfo:(NSNumber *)idnum type:(int)type changeView:(bool)changeview forcerefresh:(bool)forcerefresh {
-    int previd;
-    int prevtype;
+    int previd = 0;
+    int prevtype = 0;
     if (idnum.intValue == _infoview.selectedid && type == _infoview.type && !forcerefresh) {
         if (changeview) {
             [self changetoinfoview];

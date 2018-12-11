@@ -327,7 +327,7 @@
             </connections>
         </popover>
         <viewController id="cDa-A8-wTS" userLabel="Popover View Controller" customClass="RelatedViewController"/>
-        <popover id="0Ta-P7-rg0">
+        <popover behavior="t" id="0Ta-P7-rg0">
             <connections>
                 <outlet property="contentViewController" destination="cDa-A8-wTS" id="4lb-oT-xuh"/>
             </connections>

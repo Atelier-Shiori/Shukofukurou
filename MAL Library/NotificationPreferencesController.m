@@ -34,13 +34,13 @@
     [super viewDidLoad];
     // Do view setup here.
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AirNotifyRefreshed" object:nil];
-    [_arraycontroller fetchWithRequest:_arraycontroller.defaultFetchRequest merge:YES error:nil];
+    //[_arraycontroller fetchWithRequest:_arraycontroller.defaultFetchRequest merge:YES error:nil];
     [_tableview reloadData];
 }
 
 - (void)recieveNotification:(NSNotification *)notification {
     if ([notification.name isEqualToString:@"AirNotifyRefreshed"]) {
-        [_arraycontroller fetchWithRequest:_arraycontroller.defaultFetchRequest merge:YES error:nil];
+        //[_arraycontroller fetchWithRequest:_arraycontroller.defaultFetchRequest merge:YES error:nil];
         [_tableview reloadData];
     }
 }

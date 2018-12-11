@@ -119,7 +119,8 @@
                                     </tableColumn>
                                 </tableColumns>
                                 <connections>
-                                    <binding destination="F4x-dp-geq" name="selectionIndexes" keyPath="selectionIndexes" id="r9S-Lr-hLU"/>
+                                    <binding destination="F4x-dp-geq" name="content" keyPath="arrangedObjects" id="IgX-fY-JQJ"/>
+                                    <binding destination="F4x-dp-geq" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="IgX-fY-JQJ" id="GhY-sd-ekZ"/>
                                     <binding destination="06i-wS-slx" name="enabled" keyPath="values.airnotificationsenabled" id="eC8-nE-eYC"/>
                                     <outlet property="dataSource" destination="-2" id="9eS-Dr-fYC"/>
                                     <outlet property="delegate" destination="-2" id="9zM-np-xMB"/>
@@ -139,7 +140,7 @@
             </subviews>
             <point key="canvasLocation" x="-701" y="143.5"/>
         </customView>
-        <arrayController mode="entity" entityName="Notifications" selectsInsertedObjects="NO" id="F4x-dp-geq">
+        <arrayController mode="entity" entityName="Notifications" automaticallyPreparesContent="YES" selectsInsertedObjects="NO" automaticallyRearrangesObjects="YES" id="F4x-dp-geq">
             <declaredKeys>
                 <string>title</string>
                 <string>Key</string>

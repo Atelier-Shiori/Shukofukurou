@@ -14,12 +14,16 @@
 #import "AniListConstants.h"
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
+#import <UserNotifications/UserNotifications.h>
 #import "MSWeakTimer.h"
+#import "NotificationManager.h"
+#import "NSUserNotificationManager.h"
+#import "UNUserNotificationManager.h"
 
 @import UserNotifications;
 
 @interface AiringNotificationManager ()
-@property (strong) NSUserNotificationCenter *notificationCenter;
+@property (strong) NotificationManager *notificationManager;
 @property (strong) NSMutableArray *schedulednotifications;
 @property (strong, nonatomic) dispatch_queue_t notificationQueue;
 @property (strong, nonatomic) MSWeakTimer *refreshtimer;
@@ -42,7 +46,12 @@
 - (instancetype) init {
     if (self = [super init]) {
         self.managedObjectContext = ((AppDelegate *)NSApplication.sharedApplication.delegate).managedObjectContext;
-        self.notificationCenter = [NSUserNotificationCenter defaultUserNotificationCenter];
+        if (@available(macOS 10.14, *)) {
+            self.notificationManager = (NotificationManager *)[UNUserNotificationManager new];
+        }
+        else {
+            self.notificationManager = (NotificationManager *)[NSUserNotificationManager new];
+        }
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AirNotifyServiceChanged" object:nil];
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AirNotifyToggled" object:nil];
         [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"UserLoggedOut" object:nil];
@@ -254,26 +263,22 @@
 
 - (void)setNotification:(NSManagedObject *)notificationobj {
     if ([notificationobj valueForKey:@"nextairdate"] != [NSNull null]) {
-        NSUserNotification *content = [NSUserNotification new];
-        content.title = [notificationobj valueForKey:@"title"];
-        content.informativeText = [NSString stringWithFormat:@"Episode %@ has aired.", [notificationobj valueForKey:@"nextepisode"]];
-        content.soundName = NSUserNotificationDefaultSoundName;
-        content.userInfo = @{@"anilistid" : [notificationobj valueForKey:@"anilistid"], @"servicetitleid" : [notificationobj valueForKey:@"servicetitleid"], @"service" : [notificationobj valueForKey:@"service"]};
-        NSDate *airdate = (NSDate *)[notificationobj valueForKey:@"nextairdate"];
-        content.deliveryDate = airdate;
-        content.identifier = [NSString stringWithFormat:@"airing-%@",[notificationobj valueForKey:@"anilistid"]];
-        
-        [_notificationCenter scheduleNotification:content];
-        [self generatePendingNotificationsList:^(bool success) {
-            if (success) {
-                if ([self scheduledNotificationExist:((NSNumber *)[notificationobj valueForKey:@"anilistid"]).intValue]) {
-                    NSLog(@"Successfully scheduled notification: %@", content.identifier);
+        [_notificationManager setNotification:notificationobj];
+        if (@available(macOS 10.14, *)) {
+        }
+        else {
+            [self generatePendingNotificationsList:^(bool success) {
+                if (success) {
+                    NSUserNotification * notification = [self scheduledNotificationExist:((NSNumber *)[notificationobj valueForKey:@"anilistid"]).intValue];
+                    if (notification) {
+                        NSLog(@"Successfully scheduled notification: %@", notification.identifier);
+                    }
+                    else {
+                        NSLog(@"Something went wrong trying to schedule notification");
+                    }
                 }
-                else {
-                    NSLog(@"Something went wrong trying to schedule notification");
-                }
-            }
-        }];
+            }];
+        }
     }
     else {
         NSLog(@"Skipping %@, No Air Date and Time", [notificationobj valueForKey:@"anilistid"]);
@@ -282,14 +287,7 @@
 }
 
 - (void)removependingnotification:(int)anilistid {
-    NSLog(@"Removed from Notification Queue: %i", anilistid);
-    [self generatePendingNotificationsList:^(bool success) {
-        for (NSUserNotification *notification in _schedulednotifications) {
-            if ([notification.identifier isEqualToString:[NSString stringWithFormat:@"airing-%i",anilistid]]) {
-                [self.notificationCenter removeScheduledNotification:notification];
-            }
-        }
-    }];
+    [_notificationManager removeNotificationWithIdentifier:[NSString stringWithFormat:@"airing-%i",anilistid]];
 }
 
 - (void)addNotifyingTitle:(NSDictionary *)titleInfo withAniListID:(int)anilistid withService:(int)service {
@@ -436,23 +434,30 @@
 #pragma mark helpers
 - (void)generatePendingNotificationsList:(void (^)(bool success))completionHandler {
     [_schedulednotifications removeAllObjects];
-    [_schedulednotifications addObjectsFromArray:_notificationCenter.scheduledNotifications];
-    completionHandler(true);
+    [_notificationManager generatePendingNotificationsList:^(NSArray * _Nonnull notifications, bool success) {
+        [_schedulednotifications addObjectsFromArray:notifications];
+        completionHandler(true);
+    }];
 }
 
-- (NSUserNotification *)scheduledNotificationExist:(int)anilistid {
-    for (NSUserNotification *notification in _schedulednotifications) {
-        if ([notification.identifier isEqualToString:[NSString stringWithFormat:@"airing-%i",anilistid]]) {
-            return notification;
+- (id)scheduledNotificationExist:(int)anilistid {
+    if (@available(macOS 10.14, *)) {
+        for (UNNotificationRequest *notification in _schedulednotifications) {
+            if ([notification.identifier containsString:[NSString stringWithFormat:@"airing-%i",anilistid]]) {
+                return notification;
+            }
+        }
+    }
+    else {
+        for (NSUserNotification *notification in _schedulednotifications) {
+            if ([notification.identifier containsString:[NSString stringWithFormat:@"airing-%i",anilistid]]) {
+                return notification;
+            }
         }
     }
     return nil;
 }
 - (void)removeAllPrendingNotifications {
-    [self generatePendingNotificationsList:^(bool success) {
-        for (NSUserNotification *notification in _schedulednotifications) {
-            [_notificationCenter removeScheduledNotification:notification];
-        }
-    }];
+    [_notificationManager removeAllPendingNotifications];
 }
 @end

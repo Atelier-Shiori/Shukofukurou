@@ -122,7 +122,6 @@
     [Fabric with:@[[Crashlytics class]]];
     #endif
     [Utility checkandclearimagecache];
-    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
     _airingnotificationmanager = [AiringNotificationManager new];
     // Ask to move application
     #if defined(AppStore)
@@ -214,11 +213,6 @@
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
-}
-
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
-     shouldPresentNotification:(NSUserNotification *)notification {
-    return YES;
 }
 
 - (NSWindowController *)preferencesWindowController {

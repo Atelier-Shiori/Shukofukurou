@@ -125,6 +125,9 @@
             case 2:
                 [pwc loadProfileWithUsername:_profile_username];
                 break;
+            case 3:
+                [pwc loadProfileWithUsername:_reviewerusername.stringValue];
+                break;
             default:
                 break;
         }
@@ -138,6 +141,7 @@
                  [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://kitsu.io/users/%@",_profile_username]]];
                 break;
             case 3:
+                [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/user/%@/",_reviewerusername.stringValue]]];
                 break;
             default:
                 break;

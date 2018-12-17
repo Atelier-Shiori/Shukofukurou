@@ -88,6 +88,18 @@
 		2DB59D161EB7D4BE00FDC36E /* CocoaOniguruma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
 		2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
+		591FC1C321C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C221C7E9BD001D8684 /* NSUserNotificationManager.m */; };
+		591FC1C421C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C221C7E9BD001D8684 /* NSUserNotificationManager.m */; };
+		591FC1C521C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C221C7E9BD001D8684 /* NSUserNotificationManager.m */; };
+		591FC1C621C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C221C7E9BD001D8684 /* NSUserNotificationManager.m */; };
+		591FC1C921C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C821C7E9D5001D8684 /* UNUserNotificationManager.m */; };
+		591FC1CA21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C821C7E9D5001D8684 /* UNUserNotificationManager.m */; };
+		591FC1CB21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C821C7E9D5001D8684 /* UNUserNotificationManager.m */; };
+		591FC1CC21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1C821C7E9D5001D8684 /* UNUserNotificationManager.m */; };
+		591FC1D421C7FA17001D8684 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1D321C7FA17001D8684 /* NotificationManager.m */; };
+		591FC1D521C7FA17001D8684 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1D321C7FA17001D8684 /* NotificationManager.m */; };
+		591FC1D621C7FA17001D8684 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1D321C7FA17001D8684 /* NotificationManager.m */; };
+		591FC1D721C7FA17001D8684 /* NotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 591FC1D321C7FA17001D8684 /* NotificationManager.m */; };
 		593A793421AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
 		593A793521AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
 		593A793621AD927C0083FA86 /* TitleCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 593A793321AD927C0083FA86 /* TitleCollectionCell.m */; };
@@ -133,9 +145,7 @@
 		596BABCD21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */; };
 		596BABCE21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */; };
 		596BABD521C017A4005C3451 /* AniListSeasonListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */; };
-		596BABD721C0180B005C3451 /* DonationLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D051B2086667700502379 /* DonationLicenseManager.m */; };
 		596BABD821C0180B005C3451 /* DonationLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F84D051B2086667700502379 /* DonationLicenseManager.m */; };
-		596BABDA21C018E0005C3451 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; };
 		596BABDB21C018E0005C3451 /* PFMoveApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC41E89842400F6E9FF /* PFMoveApplication.m */; };
 		596BABDC21C018E0005C3451 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
 		596BABDD21C018E0005C3451 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
@@ -915,6 +925,12 @@
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
 		2DC64B661EC3D661005A8BCE /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
+		591FC1BA21C7E5D6001D8684 /* NotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
+		591FC1C121C7E9BD001D8684 /* NSUserNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSUserNotificationManager.h; sourceTree = "<group>"; };
+		591FC1C221C7E9BD001D8684 /* NSUserNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSUserNotificationManager.m; sourceTree = "<group>"; };
+		591FC1C721C7E9D5001D8684 /* UNUserNotificationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNUserNotificationManager.h; sourceTree = "<group>"; };
+		591FC1C821C7E9D5001D8684 /* UNUserNotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNUserNotificationManager.m; sourceTree = "<group>"; };
+		591FC1D321C7FA17001D8684 /* NotificationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationManager.m; sourceTree = "<group>"; };
 		5924225821ADFC3100A13B95 /* Shukofukurou Next.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou Next.entitlements"; sourceTree = "<group>"; };
 		593A792B21AC91A60083FA86 /* TitleCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleCollectionCell.h; sourceTree = "<group>"; };
 		593A793321AD927C0083FA86 /* TitleCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCollectionCell.m; sourceTree = "<group>"; };
@@ -1340,43 +1356,69 @@
 			name = AtarashiiDataFormatters;
 			sourceTree = "<group>";
 		};
+		591FC1C021C7E98E001D8684 /* NotificationManagers */ = {
+			isa = PBXGroup;
+			children = (
+				591FC1BA21C7E5D6001D8684 /* NotificationManager.h */,
+				591FC1C121C7E9BD001D8684 /* NSUserNotificationManager.h */,
+				591FC1C221C7E9BD001D8684 /* NSUserNotificationManager.m */,
+				591FC1C721C7E9D5001D8684 /* UNUserNotificationManager.h */,
+				591FC1C821C7E9D5001D8684 /* UNUserNotificationManager.m */,
+				591FC1D321C7FA17001D8684 /* NotificationManager.m */,
+			);
+			name = NotificationManagers;
+			sourceTree = "<group>";
+		};
 		596BABD121C0171F005C3451 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
-				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
-				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
-				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
-				598B453721AC3AE800F28180 /* TitleIdEnumerator.h */,
-				598B453621AC3AE700F28180 /* TitleIdEnumerator.m */,
-				598B452B21AC392C00F28180 /* TitleInfoCache.h */,
-				598B452A21AC392C00F28180 /* TitleInfoCache.m */,
-				598B453121AC393600F28180 /* TrendingRetriever.h */,
-				598B453021AC393600F28180 /* TrendingRetriever.m */,
-				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
-				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
-				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
-				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
-				9199BACC1E89842400F6E9FF /* Utility.h */,
-				9199BACD1E89842400F6E9FF /* Utility.m */,
-				2D88CA681FE815B600AD142E /* servicemenucontroller.h */,
-				2D88CA691FE815B600AD142E /* servicemenucontroller.m */,
-				917CEC7A211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.h */,
-				917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */,
-				2DAB19E71EF9F2C400420182 /* siteimage.h */,
-				2DAB19E81EF9F2C400420182 /* siteimage.m */,
-				2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */,
-				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
-				F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */,
-				F8B5AA902044813400132C51 /* RatingTwentyConvert.m */,
-				917CEC76211B2B1200259AA7 /* PatreonConstants.h */,
-				917CEC77211B2B1200259AA7 /* PatreonConstants.m */,
-				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
-				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
-				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
-				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
-				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
-				F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */,
+				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
+				5972405821B5816C00599AAC /* AiringNotificationManager.m */,
+				598B454921AC4BCE00F28180 /* AiringSchedule.h */,
+				598B454A21AC4BCE00F28180 /* AiringSchedule.m */,
+				F8A85910207023E40026EC0A /* AniList.h */,
+				F8A85911207023E40026EC0A /* AniList.m */,
+				F88CD0F92072BC330093C478 /* AniListConstants.h */,
+				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
+				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
+				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
+				91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */,
+				91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */,
+				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
+				91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */,
+				91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */,
+				9168F9291E89858900CCB5B3 /* Base64Category.h */,
+				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
+				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
+				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
+				91244E872108BB3000AA8F90 /* CustomListShouldShowValueTransformer.h */,
+				91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */,
+				F84D051A2086667700502379 /* DonationLicenseManager.h */,
+				F84D051B2086667700502379 /* DonationLicenseManager.m */,
+				2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */,
+				2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */,
+				912925492146D01C0011D760 /* IsAiringValueTransformer.h */,
+				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
+				9168F92C1E89861300CCB5B3 /* Keychain.h */,
+				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
+				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
+				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
+				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
+				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
+				919DE8FE20504D7B007DCFBC /* KitsuRetrievers */,
+				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
+				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
+				2D94612B1EC38CC8004E171B /* ListImport.h */,
+				2D94612C1EC38CC8004E171B /* ListImport.m */,
+				2D71422A1FE2E32C001FA9E9 /* listservice.h */,
+				2D71422B1FE2E32C001FA9E9 /* listservice.m */,
+				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
+				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
+				9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */,
+				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
+				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
+				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
+				591FC1C021C7E98E001D8684 /* NotificationManagers */,
 				9199BABD1E89842400F6E9FF /* NSNumberFormatterNumberOnly.h */,
 				9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */,
 				2D6ECA321F2E9B20003C455E /* NSString_stripHtml.h */,
@@ -1391,52 +1433,40 @@
 				9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */,
 				597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */,
 				597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */,
-				9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */,
-				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
-				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
-				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
-				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
-				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
-				2D71422A1FE2E32C001FA9E9 /* listservice.h */,
-				2D71422B1FE2E32C001FA9E9 /* listservice.m */,
-				9168F92C1E89861300CCB5B3 /* Keychain.h */,
-				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
-				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
-				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
-				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
-				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
-				919DE8FE20504D7B007DCFBC /* KitsuRetrievers */,
-				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
-				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
-				2D94612B1EC38CC8004E171B /* ListImport.h */,
-				2D94612C1EC38CC8004E171B /* ListImport.m */,
-				912925492146D01C0011D760 /* IsAiringValueTransformer.h */,
-				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
-				2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */,
-				2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */,
-				F84D051A2086667700502379 /* DonationLicenseManager.h */,
-				F84D051B2086667700502379 /* DonationLicenseManager.m */,
-				91244E872108BB3000AA8F90 /* CustomListShouldShowValueTransformer.h */,
-				91244E882108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m */,
-				59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */,
-				59E8DDF01F64C65C00A34A51 /* ClientConstants.m */,
-				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
-				F8A85910207023E40026EC0A /* AniList.h */,
-				F8A85911207023E40026EC0A /* AniList.m */,
-				598B454921AC4BCE00F28180 /* AiringSchedule.h */,
-				598B454A21AC4BCE00F28180 /* AiringSchedule.m */,
-				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
-				5972405821B5816C00599AAC /* AiringNotificationManager.m */,
-				91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */,
-				91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */,
-				F88CD0F92072BC330093C478 /* AniListConstants.h */,
-				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
-				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
-				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
-				91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */,
-				91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */,
-				9168F9291E89858900CCB5B3 /* Base64Category.h */,
-				9168F92A1E89858900CCB5B3 /* Base64Category.m */,
+				F850FCB32077D6C100B7B353 /* OtherListScoreFormatter.h */,
+				F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */,
+				F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */,
+				F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */,
+				917CEC76211B2B1200259AA7 /* PatreonConstants.h */,
+				917CEC77211B2B1200259AA7 /* PatreonConstants.m */,
+				9199BAC31E89842400F6E9FF /* PFMoveApplication.h */,
+				9199BAC41E89842400F6E9FF /* PFMoveApplication.m */,
+				F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */,
+				F8B5AA902044813400132C51 /* RatingTwentyConvert.m */,
+				2D88CA681FE815B600AD142E /* servicemenucontroller.h */,
+				2D88CA691FE815B600AD142E /* servicemenucontroller.m */,
+				917CEC7A211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.h */,
+				917CEC7B211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m */,
+				2DAB19E71EF9F2C400420182 /* siteimage.h */,
+				2DAB19E81EF9F2C400420182 /* siteimage.m */,
+				2DAB19E31EF9ED9400420182 /* StreamDataRetriever.h */,
+				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
+				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
+				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
+				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
+				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
+				598B453721AC3AE800F28180 /* TitleIdEnumerator.h */,
+				598B453621AC3AE700F28180 /* TitleIdEnumerator.m */,
+				598B452B21AC392C00F28180 /* TitleInfoCache.h */,
+				598B452A21AC392C00F28180 /* TitleInfoCache.m */,
+				598B453121AC393600F28180 /* TrendingRetriever.h */,
+				598B453021AC393600F28180 /* TrendingRetriever.m */,
+				91D3D8A41E89C3E00046C4CC /* TypeNumtoStringType.h */,
+				91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */,
+				9199BACC1E89842400F6E9FF /* Utility.h */,
+				9199BACD1E89842400F6E9FF /* Utility.m */,
+				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
+				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -1903,6 +1933,9 @@
 							com.apple.Keychain = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.Sandbox = {
 								enabled = 1;
 							};
@@ -1916,12 +1949,18 @@
 							com.apple.HardenedRuntime = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					91F8E397210A46CA007137A7 = {
 						DevelopmentTeam = 9HDZTER525;
 						SystemCapabilities = {
 							com.apple.HardenedRuntime = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
@@ -2318,6 +2357,7 @@
 				2DB444BC1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
 				59A2FD5521BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
+				591FC1CA21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
 				F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
@@ -2342,6 +2382,7 @@
 				2D8BF8AC1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
+				591FC1D521C7FA17001D8684 /* NotificationManager.m in Sources */,
 				596BABDE21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
 				F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
@@ -2351,9 +2392,9 @@
 				913A11721E8F206A00450B66 /* AddTitle.m in Sources */,
 				91244E8A2108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m in Sources */,
 				913A11731E8F206A00450B66 /* NSNumberFormatterNumberOnly.m in Sources */,
+				591FC1C421C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */,
 				F888F405208F889D00C22C39 /* AuthWebView.m in Sources */,
 				F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
-				596BABD721C0180B005C3451 /* DonationLicenseManager.m in Sources */,
 				F84D64422098FAA7003225F9 /* TipJar.m in Sources */,
 				2D8A47BB1F292D1800FC2B35 /* CharacterView.m in Sources */,
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
@@ -2363,7 +2404,6 @@
 				593A796221ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				598B452D21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
-				596BABDA21C018E0005C3451 /* PFMoveApplication.m in Sources */,
 				91D094D11E9876D8009454F8 /* AiringView.m in Sources */,
 				2D159FD11F96507800734250 /* OtherHistoryView.m in Sources */,
 				913A11781E8F206A00450B66 /* NSString+HTMLtoNSAttributedString.m in Sources */,
@@ -2406,6 +2446,7 @@
 				593A793421AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
+				591FC1D421C7FA17001D8684 /* NotificationManager.m in Sources */,
 				598B452C21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				91521F6A21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
@@ -2446,8 +2487,10 @@
 				9129254B2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
 				593A794821ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				593A795421ADAF410083FA86 /* TitleCollectionView.m in Sources */,
+				591FC1C321C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */,
 				915E8C591E8C24B4005A49A4 /* EditTitle.m in Sources */,
 				91822A4C1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
+				591FC1C921C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				59A2FD7C21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
@@ -2512,6 +2555,7 @@
 				91F8E3A9210A46CA007137A7 /* ListView.m in Sources */,
 				91F8E3AA210A46CA007137A7 /* MyListScoreFormatter.m in Sources */,
 				91F8E3AB210A46CA007137A7 /* Kitsu.m in Sources */,
+				591FC1D721C7FA17001D8684 /* NotificationManager.m in Sources */,
 				598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				91F8E3AC210A46CA007137A7 /* MainWindow.m in Sources */,
 				91F8E3AE210A46CA007137A7 /* NSTextFieldNumber.m in Sources */,
@@ -2552,8 +2596,10 @@
 				91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */,
 				91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */,
 				91F8E3CE210A46CA007137A7 /* EditTitle.m in Sources */,
+				591FC1C621C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */,
 				91F8E3D1210A46CA007137A7 /* RecommendedTitleView.m in Sources */,
 				91F8E3D2210A46CA007137A7 /* AppDelegate.m in Sources */,
+				591FC1CC21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				59A2FD7F21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
 				598B452F21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				91F8E3D3210A46CA007137A7 /* main.m in Sources */,
@@ -2628,6 +2674,7 @@
 				F888F417208FB1F500C22C39 /* AniListAuthWindow.m in Sources */,
 				F888F418208FB1F500C22C39 /* ListView.m in Sources */,
 				91244EA5210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */,
+				591FC1C521C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */,
 				91244E9A2108E89C00AA8F90 /* CustomListModify.m in Sources */,
 				F888F419208FB1F500C22C39 /* servicemenucontroller.m in Sources */,
 				59A2FD7E21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
@@ -2656,6 +2703,7 @@
 				F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */,
 				598B453A21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				596BABDF21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
+				591FC1CB21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				F888F42D208FB1F500C22C39 /* NotLoggedIn.m in Sources */,
 				596BABDB21C018E0005C3451 /* PFMoveApplication.m in Sources */,
 				F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */,
@@ -2687,6 +2735,7 @@
 				F888F443208FB1F500C22C39 /* AddTitle.m in Sources */,
 				F888F444208FB1F500C22C39 /* NSNumberFormatterNumberOnly.m in Sources */,
 				F888F445208FB1F500C22C39 /* AuthWebView.m in Sources */,
+				591FC1D621C7FA17001D8684 /* NotificationManager.m in Sources */,
 				F888F446208FB1F500C22C39 /* OtherUserListScoreFormatter.m in Sources */,
 				F888F447208FB1F500C22C39 /* CharacterView.m in Sources */,
 				F888F448208FB1F500C22C39 /* EditTitle.m in Sources */,
@@ -3334,6 +3383,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
@@ -3384,6 +3434,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
@@ -3434,6 +3485,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;
@@ -3489,6 +3541,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 9HDZTER525;

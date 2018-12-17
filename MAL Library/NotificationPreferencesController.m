@@ -9,6 +9,7 @@
 #import "NotificationPreferencesController.h"
 #import "AppDelegate.h"
 #import "AiringNotificationManager.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface NotificationPreferencesController ()
 @property (strong) IBOutlet NSArrayController *arraycontroller;
@@ -33,8 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    [_arraycontroller setSortDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]]];
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(recieveNotification:) name:@"AirNotifyRefreshed" object:nil];
-    //[_arraycontroller fetchWithRequest:_arraycontroller.defaultFetchRequest merge:YES error:nil];
     [_tableview reloadData];
 }
 
@@ -46,7 +47,25 @@
 }
 
 - (IBAction)toggleairnotifications:(id)sender {
-    [NSNotificationCenter.defaultCenter postNotificationName:@"AirNotifyToggled" object:nil];
+    if (@available(macOS 10.14, *)) {
+        UNUserNotificationCenter *userNotificationCenter = [UNUserNotificationCenter currentNotificationCenter];
+        [userNotificationCenter requestAuthorizationWithOptions:UNAuthorizationOptionAlert + UNAuthorizationOptionSound completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [NSNotificationCenter.defaultCenter postNotificationName:@"AirNotifyToggled" object:nil];
+                });
+            }
+            else {
+                NSLog(@"Can't grant notification permissions: %@", error.localizedDescription);
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"airnotificationsenabled"];
+                });
+            }
+        }];
+    }
+    else {
+        [NSNotificationCenter.defaultCenter postNotificationName:@"AirNotifyToggled" object:nil];
+    }
 }
 
 - (IBAction)notificationlistservicechanged:(id)sender {

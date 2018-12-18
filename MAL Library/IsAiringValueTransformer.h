@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IsAiringValueTransformer : NSValueTransformer
 + (Class)transformedValueClass;
-- (id)transformedValue:(id)value;
+- (id)transformedValue:(nullable id)value;
 @end
 
 NS_ASSUME_NONNULL_END

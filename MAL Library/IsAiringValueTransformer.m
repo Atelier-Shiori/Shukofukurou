@@ -13,7 +13,7 @@
     return [NSNumber class];
 }
 
-- (id)transformedValue:(id)value {
+- (id)transformedValue:(nullable id)value {
     if (!value) return @NO;
     
     if ([value isKindOfClass:[NSString class]]) {

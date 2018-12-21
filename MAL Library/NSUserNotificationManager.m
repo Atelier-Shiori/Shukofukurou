@@ -65,9 +65,11 @@
     content.soundName = NSUserNotificationDefaultSoundName;
     content.userInfo = @{@"anilistid" : [notificationobj valueForKey:@"anilistid"], @"servicetitleid" : [notificationobj valueForKey:@"servicetitleid"], @"service" : [notificationobj valueForKey:@"service"]};
     NSDate *airdate = (NSDate *)[notificationobj valueForKey:@"nextairdate"];
-    content.deliveryDate = airdate;
-    content.identifier = [NSString stringWithFormat:@"airing-%@-%.f",[notificationobj valueForKey:@"anilistid"],airdate.timeIntervalSince1970];
-    
-    [_notificationCenter scheduleNotification:content];
+    if (airdate) {
+        content.deliveryDate = airdate;
+        content.identifier = [NSString stringWithFormat:@"airing-%@-%.f",[notificationobj valueForKey:@"anilistid"],airdate.timeIntervalSince1970];
+        
+        [_notificationCenter scheduleNotification:content];
+    }
 }
 @end

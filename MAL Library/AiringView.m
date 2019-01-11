@@ -17,6 +17,8 @@
 
 @interface AiringView ()
 @property bool selected;
+@property (strong) IBOutlet NSVisualEffectView *loadingview;
+@property (strong) IBOutlet NSProgressIndicator *loadingindicator;
 @end
 
 @implementation AiringView
@@ -31,6 +33,8 @@
     [_addtitleitem setEnabled:NO];
     [self autoselectday];
     [self filterTitles];
+    _loadingview.wantsLayer = YES;
+    _loadingview.layer.cornerRadius = 15.0;
 }
 
 - (void)fetchnewAiringData {
@@ -43,11 +47,14 @@
 
 - (void)loadAiring:(NSNumber *)refresh {
     NSDate *refresheddate = [[NSUserDefaults standardUserDefaults] valueForKey:@"airschdaterefreshed"];
-    bool shouldrefresh = !refresheddate && refresh && refresheddate.timeIntervalSinceNow < -2592000;
+    bool shouldrefresh = refresh.boolValue ? refresh.boolValue : (!refresheddate || refresheddate.timeIntervalSinceNow < -2592000);
+    [self showloading:YES];
     [self retrieveAiringSchedule:shouldrefresh completion:^(id responseobject) {
         [self populateAiring:responseobject];
+        [self showloading:NO];
     } error:^(NSError * error) {
         NSLog(@"Can't retrieve airing data.");
+        [self showloading:NO];
     }];
 }
 
@@ -226,6 +233,17 @@
             break;
         default:
             break;
+    }
+}
+
+- (void)showloading:(bool)loading {
+    if (loading) {
+        _loadingview.hidden = NO;
+        [_loadingindicator startAnimation:self];
+    }
+    else {
+        _loadingview.hidden = YES;
+        [_loadingindicator stopAnimation:self];
     }
 }
 @end

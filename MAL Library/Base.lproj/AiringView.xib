@@ -116,7 +116,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
-                <visualEffectView appearanceType="inheritedVibrantLight" fixedFrame="YES" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Lgx-Am-uhu">
+                <visualEffectView hidden="YES" appearanceType="inheritedVibrantLight" fixedFrame="YES" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="Lgx-Am-uhu">
                     <rect key="frame" x="217" y="118" width="128" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>

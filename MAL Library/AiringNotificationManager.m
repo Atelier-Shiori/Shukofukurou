@@ -211,6 +211,17 @@
             return;
         }
     }
+    if ([notifyobj valueForKey:@"anilistid"] == [NSNull null] || ![notifyobj valueForKey:@"anilistid"]) {
+        if (notificationList.count == position+1) {
+            [self setNotifications];
+            completionHandler(true);
+        }
+        else {
+            int newPosition = position + 1;
+            [self performNewNotificationCheck:notificationList withPosition:newPosition completionHandler:completionHandler];
+        }
+        return;
+    }
     NSNumber *titleid = (NSNumber *)[notifyobj valueForKey:@"anilistid"];
     if (!titleid) {
         if (notificationList.count == position+1) {

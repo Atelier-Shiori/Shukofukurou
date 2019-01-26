@@ -770,8 +770,10 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
         }
     }
     else {
-        // Remove Account
-        [self removeAccount];
+        if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"] || [[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {
+            // Remove Account
+            [self removeAccount];
+        }
     }
 }
 @end

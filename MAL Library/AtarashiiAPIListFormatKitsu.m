@@ -313,14 +313,16 @@
             continue;
         }
         @autoreleasepool {
-            AtarashiiEpisodeObject *episode = [AtarashiiEpisodeObject new];
-            episode.titleId = titleid;
-            episode.episodeId = ((NSNumber *)episodeEntry[@"id"]).intValue;
-            episode.episodeTitle = episodeEntry[@"attributes"][@"canonicalTitle"];
-            episode.episodeNumber = ((NSNumber *)episodeEntry[@"attributes"][@"number"]).intValue;
-            episode.thumbnail = episodeEntry[@"attributes"][@"thumbnail"] != [NSNull null] ? episodeEntry[@"attributes"][@"thumbnail"][@"original"] : @"";
-            episode.airDate = episodeEntry[@"attributes"][@"airdate"] != [NSNull null] ? episodeEntry[@"attributes"][@"airdate"] : @"";
-            [tmparray addObject:episode.NSDictionaryRepresentation];
+            if (episodeEntry[@"attributes"][@"canonicalTitle"] != [NSNull null]) {
+                AtarashiiEpisodeObject *episode = [AtarashiiEpisodeObject new];
+                episode.titleId = titleid;
+                episode.episodeId = ((NSNumber *)episodeEntry[@"id"]).intValue;
+                episode.episodeTitle = episodeEntry[@"attributes"][@"canonicalTitle"];
+                episode.episodeNumber = ((NSNumber *)episodeEntry[@"attributes"][@"number"]).intValue;
+                episode.thumbnail = episodeEntry[@"attributes"][@"thumbnail"] != [NSNull null] ? episodeEntry[@"attributes"][@"thumbnail"][@"original"] : @"";
+                episode.airDate = episodeEntry[@"attributes"][@"airdate"] != [NSNull null] ? episodeEntry[@"attributes"][@"airdate"] : @"";
+                [tmparray addObject:episode.NSDictionaryRepresentation];
+            }
         }
     }
     return tmparray;

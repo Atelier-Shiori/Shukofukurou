@@ -758,6 +758,10 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
             [defaults setValue:d[@"mediaListOptions"][@"scoreFormat"] forKey:@"anilist-scoreformat"];
             [defaults setValue:d[@"avatar"] != [NSNull null] && d[@"avatar"][@"large"] ? d[@"avatar"][@"large"] : @"" forKey:@"anilist-avatar"];
         }
+        else {
+            // Remove Account, invalid token
+            [self removeAccount];
+        }
     }
     else {
         if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"] || [[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {

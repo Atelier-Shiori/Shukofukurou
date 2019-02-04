@@ -13,13 +13,9 @@
 #import "KitsuListRetriever.h"
 #import "Utility.h"
 #import "ClientConstants.h"
+#import "OAuthCredManager.h"
 
 @implementation Kitsu
-#ifdef DEBUG
-NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu DEBUG";
-#else
-NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
-#endif
 
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -255,8 +251,8 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 }
 
 + (void)refreshToken:(void (^)(bool success))completion {
-    AFOAuthCredential *cred =
-    [AFOAuthCredential retrieveCredentialWithIdentifier:kKeychainIdentifier];
+    OAuthCredManager *credmanager = [OAuthCredManager sharedInstance];
+    AFOAuthCredential *cred = [credmanager getFirstAccountForService:2];
     NSURL *baseURL = [NSURL URLWithString:kKitsuBaseURL];
     AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:baseURL
                                                                      clientID:kKitsuClient
@@ -265,8 +261,7 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
     [OAuth2Manager authenticateUsingOAuthWithURLString:kKitsuTokenURL
                                             parameters:@{@"grant_type":@"refresh_token", @"refresh_token":cred.refreshToken} success:^(AFOAuthCredential *credential) {
                                                 NSLog(@"Token refreshed");
-                                                [AFOAuthCredential storeCredential:credential
-                                                                    withIdentifier:kKeychainIdentifier];
+                                                [credmanager saveCredentialForService:2 withCredential:credential];
                                                 completion(true);
                                             }
                                             failure:^(NSError *error) {
@@ -281,8 +276,7 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
                                     clientID:kKitsuClient
                                       secret:kKitsusecretkey];
     [OAuth2Manager authenticateUsingOAuthWithURLString:kKitsuTokenURL parameters:@{@"grant_type":@"password", @"username":username, @"password":password} success:^(AFOAuthCredential *credential) {
-        [AFOAuthCredential storeCredential:credential
-                            withIdentifier:kKeychainIdentifier];
+        [[OAuthCredManager sharedInstance] saveCredentialForService:2 withCredential:credential];
         dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_async(queue, ^{
             [self saveuserinfoforcurrenttoken];
@@ -551,10 +545,10 @@ NSString *const kKeychainIdentifier = @"Shukofukurou - Kitsu";
 
 #pragma mark helpers
 + (AFOAuthCredential *)getFirstAccount {
-    return [AFOAuthCredential retrieveCredentialWithIdentifier:kKeychainIdentifier];
+    return [[OAuthCredManager sharedInstance] getFirstAccountForService:2];
 }
 + (bool)removeAccount {
-    return [AFOAuthCredential deleteCredentialWithIdentifier:kKeychainIdentifier];
+    return [[OAuthCredManager sharedInstance] removeCredentialForService:2];
 }
 + (long)getCurrentUserID {
     return [NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"];

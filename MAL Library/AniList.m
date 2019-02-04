@@ -13,13 +13,9 @@
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFHTTPSessionManager+Synchronous.h>
 #import "Utility.h"
+#import "OAuthCredManager.h"
 
 @implementation AniList
-#ifdef DEBUG
-NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList DEBUG";
-#else
-NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
-#endif
 
 #pragma mark List
 + (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
@@ -178,8 +174,8 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
 }
 
 + (void)refreshToken:(void (^)(bool success))completion {
-    AFOAuthCredential *cred =
-    [AFOAuthCredential retrieveCredentialWithIdentifier:kAniListKeychainIdentifier];
+    OAuthCredManager *credmanager = [OAuthCredManager sharedInstance];
+    AFOAuthCredential *cred = [credmanager getFirstAccountForService:3];
     AFOAuth2Manager *OAuth2Manager = [[AFOAuth2Manager alloc] initWithBaseURL:[NSURL URLWithString:@"https://anilist.co/"]
                                                                      clientID:kanilistclient
                                                                        secret:kanilistsecretkey];
@@ -187,8 +183,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     [OAuth2Manager authenticateUsingOAuthWithURLString:@"api/v2/oauth/token"
                                             parameters:@{@"grant_type":@"refresh_token", @"refresh_token":cred.refreshToken} success:^(AFOAuthCredential *credential) {
                                                 NSLog(@"Token refreshed");
-                                                [AFOAuthCredential storeCredential:credential
-                                                                    withIdentifier:kAniListKeychainIdentifier];
+                                                [credmanager saveCredentialForService:3 withCredential:credential];
                                                 completion(true);
                                             }
                                                failure:^(NSError *error) {
@@ -202,9 +197,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
                                     clientID:kanilistclient
                                       secret:kanilistsecretkey];
     [OAuth2Manager authenticateUsingOAuthWithURLString:@"api/v2/oauth/token" parameters:@{@"grant_type":@"authorization_code", @"code" : pin} success:^(AFOAuthCredential *credential) {
-        [AFOAuthCredential storeCredential:credential
-                            withIdentifier:kAniListKeychainIdentifier];
-        
+        [[OAuthCredManager sharedInstance] saveCredentialForService:3 withCredential:credential];
         [self getOwnAnilistid:^(int userid, NSString *username, NSString *scoreformat, NSString *avatar) {
             [[NSUserDefaults standardUserDefaults] setValue:username forKey:@"anilist-username"];
             [[NSUserDefaults standardUserDefaults] setInteger:userid forKey:@"anilist-userid"];
@@ -553,11 +546,11 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
 
 #pragma mark helpers
 + (AFOAuthCredential *)getFirstAccount {
-    return [AFOAuthCredential retrieveCredentialWithIdentifier:kAniListKeychainIdentifier];
+    return [[OAuthCredManager sharedInstance] getFirstAccountForService:3];
 }
 
 + (bool)removeAccount {
-    return [AFOAuthCredential deleteCredentialWithIdentifier:kAniListKeychainIdentifier];
+    return [[OAuthCredManager sharedInstance] removeCredentialForService:3];;
 }
 
 + (long)getCurrentUserID {

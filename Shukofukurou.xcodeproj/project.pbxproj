@@ -159,6 +159,10 @@
 		5972405A21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
 		5972405B21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
 		5972405C21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
+		5976C09C2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
+		5976C09D2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
+		5976C09E2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
+		5976C09F2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
 		597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
@@ -954,6 +958,8 @@
 		5972404D21B57D7600599AAC /* NotificationPreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesController.m; sourceTree = "<group>"; };
 		5972405721B5816C00599AAC /* AiringNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5972405821B5816C00599AAC /* AiringNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
+		5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCredManager.m; sourceTree = "<group>"; };
+		5976C09B2208AC08003DA0D6 /* OAuthCredManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCredManager.h; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
 		598B452A21AC392C00F28180 /* TitleInfoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
@@ -1372,6 +1378,8 @@
 		596BABD121C0171F005C3451 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				5976C09B2208AC08003DA0D6 /* OAuthCredManager.h */,
+				5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */,
 				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
 				5972405821B5816C00599AAC /* AiringNotificationManager.m */,
 				598B454921AC4BCE00F28180 /* AiringSchedule.h */,
@@ -2375,6 +2383,7 @@
 				2DA863EB1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
+				5976C09D2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				2D371E7C1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				91822A571EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
 				59A2FD7D21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
@@ -2466,6 +2475,7 @@
 				F8A85912207023E40026EC0A /* AniList.m in Sources */,
 				598B453821AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				593A796121ADC6FE0083FA86 /* TrendingView.m in Sources */,
+				5976C09C2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
@@ -2575,6 +2585,7 @@
 				91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */,
 				91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */,
 				91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
+				5976C09F2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				59F356D121B6E386008C79ED /* EpisodeDetailViewController.m in Sources */,
 				91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */,
 				91F8E3BB210A46CA007137A7 /* AniList.m in Sources */,
@@ -2709,6 +2720,7 @@
 				F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */,
 				F888F42F208FB1F500C22C39 /* GeneralPref.m in Sources */,
 				59A2FD5621BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
+				5976C09E2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				F888F430208FB1F500C22C39 /* AppDelegate.m in Sources */,
 				F888F433208FB1F500C22C39 /* AniListScoreConvert.m in Sources */,
 				F888F434208FB1F500C22C39 /* ReviewView.m in Sources */,

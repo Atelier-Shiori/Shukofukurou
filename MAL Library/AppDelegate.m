@@ -39,6 +39,7 @@
 #import "AppDelegate+Patreon.h"
 #endif
 #import "CharactersBrowser.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -117,6 +118,8 @@
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    // Set Image Disk Cache Size
+    SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 512;
     #if defined(OSS)
     #else
     [Fabric with:@[[Crashlytics class]]];

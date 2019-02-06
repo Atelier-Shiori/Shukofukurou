@@ -324,6 +324,15 @@
     NSMutableArray *tmparray = [NSMutableArray new];
     for (NSDictionary *d in dataarray) {
         @autoreleasepool {
+#if defined(AppStore)
+            if (((NSNumber *)d[@"isAdult"]).boolValue) {
+                continue;
+            }
+#else
+            if (((NSNumber *)d[@"isAdult"]).boolValue && ![NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+                continue;
+            }
+#endif
             AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
             mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             mobject.title = d[@"title"][@"romaji"];

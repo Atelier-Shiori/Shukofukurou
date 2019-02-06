@@ -7,7 +7,7 @@
 //
 
 #import "EpisodeDetailViewController.h"
-#import "Utility.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface EpisodeDetailViewController ()
 
@@ -39,13 +39,7 @@
         _image.image = [NSImage imageNamed:@"noimage"];
         return;
     }
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
-        NSImage *posterimage = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[url stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:url]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            _image.image = posterimage;
-        });
-    });
+    [_image sd_setImageWithURL:[NSURL URLWithString:url]];
 }
 
 - (void)viewDidLoad {

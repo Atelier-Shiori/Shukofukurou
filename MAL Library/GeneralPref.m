@@ -14,6 +14,7 @@
 #import "StreamDataRetriever.h"
 #import "TitleIdConverter.h"
 #import "TitleInfoCache.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface GeneralPref ()
 @property (strong) IBOutlet NSButton *showadultoption;
@@ -78,8 +79,9 @@
     // Set Message type to Warning
     alert.alertStyle = NSAlertStyleInformational;
     [alert beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode== NSAlertFirstButtonReturn) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             [Utility clearImageCache];
+            [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{}];
         }
     }];
 }

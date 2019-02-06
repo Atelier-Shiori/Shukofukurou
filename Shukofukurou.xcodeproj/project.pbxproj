@@ -183,6 +183,18 @@
 		598B454D21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454F21AC5C3400F28180 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
+		599CEFEF220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFF0220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFF1220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFF2220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFF3220B2CE50063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFF4220B2CE50063EBB9 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		599CEFF5220B2CEA0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFF6220B2CEA0063EBB9 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		599CEFF7220B2CEE0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFF8220B2CEE0063EBB9 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		599CEFF9220B2CF30063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
+		599CEFFA220B2CF30063EBB9 /* SDWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59A2FD5421BEBE770092E963 /* CharacterPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */; };
 		59A2FD5521BEBE770092E963 /* CharacterPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */; };
 		59A2FD5621BEBE770092E963 /* CharacterPopOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */; };
@@ -761,6 +773,7 @@
 				913A11A11E8F206A00450B66 /* AFNetworking.framework in Embed Frameworks */,
 				F8ABAAAF2087C33C00752627 /* SAMKeychain.framework in Embed Frameworks */,
 				913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */,
+				599CEFF6220B2CEA0063EBB9 /* SDWebImage.framework in Embed Frameworks */,
 				913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -799,6 +812,7 @@
 				F8ABAAA82087C22600752627 /* DonationCheck.framework in Embed Frameworks */,
 				2DB59D141EB7D4B700FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				91044F95211B252100DBEF57 /* Patreon.framework in Embed Frameworks */,
+				599CEFF4220B2CE50063EBB9 /* SDWebImage.framework in Embed Frameworks */,
 				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -817,6 +831,7 @@
 				91F8E435210A46CA007137A7 /* DonationCheck.framework in Embed Frameworks */,
 				91F8E436210A46CA007137A7 /* CocoaOniguruma.framework in Embed Frameworks */,
 				91044F93211B251900DBEF57 /* Patreon.framework in Embed Frameworks */,
+				599CEFFA220B2CF30063EBB9 /* SDWebImage.framework in Embed Frameworks */,
 				91F8E437210A46CA007137A7 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -842,6 +857,7 @@
 				F888F491208FB1F500C22C39 /* AFNetworking.framework in Embed Frameworks */,
 				F888F492208FB1F500C22C39 /* SAMKeychain.framework in Embed Frameworks */,
 				F888F493208FB1F500C22C39 /* PXSourceList.framework in Embed Frameworks */,
+				599CEFF8220B2CEE0063EBB9 /* SDWebImage.framework in Embed Frameworks */,
 				F888F494208FB1F500C22C39 /* MASPreferences.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -971,6 +987,7 @@
 		598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
 		598B454921AC4BCE00F28180 /* AiringSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringSchedule.h; sourceTree = "<group>"; };
 		598B454A21AC4BCE00F28180 /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
+		599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		59A2FD5121BEBE770092E963 /* CharacterPopOverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterPopOverViewController.h; sourceTree = "<group>"; };
 		59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterPopOverViewController.m; sourceTree = "<group>"; };
 		59A2FD6621BED4D90092E963 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CharacterPopOverViewController.xib; sourceTree = "<group>"; };
@@ -1183,10 +1200,12 @@
 				913A117F1E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
 				F8ABAAAB2087C33300752627 /* SAMKeychain.framework in Frameworks */,
 				913A11801E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
+				599CEFF5220B2CEA0063EBB9 /* SDWebImage.framework in Frameworks */,
 				913A11821E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				2DB59D151EB7D4BE00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A11831E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				913A11841E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
+				599CEFF0220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */,
 				F8ABAAAE2087C33C00752627 /* SAMKeychain.framework in Frameworks */,
 				913A11851E8F206A00450B66 /* Crashlytics.framework in Frameworks */,
 				913A11861E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
@@ -1205,9 +1224,11 @@
 				91044F90211B240600DBEF57 /* Patreon.framework in Frameworks */,
 				91AECE5B1E89922A00824C2D /* MASPreferences.framework in Frameworks */,
 				9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */,
+				599CEFEF220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */,
 				F84D05202086720800502379 /* DonationCheck.framework in Frameworks */,
 				9199BAFE1E89847D00F6E9FF /* AFNetworking.framework in Frameworks */,
 				2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
+				599CEFF3220B2CE50063EBB9 /* SDWebImage.framework in Frameworks */,
 				913A115D1E8F200F00450B66 /* Sparkle.framework in Frameworks */,
 				9109116D1E89923D00C95E76 /* MASPreferences.framework in Frameworks */,
 				9199BAF51E89844C00F6E9FF /* MASPreferences.framework in Frameworks */,
@@ -1232,9 +1253,11 @@
 				91044F91211B240600DBEF57 /* Patreon.framework in Frameworks */,
 				91F8E3F3210A46CA007137A7 /* MASPreferences.framework in Frameworks */,
 				91F8E3F4210A46CA007137A7 /* AFNetworking.framework in Frameworks */,
+				599CEFF2220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */,
 				91F8E3F5210A46CA007137A7 /* DonationCheck.framework in Frameworks */,
 				91F8E3F6210A46CA007137A7 /* AFNetworking.framework in Frameworks */,
 				91F8E3F7210A46CA007137A7 /* CocoaOniguruma.framework in Frameworks */,
+				599CEFF9220B2CF30063EBB9 /* SDWebImage.framework in Frameworks */,
 				91F8E3F8210A46CA007137A7 /* Sparkle.framework in Frameworks */,
 				91F8E3F9210A46CA007137A7 /* MASPreferences.framework in Frameworks */,
 				91F8E3FA210A46CA007137A7 /* MASPreferences.framework in Frameworks */,
@@ -1266,11 +1289,13 @@
 				F888F45A208FB1F500C22C39 /* AFNetworking.framework in Frameworks */,
 				F888F45B208FB1F500C22C39 /* SAMKeychain.framework in Frameworks */,
 				F888F45C208FB1F500C22C39 /* AFNetworking.framework in Frameworks */,
+				599CEFF7220B2CEE0063EBB9 /* SDWebImage.framework in Frameworks */,
 				F888F45D208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
 				F888F45E208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */,
 				F888F45F208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
 				F888F460208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
 				F888F461208FB1F500C22C39 /* SAMKeychain.framework in Frameworks */,
+				599CEFF1220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */,
 				F888F463208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
 				F888F464208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */,
 				F888F466208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
@@ -1727,6 +1752,7 @@
 		9199BAEF1E89843B00F6E9FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */,
 				918C0D381E89FF920037898E /* Crashlytics.framework */,
 				918C0D361E89FF8B0037898E /* Fabric.framework */,
 				91AECE5A1E89922A00824C2D /* MASPreferences.framework */,
@@ -3250,6 +3276,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
@@ -3287,6 +3315,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3432,6 +3462,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
@@ -3470,6 +3502,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3534,6 +3568,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -3577,6 +3613,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3689,6 +3727,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"OSS=true",
@@ -3730,6 +3770,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",

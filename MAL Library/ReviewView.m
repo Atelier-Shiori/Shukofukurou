@@ -14,6 +14,7 @@
 #import "listservice.h"
 #import "RatingTwentyConvert.h"
 #import "AniListScoreConvert.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ReviewView ()
 @property (strong) NSString *profile_username;
@@ -107,7 +108,7 @@
         weakSelf.reviewtext.textColor = NSColor.controlTextColor;
     }];
     if (((NSString *)review[@"avatar_url"]).length > 0) {
-        _revieweravatar.image = [Utility loadImage:[NSString stringWithFormat:@"useravatar-%@.jpg",_reviewerusername.stringValue] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:review[@"avatar_url"]]];
+        [_revieweravatar sd_setImageWithURL:review[@"avatar_url"]];
     }
     else {
         _revieweravatar.image = [NSImage imageNamed:@"noimage"];

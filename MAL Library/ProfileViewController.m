@@ -11,6 +11,8 @@
 #import "AppDelegate.h"
 #import "Keychain.h"
 #import "Utility.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "NSTextView+SetHTMLAttributedText.h"
 
 @interface ProfileViewController ()
 @property (strong) NSString *homepageurl;
@@ -42,7 +44,7 @@
 - (void)populateProfile:(id)responseobject withUsername:(NSString *)username {
     _usernamelabel.stringValue = username.lowercaseString;
     if (responseobject[@"avatar_url"] && responseobject[@"avatar_url"] != [NSNull null]) {
-        _profileimage.image = [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[responseobject[@"avatar_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""]stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",responseobject[@"avatar_url"]]]];
+        [_profileimage sd_setImageWithURL:responseobject[@"avatar_url"]];
     }
     else {
         _profileimage.image = [NSImage new];
@@ -54,35 +56,35 @@
         }
     }
     if ([listservice getCurrentServiceID] != 3) {
-        [details appendString:@"General Details:\n"];
+        [details appendString:@"General Details:<br />"];
         if (responseobject[@"details"][@"gender"] && responseobject[@"details"][@"gender"] != [NSNull null]) {
-            [details appendFormat:@"Gender: %@\n", responseobject[@"details"][@"gender"]];
+            [details appendFormat:@"Gender: %@<br />", responseobject[@"details"][@"gender"]];
         }
         if (responseobject[@"details"][@"birthday"] && responseobject[@"details"][@"birthday"] != [NSNull null]) {
-            [details appendFormat:@"Birthday: %@\n", responseobject[@"details"][@"birthday"]];
+            [details appendFormat:@"Birthday: %@<br />", responseobject[@"details"][@"birthday"]];
         }
         if (responseobject[@"details"][@"location"] && ![NSNull null]) {
-            [details appendFormat:@"Location: %@\n", responseobject[@"details"][@"location"]];
+            [details appendFormat:@"Location: %@<br />", responseobject[@"details"][@"location"]];
         }
-        [details appendFormat:@"Join Date: %@\n", responseobject[@"details"][@"join_date"]];
-        [details appendFormat:@"Access Rank: %@\n\n", responseobject[@"details"][@"access_rank"]];
-        [details appendString:@"Member Statistics:\n"];
-        [details appendFormat:@"Forum Posts: %@\n", responseobject[@"details"][@"forum_posts"]];
+        [details appendFormat:@"Join Date: %@<br />", responseobject[@"details"][@"join_date"]];
+        [details appendFormat:@"Access Rank: %@<br /><br />", responseobject[@"details"][@"access_rank"]];
+        [details appendString:@"Member Statistics:<br />"];
+        [details appendFormat:@"Forum Posts: %@<br />", responseobject[@"details"][@"forum_posts"]];
         switch ([listservice getCurrentServiceID]) {
             case 1: {
-                [details appendFormat:@"Reviews: %@\n", responseobject[@"details"][@"reviews"]];
-                [details appendFormat:@"Recommendations: %@\n", responseobject[@"details"][@"recommendations"]];
-                [details appendFormat:@"Blog Posts: %@\n", responseobject[@"details"][@"blog_posts"]];
-                [details appendFormat:@"Clubs Joined: %@\n", responseobject[@"details"][@"clubs"]];
-                [details appendFormat:@"Comments: %@\n", responseobject[@"details"][@"comments"]];
+                [details appendFormat:@"Reviews: %@<br />", responseobject[@"details"][@"reviews"]];
+                [details appendFormat:@"Recommendations: %@<br />", responseobject[@"details"][@"recommendations"]];
+                [details appendFormat:@"Blog Posts: %@<br />", responseobject[@"details"][@"blog_posts"]];
+                [details appendFormat:@"Clubs Joined: %@<br />", responseobject[@"details"][@"clubs"]];
+                [details appendFormat:@"Comments: %@<br />", responseobject[@"details"][@"comments"]];
                 _sendmessagebtn.hidden = false;
                 break;
             }
             case 2: {
-                [details appendFormat:@"Reactions: %@\n", responseobject[@"details"][@"reviews"]];
-                [details appendFormat:@"Likes Given: %@\n", responseobject[@"details"][@"extra"][@"likes_given"]];
-                [details appendFormat:@"Liked: %@\n", responseobject[@"details"][@"extra"][@"likes_recieved"]];
-                [details appendFormat:@"Comments: %@\n", responseobject[@"details"][@"comments"]];
+                [details appendFormat:@"Reactions: %@<br />", responseobject[@"details"][@"reviews"]];
+                [details appendFormat:@"Likes Given: %@<br />", responseobject[@"details"][@"extra"][@"likes_given"]];
+                [details appendFormat:@"Liked: %@<br />", responseobject[@"details"][@"extra"][@"likes_recieved"]];
+                [details appendFormat:@"Comments: %@<br />", responseobject[@"details"][@"comments"]];
                 _sendmessagebtn.hidden = true;
                 break;
             }
@@ -105,8 +107,11 @@
         _sendmessagebtn.hidden = true;
         [NSUserDefaults.standardUserDefaults setObject:responseobject[@"details"][@"extra"][@"scoreFormat"] forKey:@"anilist-otheruser-scoreformat"];
     }
-    _profiledetails.string = details;
-    _profiledetails.textColor = NSColor.controlTextColor;
+    __weak ProfileViewController *weakself = self;
+    [_profiledetails setTextToHTML:details withLoadingText:@"Loading" completion:^(NSAttributedString * _Nonnull astr) {
+        [weakself.profiledetails.textStorage setAttributedString:astr];
+        weakself.profiledetails.textColor = NSColor.controlTextColor;
+    }];
 }
 - (IBAction)viewuserhomepage:(id)sender {
     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:_homepageurl]];

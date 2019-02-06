@@ -15,6 +15,7 @@
 #import "NSString_stripHtml.h"
 #import "listservice.h"
 #import "TitleIdConverter.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 
 @interface CharacterView ()
@@ -46,7 +47,7 @@
 - (void)populateStaffInformation:(NSDictionary *)d {
     NSMutableString *tmpstr = [NSMutableString new];
     _charactername.stringValue = d[@"name"];
-    _posterimage.image = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
+    [self loadPosterImageWithURL:d[@"image_url"]];
     if (d[@"native_name"]) {
         [tmpstr appendFormat:@"Native name: %@\n",d[@"native_name"]];
         _nativename = d[@"native_name"];
@@ -278,5 +279,14 @@
     _details.string = @"";
     _charactername.stringValue = @"";
     _posterimage.image = nil;
+}
+
+- (void)loadPosterImageWithURL:(NSString *)url {
+    if (url.length > 0) {
+        [_posterimage sd_setImageWithURL:[NSURL URLWithString:url]];
+    }
+    else {
+        _posterimage.image = [NSImage imageNamed:@"noimage"];
+    }
 }
 @end

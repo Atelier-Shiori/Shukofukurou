@@ -16,6 +16,7 @@
 #import "RelatedViewController.h"
 #import "StreamPopup.h"
 #import "listservice.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface InfoView ()
 @property (strong) IBOutlet NSTextField *infoviewtitle;
@@ -153,8 +154,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
-    _infoviewposterimage.image = posterimage;
+    [self loadPosterImageWithURL:d[@"image_url"]];
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"episodes"] == nil || ((NSNumber *)d[@"episodes"]).intValue == 0) {
         if (d[@"duration"] == nil  || ((NSNumber *)d[@"duration"]).intValue == 0){
@@ -327,8 +327,7 @@
     NSNumber *memberscount = d[@"members_count"];
     NSNumber *rank = d[@"rank"];
     NSNumber *favorites = d[@"favorited_count"];
-    NSImage *posterimage = ((NSString *)d[@"image_url"]).length > 0 ? [Utility loadImage:[NSString stringWithFormat:@"%@.jpg",[[(NSString *)d[@"image_url"] stringByReplacingOccurrencesOfString:@"https://" withString:@""] stringByReplacingOccurrencesOfString:@"/" withString:@"-"]] withAppendPath:@"imgcache" fromURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",d[@"image_url"]]]] : [NSImage imageNamed:@"noimage"];
-    _infoviewposterimage.image = posterimage;
+    [self loadPosterImageWithURL:d[@"image_url"]];
     [details appendString:[NSString stringWithFormat:@"Type: %@\n", type]];
     if (d[@"chapters"] == nil || ((NSNumber *)d[@"chapters"]).intValue  == 0) {
         [details appendString:@"Chapters: Unknown\n"];
@@ -602,5 +601,14 @@
     }
     [_episodedetail.window makeKeyAndOrderFront:self];
     [_episodedetail loadEpisodeData:_selectedid];
+}
+
+- (void)loadPosterImageWithURL:(NSString *)url {
+    if (url.length > 0) {
+        [_infoviewposterimage sd_setImageWithURL:[NSURL URLWithString:url]];
+    }
+    else {
+        _infoviewposterimage.image = [NSImage imageNamed:@"noimage"];
+    }
 }
 @end

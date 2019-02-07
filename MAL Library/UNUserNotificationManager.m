@@ -72,37 +72,61 @@ API_AVAILABLE(macos(10.14))
 
 - (void)setNotification:(NSManagedObject *)notificationobj {
     if (@available(macOS 10.14, *)) {
-        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-        content.title = [notificationobj valueForKey:@"title"];
-        content.body = [NSString stringWithFormat:@"Episode %@ has aired.", [notificationobj valueForKey:@"nextepisode"]];
-        content.sound = [UNNotificationSound defaultSound];
-        content.userInfo = @{@"anilistid" : [notificationobj valueForKey:@"anilistid"], @"servicetitleid" : [notificationobj valueForKey:@"servicetitleid"], @"service" : [notificationobj valueForKey:@"service"]};
-        NSDate *airdate = (NSDate *)[notificationobj valueForKey:@"nextairdate"];
-        if (airdate) {
-            NSDateComponents *triggerDate = [[NSCalendar currentCalendar]
-                                             components:NSCalendarUnitYear +
-                                             NSCalendarUnitMonth + NSCalendarUnitDay +
-                                             NSCalendarUnitHour + NSCalendarUnitMinute +
-                                             NSCalendarUnitSecond fromDate:airdate];
-            UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate
-                                                                                                              repeats:NO];
-            NSString *identifier = [NSString stringWithFormat:@"airing-%@-%.f",[notificationobj valueForKey:@"anilistid"],airdate.timeIntervalSince1970];
-            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
-                                                                                  content:content
-                                                                                  trigger:trigger];
-            [_notificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-                if (error != nil) {
-                    NSLog(@"Something went wrong: %@",error);
-                }
-                else {
-                    NSLog(@"Successfully scheduled notification: %@", identifier);
-                }
-            }];
+        if ([notificationobj valueForKey:@"title"] && [notificationobj valueForKey:@"nextepisode"] && [notificationobj valueForKey:@"anilistid"] && [notificationobj valueForKey:@"servicetitleid"] && [notificationobj valueForKey:@"service"]) {
+            UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+            content.title = [notificationobj valueForKey:@"title"];
+            content.body = [NSString stringWithFormat:@"Episode %@ has aired.", [notificationobj valueForKey:@"nextepisode"]];
+            content.sound = [UNNotificationSound defaultSound];
+            content.userInfo = @{@"anilistid" : [notificationobj valueForKey:@"anilistid"], @"servicetitleid" : [notificationobj valueForKey:@"servicetitleid"], @"service" : [notificationobj valueForKey:@"service"]};
+            NSDate *airdate = (NSDate *)[notificationobj valueForKey:@"nextairdate"];
+            if (airdate) {
+                NSDateComponents *triggerDate = [[NSCalendar currentCalendar]
+                                                 components:NSCalendarUnitYear +
+                                                 NSCalendarUnitMonth + NSCalendarUnitDay +
+                                                 NSCalendarUnitHour + NSCalendarUnitMinute +
+                                                 NSCalendarUnitSecond fromDate:airdate];
+                UNCalendarNotificationTrigger *trigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:triggerDate
+                                                                                                                  repeats:NO];
+                NSString *identifier = [NSString stringWithFormat:@"airing-%@-%.f",[notificationobj valueForKey:@"anilistid"],airdate.timeIntervalSince1970];
+                UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier
+                                                                                      content:content
+                                                                                      trigger:trigger];
+                [_notificationCenter addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                    if (error != nil) {
+                        NSLog(@"Something went wrong: %@",error);
+                    }
+                    else {
+                        NSLog(@"Successfully scheduled notification: %@", identifier);
+                    }
+                }];
+            }
+            else {
+                NSLog(@"Something went wrong: Invalid Air Date");
+            }
         }
         else {
-            NSLog(@"Something went wrong: Invalid Air Date");
+            NSLog(@"Something went wrong. Missing values");
+            [self generateDebugOutput:notificationobj];
         }
     } else {
+    }
+}
+
+- (void)generateDebugOutput:(NSManagedObject *)notificationobj {
+    if (![notificationobj valueForKey:@"title"]) {
+        NSLog(@"Title is missing.");
+    }
+    if (![notificationobj valueForKey:@"nextepisode"]) {
+        NSLog(@"Next episode is missing.");
+    }
+    if (![notificationobj valueForKey:@"anilistid"]) {
+        NSLog(@"AniList ID is missing.");
+    }
+    if (![notificationobj valueForKey:@"service"]) {
+        NSLog(@"Service is missing.");
+    }
+    if (![notificationobj valueForKey:@"servicetitleid"]) {
+        NSLog(@"Service ID is missing");
     }
 }
 @end

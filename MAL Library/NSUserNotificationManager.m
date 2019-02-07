@@ -59,17 +59,40 @@
 }
 
 - (void)setNotification:(NSManagedObject *)notificationobj {
-    NSUserNotification *content = [NSUserNotification new];
-    content.title = [notificationobj valueForKey:@"title"];
-    content.informativeText = [NSString stringWithFormat:@"Episode %@ has aired.", [notificationobj valueForKey:@"nextepisode"]];
-    content.soundName = NSUserNotificationDefaultSoundName;
-    content.userInfo = @{@"anilistid" : [notificationobj valueForKey:@"anilistid"], @"servicetitleid" : [notificationobj valueForKey:@"servicetitleid"], @"service" : [notificationobj valueForKey:@"service"]};
-    NSDate *airdate = (NSDate *)[notificationobj valueForKey:@"nextairdate"];
-    if (airdate) {
-        content.deliveryDate = airdate;
-        content.identifier = [NSString stringWithFormat:@"airing-%@-%.f",[notificationobj valueForKey:@"anilistid"],airdate.timeIntervalSince1970];
-        
-        [_notificationCenter scheduleNotification:content];
+    if ([notificationobj valueForKey:@"title"] && [notificationobj valueForKey:@"nextepisode"] && [notificationobj valueForKey:@"anilistid"] && [notificationobj valueForKey:@"servicetitleid"] && [notificationobj valueForKey:@"service"]) {
+        NSUserNotification *content = [NSUserNotification new];
+        content.title = [notificationobj valueForKey:@"title"];
+        content.informativeText = [NSString stringWithFormat:@"Episode %@ has aired.", [notificationobj valueForKey:@"nextepisode"]];
+        content.soundName = NSUserNotificationDefaultSoundName;
+        content.userInfo = @{@"anilistid" : [notificationobj valueForKey:@"anilistid"], @"servicetitleid" : [notificationobj valueForKey:@"servicetitleid"], @"service" : [notificationobj valueForKey:@"service"]};
+        NSDate *airdate = (NSDate *)[notificationobj valueForKey:@"nextairdate"];
+        if (airdate) {
+            content.deliveryDate = airdate;
+            content.identifier = [NSString stringWithFormat:@"airing-%@-%.f",[notificationobj valueForKey:@"anilistid"],airdate.timeIntervalSince1970];
+            
+            [_notificationCenter scheduleNotification:content];
+        }
+    }
+    else {
+        NSLog(@"Something went wrong. Missing values");
+        [self generateDebugOutput:notificationobj];
+    }
+}
+- (void)generateDebugOutput:(NSManagedObject *)notificationobj {
+    if (![notificationobj valueForKey:@"title"]) {
+        NSLog(@"Title is missing.");
+    }
+    if (![notificationobj valueForKey:@"nextepisode"]) {
+        NSLog(@"Next episode is missing.");
+    }
+    if (![notificationobj valueForKey:@"anilistid"]) {
+        NSLog(@"AniList ID is missing.");
+    }
+    if (![notificationobj valueForKey:@"service"]) {
+        NSLog(@"Service is missing.");
+    }
+    if (![notificationobj valueForKey:@"servicetitleid"]) {
+        NSLog(@"Service ID is missing");
     }
 }
 @end

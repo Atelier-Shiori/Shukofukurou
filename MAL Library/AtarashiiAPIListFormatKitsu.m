@@ -27,7 +27,7 @@
                         lentry.episodes = metadata[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeCount"]).intValue : 0;
                         lentry.episode_length = metadata[@"attributes"][@"episodeLength"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"episodeLength"]).intValue : 0;
                         if (metadata[@"attributes"][@"posterImage"] != [NSNull null]) {
-                            lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
+                            lentry.image_url = metadata[@"attributes"][@"posterImage"][@"large"];
                         }
                         lentry.type = [Utility convertAnimeType:metadata[@"attributes"][@"showType"]];
                         NSString *tmpstatus = metadata[@"attributes"][@"status"];
@@ -84,7 +84,7 @@
                     lentry.chapters = metadata[@"attributes"][@"chapterCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"chapterCount"]).intValue : 0;
                     lentry.volumes = metadata[@"attributes"][@"volumeCount"] != [NSNull null] ? ((NSNumber *)metadata[@"attributes"][@"volumeCount"]).intValue : 0;
                     if (metadata[@"attributes"][@"posterImage"] != [NSNull null]) {
-                        lentry.image_url = metadata[@"attributes"][@"posterImage"][@"medium"];
+                        lentry.image_url = metadata[@"attributes"][@"posterImage"][@"large"];
                     }
                     lentry.type = ((NSString *)metadata[@"attributes"][@"mangaType"]).capitalizedString;
                     NSString *tmpstatus = metadata[@"attributes"][@"status"];
@@ -256,7 +256,7 @@
             aobject.episodes = d[@"attributes"][@"episodeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"episodeCount"]).intValue : 0;
             aobject.type = [Utility convertAnimeType:d[@"attributes"][@"subtype"]];
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
-                aobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
+                aobject.image_url = d[@"attributes"][@"posterImage"][@"large"] && d[@"attributes"][@"posterImage"][@"large"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"large"] : @"";
             }
             NSString *tmpstatus = d[@"attributes"][@"status"];
             if ([tmpstatus isEqualToString:@"finished"]) {
@@ -287,7 +287,7 @@
             mobject.volumes = d[@"attributes"][@"volumeCount"] != [NSNull null] ? ((NSNumber *)d[@"attributes"][@"volumeCount"]).intValue : 0;
             mobject.type = ((NSString *)d[@"attributes"][@"subtype"]).capitalizedString;
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
-                mobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
+                mobject.image_url = d[@"attributes"][@"posterImage"][@"large"] && d[@"attributes"][@"posterImage"][@"large"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"large"] : @"";
             }
             NSString *tmpstatus = d[@"attributes"][@"status"];
             if ([tmpstatus isEqualToString:@"finished"]) {
@@ -522,7 +522,7 @@
             aobject.title = d[@"attributes"][@"canonicalTitle"];
             aobject.other_titles =  @{@"synonyms" : (d[@"attributes"][@"abbreviatedTitles"] && d[@"attributes"][@"abbreviatedTitles"]  != [NSNull null]) ? d[@"attributes"][@"abbreviatedTitles"] : @[], @"english" : d[@"attributes"][@"titles"][@"en"] && d[@"attributes"][@"titles"][@"en"] != [NSNull null] ? @[d[@"attributes"][@"titles"][@"en"]] : d[@"attributes"][@"titles"][@"en_jp"] && d[@"attributes"][@"titles"][@"en_jp"] != [NSNull null] ? @[d[@"attributes"][@"titles"][@"en_jp"]] : @[], @"japanese" : d[@"attributes"][@"titles"][@"ja_jp"] && d[@"attributes"][@"titles"][@"ja_jp"] != [NSNull null] ?  @[d[@"attributes"][@"titles"][@"ja_jp"]] : @[] };
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
-                aobject.image_url = d[@"attributes"][@"posterImage"][@"medium"] && d[@"attributes"][@"posterImage"][@"medium"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"medium"] : @"";
+                aobject.image_url = d[@"attributes"][@"posterImage"][@"large"] && d[@"attributes"][@"posterImage"][@"large"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"large"] : @"";
             }
             aobject.type = [Utility convertAnimeType:d[@"attributes"][@"showType"]];
             NSMutableDictionary *finaldict = [[NSMutableDictionary alloc] initWithDictionary:aobject.NSDictionaryRepresentation];

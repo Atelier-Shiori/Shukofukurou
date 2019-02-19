@@ -392,17 +392,6 @@
 }
 - (void)performAniDBListImport {
     NSDictionary *entry = _listimport[_progress];
-    NSString *type = entry[@"type_name"][@"text"];
-    type = [type stringByReplacingOccurrencesOfString:@" Series" withString:@""];
-    if ([type isEqualToString:@"Web"]) {
-        type = @"ONA";
-    }
-    if ([type isEqualToString:@"TV Special"]) {
-        type = @"Special";
-    }
-    if ([type isEqualToString:@"Music Video"]) {
-        type = @"Music";
-    }
     [[TitleIDMapper sharedInstance] retrieveTitleIdForService:4 withTitleId:(NSString *)entry[@"animenfoid"][@"text"] withTargetServiceId:[listservice getCurrentServiceID] withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
         if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
             [self performMALUpdatefromAniDBEntry:entry withMALID:((NSNumber *)titleid).intValue];

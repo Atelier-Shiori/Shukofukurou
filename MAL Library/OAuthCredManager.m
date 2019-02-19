@@ -52,7 +52,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
             keychainidentifier = kAniListKeychainIdentifier;
             break;
         default:
-            return nil;
+            return [AFOAuthCredential new];
     }
     return [AFOAuthCredential retrieveCredentialWithIdentifier:keychainidentifier];
 }
@@ -67,7 +67,7 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
             keychainidentifier = kAniListKeychainIdentifier;
             break;
         default:
-            return nil;
+            return [AFOAuthCredential new];
     }
     [AFOAuthCredential storeCredential:cred withIdentifier:keychainidentifier];
     switch (service) {

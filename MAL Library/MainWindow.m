@@ -654,12 +654,12 @@
             bool showrefresh = [NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"];
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
-            if (_infoview.type == MALAnime && [[NSUserDefaults standardUserDefaults] boolForKey:@"donated"]) {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"donated"]) {
                 int currentservice = [listservice getCurrentServiceID];
                 if (currentservice == 3) {
                     [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
                 }
-                else {
+                else if (currentservice == 2 && _infoview.type == MALAnime){
                     [_toolbar insertItemWithItemIdentifier:@"viewepisodes" atIndex:3+indexoffset];
                 }
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];

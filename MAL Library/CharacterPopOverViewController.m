@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
 @property (strong) NSDictionary *castdict;
 @property (strong) IBOutlet NSProgressIndicator *progressindicator;
+@property int currenttype;
 @end
 
 @implementation CharacterPopOverViewController
@@ -113,6 +114,7 @@
     [listservice retrieveStaff:idnum withType:type completion:^(id responseObject) {
         [self generateSourceList:responseObject];
         _selectedtitleid = idnum;
+        _currenttype = type;
         [self showprogressindicator:NO];
     } error:^(NSError *error){
         [self showprogressindicator:NO];
@@ -158,7 +160,9 @@
     }
     // Populate Source List
     [self.sourceListItems addObject:characterItem];
-    [self.sourceListItems addObject:voiceactorsItem];
+    if (_currenttype == 1) {
+        [self.sourceListItems addObject:voiceactorsItem];
+    }
     [self.sourceListItems addObject:staffItem];
     [_sourceList reloadData];
     _castdict = d;

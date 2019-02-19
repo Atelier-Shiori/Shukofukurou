@@ -107,17 +107,7 @@
 
 - (void)performmappingsreset {
     // Resets the Titleidmappings entity
-    NSManagedObjectContext *moc = ((AppDelegate *)[NSApplication sharedApplication].delegate).managedObjectContext;
-    NSFetchRequest *fetch = [NSFetchRequest new];
-    fetch.entity = [NSEntityDescription entityForName:@"Titleidmappings" inManagedObjectContext:moc];
-    NSError *error = nil;
-    NSArray *mappings = [moc executeFetchRequest:fetch error:&error];
-    if (!error && mappings.count > 0) {
-        for (NSManagedObject *obj in mappings) {
-            [moc deleteObject:obj];
-        }
-        [moc save:&error];
-    }
+    [[TitleIDMapper sharedInstance] clearAllMappings];
 }
 - (IBAction)cachetitletoggle:(id)sender {
     if (![NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {

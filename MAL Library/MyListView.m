@@ -11,6 +11,7 @@
 #import "EditTitle.h"
 #import "AtarashiiListCoreData.h"
 #import "AiringNotificationManager.h"
+#import "Utility.h"
 
 @interface MyListView ()
 @property bool updating;
@@ -372,7 +373,7 @@
     int score = ((NSNumber *)d[@"score"]).intValue;
     [self setUpdatingState:true];
     [listservice updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching)};
+        NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:titleid withIdType:0];
@@ -462,7 +463,7 @@
     int score = ((NSNumber *)d[@"score"]).intValue;
     [self setUpdatingState:true];
     [listservice updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
-        NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading)};
+        NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice getCurrentServiceID]]};
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:titleid withIdType:0];

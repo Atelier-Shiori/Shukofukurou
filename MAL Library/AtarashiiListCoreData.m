@@ -326,7 +326,7 @@
     int currentlistservice = [listservice getCurrentServiceID];
     switch (type) {
         case 0: {
-            same = [entry[@"episodes"] isEqualToNumber:[existingEntry valueForKey:@"episodes"]] && [entry[@"watched_episodes"] isEqualToNumber:[existingEntry valueForKey:@"watched_episodes"]] && [entry[@"score"] isEqualToNumber:[existingEntry valueForKey:@"score"]] && [entry[@"rewatching"] isEqualToNumber:[existingEntry valueForKey:@"rewatching"]] && [entry[@"rewatch_count"] isEqualToNumber:[existingEntry valueForKey:@"rewatch_count"]] && [entry[@"status"] isEqualToString:[existingEntry valueForKey:@"status"]] && [entry[@"watched_status"] isEqualToString:[existingEntry valueForKey:@"watched_status"]];
+            same = [entry[@"episodes"] isEqualToNumber:[existingEntry valueForKey:@"episodes"]] && [entry[@"watched_episodes"] isEqualToNumber:[existingEntry valueForKey:@"watched_episodes"]] && [entry[@"score"] isEqualToNumber:[existingEntry valueForKey:@"score"]] && [entry[@"rewatching"] isEqualToNumber:[existingEntry valueForKey:@"rewatching"]] && [entry[@"rewatch_count"] isEqualToNumber:[existingEntry valueForKey:@"rewatch_count"]] && [entry[@"status"] isEqualToString:[existingEntry valueForKey:@"status"]] && [entry[@"watched_status"] isEqualToString:[existingEntry valueForKey:@"watched_status"]] && [entry[@"last_updated"] isEqualToNumber:[existingEntry valueForKey:@"last_updated"]];
             switch (currentlistservice) {
                 case 1:
                     extrafieldssame = [entry[@"personal_tags"] isEqualToString:[existingEntry valueForKey:@"personal_tags"]];
@@ -353,7 +353,7 @@
             return (same && extrafieldssame && startdatessame && enddatessame);
         }
         case 1: {
-            same = [entry[@"volumes"] isEqualToNumber:[existingEntry valueForKey:@"volumes"]] && [entry[@"volumes_read"] isEqualToNumber:[existingEntry valueForKey:@"volumes_read"]] && [entry[@"chapters"] isEqualToNumber:[existingEntry valueForKey:@"chapters"]] && [entry[@"chapters_read"] isEqualToNumber:[existingEntry valueForKey:@"chapters_read"]] && [entry[@"score"] isEqualToNumber:[existingEntry valueForKey:@"score"]] && [entry[@"rereading"] isEqualToNumber:[existingEntry valueForKey:@"rereading"]] && [entry[@"reread_count"] isEqualToNumber:[existingEntry valueForKey:@"reread_count"]] && [entry[@"status"] isEqualToString:[existingEntry valueForKey:@"status"]] && [entry[@"read_status"] isEqualToString:[existingEntry valueForKey:@"read_status"]];
+            same = [entry[@"volumes"] isEqualToNumber:[existingEntry valueForKey:@"volumes"]] && [entry[@"volumes_read"] isEqualToNumber:[existingEntry valueForKey:@"volumes_read"]] && [entry[@"chapters"] isEqualToNumber:[existingEntry valueForKey:@"chapters"]] && [entry[@"chapters_read"] isEqualToNumber:[existingEntry valueForKey:@"chapters_read"]] && [entry[@"score"] isEqualToNumber:[existingEntry valueForKey:@"score"]] && [entry[@"rereading"] isEqualToNumber:[existingEntry valueForKey:@"rereading"]] && [entry[@"reread_count"] isEqualToNumber:[existingEntry valueForKey:@"reread_count"]] && [entry[@"status"] isEqualToString:[existingEntry valueForKey:@"status"]] && [entry[@"read_status"] isEqualToString:[existingEntry valueForKey:@"read_status"]] && [entry[@"last_updated"] isEqualToNumber:[existingEntry valueForKey:@"last_updated"]];
             switch (currentlistservice) {
                 case 1:
                     extrafieldssame = [entry[@"personal_tags"] isEqualToString:[existingEntry valueForKey:@"personal_tags"]];

@@ -13,6 +13,7 @@
 #import "MyListView.h"
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
+#import "Utility.h"
 
 @interface EditTitle ()
 
@@ -239,7 +240,7 @@
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
     [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        NSDictionary *updatedfields = @{@"watched_episodes" : @(_minipopoverepfield.intValue), @"watched_status" : _minipopoverstatus.title, @"score" : @(score), @"rewatching" : @(rewatching)};
+        NSDictionary *updatedfields = @{@"watched_episodes" : @(_minipopoverepfield.intValue), @"watched_status" : _minipopoverstatus.title, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:_selectededitid withIdType:0];
@@ -330,7 +331,7 @@
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
     [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        NSDictionary *updatedfields = @{@"chapters_read" : @(_mangapopoverchapfield.intValue), @"volumes_read" : @(_mangapopovervolfield.intValue), @"read_status" : _minipopoverstatus.title, @"score" : @(score), @"rereading" : @(rereading)};
+        NSDictionary *updatedfields = @{@"chapters_read" : @(_mangapopoverchapfield.intValue), @"volumes_read" : @(_mangapopovervolfield.intValue), @"read_status" : _minipopoverstatus.title, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
         switch ([listservice getCurrentServiceID]) {
             case 1:
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:_selectededitid withIdType:0];

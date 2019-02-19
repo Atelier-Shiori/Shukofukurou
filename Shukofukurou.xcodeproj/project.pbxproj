@@ -997,6 +997,7 @@
 		59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = imagetexttableviewcell.m; sourceTree = "<group>"; };
 		59B3D841221C5451001D24E7 /* TitleIDMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleIDMapper.m; sourceTree = "<group>"; };
 		59B3D842221C5451001D24E7 /* TitleIDMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleIDMapper.h; sourceTree = "<group>"; };
+		59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 3.xcdatamodel"; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
@@ -3874,10 +3875,11 @@
 		91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */,
 				598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */,
 				91244EA2210901A000AA8F90 /* datamodel.xcdatamodel */,
 			);
-			currentVersion = 598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */;
+			currentVersion = 59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */;
 			path = datamodel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -13,6 +13,7 @@
 #import "MainWindow.h"
 #import "MyListView.h"
 #import "AtarashiiListCoreData.h"
+#import "Utility.h"
 
 @interface advancededitdialog ()
 @property (strong) IBOutlet NSView *editview;
@@ -227,11 +228,11 @@
     [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
         switch ([listservice getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime withResponseObject:responseobject] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime withResponseObject:responseobject] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:1];
                 break;
             default:
                 break;
@@ -306,11 +307,11 @@
     [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
         switch ([listservice getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga withResponseObject:responseobject] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga withResponseObject:responseobject] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:1];
                 break;
             default:
                 break;
@@ -631,7 +632,7 @@
     }
     return extrafields;
 }
-- (NSDictionary *)generatelistentrywithScore:(int)score withType:(int)type {
+- (NSDictionary *)generatelistentrywithScore:(int)score withType:(int)type withResponseObject:(id)responseobject {
     NSMutableDictionary *nfields = [NSMutableDictionary new];
     NSDateFormatter *df = [NSDateFormatter new];
     df.dateFormat = @"yyyy-MM-dd";
@@ -648,6 +649,7 @@
         }
         nfields[@"private"] = @(_privatecheck.state);
     }
+    nfields[@"last_updated"] = [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]];
     switch (type) {
         case 0: {
             [nfields addEntriesFromDictionary:@{@"watched_episodes" : @(_episodefield.intValue), @"watched_status" : _status.title}];

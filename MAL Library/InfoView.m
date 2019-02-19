@@ -487,7 +487,7 @@
     NSButton *btn = (NSButton *)sender;
     [_characterpopover showRelativeToRect:btn.bounds ofView:btn preferredEdge:NSMaxYEdge];
     if (_characterpopovervc.selectedtitleid != _selectedid) {
-        [_characterpopovervc retrievestafflist:_selectedid];
+        [_characterpopovervc retrievestafflist:_selectedid withType:_type];
     }
 }
 

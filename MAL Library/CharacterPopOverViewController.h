@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CharacterPopOverViewController : NSViewController <PXSourceListDataSource, PXSourceListDelegate>
 @property (strong) IBOutlet PXSourceList *sourceList;
 @property int selectedtitleid;
-- (void)retrievestafflist:(int)idnum;
+- (void)retrievestafflist:(int)idnum withType:(int)type;
 - (int)getIndexOfItemWithIdentifier:(NSString *)string;
 @end
 

@@ -108,9 +108,9 @@
 #pragma mark -
 #pragma mark Staff Source List
 
-- (void)retrievestafflist:(int)idnum {
+- (void)retrievestafflist:(int)idnum withType:(int)type {
     [self showprogressindicator:YES];
-    [listservice retrieveStaff:idnum completion:^(id responseObject){
+    [listservice retrieveStaff:idnum withType:type completion:^(id responseObject) {
         [self generateSourceList:responseObject];
         _selectedtitleid = idnum;
         [self showprogressindicator:NO];

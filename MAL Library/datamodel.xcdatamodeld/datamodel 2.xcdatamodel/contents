@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18B75" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="1.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18E194d" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="1.0">
     <entity name="Airing" representedClassName="Airing" syncable="YES" codeGenerationType="class">
         <attribute name="day" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="episodes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -70,6 +70,15 @@
         <attribute name="volumes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="volumes_read" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
+    <entity name="NewTitleIdmappings" representedClassName="NewTitleIdmappings" syncable="YES" codeGenerationType="class">
+        <attribute name="anidb_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="anilist_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="kitsu_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="mal_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="notify_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type_str" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Notifications" representedClassName="Notifications" syncable="YES" codeGenerationType="class">
         <attribute name="anilistid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="enabled" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -116,15 +125,16 @@
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AnimeListEntries" positionX="0" positionY="180" width="128" height="390"/>
-        <element name="MangaListEntries" positionX="-27" positionY="54" width="128" height="405"/>
-        <element name="Titleidmappings" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Airing" positionX="-27" positionY="135" width="128" height="180"/>
+        <element name="AnimeListEntries" positionX="0" positionY="180" width="128" height="390"/>
         <element name="CachedTitleEntries" positionX="-18" positionY="144" width="128" height="135"/>
-        <element name="SeasonData" positionX="-9" positionY="153" width="128" height="210"/>
-        <element name="StreamSites" positionX="0" positionY="162" width="128" height="75"/>
+        <element name="MangaListEntries" positionX="-27" positionY="54" width="128" height="405"/>
         <element name="Notifications" positionX="9" positionY="171" width="128" height="165"/>
         <element name="NotificationsIgnore" positionX="18" positionY="180" width="128" height="90"/>
+        <element name="SeasonData" positionX="-9" positionY="153" width="128" height="210"/>
+        <element name="StreamSites" positionX="0" positionY="162" width="128" height="75"/>
+        <element name="Titleidmappings" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="Trending" positionX="36" positionY="189" width="128" height="105"/>
+        <element name="NewTitleIdmappings" positionX="-9" positionY="135" width="128" height="150"/>
     </elements>
 </model>

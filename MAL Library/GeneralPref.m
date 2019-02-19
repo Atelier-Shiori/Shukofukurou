@@ -12,7 +12,7 @@
 #import "ProfileWindowController.h"
 #import "Utility.h"
 #import "StreamDataRetriever.h"
-#import "TitleIdConverter.h"
+#import "TitleIDMapper.h"
 #import "TitleInfoCache.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -118,7 +118,6 @@
         }
         [moc save:&error];
     }
-    [TitleIdConverter resetshouldimportmappings];
 }
 - (IBAction)cachetitletoggle:(id)sender {
     if (![NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {

@@ -7,7 +7,11 @@
 //
 
 #import "TitleIdEnumerator.h"
-#import "TitleIdConverter.h"
+#import "TitleIDMapper.h"
+
+@interface TitleIdEnumerator ()
+@property (strong) TitleIDMapper *mapper;
+@end
 
 @implementation TitleIdEnumerator
 - (instancetype) initWithList:(NSArray *)list withType:(int)type completion:(void (^)(TitleIdEnumerator *titleidenum))completionHandler {
@@ -16,6 +20,7 @@
         self.type = type;
         _completionHandler = completionHandler;
         _titleidmap = [NSMutableArray new];
+        _mapper = [TitleIDMapper sharedInstance];
     }
     return self;
 }
@@ -39,18 +44,24 @@
                     break;
                 }
                 case 2: {
-                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)_tmplist[self.currentposition][@"id"]).intValue withTitle:_tmplist[self.currentposition][@"title"] titletype:_tmplist[self.currentposition][@"type"] withType:_type completionHandler:^(int kitsuid) {
-                        [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:kitsuid];
-                    } error:^(NSError *error) {
-                        [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                    [_mapper retrieveTitleIdForService:1 withTitleId:((NSNumber *)_tmplist[self.currentposition][@"id"]).stringValue withTargetServiceId:2 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+                        if (success) {
+                            [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:((NSNumber *)titleid).intValue];
+                        }
+                        else {
+                             [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                        }
                     }];
                     break;
                 }
                 case 3: {
-                    [TitleIdConverter getAniIDFromMALListID:((NSNumber *)_tmplist[self.currentposition][@"id"]).intValue withTitle:_tmplist[self.currentposition][@"title"]  titletype:_tmplist[self.currentposition][@"type"] withType:_type completionHandler:^(int anilistid) {
-                        [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:anilistid];
-                    } error:^(NSError *error) {
-                        [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                    [_mapper retrieveTitleIdForService:1 withTitleId:((NSNumber *)_tmplist[self.currentposition][@"id"]).stringValue withTargetServiceId:3 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+                        if (success) {
+                            [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:((NSNumber *)titleid).intValue];
+                        }
+                        else {
+                            [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                        }
                     }];
                     break;
                 }
@@ -60,10 +71,13 @@
         case 2: {
             switch (_targetserviceid) {
                 case 1: {
-                    [TitleIdConverter getMALIDFromKitsuId:((NSNumber *)_tmplist[self.currentposition][@"id"]).intValue withTitle:_tmplist[self.currentposition][@"title"] titletype:_tmplist[self.currentposition][@"type"] withType:_type completionHandler:^(int malid) {
-                        [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:malid];
-                    } error:^(NSError *error) {
-                        [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                    [_mapper retrieveTitleIdForService:2 withTitleId:((NSNumber *)_tmplist[self.currentposition][@"id"]).stringValue withTargetServiceId:1 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+                        if (success) {
+                            [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:((NSNumber *)titleid).intValue];
+                        }
+                        else {
+                            [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                        }
                     }];
                     break;
                 }
@@ -72,10 +86,13 @@
                     break;
                 }
                 case 3: {
-                    [TitleIdConverter getAniIDFromKitsuID:((NSNumber *)_tmplist[self.currentposition][@"id"]).intValue withTitle:_tmplist[self.currentposition][@"title"] titletype:_tmplist[self.currentposition][@"type"] withType:_type completionHandler:^(int anilistid) {
-                        [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:anilistid];
-                    } error:^(NSError *error) {
-                        [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                    [_mapper retrieveTitleIdForService:2 withTitleId:((NSNumber *)_tmplist[self.currentposition][@"id"]).stringValue withTargetServiceId:3 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+                        if (success) {
+                            [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:((NSNumber *)titleid).intValue];
+                        }
+                        else {
+                            [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                        }
                     }];
                     break;
                 }
@@ -85,18 +102,24 @@
         case 3: {
             switch (_targetserviceid) {
                 case 1: {
-                    [TitleIdConverter getMALIDFromAniListID:((NSNumber *)_tmplist[self.currentposition][@"id"]).intValue withTitle:_tmplist[self.currentposition][@"title"] titletype:_tmplist[self.currentposition][@"type"] withType:_type completionHandler:^(int malid) {
-                        [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:malid];
-                    } error:^(NSError *error) {
-                        [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                    [_mapper retrieveTitleIdForService:3 withTitleId:((NSNumber *)_tmplist[self.currentposition][@"id"]).stringValue withTargetServiceId:1 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+                        if (success) {
+                            [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:((NSNumber *)titleid).intValue];
+                        }
+                        else {
+                            [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                        }
                     }];
                     break;
                 }
                 case 2: {
-                    [TitleIdConverter getKitsuIdFromAniID:((NSNumber *)_tmplist[self.currentposition][@"id"]).intValue withTitle:_tmplist[self.currentposition][@"title"]  titletype:_tmplist[self.currentposition][@"type"] withType:_type completionHandler:^(int kitsuid) {
-                            [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:kitsuid];
-                    } error:^(NSError *error) {
-                        [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                    [_mapper retrieveTitleIdForService:3 withTitleId:((NSNumber *)_tmplist[self.currentposition][@"id"]).stringValue withTargetServiceId:2 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+                        if (success) {
+                            [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:((NSNumber *)titleid).intValue];
+                        }
+                        else {
+                            [self titleidconvertFailure:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue];
+                        }
                     }];
                     break;
                 }

@@ -10,7 +10,7 @@
 #import "MainWindow.h"
 #import "ExportProgressWindow.h"
 #import "Utility.h"
-#import "TitleIdConverter.h"
+#import "TitleIDMapper.h"
 #import "listservice.h"
 #import "RatingTwentyConvert.h"
 #import "AtarashiiListCoreData.h"
@@ -67,12 +67,9 @@
     _progress.maxValue = _origlist.count;
     _type = type;
     _ready = true;
-    [TitleIdConverter prepopulateTitleIdMappingsFromList:type completionHandler:^(bool success) {
-        [TitleIdConverter setImportStatus:true];
         
-        // Start Conversion
-        [self performentryconversion];
-    }];
+    // Start Conversion
+    [self performentryconversion];
 }
 
 - (void)performentryconversion {
@@ -127,29 +124,33 @@
 }
 - (void)convertKitsuEntrytoMAL {
     // Converts Kitsu entries to MyAnimeList
-    [TitleIdConverter getMALIDFromKitsuId:((NSNumber *)_currententry[@"id"]).intValue withTitle:_currententry[@"title"] titletype:_currententry[@"type"] withType:_type completionHandler:^(int malid) {
-        // Convert
-        _currententry[@"id"] = @(malid);
-        _currententry[@"score"] = @([RatingTwentyConvert translateKitsuTwentyScoreToMAL:((NSNumber *)_currententry[@"score"]).intValue]);
-        [_tmplist addObject:_currententry.copy];
-        _ready = true;
-    } error:^(NSError *error) {
-        [_faillistcontroller addObject:_currententry.copy];
-        _ready = true;
+    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:2 withTitleId:((NSNumber *)_currententry[@"id"]).stringValue withTargetServiceId:1 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+        if (success && ((NSNumber *)titleid).intValue > 0) {
+            _currententry[@"id"] = titleid;
+            _currententry[@"score"] = @([RatingTwentyConvert translateKitsuTwentyScoreToMAL:((NSNumber *)_currententry[@"score"]).intValue]);
+            [_tmplist addObject:_currententry.copy];
+            _ready = true;
+        }
+        else {
+            [_faillistcontroller addObject:_currententry.copy];
+            _ready = true;
+        }
     }];
 }
 
 - (void)convertAniListEntrytoMAL {
     // Converts AniList entries to MyAnimeList
-    [TitleIdConverter getMALIDFromAniListID:((NSNumber *)_currententry[@"id"]).intValue withTitle:_currententry[@"title"] titletype:_currententry[@"type"] withType:_type completionHandler:^(int malid) {
-        // Convert
-        _currententry[@"id"] = @(malid);
-        _currententry[@"score"] = @((((NSNumber *)_currententry[@"score"]).intValue)/10);
-        [_tmplist addObject:_currententry.copy];
-        _ready = true;
-    } error:^(NSError *error) {
-        [_faillistcontroller addObject:_currententry.copy];
-        _ready = true;
+    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)_currententry[@"id"]).stringValue withTargetServiceId:1 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
+        if (success && ((NSNumber *)titleid).intValue > 0) {
+            _currententry[@"id"] = titleid;
+            _currententry[@"score"] = @((((NSNumber *)_currententry[@"score"]).intValue)/10);
+            [_tmplist addObject:_currententry.copy];
+            _ready = true;
+        }
+        else {
+            [_faillistcontroller addObject:_currententry.copy];
+            _ready = true;
+        }
     }];
 }
 
@@ -216,7 +217,6 @@
         final = @{@"manga" : _tmplist.copy};
     }
     // Cleanup
-    [TitleIdConverter setImportStatus:false];
     _tmplist = nil;
     _origlist = nil;
     _position = 0;
@@ -228,7 +228,6 @@
 - (void)performCancel {
     [self clearfailedlist];
     // Cleanup
-    [TitleIdConverter setImportStatus:false];
     _tmplist = nil;
     _origlist = nil;
     _position = 0;

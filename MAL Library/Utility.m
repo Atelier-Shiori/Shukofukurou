@@ -464,4 +464,21 @@
     }
     return tmpstr;
 }
+
++ (NSNumber *)getLastUpdatedDateWithResponseObject:(id)responseObject withService:(int)service {
+    switch (service) {
+        case 2:
+            return @([Utility dateStringToDate:responseObject[@"data"][@"attributes"][@"updatedAt"]].timeIntervalSince1970);
+        case 3:
+            return responseObject[@"data"][@"SaveMediaListEntry"][@"updatedAt"];
+        default:
+            return @(0);
+    }
+}
+
++ (NSDate *)dateStringToDate:(NSString *)datestring {
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    formatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+    return [formatter dateFromString:datestring];
+}
 @end

@@ -12,7 +12,7 @@
 #import "listservice.h"
 #import "Utility.h"
 #import "ImportPrompt.h"
-#import "TitleIdConverter.h"
+#import "TitleIDMapper.h"
 #import "XMLReader.h"
 #import "RatingTwentyConvert.h"
 #import "AtarashiiListCoreData.h"
@@ -57,7 +57,6 @@
     _progressbar.maxValue = _listimport.count;
     _progressbar.doubleValue = _progress;
     _progresspercentage.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progressbar.doubleValue/_progressbar.maxValue*100)];
-    [TitleIdConverter setImportStatus:true];
     // Wait Time
     switch ([listservice getCurrentServiceID]) {
         case 3:
@@ -77,7 +76,6 @@
     if (_progress == _listimport.count) {
         [NSApp endSheet:self.window returnCode:0];
         [self.window close];
-        [TitleIdConverter setImportStatus:false];
         if (((NSArray *)_failedarraycontroller.content).count > 0) {
             [_failedtb reloadData];
             [NSApp beginSheet:_failedw
@@ -218,38 +216,46 @@
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:((NSString *)d[@"series_animedb_id"][@"text"]).intValue withTitle:d[@"series_title"][@"text"] titletype:d[@"series_type"][@"text"] withType:MALAnime completionHandler:^(int kitsuid) {
-                    if ([self checkiftitleisonlist:kitsuid]) {
-                        if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                            [self performanimetitleupdate:[self retrieveentryidfortitleid:kitsuid] withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"series_animedb_id"][@"text"] withTargetServiceId:2 withType:MALAnime completionHandler:^(id  _Nonnull titleid, bool success) {
+                    if (success && ((NSNumber *)titleid).intValue > 0) {
+                        int kitsuid = ((NSNumber *)titleid).intValue;
+                        if ([self checkiftitleisonlist:kitsuid]) {
+                            if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
+                                [self performanimetitleupdate:[self retrieveentryidfortitleid:kitsuid] withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                            }
+                            else {
+                                [self incrementProgress:nil withTitle:nil];
+                            }
                         }
                         else {
-                            [self incrementProgress:nil withTitle:nil];
+                            [self performanimetitleadd:kitsuid withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"series_title"][@"text"]];
                         }
                     }
                     else {
-                        [self performanimetitleadd:kitsuid withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                         [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
                     }
-                } error:^(NSError *error) {
-                    [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
                 }];
                 break;
             }
             case 3: {
-                [TitleIdConverter getAniIDFromMALListID:((NSString *)d[@"series_animedb_id"][@"text"]).intValue withTitle:d[@"series_title"][@"text"] titletype:d[@"series_type"][@"text"] withType:MALAnime completionHandler:^(int anilistid) {
-                    if ([self checkiftitleisonlist:anilistid]) {
-                        if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                            [self performanimetitleupdate:[self retrieveentryidfortitleid:anilistid] withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"series_animedb_id"][@"text"] withTargetServiceId:3 withType:MALAnime completionHandler:^(id  _Nonnull titleid, bool success) {
+                    if (success && ((NSNumber *)titleid).intValue > 0) {
+                        int anilistid = ((NSNumber *)titleid).intValue;
+                        if ([self checkiftitleisonlist:anilistid]) {
+                            if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
+                                [self performanimetitleupdate:[self retrieveentryidfortitleid:anilistid] withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                            }
+                            else {
+                                [self incrementProgress:nil withTitle:nil];
+                            }
                         }
                         else {
-                            [self incrementProgress:nil withTitle:nil];
+                            [self performanimetitleadd:anilistid withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"series_title"][@"text"]];
                         }
                     }
                     else {
-                        [self performanimetitleadd:anilistid withEpisode:((NSString *)d[@"my_watched_episodes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"series_title"][@"text"]];
+                        [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
                     }
-                } error:^(NSError *error) {
-                    [self incrementProgress:d withTitle:d[@"series_title"][@"text"]];
                 }];
                 break;
             }
@@ -278,38 +284,46 @@
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withTitle:d[@"manga_title"][@"text"] titletype:@""  withType:MALManga completionHandler:^(int kitsuid) {
-                    if ([self checkiftitleisonlist:kitsuid]) {
-                        if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                            [self performmangatitleupdate:[self retrieveentryidfortitleid:kitsuid] withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"manga_mangadb_id"][@"text"] withTargetServiceId:2 withType:MALManga completionHandler:^(id  _Nonnull titleid, bool success) {
+                    if (success && ((NSNumber *)titleid).intValue > 0) {
+                        int kitsuid = ((NSNumber *)titleid).intValue;
+                        if ([self checkiftitleisonlist:kitsuid]) {
+                            if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
+                                [self performmangatitleupdate:[self retrieveentryidfortitleid:kitsuid] withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                            }
+                            else {
+                                [self incrementProgress:nil withTitle:nil];
+                            }
                         }
                         else {
-                            [self incrementProgress:nil withTitle:nil];
+                            [self performmangatitleadd:kitsuid withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"manga_title"][@"text"]];
                         }
                     }
                     else {
-                        [self performmangatitleadd:kitsuid withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:[RatingTwentyConvert translateadvancedKitsuRatingtoRatingTwenty:((NSString *)d[@"my_score"][@"text"]).intValue] withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                        [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
                     }
-                } error:^(NSError *error) {
-                    [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
                 }];
                 break;
             }
             case 3: {
-                [TitleIdConverter getAniIDFromMALListID:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withTitle:d[@"manga_title"][@"text"] titletype:@""  withType:MALManga completionHandler:^(int anilistid) {
-                    if ([self checkiftitleisonlist:anilistid]) {
-                        if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
-                            [self performmangatitleupdate:[self retrieveentryidfortitleid:anilistid] withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"manga_mangadb_id"][@"text"] withTargetServiceId:3 withType:MALManga completionHandler:^(id  _Nonnull titleid, bool success) {
+                    if (success && ((NSNumber *)titleid).intValue > 0) {
+                        int anilistid = ((NSNumber *)titleid).intValue;
+                        if ([self checkiftitleisonlist:anilistid]) {
+                            if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
+                                [self performmangatitleupdate:[self retrieveentryidfortitleid:anilistid] withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                            }
+                            else {
+                                [self incrementProgress:nil withTitle:nil];
+                            }
                         }
                         else {
-                            [self incrementProgress:nil withTitle:nil];
+                            [self performmangatitleadd:anilistid withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"manga_title"][@"text"]];
                         }
                     }
                     else {
-                        [self performmangatitleadd:anilistid withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolumes:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withTags:d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @"" withScore:((NSString *)d[@"my_score"][@"text"]).intValue * 10 withDictionary:d withTitle:d[@"manga_title"][@"text"]];
+                        [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
                     }
-                } error:^(NSError *error) {
-                    [self incrementProgress:d withTitle:d[@"manga_title"][@"text"]];
                 }];
                 break;
             }
@@ -389,6 +403,13 @@
     if ([type isEqualToString:@"Music Video"]) {
         type = @"Music";
     }
+    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:4 withTitleId:(NSString *)entry[@"animenfoid"][@"text"] withTargetServiceId:[listservice getCurrentServiceID] withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
+        if (success && ((NSNumber *)titleid) > 0) {
+            switch ([listservice getCurrentServiceID]) {
+                    
+            }
+        }
+    }]
     switch ([listservice getCurrentServiceID]) {
         case 1: {
             [TitleIdConverter getMALIDFromServiceID:((NSString *)entry[@"animenfoid"][@"text"]).intValue withTitle:entry[@"name"][@"text"] titletype:type withType:MALAnime fromServiceID:4 completionHandler:^(int malid) {

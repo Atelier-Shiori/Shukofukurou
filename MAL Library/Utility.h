@@ -43,4 +43,6 @@
 + (double)calculatedays:(NSArray *)list;
 + (NSString *)dateIntervalToDateString:(double)timeinterval;
 + (NSString *)convertAnimeType:(NSString *)type;
++ (NSNumber *)getLastUpdatedDateWithResponseObject:(id)responseObject withService:(int)service;
++ (NSDate *)dateStringToDate:(NSString *)datestring;
 @end

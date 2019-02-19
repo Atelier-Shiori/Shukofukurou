@@ -1031,91 +1031,14 @@
         _infoview.selectedid = 0;
         _progressindicator.hidden = NO;
         [_progressindicator startAnimation:self];
-        switch (oldserviceid) {
-            case 1: {
-                switch (currentservice) {
-                    case 2: {
-                        // MAL > Kitsu Title ID
-                        [TitleIdConverter getKitsuIDFromMALId:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int kitsuid) {
-                            [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO forcerefresh:NO];
-                        } error:^(NSError *error) {
-                            [self resetTitleInfoView];
-                        }];
-                        break;
-                    }
-                    case 3: {
-                        [TitleIdConverter getAniIDFromMALListID:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int anilistid) {
-                            [self loadinfo:@(anilistid) type:_infoview.type changeView:NO forcerefresh:NO];
-                        } error:^(NSError *error) {
-                            [self resetTitleInfoView];
-                        }];
-                        break;
-                    }
-                    default:
-                        [self resetTitleInfoView];
-                        break;
-                }
-                break;
+        [[TitleIDMapper sharedInstance] retrieveTitleIdForService:oldserviceid withTitleId:@(tmpselectedid).stringValue withTargetServiceId:currentservice withType:_infoview.type completionHandler:^(id  _Nonnull titleid, bool success) {
+            if (success && ((NSNumber *)titleid).intValue) {
+                [self loadinfo:titleid type:_infoview.type changeView:NO forcerefresh:NO];
             }
-            case 2: {
-                if (currentservice == 3 ) {
-                    [TitleIdConverter getAniIDFromKitsuID:tmpselectedid withTitle:_infoview.selectedinfo[@"title"] titletype:_infoview.selectedinfo[@"type"] withType:_infoview.type completionHandler:^(int anilistid) {
-                        [self loadinfo:@(anilistid) type:_infoview.type changeView:NO forcerefresh:NO];
-                    } error:^(NSError *error) {
-                        [self resetTitleInfoView];
-                    }];
-                }
-                else if (_infoview.getSelectedInfo[@"mappings"]) {
-                    NSDictionary *mappings = _infoview.getSelectedInfo[@"mappings"];
-                    switch (currentservice) {
-                        case 1: { // MyAnimeList > "myanimelist/anime" for anime or "myanimelist/manga" for manga
-                            if (_infoview.type == 0 && mappings[@"myanimelist/anime"]) {
-                                 [self loadinfo:mappings[@"myanimelist/anime"] type:_infoview.type  changeView:NO forcerefresh:NO];
-                            }
-                            else if (_infoview.type == 1 && mappings[@"myanimelist/manga"]) {
-                                [self loadinfo:mappings[@"myanimelist/manga"] type:_infoview.type  changeView:NO forcerefresh:NO];
-                            }
-                            else {
-                                [self resetTitleInfoView];
-                            }
-                            break;
-                        }
-                        default:
-                            break;
-                    }
-                }
-                else {
-                    [self resetTitleInfoView];
-                }
-                break;
+            else {
+                [self resetTitleInfoView];
             }
-            case 3: {
-                switch (currentservice) {
-                    case 1: {
-                        [TitleIdConverter getMALIDFromAniListID:tmpselectedid withTitle:_selecteditem[@"title"] titletype:_selecteditem[@"type"] withType:_infoview.type completionHandler:^(int malid) {
-                            [self loadinfo:@(malid) type:_infoview.type changeView:NO forcerefresh:NO];
-                        } error:^(NSError *error) {
-                            [self resetTitleInfoView];
-                        }];
-                        break;
-                    }
-                    case 2: {
-                        [TitleIdConverter getKitsuIdFromAniID:tmpselectedid withTitle:_selecteditem[@"title"] titletype:_selecteditem[@"type"] withType:_infoview.type completionHandler:^(int kitsuid) {
-                            [self loadinfo:@(kitsuid) type:_infoview.type changeView:NO forcerefresh:NO];
-                        } error:^(NSError *error) {
-                            [self resetTitleInfoView];
-                        }];
-                        break;
-                    }
-                    default:
-                        [self resetTitleInfoView];
-                        break;
-                }
-                break;
-            }
-            default:
-                break;
-        }
+        }];
     }
 }
 - (void)initallistload {
@@ -1201,13 +1124,15 @@
                 break;
             }
             case 2: {
-                [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
-                    [listservice retrieveTitleInfo:kitsuid withType:KitsuAnime useAccount:NO completion:^(id responseObject){
-                        [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
-                    }error:^(NSError *error){
-                        NSLog(@"Error: %@", error);
-                    }];
-                } error:^(NSError *error) {}];
+                [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)d[@"id"]).stringValue withTargetServiceId:2 withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
+                    if (success && ((NSNumber *)titleid).intValue > 0) {
+                        [listservice retrieveTitleInfo:((NSNumber *)titleid).intValue withType:KitsuAnime useAccount:NO completion:^(id responseObject){
+                            [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
+                        }error:^(NSError *error){
+                            NSLog(@"Error: %@", error);
+                        }];
+                    }
+                }];
                 break;
             }
             case 3: {

@@ -8,6 +8,7 @@
 
 #import "listservice.h"
 #import "Keychain.h"
+#import "OAuthCredManager.h"
 
 @implementation listservice
 /* Note: Current Service type will be specified as the following:
@@ -416,7 +417,7 @@
     }
 }
 
-+ (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)retrieveStaff:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveStaff:titleid completion:completionHandler error:errorHandler];
@@ -424,17 +425,17 @@
         }
         case 2: {
             //[Kitsu retrieveStaff:titleid completion:completionHandler error:errorHandler];
-            [Kitsu retrieveTitleInfo:titleid withType:KitsuAnime completion:^(id responseObject) {
+            /*[Kitsu retrieveTitleInfo:titleid withType:KitsuAnime completion:^(id responseObject) {
                 [TitleIdConverter getMALIDFromKitsuId:titleid withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:KitsuAnime completionHandler:^(int malid) {
                     [MyAnimeList retrieveStaff:malid completion:completionHandler error:errorHandler];
                 } error:errorHandler];
             } error:^(NSError *error) {
                 errorHandler(error);
-            }];
+            }];*/
             break;
         }
         case 3: {
-            [AniList retrieveStaff:titleid completion:completionHandler error:errorHandler];
+            [AniList retrieveStaff:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -529,10 +530,16 @@
 
 + (bool)checkAccountForCurrentService {
     int service = [listservice getCurrentServiceID];
-    if ((![Keychain checkaccount] && service == 1) || (![Kitsu getFirstAccount] && service == 2) || (![AniList getFirstAccount] && service == 3)) {
-        return false;
+    bool hasUserInfo =  ([listservice getCurrentUserID] > 0 || [listservice getCurrentServiceUsername].length > 0);
+    switch (service) {
+        case 1:
+            return ([Keychain checkaccount] || hasUserInfo);
+        case 2:
+        case 3:
+            return ([OAuthCredManager.sharedInstance getFirstAccountForService:service] || hasUserInfo);
+        default:
+            return true;
     }
-    return true;
 }
 
 + (NSString *)getCurrentServiceUsername {
@@ -561,6 +568,7 @@
     return @{ @"kitsu" : kitsuid > 0 ? @(kitsuid) : [NSNull null], @"anilist" :  anilistid > 0 ? @(anilistid) : [NSNull null]};
 }
 
+
 + (NSString *)currentservicename {
     switch ([self getCurrentServiceID]) {
         case 1:
@@ -585,6 +593,19 @@
             return (int)[NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"];
         default:
             return -1;
+    }
+}
++ (NSString *)getCurrentUserAvatar {
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    switch ([self getCurrentServiceID]) {
+        case 1:
+            return @"";
+        case 2:
+            return [defaults valueForKey:@"kitsu-avatar"];
+        case 3:
+            return [defaults valueForKey:@"anilist-avatar"];
+        default:
+            return @"";
     }
 }
 @end

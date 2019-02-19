@@ -17,7 +17,7 @@
 + (NSArray *)AniListMangaSearchtoAtarashii:(NSDictionary *)data;
 + (NSArray *)AniListReviewstoAtarashii:(NSArray *)reviews withType:(int)type;
 + (NSDictionary *)AniListUserProfiletoAtarashii:(NSDictionary *)userdata;
-+ (NSDictionary *)generateStaffList:(NSArray *)staffarray withCharacterArray:(NSArray *)characterarray;
++ (NSDictionary *)generateStaffList:(NSArray *)staffarray withCharacterArray:(NSArray *)characterarray withType:(NSString *)type;
 + (NSDictionary *)AniListPersontoAtarashii:(NSDictionary *)person;
 + (NSDictionary *)AniListCharactertoAtarashii:(NSDictionary *)person;
 + (NSArray *)normalizePersonSearchData:(id)searchdata;

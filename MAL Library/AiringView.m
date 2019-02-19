@@ -113,10 +113,13 @@
                     break;
                 }
                 case 2: {
-                    [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"idMal"]).intValue withTitle:d[@"title"] titletype:@"" withType:KitsuAnime completionHandler:^(int kitsuid) {
-                        [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : @(kitsuid), @"type" : @(0)}];
-                    } error:^(NSError *error) {
-                        [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
+                    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:d[@"id"] withTargetServiceId:2 withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
+                        if (success && ((NSNumber *)titleid).intValue > 0) {
+                            [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : @(((NSNumber *)titleid).intValue), @"type" : @(0)}];
+                        }
+                        else {
+                            [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
+                        }
                     }];
                     break;
                 }

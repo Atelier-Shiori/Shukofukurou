@@ -68,6 +68,7 @@
 @property (strong) NSString *personal_comments;
 @property bool private_entry;
 @property (strong) NSString * custom_lists;
+@property long lastupdated;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
@@ -116,6 +117,7 @@
 @property (strong) NSString *personal_comments;
 @property bool private_entry;
 @property (strong) NSString * custom_lists;
+@property long lastupdated;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

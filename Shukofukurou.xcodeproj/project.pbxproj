@@ -211,6 +211,10 @@
 		59A2FD7D21BEE4510092E963 /* imagetexttableviewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */; };
 		59A2FD7E21BEE4510092E963 /* imagetexttableviewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */; };
 		59A2FD7F21BEE4510092E963 /* imagetexttableviewcell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */; };
+		59B3D843221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
+		59B3D844221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
+		59B3D845221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
+		59B3D846221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
@@ -434,7 +438,6 @@
 		91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
 		91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
 		91F8E3BB210A46CA007137A7 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
-		91F8E3BC210A46CA007137A7 /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
 		91F8E3BD210A46CA007137A7 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
 		91F8E3BE210A46CA007137A7 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB21E89842400F6E9FF /* GeneralPref.m */; };
 		91F8E3BF210A46CA007137A7 /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
@@ -599,7 +602,6 @@
 		F888F428208FB1F500C22C39 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
 		F888F429208FB1F500C22C39 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACD1E89842400F6E9FF /* Utility.m */; };
 		F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABC1E89842400F6E9FF /* MSWeakTimer.m */; };
-		F888F42B208FB1F500C22C39 /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
 		F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
 		F888F42D208FB1F500C22C39 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
 		F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
@@ -709,8 +711,6 @@
 		F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
 		F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
 		F8B5AA9A20448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
-		F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
-		F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */; };
 		F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */; };
 		F8F0482120767DF600DAAD57 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */; };
 		F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
@@ -995,6 +995,8 @@
 		59A2FD6921BED5D80092E963 /* PersonSearchPopoverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonSearchPopoverViewController.m; sourceTree = "<group>"; };
 		59A2FD7A21BEE4510092E963 /* imagetexttableviewcell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imagetexttableviewcell.h; sourceTree = "<group>"; };
 		59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = imagetexttableviewcell.m; sourceTree = "<group>"; };
+		59B3D841221C5451001D24E7 /* TitleIDMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleIDMapper.m; sourceTree = "<group>"; };
+		59B3D842221C5451001D24E7 /* TitleIDMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleIDMapper.h; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
@@ -1169,8 +1171,6 @@
 		F8B5AA942044888800132C51 /* MyListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListScoreFormatter.m; sourceTree = "<group>"; };
 		F8B5AA9720448A2E00132C51 /* OtherUserListScoreFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherUserListScoreFormatter.h; sourceTree = "<group>"; };
 		F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherUserListScoreFormatter.m; sourceTree = "<group>"; };
-		F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleIdConverter.h; sourceTree = "<group>"; };
-		F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleIdConverter.m; sourceTree = "<group>"; };
 		F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListScoreConvert.h; sourceTree = "<group>"; };
 		F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListScoreConvert.m; sourceTree = "<group>"; };
 		F8F9E02F2061920E0083912B /* advancededitdialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = advancededitdialog.h; sourceTree = "<group>"; };
@@ -1486,8 +1486,8 @@
 				2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */,
 				91B3A89E1EB0097C0066CEB1 /* StringDatetoDate.h */,
 				91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */,
-				F8BAB2CD2045BAEC00EC4B0C /* TitleIdConverter.h */,
-				F8BAB2CE2045BAEC00EC4B0C /* TitleIdConverter.m */,
+				59B3D842221C5451001D24E7 /* TitleIDMapper.h */,
+				59B3D841221C5451001D24E7 /* TitleIDMapper.m */,
 				598B453721AC3AE800F28180 /* TitleIdEnumerator.h */,
 				598B453621AC3AE700F28180 /* TitleIdEnumerator.m */,
 				598B452B21AC392C00F28180 /* TitleInfoCache.h */,
@@ -2372,6 +2372,7 @@
 				F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */,
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
 				2D88CA6B1FE815B600AD142E /* servicemenucontroller.m in Sources */,
+				59B3D844221C5451001D24E7 /* TitleIDMapper.m in Sources */,
 				596BABBE21C00886005C3451 /* RelatedViewController.m in Sources */,
 				913A11651E8F206A00450B66 /* MainWindow.m in Sources */,
 				913A11661E8F206A00450B66 /* NSTextFieldNumber.m in Sources */,
@@ -2393,7 +2394,6 @@
 				59A2FD5521BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
 				591FC1CA21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
-				F8BAB2D02045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
 				593A793521AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
@@ -2502,7 +2502,6 @@
 				598B453821AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				593A796121ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				5976C09C2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
-				F8BAB2CF2045BAEC00EC4B0C /* TitleIdConverter.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
@@ -2565,6 +2564,7 @@
 				917CEC78211B2B1200259AA7 /* PatreonConstants.m in Sources */,
 				2D94612E1EC38CC8004E171B /* ListImport.m in Sources */,
 				2DAB19E51EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
+				59B3D843221C5451001D24E7 /* TitleIDMapper.m in Sources */,
 				91F71F0B20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2615,7 +2615,6 @@
 				59F356D121B6E386008C79ED /* EpisodeDetailViewController.m in Sources */,
 				91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */,
 				91F8E3BB210A46CA007137A7 /* AniList.m in Sources */,
-				91F8E3BC210A46CA007137A7 /* TitleIdConverter.m in Sources */,
 				91F8E3BD210A46CA007137A7 /* PFAboutWindowController.m in Sources */,
 				91F8E3BE210A46CA007137A7 /* GeneralPref.m in Sources */,
 				91F8E3BF210A46CA007137A7 /* TypeNumtoStringType.m in Sources */,
@@ -2675,6 +2674,7 @@
 				917CEC79211B2B1200259AA7 /* PatreonConstants.m in Sources */,
 				91F8E3ED210A46CA007137A7 /* ListImport.m in Sources */,
 				91F8E3EF210A46CA007137A7 /* StreamDataRetriever.m in Sources */,
+				59B3D846221C5451001D24E7 /* TitleIDMapper.m in Sources */,
 				91F8E3F0210A46CA007137A7 /* ExportProgressWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2709,6 +2709,7 @@
 				F888F415208FB1F500C22C39 /* HistoryView.m in Sources */,
 				F888F416208FB1F500C22C39 /* ListExporter.m in Sources */,
 				F888F417208FB1F500C22C39 /* AniListAuthWindow.m in Sources */,
+				59B3D845221C5451001D24E7 /* TitleIDMapper.m in Sources */,
 				F888F418208FB1F500C22C39 /* ListView.m in Sources */,
 				91244EA5210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */,
 				591FC1C521C7E9BD001D8684 /* NSUserNotificationManager.m in Sources */,
@@ -2735,7 +2736,6 @@
 				596BABBF21C00886005C3451 /* RelatedViewController.m in Sources */,
 				F888F429208FB1F500C22C39 /* Utility.m in Sources */,
 				F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */,
-				F888F42B208FB1F500C22C39 /* TitleIdConverter.m in Sources */,
 				596BABDD21C018E0005C3451 /* PatreonConstants.m in Sources */,
 				F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */,
 				598B453A21AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,

@@ -24,7 +24,7 @@
         NSMutableArray *tmparray = [NSMutableArray new];
         [self retrievelist:userid withArray:tmparray withType:type page:1 completion:completionHandler error:errorHandler];
     } error:^(NSError *error) {
-            errorHandler(error);
+        errorHandler(error);
     }];
 }
 
@@ -264,7 +264,7 @@
     NSMutableDictionary *variables =  [self generateAnimeAttributes:episode withStatus:[self convertWatchStatus:status isReconsuming:false withType:AniListAnime] withScore:score withExtraFields:nil];
     variables[@"mediaid"] = @(titleid);
     NSDictionary *parameters = @{@"query"
-        : kAnilistAddAnimeListEntry, @"variables" : variables};
+                                 : kAnilistAddAnimeListEntry, @"variables" : variables};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         completionHandler(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -427,25 +427,26 @@
 }
 
 #pragma mark Characters
-+ (void)retrieveStaff:(int)titleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)retrieveStaff:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     NSMutableArray *characterarray = [NSMutableArray new];
-    [self retrievecharacters:titleid withCharacterArray:characterarray withPageOffset:1 completion:completionHandler error:errorHandler];
+    NSString *typestr = type == 0 ? @"ANIME" : @"MANGA";
+    [self retrievecharacters:titleid withCharacterArray:characterarray withType:typestr withPageOffset:1 completion:completionHandler error:errorHandler];
 }
 
-+ (void)retrievecharacters:(int)titleid withCharacterArray:(NSMutableArray *)characters withPageOffset:(int)pageoffset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)retrievecharacters:(int)titleid withCharacterArray:(NSMutableArray *)characters withType:(NSString *)type withPageOffset:(int)pageoffset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
-    NSDictionary *parameters = @{@"query" : kAnilistcharacterslist , @"variables" : @{@"id" : @(titleid), @"page" : @(pageoffset)}};
+    NSDictionary *parameters = @{@"query" : kAnilistcharacterslist , @"variables" : @{@"id" : @(titleid), @"page" : @(pageoffset), @"type" : type}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"][@"Media"] != [NSNull null]) {
             [characters addObjectsFromArray:responseObject[@"data"][@"Media"][@"characters"][@"edges"]];
             if (((NSNumber *)responseObject[@"data"][@"Media"][@"characters"][@"pageInfo"][@"hasNextPage"]).boolValue) {
                 int newpageoffset = pageoffset+1;
-                [self retrievecharacters:titleid withCharacterArray:characters withPageOffset:newpageoffset completion:completionHandler error:errorHandler];
+                [self retrievecharacters:titleid withCharacterArray:characters withType:type withPageOffset:newpageoffset completion:completionHandler error:errorHandler];
             }
             else {
                 NSMutableArray *staffmembers = [NSMutableArray new];
-                [self retrievestaffmembers:titleid withCharacterArray:characters withStaffArray:staffmembers withPageOffset:1 completion:completionHandler error:errorHandler];
+                [self retrievestaffmembers:titleid withCharacterArray:characters withStaffArray:staffmembers withType:type withPageOffset:1 completion:completionHandler error:errorHandler];
             }
         }
         else {
@@ -456,19 +457,19 @@
     }];
 }
 
-+ (void)retrievestaffmembers:(int)titleid withCharacterArray:(NSMutableArray *)characters withStaffArray:(NSMutableArray *)staffarray withPageOffset:(int)pageoffset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
++ (void)retrievestaffmembers:(int)titleid withCharacterArray:(NSMutableArray *)characters withStaffArray:(NSMutableArray *)staffarray withType:(NSString *)type withPageOffset:(int)pageoffset completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     AFHTTPSessionManager *manager = [Utility jsonmanager];
     manager.requestSerializer = [Utility jsonrequestserializer];
-    NSDictionary *parameters = @{@"query" : kAniliststafflist , @"variables" : @{@"id" : @(titleid), @"page" : @(pageoffset)}};
+    NSDictionary *parameters = @{@"query" : kAniliststafflist , @"variables" : @{@"id" : @(titleid), @"page" : @(pageoffset), @"type" : type}};
     [manager POST:@"https://graphql.anilist.co" parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (responseObject[@"data"][@"Media"] != [NSNull null]) {
             [staffarray addObjectsFromArray:responseObject[@"data"][@"Media"][@"staff"][@"staff"]];
             if (((NSNumber *)responseObject[@"data"][@"Media"][@"staff"][@"pageInfo"][@"hasNextPage"]).boolValue) {
                 int newpageoffset = pageoffset+1;
-                [self retrievestaffmembers:titleid withCharacterArray:characters withStaffArray:staffarray withPageOffset:newpageoffset completion:completionHandler error:errorHandler];
+                [self retrievestaffmembers:titleid withCharacterArray:characters withStaffArray:staffarray withType:type withPageOffset:newpageoffset completion:completionHandler error:errorHandler];
             }
             else {
-                completionHandler([AtarashiiAPIListFormatAniList generateStaffList:staffarray withCharacterArray:characters]);
+                completionHandler([AtarashiiAPIListFormatAniList generateStaffList:staffarray withCharacterArray:characters withType:type]);
             }
         }
         else {
@@ -750,10 +751,6 @@
             [defaults setValue:d[@"name"] forKey:@"anilist-username"];
             [defaults setValue:d[@"mediaListOptions"][@"scoreFormat"] forKey:@"anilist-scoreformat"];
             [defaults setValue:d[@"avatar"] != [NSNull null] && d[@"avatar"][@"large"] ? d[@"avatar"][@"large"] : @"" forKey:@"anilist-avatar"];
-        }
-        else {
-            // Remove Account, invalid token
-            [self removeAccount];
         }
     }
     else {

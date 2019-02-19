@@ -758,10 +758,6 @@
                 [defaults setValue:@"" forKey:@"kitsu-avatar"];
             }
         }
-        else {
-            // Remove Account, invalid token
-            [self removeAccount];
-        }
     }
     else {
         if ([[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: unauthorized (401)"] || [[error.userInfo valueForKey:@"NSLocalizedDescription"] isEqualToString:@"Request failed: forbidden (403)"]) {

@@ -63,6 +63,7 @@
                         lentry.rewatch_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
                         lentry.personal_comments = entry[@"attributes"][@"notes"];
                         lentry.private_entry = ((NSNumber *) entry[@"attributes"][@"private"]).boolValue;
+                        lentry.lastupdated = [Utility dateStringToDate:entry[@"attributes"][@"updatedAt"]].timeIntervalSince1970;
                         [tmpanimelist addObject: lentry.NSDictionaryRepresentation];
                     }
                 }
@@ -124,6 +125,7 @@
                     lentry.reread_count = ((NSNumber *)entry[@"attributes"][@"reconsumeCount"]).intValue;
                     lentry.personal_comments = entry[@"attributes"][@"notes"];
                     lentry.private_entry = ((NSNumber *) entry[@"attributes"][@"private"]).boolValue;
+                    lentry.lastupdated = [Utility dateStringToDate:entry[@"attributes"][@"updatedAt"]].timeIntervalSince1970;
                     [tmpmangalist addObject: lentry.NSDictionaryRepresentation];
                 }
             }
@@ -413,7 +415,7 @@
             user.forum_posts = ((NSNumber *)userdata[@"attributes"][@"postsCount"]).intValue;
             user.reviews = ((NSNumber *)userdata[@"attributes"][@"mediaReactionsCount"]).intValue;
             user.comments = ((NSNumber *)userdata[@"attributes"][@"commentsCount"]).intValue;
-            user.extradict = @{@"likes_recieved" : userdata[@"attributes"][@"likesReceivedCount"], @"likes_given" : userdata[@"attributes"][@"likesGivenCount"], @"about" : userdata[@"attributes"][@"about"] != [NSNull null] ? userdata[@"attributes"][@"about"] : [NSNull null]};
+            user.extradict = @{@"likes_received" : userdata[@"attributes"][@"likesReceivedCount"], @"likes_given" : userdata[@"attributes"][@"likesGivenCount"], @"about" : userdata[@"attributes"][@"about"] != [NSNull null] ? userdata[@"attributes"][@"about"] : [NSNull null]};
             return [user.NSDictionaryRepresentation copy];
     }
     return nil;

@@ -14,7 +14,7 @@
 #import "NSTableViewAction.h"
 #import "NSString_stripHtml.h"
 #import "listservice.h"
-#import "TitleIdConverter.h"
+#import "TitleIDMapper.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 
@@ -244,20 +244,21 @@
                 }
             }
             else {
-                int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Published Manga"] ? 1 : 0;
+                //int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Published Manga"] ? 1 : 0;
                 switch ([listservice getCurrentServiceID]) {
                     case 1:
                     case 3:
                         [_cb retrievecharacterinformation:((NSNumber *)d[@"id"]).intValue];
                         break;
                     case 2: {
-                        [MyAnimeList retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:loadtype useAccount:NO completion:^(id responseObject) {
+                        /*[MyAnimeList retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:loadtype useAccount:NO completion:^(id responseObject) {
                             [TitleIdConverter getKitsuIDFromMALId:((NSNumber *)d[@"id"]).intValue withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:loadtype completionHandler:^(int kitsuid) {
                                 [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : @(kitsuid), @"type" : @(loadtype)}];
                             } error:^(NSError *error) {}];
                         } error:^(NSError *error) {
                             
-                        }];
+                        }];*/
+                        break;
                     }
                     default:
                         break;

@@ -125,7 +125,7 @@
 - (void)convertKitsuEntrytoMAL {
     // Converts Kitsu entries to MyAnimeList
     [[TitleIDMapper sharedInstance] retrieveTitleIdForService:2 withTitleId:((NSNumber *)_currententry[@"id"]).stringValue withTargetServiceId:1 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
-        if (success && ((NSNumber *)titleid).intValue > 0) {
+        if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
             _currententry[@"id"] = titleid;
             _currententry[@"score"] = @([RatingTwentyConvert translateKitsuTwentyScoreToMAL:((NSNumber *)_currententry[@"score"]).intValue]);
             [_tmplist addObject:_currententry.copy];
@@ -141,7 +141,7 @@
 - (void)convertAniListEntrytoMAL {
     // Converts AniList entries to MyAnimeList
     [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)_currententry[@"id"]).stringValue withTargetServiceId:1 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
-        if (success && ((NSNumber *)titleid).intValue > 0) {
+        if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
             _currententry[@"id"] = titleid;
             _currententry[@"score"] = @((((NSNumber *)_currententry[@"score"]).intValue)/10);
             [_tmplist addObject:_currententry.copy];

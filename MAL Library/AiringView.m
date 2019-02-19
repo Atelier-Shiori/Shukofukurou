@@ -114,7 +114,7 @@
                 }
                 case 2: {
                     [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:d[@"id"] withTargetServiceId:2 withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
-                        if (success && ((NSNumber *)titleid).intValue > 0) {
+                        if (success && titleid  && ((NSNumber *)titleid).intValue > 0) {
                             [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : @(((NSNumber *)titleid).intValue), @"type" : @(0)}];
                         }
                         else {

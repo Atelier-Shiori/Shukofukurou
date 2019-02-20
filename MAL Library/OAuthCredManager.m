@@ -97,9 +97,13 @@ NSString *const kAniListKeychainIdentifier = @"Shukofukurou - AniList";
     switch (service) {
         case 2:
             _KitsuCredential = nil;
+            [NSUserDefaults.standardUserDefaults setValue:@"" forKey:@"kitsu-username"];
+            [NSUserDefaults.standardUserDefaults setInteger:0 forKey:@"kitsu-userid"];
             break;
         case 3:
             _AniListCredential = nil;
+            [NSUserDefaults.standardUserDefaults setValue:@"" forKey:@"anilist-username"];
+            [NSUserDefaults.standardUserDefaults setInteger:0 forKey:@"anilist-userid"];
             break;
     }
     return success;

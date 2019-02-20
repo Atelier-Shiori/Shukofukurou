@@ -530,13 +530,12 @@
 
 + (bool)checkAccountForCurrentService {
     int service = [listservice getCurrentServiceID];
-    bool hasUserInfo =  ([listservice getCurrentUserID] > 0 || [listservice getCurrentServiceUsername].length > 0);
     switch (service) {
         case 1:
-            return ([Keychain checkaccount] || hasUserInfo);
+            return ([Keychain checkaccount]);
         case 2:
         case 3:
-            return ([OAuthCredManager.sharedInstance getFirstAccountForService:service] || hasUserInfo);
+            return [OAuthCredManager.sharedInstance getFirstAccountForService:service];
         default:
             return true;
     }

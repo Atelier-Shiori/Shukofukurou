@@ -1032,7 +1032,7 @@
         _progressindicator.hidden = NO;
         [_progressindicator startAnimation:self];
         [[TitleIDMapper sharedInstance] retrieveTitleIdForService:oldserviceid withTitleId:@(tmpselectedid).stringValue withTargetServiceId:currentservice withType:_infoview.type completionHandler:^(id  _Nonnull titleid, bool success) {
-            if (success && titleid && ((NSNumber *)titleid).intValue) {
+            if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue) {
                 [self loadinfo:titleid type:_infoview.type changeView:NO forcerefresh:NO];
             }
             else {
@@ -1125,7 +1125,7 @@
             }
             case 2: {
                 [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)d[@"id"]).stringValue withTargetServiceId:2 withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
-                    if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
+                    if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
                         [listservice retrieveTitleInfo:((NSNumber *)titleid).intValue withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                             [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                         }error:^(NSError *error){

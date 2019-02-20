@@ -134,6 +134,9 @@
             case 3:
                 predicate = [NSPredicate predicateWithFormat:@"anilist_id == %i AND type == %i", titleid.intValue, type];
                 break;
+            case 4:
+                predicate = [NSPredicate predicateWithFormat:@"anidb_id == %i AND type == %i", titleid.intValue, type];
+                break;
             default:
                 break;
         }

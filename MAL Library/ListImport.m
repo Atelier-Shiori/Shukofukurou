@@ -217,7 +217,7 @@
             }
             case 2: {
                 [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"series_animedb_id"][@"text"] withTargetServiceId:2 withType:MALAnime completionHandler:^(id  _Nonnull titleid, bool success) {
-                    if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
+                    if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
                         int kitsuid = ((NSNumber *)titleid).intValue;
                         if ([self checkiftitleisonlist:kitsuid]) {
                             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
@@ -239,7 +239,7 @@
             }
             case 3: {
                 [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"series_animedb_id"][@"text"] withTargetServiceId:3 withType:MALAnime completionHandler:^(id  _Nonnull titleid, bool success) {
-                    if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
+                    if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
                         int anilistid = ((NSNumber *)titleid).intValue;
                         if ([self checkiftitleisonlist:anilistid]) {
                             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
@@ -285,7 +285,7 @@
             }
             case 2: {
                 [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"manga_mangadb_id"][@"text"] withTargetServiceId:2 withType:MALManga completionHandler:^(id  _Nonnull titleid, bool success) {
-                    if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
+                    if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
                         int kitsuid = ((NSNumber *)titleid).intValue;
                         if ([self checkiftitleisonlist:kitsuid]) {
                             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
@@ -307,7 +307,7 @@
             }
             case 3: {
                 [[TitleIDMapper sharedInstance] retrieveTitleIdForService:1 withTitleId:(NSString *)d[@"manga_mangadb_id"][@"text"] withTargetServiceId:3 withType:MALManga completionHandler:^(id  _Nonnull titleid, bool success) {
-                    if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
+                    if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
                         int anilistid = ((NSNumber *)titleid).intValue;
                         if ([self checkiftitleisonlist:anilistid]) {
                             if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
@@ -393,7 +393,7 @@
 - (void)performAniDBListImport {
     NSDictionary *entry = _listimport[_progress];
     [[TitleIDMapper sharedInstance] retrieveTitleIdForService:4 withTitleId:(NSString *)entry[@"animenfoid"][@"text"] withTargetServiceId:[listservice getCurrentServiceID] withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
-        if (success && titleid && ((NSNumber *)titleid).intValue > 0) {
+        if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
             [self performMALUpdatefromAniDBEntry:entry withMALID:((NSNumber *)titleid).intValue];
         }
         else {
@@ -501,7 +501,7 @@
 - (void)performKitsuImport {
     NSDictionary *entry = _listimport[_progress];
     [[TitleIDMapper sharedInstance] retrieveTitleIdForService:2 withTitleId:((NSNumber *)entry[@"id"]).stringValue withTargetServiceId:[listservice getCurrentServiceID] withType:_importlisttype completionHandler:^(id  _Nonnull titleid, bool success) {
-        if (success && titleid  && ((NSNumber *)titleid).intValue > 0) {
+        if (success && titleid && titleid != [NSNull null]  && ((NSNumber *)titleid).intValue > 0) {
             [self performListServiceUpdateFromKitsuEntry:entry withID:((NSNumber *)titleid).intValue];
         }
         else {
@@ -605,7 +605,7 @@
 - (void)performAnilistImport {
     __block NSDictionary *entry = _listimport[_progress];
     [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)entry[@"id"]).stringValue withTargetServiceId:[listservice getCurrentServiceID] withType:_importlisttype completionHandler:^(id  _Nonnull titleid, bool success) {
-        if (success && titleid  && ((NSNumber *)titleid).intValue > 0) {
+        if (success && titleid && titleid != [NSNull null]  && ((NSNumber *)titleid).intValue > 0) {
             [self performMALUpdateFromAnilistEntry:entry withMALID:((NSNumber *)titleid).intValue];
         }
         else {

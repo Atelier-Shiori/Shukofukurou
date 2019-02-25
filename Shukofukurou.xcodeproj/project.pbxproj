@@ -215,6 +215,8 @@
 		59B3D844221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
 		59B3D845221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
 		59B3D846221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
+		59C4DAD5222438FD001EE490 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */; };
+		59C4DAD6222438FD001EE490 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
@@ -998,6 +1000,8 @@
 		59B3D841221C5451001D24E7 /* TitleIDMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleIDMapper.m; sourceTree = "<group>"; };
 		59B3D842221C5451001D24E7 /* TitleIDMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleIDMapper.h; sourceTree = "<group>"; };
 		59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 3.xcdatamodel"; sourceTree = "<group>"; };
+		59C4DAD3222438FD001EE490 /* PatreonLicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatreonLicenseManager.h; sourceTree = "<group>"; };
+		59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatreonLicenseManager.m; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
@@ -1404,6 +1408,7 @@
 		596BABD121C0171F005C3451 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
+				59C4DAD2222438D4001EE490 /* PatreonLicenseCheck */,
 				5976C09B2208AC08003DA0D6 /* OAuthCredManager.h */,
 				5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */,
 				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
@@ -1657,6 +1662,15 @@
 				59A2FD7B21BEE4510092E963 /* imagetexttableviewcell.m */,
 			);
 			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		59C4DAD2222438D4001EE490 /* PatreonLicenseCheck */ = {
+			isa = PBXGroup;
+			children = (
+				59C4DAD3222438FD001EE490 /* PatreonLicenseManager.h */,
+				59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */,
+			);
+			name = PatreonLicenseCheck;
 			sourceTree = "<group>";
 		};
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
@@ -2497,6 +2511,7 @@
 				9199BAE11E89842400F6E9FF /* Utility.m in Sources */,
 				9199BAD91E89842400F6E9FF /* MSWeakTimer.m in Sources */,
 				916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */,
+				59C4DAD5222438FD001EE490 /* PatreonLicenseManager.m in Sources */,
 				91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
 				F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */,
 				F8A85912207023E40026EC0A /* AniList.m in Sources */,
@@ -2607,6 +2622,7 @@
 				91F8E3B3210A46CA007137A7 /* LoginPref.m in Sources */,
 				91F8E3B4210A46CA007137A7 /* ListStatistics.m in Sources */,
 				91F8E3B5210A46CA007137A7 /* SearchView.m in Sources */,
+				59C4DAD6222438FD001EE490 /* PatreonLicenseManager.m in Sources */,
 				91F8E3B6210A46CA007137A7 /* StringDatetoDate.m in Sources */,
 				91F8E3B7210A46CA007137A7 /* Utility.m in Sources */,
 				91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */,

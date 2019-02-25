@@ -519,6 +519,7 @@
 #else
     // Checks Donation Key and Patreon status
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) {
+        [Utility showsheetmessage:@"Notice" explaination:@"The old system to unlock Donor features with a Patreon Account is being deprecated in favor of a Patreon License. \n\nTo switch to the new system, deauthorize your Patreon account under the Patreon menu in the App menu. From the App menu, select Add Donation Key. Click Patreon License Portal and follow the instructions to obtain a Patreon License. \n\nOnce you have authorized your account with the website, use the Patreon license details to register."  window:nil];
         if ([_pamanager getFirstAccount]) {
             NSLog(@"Checking Pledges");
             [self checkPatreonAccount];
@@ -529,6 +530,9 @@
             [NSUserDefaults.standardUserDefaults setObject:nil forKey:@"patreongraceperiod"];
             [Utility donateCheck:self];
         }
+    }
+    else if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"patreon_license"]) {
+        [Utility patreonDonateCheck:self];
     }
     else {
         [Utility donateCheck:self];
@@ -549,6 +553,24 @@
 
 - (IBAction)becomepatreon:(id)sender {
     [self openpledgepage];
+}
+#endif
+
+#if defined(AppStore)
+#else
+- (IBAction)deactivatePatreonLicense:(id)sender {
+    NSAlert *alert = [[NSAlert alloc] init] ;
+    [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
+    [alert setMessageText:NSLocalizedString(@"Do you want to deauthorize your Patreon license?",nil)];
+    alert.informativeText = NSLocalizedString(@"By deauthorizing your Patreon license, you will lose access to donor features. However, you may reauthorize your license by registering it again.",nil);
+    // Set Message type to Warning
+    alert.alertStyle = NSAlertStyleInformational;
+    [alert beginSheetModalForWindow:self.mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            [Utility deactivatePatreonLicense:self];
+        }
+    }];
 }
 #endif
 

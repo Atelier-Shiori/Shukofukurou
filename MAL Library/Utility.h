@@ -33,6 +33,8 @@
 + (void)setCacheClearDate;
 + (void)clearImageCache;
 + (void)donateCheck:(AppDelegate*)delegate;
++ (void)patreonDonateCheck:(AppDelegate*)delegate;
++ (void)deactivatePatreonLicense:(AppDelegate *)delegate;
 + (NSDate *)stringDatetoDate:(NSString *)stringdate;
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
 + (AFHTTPSessionManager*)jsonmanager;

@@ -8,6 +8,7 @@
 
 #import "DonationLicenseManager.h"
 #import <DonationCheck/DonationCheck.h>
+#import "PatreonLicenseManager.h"
 #import "AppDelegate.h"
 #import "MainWindow.h"
 #import "Utility.h"
@@ -18,7 +19,7 @@
 @property (strong) IBOutlet NSButton *upgradebtn;
 @property (strong) IBOutlet NSTextField *name;
 @property (strong) IBOutlet NSTextField *donationkey;
-
+@property (strong) IBOutlet NSButton *patreonlicense;
 @end
 
 @implementation DonationLicenseManager
@@ -41,6 +42,15 @@
 }
 
 - (IBAction)registerkey:(id)sender {
+    if (_patreonlicense.state) {
+        [self performPatreonLicenseCheck];
+    }
+    else {
+        [self performRegularLicenseCheck];
+    }
+}
+
+- (void)performRegularLicenseCheck {
     bool success = [DonationKeyVerify checkLicense:_name.stringValue withDonationKey:_donationkey.stringValue isUpgradeLicense:false];
     if (success) {
         [self donationKeyRegister:_name.stringValue withKey:_donationkey.stringValue];
@@ -57,9 +67,21 @@
             }];
         }
         else {
-            [Utility showsheetmessage:@"Invalid Donation Key" explaination:@"Make sure you entered the name and license key exactly down in your email." window:self.window];
+            [Utility showsheetmessage:@"Invalid Donation Key" explaination:@"Make sure you entered the name and license key exactly shown in your email." window:self.window];
         }
     }
+}
+
+- (void)performPatreonLicenseCheck {
+    [[PatreonLicenseManager sharedInstance] validateLicense:_name.stringValue withLicenseKey:_donationkey.stringValue withCompletion:^(bool success, bool error) {
+        if (success && !error) {
+            [self donationKeyRegister:_name.stringValue withKey:_donationkey.stringValue];
+            [self.window close];
+        }
+        else {
+            [Utility showsheetmessage:@"Invalid Donation Key" explaination:@"Make sure you entered the name and license key exactly shown on the Patreon License Portal." window:self.window];
+        }
+    }];
 }
 
 - (IBAction)upgrade:(id)sender {
@@ -118,22 +140,34 @@
     _cancelbtn.enabled = enable;
     _upgradebtn.enabled = enable;
 }
+
 - (void)donationKeyRegister:(NSString *)name withKey:(NSString *)license {
 #if defined(AppStore)
 #else
     MainWindow *mw = [[self getAppDelegate] getMainWindowController];
     [Utility showsheetmessage:@"Registered" explaination:@"All Pro features are unlocked. Thank you for supporting the development of Shukofukurou!" window:mw.window];
-    // Add to the preferences
-    [[NSUserDefaults standardUserDefaults] setObject:license forKey:@"donation_license"];
-    [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"donation_name"];
-    [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
+    if (_patreonlicense.state) {
+        [[PatreonLicenseManager sharedInstance] storeLicense:name withLicenseKey:license];
+        [NSUserDefaults.standardUserDefaults setValue:[NSDate date] forKey:@"patreon_license_last_checked"];
+    }
+    else {
+        // Add to the preferences
+        [[NSUserDefaults standardUserDefaults] setObject:license forKey:@"donation_license"];
+        [[NSUserDefaults standardUserDefaults] setObject:name forKey:@"donation_name"];
+        [[NSUserDefaults standardUserDefaults] setObject:@YES forKey:@"donated"];
+    }
+    [NSUserDefaults.standardUserDefaults synchronize];
     [mw generateSourceList];
     [mw loadmainview];
 #endif
 }
+
 - (IBAction)becomepatron:(id)sender {
         [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://www.patreon.com/bePatron?c=677182"]];
 }
 
+- (IBAction)openpatreonlicenseportal:(id)sender {
+        [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://patreonlicensing.malupdaterosx.moe"]];
+}
 
 @end

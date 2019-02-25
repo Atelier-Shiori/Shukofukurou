@@ -85,6 +85,17 @@
                                                 </binding>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Deauthorize Patreon License…" id="zRJ-U1-Fdf">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="deactivatePatreonLicense:" target="Voe-Tx-rLC" id="doG-gN-G0y"/>
+                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.patreon_license" id="Tc4-yC-1AQ">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Become a Patreon" id="OfZ-Xn-bGE">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

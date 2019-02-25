@@ -94,3 +94,5 @@ MAL Library/PatreonConstants.h
 MAL Library/PatreonConstants.m
 MAL Library/AppDelegate+Patreon.h
 MAL Library/AppDelegate+Patreon.m
+MAL Library/PatreonLicenseManager.h
+MAL Library/PatreonLicenseManager.m

@@ -16,7 +16,8 @@
 - (id)transformedValue:(id)value {
     if (!value) return nil;
     
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) return @NO;
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) { return @NO; }
+    else if ([NSUserDefaults.standardUserDefaults boolForKey:@"patreon_license"]){ return @NO;}
     
     if ([value respondsToSelector:@selector(boolValue)]) {
         bool shoudldhide = [value intValue];

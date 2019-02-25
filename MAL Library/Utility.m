@@ -14,6 +14,7 @@
 #if defined(AppStore)
 #else
 #import <DonationCheck/DonationCheck.h>
+#import "PatreonLicenseManager.h"
 #endif
 
 @implementation Utility
@@ -238,13 +239,14 @@
         }
         else {
             //Invalid Copy
-            [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. Shukofukurou will now quit." window:nil];
+            [Utility showsheetmessage:@"Donation Key Error" explaination:@"This key has been revoked. You will no longer have access to donor features until you register with a valid key." window:nil];
             [Utility showDonateReminder:delegate];
             [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"donated"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donation_license"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donation_name"];
-            [[NSApplication sharedApplication] terminate:nil];
+            [delegate.mainwindowcontroller generateSourceList];
+            [delegate.mainwindowcontroller loadmainview];
         }
     }
     else if ([[[NSUserDefaults standardUserDefaults] objectForKey:@"donatereminderdate"] timeIntervalSinceNow] < 0) {
@@ -255,6 +257,43 @@
     }
 #endif
 }
+
++ (void)patreonDonateCheck:(AppDelegate*)delegate {
+#if defined(AppStore)
+#else
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    [[PatreonLicenseManager sharedInstance] validateLicense:[defaults valueForKey:@"donation_name"] withLicenseKey:[defaults valueForKey:@"donation_license"] withCompletion:^(bool success, bool error) {
+        if (success && !error) {
+            [defaults setValue:[NSDate date] forKey:@"patreon_license_last_checked"];
+        }
+        else if (!success && error) {
+            NSDate *lastchecked = (NSDate *)[defaults valueForKey:@"patreon_license_last_checked"];
+            if (lastchecked) {
+                if (lastchecked.timeIntervalSinceNow < -172800) {
+                    [Utility showsheetmessage:@"Donation Key Error" explaination:@"Failed to check Patreon License within 48 hours. Please reauthorize Patreon License." window:nil];
+                    [Utility deactivatePatreonLicense:delegate];
+                    [Utility showDonateReminder:delegate];
+                }
+            }
+        }
+        else {
+            [Utility showsheetmessage:@"Donation Key Error" explaination:@"License revoked since you are no longer an active patron. Donation features are only available for active patrons and donors." window:nil];
+            [self deactivatePatreonLicense:delegate];
+            [Utility showDonateReminder:delegate];
+        }
+    }];
+#endif
+}
+
++ (void)deactivatePatreonLicense:(AppDelegate *)delegate {
+#if defined(AppStore)
+#else
+    [[PatreonLicenseManager sharedInstance] removeLicense];
+    [delegate.mainwindowcontroller generateSourceList];
+    [delegate.mainwindowcontroller loadmainview];
+#endif
+}
+
 + (void)showDonateReminder:(AppDelegate*)delegate{
 #if defined(AppStore)
 #else

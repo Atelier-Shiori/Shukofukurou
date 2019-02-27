@@ -33,7 +33,7 @@
 }
 
 - (IBAction)doubleclickaction:(id)sender {
-    if (_tableview.selectedRow >=0) {
+    if (_tableview.selectedRow >=0 && ((NSArray *)_customlistarraycontroller.arrangedObjects).count) {
         if (_tableview.selectedRow >-1) {
             NSDictionary *d = _customlistarraycontroller.selectedObjects[0];
             _actionblock(d[@"name"]);

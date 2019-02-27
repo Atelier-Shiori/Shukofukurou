@@ -198,7 +198,7 @@ Gw
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Patreon License Portal" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aJ4-kt-KbP">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system" size="12"/>
+                            <font key="font" metaFont="cellTitle"/>
                         </buttonCell>
                         <connections>
                             <action selector="openpatreonlicenseportal:" target="-2" id="rIs-uT-4qF"/>
@@ -209,7 +209,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="3aV-gG-Z2x"/>
             </connections>
-            <point key="canvasLocation" x="186" y="209"/>
+            <point key="canvasLocation" x="48" y="186"/>
         </window>
     </objects>
 </document>

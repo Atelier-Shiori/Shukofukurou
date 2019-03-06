@@ -249,8 +249,8 @@
 + (NSArray *)KitsuAnimeSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"];
     NSMutableArray *tmparray = [NSMutableArray new];
-        for (NSDictionary *d in dataarray) {
-            @autoreleasepool {
+    for (NSDictionary *d in dataarray) {
+        @autoreleasepool {
             AtarashiiAnimeObject *aobject = [AtarashiiAnimeObject new];
             aobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             aobject.title = d[@"attributes"][@"canonicalTitle"];
@@ -260,7 +260,7 @@
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
                 aobject.image_url = d[@"attributes"][@"posterImage"][@"large"] && d[@"attributes"][@"posterImage"][@"large"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"large"] : @"";
             }
-            NSString *tmpstatus = d[@"attributes"][@"status"];
+            NSString *tmpstatus = d[@"attributes"][@"status"] != [NSNull null] ? d[@"attributes"][@"status"] : @"unreleased";
             if ([tmpstatus isEqualToString:@"finished"]) {
                 aobject.status = @"finished airing";
             }
@@ -279,8 +279,8 @@
 + (NSArray *)KitsuMangaSearchtoAtarashii:(NSDictionary *)data {
     NSArray *dataarray = data[@"data"];
     NSMutableArray *tmparray = [NSMutableArray new];
-        for (NSDictionary *d in dataarray) {
-            @autoreleasepool {
+    for (NSDictionary *d in dataarray) {
+        @autoreleasepool {
             AtarashiiMangaObject *mobject = [AtarashiiMangaObject new];
             mobject.titleid = ((NSNumber *)d[@"id"]).intValue;
             mobject.title = d[@"attributes"][@"canonicalTitle"];
@@ -291,7 +291,7 @@
             if (d[@"attributes"][@"posterImage"] != [NSNull null]) {
                 mobject.image_url = d[@"attributes"][@"posterImage"][@"large"] && d[@"attributes"][@"posterImage"][@"large"] != [NSNull null] ? d[@"attributes"][@"posterImage"][@"large"] : @"";
             }
-            NSString *tmpstatus = d[@"attributes"][@"status"];
+            NSString *tmpstatus = d[@"attributes"][@"status"] != [NSNull null] ? d[@"attributes"][@"status"] : @"unreleased";
             if ([tmpstatus isEqualToString:@"finished"]) {
                 mobject.status = tmpstatus;
             }

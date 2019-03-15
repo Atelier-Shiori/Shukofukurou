@@ -382,7 +382,7 @@
 }
 
 - (IBAction)viewonmal:(id)sender {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (_type == AnimeType){
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%i",_selectedid]]];

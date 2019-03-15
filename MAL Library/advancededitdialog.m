@@ -91,7 +91,7 @@
             _episodefieldnumberformat.maximum = @(9999999);
         }
         _episodestepper.maxValue = _episodefieldnumberformat.maximum.doubleValue;
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
@@ -155,7 +155,7 @@
             }
         }
         //_mangapopoverstatustext.stringValue = @"";
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
@@ -202,7 +202,7 @@
         _episodefield.stringValue = _totalepisodes.stringValue;
     }
     NSDictionary *extrafields = [self generateExtraFieldsWithType:0];
-    int currentlistservice = [listservice getCurrentServiceID];
+    int currentlistservice = [listservice.sharedInstance getCurrentServiceID];
     int score = 0;
     switch (currentlistservice) {
         case 1:
@@ -225,14 +225,14 @@
     }
     [_mlv setUpdatingState:true];
     [_progressindicator startAnimation:nil];
-    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateAnimeTitleOnList:_selectededitid withEpisode:_episodefield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime withResponseObject:responseobject] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime withResponseObject:responseobject] withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime withResponseObject:responseobject] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALAnime withResponseObject:responseobject] withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime withId:_selectededitid withIdType:1];
                 break;
             default:
                 break;
@@ -280,7 +280,7 @@
         _chaptersfield.stringValue = _totalchapters.stringValue;
         _totalvolumes.stringValue = _totalvolumes.stringValue;
     }
-    int currentlistservice = [listservice getCurrentServiceID];
+    int currentlistservice = [listservice.sharedInstance getCurrentServiceID];
     NSDictionary *extrafields = [self generateExtraFieldsWithType:1];
     int score = 0;
     switch (currentlistservice) {
@@ -304,14 +304,14 @@
     }
     [_mlv setUpdatingState:true];
     [_progressindicator startAnimation:nil];
-    [listservice updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateMangaTitleOnList:_selectededitid withChapter:_chaptersfield.intValue withVolume:_volumesfield.intValue withStatus:_status.title withScore:score withExtraFields:extrafields completion:^(id responseobject) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga withResponseObject:responseobject] withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga withResponseObject:responseobject] withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga withResponseObject:responseobject] withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:[self generatelistentrywithScore:score withType:MALManga withResponseObject:responseobject] withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga withId:_selectededitid withIdType:1];
                 break;
             default:
                 break;
@@ -407,7 +407,7 @@
 }
 
 - (void)setuplistservicefields {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             _score.menu = _malscoremenu;
             [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_malfieldsview];
@@ -534,7 +534,7 @@
 }
 
 - (void)setScoreMenu:(NSDictionary *)d {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
         case 2:
             [_score selectItemWithTag:((NSNumber *)d[@"score"]).intValue];
@@ -561,7 +561,7 @@
     NSDateFormatter *df = [NSDateFormatter new];
     df.dateFormat = @"yyyy-MM-dd";
     NSString *tags = @"";
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (((NSArray *)_tagsfield.objectValue).count > 0){
                 tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
@@ -637,10 +637,10 @@
     NSDateFormatter *df = [NSDateFormatter new];
     df.dateFormat = @"yyyy-MM-dd";
     nfields[@"score"] = @(score);
-    if (((NSArray *)_tagsfield.objectValue).count > 0 && [listservice getCurrentServiceID] == 1){
+    if (((NSArray *)_tagsfield.objectValue).count > 0 && [listservice.sharedInstance getCurrentServiceID] == 1){
         nfields[@"personal_tags"] = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
     }
-    if ([listservice getCurrentServiceID] == 2 && [listservice getCurrentServiceID] == 3) {
+    if ([listservice.sharedInstance getCurrentServiceID] == 2 && [listservice.sharedInstance getCurrentServiceID] == 3) {
         if (_notesfield.stringValue.length > 0) {
             nfields[@"personal_comments"] = _notesfield.stringValue;
         }
@@ -649,7 +649,7 @@
         }
         nfields[@"private"] = @(_privatecheck.state);
     }
-    nfields[@"last_updated"] = [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]];
+    nfields[@"last_updated"] = [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]];
     switch (type) {
         case 0: {
             [nfields addEntriesFromDictionary:@{@"watched_episodes" : @(_episodefield.intValue), @"watched_status" : _status.title}];

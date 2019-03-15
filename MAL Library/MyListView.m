@@ -33,7 +33,7 @@
 - (void)populateList:(id)object type:(int)type {
     [super populateList:object type:type];
     [self setToolbarButtonState];
-    if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice getCurrentServiceID] && type == 0) {
+    if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice.sharedInstance getCurrentServiceID] && type == 0) {
         [[AiringNotificationManager sharedAiringNotificationManager] checknotifications:^(bool success) {
             NSLog(@"Done fetching new air notifications");
         }];
@@ -153,7 +153,7 @@
     if (self.currentlist == 0) {
         if (self.animelistarraycontroller.selectedObjects.count > 0) {
             d = self.animelistarraycontroller.selectedObjects[0];
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     selid = d[@"id"];
                     break;
@@ -173,7 +173,7 @@
     else {
         if (self.mangalistarraycontroller.selectedObjects.count > 0) {
             d = self.mangalistarraycontroller.selectedObjects[0];
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     selid = d[@"id"];
                     break;
@@ -192,22 +192,22 @@
     }
     _deletetitleitem.enabled = NO;
     [self setUpdatingState:true];
-    [listservice removeTitleFromList:selid.intValue withType:self.currentlist completion:^(id responseobject) {
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance removeTitleFromList:selid.intValue withType:self.currentlist completion:^(id responseobject) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData removeSingleEntrywithUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:self.currentlist withId:selid.intValue withIdType:0];
+                [AtarashiiListCoreData removeSingleEntrywithUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:self.currentlist withId:selid.intValue withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData removeSingleEntrywithUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:self.currentlist withId:selid.intValue withIdType:1];
+                [AtarashiiListCoreData removeSingleEntrywithUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:self.currentlist withId:selid.intValue withIdType:1];
                 break;
             default:
                 break;
         }
         [_mw loadlist:@(false) type:self.currentlist];
         [self setUpdatingState:false];
-        if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice getCurrentServiceID] && self.currentlist == 0) {
-            [[AiringNotificationManager sharedAiringNotificationManager] removeNotifyingTitle:((NSNumber *)d[@"id"]).intValue withService:[listservice getCurrentServiceID]];
+        if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice.sharedInstance getCurrentServiceID] && self.currentlist == 0) {
+            [[AiringNotificationManager sharedAiringNotificationManager] removeNotifyingTitle:((NSNumber *)d[@"id"]).intValue withService:[listservice.sharedInstance getCurrentServiceID]];
         }
     }error:^(NSError *error) {
         NSLog(@"%@",error);
@@ -308,7 +308,7 @@
 
 - (void)animeincrement {
     NSDictionary *d = self.animelistarraycontroller.selectedObjects[0];
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     int titleid = -1;
     switch (currentservice) {
         case 1:
@@ -372,15 +372,15 @@
     }
     int score = ((NSNumber *)d[@"score"]).intValue;
     [self setUpdatingState:true];
-    [listservice updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateAnimeTitleOnList:titleid withEpisode:watchedepisodes withStatus:watchstatus withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
+        NSDictionary *updatedfields = @{@"watched_episodes" : @(watchedepisodes), @"watched_status" : watchstatus, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]};
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:titleid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:0 withId:titleid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:titleid withIdType:1];
                 break;
         }
         [_mw loadlist:@(false) type:MALAnime];
@@ -395,7 +395,7 @@
 
 - (void)mangaincrement {
     NSDictionary *d = self.mangalistarraycontroller.selectedObjects[0];
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     int titleid = -1;
     switch (currentservice) {
         case 1:
@@ -462,15 +462,15 @@
     }
     int score = ((NSNumber *)d[@"score"]).intValue;
     [self setUpdatingState:true];
-    [listservice updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
-        NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice getCurrentServiceID]]};
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateMangaTitleOnList:titleid withChapter:readchapters withVolume:readvolumes withStatus:readstatus withScore:score withExtraFields:extraparameters completion:^(id responseObject) {
+        NSDictionary *updatedfields = @{@"chapters_read" : @(readchapters), @"volumes_read" : @(readvolumes), @"read_status" : readstatus, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseObject withService:[listservice.sharedInstance getCurrentServiceID]]};
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:titleid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:titleid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:1 withId:titleid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:titleid withIdType:1];
                 break;
         }
         [_mw loadlist:@(false) type:MALManga];
@@ -487,7 +487,7 @@
     if (self.currentlist == 0) {
         if (self.animelistarraycontroller.selectedObjects.count > 0) {
             d = self.animelistarraycontroller.selectedObjects[0];
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     selid = d[@"id"];
                     break;
@@ -507,7 +507,7 @@
     else {
         if (self.mangalistarraycontroller.selectedObjects.count > 0) {
             d = self.mangalistarraycontroller.selectedObjects[0];
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     selid = d[@"id"];
                     break;

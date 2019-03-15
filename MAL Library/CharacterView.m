@@ -245,7 +245,7 @@
             }
             else {
                 //int loadtype = [(NSString *)d[@"type"] isEqualToString:@"Published Manga"] ? 1 : 0;
-                switch ([listservice getCurrentServiceID]) {
+                switch ([listservice.sharedInstance getCurrentServiceID]) {
                     case 1:
                     case 3:
                         [_cb retrievecharacterinformation:((NSNumber *)d[@"id"]).intValue];

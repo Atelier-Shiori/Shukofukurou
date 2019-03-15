@@ -7,11 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-@class KitsuListRetriever;
 
 @interface AtarashiiAPIListFormatKitsu: NSObject
-+ (NSDictionary *)KitsutoAtarashiiAnimeList: (KitsuListRetriever *)retriever;
-+ (NSDictionary *)KitsutoAtarashiiMangaList: (KitsuListRetriever *)retriever;
++ (NSDictionary *)KitsutoAtarashiiAnimeList:(NSArray *)tmplist withMetaData:(NSArray *)metadataa;
++ (NSDictionary *)KitsutoAtarashiiMangaList:(NSArray *)tmplist withMetaData:(NSArray *)metadataa;
 + (NSDictionary *)KitsuAnimeInfotoAtarashii:(NSDictionary *)data;
 + (NSDictionary *)KitsuMangaInfotoAtarashii:(NSDictionary *)data;
 + (NSArray *)KitsuAnimeSearchtoAtarashii:(NSDictionary *)data;

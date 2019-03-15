@@ -173,7 +173,7 @@
         }
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
-    [self refreshUIServiceChange:[listservice getCurrentServiceID]];
+    [self refreshUIServiceChange:[listservice.sharedInstance getCurrentServiceID]];
     [self checkaccountinformation];
 #if defined(BETA)
     // Show Beta Notice
@@ -240,13 +240,13 @@
         [self.preferencesWindowController showWindow:nil];
 }
 - (void)showloginnotice {
-    if (![listservice checkAccountForCurrentService]) {
+    if (![listservice.sharedInstance checkAccountForCurrentService]) {
         // First time prompt
         NSAlert *alert = [[NSAlert alloc] init] ;
         [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
         [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
         [alert setMessageText:NSLocalizedString(@"Welcome to Shukofukurou",nil)];
-        alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Before you can use this program, you need to add an account for %@. Do you want to open Preferences to authenticate an account now? \r\rNote that there is limited functionality if you don't add an account.\r\rYou can change the current service by clicking on the service menu and selecting a list service.",nil),[listservice currentservicename]];
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Before you can use this program, you need to add an account for %@. Do you want to open Preferences to authenticate an account now? \r\rNote that there is limited functionality if you don't add an account.\r\rYou can change the current service by clicking on the service menu and selecting a list service.",nil),[listservice.sharedInstance currentservicename]];
         // Set Message type to Warning
         alert.alertStyle = NSAlertStyleInformational;
         [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
@@ -257,7 +257,7 @@
             }];
     }
     else {
-        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"] && [listservice getCurrentServiceID] == 1){
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"credentialscheckdate"] && [listservice.sharedInstance getCurrentServiceID] == 1){
             // Check credentials now if user has an account and these values are not set
             [[NSUserDefaults standardUserDefaults] setObject:[NSDate new] forKey:@"credentialscheckdate"];
             [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
@@ -322,7 +322,7 @@
         service = 3;
         url = [url stringByReplacingOccurrencesOfString:@"anilist/" withString:@""];
     }
-    bool surpressidconversion = (service != [listservice getCurrentServiceID]);
+    bool surpressidconversion = (service != [listservice.sharedInstance getCurrentServiceID]);
     if ([url containsString:@"anime/"]) {
         // Loads Anime Information with specified id.
         [self clearInfoView:surpressidconversion];
@@ -362,7 +362,7 @@
 }
 
 - (IBAction)viewListStats:(id)sender {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (![Keychain checkaccount]) {
                 [self showloginnotice];
@@ -371,14 +371,14 @@
             break;
         }
         case 2: {
-            if (![Kitsu getFirstAccount]) {
+            if (![listservice.sharedInstance.kitsuManager getFirstAccount]) {
                 [self showloginnotice];
                 return;
             }
             break;
         }
         case 3: {
-            if (![AniList getFirstAccount]) {
+            if (![listservice.sharedInstance.anilistManager getFirstAccount]) {
                 [self showloginnotice];
                 return;
             }
@@ -485,17 +485,17 @@
 
 - (void)checkaccountinformation {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
-    if ([Kitsu getFirstAccount]) {
+    if ([listservice.sharedInstance.kitsuManager getFirstAccount]) {
         bool refreshKitsu = (![defaults valueForKey:@"kitsu-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"kitsu-userinformationrefresh"]).timeIntervalSinceNow < 0);
         if ((![defaults valueForKey:@"kitsu-username"] && ![defaults valueForKey:@"kitsu-userid"]) || ((NSString *)[defaults valueForKey:@"kitsu-username"]).length == 0 || refreshKitsu) {
-            [Kitsu saveuserinfoforcurrenttoken];
+            [listservice.sharedInstance.kitsuManager saveuserinfoforcurrenttoken];
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
         }
     }
-    if ([AniList getFirstAccount]) {
+    if ([listservice.sharedInstance.anilistManager getFirstAccount]) {
         bool refreshAniList = (![defaults valueForKey:@"anilist-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"anilist-userinformationrefresh"]).timeIntervalSinceNow < 0);
         if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
-            [AniList saveuserinfoforcurrenttoken];
+            [listservice.sharedInstance.anilistManager saveuserinfoforcurrenttoken];
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
         }
     }

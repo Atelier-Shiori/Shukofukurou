@@ -37,8 +37,6 @@
 		2D6ECA351F2E9B20003C455E /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */; };
 		2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
 		2D71422D1FE2E32C001FA9E9 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
-		2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
-		2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
 		2D7877761F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D7877771F87E44000AD40F1 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		2D86F18B1EC21D4B00650E34 /* ListExporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D86F18A1EC21D4B00650E34 /* ListExporter.m */; };
@@ -74,12 +72,6 @@
 		2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
 		2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
 		2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
-		2DB444BB1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
-		2DB444BC1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
-		2DB444BF1FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
-		2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
-		2DB444C41FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
-		2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
 		2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D121EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
 		2DB59D131EB7D4B700FDC36E /* CocoaOniguruma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */; };
@@ -159,10 +151,6 @@
 		5972405A21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
 		5972405B21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
 		5972405C21B5816C00599AAC /* AiringNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5972405821B5816C00599AAC /* AiringNotificationManager.m */; };
-		5976C09C2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
-		5976C09D2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
-		5976C09E2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
-		5976C09F2208AC09003DA0D6 /* OAuthCredManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */; };
 		597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
 		597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */ = {isa = PBXBuildFile; fileRef = 597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */; };
@@ -217,6 +205,18 @@
 		59B3D846221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
 		59C4DAD5222438FD001EE490 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */; };
 		59C4DAD6222438FD001EE490 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */; };
+		59D7C99B223BEA8B0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C99C223BEA8B0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C99D223BEA8B0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C99E223BEA8B0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C99F223BEADD0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C9A0223BEADD0024C31A /* Hakuchou.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59D7C9A1223BEAE10024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C9A2223BEAE10024C31A /* Hakuchou.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59D7C9A3223BEAE50024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C9A4223BEAE50024C31A /* Hakuchou.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59D7C9A5223BEAEA0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
+		59D7C9A6223BEAEA0024C31A /* Hakuchou.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
@@ -344,8 +344,6 @@
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
 		9169BC442062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
 		9169BC452062C3F700C534B8 /* advancededitdialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9169BC472062C3F700C534B8 /* advancededitdialog.xib */; };
-		916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
-		916D7FE2206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		917897EE1E89F19C00C155DF /* PFAboutWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 917897F01E89F19C00C155DF /* PFAboutWindow.xib */; };
 		917CEC78211B2B1200259AA7 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
 		917CEC79211B2B1200259AA7 /* PatreonConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 917CEC77211B2B1200259AA7 /* PatreonConstants.m */; };
@@ -424,7 +422,6 @@
 		91F8E3A8210A46CA007137A7 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
 		91F8E3A9210A46CA007137A7 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502BB1E8C576B00565D30 /* ListView.m */; };
 		91F8E3AA210A46CA007137A7 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
-		91F8E3AB210A46CA007137A7 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
 		91F8E3AC210A46CA007137A7 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABA1E89842400F6E9FF /* MainWindow.m */; };
 		91F8E3AE210A46CA007137A7 /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
 		91F8E3AF210A46CA007137A7 /* AtarashiiListCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */; };
@@ -439,7 +436,6 @@
 		91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABC1E89842400F6E9FF /* MSWeakTimer.m */; };
 		91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
 		91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
-		91F8E3BB210A46CA007137A7 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
 		91F8E3BD210A46CA007137A7 /* PFAboutWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89A1E89BFEF0046C4CC /* PFAboutWindowController.m */; };
 		91F8E3BE210A46CA007137A7 /* GeneralPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB21E89842400F6E9FF /* GeneralPref.m */; };
 		91F8E3BF210A46CA007137A7 /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
@@ -459,9 +455,6 @@
 		91F8E3D1210A46CA007137A7 /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		91F8E3D2210A46CA007137A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A41F81E9AB41600CE52B2 /* AppDelegate.m */; };
 		91F8E3D3210A46CA007137A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
-		91F8E3D4210A46CA007137A7 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
-		91F8E3D5210A46CA007137A7 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
-		91F8E3D6210A46CA007137A7 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
 		91F8E3D7210A46CA007137A7 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
 		91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA9820448A2E00132C51 /* OtherUserListScoreFormatter.m */; };
 		91F8E3D9210A46CA007137A7 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
@@ -472,7 +465,6 @@
 		91F8E3DE210A46CA007137A7 /* NSString_stripHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */; };
 		91F8E3DF210A46CA007137A7 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */; };
 		91F8E3E0210A46CA007137A7 /* ImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */; };
-		91F8E3E1210A46CA007137A7 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
 		91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E791ECF8B4F00F47138 /* ratingchartview.m */; };
 		91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
 		91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
@@ -482,7 +474,6 @@
 		91F8E3E8210A46CA007137A7 /* siteimage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E81EF9F2C400420182 /* siteimage.m */; };
 		91F8E3E9210A46CA007137A7 /* servicemenucontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D88CA691FE815B600AD142E /* servicemenucontroller.m */; };
 		91F8E3EA210A46CA007137A7 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
-		91F8E3EB210A46CA007137A7 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		91F8E3EC210A46CA007137A7 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
 		91F8E3ED210A46CA007137A7 /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
 		91F8E3EF210A46CA007137A7 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
@@ -577,11 +568,9 @@
 		F888F404208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
 		F888F405208F889D00C22C39 /* AuthWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = F888F403208F889D00C22C39 /* AuthWebView.m */; };
 		F888F40A208FB1F500C22C39 /* OtherListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F850FCB42077D6C100B7B353 /* OtherListScoreFormatter.m */; };
-		F888F40B208FB1F500C22C39 /* Kitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422F1FE31DFB001FA9E9 /* Kitsu.m */; };
 		F888F40C208FB1F500C22C39 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
 		F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E721ECF8AF500F47138 /* ListStatistics.m */; };
 		F888F410208FB1F500C22C39 /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
-		F888F411208FB1F500C22C39 /* AtarashiiAPIListFormatAniList.m in Sources */ = {isa = PBXBuildFile; fileRef = 916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */; };
 		F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */; };
 		F888F413208FB1F500C22C39 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
 		F888F414208FB1F500C22C39 /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
@@ -594,14 +583,12 @@
 		F888F41B208FB1F500C22C39 /* NSTextFieldNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC21E89842400F6E9FF /* NSTextFieldNumber.m */; };
 		F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B11F290E2200FC2B35 /* CharactersBrowser.m */; };
 		F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D061E8C81580026D3E9 /* SeasonView.m */; };
-		F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
 		F888F420208FB1F500C22C39 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC64B671EC3D661005A8BCE /* XMLReader.m */; };
 		F888F421208FB1F500C22C39 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA863EF1F89B2F300D2876A /* ProfileViewController.m */; };
 		F888F422208FB1F500C22C39 /* LoginPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB71E89842400F6E9FF /* LoginPref.m */; };
 		F888F424208FB1F500C22C39 /* listservice.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D71422B1FE2E32C001FA9E9 /* listservice.m */; };
 		F888F425208FB1F500C22C39 /* MyListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D7877751F87E44000AD40F1 /* MyListView.m */; };
 		F888F426208FB1F500C22C39 /* SearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999CFE1E8C73300026D3E9 /* SearchView.m */; };
-		F888F428208FB1F500C22C39 /* AtarashiiAPIListFormatKitsu.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */; };
 		F888F429208FB1F500C22C39 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BACD1E89842400F6E9FF /* Utility.m */; };
 		F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABC1E89842400F6E9FF /* MSWeakTimer.m */; };
 		F888F42C208FB1F500C22C39 /* MyListScoreFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA942044888800132C51 /* MyListScoreFormatter.m */; };
@@ -617,7 +604,6 @@
 		F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D8A51E89C3E00046C4CC /* TypeNumtoStringType.m */; };
 		F888F439208FB1F500C22C39 /* ratingchartview.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E791ECF8B4F00F47138 /* ratingchartview.m */; };
 		F888F43A208FB1F500C22C39 /* NSTextFieldCellMiddleAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */; };
-		F888F43B208FB1F500C22C39 /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
 		F888F43C208FB1F500C22C39 /* ImportPrompt.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8BF8A91EC4D6DC0068856A /* ImportPrompt.m */; };
 		F888F43D208FB1F500C22C39 /* StringDatetoDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91B3A89F1EB0097C0066CEB1 /* StringDatetoDate.m */; };
 		F888F43E208FB1F500C22C39 /* StreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */; };
@@ -632,7 +618,6 @@
 		F888F447208FB1F500C22C39 /* CharacterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D8A47B81F292D1800FC2B35 /* CharacterView.m */; };
 		F888F448208FB1F500C22C39 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
 		F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
-		F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */; };
 		F888F44D208FB1F500C22C39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAB81E89842400F6E9FF /* main.m */; };
 		F888F44E208FB1F500C22C39 /* AiringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094CE1E9876D8009454F8 /* AiringView.m */; };
 		F888F450208FB1F500C22C39 /* OtherHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D159FCF1F96507800734250 /* OtherHistoryView.m */; };
@@ -641,7 +626,6 @@
 		F888F453208FB1F500C22C39 /* SoftwareUpdatesPref.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BAC71E89842400F6E9FF /* SoftwareUpdatesPref.m */; };
 		F888F454208FB1F500C22C39 /* AdvancedSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C421E8C0ACC005A49A4 /* AdvancedSearch.m */; };
 		F888F455208FB1F500C22C39 /* StreamPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB19DD1EF9D16800420182 /* StreamPopup.m */; };
-		F888F456208FB1F500C22C39 /* KitsuListRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */; };
 		F888F457208FB1F500C22C39 /* InfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91999D101E8C88280026D3E9 /* InfoView.m */; };
 		F888F459208FB1F500C22C39 /* MASPreferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; };
 		F888F45A208FB1F500C22C39 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BAF01E89844500F6E9FF /* AFNetworking.framework */; };
@@ -695,10 +679,6 @@
 		F888F492208FB1F500C22C39 /* SAMKeychain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F888F493208FB1F500C22C39 /* PXSourceList.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F888F494208FB1F500C22C39 /* MASPreferences.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 91AECE5A1E89922A00824C2D /* MASPreferences.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
-		F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = F88CD0FA2072BC330093C478 /* AniListConstants.m */; };
-		F8A85912207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
-		F8A85913207023E40026EC0A /* AniList.m in Sources */ = {isa = PBXBuildFile; fileRef = F8A85911207023E40026EC0A /* AniList.m */; };
 		F8ABAAA72087C22600752627 /* DonationCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; };
 		F8ABAAA82087C22600752627 /* DonationCheck.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F84D051F2086720700502379 /* DonationCheck.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F8ABAAAA2087C33300752627 /* SAMKeychain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ABAAA92087C33200752627 /* SAMKeychain.framework */; };
@@ -773,6 +753,7 @@
 			files = (
 				2DB59D161EB7D4BE00FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				913A11A11E8F206A00450B66 /* AFNetworking.framework in Embed Frameworks */,
+				59D7C9A2223BEAE10024C31A /* Hakuchou.framework in Embed Frameworks */,
 				F8ABAAAF2087C33C00752627 /* SAMKeychain.framework in Embed Frameworks */,
 				913A11A21E8F206A00450B66 /* PXSourceList.framework in Embed Frameworks */,
 				599CEFF6220B2CEA0063EBB9 /* SDWebImage.framework in Embed Frameworks */,
@@ -815,6 +796,7 @@
 				2DB59D141EB7D4B700FDC36E /* CocoaOniguruma.framework in Embed Frameworks */,
 				91044F95211B252100DBEF57 /* Patreon.framework in Embed Frameworks */,
 				599CEFF4220B2CE50063EBB9 /* SDWebImage.framework in Embed Frameworks */,
+				59D7C9A0223BEADD0024C31A /* Hakuchou.framework in Embed Frameworks */,
 				913A115E1E8F200F00450B66 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -834,6 +816,7 @@
 				91F8E436210A46CA007137A7 /* CocoaOniguruma.framework in Embed Frameworks */,
 				91044F93211B251900DBEF57 /* Patreon.framework in Embed Frameworks */,
 				599CEFFA220B2CF30063EBB9 /* SDWebImage.framework in Embed Frameworks */,
+				59D7C9A6223BEAEA0024C31A /* Hakuchou.framework in Embed Frameworks */,
 				91F8E437210A46CA007137A7 /* Sparkle.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -857,6 +840,7 @@
 			files = (
 				F888F490208FB1F500C22C39 /* CocoaOniguruma.framework in Embed Frameworks */,
 				F888F491208FB1F500C22C39 /* AFNetworking.framework in Embed Frameworks */,
+				59D7C9A4223BEAE50024C31A /* Hakuchou.framework in Embed Frameworks */,
 				F888F492208FB1F500C22C39 /* SAMKeychain.framework in Embed Frameworks */,
 				F888F493208FB1F500C22C39 /* PXSourceList.framework in Embed Frameworks */,
 				599CEFF8220B2CEE0063EBB9 /* SDWebImage.framework in Embed Frameworks */,
@@ -901,10 +885,6 @@
 		2D6ECA331F2E9B20003C455E /* NSString_stripHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSString_stripHtml.m; sourceTree = "<group>"; };
 		2D71422A1FE2E32C001FA9E9 /* listservice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = listservice.h; sourceTree = "<group>"; };
 		2D71422B1FE2E32C001FA9E9 /* listservice.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = listservice.m; sourceTree = "<group>"; };
-		2D71422E1FE31DFB001FA9E9 /* Kitsu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kitsu.h; sourceTree = "<group>"; };
-		2D71422F1FE31DFB001FA9E9 /* Kitsu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kitsu.m; sourceTree = "<group>"; };
-		2D72F9251FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIKitsuStaffFormat.h; sourceTree = "<group>"; };
-		2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIKitsuStaffFormat.m; sourceTree = "<group>"; };
 		2D7877741F87E44000AD40F1 /* MyListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyListView.h; sourceTree = "<group>"; };
 		2D7877751F87E44000AD40F1 /* MyListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyListView.m; sourceTree = "<group>"; };
 		2D86F1891EC21D4B00650E34 /* ListExporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListExporter.h; sourceTree = "<group>"; };
@@ -938,12 +918,6 @@
 		2DAB19E41EF9ED9400420182 /* StreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamDataRetriever.m; sourceTree = "<group>"; };
 		2DAB19E71EF9F2C400420182 /* siteimage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = siteimage.h; sourceTree = "<group>"; };
 		2DAB19E81EF9F2C400420182 /* siteimage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = siteimage.m; sourceTree = "<group>"; };
-		2DB444B91FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatKitsu.h; sourceTree = "<group>"; };
-		2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatKitsu.m; sourceTree = "<group>"; };
-		2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KitsuListRetriever.h; sourceTree = "<group>"; };
-		2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KitsuListRetriever.m; sourceTree = "<group>"; };
-		2DB444C21FE9875F00BE5534 /* AtarashiiDataObjects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiDataObjects.h; sourceTree = "<group>"; };
-		2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiDataObjects.m; sourceTree = "<group>"; };
 		2DB59D101EB7D48F00FDC36E /* CocoaOniguruma.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaOniguruma.framework; path = "MAL Library/CocoaOniguruma.framework"; sourceTree = "<group>"; };
 		2DC64B661EC3D661005A8BCE /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
 		2DC64B671EC3D661005A8BCE /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
@@ -976,8 +950,6 @@
 		5972404D21B57D7600599AAC /* NotificationPreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesController.m; sourceTree = "<group>"; };
 		5972405721B5816C00599AAC /* AiringNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringNotificationManager.h; sourceTree = "<group>"; };
 		5972405821B5816C00599AAC /* AiringNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringNotificationManager.m; sourceTree = "<group>"; };
-		5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCredManager.m; sourceTree = "<group>"; };
-		5976C09B2208AC08003DA0D6 /* OAuthCredManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCredManager.h; sourceTree = "<group>"; };
 		597D78B621656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTextView+SetHTMLAttributedText.h"; sourceTree = "<group>"; };
 		597D78B721656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+SetHTMLAttributedText.m"; sourceTree = "<group>"; };
 		598B452A21AC392C00F28180 /* TitleInfoCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleInfoCache.m; sourceTree = "<group>"; };
@@ -1002,6 +974,7 @@
 		59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 3.xcdatamodel"; sourceTree = "<group>"; };
 		59C4DAD3222438FD001EE490 /* PatreonLicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatreonLicenseManager.h; sourceTree = "<group>"; };
 		59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatreonLicenseManager.m; sourceTree = "<group>"; };
+		59D7C99A223BEA8B0024C31A /* Hakuchou.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hakuchou.framework; path = "MAL Library/Hakuchou.framework"; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
@@ -1056,8 +1029,6 @@
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
 		9168F9341E89920300CCB5B3 /* PXSourceList.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PXSourceList.framework; sourceTree = "<group>"; };
 		9169BC462062C3F700C534B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/advancededitdialog.xib; sourceTree = "<group>"; };
-		916D7FDF206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtarashiiAPIListFormatAniList.h; sourceTree = "<group>"; };
-		916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtarashiiAPIListFormatAniList.m; sourceTree = "<group>"; };
 		916EABCE1E8F252600DC5C2A /* MAL Library.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "MAL Library.entitlements"; path = "MAL Library/MAL Library.entitlements"; sourceTree = SOURCE_ROOT; };
 		917897EF1E89F19C00C155DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PFAboutWindow.xib; sourceTree = "<group>"; };
 		917CEC76211B2B1200259AA7 /* PatreonConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatreonConstants.h; sourceTree = "<group>"; };
@@ -1165,10 +1136,6 @@
 		F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shukofukurou Community.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F888F49B208FB1F600C22C39 /* Shukofukurou (Open Source)-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Shukofukurou (Open Source)-Info.plist"; path = "/Users/takanashirikka/Desktop/repo/MAL-Library/MAL Library/Shukofukurou (Open Source)-Info.plist"; sourceTree = "<absolute>"; };
 		F888F49C208FB20C00C22C39 /* Shukofukurou Open Source.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shukofukurou Open Source.entitlements"; sourceTree = "<group>"; };
-		F88CD0F92072BC330093C478 /* AniListConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniListConstants.h; sourceTree = "<group>"; };
-		F88CD0FA2072BC330093C478 /* AniListConstants.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListConstants.m; sourceTree = "<group>"; };
-		F8A85910207023E40026EC0A /* AniList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AniList.h; sourceTree = "<group>"; };
-		F8A85911207023E40026EC0A /* AniList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniList.m; sourceTree = "<group>"; };
 		F8ABAAA92087C33200752627 /* SAMKeychain.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SAMKeychain.framework; path = "MAL Library/SAMKeychain.framework"; sourceTree = "<group>"; };
 		F8B5AA8F2044813400132C51 /* RatingTwentyConvert.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RatingTwentyConvert.h; sourceTree = "<group>"; };
 		F8B5AA902044813400132C51 /* RatingTwentyConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RatingTwentyConvert.m; sourceTree = "<group>"; };
@@ -1206,7 +1173,9 @@
 				F8ABAAAB2087C33300752627 /* SAMKeychain.framework in Frameworks */,
 				913A11801E8F206A00450B66 /* AFNetworking.framework in Frameworks */,
 				599CEFF5220B2CEA0063EBB9 /* SDWebImage.framework in Frameworks */,
+				59D7C9A1223BEAE10024C31A /* Hakuchou.framework in Frameworks */,
 				913A11821E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
+				59D7C99C223BEA8B0024C31A /* Hakuchou.framework in Frameworks */,
 				2DB59D151EB7D4BE00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				913A11831E8F206A00450B66 /* MASPreferences.framework in Frameworks */,
 				913A11841E8F206A00450B66 /* PXSourceList.framework in Frameworks */,
@@ -1231,6 +1200,7 @@
 				9199BAF11E89844500F6E9FF /* AFNetworking.framework in Frameworks */,
 				599CEFEF220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */,
 				F84D05202086720800502379 /* DonationCheck.framework in Frameworks */,
+				59D7C99F223BEADD0024C31A /* Hakuchou.framework in Frameworks */,
 				9199BAFE1E89847D00F6E9FF /* AFNetworking.framework in Frameworks */,
 				2DB59D111EB7D48F00FDC36E /* CocoaOniguruma.framework in Frameworks */,
 				599CEFF3220B2CE50063EBB9 /* SDWebImage.framework in Frameworks */,
@@ -1244,6 +1214,7 @@
 				91044F94211B252100DBEF57 /* Patreon.framework in Frameworks */,
 				F8ABAAA72087C22600752627 /* DonationCheck.framework in Frameworks */,
 				F8ABAAAA2087C33300752627 /* SAMKeychain.framework in Frameworks */,
+				59D7C99B223BEA8B0024C31A /* Hakuchou.framework in Frameworks */,
 				918C0D371E89FF8B0037898E /* Fabric.framework in Frameworks */,
 				9199BAFC1E89847D00F6E9FF /* Sparkle.framework in Frameworks */,
 				91AECE581E89921200824C2D /* PXSourceList.framework in Frameworks */,
@@ -1260,6 +1231,7 @@
 				91F8E3F4210A46CA007137A7 /* AFNetworking.framework in Frameworks */,
 				599CEFF2220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */,
 				91F8E3F5210A46CA007137A7 /* DonationCheck.framework in Frameworks */,
+				59D7C9A5223BEAEA0024C31A /* Hakuchou.framework in Frameworks */,
 				91F8E3F6210A46CA007137A7 /* AFNetworking.framework in Frameworks */,
 				91F8E3F7210A46CA007137A7 /* CocoaOniguruma.framework in Frameworks */,
 				599CEFF9220B2CF30063EBB9 /* SDWebImage.framework in Frameworks */,
@@ -1273,6 +1245,7 @@
 				91044F92211B251900DBEF57 /* Patreon.framework in Frameworks */,
 				91F8E3FF210A46CA007137A7 /* DonationCheck.framework in Frameworks */,
 				91F8E400210A46CA007137A7 /* SAMKeychain.framework in Frameworks */,
+				59D7C99E223BEA8B0024C31A /* Hakuchou.framework in Frameworks */,
 				91F8E401210A46CA007137A7 /* Fabric.framework in Frameworks */,
 				91F8E402210A46CA007137A7 /* Sparkle.framework in Frameworks */,
 				91F8E403210A46CA007137A7 /* PXSourceList.framework in Frameworks */,
@@ -1293,8 +1266,10 @@
 				F888F459208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
 				F888F45A208FB1F500C22C39 /* AFNetworking.framework in Frameworks */,
 				F888F45B208FB1F500C22C39 /* SAMKeychain.framework in Frameworks */,
+				59D7C99D223BEA8B0024C31A /* Hakuchou.framework in Frameworks */,
 				F888F45C208FB1F500C22C39 /* AFNetworking.framework in Frameworks */,
 				599CEFF7220B2CEE0063EBB9 /* SDWebImage.framework in Frameworks */,
+				59D7C9A3223BEAE50024C31A /* Hakuchou.framework in Frameworks */,
 				F888F45D208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
 				F888F45E208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */,
 				F888F45F208FB1F500C22C39 /* MASPreferences.framework in Frameworks */,
@@ -1377,21 +1352,6 @@
 			path = MALLibraryHelp;
 			sourceTree = "<group>";
 		};
-		2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */ = {
-			isa = PBXGroup;
-			children = (
-				2DB444B91FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.h */,
-				2DB444BA1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m */,
-				2D72F9251FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.h */,
-				2D72F9261FFEAD6F0075FD6B /* AtarashiiAPIKitsuStaffFormat.m */,
-				2DB444C21FE9875F00BE5534 /* AtarashiiDataObjects.h */,
-				2DB444C31FE9875F00BE5534 /* AtarashiiDataObjects.m */,
-				916D7FDF206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.h */,
-				916D7FE0206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m */,
-			);
-			name = AtarashiiDataFormatters;
-			sourceTree = "<group>";
-		};
 		591FC1C021C7E98E001D8684 /* NotificationManagers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1409,21 +1369,14 @@
 			isa = PBXGroup;
 			children = (
 				59C4DAD2222438D4001EE490 /* PatreonLicenseCheck */,
-				5976C09B2208AC08003DA0D6 /* OAuthCredManager.h */,
-				5976C09A2208AC08003DA0D6 /* OAuthCredManager.m */,
 				5972405721B5816C00599AAC /* AiringNotificationManager.h */,
 				5972405821B5816C00599AAC /* AiringNotificationManager.m */,
 				598B454921AC4BCE00F28180 /* AiringSchedule.h */,
 				598B454A21AC4BCE00F28180 /* AiringSchedule.m */,
-				F8A85910207023E40026EC0A /* AniList.h */,
-				F8A85911207023E40026EC0A /* AniList.m */,
-				F88CD0F92072BC330093C478 /* AniListConstants.h */,
-				F88CD0FA2072BC330093C478 /* AniListConstants.m */,
 				F8F0481E20767DF600DAAD57 /* AniListScoreConvert.h */,
 				F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */,
 				91332AC220F7914F00E5BA42 /* AniListSeasonListGenerator.h */,
 				91332AC320F7914F00E5BA42 /* AniListSeasonListGenerator.m */,
-				2DB444C11FE9873E00BE5534 /* AtarashiiDataFormatters */,
 				91521F6821075E4E001FCBBB /* AtarashiiListCoreData.h */,
 				91521F6921075E4E001FCBBB /* AtarashiiListCoreData.m */,
 				9168F9291E89858900CCB5B3 /* Base64Category.h */,
@@ -1440,11 +1393,6 @@
 				9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */,
 				9168F92C1E89861300CCB5B3 /* Keychain.h */,
 				91D3D89E1E89C0E40046C4CC /* Keychain.m */,
-				2D71422E1FE31DFB001FA9E9 /* Kitsu.h */,
-				2D71422F1FE31DFB001FA9E9 /* Kitsu.m */,
-				2DB444BD1FE84D7B00BE5534 /* KitsuListRetriever.h */,
-				2DB444BE1FE84D7B00BE5534 /* KitsuListRetriever.m */,
-				919DE8FE20504D7B007DCFBC /* KitsuRetrievers */,
 				2D86F1891EC21D4B00650E34 /* ListExporter.h */,
 				2D86F18A1EC21D4B00650E34 /* ListExporter.m */,
 				2D94612B1EC38CC8004E171B /* ListImport.h */,
@@ -1676,6 +1624,7 @@
 		918C0D3F1E8A00ED0037898E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				59D7C99A223BEA8B0024C31A /* Hakuchou.framework */,
 				F84D643D2098F877003225F9 /* StoreKit.framework */,
 				F8ABAAA92087C33200752627 /* SAMKeychain.framework */,
 				9199BB011E8984E300F6E9FF /* PXSourceList.framework */,
@@ -1776,13 +1725,6 @@
 				9199BAF01E89844500F6E9FF /* AFNetworking.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		919DE8FE20504D7B007DCFBC /* KitsuRetrievers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = KitsuRetrievers;
 			sourceTree = "<group>";
 		};
 		91D3D89D1E89C0020046C4CC /* about */ = {
@@ -2370,13 +2312,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F850FCB62077D6C100B7B353 /* OtherListScoreFormatter.m in Sources */,
-				2D7142311FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				2D8A41FB1E9AB45700CE52B2 /* Keychain.m in Sources */,
 				91332AC520F7914F00E5BA42 /* AniListSeasonListGenerator.m in Sources */,
 				2D371E751ECF8AF500F47138 /* ListStatistics.m in Sources */,
 				91244EA4210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */,
 				2D94612F1EC38CC8004E171B /* ListImport.m in Sources */,
-				916D7FE2206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				91244E992108E89C00AA8F90 /* CustomListModify.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
@@ -2396,7 +2336,6 @@
 				913A11671E8F206A00450B66 /* SeasonView.m in Sources */,
 				59A2FD6C21BED5D80092E963 /* PersonSearchPopoverViewController.m in Sources */,
 				593A798821ADE8370083FA86 /* HeaderView.m in Sources */,
-				F88CD0FC2072BC330093C478 /* AniListConstants.m in Sources */,
 				2DC64B691EC3D661005A8BCE /* XMLReader.m in Sources */,
 				2DA863F21F89B2F300D2876A /* ProfileViewController.m in Sources */,
 				597D78B921656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
@@ -2404,7 +2343,6 @@
 				2D71422D1FE2E32C001FA9E9 /* listservice.m in Sources */,
 				2D7877771F87E44000AD40F1 /* MyListView.m in Sources */,
 				913A11691E8F206A00450B66 /* SearchView.m in Sources */,
-				2DB444BC1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				913A116A1E8F206A00450B66 /* Utility.m in Sources */,
 				59A2FD5521BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
 				591FC1CA21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
@@ -2424,11 +2362,9 @@
 				2DA863EB1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
 				2DAB19EA1EF9F2C400420182 /* siteimage.m in Sources */,
 				913A116F1E8F206A00450B66 /* TypeNumtoStringType.m in Sources */,
-				5976C09D2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				2D371E7C1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				91822A571EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
 				59A2FD7D21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
-				F8A85913207023E40026EC0A /* AniList.m in Sources */,
 				2D8BF8AC1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
@@ -2450,7 +2386,6 @@
 				913A11761E8F206A00450B66 /* EditTitle.m in Sources */,
 				59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				5972405021B57D7600599AAC /* NotificationPreferencesController.m in Sources */,
-				2DB444C51FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
 				593A796221ADC6FE0083FA86 /* TrendingView.m in Sources */,
 				598B452D21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				913A11771E8F206A00450B66 /* main.m in Sources */,
@@ -2464,7 +2399,6 @@
 				913A117B1E8F206A00450B66 /* AdvancedSearch.m in Sources */,
 				598B454C21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				2DAB19E01EF9D16800420182 /* StreamPopup.m in Sources */,
-				2DB444C01FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				913A117C1E8F206A00450B66 /* InfoView.m in Sources */,
 				596BABDC21C018E0005C3451 /* PatreonConstants.m in Sources */,
 				593A794921ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
@@ -2492,7 +2426,6 @@
 				91D094C21E983095009454F8 /* HistoryView.m in Sources */,
 				916502BD1E8C576B00565D30 /* ListView.m in Sources */,
 				F8B5AA952044888800132C51 /* MyListScoreFormatter.m in Sources */,
-				2D7142301FE31DFB001FA9E9 /* Kitsu.m in Sources */,
 				593A793421AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
 				9199BAD81E89842400F6E9FF /* MainWindow.m in Sources */,
 				9199BADC1E89842400F6E9FF /* NSTextFieldNumber.m in Sources */,
@@ -2514,10 +2447,8 @@
 				59C4DAD5222438FD001EE490 /* PatreonLicenseManager.m in Sources */,
 				91044F8D211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
 				F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */,
-				F8A85912207023E40026EC0A /* AniList.m in Sources */,
 				598B453821AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
 				593A796121ADC6FE0083FA86 /* TrendingView.m in Sources */,
-				5976C09C2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				91D3D89C1E89BFEF0046C4CC /* PFAboutWindowController.m in Sources */,
 				9199BAD31E89842400F6E9FF /* GeneralPref.m in Sources */,
 				91D3D8A61E89C3E00046C4CC /* TypeNumtoStringType.m in Sources */,
@@ -2545,9 +2476,6 @@
 				59A2FD7C21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
-				F88CD0FB2072BC330093C478 /* AniListConstants.m in Sources */,
-				2DB444C41FE9875F00BE5534 /* AtarashiiDataObjects.m in Sources */,
-				2DB444BB1FE8328A00BE5534 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
 				F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
 				2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */,
@@ -2561,7 +2489,6 @@
 				597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
-				2DB444BF1FE84D7B00BE5534 /* KitsuListRetriever.m in Sources */,
 				5972405921B5816C00599AAC /* AiringNotificationManager.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
 				F888F404208F889D00C22C39 /* AuthWebView.m in Sources */,
@@ -2574,7 +2501,6 @@
 				2DAB19E91EF9F2C400420182 /* siteimage.m in Sources */,
 				2D88CA6A1FE815B600AD142E /* servicemenucontroller.m in Sources */,
 				2D71422C1FE2E32C001FA9E9 /* listservice.m in Sources */,
-				916D7FE1206ADA5A005F98E9 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				596BABBD21C00886005C3451 /* RelatedViewController.m in Sources */,
 				2D159FD01F96507800734250 /* OtherHistoryView.m in Sources */,
 				917CEC78211B2B1200259AA7 /* PatreonConstants.m in Sources */,
@@ -2606,7 +2532,6 @@
 				91F8E3A8210A46CA007137A7 /* HistoryView.m in Sources */,
 				91F8E3A9210A46CA007137A7 /* ListView.m in Sources */,
 				91F8E3AA210A46CA007137A7 /* MyListScoreFormatter.m in Sources */,
-				91F8E3AB210A46CA007137A7 /* Kitsu.m in Sources */,
 				591FC1D721C7FA17001D8684 /* NotificationManager.m in Sources */,
 				598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				91F8E3AC210A46CA007137A7 /* MainWindow.m in Sources */,
@@ -2628,10 +2553,8 @@
 				91F8E3B8210A46CA007137A7 /* MSWeakTimer.m in Sources */,
 				91F8E3B9210A46CA007137A7 /* NotLoggedIn.m in Sources */,
 				91044F8E211B23BF00DBEF57 /* AppDelegate+Patreon.m in Sources */,
-				5976C09F2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				59F356D121B6E386008C79ED /* EpisodeDetailViewController.m in Sources */,
 				91F8E3BA210A46CA007137A7 /* advancededitdialog.m in Sources */,
-				91F8E3BB210A46CA007137A7 /* AniList.m in Sources */,
 				91F8E3BD210A46CA007137A7 /* PFAboutWindowController.m in Sources */,
 				91F8E3BE210A46CA007137A7 /* GeneralPref.m in Sources */,
 				91F8E3BF210A46CA007137A7 /* TypeNumtoStringType.m in Sources */,
@@ -2656,9 +2579,6 @@
 				59A2FD7F21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
 				598B452F21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				91F8E3D3210A46CA007137A7 /* main.m in Sources */,
-				91F8E3D4210A46CA007137A7 /* AniListConstants.m in Sources */,
-				91F8E3D5210A46CA007137A7 /* AtarashiiDataObjects.m in Sources */,
-				91F8E3D6210A46CA007137A7 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				91F8E3D7210A46CA007137A7 /* AiringView.m in Sources */,
 				91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */,
 				91F8E3D9210A46CA007137A7 /* ProfileViewController.m in Sources */,
@@ -2672,7 +2592,6 @@
 				91F8E3DF210A46CA007137A7 /* SoftwareUpdatesPref.m in Sources */,
 				91F8E3E0210A46CA007137A7 /* ImportPrompt.m in Sources */,
 				593A795721ADAF410083FA86 /* TitleCollectionView.m in Sources */,
-				91F8E3E1210A46CA007137A7 /* KitsuListRetriever.m in Sources */,
 				91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */,
 				91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */,
 				91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */,
@@ -2685,7 +2604,6 @@
 				91F8E3E8210A46CA007137A7 /* siteimage.m in Sources */,
 				91F8E3E9210A46CA007137A7 /* servicemenucontroller.m in Sources */,
 				91F8E3EA210A46CA007137A7 /* listservice.m in Sources */,
-				91F8E3EB210A46CA007137A7 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				596BABC021C00886005C3451 /* RelatedViewController.m in Sources */,
 				91F8E3EC210A46CA007137A7 /* OtherHistoryView.m in Sources */,
 				917CEC79211B2B1200259AA7 /* PatreonConstants.m in Sources */,
@@ -2710,13 +2628,11 @@
 			files = (
 				F888F40A208FB1F500C22C39 /* OtherListScoreFormatter.m in Sources */,
 				598B453421AC393600F28180 /* TrendingRetriever.m in Sources */,
-				F888F40B208FB1F500C22C39 /* Kitsu.m in Sources */,
 				F888F40C208FB1F500C22C39 /* Keychain.m in Sources */,
 				59F356C521B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
 				F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */,
 				91244E8B2108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m in Sources */,
 				F888F410208FB1F500C22C39 /* ListImport.m in Sources */,
-				F888F411208FB1F500C22C39 /* AtarashiiAPIListFormatAniList.m in Sources */,
 				F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */,
 				597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				5972405B21B5816C00599AAC /* AiringNotificationManager.m in Sources */,
@@ -2739,7 +2655,6 @@
 				F888F41C208FB1F500C22C39 /* CharactersBrowser.m in Sources */,
 				F888F41D208FB1F500C22C39 /* SeasonView.m in Sources */,
 				9129254D2146D01C0011D760 /* IsAiringValueTransformer.m in Sources */,
-				F888F41F208FB1F500C22C39 /* AniListConstants.m in Sources */,
 				F888F420208FB1F500C22C39 /* XMLReader.m in Sources */,
 				91521F6C21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
 				F888F421208FB1F500C22C39 /* ProfileViewController.m in Sources */,
@@ -2749,7 +2664,6 @@
 				F888F425208FB1F500C22C39 /* MyListView.m in Sources */,
 				F888F426208FB1F500C22C39 /* SearchView.m in Sources */,
 				91244E912108BCFE00AA8F90 /* CustomListsPopover.m in Sources */,
-				F888F428208FB1F500C22C39 /* AtarashiiAPIListFormatKitsu.m in Sources */,
 				596BABBF21C00886005C3451 /* RelatedViewController.m in Sources */,
 				F888F429208FB1F500C22C39 /* Utility.m in Sources */,
 				F888F42A208FB1F500C22C39 /* MSWeakTimer.m in Sources */,
@@ -2763,7 +2677,6 @@
 				F888F42E208FB1F500C22C39 /* PFAboutWindowController.m in Sources */,
 				F888F42F208FB1F500C22C39 /* GeneralPref.m in Sources */,
 				59A2FD5621BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
-				5976C09E2208AC09003DA0D6 /* OAuthCredManager.m in Sources */,
 				F888F430208FB1F500C22C39 /* AppDelegate.m in Sources */,
 				F888F433208FB1F500C22C39 /* AniListScoreConvert.m in Sources */,
 				F888F434208FB1F500C22C39 /* ReviewView.m in Sources */,
@@ -2777,7 +2690,6 @@
 				F888F439208FB1F500C22C39 /* ratingchartview.m in Sources */,
 				F888F43A208FB1F500C22C39 /* NSTextFieldCellMiddleAligned.m in Sources */,
 				593A795621ADAF410083FA86 /* TitleCollectionView.m in Sources */,
-				F888F43B208FB1F500C22C39 /* AniList.m in Sources */,
 				F888F43C208FB1F500C22C39 /* ImportPrompt.m in Sources */,
 				F888F43D208FB1F500C22C39 /* StringDatetoDate.m in Sources */,
 				598B452E21AC392C00F28180 /* TitleInfoCache.m in Sources */,
@@ -2795,7 +2707,6 @@
 				F888F447208FB1F500C22C39 /* CharacterView.m in Sources */,
 				F888F448208FB1F500C22C39 /* EditTitle.m in Sources */,
 				F888F44B208FB1F500C22C39 /* ClientConstants.m in Sources */,
-				F888F44C208FB1F500C22C39 /* AtarashiiDataObjects.m in Sources */,
 				5972405121B57D7600599AAC /* NotificationPreferencesController.m in Sources */,
 				F888F44D208FB1F500C22C39 /* main.m in Sources */,
 				F888F44E208FB1F500C22C39 /* AiringView.m in Sources */,
@@ -2806,7 +2717,6 @@
 				F888F453208FB1F500C22C39 /* SoftwareUpdatesPref.m in Sources */,
 				F888F454208FB1F500C22C39 /* AdvancedSearch.m in Sources */,
 				F888F455208FB1F500C22C39 /* StreamPopup.m in Sources */,
-				F888F456208FB1F500C22C39 /* KitsuListRetriever.m in Sources */,
 				593A793621AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
 				59A2FD6D21BED5D80092E963 /* PersonSearchPopoverViewController.m in Sources */,
 				F888F457208FB1F500C22C39 /* InfoView.m in Sources */,
@@ -3295,6 +3205,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
@@ -3332,6 +3244,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3481,6 +3395,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
@@ -3519,6 +3435,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3587,6 +3505,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -3630,6 +3550,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
@@ -3746,6 +3668,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = (
 					"OSS=true",
@@ -3787,6 +3711,8 @@
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/MAL\\ Library",
+					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",
 					"$(PROJECT_DIR)/MAL\\ Library",

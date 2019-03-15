@@ -8,30 +8,50 @@
 
 #import "listservice.h"
 #import "Keychain.h"
-#import "OAuthCredManager.h"
+#import "ClientConstants.h"
+#import <Hakuchou/OAuthCredManager.h>
 
 @implementation listservice
+@synthesize kitsuManager;
+@synthesize anilistManager;
 /* Note: Current Service type will be specified as the following:
-         1. MyAnimeList
-         2. Kitsu
-         3. AniList */
+ 1. MyAnimeList
+ 2. Kitsu
+ 3. AniList */
 
-+ (int)getCurrentServiceID {
++ (instancetype)sharedInstance {
+    static listservice *sharedManager = nil;
+    static dispatch_once_t listservicetoken;
+    dispatch_once(&listservicetoken, ^{
+        sharedManager = [listservice new];
+    });
+    return sharedManager;
+}
+
+- (instancetype)init {
+    if (self = [super init]) {
+        anilistManager = [[AniList alloc] initWithClientId:kanilistclient withClientSecret:kanilistsecretkey];
+        kitsuManager = [[Kitsu alloc] initWithClientId:kKitsuClient withClientSecret:kKitsusecretkey];
+    }
+    return self;
+}
+
+- (int)getCurrentServiceID {
     return (int)[NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"];
 }
 
-+ (void)retrieveownListWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveownListWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveList:[self getCurrentServiceUsername] listType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu retrieveOwnLisWithType:type completion:completionHandler error:errorHandler];
+            [kitsuManager retrieveOwnLisWithType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList retrieveList:[self getCurrentServiceUsername] listType:type completion:completionHandler error:errorHandler];
+            [anilistManager retrieveList:[self getCurrentServiceUsername] listType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -40,18 +60,18 @@
     }
 }
 
-+ (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveList:username listType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu retrieveList:username listType:type completion:completionHandler error:errorHandler];
+            [kitsuManager retrieveList:username listType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList retrieveList:username listType:type completion:completionHandler error:errorHandler];
+            [anilistManager retrieveList:username listType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -60,7 +80,7 @@
     }
 }
 
-+ (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveAiringSchedule:completionHandler error:errorHandler];
@@ -80,18 +100,18 @@
     }
 }
 
-+ (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            [kitsuManager searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            [anilistManager searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -100,7 +120,7 @@
     }
 }
 
-+ (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)advsearchTitle:(NSString *)searchterm withType:(int)type withGenres:(NSString *)genres excludeGenres:(bool)exclude startDate:(NSDate *)startDate endDate:(NSDate *)endDate minScore:(int)minscore rating:(int)rating withStatus:(int)status completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList advsearchTitle:searchterm withType:type withGenres:genres excludeGenres:exclude startDate:startDate endDate:endDate minScore:minscore rating:rating withStatus:status completion:completionHandler error:errorHandler];
@@ -112,18 +132,18 @@
     }
 }
 
-+ (void)retrieveTitleInfo:(int)titleid withType:(int)type useAccount:(bool)useAccount completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveTitleInfo:(int)titleid withType:(int)type useAccount:(bool)useAccount completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveTitleInfo:titleid withType:type useAccount:useAccount completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
+            [kitsuManager retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
+            [anilistManager retrieveTitleInfo:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -132,18 +152,18 @@
     }
 }
 
-+ (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
+            [kitsuManager retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
+            [anilistManager retrieveReviewsForTitle:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -152,7 +172,7 @@
     }
 }
 
-+ (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retriveUpdateHistory:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retriveUpdateHistory:username completion:completionHandler error:errorHandler];
@@ -169,7 +189,7 @@
     }
 }
 
-+ (bool)verifyAccount {
+- (bool)verifyAccount {
     switch ([self getCurrentServiceID]) {
         case 1: {
             return [MyAnimeList verifyAccount];
@@ -181,23 +201,23 @@
     return false;
 }
 
-+ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     [self verifyAccountWithUsername:username password:password withServiceID:[self getCurrentServiceID] completion:completionHandler error:errorHandler];
-
+    
 }
 
-+ (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)verifyAccountWithUsername:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch (serviceid) {
         case 1: {
             [MyAnimeList verifyAccountWithUsername:username password:password completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu verifyAccountWithUsername:username password:password completion:completionHandler error:errorHandler];
+            [kitsuManager verifyAccountWithUsername:username password:password completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList verifyAccountWithPin:password completion:completionHandler error:errorHandler];
+            [anilistManager verifyAccountWithPin:password completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -206,18 +226,18 @@
     }
 }
 
-+ (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveProfile:(NSString *)username completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveProfile:username completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu retrieveProfile:username completion:completionHandler error:errorHandler];
+            [kitsuManager retrieveProfile:username completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList retrieveProfile:username completion:completionHandler error:errorHandler];
+            [anilistManager retrieveProfile:username completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -226,18 +246,18 @@
     }
 }
 
-+ (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)addAnimeTitleToList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            [kitsuManager addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            [anilistManager addAnimeTitleToList:titleid withEpisode:episode withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -246,18 +266,18 @@
     }
 }
 
-+ (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)addMangaTitleToList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            [kitsuManager addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
+            [anilistManager addMangaTitleToList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -266,18 +286,18 @@
     }
 }
 
-+ (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)updateAnimeTitleOnList:(int)titleid withEpisode:(int)episode withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
+            [kitsuManager updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
+            [anilistManager updateAnimeTitleOnList:titleid withEpisode:episode withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -286,18 +306,18 @@
     }
 }
 
-+ (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)updateMangaTitleOnList:(int)titleid withChapter:(int)chapter withVolume:(int)volume withStatus:(NSString *)status withScore:(int)score withExtraFields:(NSDictionary *)efields completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
+            [kitsuManager updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
+            [anilistManager updateMangaTitleOnList:titleid withChapter:chapter withVolume:volume withStatus:status withScore:score withExtraFields:efields completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -306,18 +326,18 @@
     }
 }
 
-+ (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)removeTitleFromList:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            [Kitsu removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
+            [kitsuManager removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
+            [anilistManager removeTitleFromList:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -326,17 +346,17 @@
     }
 }
 
-+ (void)retrieveTitleIdsWithlistType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveTitleIdsWithlistType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             break;
         }
         case 2: {
-            [Kitsu retrieveTitleIdsWithlistType:type completion:completionHandler error:errorHandler];
+            [kitsuManager retrieveTitleIdsWithlistType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 3: {
-            [AniList retrieveTitleIdsWithlistType:type completion:completionHandler error:errorHandler];
+            [anilistManager retrieveTitleIdsWithlistType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -345,7 +365,7 @@
     }
 }
 
-+ (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrievemessagelist:(int)page completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrievemessagelist:page completionHandler:completionHandler error:errorHandler];
@@ -363,7 +383,7 @@
     }
 }
 
-+ (void)retrievemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrievemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrievemessage:messageid completionHandler:completionHandler error:errorHandler];
@@ -381,7 +401,7 @@
     }
 }
 
-+ (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)sendmessage:(NSString *)username withSubject:(NSString *)subject withMessage:(NSString *)message withthreadID:(int)threadid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList sendmessage:username withSubject:subject withMessage:message withthreadID:threadid completionHandler:completionHandler error:errorHandler];
@@ -399,7 +419,7 @@
     }
 }
 
-+ (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)deletemessage:(int)messageid completionHandler:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList deletemessage:messageid completionHandler:completionHandler error:errorHandler];
@@ -417,25 +437,25 @@
     }
 }
 
-+ (void)retrieveStaff:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrieveStaff:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrieveStaff:titleid completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
-            //[Kitsu retrieveStaff:titleid completion:completionHandler error:errorHandler];
-            /*[Kitsu retrieveTitleInfo:titleid withType:KitsuAnime completion:^(id responseObject) {
-                [TitleIdConverter getMALIDFromKitsuId:titleid withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:KitsuAnime completionHandler:^(int malid) {
-                    [MyAnimeList retrieveStaff:malid completion:completionHandler error:errorHandler];
-                } error:errorHandler];
-            } error:^(NSError *error) {
-                errorHandler(error);
-            }];*/
+            //[kitsuManager retrieveStaff:titleid completion:completionHandler error:errorHandler];
+            /*[kitsuManager retrieveTitleInfo:titleid withType:KitsuAnime completion:^(id responseObject) {
+             [TitleIdConverter getMALIDFromKitsuId:titleid withTitle:responseObject[@"title"] titletype:responseObject[@"type"] withType:KitsuAnime completionHandler:^(int malid) {
+             [MyAnimeList retrieveStaff:malid completion:completionHandler error:errorHandler];
+             } error:errorHandler];
+             } error:^(NSError *error) {
+             errorHandler(error);
+             }];*/
             break;
         }
         case 3: {
-            [AniList retrieveStaff:titleid withType:type completion:completionHandler error:errorHandler];
+            [anilistManager retrieveStaff:titleid withType:type completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -443,7 +463,7 @@
         }
     }
 }
-+ (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)retrievePersonDetails:(int)personid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
             [MyAnimeList retrievePersonDetails:personid completion:completionHandler error:errorHandler];
@@ -454,7 +474,7 @@
             break;
         }
         case 3: {
-            [AniList retrievePersonDetails:personid completion:completionHandler error:errorHandler];
+            [anilistManager retrievePersonDetails:personid completion:completionHandler error:errorHandler];
             break;
         }
         default: {
@@ -463,11 +483,11 @@
     }
 }
 
-+ (NSString *)retrieveListFileName:(int)type {
+- (NSString *)retrieveListFileName:(int)type {
     return [self retrieveListFileName:type withServiceID:[self getCurrentServiceID]];
 }
 
-+ (NSString *)retrieveListFileName:(int)type withServiceID:(int)serviceid {
+- (NSString *)retrieveListFileName:(int)type withServiceID:(int)serviceid {
     NSDictionary *usernames = [self getAllUserNames];
     switch (serviceid) {
         case 1: {
@@ -504,11 +524,11 @@
     return @"";
 }
 
-+ (id)retrieveHistoryFileName {
+- (id)retrieveHistoryFileName {
     return [self retrieveHistoryFileName:[self getCurrentServiceID]];
 }
 
-+ (id)retrieveHistoryFileName:(int)serviceid {
+- (id)retrieveHistoryFileName:(int)serviceid {
     NSDictionary *usernames = [self getAllUserNames];
     switch (serviceid) {
         case 1: {
@@ -519,7 +539,7 @@
         }
         case 3: {
             return [NSString stringWithFormat:@"anilist-history-%@.json",usernames[@"anilist"]];
-
+            
         }
         default: {
             break;
@@ -528,20 +548,20 @@
     return @"";
 }
 
-+ (bool)checkAccountForCurrentService {
-    int service = [listservice getCurrentServiceID];
+- (bool)checkAccountForCurrentService {
+    int service = [listservice.sharedInstance getCurrentServiceID];
     switch (service) {
         case 1:
             return ([Keychain checkaccount]);
         case 2:
         case 3:
-            return [OAuthCredManager.sharedInstance getFirstAccountForService:service];
+            return ([OAuthCredManager.sharedInstance getFirstAccountForService:service]);
         default:
             return true;
     }
 }
 
-+ (NSString *)getCurrentServiceUsername {
+- (NSString *)getCurrentServiceUsername {
     switch ([self getCurrentServiceID]) {
         case 1:
             return [Keychain getusername];
@@ -555,20 +575,20 @@
     return @"";
 }
 
-+ (NSDictionary *)getAllUserNames {
+- (NSDictionary *)getAllUserNames {
     NSString *kitsuusername = [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
     NSString *anilistusername = [NSUserDefaults.standardUserDefaults valueForKey:@"anilist-username"];
     return @{ @"myanimelist" : [Keychain getusername] ? [Keychain getusername] : [NSNull null], @"kitsu" : kitsuusername && kitsuusername.length > 0 ? kitsuusername : [NSNull null], @"anilist" : anilistusername && anilistusername.length > 0 ? anilistusername : [NSNull null] };
 }
 
-+ (NSDictionary *)getAllUserID {
+- (NSDictionary *)getAllUserID {
     int kitsuid = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"kitsu-userid"];
     int anilistid = (int)[NSUserDefaults.standardUserDefaults integerForKey:@"anilist-userid"];
     return @{ @"kitsu" : kitsuid > 0 ? @(kitsuid) : [NSNull null], @"anilist" :  anilistid > 0 ? @(anilistid) : [NSNull null]};
 }
 
 
-+ (NSString *)currentservicename {
+- (NSString *)currentservicename {
     switch ([self getCurrentServiceID]) {
         case 1:
             return @"MyAnimeList";
@@ -582,7 +602,7 @@
     return @"";
 }
 
-+ (int)getCurrentUserID {
+- (int)getCurrentUserID {
     switch ([self getCurrentServiceID]) {
         case 1:
             return -1;
@@ -594,7 +614,7 @@
             return -1;
     }
 }
-+ (NSString *)getCurrentUserAvatar {
+- (NSString *)getCurrentUserAvatar {
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     switch ([self getCurrentServiceID]) {
         case 1:

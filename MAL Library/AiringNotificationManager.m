@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "AtarashiiListCoreData.h"
 #import "listservice.h"
-#import "AniListConstants.h"
+#import <Hakuchou/AniListConstants.h>
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
 #import <UserNotifications/UserNotifications.h>
@@ -77,7 +77,7 @@
         }
     }
     else if ([notification.name isEqualToString:@"UserLoggedOut"]) {
-        if (service == [listservice getCurrentServiceID]) {
+        if (service == [listservice.sharedInstance getCurrentServiceID]) {
             [self clearNotifyList];
         }
     }
@@ -134,7 +134,7 @@
     NSArray *list;
     switch (service) {
         case 1: {
-            NSDictionary *udict = [listservice getAllUserNames];
+            NSDictionary *udict = [listservice.sharedInstance getAllUserNames];
             if (udict[@"myanimelist"] != [NSNull null]) {
                 list = [AtarashiiListCoreData retrieveEntriesForUserName:udict[@"myanimelist"] withService:1 withType:0 withPredicate:[NSPredicate predicateWithFormat:@"status ==[c] %@ AND (watched_status ==[c] %@ OR watched_status ==[c] %@)", @"currently airing", @"watching", @"plan to watch"]];
                 break;
@@ -143,7 +143,7 @@
         }
         case 2:
         case 3: {
-            NSDictionary *uiddict = [listservice getAllUserID];
+            NSDictionary *uiddict = [listservice.sharedInstance getAllUserID];
             int uid = 0;
             switch (service) {
                 case 2: {

@@ -61,7 +61,7 @@
 
 - (void)loadTrending:(bool)refreshing {
     [self showloading:YES];
-    [TrendingRetriever getTrendListForService:[listservice getCurrentServiceID] withType:(int)_trendingtype.selectedSegment shouldRefresh:refreshing completion:^(id  _Nonnull responseobject) {
+    [TrendingRetriever getTrendListForService:[listservice.sharedInstance getCurrentServiceID] withType:(int)_trendingtype.selectedSegment shouldRefresh:refreshing completion:^(id  _Nonnull responseobject) {
         self.items = responseobject;
         [self.collectionview reloadData];
         [self showloading:NO];

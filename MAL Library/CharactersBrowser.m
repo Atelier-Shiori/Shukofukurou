@@ -142,7 +142,7 @@
 }
 
 - (IBAction)vieonmal:(id)sender {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (_characterviewcontroller.persontype == PersonCharacter) {
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i",_characterviewcontroller.selectedid]]];
@@ -173,7 +173,7 @@
 - (IBAction)share:(id)sender {
     //Generate Items to Share
     NSArray *shareItems = @[];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (_characterviewcontroller.persontype == PersonCharacter) {
                 shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", [Utility convertNameFormat:_characterviewcontroller.charactername.stringValue]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/character/%i", _characterviewcontroller.selectedid]]];
@@ -204,7 +204,7 @@
 - (void)retrievecharacterinformation:(int)idnum {
     [self replaceMainViewSubViewWithView:_noselectionview];
     [self startstopanimation:true];
-    [AniList retrieveCharacterDetails:idnum completion:^(id responseObject) {
+    [listservice.sharedInstance.anilistManager retrieveCharacterDetails:idnum completion:^(id responseObject) {
         self.characterviewcontroller.persontype = PersonCharacter;
         [self startstopanimation:false];
         [_characterviewcontroller populateStaffInformation:responseObject];
@@ -220,7 +220,7 @@
 - (void)retrievestaffinformation:(int)idnum {
     [self replaceMainViewSubViewWithView:_noselectionview];
     [self startstopanimation:true];
-    [listservice retrievePersonDetails:idnum completion:^(id responseObject){
+    [listservice.sharedInstance retrievePersonDetails:idnum completion:^(id responseObject){
         self.characterviewcontroller.persontype = PersonStaff;
         [self startstopanimation:false];
         [_characterviewcontroller populateStaffInformation:responseObject];

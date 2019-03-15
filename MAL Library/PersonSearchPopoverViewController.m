@@ -39,7 +39,7 @@
         [_tableview reloadData];
     }
     else {
-        [AniList searchPeople:_searchterm withType:(int)_searchtype.selectedSegment completion:^(id responseObject) {
+        [listservice.sharedInstance.anilistManager searchPeople:_searchterm withType:(int)_searchtype.selectedSegment completion:^(id responseObject) {
             _searchcontent = responseObject;
             [_tableview reloadData];
         } error:^(NSError *error) {

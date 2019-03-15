@@ -1,6 +1,6 @@
 //
 //  OAuthCredManager.h
-//  Shukofukurou
+//  Shukofukurou-IOS
 //
 //  Created by 香風智乃 on 2/4/19.
 //  Copyright © 2019 MAL Updater OS X Group. All rights reserved.
@@ -11,12 +11,13 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface OAuthCredManager : NSObject
-@property (strong, nullable) AFOAuthCredential *AniListCredential;
-@property (strong, nullable) AFOAuthCredential *KitsuCredential;
+@property (strong) AFOAuthCredential *AniListCredential;
+@property (strong) AFOAuthCredential *KitsuCredential;
 + (instancetype)sharedInstance;
 - (AFOAuthCredential *)getFirstAccountForService:(int)service;
 - (AFOAuthCredential *)saveCredentialForService:(int)service withCredential:(AFOAuthCredential *)cred;
 - (bool)removeCredentialForService:(int)service;
+- (void)fixkeychainaccessability;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,7 +8,7 @@
 
 #import "AiringView.h"
 #import "AiringSchedule.h"
-#import "AtarashiiAPIListFormatAniList.h"
+#import <Hakuchou/AtarashiiAPIListFormatAniList.h>
 #import <AFNetworking/AFNetworking.h>
 #import "Utility.h"
 #import "NSTableViewAction.h"
@@ -107,7 +107,7 @@
     if (_airingtb.selectedRow >=0) {
         if (_airingtb.selectedRow >-1) {
             NSDictionary *d = _airingarraycontroller.selectedObjects[0];
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1: {
                     [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : d[@"idMal"], @"type" : @(0)}];
                     break;
@@ -118,7 +118,7 @@
                             [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : @(((NSNumber *)titleid).intValue), @"type" : @(0)}];
                         }
                         else {
-                            [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
+                            [Utility showsheetmessage:[NSString stringWithFormat:@"%@ could't be found on %@", d[@"title"], [listservice.sharedInstance currentservicename]] explaination:@"Try searching for this title instead"  window:self.view.window];
                         }
                     }];
                     break;

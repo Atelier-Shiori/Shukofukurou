@@ -38,12 +38,12 @@
     NSArray *entries;
     switch (service) {
         case 1: {
-            entries = [self retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:service withType:type withPredicate:[NSPredicate predicateWithFormat:@"id == %i", titleid]];
+            entries = [self retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:service withType:type withPredicate:[NSPredicate predicateWithFormat:@"id == %i", titleid]];
             break;
         }
         case 2:
         case 3:
-            entries = [self retrieveEntriesForUserId:[listservice getCurrentUserID] withService:service withType:type withPredicate:[NSPredicate predicateWithFormat:@"id == %i", titleid]];
+            entries = [self retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:service withType:type withPredicate:[NSPredicate predicateWithFormat:@"id == %i", titleid]];
             break;
     }
     if (entries.count > 0) {
@@ -323,7 +323,7 @@
     bool startdatessame = false;
     bool enddatessame = false;
     bool iseithercommentsempty = false;
-    int currentlistservice = [listservice getCurrentServiceID];
+    int currentlistservice = [listservice.sharedInstance getCurrentServiceID];
     switch (type) {
         case 0: {
             same = [entry[@"episodes"] isEqualToNumber:[existingEntry valueForKey:@"episodes"]] && [entry[@"watched_episodes"] isEqualToNumber:[existingEntry valueForKey:@"watched_episodes"]] && [entry[@"score"] isEqualToNumber:[existingEntry valueForKey:@"score"]] && [entry[@"rewatching"] isEqualToNumber:[existingEntry valueForKey:@"rewatching"]] && [entry[@"rewatch_count"] isEqualToNumber:[existingEntry valueForKey:@"rewatch_count"]] && [entry[@"status"] isEqualToString:[existingEntry valueForKey:@"status"]] && [entry[@"watched_status"] isEqualToString:[existingEntry valueForKey:@"watched_status"]] && [entry[@"last_updated"] isEqualToNumber:[existingEntry valueForKey:@"last_updated"]];

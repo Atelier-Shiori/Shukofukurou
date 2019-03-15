@@ -51,10 +51,10 @@
     }
     [self cleartableview];
     [self toggleprogresswheel:YES];
-    [listservice retrieveReviewsForTitle:idnum withType:type completion:^(id responsedata) {
+    [listservice.sharedInstance retrieveReviewsForTitle:idnum withType:type completion:^(id responsedata) {
         _selectedid = idnum;
         _selectedtype = type;
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 3:
                 self.window.title = [NSString stringWithFormat:@"Reviews - %@", title];
@@ -70,7 +70,7 @@
     } error:^(NSError *error) {
         [self toggleprogresswheel:NO];
         NSAlert *alert = [[NSAlert alloc] init];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 3:
                 [alert setMessageText:NSLocalizedString(@"Couldn't Load Reviews",nil)];
@@ -92,7 +92,7 @@
 
 - (void)toggleprogresswheel:(bool)state{
     if (state) {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 3:
                 _selectreviewlabel.stringValue = @"Loading Reviews...";
@@ -116,7 +116,7 @@
     [a removeAllObjects];
     [_reviewtb reloadData];
     [_reviewtb deselectAll:self];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
         case 3:
             self.window.title = @"Reviews";
@@ -134,7 +134,7 @@
     [_reviewtb reloadData];
     [_reviewtb deselectAll:self];
     if ([_reviewarraycontroller mutableArrayValueForKey:@"content"].count > 0) {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 3:
                 _selectreviewlabel.stringValue = @"Please select a review.";
@@ -147,7 +147,7 @@
         }
     }
     else {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 3:
                 _selectreviewlabel.stringValue = @"No reviews.";

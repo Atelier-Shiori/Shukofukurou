@@ -72,7 +72,7 @@
     [self showloading:YES];
     [_arraycontroller.content removeAllObjects];
     [_tableview reloadData];
-    [Kitsu retrieveEpisodesList:titleid completion:^(id responseObject) {
+    [listservice.sharedInstance.kitsuManager retrieveEpisodesList:titleid completion:^(id responseObject) {
         [_arraycontroller addObjects:responseObject];
         [_tableview reloadData];
         [_tableview deselectAll:self];
@@ -125,7 +125,7 @@
     if (_tableview.selectedRow > -1) {
         NSDictionary *episodedetail = _arraycontroller.selectedObjects[0];
         [self showloading:YES];
-        [Kitsu retrieveEpisodeDetails:((NSNumber *)episodedetail[@"episodeId"]).intValue completion:^(id responseObject) {
+        [listservice.sharedInstance.kitsuManager retrieveEpisodeDetails:((NSNumber *)episodedetail[@"episodeId"]).intValue completion:^(id responseObject) {
             [_contentview replaceSubview:_contentview.subviews[0] with:_episodedetailvc.view];
             _episodedetailvc.view.frame = _contentview.frame;
             [_episodedetailvc.view setFrameOrigin:NSMakePoint(0, 0)];

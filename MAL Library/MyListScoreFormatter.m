@@ -21,7 +21,7 @@
     
     if ([value respondsToSelector:@selector(integerValue)]) {
         int rating = [value intValue];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 return @(rating).stringValue;
             case 2:

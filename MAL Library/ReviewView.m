@@ -39,7 +39,7 @@
 }
 
 - (void)loadReview:(NSDictionary *)review type:(int)type {
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     _reviewerusername.stringValue = review[@"username"];
     if (currentservice == 2) {
         _profile_username = review[@"actual_username"];
@@ -119,7 +119,7 @@
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         ProfileWindowController *pwc = [(AppDelegate *)NSApplication.sharedApplication.delegate getProfileWindow];
         [pwc.window makeKeyAndOrderFront:self];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 [pwc loadProfileWithUsername:_reviewerusername.stringValue];
                 break;
@@ -134,7 +134,7 @@
         }
     }
     else {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_reviewerusername.stringValue]]];
                 break;

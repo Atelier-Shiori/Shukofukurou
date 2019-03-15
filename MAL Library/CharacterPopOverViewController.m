@@ -111,7 +111,7 @@
 
 - (void)retrievestafflist:(int)idnum withType:(int)type {
     [self showprogressindicator:YES];
-    [listservice retrieveStaff:idnum withType:type completion:^(id responseObject) {
+    [listservice.sharedInstance retrieveStaff:idnum withType:type completion:^(id responseObject) {
         [self generateSourceList:responseObject];
         _selectedtitleid = idnum;
         _currenttype = type;

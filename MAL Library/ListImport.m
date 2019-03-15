@@ -58,7 +58,7 @@
     _progressbar.doubleValue = _progress;
     _progresspercentage.stringValue = [NSString stringWithFormat:@"%i%%",(int)(_progressbar.doubleValue/_progressbar.maxValue*100)];
     // Wait Time
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 3:
             [NSThread sleepForTimeInterval:0.5f];
             break;
@@ -113,7 +113,7 @@
 }
 #pragma mark MyAnimeList Import
 - (IBAction)importMALList:(id)sender{
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         NSOpenPanel * op = [NSOpenPanel openPanel];
         op.allowedFileTypes = @[@"xml", @"Extended Markup Language file"];
         op.message = @"Please select a MAL XML List to import.";
@@ -144,13 +144,13 @@
                        if (d[@"anime"]) {
                            _importlisttype = MALAnime;
                            _listimport = d[@"anime"];
-                           switch ([listservice getCurrentServiceID]) {
+                           switch ([listservice.sharedInstance getCurrentServiceID]) {
                                case 1:
-                                   _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                   _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                                    break;
                                case 2:
                                case 3:
-                                   _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                   _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                                    break;
                            }
                        }
@@ -158,13 +158,13 @@
                            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
                            _importlisttype = MALManga;
                            _listimport = d[@"manga"];
-                               switch ([listservice getCurrentServiceID]) {
+                               switch ([listservice.sharedInstance getCurrentServiceID]) {
                                    case 1:
-                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga][@"manga"];
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga][@"manga"];
                                        break;
                                    case 2:
                                    case 3:
-                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga][@"manga"];
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga][@"manga"];
                                        break;
                                }
                            }
@@ -200,7 +200,7 @@
 - (void)importAnimeMALEntry {
     if (_listimport.count > 0) {
         NSDictionary *d = _listimport[_progress];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
                 if ([self checkiftitleisonlist:((NSString *)d[@"series_animedb_id"][@"text"]).intValue]) {
                     if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
@@ -268,7 +268,7 @@
 - (void)importMangaMALEntry {
     if (_listimport.count > 0) {
         NSDictionary *d = _listimport[_progress];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
                 if ([self checkiftitleisonlist:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue]) {
                     if (_replaceexisting || ((NSString *)d[@"update_on_import"][@"text"]).intValue == 1) {
@@ -335,7 +335,7 @@
 
 #pragma mark Anidb Import
 - (IBAction)importAniDBList:(id)sender {
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         NSOpenPanel * op = [NSOpenPanel openPanel];
         op.allowedFileTypes = @[@"XML", @"Extended Markup File file"];
         op.message = @"Please select the exported AniDB XML List file to import.";
@@ -367,13 +367,13 @@
                                }
                                _listtype = @"anidb";
                                _importlisttype = MALAnime;
-                               switch ([listservice getCurrentServiceID]) {
+                               switch ([listservice.sharedInstance getCurrentServiceID]) {
                                    case 1:
-                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                                        break;
                                    case 2:
                                    case 3:
-                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                                       _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                                        break;
                                }
                                [self importsetup];
@@ -392,7 +392,7 @@
 }
 - (void)performAniDBListImport {
     NSDictionary *entry = _listimport[_progress];
-    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:4 withTitleId:(NSString *)entry[@"animenfoid"][@"text"] withTargetServiceId:[listservice getCurrentServiceID] withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
+    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:4 withTitleId:(NSString *)entry[@"animenfoid"][@"text"] withTargetServiceId:[listservice.sharedInstance getCurrentServiceID] withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
         if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
             [self performMALUpdatefromAniDBEntry:entry withMALID:((NSNumber *)titleid).intValue];
         }
@@ -419,7 +419,7 @@
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
             int tmpid = 0;
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     tmpid = malid;
                     break;
@@ -430,7 +430,7 @@
                 default:
                     break;
             }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:watchedeps withStatus:status withScore:0 withExtraFields:nil completion:^(id responseObject){
+            [listservice.sharedInstance updateAnimeTitleOnList:tmpid withEpisode:watchedeps withStatus:status withScore:0 withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -441,7 +441,7 @@
         }
     }
     else {
-        [listservice addAnimeTitleToList:malid withEpisode:watchedeps withStatus:status withScore:0 completion:^(id responseObject){
+        [listservice.sharedInstance addAnimeTitleToList:malid withEpisode:watchedeps withStatus:status withScore:0 completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
             [self incrementProgress:entry withTitle:entry[@"name"][@"text"]];
@@ -451,7 +451,7 @@
 
 #pragma mark Kitsu Import
 - (IBAction)importKitsu:(id)sender {
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         if (!_importprompt){
             _importprompt = [ImportPrompt new];
         }
@@ -477,19 +477,19 @@
 
 
 - (void)startKitsuImport:(NSString *)username {
-    [Kitsu retrieveList:username listType:KitsuAnime completion:^(id responseObject) {
+    [listservice.sharedInstance.kitsuManager retrieveList:username listType:KitsuAnime completion:^(id responseObject) {
         _listimport = responseObject[@"anime"];
         _tmplist = nil;
         _listtype = @"kitsu";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                 break;
             case 2:
             case 3:
-                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                 break;
         }
         [self importsetup];
@@ -500,7 +500,7 @@
 }
 - (void)performKitsuImport {
     NSDictionary *entry = _listimport[_progress];
-    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:2 withTitleId:((NSNumber *)entry[@"id"]).stringValue withTargetServiceId:[listservice getCurrentServiceID] withType:_importlisttype completionHandler:^(id  _Nonnull titleid, bool success) {
+    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:2 withTitleId:((NSNumber *)entry[@"id"]).stringValue withTargetServiceId:[listservice.sharedInstance getCurrentServiceID] withType:_importlisttype completionHandler:^(id  _Nonnull titleid, bool success) {
         if (success && titleid && titleid != [NSNull null]  && ((NSNumber *)titleid).intValue > 0) {
             [self performListServiceUpdateFromKitsuEntry:entry withID:((NSNumber *)titleid).intValue];
         }
@@ -512,11 +512,11 @@
 
 - (void)performListServiceUpdateFromKitsuEntry:(NSDictionary *)entry withID:(int)titleid{
     int score = 0;
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     int tmpid = titleid;
     NSString *status = entry[@"watched_status"];
     if (((NSNumber *)entry[@"score"]).intValue > 0) {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 score = [self translateKitsuTwentyScoreToMAL:((NSNumber *)entry[@"score"]).intValue];
                 break;
@@ -533,7 +533,7 @@
             if (currentservice == 3) {
                 tmpid = [self retrieveentryidfortitleid:tmpid];
             }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withExtraFields:nil completion:^(id responseObject){
+            [listservice.sharedInstance updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"title"]];
@@ -544,7 +544,7 @@
         }
     }
     else {
-        [listservice addAnimeTitleToList:titleid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+        [listservice.sharedInstance addAnimeTitleToList:titleid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
             [self incrementProgress:entry withTitle:entry[@"title"]];
@@ -554,7 +554,7 @@
 
 #pragma mark AniList Import
 - (IBAction)importAnilist:(id)sender {
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         if (!_importprompt){
             _importprompt = [ImportPrompt new];
         }
@@ -580,18 +580,18 @@
 }
 
 - (void)startAnilist:(NSString *)username {
-    [AniList retrieveList:username listType:AniListAnime completion:^(id responseObject) {
+    [listservice.sharedInstance.anilistManager retrieveList:username listType:AniListAnime completion:^(id responseObject) {
         _listimport = responseObject[@"anime"];
         _listtype = @"anilist";
         _importlisttype = MALAnime;
         _replaceexisting = (_importprompt.replaceexisting.state == NSOnState);
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                 break;
             case 2:
             case 3:
-                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime][@"anime"];
+                _existinglist = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime][@"anime"];
                 break;
         }
         [self importsetup];
@@ -604,7 +604,7 @@
 
 - (void)performAnilistImport {
     __block NSDictionary *entry = _listimport[_progress];
-    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)entry[@"id"]).stringValue withTargetServiceId:[listservice getCurrentServiceID] withType:_importlisttype completionHandler:^(id  _Nonnull titleid, bool success) {
+    [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)entry[@"id"]).stringValue withTargetServiceId:[listservice.sharedInstance getCurrentServiceID] withType:_importlisttype completionHandler:^(id  _Nonnull titleid, bool success) {
         if (success && titleid && titleid != [NSNull null]  && ((NSNumber *)titleid).intValue > 0) {
             [self performMALUpdateFromAnilistEntry:entry withMALID:((NSNumber *)titleid).intValue];
         }
@@ -617,7 +617,7 @@
     int score = 0;
     NSString *status = entry[@"watched_status"];
     if (entry[@"score"]) {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 score = ((NSNumber *)entry[@"score"]).intValue/10;
                 break;
@@ -631,7 +631,7 @@
     if ([self checkiftitleisonlist:malid]) {
         if (_replaceexisting) {
             int tmpid = 0;
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     tmpid = malid;
                     break;
@@ -641,7 +641,7 @@
                 default:
                     break;
             }
-            [listservice updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withExtraFields:nil completion:^(id responseObject){
+            [listservice.sharedInstance updateAnimeTitleOnList:tmpid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score withExtraFields:nil completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(id error){
                 [self incrementProgress:entry withTitle:entry[@"title"]];
@@ -652,7 +652,7 @@
         }
     }
     else {
-        [listservice addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
+        [listservice.sharedInstance addAnimeTitleToList:malid withEpisode:((NSNumber *)entry[@"watched_episodes"]).intValue withStatus:status withScore:score completion:^(id responseObject){
             [self incrementProgress:nil withTitle:nil];
         }error:^(id error){
             [self incrementProgress:entry withTitle:entry[@"title"]];
@@ -776,10 +776,10 @@
 }
 
 - (void)performanimetitleadd:(int)titleid withEpisode:(int)episodenum withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
-    [listservice addAnimeTitleToList:titleid withEpisode:episodenum withStatus:status withScore:score  completion:^(id responseobject){
-        if (tags.length > 0 && [listservice getCurrentServiceID] == 1) {
+    [listservice.sharedInstance addAnimeTitleToList:titleid withEpisode:episodenum withStatus:status withScore:score  completion:^(id responseobject){
+        if (tags.length > 0 && [listservice.sharedInstance getCurrentServiceID] == 1) {
             // Set Tags by updating the entry
-            [listservice updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withExtraFields:@{@"tags" : tags} completion:^(id responseobject) {
+            [listservice.sharedInstance updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withExtraFields:@{@"tags" : tags} completion:^(id responseobject) {
                 [self incrementProgress:nil withTitle:nil];
             }error:^(NSError *error){
                 [self incrementProgress:nil withTitle:nil];
@@ -795,8 +795,8 @@
 }
 
 - (void)performanimetitleupdate:(int)titleid withEpisode:(int)episodenum withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
-    NSDictionary *efields = [listservice getCurrentServiceID] == 1 ? @{@"tags" : tags} : @{};
-    [listservice updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withExtraFields:efields completion:^(id responseobject) {
+    NSDictionary *efields = [listservice.sharedInstance getCurrentServiceID] == 1 ? @{@"tags" : tags} : @{};
+    [listservice.sharedInstance updateAnimeTitleOnList:titleid withEpisode:episodenum withStatus:status withScore:score withExtraFields:efields completion:^(id responseobject) {
         [self incrementProgress:nil withTitle:nil];
     }error:^(NSError *error){
         NSLog(@"%@", error.localizedDescription);
@@ -805,10 +805,10 @@
 }
 
 - (void)performmangatitleadd:(int)titleid withChapter:(int)chapters withVolumes:(int)volumes withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
-    [listservice addMangaTitleToList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score completion:^(id responseObject){
-        if (d[@"my_tags"][@"text"] && [listservice getCurrentServiceID] == 1) {
+    [listservice.sharedInstance addMangaTitleToList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score completion:^(id responseObject){
+        if (d[@"my_tags"][@"text"] && [listservice.sharedInstance getCurrentServiceID] == 1) {
             // Set Tags by updating the entry
-            [listservice updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withExtraFields:@{@"tags" : d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @""} completion:^(id responseObject){
+            [listservice.sharedInstance updateMangaTitleOnList:((NSString *)d[@"manga_mangadb_id"][@"text"]).intValue withChapter:((NSString *)d[@"my_read_chapters"][@"text"]).intValue withVolume:((NSString *)d[@"my_read_volumes"][@"text"]).intValue withStatus:((NSString *)d[@"my_status"][@"text"]).lowercaseString withScore:((NSString *)d[@"my_score"][@"text"]).intValue withExtraFields:@{@"tags" : d[@"my_tags"][@"text"] ? d[@"my_tags"][@"text"] : @""} completion:^(id responseObject){
                 [self incrementProgress:nil withTitle:nil];
             }error:^(NSError *error){
                 [self incrementProgress:nil withTitle:nil];
@@ -823,8 +823,8 @@
 }
 
 - (void)performmangatitleupdate:(int)titleid withChapter:(int)chapters withVolumes:(int)volumes withStatus:(NSString *)status withTags:(NSString *)tags withScore:(int)score withDictionary:(NSDictionary *)d withTitle:(NSString *)title {
-    NSDictionary *efields = [listservice getCurrentServiceID] == 1 ? @{@"tags" : tags} : @{};
-    [listservice updateMangaTitleOnList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score withExtraFields:efields completion:^(id responseObject){
+    NSDictionary *efields = [listservice.sharedInstance getCurrentServiceID] == 1 ? @{@"tags" : tags} : @{};
+    [listservice.sharedInstance updateMangaTitleOnList:titleid withChapter:chapters withVolume:volumes withStatus:status withScore:score withExtraFields:efields completion:^(id responseObject){
         [self incrementProgress:nil withTitle:nil];
     }error:^(NSError *error){
         [self incrementProgress:d withTitle:title];

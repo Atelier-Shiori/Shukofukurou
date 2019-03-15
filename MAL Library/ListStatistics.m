@@ -60,30 +60,30 @@
 
 -(void)populateValues {
     NSDictionary *anime;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            anime = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime];
+            anime = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime];
             break;
         case 2:
         case 3:
-            anime = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALAnime];
+            anime = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime];
             break;
     }
-    [_ratingstats populateView:anime[@"anime"] withService:[listservice getCurrentServiceID]];
+    [_ratingstats populateView:anime[@"anime"] withService:[listservice.sharedInstance getCurrentServiceID]];
     [self populatestatuscounts:anime[@"anime"] type:0];
     [self populateTotalEps:anime[@"anime"]];
     _dayspentanime.stringValue = anime[@"statistics"][@"days"];
     NSDictionary *manga;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            manga = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga];
+            manga = [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga];
             break;
         case 2:
         case 3:
-            manga = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:MALManga];
+            manga = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga];
             break;
     }
-    [_mangastats populateView:manga[@"manga"] withService:[listservice getCurrentServiceID]];
+    [_mangastats populateView:manga[@"manga"] withService:[listservice.sharedInstance getCurrentServiceID]];
     [self populatestatuscounts:manga[@"manga"] type:1];
     [self populateTotalVolandChaps:manga[@"manga"]];
     _daysspentonmanga.stringValue = manga[@"statistics"][@"days"];
@@ -91,13 +91,13 @@
 
 - (void)populateValues:(id)list type:(int)type {
     if (type == 1) {
-        [_ratingstats populateView:list[@"anime"] withService:[listservice getCurrentServiceID]];
+        [_ratingstats populateView:list[@"anime"] withService:[listservice.sharedInstance getCurrentServiceID]];
         [self populatestatuscounts:list[@"anime"] type:0];
         [self populateTotalEps:list[@"anime"]];
         _dayspentanime.stringValue = list[@"statistics"][@"days"];
     }
     else if (type == 2) {
-        [_mangastats populateView:list[@"manga"] withService:[listservice getCurrentServiceID]];
+        [_mangastats populateView:list[@"manga"] withService:[listservice.sharedInstance getCurrentServiceID]];
         [self populatestatuscounts:list[@"manga"] type:1];
         [self populateTotalVolandChaps:list[@"manga"]];
         _daysspentonmanga.stringValue = list[@"statistics"][@"days"];

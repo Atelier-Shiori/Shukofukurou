@@ -45,7 +45,7 @@
 - (IBAction)exportAnimeList:(id)sender {
     // Export Anime List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Anime List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
@@ -55,7 +55,7 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-          [self writeListXML:[AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALAnime] withFileURL:sp.URL withType:MALAnime];
+          [self writeListXML:[AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALAnime] withFileURL:sp.URL withType:MALAnime];
         }];
     }
     else {
@@ -68,7 +68,7 @@
 - (IBAction)exportMangaList:(id)sender {
     // Export Manga List to MyAnimeList XML Format
     // Note that not all fields can be exported since some fields are not exposed by the API
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         NSSavePanel * sp = [NSSavePanel savePanel];
         sp.title = @"Export Manga List";
         sp.allowedFileTypes = @[@"xml", @"Extended Markup Language File"];
@@ -78,7 +78,7 @@
             if (result == NSFileHandlingPanelCancelButton) {
                 return;
             }
-            [self writeListXML:[AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:MALManga] withFileURL:sp.URL withType:MALManga];
+            [self writeListXML:[AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:MALManga] withFileURL:sp.URL withType:MALManga];
         }];
     }
     else {
@@ -89,7 +89,7 @@
 }
 
 - (IBAction)exportconvertedAnimeList:(id)sender {
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         [_epw checklist:MALAnime];
     }
     else {
@@ -100,7 +100,7 @@
 }
 
 - (IBAction)exportconvertedMangaList:(id)sender {
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         [_epw checklist:MALManga];
     }
     else {
@@ -158,13 +158,13 @@
     NSMutableString *output = [NSMutableString new];
     [output appendString:headerstring];
     [output appendString:@"\n\n\t<myinfo>"];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
             break;
         case 2:
         case 3:
-            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice getCurrentServiceUsername]];
+            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice.sharedInstance getCurrentServiceUsername]];
             break;
         default:
             break;
@@ -209,13 +209,13 @@
     NSMutableString *output = [NSMutableString new];
     [output appendString:headerstring];
     [output appendString:@"\n\n\t<myinfo>"];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
             break;
         case 2:
         case 3:
-            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice getCurrentServiceUsername]];
+            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice.sharedInstance getCurrentServiceUsername]];
             break;
         default:
             break;

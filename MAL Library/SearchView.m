@@ -57,7 +57,7 @@
 
 - (IBAction)performsearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
-        [listservice searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject){
+        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject){
             [_mw populatesearchtb:responseObject type:_currentsearch];
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);

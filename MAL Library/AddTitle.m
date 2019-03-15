@@ -85,7 +85,7 @@
                 [self checkStatus:[Utility statusFromDateRange:d[@"start_date"] toDate:d[@"end_date"]] type:type];
             }
             else {
-                [listservice retrieveTitleInfo:idnum.intValue withType:MALAnime useAccount:NO completion:^(id responseObject) {
+                [listservice.sharedInstance retrieveTitleInfo:idnum.intValue withType:MALAnime useAccount:NO completion:^(id responseObject) {
                     NSDictionary *titleinfo = responseObject;
                     [self checkStatus:titleinfo[@"status"] type: 0];
                 }error:^(NSError *error) {
@@ -130,7 +130,7 @@
                 [self checkStatus:_selecteditem[@"status"] type:1];
             }
             else {
-                [listservice retrieveTitleInfo:idnum.intValue withType:MALManga useAccount:NO completion:^(id responseObject) {
+                [listservice.sharedInstance retrieveTitleInfo:idnum.intValue withType:MALManga useAccount:NO completion:^(id responseObject) {
                     NSDictionary *titleinfo = responseObject;
                     [self checkStatus:titleinfo[@"status"] type: MALManga];
                 }error:^(NSError *error) {
@@ -216,7 +216,7 @@
             _addepifield.stringValue = _addtotalepisodes.stringValue;
         }
         int score = 0;
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 2:
                 score = (int)_addscorefiled.selectedTag;
@@ -233,7 +233,7 @@
         }
         [_mlv setUpdatingState:true];
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [listservice addAnimeTitleToList:_selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:score completion:^(id responseObject) {
+        [listservice.sharedInstance addAnimeTitleToList:_selectededitid withEpisode:_addepifield.intValue withStatus:_addstatusfield.title withScore:score completion:^(id responseObject) {
             [_mw loadlist:@(true) type:0];
             [_mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
@@ -278,7 +278,7 @@
             _addvolfield.stringValue = _addtotalvol.stringValue;
         }
         int score = 0;
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
             case 2:
                 score = (int)_addmangascorefiled.selectedTag;
@@ -295,7 +295,7 @@
         }
         [_mlv setUpdatingState:true];
         _addpopover.behavior = NSPopoverBehaviorApplicationDefined;
-        [listservice addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:score completion:^(id responseData) {
+        [listservice.sharedInstance addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:score completion:^(id responseData) {
             [_mw loadlist:@(true) type:1];
             [_mw loadlist:@(true) type:2];
             [_addmangabtn setEnabled:true];
@@ -383,7 +383,7 @@
 }
 - (void)setScoreMenu:(int)type {
     if (type == 0) {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 _addadvancedscore.hidden = true;
                 _addscorefiled.hidden = false;
@@ -440,7 +440,7 @@
         }
     }
     else {
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 _addmangaadvancescorefield.hidden = true;
                 _addmangascorefiled.hidden = false;

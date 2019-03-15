@@ -26,15 +26,15 @@
 - (void)loadHistory:(NSNumber *)refresh{
     id list;
     bool refreshlist = refresh.boolValue;
-    bool exists = [Utility checkifFileExists:[listservice retrieveHistoryFileName] appendPath:@""];
+    bool exists = [Utility checkifFileExists:[listservice.sharedInstance retrieveHistoryFileName] appendPath:@""];
     if (exists && !refreshlist) {
-        list = [Utility loadJSON:[listservice retrieveHistoryFileName] appendpath:@""];
+        list = [Utility loadJSON:[listservice.sharedInstance retrieveHistoryFileName] appendpath:@""];
         [self populateHistory:list];
         return;
     }
     else {
-        [listservice retriveUpdateHistory:[listservice getCurrentServiceUsername] completion:^(id response){
-            [self populateHistory:[Utility saveJSON:response withFilename:[listservice retrieveHistoryFileName] appendpath:@"" replace:TRUE]];
+        [listservice.sharedInstance retriveUpdateHistory:[listservice.sharedInstance getCurrentServiceUsername] completion:^(id response){
+            [self populateHistory:[Utility saveJSON:response withFilename:[listservice.sharedInstance retrieveHistoryFileName] appendpath:@"" replace:TRUE]];
         }error:^(NSError *error){
             NSLog(@"%@", error.userInfo);
         }];
@@ -64,8 +64,8 @@
 }
 
 - (void)clearHistory:(int)serviceid {
-    [Utility deleteFile:[listservice retrieveHistoryFileName:serviceid] appendpath:@""];
-    if ([listservice getCurrentServiceID] == serviceid) {
+    [Utility deleteFile:[listservice.sharedInstance retrieveHistoryFileName:serviceid] appendpath:@""];
+    if ([listservice.sharedInstance getCurrentServiceID] == serviceid) {
         NSMutableArray *a = _historyarraycontroller.content;
         [a removeAllObjects];
         [self.historytb reloadData];

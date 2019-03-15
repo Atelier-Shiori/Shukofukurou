@@ -1,0 +1,6 @@
+framework module Hakuchou {
+  umbrella header "Hakuchou.h"
+
+  export *
+  module * { export * }
+}

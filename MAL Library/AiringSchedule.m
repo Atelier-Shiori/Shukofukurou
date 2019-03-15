@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 #import "AiringSchedule.h"
 #import <AFNetworking/AFNetworking.h>
-#import "AniListConstants.h"
-#import "AtarashiiAPIListFormatAniList.h"
+#import <Hakuchou/AniListConstants.h>
+#import <Hakuchou/AtarashiiAPIListFormatAniList.h>
 #import "Utility.h"
 
 @implementation AiringSchedule

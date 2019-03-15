@@ -139,7 +139,7 @@
 
 - (void)generateSourceList {
     self.sourceListItems = [[NSMutableArray alloc] init];
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     //Library Group
     PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
     PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
@@ -221,7 +221,7 @@
 
     //Generate Items to Share
     NSArray *shareItems = @[];;
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             if (type == AnimeType){
                 shareItems = @[[NSString stringWithFormat:@"Check out %@ out on MyAnimeList ", d[@"title"]], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/anime/%@", d[@"id"]]]];
@@ -274,14 +274,14 @@
 }
 
 - (void)fireTimer{
-    if ([listservice checkAccountForCurrentService]) {
-        switch ([listservice getCurrentServiceID]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
                 [self performtimerlistrefresh];
                 break;
             }
             case 2: {
-                [Kitsu getUserRatingType:^(int scoretype) {
+                [listservice.sharedInstance.kitsuManager getUserRatingType:^(int scoretype) {
                     [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                     [self performtimerlistrefresh];
                 } error:^(NSError *error) {
@@ -289,7 +289,7 @@
                 }];
             }
             case 3: {
-                [AniList getUserRatingType:^(NSString *scoretype) {
+                [listservice.sharedInstance.anilistManager getUserRatingType:^(NSString *scoretype) {
                     [NSUserDefaults.standardUserDefaults setValue:scoretype forKey:@"anilist-scoreformat"];
                     [self performtimerlistrefresh];
                 } error:^(NSError *error) {
@@ -346,8 +346,8 @@
 }
 
 - (void)refreshloginlabel{
-    if ([listservice checkAccountForCurrentService]) {
-        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@ (%@)",[listservice getCurrentServiceUsername], [listservice currentservicename]];
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
+        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@ (%@)",[listservice.sharedInstance getCurrentServiceUsername], [listservice.sharedInstance currentservicename]];
     }
     else {
         _loggedinuser.stringValue = @"Not logged in.";
@@ -465,7 +465,7 @@
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     NSPoint origin = NSMakePoint(0, 0);
         if ([identifier isEqualToString:@"animelist"]){
-            if ([listservice checkAccountForCurrentService]) {
+            if ([listservice.sharedInstance checkAccountForCurrentService]) {
                 [self replaceMainViewWithView:_listview.view];
                 [_listview loadList:0];
                 _listview.animelistview.frame = mainviewframe;
@@ -477,7 +477,7 @@
         }
         else if ([identifier isEqualToString:@"mangalist"]){
             if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue){
-                if ([listservice checkAccountForCurrentService]) {
+                if ([listservice.sharedInstance checkAccountForCurrentService]) {
                     [self replaceMainViewWithView:_listview.view];
                     [_listview loadList:1];
                     _listview.mangalistview.frame = mainviewframe;
@@ -489,7 +489,7 @@
             }
         }
         else if ([identifier isEqualToString:@"history"]){
-            if ([listservice checkAccountForCurrentService]) {
+            if ([listservice.sharedInstance checkAccountForCurrentService]) {
                 [self replaceMainViewWithView:_historyview.view];
             }
             else{
@@ -561,11 +561,11 @@
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     int indexoffset = 0;
     if ([identifier isEqualToString:@"animelist"]){
-        if ([listservice checkAccountForCurrentService]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
             [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
             [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
-            if ([listservice getCurrentServiceID] == 3 && [NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
+            if ([listservice.sharedInstance getCurrentServiceID] == 3 && [NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
                 [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:3];
             }
             else {
@@ -580,11 +580,11 @@
     }
     else if ([identifier isEqualToString:@"mangalist"]){
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
-            if ([listservice checkAccountForCurrentService]) {
+            if ([listservice.sharedInstance checkAccountForCurrentService]) {
                 [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
                 [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
                 [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
-                if ([listservice getCurrentServiceID] == 3) {
+                if ([listservice.sharedInstance getCurrentServiceID] == 3) {
                     [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:3];
                 }
                 else {
@@ -599,20 +599,20 @@
         }
     }
     else if ([identifier isEqualToString:@"history"]){
-        if ([listservice checkAccountForCurrentService]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:0];
         }
         
     }
     else if ([identifier isEqualToString:@"search"]){
-        if ([listservice checkAccountForCurrentService]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
         }
         else {
             indexoffset = -1;
         }
         [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
-        if ([listservice getCurrentServiceID] == 1) {
+        if ([listservice.sharedInstance getCurrentServiceID] == 1) {
             [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
         }
@@ -622,14 +622,14 @@
     }
     else if ([identifier isEqualToString:@"mangasearch"]){
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
-            if ([listservice checkAccountForCurrentService]) {
+            if ([listservice.sharedInstance checkAccountForCurrentService]) {
                 [_toolbar insertItemWithItemIdentifier:@"AddTitleSearch" atIndex:0];
             }
             else {
                 indexoffset = -1;
             }
             [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
-            if ([listservice getCurrentServiceID] == 1) {
+            if ([listservice.sharedInstance getCurrentServiceID] == 1) {
                 [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
             }
@@ -640,7 +640,7 @@
     }
     else if ([identifier isEqualToString:@"titleinfo"]){
         if (_infoview.selectedid > 0){
-            if ([listservice checkAccountForCurrentService]) {
+            if ([listservice.sharedInstance checkAccountForCurrentService]) {
                 if ([self checkiftitleisonlist:_infoview.selectedid type:_infoview.type]){
                      [_toolbar insertItemWithItemIdentifier:@"editInfo" atIndex:0];
                 }
@@ -655,7 +655,7 @@
             [_toolbar insertItemWithItemIdentifier:@"viewonmal" atIndex:1+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"viewreviews" atIndex:2+indexoffset];
             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"donated"]) {
-                int currentservice = [listservice getCurrentServiceID];
+                int currentservice = [listservice.sharedInstance getCurrentServiceID];
                 if (currentservice == 3) {
                     [_toolbar insertItemWithItemIdentifier:@"viewpeople" atIndex:3+indexoffset];
                 }
@@ -678,7 +678,7 @@
         }
     }
     else if ([identifier isEqualToString:@"seasons"]){
-        if ([listservice checkAccountForCurrentService]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"AddTitleSeason" atIndex:0+indexoffset];
         }
         else {
@@ -689,7 +689,7 @@
         [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:3+indexoffset];
     }
     else if ([identifier isEqualToString:@"airing"]){
-        if ([listservice checkAccountForCurrentService]) {
+        if ([listservice.sharedInstance checkAccountForCurrentService]) {
             [_toolbar insertItemWithItemIdentifier:@"AddTitleAiring" atIndex:0+indexoffset];
         }
         else {
@@ -754,13 +754,13 @@
 - (IBAction)refreshlist:(id)sender {
     [_appdel.servicemenucontrol enableservicemenuitems:NO];
     [_listview setUpdatingState:true];
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
             [self performlistRefresh];
             break;
         }
         case 2: {
-            [Kitsu getUserRatingType:^(int scoretype) {
+            [listservice.sharedInstance.kitsuManager getUserRatingType:^(int scoretype) {
                 [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                 [self performlistRefresh];
             } error:^(NSError *error) {
@@ -769,7 +769,7 @@
             }];
         }
         case 3: {
-            [AniList getUserRatingType:^(NSString *scoretype) {
+            [listservice.sharedInstance.anilistManager getUserRatingType:^(NSString *scoretype) {
                 [NSUserDefaults.standardUserDefaults setValue:scoretype forKey:@"anilist-scoreformat"];
                 [self performlistRefresh];
             } error:^(NSError *error) {
@@ -820,7 +820,7 @@
     }
 }
 - (void)loadlist:(NSNumber *)refresh type:(int)type {
-    if ([listservice checkAccountForCurrentService]) {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
         id list;
         bool refreshlist = refresh.boolValue;
         bool exists = false;
@@ -839,7 +839,7 @@
                     [_listview setUpdatingState:true];
                     [self showProgressWheel:false];
                     [_appdel.servicemenucontrol enableservicemenuitems:NO];
-                    [listservice retrieveownListWithType:MALAnime completion:^(id responseObject){
+                    [listservice.sharedInstance retrieveownListWithType:MALAnime completion:^(id responseObject){
                         [self saveEntriesWithDictionary:responseObject withType:0];
                         [_listview populateList:[self retrieveEntriesWithType:0] type:0];
                         [self refreshStatistics];
@@ -870,7 +870,7 @@
                     [_listview setUpdatingState:true];
                     [self showProgressWheel:false];
                     [_appdel.servicemenucontrol enableservicemenuitems:NO];
-                    [listservice retrieveownListWithType:MALManga completion:^(id responseObject){
+                    [listservice.sharedInstance retrieveownListWithType:MALManga completion:^(id responseObject){
                         [self saveEntriesWithDictionary:responseObject withType:1];
                         [_listview populateList:[self retrieveEntriesWithType:1] type:1];
                         [self refreshStatistics];
@@ -897,25 +897,25 @@
 }
 
 - (bool)hasListEntriesWithType:(int)type {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            return [AtarashiiListCoreData hasListEntriesWithUserName:[listservice getCurrentServiceUsername] withService:0 withType:type];
+            return [AtarashiiListCoreData hasListEntriesWithUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:0 withType:type];
         case 2:
         case 3:
-            return [AtarashiiListCoreData hasListEntriesWithUserID:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+            return [AtarashiiListCoreData hasListEntriesWithUserID:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
         default:
             return false;
     }
 }
 
 - (void)saveEntriesWithDictionary:(NSDictionary *)data withType:(int)type {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:type];
+            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
             break;
         case 2:
         case 3:
-            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+            [AtarashiiListCoreData insertorupdateentriesWithDictionary:data withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
             break;
         default:
             break;
@@ -923,12 +923,12 @@
 }
 
 - (NSDictionary *)retrieveEntriesWithType:(int)type {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
-            return [AtarashiiListCoreData retrieveEntriesForUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:type];
+            return [AtarashiiListCoreData retrieveEntriesForUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
         case 2:
         case 3:
-            return [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+            return [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
         default:
             return false;
     }
@@ -945,11 +945,11 @@
     }
 }
 - (void)clearlist:(int)service {
-    //[Utility deleteFile:[listservice retrieveListFileName:0 withServiceID:service] appendpath:@""];
-    //[Utility deleteFile:[listservice retrieveListFileName:1 withServiceID:service] appendpath:@""];
+    //[Utility deleteFile:[listservice.sharedInstance retrieveListFileName:0 withServiceID:service] appendpath:@""];
+    //[Utility deleteFile:[listservice.sharedInstance retrieveListFileName:1 withServiceID:service] appendpath:@""];
     [self clearallentriesForService:service];
     [_historyview clearHistory:service];
-    if ([listservice getCurrentServiceID] == service) {
+    if ([listservice.sharedInstance getCurrentServiceID] == service) {
         //Clears List
         NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];
@@ -977,7 +977,7 @@
     [_searchview clearallsearch];
     long oldselecteditemindex = [_sourceList selectedRow];
     [self generateSourceList];
-    [self selectsourcelistitemWithSelectedIndex:oldselecteditemindex withOldService:oldserviceid withNewService:[listservice getCurrentServiceID]];
+    [self selectsourcelistitemWithSelectedIndex:oldselecteditemindex withOldService:oldserviceid withNewService:[listservice.sharedInstance getCurrentServiceID]];
     [self loadmainview];
     [self refreshloginlabel];
     [self initallistload];
@@ -1025,7 +1025,7 @@
 }
 
 - (void)loadtitleinfoWithDifferentService:(int)oldserviceid {
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if (_infoview.selectedid > 0) {
         int tmpselectedid = _infoview.selectedid;
         _infoview.selectedid = 0;
@@ -1043,13 +1043,13 @@
 }
 - (void)initallistload {
     NSNumber *shouldrefresh = [[NSUserDefaults standardUserDefaults] valueForKey:@"refreshlistonstart"];
-    if (shouldrefresh && [listservice checkAccountForCurrentService]) {
+    if (shouldrefresh && [listservice.sharedInstance checkAccountForCurrentService]) {
         [_appdel.servicemenucontrol enableservicemenuitems:NO];
         [self showProgressWheel:NO];
     }
     [self loadlist:shouldrefresh type:0];
     [self loadlist:shouldrefresh type:1];
-    if ([listservice getCurrentServiceID] == 1) {
+    if ([listservice.sharedInstance getCurrentServiceID] == 1) {
         [self loadlist:shouldrefresh type:2];
     }
 }
@@ -1090,9 +1090,9 @@
         NSIndexPath *selected = _seasonview.collectionview.selectionIndexPaths.anyObject;
         NSCollectionViewItem *collectionitem = [_seasonview.collectionview itemAtIndexPath:selected];
         NSDictionary *d = (_seasonview.seasonarraycontroller).arrangedObjects[selected.item];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
-                [listservice retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
+                [listservice.sharedInstance retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
                     [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:0];
                 }error:^(NSError *error){
                     NSLog(@"Error: %@", error);
@@ -1101,7 +1101,7 @@
             }
             case 2:
             case 3: {
-                [listservice retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:AniListAnime useAccount:NO completion:^(id responseObject) {
+                [listservice.sharedInstance retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:AniListAnime useAccount:NO completion:^(id responseObject) {
                     [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:0];
                 } error:^(NSError *error) {
                     NSLog(@"Error: %@", error);
@@ -1114,9 +1114,9 @@
     }
     else if ([identifier isEqualToString:@"airing"]){
         NSDictionary *d = (_airingview.airingarraycontroller).selectedObjects[0];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
-                [listservice retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
+                [listservice.sharedInstance retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
                     [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                 }error:^(NSError *error){
                     NSLog(@"Error: %@", error);
@@ -1126,7 +1126,7 @@
             case 2: {
                 [[TitleIDMapper sharedInstance] retrieveTitleIdForService:3 withTitleId:((NSNumber *)d[@"id"]).stringValue withTargetServiceId:2 withType:0 completionHandler:^(id  _Nonnull titleid, bool success) {
                     if (success && titleid && titleid != [NSNull null] && ((NSNumber *)titleid).intValue > 0) {
-                        [listservice retrieveTitleInfo:((NSNumber *)titleid).intValue withType:KitsuAnime useAccount:NO completion:^(id responseObject){
+                        [listservice.sharedInstance retrieveTitleInfo:((NSNumber *)titleid).intValue withType:KitsuAnime useAccount:NO completion:^(id responseObject){
                             [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:[_airingview.airingtb frameOfCellAtColumn:0 row:(_airingview.airingtb).selectedRow] ofView:_airingview.airingtb preferredEdge:0 type:0];
                         }error:^(NSError *error){
                             NSLog(@"Error: %@", error);
@@ -1147,7 +1147,7 @@
         NSIndexPath *selected = _trendingview.collectionview.selectionIndexPaths.anyObject;
         NSCollectionViewItem *collectionitem = [_trendingview.collectionview itemAtIndexPath:selected];
         NSDictionary *d = _trendingview.items[_trendingview.items.allKeys[selected.section]][selected.item];
-        [listservice retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:(int)_trendingview.trendingtype.selectedSegment useAccount:NO completion:^(id responseObject) {
+        [listservice.sharedInstance retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:(int)_trendingview.trendingtype.selectedSegment useAccount:NO completion:^(id responseObject) {
             [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:(int)_trendingview.trendingtype.selectedSegment];
         } error:^(NSError *error) {
             NSLog(@"Error: %@", error);
@@ -1187,9 +1187,9 @@
         [_appdel.servicemenucontrol enableservicemenuitems:YES];
         return;
     }
-    [listservice retrieveTitleInfo:idnum.intValue withType:type useAccount:NO completion:^(id responseObject){
+    [listservice.sharedInstance retrieveTitleInfo:idnum.intValue withType:type useAccount:NO completion:^(id responseObject){
         if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"]) {
-            [TitleInfoCache saveTitleInfoWithTitleID:idnum.intValue  withServiceID:[listservice getCurrentServiceID] withType:type withResponseObject:responseObject];
+            [TitleInfoCache saveTitleInfoWithTitleID:idnum.intValue  withServiceID:[listservice.sharedInstance getCurrentServiceID] withType:type withResponseObject:responseObject];
         }
         if (!_infoview.forcerefresh) {
             _infoview.selectedid = idnum.intValue;
@@ -1225,7 +1225,7 @@
 
 - (bool)loadfromcache:(int)titleid withType:(int)type forcerefresh:(bool)forcerefresh ignoreLastUpdated:(bool)ignorelastupdated {
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"cachetitleinfo"] && !forcerefresh) {
-        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice getCurrentServiceID] withType:type ignoreLastUpdated:ignorelastupdated];
+        NSDictionary *titleinfo = [TitleInfoCache getTitleInfoWithTitleID:titleid withServiceID:[listservice.sharedInstance getCurrentServiceID] withType:type ignoreLastUpdated:ignorelastupdated];
         if (titleinfo) {
             _infoview.selectedid = titleid;
             _infoview.type = type;
@@ -1243,7 +1243,7 @@
 }
 
 - (void)changetoinfoview {
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         if (currentservice == 1) {
             [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];

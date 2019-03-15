@@ -21,7 +21,7 @@
 - (void)setUp {
     [super setUp];
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    NSDictionary *usernames = [listservice getAllUserNames];
+    NSDictionary *usernames = [listservice.sharedInstance getAllUserNames];
     _myanimelistusername = usernames[@"myanimelist"];
     _kitsuusername = usernames[@"kitsu"];
     _anilistusername = usernames[@"anilist"];

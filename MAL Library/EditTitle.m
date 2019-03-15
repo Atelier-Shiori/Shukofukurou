@@ -98,7 +98,7 @@
             _minieditpopovernumformat.maximum = @(9999999);
         }
         _minipopovereditepstep.maxValue = _minieditpopovernumformat.maximum.doubleValue;
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
@@ -151,7 +151,7 @@
         _mangapopovereditchapstep.maxValue = _mangaeditpopoverchapnumformat.maximum.doubleValue;
         [_minipopoverstatus selectItemWithTitle:d[@"read_status"]];
         [self setScore:d];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 _selectededitid = ((NSNumber *)d[@"id"]).intValue;
                 break;
@@ -206,7 +206,7 @@
         _minipopoverepfield.stringValue = _minipopovertotalep.stringValue;
     }
     NSDictionary * extraparameters = @{};
-    int currentservice = [listservice getCurrentServiceID];
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     switch (currentservice) {
         case 2:
         case 3: {
@@ -239,15 +239,15 @@
     [_mlv setUpdatingState:true];
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [listservice updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        NSDictionary *updatedfields = @{@"watched_episodes" : @(_minipopoverepfield.intValue), @"watched_status" : _minipopoverstatus.title, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateAnimeTitleOnList:_selectededitid withEpisode:_minipopoverepfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
+        NSDictionary *updatedfields = @{@"watched_episodes" : @(_minipopoverepfield.intValue), @"watched_status" : _minipopoverstatus.title, @"score" : @(score), @"rewatching" : @(rewatching), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]};
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:0 withId:_selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:_selectededitid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:0 withId:_selectededitid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:_selectededitid withIdType:1];
                 break;
         }
         [_mw loadlist:@(false) type:_selectedtype];
@@ -297,8 +297,8 @@
         _mangapopovertotalvol.stringValue = _mangapopovertotalvol.stringValue;
     }
     NSDictionary * extraparameters = @{};
-    int currentservice = [listservice getCurrentServiceID];
-    switch ([listservice getCurrentServiceID]) {
+    int currentservice = [listservice.sharedInstance getCurrentServiceID];
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 2:
         case 3: {
             extraparameters = @{@"reconsuming" : @(rereading)};
@@ -330,15 +330,15 @@
     [_mlv setUpdatingState:true];
     _minieditpopover.behavior = NSPopoverBehaviorApplicationDefined;
     [_minipopoverindicator startAnimation:nil];
-    [listservice updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
-        NSDictionary *updatedfields = @{@"chapters_read" : @(_mangapopoverchapfield.intValue), @"volumes_read" : @(_mangapopovervolfield.intValue), @"read_status" : _minipopoverstatus.title, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]]};
-        switch ([listservice getCurrentServiceID]) {
+    [listservice.sharedInstance updateMangaTitleOnList:_selectededitid withChapter:_mangapopoverchapfield.intValue withVolume:_mangapopovervolfield.intValue withStatus:_minipopoverstatus.title withScore:score withExtraFields:extraparameters completion:^(id responseobject) {
+        NSDictionary *updatedfields = @{@"chapters_read" : @(_mangapopoverchapfield.intValue), @"volumes_read" : @(_mangapopovervolfield.intValue), @"read_status" : _minipopoverstatus.title, @"score" : @(score), @"rereading" : @(rereading), @"last_updated" : [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]]};
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice getCurrentServiceUsername] withService:[listservice getCurrentServiceID] withType:1 withId:_selectededitid withIdType:0];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserName:[listservice.sharedInstance getCurrentServiceUsername] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:_selectededitid withIdType:0];
                 break;
             case 2:
             case 3:
-                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:1 withId:_selectededitid withIdType:1];
+                [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:1 withId:_selectededitid withIdType:1];
                 break;
         }
         [_mw loadlist:@(false) type:_selectedtype];
@@ -427,7 +427,7 @@
 }
 
 - (void)setScoreMenu:(int)type {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             _advancedscorefield.hidden = true;
             _minipopoverscore.hidden = false;
@@ -521,7 +521,7 @@
 }
 
 - (void)setScore:(NSDictionary *)d {
-    switch ([listservice getCurrentServiceID]) {
+    switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
         case 2:
             [_minipopoverscore selectItemWithTag:((NSNumber *)d[@"score"]).intValue];

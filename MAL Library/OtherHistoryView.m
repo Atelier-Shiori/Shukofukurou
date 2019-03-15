@@ -25,7 +25,7 @@
 }
 - (void)loadHistory:(NSString *)username {
     [self clearHistory];
-    [listservice retriveUpdateHistory:username completion:^(id response){
+    [listservice.sharedInstance retriveUpdateHistory:username completion:^(id response){
         [self populateHistory:response];
     }error:^(NSError *error){
         NSLog(@"%@", error.userInfo);

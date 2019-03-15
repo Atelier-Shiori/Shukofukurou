@@ -13,7 +13,7 @@
 #import "Utility.h"
 #import "listservice.h"
 #import "AniListAuthWindow.h"
-#import "AtarashiiDataObjects.h"
+#import <Hakuchou/AtarashiiDataObjects.h>
 
 @implementation LoginPref
 
@@ -66,7 +66,7 @@
         _clearbut.enabled = NO;
         _savebut.enabled = YES;
     }
-    if ([Kitsu getFirstAccount]) {
+    if ([listservice.sharedInstance.kitsuManager getFirstAccount]) {
         _kitsuclearbut.enabled = YES;
         _kitsusavebut.enabled = NO;
         _kitsuloggedinview.hidden = NO;
@@ -78,7 +78,7 @@
         _kitsuclearbut.enabled = NO;
         _kitsusavebut.enabled = YES;
     }
-    if ([AniList getFirstAccount]) {
+    if ([listservice.sharedInstance.anilistManager getFirstAccount]) {
         _anilistclearbut.enabled =YES;
         _anilistloggedinview.hidden = NO;
         _anilistloginview.hidden = YES;
@@ -156,7 +156,7 @@
 }
 
 - (void)login:(NSString *)username password:(NSString *)password withServiceID:(int)serviceid {
-    [listservice verifyAccountWithUsername:username password:password withServiceID:serviceid completion:^(id responseObject){
+    [listservice.sharedInstance verifyAccountWithUsername:username password:password withServiceID:serviceid completion:^(id responseObject){
         [self showLoginSuccess:username withServiceID:serviceid];
     } error:^(NSError *error) {
         [self showLoginFailure:error withServiceID:serviceid];
@@ -198,9 +198,9 @@
             break;
     }
     [self showServiceMenuReminder:serviceid];
-    if ([listservice getCurrentServiceID] == serviceid) {
+    if ([listservice.sharedInstance getCurrentServiceID] == serviceid) {
         if (serviceid == 2) {
-            [Kitsu getUserRatingType:^(int scoretype) {
+            [listservice.sharedInstance.kitsuManager getUserRatingType:^(int scoretype) {
                 [NSUserDefaults.standardUserDefaults setInteger:scoretype forKey:@"kitsu-ratingsystem"];
                 [self performlistloading];
             } error:^(NSError *error) {
@@ -308,10 +308,10 @@
             [Keychain removeaccount];
             break;
         case 2:
-            [Kitsu removeAccount];
+            [listservice.sharedInstance.kitsuManager removeAccount];
             break;
         case 3:
-            [AniList removeAccount];
+            [listservice.sharedInstance.anilistManager removeAccount];
         default:
             break;
     }
@@ -319,7 +319,7 @@
     if (service == 1) {
         [_appdelegate clearMessages];
     }
-    if ([listservice getCurrentServiceID] == service) {
+    if ([listservice.sharedInstance getCurrentServiceID] == service) {
         [_mw loadmainview];
         [_mw refreshloginlabel];
     }

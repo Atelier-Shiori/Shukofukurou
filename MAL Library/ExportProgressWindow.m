@@ -53,7 +53,7 @@
 - (void)checklist:(int)type {
     // Initalize Translation
     [NSApp beginSheet:self.window modalForWindow:_mw.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
-    NSDictionary *list = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:type];
+    NSDictionary *list = [AtarashiiListCoreData retrieveEntriesForUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:type];
     if (type == MALAnime) {
         _origlist = list[@"anime"];
     }
@@ -84,7 +84,7 @@
                 // Convert entries and ids to MyAnimeList format
                 _currententry = [[NSMutableDictionary alloc] initWithDictionary:_origlist[_position]];
                 _ready = false;
-                switch ([listservice getCurrentServiceID]) {
+                switch ([listservice.sharedInstance getCurrentServiceID]) {
                     case 2:
                         [self convertKitsuEntrytoMAL];
                         break;

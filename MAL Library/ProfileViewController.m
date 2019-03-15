@@ -30,7 +30,7 @@
 }
 
 - (void)loadprofilewithUsername:(NSString *)username completion:(void (^)(bool))completion {
-    [listservice retrieveProfile:username completion:^(id responseObject) {
+    [listservice.sharedInstance retrieveProfile:username completion:^(id responseObject) {
         [self populateProfile:responseObject withUsername:username];
         if ([_usernamelabel.stringValue isEqualToString:@"Username"]) {
             [self populateProfile:responseObject withUsername:username];
@@ -55,7 +55,7 @@
             [details appendFormat:@"%@\n\n", responseobject[@"details"][@"extra"][@"about"]];
         }
     }
-    if ([listservice getCurrentServiceID] != 3) {
+    if ([listservice.sharedInstance getCurrentServiceID] != 3) {
         [details appendString:@"General Details:<br />"];
         if (responseobject[@"details"][@"gender"] && responseobject[@"details"][@"gender"] != [NSNull null]) {
             [details appendFormat:@"Gender: %@<br />", responseobject[@"details"][@"gender"]];
@@ -70,7 +70,7 @@
         [details appendFormat:@"Access Rank: %@<br /><br />", responseobject[@"details"][@"access_rank"]];
         [details appendString:@"Member Statistics:<br />"];
         [details appendFormat:@"Forum Posts: %@<br />", responseobject[@"details"][@"forum_posts"]];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
                 [details appendFormat:@"Reviews: %@<br />", responseobject[@"details"][@"reviews"]];
                 [details appendFormat:@"Recommendations: %@<br />", responseobject[@"details"][@"recommendations"]];

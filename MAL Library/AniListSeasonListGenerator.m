@@ -7,10 +7,9 @@
 //
 #import <AFNetworking/AFNetworking.h>
 #import "AppDelegate.h"
-#import "AtarashiiAPIListFormatAniList.h"
-#import "AtarashiiAPIListFormatKitsu.h"
+#import <Hakuchou/Hakuchou.h>
 #import "AniListSeasonListGenerator.h"
-#import "AniListConstants.h"
+#import <Hakuchou/AniListConstants.h>
 #import "listservice.h"
 #import "Utility.h"
 
@@ -24,13 +23,13 @@
 }
 
 + (void)retrieveSeasonDataWithSeason:(NSString *)season withYear:(int)year refresh:(bool)refresh completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
-    NSArray *seasondata = [self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i",season, year, [listservice getCurrentServiceID]]];
+    NSArray *seasondata = [self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i",season, year, [listservice.sharedInstance getCurrentServiceID]]];
     if (seasondata.count > 0 && !refresh) {
         completionHandler(seasondata);
     }
     else {
         NSMutableArray *tmplist = [NSMutableArray new];
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 2:
                 [self retrieveKitsuSeasonDataWithSeason:season withYear:year withPage:0 withArray:tmplist completion:completionHandler error:errorHandler];
                 break;
@@ -56,7 +55,7 @@
         }
         else {
             [self processSeasonData:[AtarashiiAPIListFormatKitsu normalizeSeasonData:array withSeason:season withYear:year] withSeason:season withYear:year];
-            completionHandler([self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i", season, year, [listservice getCurrentServiceID]]]);
+            completionHandler([self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i", season, year, [listservice.sharedInstance getCurrentServiceID]]]);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         errorHandler(error);
@@ -76,7 +75,7 @@
             }
             else {
                 [self processSeasonData:[AtarashiiAPIListFormatAniList normalizeSeasonData:array withSeason:season withYear:year] withSeason:season withYear:year];
-                completionHandler([self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i", season, year, [listservice getCurrentServiceID]]]);
+                completionHandler([self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i", season, year, [listservice.sharedInstance getCurrentServiceID]]]);
             }
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -91,9 +90,9 @@
             [self saveToCoreData:entry];
         }
         // Delete nonexisting entries that was retrieved
-        NSArray *existingseasondata = [self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i", season, year, [listservice getCurrentServiceID]]];
+        NSArray *existingseasondata = [self retrieveFromCoreData:[NSPredicate predicateWithFormat:@"season ==[c] %@ AND year == %i AND service == %i", season, year, [listservice.sharedInstance getCurrentServiceID]]];
         for (NSDictionary *seasonentry in existingseasondata) {
-            NSArray *filteredarray = [seasondata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@ AND season ==[c] %@ AND year == %@ AND service == %i",seasonentry[@"id"], seasonentry[@"season"], seasonentry[@"year"], [listservice getCurrentServiceID]]];
+            NSArray *filteredarray = [seasondata filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"id == %@ AND season ==[c] %@ AND year == %@ AND service == %i",seasonentry[@"id"], seasonentry[@"season"], seasonentry[@"year"], [listservice.sharedInstance getCurrentServiceID]]];
             if (filteredarray.count == 0) {
                 [self deleteFromCoreData:((NSNumber *)seasonentry[@"id"]).intValue withSeason:seasonentry[@"season"] withYear:((NSNumber *)seasonentry[@"year"]).intValue];
             }
@@ -163,7 +162,7 @@
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
     fetchRequest.entity = [NSEntityDescription entityForName:@"SeasonData" inManagedObjectContext:moc];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %i AND season ==[c] %@ AND year == %i && service == %i",titleid, season, year, [listservice getCurrentServiceID]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"id == %i AND season ==[c] %@ AND year == %i && service == %i",titleid, season, year, [listservice.sharedInstance getCurrentServiceID]];
     fetchRequest.predicate = predicate;
     NSError *error = nil;
     NSArray *seasonentries = [moc executeFetchRequest:fetchRequest error:&error];

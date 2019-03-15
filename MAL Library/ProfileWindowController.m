@@ -314,7 +314,7 @@
     mangalistItem.icon = [NSImage imageNamed:@"library"];
     PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
     historyItem.icon = [NSImage imageNamed:@"history"];
-    if ([listservice getCurrentServiceID] == 1) {
+    if ([listservice.sharedInstance getCurrentServiceID] == 1) {
         profilegroupItem.children = @[profileItem, animelistItem, mangalistItem, historyItem];
     }
     else {
@@ -353,11 +353,11 @@
     [_liststats.window close];
     [_profilevc loadprofilewithUsername:username completion:^(bool success){
         if (success) {
-            [listservice retrieveList:username listType:MALAnime completion:^(id responseObject) {
+            [listservice.sharedInstance retrieveList:username listType:MALAnime completion:^(id responseObject) {
                 [_listview populateList:responseObject type:MALAnime];
                 [_ohistoryvc loadHistory:username];
                 [_liststats populateValues:responseObject type:1];
-                [listservice retrieveList:username listType:MALManga completion:^(id responseObject){
+                [listservice.sharedInstance retrieveList:username listType:MALManga completion:^(id responseObject){
                     [_listview populateList:responseObject type:MALManga];
                     [_liststats populateValues:responseObject type:2];
                     _liststats.window.title = [NSString stringWithFormat:@"List Statistics - %@", username];
@@ -392,7 +392,7 @@
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     if ([identifier isEqualToString:@"profile"]){
         if (_loadedprofile){
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@",_searchfield.stringValue]]];
                     break;
@@ -409,7 +409,7 @@
     }
     else if ([identifier isEqualToString:@"animelist"]){
         if (_loadedprofile){
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@",_searchfield.stringValue]]];
                     break;
@@ -426,7 +426,7 @@
     }
     else if ([identifier isEqualToString:@"mangalist"]){
         if (_loadedprofile){
-            switch ([listservice getCurrentServiceID]) {
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
                 case 1:
                     [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@",_searchfield.stringValue]]];
                     break;
@@ -451,7 +451,7 @@
     //Generate Items to Share
     NSArray *shareItems = @[];
     if ([identifier isEqualToString:@"profile"]){
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 shareItems = @[[NSString stringWithFormat:@"Check out %@'s profile out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/profile/%@", _searchfield.stringValue]]];
                 break;
@@ -466,7 +466,7 @@
         }
     }
     if ([identifier isEqualToString:@"animelist"]){
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 shareItems = @[[NSString stringWithFormat:@"Check out %@'s anime list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/animelist/%@", _searchfield.stringValue]]];
                 break;
@@ -481,7 +481,7 @@
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
-        switch ([listservice getCurrentServiceID]) {
+        switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1:
                 shareItems = @[[NSString stringWithFormat:@"Check out %@'s manga list out on MyAnimeList ", _searchfield.stringValue], [NSURL URLWithString:[NSString stringWithFormat:@"https://myanimelist.net/mangalist/%@", _searchfield.stringValue]]];
                 break;

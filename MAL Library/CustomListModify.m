@@ -6,7 +6,7 @@
 //  Copyright © 2018 Atelier Shiori. All rights reserved.
 //
 
-#import "AniList.h"
+#import <Hakuchou/AniList.h>
 #import "AtarashiiListCoreData.h"
 #import "CustomListModify.h"
 #import "ListView.h"
@@ -52,12 +52,12 @@
 - (IBAction)saveaction:(id)sender {
     _popover.behavior = NSPopoverBehaviorApplicationDefined;
     _savebtn.enabled = false;
-    [AniList modifyCustomLists:_entryid withCustomLists:[self generateCustomListArray] completion:^(id responseObject) {
+    [listservice.sharedInstance.anilistManager modifyCustomLists:_entryid withCustomLists:[self generateCustomListArray] completion:^(id responseObject) {
         _popover.behavior = NSPopoverBehaviorTransient;
         _savebtn.enabled = true;
         if (responseObject[@"data"] != [NSNull null]) {
             NSString *customliststr = [self generateCustomListStringWithArray:responseObject[@"data"][@"SaveMediaListEntry"][@"customLists"]];
-            [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr} withUserId:[listservice getCurrentUserID] withService:[listservice getCurrentServiceID] withType:_currenttype withId:_entryid withIdType:1];
+            [AtarashiiListCoreData updateSingleEntry:@{@"custom_lists" : customliststr} withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:_currenttype withId:_entryid withIdType:1];
             [_mw loadlist:@(false) type:_currenttype];
         }
         [_popover close];

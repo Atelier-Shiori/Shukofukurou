@@ -45,6 +45,12 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
         [self resetWebView];
         _completion([navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:@"shukofukurouauth://anilistauth/?code=" withString:@""]);
     }
+    else if ([navigationAction.request.URL.absoluteString containsString:@"http://"]) {
+        NSLog(@"Insecure URL, changing to HTTPS");
+        NSString *newURL = [navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
+        decisionHandler(WKNavigationActionPolicyCancel);
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:newURL]]];
+    }
     else {
         decisionHandler(WKNavigationActionPolicyAllow);
     }

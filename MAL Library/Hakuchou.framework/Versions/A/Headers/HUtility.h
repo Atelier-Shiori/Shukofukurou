@@ -10,13 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Utility : NSObject
+@interface HUtility : NSObject
 + (NSString *)urlEncodeString:(NSString *)string;
 + (double)calculatedays:(NSArray *)list;
 + (NSString *)dateIntervalToDateString:(double)timeinterval;
 + (NSString *)convertAnimeType:(NSString *)type;
 + (NSNumber *)getLastUpdatedDateWithResponseObject:(id)responseObject withService:(int)service;
 + (NSDate *)dateStringToDate:(NSString *)datestring;
++ (int)parseSeason:(NSString *)string;
 @end
 
 NS_ASSUME_NONNULL_END

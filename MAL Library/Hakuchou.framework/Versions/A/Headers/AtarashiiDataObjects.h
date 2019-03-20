@@ -45,6 +45,8 @@
 @property (strong) NSArray *ending_theme;
 @property (strong) NSArray *recommendations;
 @property (strong) NSDictionary *mappings;
+@property int parsedseason;
+- (void)parseSeason;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

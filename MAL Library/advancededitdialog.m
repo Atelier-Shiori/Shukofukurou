@@ -596,8 +596,8 @@
             if (@(_setenddatecheck.state).boolValue) {
                 extrafields[@"finishedAt"] = [df stringFromDate:_enddatepicker.dateValue];
             }
-            extrafields[@"private"] = @(_privatecheck.state);
-            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            extrafields[@"private"] = @(@(_privatecheck.state).boolValue);
+            extrafields[@"reconsuming"] = @(@(_reconsuming.state).boolValue);
             extrafields[@"reconsumeCount"] = @(_repeattimes.intValue);
             break;
         }
@@ -622,8 +622,8 @@
             else {
                 extrafields[@"completedAt"] = @{@"year" : @(0), @"month" : @(0), @"day" : @(0)};
             }
-            extrafields[@"private"] = @(_privatecheck.state);
-            extrafields[@"reconsuming"] = @(_reconsuming.state);
+            extrafields[@"private"] = @(@(_privatecheck.state).boolValue);
+            extrafields[@"reconsuming"] = @(@(_reconsuming.state).boolValue);
             extrafields[@"reconsumeCount"] = @(_repeattimes.intValue);
             break;
         }
@@ -647,7 +647,7 @@
         else {
             nfields[@"personal_comments"] = @"";
         }
-        nfields[@"private"] = @(_privatecheck.state);
+        nfields[@"private"] = @(@(_privatecheck.state).boolValue);
     }
     nfields[@"last_updated"] = [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice getCurrentServiceID]];
     switch (type) {

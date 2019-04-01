@@ -15,8 +15,9 @@
 #import "AiringNotificationManager.h"
 #if defined(OSS)
 #else
-#import <Fabric/Fabric.h>
-#import <Crashlytics/Crashlytics.h>
+@import AppCenter;
+@import AppCenterAnalytics;
+@import AppCenterCrashes;
 #if defined(BETA)
 #import <DonationCheck/MigrateAppStoreLicense.h>
 #endif
@@ -122,7 +123,10 @@
     SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 512;
     #if defined(OSS)
     #else
-    [Fabric with:@[[Crashlytics class]]];
+    [MSAppCenter start:@"bbc45a4c-a8b0-499b-9a77-35320b21684f" withServices:@[
+                                                                              [MSAnalytics class],
+                                                                              [MSCrashes class]
+                                                                              ]];
     #endif
     [Utility checkandclearimagecache];
     _airingnotificationmanager = [AiringNotificationManager new];

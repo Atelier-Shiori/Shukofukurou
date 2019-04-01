@@ -86,6 +86,8 @@
 @property int chapters;
 @property int volumes;
 @property (strong) NSString *status;
+@property (strong) NSString *start_date;
+@property (strong) NSString *end_date;
 @property double members_score;
 @property int members_count;
 @property int favorited_count;

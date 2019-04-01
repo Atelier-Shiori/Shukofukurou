@@ -948,9 +948,9 @@
 		596BABBB21C00886005C3451 /* RelatedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedViewController.m; sourceTree = "<group>"; };
 		596BABBC21C00886005C3451 /* RelatedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedViewController.xib; sourceTree = "<group>"; };
 		596BABCF21C016B2005C3451 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PersonSearchPopoverViewController.xib; sourceTree = "<group>"; };
-		596EAADB22528D87007C4762 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenterCrashes.framework; sourceTree = "<group>"; };
-		596EAADC22528D87007C4762 /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenter.framework; sourceTree = "<group>"; };
-		596EAADD22528D87007C4762 /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppCenterAnalytics.framework; sourceTree = "<group>"; };
+		596EAADB22528D87007C4762 /* AppCenterCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterCrashes.framework; path = "MAL Library/AppCenterCrashes.framework"; sourceTree = "<group>"; };
+		596EAADC22528D87007C4762 /* AppCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenter.framework; path = "MAL Library/AppCenter.framework"; sourceTree = "<group>"; };
+		596EAADD22528D87007C4762 /* AppCenterAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppCenterAnalytics.framework; path = "MAL Library/AppCenterAnalytics.framework"; sourceTree = "<group>"; };
 		5970A98F214AA9A300450626 /* Shukofukurou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shukofukurou.entitlements; sourceTree = "<group>"; };
 		5972404C21B57D7600599AAC /* NotificationPreferencesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationPreferencesController.h; sourceTree = "<group>"; };
 		5972404D21B57D7600599AAC /* NotificationPreferencesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationPreferencesController.m; sourceTree = "<group>"; };

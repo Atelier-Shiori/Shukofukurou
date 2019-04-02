@@ -12,6 +12,7 @@
 #import "AtarashiiListCoreData.h"
 #import "AiringNotificationManager.h"
 #import "Utility.h"
+#import "Analytics.h"
 
 @interface MyListView ()
 @property bool updating;
@@ -206,6 +207,7 @@
         }
         [_mw loadlist:@(false) type:self.currentlist];
         [self setUpdatingState:false];
+        [Analytics sendAnalyticsWithEventTitle:@"Entry Deletion Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.currentlist == 0 ? @"anime" : @"manga"}];
         if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice.sharedInstance getCurrentServiceID] && self.currentlist == 0) {
             [[AiringNotificationManager sharedAiringNotificationManager] removeNotifyingTitle:((NSNumber *)d[@"id"]).intValue withService:[listservice.sharedInstance getCurrentServiceID]];
         }
@@ -213,6 +215,7 @@
         NSLog(@"%@",error);
         _deletetitleitem.enabled = YES;
         [self setUpdatingState:false];
+        [Analytics sendAnalyticsWithEventTitle:@"Entry Deletion Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.currentlist == 0 ? @"anime" : @"manga"}];
     }];
 }
 
@@ -385,11 +388,13 @@
         }
         [_mw loadlist:@(false) type:MALAnime];
         [self setUpdatingState:false];
+        [Analytics sendAnalyticsWithEventTitle:@"Increment Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : @"anime"}];
     }
                                   error:^(NSError * error) {
                                       [self setUpdatingState:false];
                                       NSLog(@"%@", error.localizedDescription);
                                       NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+                                    [Analytics sendAnalyticsWithEventTitle:@"Increment Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : @"anime"}];
     }];
 }
 
@@ -475,10 +480,12 @@
         }
         [_mw loadlist:@(false) type:MALManga];
         [self setUpdatingState:false];
+        [Analytics sendAnalyticsWithEventTitle:@"Increment Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : @"manga"}];
     } error:^(NSError *error) {
         [self setUpdatingState:false];
         NSLog(@"%@", error.localizedDescription);
         NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+        [Analytics sendAnalyticsWithEventTitle:@"Increment Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : @"manga"}];
     }];
 }
 - (IBAction)modifyCustomLists:(id)sender {

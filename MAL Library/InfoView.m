@@ -173,6 +173,12 @@
         }
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
+    if (d[@"start_date"] && d[@"start_date"] != [NSNull null] && ((NSString *)d[@"start_date"]).length > 0) {
+        [details appendFormat:@"Started: %@\n", d[@"start_date"]];
+    }
+    if (d[@"end_date"] && d[@"end_date"] != [NSNull null] && ((NSString *)d[@"end_date"]).length > 0) {
+        [details appendFormat:@"Ended: %@\n", d[@"end_date"]];
+    }
     if (((NSString *)d[@"season"]).length > 0) {
         [details appendString:[NSString stringWithFormat:@"Aired Season: %@\n", d[@"season"]]];
     }
@@ -342,6 +348,12 @@
         [details appendString:[NSString stringWithFormat:@"Volumes: %i \n", ((NSNumber *)d[@"volumes"]).intValue]];
     }
     [details appendString:[NSString stringWithFormat:@"Status: %@\n", d[@"status"]]];
+    if (d[@"start_date"] && d[@"start_date"] != [NSNull null] && ((NSString *)d[@"start_date"]).length > 0) {
+        [details appendFormat:@"Started: %@\n", d[@"start_date"]];
+    }
+    if (d[@"end_date"] && d[@"end_date"] != [NSNull null] && ((NSString *)d[@"end_date"]).length > 0) {
+        [details appendFormat:@"Ended: %@\n", d[@"end_date"]];
+    }
     [details appendString:[NSString stringWithFormat:@"Genre: %@\n", genres]];
     if (d[@"members_score"] !=nil || ((NSNumber *)d[@"members_score"]).intValue) {
         if (rank.intValue > 0) {

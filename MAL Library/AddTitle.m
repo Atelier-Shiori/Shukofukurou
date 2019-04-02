@@ -12,6 +12,7 @@
 #import "MyListView.h"
 #import "listservice.h"
 #import "Utility.h"
+#import "Analytics.h"
 
 @interface AddTitle ()
 @property (strong) IBOutlet NSView *popoveraddtitleexistsview;
@@ -238,6 +239,7 @@
             [_mw loadlist:@(true) type:2];
             [_addfield setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
+            [Analytics sendAnalyticsWithEventTitle:@"Add Title Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
             [_addpopover close];
             [_animeprogresswheel stopAnimation:self];
             _animeprogresswheel.hidden = true;
@@ -251,6 +253,7 @@
             [_animeprogresswheel stopAnimation:self];
             _animeprogresswheel.hidden = true;
             [_mlv setUpdatingState:false];
+            [Analytics sendAnalyticsWithEventTitle:@"Add Title Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga", @"title_id" : [NSString stringWithFormat:@"%@-%i", [listservice.sharedInstance currentservicename], self.selectededitid]}];
         }];
     }
     else {
@@ -298,6 +301,7 @@
         [listservice.sharedInstance addMangaTitleToList:_selectededitid withChapter:_addchapfield.intValue withVolume:_addvolfield.intValue withStatus:_addmangastatusfield.title withScore:score completion:^(id responseData) {
             [_mw loadlist:@(true) type:1];
             [_mw loadlist:@(true) type:2];
+            [Analytics sendAnalyticsWithEventTitle:@"Add Title Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
             [_addmangabtn setEnabled:true];
             _addpopover.behavior = NSPopoverBehaviorTransient;
             [_addpopover close];
@@ -313,6 +317,7 @@
             _mangaprogresswheel.hidden = true;
             [_mangaprogresswheel stopAnimation:self];
             [_mlv setUpdatingState:false];
+            [Analytics sendAnalyticsWithEventTitle:@"Add Title Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga", @"title_id" : [NSString stringWithFormat:@"%@-%i", [listservice.sharedInstance currentservicename], self.selectededitid]}];
         }];
     }
 }

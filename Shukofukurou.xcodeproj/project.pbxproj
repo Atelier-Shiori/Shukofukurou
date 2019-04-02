@@ -228,6 +228,10 @@
 		59D7C9A6223BEAEA0024C31A /* Hakuchou.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
+		59F08C5E2253B42B00A52539 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F08C5D2253B42B00A52539 /* Analytics.m */; };
+		59F08C5F2253B42B00A52539 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F08C5D2253B42B00A52539 /* Analytics.m */; };
+		59F08C602253B42B00A52539 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F08C5D2253B42B00A52539 /* Analytics.m */; };
+		59F08C612253B42B00A52539 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F08C5D2253B42B00A52539 /* Analytics.m */; };
 		59F356A221B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
 		59F356A321B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
 		59F356A421B5D534008C79ED /* NotificationPreferencesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F356A721B5D534008C79ED /* NotificationPreferencesController.xib */; };
@@ -983,6 +987,8 @@
 		59D7C99A223BEA8B0024C31A /* Hakuchou.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hakuchou.framework; path = "MAL Library/Hakuchou.framework"; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
+		59F08C5C2253B42B00A52539 /* Analytics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Analytics.h; sourceTree = "<group>"; };
+		59F08C5D2253B42B00A52539 /* Analytics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Analytics.m; sourceTree = "<group>"; };
 		59F356A621B5D534008C79ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotificationPreferencesController.xib; sourceTree = "<group>"; };
 		59F356C021B6E09B008C79ED /* EpisodeDetailsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EpisodeDetailsWindowController.h; sourceTree = "<group>"; };
 		59F356C121B6E09B008C79ED /* EpisodeDetailsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpisodeDetailsWindowController.m; sourceTree = "<group>"; };
@@ -1461,6 +1467,8 @@
 				9199BACD1E89842400F6E9FF /* Utility.m */,
 				2DC64B661EC3D661005A8BCE /* XMLReader.h */,
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
+				59F08C5C2253B42B00A52539 /* Analytics.h */,
+				59F08C5D2253B42B00A52539 /* Analytics.m */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -2284,6 +2292,7 @@
 				2D371E751ECF8AF500F47138 /* ListStatistics.m in Sources */,
 				91244EA4210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */,
 				2D94612F1EC38CC8004E171B /* ListImport.m in Sources */,
+				59F08C5F2253B42B00A52539 /* Analytics.m in Sources */,
 				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				91244E992108E89C00AA8F90 /* CustomListModify.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
@@ -2454,6 +2463,7 @@
 				59F356C321B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
 				2D6ECA341F2E9B20003C455E /* NSString_stripHtml.m in Sources */,
 				597D78B821656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
+				59F08C5E2253B42B00A52539 /* Analytics.m in Sources */,
 				9199BADE1E89842400F6E9FF /* SoftwareUpdatesPref.m in Sources */,
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				5972405921B5816C00599AAC /* AiringNotificationManager.m in Sources */,
@@ -2557,6 +2567,7 @@
 				91F8E3DD210A46CA007137A7 /* StreamPopup.m in Sources */,
 				91F8E3DE210A46CA007137A7 /* NSString_stripHtml.m in Sources */,
 				91F8E3DF210A46CA007137A7 /* SoftwareUpdatesPref.m in Sources */,
+				59F08C612253B42B00A52539 /* Analytics.m in Sources */,
 				91F8E3E0210A46CA007137A7 /* ImportPrompt.m in Sources */,
 				593A795721ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */,
@@ -2599,6 +2610,7 @@
 				59F356C521B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
 				F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */,
 				91244E8B2108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m in Sources */,
+				59F08C602253B42B00A52539 /* Analytics.m in Sources */,
 				F888F410208FB1F500C22C39 /* ListImport.m in Sources */,
 				F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */,
 				597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,

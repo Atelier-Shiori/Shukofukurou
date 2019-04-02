@@ -9,6 +9,7 @@
 #import "SearchView.h"
 #import "MainWindow.h"
 #import "listservice.h"
+#import "Analytics.h"
 
 @interface SearchView ()
 
@@ -59,8 +60,10 @@
     if ((_searchtitlefield.stringValue).length > 0){
         [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject){
             [_mw populatesearchtb:responseObject type:_currentsearch];
+            [Analytics sendAnalyticsWithEventTitle:@"Search Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename]}];
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);
+            [Analytics sendAnalyticsWithEventTitle:@"Search Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error]}];
         }];
     }
     else{

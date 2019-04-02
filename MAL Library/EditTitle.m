@@ -14,6 +14,7 @@
 #import "listservice.h"
 #import "AtarashiiListCoreData.h"
 #import "Utility.h"
+#import "Analytics.h"
 
 @interface EditTitle ()
 
@@ -252,6 +253,7 @@
         }
         [_mw loadlist:@(false) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
+        [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
@@ -266,7 +268,7 @@
       [_mlv setUpdatingState:false];
       [_minipopoverindicator stopAnimation:nil];
       NSLog(@"%@", error.localizedDescription);
-      NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+      [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
   }];
 }
 
@@ -343,7 +345,7 @@
         }
         [_mw loadlist:@(false) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
-        
+        [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
@@ -357,7 +359,7 @@
         [_mlv setUpdatingState:false];
         [_minipopoverindicator stopAnimation:nil];
         NSLog(@"%@", error.localizedDescription);
-        NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+        [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
     }];
 }
 

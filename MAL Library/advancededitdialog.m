@@ -14,6 +14,7 @@
 #import "MyListView.h"
 #import "AtarashiiListCoreData.h"
 #import "Utility.h"
+#import "Analytics.h"
 
 @interface advancededitdialog ()
 @property (strong) IBOutlet NSView *editview;
@@ -241,6 +242,7 @@
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
         [_mlv setUpdatingState:false];
+        [Analytics sendAnalyticsWithEventTitle:@"Advanced Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
         [self updateissuccessful];
         _selecteditem = nil;
     }
@@ -251,6 +253,7 @@
                                       [_progressindicator stopAnimation:nil];
                                       NSLog(@"%@", error.localizedDescription);
                                       NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
+                                        [Analytics sendAnalyticsWithEventTitle:@"Advanced Entry Edit Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
                                       //_minipopoverstatustext.stringValue = @"Error";
                                   }];
 }
@@ -320,6 +323,7 @@
         _progressindicator.hidden = true;
         [_progressindicator stopAnimation:nil];
         [_mlv setUpdatingState:false];
+        [Analytics sendAnalyticsWithEventTitle:@"Advanced Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
         [self updateissuccessful];
         _selecteditem = nil;
     }error:^(NSError * error) {
@@ -329,7 +333,7 @@
         [_mlv setUpdatingState:false];
         NSLog(@"%@", error.localizedDescription);
         NSLog(@"Content: %@", [[NSString alloc] initWithData:error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding]);
-        //_mangapopoverstatustext.stringValue = @"Error";
+        [Analytics sendAnalyticsWithEventTitle:@"Advanced Entry Edit Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
     }];
 }
 

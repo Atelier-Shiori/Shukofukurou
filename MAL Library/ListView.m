@@ -91,7 +91,9 @@
         NSPoint scrollOrigin = _animelisttb.superview.bounds.origin;
         // Populates list
         if (_animelisttb.selectedRow >= 0) {
-            selectedAnimeID = _animelistarraycontroller.selectedObjects[0][@"id"];
+            if (_animelistarraycontroller.selectedObjects[0]) {
+                selectedAnimeID = _animelistarraycontroller.selectedObjects[0][@"id"];
+            }
         }
         NSMutableArray *a = [_animelistarraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];
@@ -142,7 +144,9 @@
         NSPoint scrollOrigin = _mangalisttb.superview.bounds.origin;
         // Populates list
         if (_mangalisttb.selectedRow >= 0) {
-            selectedAnimeID = _mangalistarraycontroller.selectedObjects[0][@"id"];
+            if (_mangalistarraycontroller.selectedObjects[0]) {
+                selectedAnimeID = _mangalistarraycontroller.selectedObjects[0][@"id"];
+            }
         }
         NSMutableArray *a = [_mangalistarraycontroller mutableArrayValueForKey:@"content"];
         [a removeAllObjects];

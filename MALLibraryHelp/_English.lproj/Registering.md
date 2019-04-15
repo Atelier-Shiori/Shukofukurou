@@ -39,12 +39,10 @@ There are other options besides inputting;
 * Become a Patreon - You can become a Patreon to support development monthly and unlock donor features. See Registering by Authorizing a Patreon Account for more details.
 
 ## Registering by Authorizing a Patreon Account (Non AppStore Version)
-By supporting us on Patreon, you can help support development of Shukofukurou and other applications monthly while recieving free access to full versions of our apps, including future updates. You can use your Patreon account to unlock donor features as long you have an active pledge. Note that you cannot authorize a Patreon account if you already registered a donation key. If you decide to discontinue the pledge, you will lose access to donor features automatically.
+By supporting us on Patreon, you can help support development of Shukofukurou and other applications monthly while recieving free access to full versions of our apps, including future updates. You can use your Patreon account to unlock donor features as long you have an active pledge. 
 
-Currently, it's limited to one Mac/one user.
+To authorize a Patreon account, go to the Shukofukurou menu > Add Donation Key and then click the Patreon License Portal. Authorize your Patreon account at the portal. Once authorized and the portal detects an active pledge status, you will receive a Patreon Key. Click on the Register Donation Key window and enter the details as shown on the portal to register your copy. Check the "Patreon Key"check box and click the Register button.
 
-To authorize a Patreon account, go to the Shukofukurou menu > Patreon and select "Authorize Patreon Account…" Login into your Patreon account and allow the application. If Patreon prompts you to authorize a device by email, follow the instructions and then click the "Start Over" button to return to the login page.
-
-If Shukofukurou detects an active pledge, it will unlock the features. If it does not, it will ask if you want to make a pledge. Otherwise, it will not unlock any features.
+Note: Shukofukurou will check your key every time you launch the application to see if it has a valid pledge. If you are offline more than 48 hours, it will deactivate and you will have to register it again.
 
 At any time, you may deauthorize your Patreon account by going to Shukofukurou > Patreon > "Deauthorize Patreon Account…"

@@ -61,6 +61,14 @@ You can export lists for backup or use on other services.
 ### MyAnimeList XML Export (MyAnimeList only)
 You can export your list to MyAnimeList XML compatible format. Note that some information that is not exposed by the API **will not** exported. However, your progress, status, personal tags and scores will be exported.
 
+### Other Formats (Donors only)
+You can export your lists to JSON or CSV format. Note that you cannot import these formats yet. They are meant as a backup or use in other third party applications.
+
+* JSON (JavaScript Object Notation File) - JSON format allows you to use lists in other third party applications. 
+* CSV (Comma Delimited File) - CSV format allows you to view your lists in Spreadsheet applications such as Microsoft Excel or Apple's Numbers.
+
+**Note:** Fields like custom lists, tags (MyAnimeList), and privacy settings are not exported with CSV format. Scores/Ratings are converted to a 0-100 scale.
+
 ### Export Converted Lists
 You can export converted MyAnimeList XML Anime or Manga lists from AniList or Kitsu with this option. Note that not all titles will be exported if the title does not exist on MyAnimeList.
 

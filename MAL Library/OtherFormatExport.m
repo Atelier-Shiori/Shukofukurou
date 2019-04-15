@@ -39,10 +39,10 @@
     NSMutableString *csvoutput = [NSMutableString new];
     // Write CSV Header
     if (listtype == 0) {
-        [csvoutput appendString:@"\"title_id\", \"title\",\"episodes\",\"type\",\"current_status\",\"current_progress\",\"rating\",\"reconsume_count\",\"comments\",\"start_date\",\"end_date\"\n"];
+        [csvoutput appendString:@"\"title_id\",\"title\",\"episodes\",\"type\",\"current_status\",\"current_progress\",\"rating\",\"reconsume_count\",\"comments\",\"start_date\",\"end_date\"\n"];
     }
     else {
-        [csvoutput appendString:@"\"title_id\", \"title\",\"chapters\",\"volumes\",\"type\",\"current_status\",\"current_progress\",\"current_progress_volumes\",\"rating\",\"reconsume_count\",\"comments\",\"start_date\",\"end_date\"\n"];
+        [csvoutput appendString:@"\"title_id\",\"title\",\"chapters\",\"volumes\",\"type\",\"current_status\",\"current_progress\",\"current_progress_volumes\",\"rating\",\"reconsume_count\",\"comments\",\"start_date\",\"end_date\"\n"];
     }
     NSArray *alist = listtype == 0 ? list[@"anime"] : list[@"manga"];
     for (NSDictionary *entry in alist) {

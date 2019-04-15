@@ -11,6 +11,7 @@ The following features is in the App Store version:
 * Managing Manga lists and viewing information of Manga titles
 * List Statistics (Manga)
 * Importing and Exporting of Manga lists.
+* Exporting lists into JSON or CSV formats
 * Using custom lists on AniList.
 * Viewing related titles
 * Viewing, searching and browsing characters and staff using the People Browser.

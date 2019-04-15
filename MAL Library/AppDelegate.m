@@ -41,6 +41,7 @@
 #endif
 #import "CharactersBrowser.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "OtherFormatExport.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -441,12 +442,12 @@
 - (void)refreshUIServiceChange:(int)selected {
     if (selected != 1) {
         _messagesmenuitem.hidden = true;
-        _malexportmenu.hidden = true;
+        //_malexportmenu.hidden = true;
         _convertexportmenu.hidden = false;
     }
     else {
         _messagesmenuitem.hidden = false;
-        _malexportmenu.hidden = false;
+        //_malexportmenu.hidden = false;
         _convertexportmenu.hidden = true;
     }
     switch (selected) {
@@ -604,6 +605,13 @@
                 break;
         }
     }
+}
+
+#pragma mark - Other list exports
+
+- (IBAction)exportOtherFormatList:(id)sender {
+    int tag = (int)((NSMenuItem *)sender).tag;
+    [OtherFormatExport.sharedManager saveExportedList:tag];
 }
 
 #pragma mark - Core Data stack

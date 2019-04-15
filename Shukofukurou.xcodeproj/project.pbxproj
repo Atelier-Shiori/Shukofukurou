@@ -214,6 +214,10 @@
 		59B3D846221C5451001D24E7 /* TitleIDMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 59B3D841221C5451001D24E7 /* TitleIDMapper.m */; };
 		59C4DAD5222438FD001EE490 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */; };
 		59C4DAD6222438FD001EE490 /* PatreonLicenseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */; };
+		59CBB2112264F51D007CB65B /* OtherFormatExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2102264F51D007CB65B /* OtherFormatExport.m */; };
+		59CBB2122264F51D007CB65B /* OtherFormatExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2102264F51D007CB65B /* OtherFormatExport.m */; };
+		59CBB2132264F51D007CB65B /* OtherFormatExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2102264F51D007CB65B /* OtherFormatExport.m */; };
+		59CBB2142264F51D007CB65B /* OtherFormatExport.m in Sources */ = {isa = PBXBuildFile; fileRef = 59CBB2102264F51D007CB65B /* OtherFormatExport.m */; };
 		59D7C99B223BEA8B0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
 		59D7C99C223BEA8B0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
 		59D7C99D223BEA8B0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
@@ -984,6 +988,8 @@
 		59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 3.xcdatamodel"; sourceTree = "<group>"; };
 		59C4DAD3222438FD001EE490 /* PatreonLicenseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PatreonLicenseManager.h; sourceTree = "<group>"; };
 		59C4DAD4222438FD001EE490 /* PatreonLicenseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PatreonLicenseManager.m; sourceTree = "<group>"; };
+		59CBB20F2264F51D007CB65B /* OtherFormatExport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OtherFormatExport.h; sourceTree = "<group>"; };
+		59CBB2102264F51D007CB65B /* OtherFormatExport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OtherFormatExport.m; sourceTree = "<group>"; };
 		59D7C99A223BEA8B0024C31A /* Hakuchou.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hakuchou.framework; path = "MAL Library/Hakuchou.framework"; sourceTree = "<group>"; };
 		59E8DDEF1F64C65C00A34A51 /* ClientConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClientConstants.h; sourceTree = "<group>"; };
 		59E8DDF01F64C65C00A34A51 /* ClientConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClientConstants.m; sourceTree = "<group>"; };
@@ -1469,6 +1475,8 @@
 				2DC64B671EC3D661005A8BCE /* XMLReader.m */,
 				59F08C5C2253B42B00A52539 /* Analytics.h */,
 				59F08C5D2253B42B00A52539 /* Analytics.m */,
+				59CBB20F2264F51D007CB65B /* OtherFormatExport.h */,
+				59CBB2102264F51D007CB65B /* OtherFormatExport.m */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -1990,10 +1998,9 @@
 			};
 			buildConfigurationList = 9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "Shukofukurou" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -2345,6 +2352,7 @@
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
 				591FC1D521C7FA17001D8684 /* NotificationManager.m in Sources */,
+				59CBB2122264F51D007CB65B /* OtherFormatExport.m in Sources */,
 				596BABDE21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
 				F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */,
 				91C060141EAD2CDC0099E433 /* ReviewWindow.m in Sources */,
@@ -2451,6 +2459,7 @@
 				591FC1C921C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				59A2FD7C21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
+				59CBB2112264F51D007CB65B /* OtherFormatExport.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
 				F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
@@ -2555,6 +2564,7 @@
 				591FC1CC21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				59A2FD7F21BEE4510092E963 /* imagetexttableviewcell.m in Sources */,
 				598B452F21AC392C00F28180 /* TitleInfoCache.m in Sources */,
+				59CBB2142264F51D007CB65B /* OtherFormatExport.m in Sources */,
 				91F8E3D3210A46CA007137A7 /* main.m in Sources */,
 				91F8E3D7210A46CA007137A7 /* AiringView.m in Sources */,
 				91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */,
@@ -2663,6 +2673,7 @@
 				F888F436208FB1F500C22C39 /* ProfileWindowController.m in Sources */,
 				596BABD821C0180B005C3451 /* DonationLicenseManager.m in Sources */,
 				91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
+				59CBB2132264F51D007CB65B /* OtherFormatExport.m in Sources */,
 				F888F437208FB1F500C22C39 /* siteimage.m in Sources */,
 				F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */,
 				593A798921ADE8370083FA86 /* HeaderView.m in Sources */,

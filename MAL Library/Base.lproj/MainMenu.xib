@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,7 +19,6 @@
                 <outlet property="convertexportmenu" destination="cxh-a0-EgH" id="tti-up-Doj"/>
                 <outlet property="importanilist" destination="LhM-Wm-9AK" id="pdr-7y-cxx"/>
                 <outlet property="importkitsumenu" destination="Yfh-DT-TKI" id="YoT-kG-iZP"/>
-                <outlet property="malexportmenu" destination="6yC-xo-9wk" id="hcS-EX-hyk"/>
                 <outlet property="personbrowsermenuitem" destination="t8n-EL-Wev" id="4YN-Pg-1El"/>
                 <outlet property="servicemenucontrol" destination="Soe-9M-Amc" id="6H8-R2-elv"/>
             </connections>
@@ -505,13 +504,13 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Export List" id="pA4-hy-YwK">
                                     <items>
-                                        <menuItem title="Export Anime List…" id="QYw-hI-yCc">
+                                        <menuItem title="Export Anime List…" hidden="YES" id="QYw-hI-yCc">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportAnimeList:" target="Qdg-2P-lTs" id="Xmy-ZI-xfX"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Export Manga List…" id="YKV-a6-tzZ">
+                                        <menuItem title="Export Manga List…" hidden="YES" id="YKV-a6-tzZ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportMangaList:" target="Qdg-2P-lTs" id="dEo-BJ-vZX"/>
@@ -520,6 +519,34 @@
                                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                     </dictionary>
                                                 </binding>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export Anime List (JSON)…" tag="1" id="gox-ZL-36Q">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportOtherFormatList:" target="Voe-Tx-rLC" id="KQ5-Yv-ogb"/>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="oek-v7-jOc"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export Manga List (JSON)…" tag="2" id="Fge-Ik-9Si">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportOtherFormatList:" target="Voe-Tx-rLC" id="uLf-95-UGD"/>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="TMe-l8-bMx"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export Anime List (CSV)…" tag="3" id="oPw-7s-Zu3">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportOtherFormatList:" target="Voe-Tx-rLC" id="HxZ-tq-uUH"/>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="m4R-zw-iaS"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Export Manga List (CSV)…" tag="4" id="hWj-WV-VGQ">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="exportOtherFormatList:" target="Voe-Tx-rLC" id="rGd-Ri-qVO"/>
+                                                <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="tQy-ta-xfo"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -874,5 +901,8 @@
                 <outlet property="servicemenuitem" destination="gvA-y9-4Af" id="fMs-Kh-tKY"/>
             </connections>
         </customObject>
+        <menuItem title="Export Anime List (JSON)…" id="FDO-V9-AoG">
+            <modifierMask key="keyEquivalentModifierMask"/>
+        </menuItem>
     </objects>
 </document>

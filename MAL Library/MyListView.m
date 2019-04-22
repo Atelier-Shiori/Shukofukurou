@@ -627,10 +627,10 @@
     NSArray *menuArray = self.currentlist == 0 ? _animecontextmenu.itemArray : _mangacontextmenu.itemArray;
     for (NSMenuItem *item in menuArray) {
         if (self.currentlist == 0) {
-            item.enabled = self.animelisttb.clickedRow > 0 && !_updating;
+            item.enabled = self.animelisttb.clickedRow >= 0 && !_updating;
         }
         else {
-            item.enabled = self.mangalisttb.clickedRow > 0 && !_updating;
+            item.enabled = self.mangalisttb.clickedRow >= 0 && !_updating;
         }
     }
 }

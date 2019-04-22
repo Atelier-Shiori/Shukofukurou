@@ -557,11 +557,12 @@
     NSMenuItem *incrementepisode = [[NSMenuItem alloc] initWithTitle:@"Increment Episode" action:@selector(rightClickIncrement:) keyEquivalent:@""];
     NSMenuItem *incrementChapter = [[NSMenuItem alloc] initWithTitle:@"Increment Chapter" action:@selector(rightClickIncrement:) keyEquivalent:@""];
     NSMenuItem *editItem = [[NSMenuItem alloc] initWithTitle:@"Edit Entry…" action:@selector(editEntry:) keyEquivalent:@""];
+    NSMenuItem *customListItem = [[NSMenuItem alloc] initWithTitle:@"Modify Custom Lists…" action:@selector(rightclickManageCustomLists:) keyEquivalent:@""];
     NSMenuItem *deleteItem = [[NSMenuItem alloc] initWithTitle:@"Delete Entry…" action:@selector(rightClickDeleteEntry:) keyEquivalent:@""];
     NSMenuItem *titleInfoItem = [[NSMenuItem alloc] initWithTitle:
                                  @"View Title Information" action:@selector(viewTitleInfo:) keyEquivalent:@""];
-    _animecontextmenu.itemArray = @[incrementepisode.copy,editItem.copy,deleteItem.copy,titleInfoItem.copy];
-    _mangacontextmenu.itemArray = @[incrementChapter.copy,editItem.copy,deleteItem.copy,titleInfoItem.copy];
+    _animecontextmenu.itemArray = @[incrementepisode.copy,editItem.copy ,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
+    _mangacontextmenu.itemArray = @[incrementChapter.copy,editItem.copy,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
     _animecontextmenu.delegate = self;
     _mangacontextmenu.delegate = self;
 }
@@ -587,6 +588,7 @@
     }
     [self deletetitle:sender];
 }
+
 - (void)editEntry:(id)sender {
     long rightClickSelectedRow = self.currentlist == 0 ? self.animelisttb.clickedRow : self.mangalisttb.clickedRow;
     if (self.currentlist == 0) {
@@ -612,6 +614,17 @@
     [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : idnum, @"type" : @(self.currentlist)}];
 }
 
+- (void)rightclickManageCustomLists:(id)sender {
+    long rightClickSelectedRow = self.currentlist == 0 ? self.animelisttb.clickedRow : self.mangalisttb.clickedRow;
+    if (self.currentlist == 0) {
+        [self.animelisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    [self modifyCustomLists:self];
+}
+
 - (void)menuWillOpen:(NSMenu *)menu {
     [self setPopupMenuState];
 }
@@ -631,6 +644,9 @@
         }
         else {
             item.enabled = self.mangalisttb.clickedRow >= 0 && !_updating;
+        }
+        if ([item.title localizedStandardContainsString:@"Custom List"]) {
+            item.hidden = [listservice.sharedInstance getCurrentServiceID] != 3 || ![NSUserDefaults.standardUserDefaults boolForKey:@"donated"];
         }
     }
 }

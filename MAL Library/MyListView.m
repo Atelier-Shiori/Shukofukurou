@@ -16,6 +16,8 @@
 
 @interface MyListView ()
 @property bool updating;
+@property (strong) NSMenu *animecontextmenu;
+@property (strong) NSMenu *mangacontextmenu;
 @end
 
 @implementation MyListView
@@ -24,6 +26,9 @@
     [super viewDidLoad];
     // Do view setup here
     self.customlistmodifyviewcontroller.mw = self.mw;
+    [self createpopupMenu];
+    self.animelisttb.menu = _animecontextmenu;
+    self.mangalisttb.menu = _mangacontextmenu;
 }
 
 - (void)loadList:(int)list {
@@ -542,5 +547,91 @@
 - (void)setUpdatingState:(bool)updating {
     _updating = updating;
     [self setToolbarButtonState];
+}
+#pragma mark Context Menu
+- (void)createpopupMenu {
+    _animecontextmenu = [NSMenu new];
+    _mangacontextmenu = [NSMenu new];
+    _animecontextmenu.autoenablesItems = NO;
+    _mangacontextmenu.autoenablesItems = NO;
+    NSMenuItem *incrementepisode = [[NSMenuItem alloc] initWithTitle:@"Increment Episode" action:@selector(rightClickIncrement:) keyEquivalent:@""];
+    NSMenuItem *incrementChapter = [[NSMenuItem alloc] initWithTitle:@"Increment Chapter" action:@selector(rightClickIncrement:) keyEquivalent:@""];
+    NSMenuItem *editItem = [[NSMenuItem alloc] initWithTitle:@"Edit Entry…" action:@selector(editEntry:) keyEquivalent:@""];
+    NSMenuItem *deleteItem = [[NSMenuItem alloc] initWithTitle:@"Delete Entry…" action:@selector(rightClickDeleteEntry:) keyEquivalent:@""];
+    NSMenuItem *titleInfoItem = [[NSMenuItem alloc] initWithTitle:
+                                 @"View Title Information" action:@selector(viewTitleInfo:) keyEquivalent:@""];
+    _animecontextmenu.itemArray = @[incrementepisode.copy,editItem.copy,deleteItem.copy,titleInfoItem.copy];
+    _mangacontextmenu.itemArray = @[incrementChapter.copy,editItem.copy,deleteItem.copy,titleInfoItem.copy];
+    _animecontextmenu.delegate = self;
+    _mangacontextmenu.delegate = self;
+}
+
+- (void)rightClickIncrement:(id)sender {
+    long rightClickSelectedRow = self.currentlist == 0 ? self.animelisttb.clickedRow : self.mangalisttb.clickedRow;
+    if (self.currentlist == 0) {
+        [self.animelisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    [self increment:sender];
+}
+
+- (void)rightClickDeleteEntry:(id)sender {
+    long rightClickSelectedRow = self.currentlist == 0 ? self.animelisttb.clickedRow : self.mangalisttb.clickedRow;
+    if (self.currentlist == 0) {
+        [self.animelisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    [self deletetitle:sender];
+}
+- (void)editEntry:(id)sender {
+    long rightClickSelectedRow = self.currentlist == 0 ? self.animelisttb.clickedRow : self.mangalisttb.clickedRow;
+    if (self.currentlist == 0) {
+        [self.animelisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    NSDictionary *d = self.currentlist == 0 ? self.animelistarraycontroller.selectedObjects[0] : self.mangalistarraycontroller.selectedObjects[0];
+        [_mw.editviewcontroller showEditPopover:d showRelativeToRec:[self.animelisttb frameOfCellAtColumn:0 row:self.animelisttb.selectedRow] ofView:self.animelisttb preferredEdge:0 type:self.currentlist];
+}
+
+- (void)viewTitleInfo:(id)sender {
+    long rightClickSelectedRow = self.currentlist == 0 ? self.animelisttb.clickedRow : self.mangalisttb.clickedRow;
+    if (self.currentlist == 0) {
+        [self.animelisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    NSDictionary *d = self.currentlist == 0 ? self.animelistarraycontroller.selectedObjects[0] : self.mangalistarraycontroller.selectedObjects[0];
+    NSNumber *idnum = d[@"id"];
+    [NSNotificationCenter.defaultCenter postNotificationName:@"LoadTitleInfo" object:@{@"id" : idnum, @"type" : @(self.currentlist)}];
+}
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    [self setPopupMenuState];
+}
+
+- (void)setPopupMenuState {
+    long rightClickSelectedRow = self.currentlist == 0 ? self.animelisttb.clickedRow : self.mangalisttb.clickedRow;
+    if (self.currentlist == 0) {
+        [self.animelisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    }
+    NSArray *menuArray = self.currentlist == 0 ? _animecontextmenu.itemArray : _mangacontextmenu.itemArray;
+    for (NSMenuItem *item in menuArray) {
+        if (self.currentlist == 0) {
+            item.enabled = self.animelisttb.clickedRow > 0 && !_updating;
+        }
+        else {
+            item.enabled = self.mangalisttb.clickedRow > 0 && !_updating;
+        }
+    }
 }
 @end

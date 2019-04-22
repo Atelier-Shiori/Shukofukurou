@@ -9,7 +9,7 @@
 #import "ListView.h"
 #import "MainWindow.h"
 
-@interface MyListView : ListView
+@interface MyListView : ListView <NSMenuDelegate>
 @property (strong) IBOutlet MainWindow *mw;
 
 // Toolbar Items

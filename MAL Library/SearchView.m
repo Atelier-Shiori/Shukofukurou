@@ -12,6 +12,8 @@
 #import "Analytics.h"
 
 @interface SearchView ()
+@property (strong) IBOutlet NSMenuItem *addtitlemenuitem;
+@property (strong) IBOutlet NSMenuItem *viewtitlemenuitem;
 
 @end
 
@@ -150,5 +152,38 @@
     _AnimeSearchTerm = @"";
     _MangaSearchTerm = @"";
     _searchtitlefield.stringValue = @"";
+}
+
+#pragma mark Context Menu
+- (void)menuWillOpen:(NSMenu *)menu {
+    long selected = self.currentsearch == 0 ? self.searchtb.clickedRow : self.mangasearchtb.clickedRow;
+    if (selected >= 0) {
+        _addtitlemenuitem.enabled = [listservice.sharedInstance checkAccountForCurrentService];
+        _viewtitlemenuitem.enabled = true;
+    }
+    else {
+        _addtitlemenuitem.enabled = false;
+        _viewtitlemenuitem.enabled = false;
+    }
+}
+- (IBAction)rightclickAddTitle:(id)sender {
+    long selected = self.currentsearch == 0 ? self.searchtb.clickedRow : self.mangasearchtb.clickedRow;
+    if (self.currentsearch == 0) {
+        [self.searchtb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:selected] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangasearchtb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:selected] byExtendingSelection:NO];
+    }
+    [_mw showaddpopover:_addtitleitem];
+}
+- (IBAction)rightclickViewTitle:(id)sender {
+    long selected = self.currentsearch == 0 ? self.searchtb.clickedRow : self.mangasearchtb.clickedRow;
+    if (self.currentsearch == 0) {
+        [self.searchtb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:selected] byExtendingSelection:NO];
+    }
+    else {
+        [self.mangasearchtb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:selected] byExtendingSelection:NO];
+    }
+    [self searchtbdoubleclick:sender];
 }
 @end

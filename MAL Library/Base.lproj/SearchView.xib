@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SearchView">
             <connections>
+                <outlet property="addtitlemenuitem" destination="bzb-pM-BuJ" id="8XA-VB-OFT"/>
                 <outlet property="animesearch" destination="sX9-pI-QkP" id="Gja-dR-Az9"/>
                 <outlet property="mangasearch" destination="b3v-Bf-Onm" id="14H-CO-7y1"/>
                 <outlet property="mangasearcharraycontroller" destination="6oV-sT-NIM" id="h9e-XQ-oUJ"/>
@@ -15,6 +16,7 @@
                 <outlet property="searcharraycontroller" destination="fgM-Kb-a35" id="Umy-jD-LrV"/>
                 <outlet property="searchtb" destination="WdW-cE-aev" id="P94-GI-xbb"/>
                 <outlet property="view" destination="lCZ-jy-8qy" id="s7p-8Y-qmb"/>
+                <outlet property="viewtitlemenuitem" destination="QfR-wN-Yhe" id="oMb-ZI-XcU"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -111,6 +113,7 @@
                                 <connections>
                                     <action trigger="doubleAction" selector="searchtbdoubleclick:" target="-2" id="Dg2-hW-CsK"/>
                                     <outlet property="delegate" destination="-2" id="xVQ-EO-leh"/>
+                                    <outlet property="menu" destination="VMc-Qj-gay" id="8U4-ea-5O0"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -229,6 +232,7 @@
                                 <connections>
                                     <action trigger="doubleAction" selector="searchtbdoubleclick:" target="-2" id="I9V-gn-K8H"/>
                                     <outlet property="delegate" destination="-2" id="70w-ml-z3V"/>
+                                    <outlet property="menu" destination="VMc-Qj-gay" id="DDP-Gh-paD"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -254,5 +258,25 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <point key="canvasLocation" x="112" y="1263"/>
         </customView>
+        <menu autoenablesItems="NO" id="VMc-Qj-gay">
+            <items>
+                <menuItem title="Add Title…" enabled="NO" id="bzb-pM-BuJ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="rightclickAddTitle:" target="-2" id="Bjp-qD-HId"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="View Title Information" enabled="NO" id="QfR-wN-Yhe">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="rightclickViewTitle:" target="-2" id="btg-g3-j2d"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="Kya-DB-SLQ"/>
+            </connections>
+            <point key="canvasLocation" x="339" y="1033"/>
+        </menu>
     </objects>
 </document>

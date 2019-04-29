@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 @class NSTableViewAction;
 @class MainWindow;
-@interface AiringView : NSViewController <NSTableViewDelegate>;
+@interface AiringView : NSViewController <NSTableViewDelegate, NSMenuDelegate>;
 @property (strong) IBOutlet MainWindow *mw;
 @property (strong) IBOutlet NSArrayController *airingarraycontroller;
 @property (strong) IBOutlet NSTableViewAction *airingtb;

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AiringView">
             <connections>
+                <outlet property="addtitlemenuitem" destination="O2i-QQ-KFe" id="THQ-1p-2ck"/>
                 <outlet property="airingarraycontroller" destination="0hz-9t-reh" id="yTB-Gs-Zzx"/>
                 <outlet property="airingtb" destination="Z8Z-tY-0mI" id="DHE-xX-dgE"/>
                 <outlet property="loadingindicator" destination="raB-ld-Wqm" id="LWE-Zr-dXZ"/>
                 <outlet property="loadingview" destination="Lgx-Am-uhu" id="lWb-vv-0hs"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="viewtitlemenuitem" destination="sa7-Lq-9CB" id="dbi-7c-ALp"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -99,15 +101,16 @@
                                 <connections>
                                     <action trigger="doubleAction" selector="airingdoubleclick:" target="-2" id="Iob-vf-Lh7"/>
                                     <outlet property="delegate" destination="-2" id="9F1-2c-T89"/>
+                                    <outlet property="menu" destination="i6M-dY-78N" id="D9L-jd-BUb"/>
                                 </connections>
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="E6b-nA-JH8">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="E6b-nA-JH8">
                         <rect key="frame" x="0.0" y="7" width="0.0" height="16"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Iwq-HX-ik0">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Iwq-HX-ik0">
                         <rect key="frame" x="-16" y="23" width="16" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -139,5 +142,25 @@
             <point key="canvasLocation" x="121.5" y="213.5"/>
         </customView>
         <arrayController id="0hz-9t-reh"/>
+        <menu autoenablesItems="NO" id="i6M-dY-78N">
+            <items>
+                <menuItem title="Add Title…" enabled="NO" id="O2i-QQ-KFe">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="rightclickAddTitle:" target="-2" id="jdf-vZ-qa4"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="View Title Information" enabled="NO" id="sa7-Lq-9CB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="rightclickViewTitle:" target="-2" id="jdo-em-lSg"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="Mct-9Y-116"/>
+            </connections>
+            <point key="canvasLocation" x="339" y="1033"/>
+        </menu>
     </objects>
 </document>

@@ -19,6 +19,8 @@
 @property bool selected;
 @property (strong) IBOutlet NSVisualEffectView *loadingview;
 @property (strong) IBOutlet NSProgressIndicator *loadingindicator;
+@property (strong) IBOutlet NSMenuItem *addtitlemenuitem;
+@property (strong) IBOutlet NSMenuItem *viewtitlemenuitem;
 @end
 
 @implementation AiringView
@@ -248,5 +250,28 @@
         _loadingview.hidden = YES;
         [_loadingindicator stopAnimation:self];
     }
+}
+
+#pragma mark Context Menu
+- (void)menuWillOpen:(NSMenu *)menu {
+    long selected = self.airingtb.clickedRow;
+    if (selected >= 0) {
+        _addtitlemenuitem.enabled = [listservice.sharedInstance checkAccountForCurrentService];
+        _viewtitlemenuitem.enabled = true;
+    }
+    else {
+        _addtitlemenuitem.enabled = false;
+        _viewtitlemenuitem.enabled = false;
+    }
+}
+- (IBAction)rightclickAddTitle:(id)sender {
+    long selected = self.airingtb.clickedRow;
+    [self.airingtb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:selected] byExtendingSelection:NO];
+    [_mw showaddpopover:_addtitleitem];
+}
+- (IBAction)rightclickViewTitle:(id)sender {
+    long selected = self.airingtb.clickedRow;
+    [self.airingtb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:selected] byExtendingSelection:NO];
+    [self airingdoubleclick:sender];
 }
 @end

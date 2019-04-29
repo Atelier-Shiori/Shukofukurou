@@ -514,11 +514,6 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportMangaList:" target="Qdg-2P-lTs" id="dEo-BJ-vZX"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="49e-CO-TGh">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Export Anime List (JSON)…" tag="1" id="gox-ZL-36Q">

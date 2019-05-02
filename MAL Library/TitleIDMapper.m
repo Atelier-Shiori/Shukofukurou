@@ -30,6 +30,7 @@
     if (self = [super init]) {
         _managedObjectContext = ((AppDelegate*)NSApplication.sharedApplication.delegate).managedObjectContext;
         _manager = [AFHTTPSessionManager manager];
+        _manager.requestSerializer = [AFJSONRequestSerializer serializer];
     }
     return self;
 }
@@ -44,6 +45,47 @@
         completionHandler([self retrieveIDFromMappingWithTargetServiceID:tserviceid withMapping:mapping], true);
     } error:^(NSError *error) {
         completionHandler(nil, false);
+    }];
+}
+- (NSDictionary *)retrieveTitleIdForService:(int)service withTitleId:(NSString *)titleid withTargetServiceId:(int)tserviceid withType:(int)type {
+    NSDictionary *emapping = [self retrieveExistingMappingAsDictionary:titleid forService:service withType:type];
+    return emapping;
+}
+
+- (void)retreiveMultipleMappingsForSourceService:(int)sourceservice withTitleIds:(NSArray *)titleids withMediaType:(int)mediaType completionHandler:(void (^) (NSDictionary *mapping)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    NSString *site;
+    switch (sourceservice) {
+        case 1:
+            site = @"mal";
+            break;
+        case 2:
+            site = @"kitsu";
+            break;
+        case 3:
+            site = @"anilist";
+            break;
+        case 4:
+            site = @"anidb";
+            break;
+        default:
+            errorHandler(nil);
+            return;
+    }
+    NSString *hatourl = @"https://hato.malupdaterosx.moe/api/mappings/mappings/";
+    NSDictionary *parameters = @{@"media_type" : mediaType == 0 ? @"anime" : @"manga", @"service" : site, @"title_ids" : titleids};
+    [_manager POST:hatourl parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (responseObject[@"data"]) {
+            for (NSDictionary *mapping in responseObject[@"data"]) {
+                [self.managedObjectContext performBlockAndWait:^{
+                    int tmpservice = mapping[@"anilist_id"] ? 3 : mapping[@"kitsu_id"] ? 2 : 1;
+                    NSString *sourceid = mapping[@"anilist_id"] ? ((NSNumber *)mapping[@"anilist_id"]).stringValue : mapping[@"kitsu_id"] ? ((NSNumber *)mapping[@"kitsu_id"]).stringValue :  ((NSNumber *)mapping[@"mal_id"]).stringValue;
+                    [self saveTitleIDMappings:mapping withTitleId:sourceid forService:tmpservice withType:mediaType];
+                }];
+            }
+            completionHandler(responseObject);
+        }
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        errorHandler(nil);
     }];
 }
 

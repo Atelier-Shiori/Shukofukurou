@@ -19,6 +19,8 @@ typedef NS_ENUM(unsigned int, titleIDMapperServices){
 };
 + (instancetype)sharedInstance;
 - (void)retrieveTitleIdForService:(int)service withTitleId:(NSString *)titleid withTargetServiceId:(int)tserviceid withType:(int)type completionHandler:(void (^) (id titleid, bool success)) completionHandler;
+- (NSDictionary *)retrieveTitleIdForService:(int)service withTitleId:(NSString *)titleid withTargetServiceId:(int)tserviceid withType:(int)type;
+- (void)retreiveMultipleMappingsForSourceService:(int)sourceservice withTitleIds:(NSArray *)titleids withMediaType:(int)mediaType completionHandler:(void (^) (NSDictionary *mapping)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)clearAllMappings;
 @end
 

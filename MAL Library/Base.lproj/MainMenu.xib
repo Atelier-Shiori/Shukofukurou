@@ -58,32 +58,6 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Patreon" id="bBc-55-P2W">
                                     <items>
-                                        <menuItem title="Authorize Patreon Account…" id="GOu-ZW-LsQ">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="authorizepatreon:" target="Voe-Tx-rLC" id="WID-6U-YPk"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden2" keyPath="values.activepatron" previousBinding="LfZ-5f-ihE" id="vsw-UC-Of8">
-                                                    <dictionary key="options">
-                                                        <integer key="NSMultipleValuesPlaceholder" value="-1"/>
-                                                        <integer key="NSNoSelectionPlaceholder" value="-1"/>
-                                                        <integer key="NSNotApplicablePlaceholder" value="-1"/>
-                                                        <integer key="NSNullPlaceholder" value="-1"/>
-                                                    </dictionary>
-                                                </binding>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.donated" id="LfZ-5f-ihE"/>
-                                            </connections>
-                                        </menuItem>
-                                        <menuItem title="Deauthorize Patreon Account…" id="y2v-7P-JHw">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
-                                            <connections>
-                                                <action selector="deauthorizepatron:" target="Voe-Tx-rLC" id="UGe-s2-0XE"/>
-                                                <binding destination="kZr-4I-AQm" name="hidden" keyPath="values.activepatron" id="qyi-fx-NtK">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </menuItem>
                                         <menuItem title="Deauthorize Patreon License…" id="zRJ-U1-Fdf">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>

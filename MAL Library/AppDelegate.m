@@ -36,7 +36,6 @@
 #else
 #import "PFMoveApplication.h"
 #import "DonationLicenseManager.h"
-#import "PatreonConstants.h"
 #import "AppDelegate+Patreon.h"
 #endif
 #import "CharactersBrowser.h"
@@ -138,11 +137,6 @@
     #else
     PFMoveToApplicationsFolderIfNecessary();
     #endif
-#if defined(AppStore)
-#else
-    _pamanager = [PatreonManager new];
-    [_pamanager setClientID:kPatreonclientid withClientSecret:kPatreonclientsecret withTargetCampaignId:kPatreoncampaignid];
-#endif
 #if defined(BETA)
     if ((![NSUserDefaults.standardUserDefaults valueForKey:@"donation_license"] && ![NSUserDefaults.standardUserDefaults valueForKey:@"donation_name"]) || (![NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && ![NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"])) {
         [MigrateAppStoreLicense validateShukofukurou:^(bool success, id responseObject, NSString *path) {
@@ -523,20 +517,7 @@
 #if defined(AppStore)
 #else
     // Checks Donation Key and Patreon status
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) {
-        [Utility showsheetmessage:@"Notice" explaination:@"The old system to unlock Donor features with a Patreon Account is being deprecated in favor of a Patreon License. \n\nTo switch to the new system, deauthorize your Patreon account under the Patreon menu in the App menu. From the App menu, select Add Donation Key. Click Patreon License Portal and follow the instructions to obtain a Patreon License. \n\nOnce you have authorized your account with the website, use the Patreon license details to register."  window:nil];
-        if ([_pamanager getFirstAccount]) {
-            NSLog(@"Checking Pledges");
-            [self checkPatreonAccount];
-        }
-        else {
-            [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"donated"];
-            [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"activepatron"];
-            [NSUserDefaults.standardUserDefaults setObject:nil forKey:@"patreongraceperiod"];
-            [Utility donateCheck:self];
-        }
-    }
-    else if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"patreon_license"]) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"patreon_license"]) {
         [Utility patreonDonateCheck:self];
     }
     else {
@@ -548,14 +529,6 @@
 #pragma mark Patreon
 #if defined(AppStore)
 #else
-- (IBAction)authorizepatreon:(id)sender {
-    [self authorizePatreonAccount];
-}
-
-- (IBAction)deauthorizepatron:(id)sender {
-    [self deauthorizePatreonAccount];
-}
-
 - (IBAction)becomepatreon:(id)sender {
     [self openpledgepage];
 }

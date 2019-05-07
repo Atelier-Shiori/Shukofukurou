@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>18F96h</string>
+	<string>18F127a</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,7 +27,7 @@
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>10E125</string>
+	<string>10E1001</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
@@ -37,7 +37,7 @@
 	<key>DTXcode</key>
 	<string>1020</string>
 	<key>DTXcodeBuild</key>
-	<string>10E125</string>
+	<string>10E1001</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2019 MAL Updater OS X Group. All rights reserved.</string>
 </dict>

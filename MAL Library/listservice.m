@@ -100,10 +100,10 @@
     }
 }
 
-- (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+- (void)searchTitle:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject, int nextoffset, bool hasnextpage)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
-            [MyAnimeList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            //[MyAnimeList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {
@@ -111,7 +111,27 @@
             break;
         }
         case 3: {
-            [anilistManager searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            [anilistManager searchTitle:searchterm withType:type withCurrentPage:1 completion:completionHandler error:errorHandler];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+}
+
+- (void)searchTitle:(NSString *)searchterm withType:(int)type withOffset:(int)offset completion:(void (^)(id responseObject, int nextoffset, bool hasnextpage)) completionHandler error:(void (^)(NSError * error)) errorHandler {
+    switch ([self getCurrentServiceID]) {
+        case 1: {
+            //[MyAnimeList searchTitle:searchterm withType:type completion:completionHandler error:errorHandler];
+            break;
+        }
+        case 2: {
+            [kitsuManager searchTitle:searchterm withType:type withDataArray:[NSMutableArray new] withPageOffet:offset withMaxOffset:offset completion:completionHandler error:errorHandler];
+            break;
+        }
+        case 3: {
+            [anilistManager searchTitle:searchterm withType:type withCurrentPage:offset completion:completionHandler error:errorHandler];
             break;
         }
         default: {

@@ -14,6 +14,10 @@
 @interface SearchView ()
 @property (strong) IBOutlet NSMenuItem *addtitlemenuitem;
 @property (strong) IBOutlet NSMenuItem *viewtitlemenuitem;
+@property int animeNextPageOffset;
+@property bool animeHasNextPage;
+@property int mangaNextPageOffset;
+@property bool mangaHasNextPage;
 
 @end
 
@@ -36,6 +40,7 @@
     [self.view addSubview:_animesearch];
     _AnimeSearchTerm = @"";
     _MangaSearchTerm = @"";
+    [self setMoreSearchState];
 }
 - (void)loadsearchView:(int)type{
     switch (type){
@@ -45,6 +50,7 @@
             _currentsearch = type;
             [self.view replaceSubview:(self.view).subviews[0] with:_animesearch];
             [self setToolbarButtonStatus];
+            [self setMoreSearchState];
             break;
         case MangaSearch:
             _AnimeSearchTerm = _searchtitlefield.stringValue;
@@ -52,6 +58,7 @@
             _currentsearch = type;
             [self.view replaceSubview:(self.view).subviews[0] with:_mangasearch];
             [self setToolbarButtonStatus];
+            [self setMoreSearchState];
             break;
         default:
             break;
@@ -60,8 +67,28 @@
 
 - (IBAction)performsearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
-        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject){
-            [_mw populatesearchtb:responseObject type:_currentsearch];
+        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject, int nextoffset, bool hasnextpage){
+            [self setPageInfo:nextoffset withHasNextPage:hasnextpage];
+            [self setMoreSearchState];
+            [_mw populatesearchtb:responseObject type:_currentsearch append:NO];
+            [Analytics sendAnalyticsWithEventTitle:@"Search Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename]}];
+        }error:^(NSError *error){
+            NSLog(@"Error: %@", error);
+            [Analytics sendAnalyticsWithEventTitle:@"Search Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error]}];
+        }];
+    }
+    else{
+        [self clearsearchtb];
+    }
+}
+
+- (IBAction)performMoresearch:(id)sender {
+    if ((_searchtitlefield.stringValue).length > 0){
+        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch withOffset:_currentsearch == 0 ? _animeNextPageOffset : _mangaNextPageOffset
+        completion:^(id responseObject, int nextoffset, bool hasnextpage){
+            [self setPageInfo:nextoffset withHasNextPage:hasnextpage];
+            [self setMoreSearchState];
+            [_mw populatesearchtb:responseObject type:_currentsearch append:YES];
             [Analytics sendAnalyticsWithEventTitle:@"Search Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename]}];
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);
@@ -135,12 +162,17 @@
         [[_searcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
         [_searchtb reloadData];
         [_searchtb deselectAll:self];
+        _animeHasNextPage = false;
+        _animeNextPageOffset = 0;
     }
     else{
         [[_mangasearcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
         [_mangasearchtb reloadData];
         [_mangasearchtb deselectAll:self];
+        _mangaHasNextPage = false;
+        _mangaNextPageOffset = 0;
     }
+    [self setMoreSearchState];
 }
 - (void)clearallsearch {
     [[_searcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
@@ -185,5 +217,20 @@
         [self.mangasearchtb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:selected] byExtendingSelection:NO];
     }
     [self searchtbdoubleclick:sender];
+}
+
+- (void)setPageInfo:(int)nextpage withHasNextPage:(bool)hasnextpage {
+    if (_currentsearch == 0) {
+        _animeNextPageOffset = nextpage;
+        _animeHasNextPage = hasnextpage;
+    }
+    else {
+        _mangaNextPageOffset = nextpage;
+        _mangaHasNextPage = hasnextpage;
+    }
+}
+
+- (void)setMoreSearchState {
+    _moresearchitem.enabled = _currentsearch == 0 ? _animeHasNextPage : _mangaHasNextPage;
 }
 @end

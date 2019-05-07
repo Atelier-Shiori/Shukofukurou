@@ -91,7 +91,7 @@
 - (void)fireTimer;
 - (void)refreshloginlabel;
 - (void)loadinfo:(NSNumber *) idnum type:(int)type changeView:(bool)changeview forcerefresh:(bool)forcerefresh;
-- (void)populatesearchtb:(id)json type:(int)type;
+- (void)populatesearchtb:(id)json type:(int)type append:(bool)append;
 - (void)clearsearchtb;
 - (bool)checkiftitleisonlist:(int)idnum type:(int)type;
 - (void)loadlist:(NSNumber *)refresh type:(int)type;

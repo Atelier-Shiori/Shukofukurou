@@ -617,7 +617,8 @@
             [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
         }
         else {
-            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
         }
     }
     else if ([identifier isEqualToString:@"mangasearch"]){
@@ -634,7 +635,8 @@
                 [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
             }
             else {
-                [_toolbar insertItemWithItemIdentifier:@"search" atIndex:2+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:2+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
             }
         }
     }
@@ -710,10 +712,12 @@
 }
 #pragma mark -
 #pragma mark Search View
-- (void)populatesearchtb:(id)json type:(int)type{
+- (void)populatesearchtb:(id)json type:(int)type append:(bool)append {
     if (type == 0){
-        NSMutableArray * a = (_searchview.searcharraycontroller).content;
-        [a removeAllObjects];
+        if (!append) {
+            NSMutableArray * a = (_searchview.searcharraycontroller).content;
+            [a removeAllObjects];
+        }
         if ([json isKindOfClass:[NSArray class]]){
            // Valid Search Results, populate
             [_searchview.searcharraycontroller addObjects:json];
@@ -722,8 +726,10 @@
         [_searchview.searchtb deselectAll:self];
     }
     else {
-        NSMutableArray * a = (_searchview.mangasearcharraycontroller).content;
-        [a removeAllObjects];
+        if (!append) {
+            NSMutableArray * a = (_searchview.mangasearcharraycontroller).content;
+            [a removeAllObjects];
+        }
         if ([json isKindOfClass:[NSArray class]]){
             // Valid Search Results, populate
             [_searchview.mangasearcharraycontroller addObjects:json];

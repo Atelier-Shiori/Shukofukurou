@@ -33,8 +33,10 @@ typedef NS_ENUM(unsigned int, SearchType) {
 
 // Toolbar Items
 @property (strong) IBOutlet NSToolbarItem *addtitleitem;
+@property (strong) IBOutlet NSToolbarItem *moresearchitem;
 
 - (void)loadsearchView:(int)type;
+- (IBAction)performsearch:(id)sender;
 - (IBAction)performsearch:(id)sender;
 - (IBAction)searchtbdoubleclick:(id)sender;
 - (void)clearsearchtb;

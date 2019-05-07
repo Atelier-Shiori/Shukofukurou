@@ -108,7 +108,7 @@
         endDate = _enddate.dateValue;
     }
     [listservice.sharedInstance advsearchTitle:_searchfield.stringValue withType:searchtype withGenres:genreslist excludeGenres:_exclude.state startDate:startDate endDate:endDate minScore:_minscore.intValue rating:(int)_rating.selectedTag withStatus:(int)_airstatus.selectedTag completion:^(id responseObject){
-        [_mw populatesearchtb:responseObject type:searchtype];
+        [_mw populatesearchtb:responseObject type:searchtype append:NO];
         [btn setEnabled:YES];
         _popover.behavior = NSPopoverBehaviorTransient;
         [_popover close];

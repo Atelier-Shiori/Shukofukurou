@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -600,7 +600,7 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
                             <rect key="frame" x="0.0" y="14" width="43" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">
@@ -707,6 +707,21 @@
                             <action selector="trendingchanged:" target="aeO-w6-I5I" id="uKu-CK-mXp"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="1569161F-3FDA-4A2B-9F25-E059B5C39919" explicitItemIdentifier="moreresults" label="More Results" paletteLabel="More Results" toolTip="More Results" image="moreresults" id="E8o-gm-YxM">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="tP8-97-SVR">
+                            <rect key="frame" x="20" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="moreresults" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wSU-7U-do5">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="performMoresearch:" target="3aF-oI-xAM" id="ZeY-fa-fuy"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -804,6 +819,7 @@
         <viewController id="3aF-oI-xAM" customClass="SearchView">
             <connections>
                 <outlet property="addtitleitem" destination="2dK-au-ShY" id="xXc-hT-v5f"/>
+                <outlet property="moresearchitem" destination="E8o-gm-YxM" id="JZh-yz-49A"/>
                 <outlet property="mw" destination="-2" id="ldd-gL-JEn"/>
                 <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="4Xs-bj-wtA"/>
             </connections>
@@ -848,9 +864,10 @@
         <image name="advsearch" width="32" height="32"/>
         <image name="cast" width="32" height="32"/>
         <image name="delete" width="32" height="32"/>
-        <image name="editcustomlists" width="24" height="24"/>
+        <image name="editcustomlists" width="32" height="32"/>
         <image name="episodes" width="32" height="32"/>
-        <image name="increment" width="24" height="24"/>
+        <image name="increment" width="32" height="32"/>
+        <image name="moreresults" width="32" height="32"/>
         <image name="reviews" width="32" height="32"/>
         <image name="safari" width="32" height="32"/>
     </resources>

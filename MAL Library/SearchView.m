@@ -10,6 +10,7 @@
 #import "MainWindow.h"
 #import "listservice.h"
 #import "Analytics.h"
+#import "AdvSearchController.h"
 
 @interface SearchView ()
 @property (strong) IBOutlet NSMenuItem *addtitlemenuitem;
@@ -18,6 +19,8 @@
 @property bool animeHasNextPage;
 @property int mangaNextPageOffset;
 @property bool mangaHasNextPage;
+@property (strong) IBOutlet AdvSearchController *advsearchcontroller;
+@property (strong) IBOutlet NSPopover *advpopover;
 
 @end
 
@@ -67,7 +70,7 @@
 
 - (IBAction)performsearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
-        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch completion:^(id responseObject, int nextoffset, bool hasnextpage){
+        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch withSearchOptions:[_advsearchcontroller getAdvSearchOptionsForType:_currentsearch] completion:^(id responseObject, int nextoffset, bool hasnextpage){
             [self setPageInfo:nextoffset withHasNextPage:hasnextpage];
             [self setMoreSearchState];
             [_mw populatesearchtb:responseObject type:_currentsearch append:NO];
@@ -75,16 +78,29 @@
         }error:^(NSError *error){
             NSLog(@"Error: %@", error);
             [Analytics sendAnalyticsWithEventTitle:@"Search Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error]}];
+            
+            NSString* errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+            NSLog(@"%@",errResponse);
         }];
     }
     else{
         [self clearsearchtb];
+        if (_currentsearch == 0) {
+            if (_advsearchcontroller.viewLoaded) {
+                [_advsearchcontroller resetanime];
+            }
+        }
+        else {
+            if (_advsearchcontroller.viewLoaded) {
+                [_advsearchcontroller resetmanga];
+            }
+        }
     }
 }
 
 - (IBAction)performMoresearch:(id)sender {
     if ((_searchtitlefield.stringValue).length > 0){
-        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch withOffset:_currentsearch == 0 ? _animeNextPageOffset : _mangaNextPageOffset
+        [listservice.sharedInstance searchTitle:_searchtitlefield.stringValue withType:_currentsearch withOffset:_currentsearch == 0 ? _animeNextPageOffset : _mangaNextPageOffset withSearchOptions:[_advsearchcontroller getAdvSearchOptionsForType:_currentsearch]
         completion:^(id responseObject, int nextoffset, bool hasnextpage){
             [self setPageInfo:nextoffset withHasNextPage:hasnextpage];
             [self setMoreSearchState];
@@ -95,7 +111,13 @@
             [Analytics sendAnalyticsWithEventTitle:@"Search Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error]}];
         }];
     }
-    else{
+    else {
+        if (_currentsearch == 0) {
+            [_advsearchcontroller resetanime];
+        }
+        else {
+            [_advsearchcontroller resetmanga];
+        }
         [self clearsearchtb];
     }
 }
@@ -157,7 +179,7 @@
         }
     }
 }
-- (void)clearsearchtb{
+- (void)clearsearchtb {
     if (_currentsearch == AnimeSearch){
         [[_searcharraycontroller mutableArrayValueForKey:@"content"] removeAllObjects];
         [_searchtb reloadData];
@@ -233,4 +255,22 @@
 - (void)setMoreSearchState {
     _moresearchitem.enabled = _currentsearch == 0 ? _animeHasNextPage : _mangaHasNextPage;
 }
+
+- (IBAction)viewAdvPopover:(id)sender {
+    if (!_advsearchcontroller.viewLoaded) {
+        [_advsearchcontroller viewDidLoad];
+    }
+    [_advpopover showRelativeToRect:[sender bounds] ofView:sender preferredEdge:NSMaxYEdge];
+    [_advsearchcontroller loadViewForType:_currentsearch];
+}
+
+- (void)popoverDidClose:(NSNotification *)notification {
+    NSLog(@"Popover closed");
+    [_advsearchcontroller generateadvsearchdictionary];
+    if ((_searchtitlefield.stringValue).length > 0) {
+        [self clearsearchtb];
+        [self performsearch:_searchtitlefield];
+    }
+}
+
 @end

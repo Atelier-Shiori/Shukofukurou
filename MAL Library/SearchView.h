@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @class MainWindow;
-@interface SearchView : NSViewController <NSTableViewDelegate, NSMenuDelegate>
+@interface SearchView : NSViewController <NSTableViewDelegate, NSMenuDelegate, NSPopoverDelegate>
 typedef NS_ENUM(unsigned int, SearchType) {
     AnimeSearch = 0,
     MangaSearch = 1

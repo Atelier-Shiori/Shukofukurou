@@ -617,8 +617,9 @@
             [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
         }
         else {
-            [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:2+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"nadvsearch" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:3+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"search" atIndex:4+indexoffset];
         }
     }
     else if ([identifier isEqualToString:@"mangasearch"]){
@@ -635,8 +636,9 @@
                 [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
             }
             else {
-                [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:2+indexoffset];
-                [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"nadvsearch" atIndex:2+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:3+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"search" atIndex:4+indexoffset];
             }
         }
     }

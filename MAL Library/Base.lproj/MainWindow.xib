@@ -474,6 +474,21 @@
                             <action selector="performmodifytitle:" target="-2" id="eco-nX-xxF"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A1D0F132-D3CE-4BB9-A94F-AE8E7F490C6E" explicitItemIdentifier="nadvsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="Advanced Search" image="advsearch" id="dV1-q6-VcJ">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="zpz-Ia-Oza">
+                            <rect key="frame" x="31" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="advsearch" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UqQ-lv-VCt">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="viewAdvPopover:" target="3aF-oI-xAM" id="3V0-qL-yJq"/>
+                        </connections>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="3B45B1B9-3088-40F4-B8DC-CD9DC8512EDE" explicitItemIdentifier="airingdayselect" label="Day" paletteLabel="Day" id="hTd-hf-Vqb">
                         <nil key="toolTip"/>
                         <size key="minSize" width="100" height="28"/>
@@ -600,7 +615,7 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
                             <rect key="frame" x="0.0" y="14" width="43" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">

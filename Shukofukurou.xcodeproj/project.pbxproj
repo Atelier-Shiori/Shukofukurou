@@ -178,6 +178,11 @@
 		598B454D21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 598B454A21AC4BCE00F28180 /* AiringSchedule.m */; };
 		598B454F21AC5C3400F28180 /* IsAiringValueTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9129254A2146D01C0011D760 /* IsAiringValueTransformer.m */; };
+		5999AF9C22820B3D001FBF85 /* AdvSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999AF9A22820B3D001FBF85 /* AdvSearchController.m */; };
+		5999AF9D22820B3D001FBF85 /* AdvSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5999AF9B22820B3D001FBF85 /* AdvSearchController.xib */; };
+		5999AF9E22820B43001FBF85 /* AdvSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999AF9A22820B3D001FBF85 /* AdvSearchController.m */; };
+		5999AF9F22820B44001FBF85 /* AdvSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999AF9A22820B3D001FBF85 /* AdvSearchController.m */; };
+		5999AFA022820B45001FBF85 /* AdvSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5999AF9A22820B3D001FBF85 /* AdvSearchController.m */; };
 		599CEFEF220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
 		599CEFF0220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
 		599CEFF1220B2CDD0063EBB9 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */; };
@@ -228,6 +233,9 @@
 		59D7C9A4223BEAE50024C31A /* Hakuchou.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		59D7C9A5223BEAEA0024C31A /* Hakuchou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; };
 		59D7C9A6223BEAEA0024C31A /* Hakuchou.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 59D7C99A223BEA8B0024C31A /* Hakuchou.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		59E7B79F2283198700842C4A /* AdvSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5999AF9B22820B3D001FBF85 /* AdvSearchController.xib */; };
+		59E7B7A02283198900842C4A /* AdvSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5999AF9B22820B3D001FBF85 /* AdvSearchController.xib */; };
+		59E7B7A12283198900842C4A /* AdvSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5999AF9B22820B3D001FBF85 /* AdvSearchController.xib */; };
 		59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59E8DDF21F64C65C00A34A51 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		59F08C5E2253B42B00A52539 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = 59F08C5D2253B42B00A52539 /* Analytics.m */; };
@@ -963,6 +971,9 @@
 		598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
 		598B454921AC4BCE00F28180 /* AiringSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AiringSchedule.h; sourceTree = "<group>"; };
 		598B454A21AC4BCE00F28180 /* AiringSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AiringSchedule.m; sourceTree = "<group>"; };
+		5999AF9922820B3D001FBF85 /* AdvSearchController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvSearchController.h; sourceTree = "<group>"; };
+		5999AF9A22820B3D001FBF85 /* AdvSearchController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvSearchController.m; sourceTree = "<group>"; };
+		5999AF9B22820B3D001FBF85 /* AdvSearchController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdvSearchController.xib; sourceTree = "<group>"; };
 		599CEFEE220B2CDD0063EBB9 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		59A2FD5121BEBE770092E963 /* CharacterPopOverViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CharacterPopOverViewController.h; sourceTree = "<group>"; };
 		59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CharacterPopOverViewController.m; sourceTree = "<group>"; };
@@ -1329,6 +1340,7 @@
 				59A2FD6721BED4D90092E963 /* CharacterPopOverViewController.xib */,
 				596BABD021C016B2005C3451 /* PersonSearchPopoverViewController.xib */,
 				596BABBC21C00886005C3451 /* RelatedViewController.xib */,
+				5999AF9B22820B3D001FBF85 /* AdvSearchController.xib */,
 			);
 			name = XIB;
 			sourceTree = "<group>";
@@ -1492,6 +1504,8 @@
 		596BABD321C01738005C3451 /* Popover Views */ = {
 			isa = PBXGroup;
 			children = (
+				5999AF9922820B3D001FBF85 /* AdvSearchController.h */,
+				5999AF9A22820B3D001FBF85 /* AdvSearchController.m */,
 				59A2FD5121BEBE770092E963 /* CharacterPopOverViewController.h */,
 				59A2FD5221BEBE770092E963 /* CharacterPopOverViewController.m */,
 				2DAB19DC1EF9D16800420182 /* StreamPopup.h */,
@@ -2031,6 +2045,7 @@
 				913A11911E8F206A00450B66 /* SearchView.xib in Resources */,
 				91B378B31E989C7C000061E6 /* AiringView.xib in Resources */,
 				2D8BF8B41EC4EED30068856A /* ListImport.xib in Resources */,
+				59E7B79F2283198700842C4A /* AdvSearchController.xib in Resources */,
 				913A11931E8F206A00450B66 /* LoginView.xib in Resources */,
 				F8813A5920CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				913A11941E8F206A00450B66 /* MainWindow.xib in Resources */,
@@ -2086,6 +2101,7 @@
 				2D371E7F1ECFA3E400F47138 /* ListStatistics.xib in Resources */,
 				9199BAEB1E89843300F6E9FF /* LoginView.xib in Resources */,
 				9199BAEC1E89843300F6E9FF /* MainWindow.xib in Resources */,
+				5999AF9D22820B3D001FBF85 /* AdvSearchController.xib in Resources */,
 				F8813A5820CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
 				91D3D8A31E89C1850046C4CC /* EULA.rtf in Resources */,
 				2D4E010B1FA3B1A70053A82B /* ProfileWindowController.xib in Resources */,
@@ -2141,6 +2157,7 @@
 				91F8E411210A46CA007137A7 /* ListStatistics.xib in Resources */,
 				91F8E412210A46CA007137A7 /* LoginView.xib in Resources */,
 				91F8E413210A46CA007137A7 /* MainWindow.xib in Resources */,
+				59E7B7A12283198900842C4A /* AdvSearchController.xib in Resources */,
 				91F8E414210A46CA007137A7 /* ExportProgressWindow.xib in Resources */,
 				91F8E415210A46CA007137A7 /* EULA.rtf in Resources */,
 				91F8E416210A46CA007137A7 /* ProfileWindowController.xib in Resources */,
@@ -2218,6 +2235,7 @@
 				59F356C921B6E09B008C79ED /* EpisodeDetailsWindowController.xib in Resources */,
 				F888F47F208FB1F500C22C39 /* CharacterView.xib in Resources */,
 				F8813A5A20CF159400D974A1 /* ExportProgressWindow.xib in Resources */,
+				59E7B7A02283198900842C4A /* AdvSearchController.xib in Resources */,
 				91F8E441210A4BBB007137A7 /* CustomListsPopover.xib in Resources */,
 				596BABCD21C016B2005C3451 /* PersonSearchPopoverViewController.xib in Resources */,
 				F888F480208FB1F500C22C39 /* NotLoggedIn.xib in Resources */,
@@ -2308,6 +2326,7 @@
 				59A2FD5521BEBE770092E963 /* CharacterPopOverViewController.m in Sources */,
 				591FC1CA21C7E9D5001D8684 /* UNUserNotificationManager.m in Sources */,
 				913A116B1E8F206A00450B66 /* MSWeakTimer.m in Sources */,
+				5999AF9E22820B43001FBF85 /* AdvSearchController.m in Sources */,
 				F8B5AA962044888800132C51 /* MyListScoreFormatter.m in Sources */,
 				913A116C1E8F206A00450B66 /* NotLoggedIn.m in Sources */,
 				593A793521AD927C0083FA86 /* TitleCollectionCell.m in Sources */,
@@ -2438,6 +2457,7 @@
 				2D8A41F91E9AB41600CE52B2 /* AppDelegate.m in Sources */,
 				59CBB2112264F51D007CB65B /* OtherFormatExport.m in Sources */,
 				9199BAD71E89842400F6E9FF /* main.m in Sources */,
+				5999AF9C22820B3D001FBF85 /* AdvSearchController.m in Sources */,
 				91D094D01E9876D8009454F8 /* AiringView.m in Sources */,
 				F8B5AA9920448A2E00132C51 /* OtherUserListScoreFormatter.m in Sources */,
 				2DA863F11F89B2F300D2876A /* ProfileViewController.m in Sources */,
@@ -2542,6 +2562,7 @@
 				598B452F21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				59CBB2142264F51D007CB65B /* OtherFormatExport.m in Sources */,
 				91F8E3D3210A46CA007137A7 /* main.m in Sources */,
+				5999AFA022820B45001FBF85 /* AdvSearchController.m in Sources */,
 				91F8E3D7210A46CA007137A7 /* AiringView.m in Sources */,
 				91F8E3D8210A46CA007137A7 /* OtherUserListScoreFormatter.m in Sources */,
 				91F8E3D9210A46CA007137A7 /* ProfileViewController.m in Sources */,
@@ -2626,6 +2647,7 @@
 				F888F424208FB1F500C22C39 /* listservice.m in Sources */,
 				596BABD521C017A4005C3451 /* AniListSeasonListGenerator.m in Sources */,
 				F888F425208FB1F500C22C39 /* MyListView.m in Sources */,
+				5999AF9F22820B44001FBF85 /* AdvSearchController.m in Sources */,
 				F888F426208FB1F500C22C39 /* SearchView.m in Sources */,
 				91244E912108BCFE00AA8F90 /* CustomListsPopover.m in Sources */,
 				596BABBF21C00886005C3451 /* RelatedViewController.m in Sources */,

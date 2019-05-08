@@ -9,6 +9,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="SearchView">
             <connections>
                 <outlet property="addtitlemenuitem" destination="bzb-pM-BuJ" id="8XA-VB-OFT"/>
+                <outlet property="advpopover" destination="dYy-yC-HJU" id="2VA-FG-sbr"/>
+                <outlet property="advsearchcontroller" destination="nMj-mE-fCM" id="dM8-9j-K8l"/>
                 <outlet property="animesearch" destination="sX9-pI-QkP" id="Gja-dR-Az9"/>
                 <outlet property="mangasearch" destination="b3v-Bf-Onm" id="14H-CO-7y1"/>
                 <outlet property="mangasearcharraycontroller" destination="6oV-sT-NIM" id="h9e-XQ-oUJ"/>
@@ -278,5 +280,12 @@
             </connections>
             <point key="canvasLocation" x="339" y="1033"/>
         </menu>
+        <viewController id="nMj-mE-fCM" userLabel="Popover View Controller" customClass="AdvSearchController"/>
+        <popover behavior="t" id="dYy-yC-HJU">
+            <connections>
+                <outlet property="contentViewController" destination="nMj-mE-fCM" id="mUU-PV-RjS"/>
+                <outlet property="delegate" destination="-2" id="IA5-td-OBu"/>
+            </connections>
+        </popover>
     </objects>
 </document>

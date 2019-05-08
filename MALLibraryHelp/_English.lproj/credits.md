@@ -5,8 +5,10 @@ order: .INF
 ---
 Shukofukurou uses the following open source frameworks and classes. Note that this applications license do not apply to these classes/libraries/frameworks. 
 
+* [AppCenter](https://github.com/microsoft/AppCenter-SDK-Apple/blob/develop/LICENSE) - MIT License
 * [AFNetworking](https://github.com/AFNetworking/AFNetworking) - Used to create HTTP requests - Licensed under MIT License
 * [CocoaOniguruma](http://limechat.net/cocoaoniguruma/) - Used for regular expressions and parsing - Licensed under BSD License.
+* [Hakuchou](https://github.com/Atelier-Shiori/Hakuchou) - BSD License
 * [PFAboutWindow](https://github.com/perfaram/PFAboutWindow) - Licensed under MIT License
 * [MASPreferences](https://github.com/shpakovski/MASPreferences) - Preferences UI - Licensed under the BSD License
 * [MSWeakTimer](https://github.com/mindsnacks/MSWeakTimer) - Licensed under MIT License
@@ -17,4 +19,4 @@ Shukofukurou uses the following open source frameworks and classes. Note that th
 * [XMLReader](https://github.com/amarcadet/XMLReader) - Used to read XML List files to import. Licensed under MIT License
 * Toolbar icons from [icons8](https://icons8.com/)
 
-To see a list of people who donated to the development of this program, [click here](https://github.com/Atelier-Shiori/malupdaterosx-cocoa/wiki/Credits)
+The list of patrons who are supporting the development of our apps can be seen in the About dialog.

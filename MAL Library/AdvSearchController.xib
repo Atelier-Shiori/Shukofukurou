@@ -43,7 +43,7 @@
                     </connections>
                 </button>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7mq-X5-SLQ">
-                    <rect key="frame" x="83" y="183" width="247" height="21"/>
+                    <rect key="frame" x="10" y="183" width="320" height="21"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Advanced Search" id="oSp-Ur-LU2">
                         <font key="font" metaFont="system"/>

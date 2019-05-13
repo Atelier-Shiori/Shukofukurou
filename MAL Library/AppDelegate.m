@@ -517,7 +517,14 @@
 #if defined(AppStore)
 #else
     // Checks Donation Key and Patreon status
-    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"patreon_license"]) {
+    if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"]) {
+        [Utility showsheetmessage:@"Notice" explaination:@"The old system to unlock Donor features with a Patreon Account is now deprecated in favor of a Patreon License. \n\nTo switch to the new system, select Add Donation Key. Click Patreon License Portal and follow the instructions to obtain a Patreon License. \n\nOnce you have authorized your account with the website, use the Patreon license details to register."  window:nil];
+        [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"donated"];
+        [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"activepatron"];
+        [NSUserDefaults.standardUserDefaults setObject:nil forKey:@"patreongraceperiod"];
+        [Utility donateCheck:self];
+    }
+    else if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && [NSUserDefaults.standardUserDefaults boolForKey:@"patreon_license"]) {
         [Utility patreonDonateCheck:self];
     }
     else {

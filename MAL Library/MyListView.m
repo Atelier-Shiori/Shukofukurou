@@ -309,7 +309,7 @@
     }
     else {
         if (self.mangalistarraycontroller.selectedObjects.count > 0) {
-            [self mangaincrement];
+            [self mangaincrement:NO];
         }
     }
 }
@@ -403,7 +403,7 @@
     }];
 }
 
-- (void)mangaincrement {
+- (void)mangaincrement:(bool)volumeincrement {
     NSDictionary *d = self.mangalistarraycontroller.selectedObjects[0];
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     int titleid = -1;
@@ -425,8 +425,8 @@
     bool selectedfinished;
     bool selectedpublished;
     NSString *readstatus = d[@"read_status"];
-    int readchapters = ((NSNumber *)d[@"chapters_read"]).intValue+1;
-    int readvolumes = ((NSNumber *)d[@"volumes_read"]).intValue;
+    int readchapters = !volumeincrement ? ((NSNumber *)d[@"chapters_read"]).intValue+1 : ((NSNumber *)d[@"chapters_read"]).intValue;
+    int readvolumes = volumeincrement ? ((NSNumber *)d[@"volumes_read"]).intValue+1 : ((NSNumber *)d[@"volumes_read"]).intValue;
     int chapters = ((NSNumber *)d[@"chapters"]).intValue;
     int volumes = ((NSNumber *)d[@"volumes"]).intValue;
     if ([publishstatus isEqualToString:@"finished"]) {
@@ -556,13 +556,14 @@
     _mangacontextmenu.autoenablesItems = NO;
     NSMenuItem *incrementepisode = [[NSMenuItem alloc] initWithTitle:@"Increment Episode" action:@selector(rightClickIncrement:) keyEquivalent:@""];
     NSMenuItem *incrementChapter = [[NSMenuItem alloc] initWithTitle:@"Increment Chapter" action:@selector(rightClickIncrement:) keyEquivalent:@""];
+    NSMenuItem *incrementVolume = [[NSMenuItem alloc] initWithTitle:@"Increment Volume" action:@selector(rightClickVolumeIncrement:) keyEquivalent:@""];
     NSMenuItem *editItem = [[NSMenuItem alloc] initWithTitle:@"Edit Entry…" action:@selector(editEntry:) keyEquivalent:@""];
     NSMenuItem *customListItem = [[NSMenuItem alloc] initWithTitle:@"Modify Custom Lists…" action:@selector(rightclickManageCustomLists:) keyEquivalent:@""];
     NSMenuItem *deleteItem = [[NSMenuItem alloc] initWithTitle:@"Delete Entry…" action:@selector(rightClickDeleteEntry:) keyEquivalent:@""];
     NSMenuItem *titleInfoItem = [[NSMenuItem alloc] initWithTitle:
                                  @"View Title Information" action:@selector(viewTitleInfo:) keyEquivalent:@""];
     _animecontextmenu.itemArray = @[incrementepisode.copy,editItem.copy ,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
-    _mangacontextmenu.itemArray = @[incrementChapter.copy,editItem.copy,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
+    _mangacontextmenu.itemArray = @[incrementChapter.copy,incrementVolume.copy,editItem.copy,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
     _animecontextmenu.delegate = self;
     _mangacontextmenu.delegate = self;
 }
@@ -576,6 +577,14 @@
         [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
     }
     [self increment:sender];
+}
+
+- (void)rightClickVolumeIncrement:(id)sender {
+    long rightClickSelectedRow = self.mangalisttb.clickedRow;
+    [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
+    if (self.mangalistarraycontroller.selectedObjects.count > 0) {
+        [self mangaincrement:YES];
+    }
 }
 
 - (void)rightClickDeleteEntry:(id)sender {
@@ -598,7 +607,7 @@
         [self.mangalisttb selectRowIndexes:[[NSIndexSet alloc] initWithIndex:rightClickSelectedRow] byExtendingSelection:NO];
     }
     NSDictionary *d = self.currentlist == 0 ? self.animelistarraycontroller.selectedObjects[0] : self.mangalistarraycontroller.selectedObjects[0];
-        [_mw.editviewcontroller showEditPopover:d showRelativeToRec:[self.animelisttb frameOfCellAtColumn:0 row:self.animelisttb.selectedRow] ofView:self.animelisttb preferredEdge:0 type:self.currentlist];
+    [_mw.editviewcontroller showEditPopover:d showRelativeToRec:self.currentlist == 0 ? [self.animelisttb frameOfCellAtColumn:0 row:self.animelisttb.selectedRow] : [self.mangalisttb frameOfCellAtColumn:0 row:self.mangalisttb.selectedRow] ofView:self.currentlist == 0 ? self.animelisttb : self.mangalisttb preferredEdge:0 type:self.currentlist];
 }
 
 - (void)viewTitleInfo:(id)sender {
@@ -640,14 +649,45 @@
     NSArray *menuArray = self.currentlist == 0 ? _animecontextmenu.itemArray : _mangacontextmenu.itemArray;
     for (NSMenuItem *item in menuArray) {
         if (self.currentlist == 0) {
-            item.enabled = self.animelisttb.clickedRow >= 0 && !_updating;
+            if (!_updating && self.animelisttb.clickedRow >= 0 && [item.title isEqualToString:@"Increment Episode"]) {
+                item.enabled = [self checkclickeditemstate:0];
+            }
+            else {
+                item.enabled = self.animelisttb.clickedRow >= 0 && !_updating;
+            }
         }
         else {
-            item.enabled = self.mangalisttb.clickedRow >= 0 && !_updating;
+            if (!_updating && self.mangalisttb.clickedRow >= 0 && [item.title isEqualToString:@"Increment Chapter"]) {
+                item.enabled = [self checkclickeditemstate:0];
+            }
+            else if (!_updating && self.mangalisttb.clickedRow >= 0 && [item.title isEqualToString:@"Increment Volume"]) {
+                item.enabled = [self checkclickeditemstate:1];
+            }
+            else {
+                item.enabled = self.mangalisttb.clickedRow >= 0 && !_updating;
+            }
         }
         if ([item.title localizedStandardContainsString:@"Custom List"]) {
             item.hidden = [listservice.sharedInstance getCurrentServiceID] != 3 || ![NSUserDefaults.standardUserDefaults boolForKey:@"donated"];
         }
     }
+}
+
+- (bool)checkclickeditemstate:(int)menutype {
+    NSDictionary *clickeditem = self.currentlist == 0 ? self.animelistarraycontroller.arrangedObjects[self.animelisttb.clickedRow] : self.mangalistarraycontroller.arrangedObjects[self.mangalisttb.clickedRow];
+    if (menutype == 0) { // Progress Increment
+        if (self.currentlist == 0 && ((((NSNumber *)clickeditem[@"watched_episodes"]).intValue < ((NSNumber *)clickeditem[@"episodes"]).intValue && ((NSNumber *)clickeditem[@"episodes"]).intValue != 0) || ((NSNumber *)clickeditem[@"episodes"]).intValue == 0 )) {
+            return true;
+        }
+        else if (self.currentlist == 1 && ((((NSNumber *)clickeditem[@"chapters_read"]).intValue < ((NSNumber *)clickeditem[@"chapters"]).intValue && ((NSNumber *)clickeditem[@"chapters"]).intValue != 0) || ((NSNumber *)clickeditem[@"chapters"]).intValue == 0)) {
+            return true;
+        }
+    }
+    else if (menutype == 1) {
+        if (self.currentlist == 1 && ((((NSNumber *)clickeditem[@"volumes_read"]).intValue < ((NSNumber *)clickeditem[@"volumes"]).intValue && ((NSNumber *)clickeditem[@"volumes"]).intValue != 0) || ((NSNumber *)clickeditem[@"volumes"]).intValue == 0)) {
+            return true;
+        }
+    }
+    return false;
 }
 @end

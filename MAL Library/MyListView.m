@@ -573,7 +573,7 @@
             [_animecontextmenu addItem:mitem];
         }
         for (NSMenuItem *mitem in mangaArray) {
-            [_animecontextmenu addItem:mitem];
+            [_mangacontextmenu addItem:mitem];
         }
     }
     _animecontextmenu.delegate = self;

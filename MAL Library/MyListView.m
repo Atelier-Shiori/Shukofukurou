@@ -562,8 +562,20 @@
     NSMenuItem *deleteItem = [[NSMenuItem alloc] initWithTitle:@"Delete Entry…" action:@selector(rightClickDeleteEntry:) keyEquivalent:@""];
     NSMenuItem *titleInfoItem = [[NSMenuItem alloc] initWithTitle:
                                  @"View Title Information" action:@selector(viewTitleInfo:) keyEquivalent:@""];
-    _animecontextmenu.itemArray = @[incrementepisode.copy,editItem.copy ,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
-    _mangacontextmenu.itemArray = @[incrementChapter.copy,incrementVolume.copy,editItem.copy,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
+    NSArray *animeArray = @[incrementepisode.copy,editItem.copy ,customListItem.copy,deleteItem.copy,titleInfoItem.copy];;
+    NSArray *mangaArray = @[incrementChapter.copy,incrementVolume.copy,editItem.copy,customListItem.copy,deleteItem.copy,titleInfoItem.copy];
+    if (@available(macOS 10.14, *)) {
+        _animecontextmenu.itemArray = animeArray;
+        _mangacontextmenu.itemArray = mangaArray;
+    }
+    else {
+        for (NSMenuItem *mitem in animeArray) {
+            [_animecontextmenu addItem:mitem];
+        }
+        for (NSMenuItem *mitem in mangaArray) {
+            [_animecontextmenu addItem:mitem];
+        }
+    }
     _animecontextmenu.delegate = self;
     _mangacontextmenu.delegate = self;
 }

@@ -90,7 +90,7 @@
         // Save Scroll orgin
         NSPoint scrollOrigin = _animelisttb.superview.bounds.origin;
         // Populates list
-        if (_animelisttb.selectedRow >= 0) {
+        if (_animelisttb.selectedRow >= 0 & _animelistarraycontroller.selectedObjects.count > 0) {
             if (_animelistarraycontroller.selectedObjects[0]) {
                 selectedAnimeID = _animelistarraycontroller.selectedObjects[0][@"id"];
             }
@@ -143,7 +143,7 @@
         // Save Scroll orgin
         NSPoint scrollOrigin = _mangalisttb.superview.bounds.origin;
         // Populates list
-        if (_mangalisttb.selectedRow >= 0) {
+        if (_mangalisttb.selectedRow >= 0 && _mangalistarraycontroller.selectedObjects.count > 0) {
             if (_mangalistarraycontroller.selectedObjects[0]) {
                 selectedAnimeID = _mangalistarraycontroller.selectedObjects[0][@"id"];
             }

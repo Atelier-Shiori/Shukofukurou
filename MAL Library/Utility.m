@@ -16,6 +16,11 @@
 #import <DonationCheck/DonationCheck.h>
 #import "PatreonLicenseManager.h"
 #endif
+#if defined(OSS)
+#else
+@import AppCenterAnalytics;
+@import AppCenterCrashes;
+#endif
 
 @implementation Utility
 + (void)showsheetmessage:(NSString *)message
@@ -245,6 +250,8 @@
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donatereminderdate"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donation_license"];
             [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"donation_name"];
+            [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"sendanalytics"];
+            [Utility setAnalytics];
             [delegate.mainwindowcontroller generateSourceList];
             [delegate.mainwindowcontroller loadmainview];
         }
@@ -289,6 +296,8 @@
 #if defined(AppStore)
 #else
     [[PatreonLicenseManager sharedInstance] removeLicense];
+    [[NSUserDefaults standardUserDefaults] setObject:@NO forKey:@"sendanalytics"];
+    [Utility setAnalytics];
     [delegate.mainwindowcontroller generateSourceList];
     [delegate.mainwindowcontroller loadmainview];
 #endif
@@ -339,6 +348,14 @@
     NSDate *now = [NSDate date];
     NSDate *reminderdate = [now dateByAddingTimeInterval:60*60*24];
     [[NSUserDefaults standardUserDefaults] setObject:reminderdate forKey:@"donatereminderdate"];
+#endif
+}
+
++ (void)setAnalytics {
+#if defined(OSS)
+#else
+    [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #endif
 }
 

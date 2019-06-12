@@ -85,6 +85,7 @@
     defaultValues[@"malapiurl"] = @"http://localhost:8000";
 #else
     defaultValues[@"malapiurl"] = @"https://malapi.malupdaterosx.moe";
+    defaultValues[@"sendanalytics"] = @YES;
 #endif
     defaultValues[@"stream_region"] = @(0);
     defaultValues[@"currentservice"] = @(3);
@@ -127,6 +128,8 @@
                                                                               [MSAnalytics class],
                                                                               [MSCrashes class]
                                                                               ]];
+    [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
     #endif
     [Utility checkandclearimagecache];
     _airingnotificationmanager = [AiringNotificationManager new];

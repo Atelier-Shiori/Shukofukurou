@@ -16,6 +16,12 @@
 #import "TitleInfoCache.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+#if defined(OSS)
+#else
+@import AppCenterAnalytics;
+@import AppCenterCrashes;
+#endif
+
 @interface GeneralPref ()
 @property (strong) IBOutlet NSButton *showadultoption;
 @property (strong) IBOutlet NSPopUpButton *appearencepopupbtn;
@@ -114,5 +120,16 @@
         [TitleInfoCache cleanupcacheShouldRemoveAll:YES];
     }
     [NSNotificationCenter.defaultCenter postNotificationName:@"TitleCacheToggled" object:nil];
+}
+
+- (IBAction)sendstatstoggle:(id)sender {
+#if defined(OSS)
+#else
+    [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+#endif
+}
+- (IBAction)viewprivacypolicy:(id)sender {
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/shukofukurou/privacy-policy/"]];
 }
 @end

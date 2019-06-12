@@ -21,6 +21,7 @@ These options affect the main functionality of the application.
 * Reset Title ID Mappings - Allows you to reset the Title ID Mappings used for importing titles and switching services. Use this if the you having issues with Title ID conversion used by service switching and list importing.
 * Cache Title Information - When enabled, Shukofukurou will cache title information so it can be loaded quickly. This enables offline viewing of title information, provided that you loaded it previously.
 * Show 18+ Content (Non-Mac App Store version) - Enables the viewing of 18+ content. Note that for Kitsu, you need to enable viewing of mature content before Shukofukurou can view this kind of content. On the Mac App Store, this option is always disabled due to rating restrictions. However, you will still be able to manage 18+ on your animelist.
+* Send Crash Data/Statistics - Allows you to opt in/opt out of crash data and statistics collection. Free users cannot opt out, only people who donated, is an active patron or downloaded the app from the Mac App Store can.
 
 ### Export
 * Set Update on Import: You can chose which status you want to set the Update on Import value to enabled. If checked, it will change the update_on_import value to 1. This means that when you import the MyAnimeList XML, the entry will be imported.

@@ -268,7 +268,7 @@
       [_mlv setUpdatingState:false];
       [_minipopoverindicator stopAnimation:nil];
       NSLog(@"%@", error.localizedDescription);
-      [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
+      [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error ? error.localizedDescription : @"Unknown", @"error_description" : error ? [Analytics getErrorDescriptionFromErrorResponse:error] : @"None", @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
   }];
 }
 

@@ -20,7 +20,8 @@
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSManagedObject *entry = [self getTitleInfoManagedObjectTitleID:titleid withServiceID:serviceid withType:type];
     if (entry) {
-        if ([(NSDate *)[entry valueForKey:@"lastupdated"] timeIntervalSinceNow] < 172800 || ignorelastupdated) {
+        double timedifference = [(NSDate *)[entry valueForKey:@"lastupdated"] timeIntervalSince1970] - NSDate.date.timeIntervalSince1970;
+        if (timedifference > -172800 || ignorelastupdated) {
             [entry setValue:[NSDate date] forKey:@"lastaccessed"];
             [moc save:nil];
             NSError *error;

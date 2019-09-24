@@ -42,7 +42,7 @@
                     <font key="font" metaFont="system"/>
                     <tabViewItems>
                         <tabViewItem label="MyAnimeList" identifier="" id="L6q-wp-TZZ">
-                            <view key="view" id="AH2-ft-ULp">
+                            <view key="view" ambiguous="YES" id="AH2-ft-ULp">
                                 <rect key="frame" x="10" y="33" width="373" height="183"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -62,7 +62,7 @@
                                                 </connections>
                                             </button>
                                             <button verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="39">
-                                                <rect key="frame" x="140" y="45" width="96" height="32"/>
+                                                <rect key="frame" x="148" y="45" width="96" height="32"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="push" title="Authorize" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="40">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -133,7 +133,7 @@
                             </view>
                         </tabViewItem>
                         <tabViewItem label="AniList" identifier="" id="yAz-OV-LXm">
-                            <view key="view" ambiguous="YES" id="SHS-QF-aXE">
+                            <view key="view" id="SHS-QF-aXE">
                                 <rect key="frame" x="10" y="33" width="373" height="183"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>

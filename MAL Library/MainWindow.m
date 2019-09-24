@@ -150,7 +150,7 @@
         PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
         mangalistItem.icon = [NSImage imageNamed:@"library"];
         if (currentservice == 1) {
-            libraryItem.children = @[animelistItem, mangalistItem, historyItem];
+            libraryItem.children = @[animelistItem, mangalistItem/*, historyItem*/];
         }
         else {
             libraryItem.children = @[animelistItem, mangalistItem];
@@ -158,7 +158,7 @@
     }
     else {
         if (currentservice == 1) {
-            libraryItem.children = @[animelistItem, historyItem];
+            libraryItem.children = @[animelistItem/*, historyItem*/];
         }
         else {
             libraryItem.children = @[animelistItem];
@@ -613,7 +613,7 @@
         }
         [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
         if ([listservice.sharedInstance getCurrentServiceID] == 1) {
-            [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:2+indexoffset];
             [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
         }
         else {
@@ -632,7 +632,7 @@
             }
             [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:1+indexoffset];
             if ([listservice.sharedInstance getCurrentServiceID] == 1) {
-                [_toolbar insertItemWithItemIdentifier:@"advsearch" atIndex:2+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"moreresults" atIndex:2+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"search" atIndex:3+indexoffset];
             }
             else {
@@ -1257,7 +1257,8 @@
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         if (currentservice == 1) {
-            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+            //[_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
+            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:7]byExtendingSelection:false];
         }
         else {
             [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:7]byExtendingSelection:false];
@@ -1265,7 +1266,8 @@
     }
     else {
         if (currentservice == 1) {
-            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+            //[_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
+             [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:5]byExtendingSelection:false];
         }
         else {
             [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:5]byExtendingSelection:false];

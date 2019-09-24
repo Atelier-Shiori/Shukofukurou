@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface ClientConstants : NSObject
+    FOUNDATION_EXPORT NSString *const kMALClient;
+    FOUNDATION_EXPORT NSString *const kMALRedirectURL;
     FOUNDATION_EXPORT NSString *const kKitsuBaseURL;
     FOUNDATION_EXPORT NSString *const kKitsuAuthURL;
     FOUNDATION_EXPORT NSString *const kKitsuTokenURL;

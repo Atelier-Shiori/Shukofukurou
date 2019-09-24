@@ -158,17 +158,7 @@
     NSMutableString *output = [NSMutableString new];
     [output appendString:headerstring];
     [output appendString:@"\n\n\t<myinfo>"];
-    switch ([listservice.sharedInstance getCurrentServiceID]) {
-        case 1:
-            [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
-            break;
-        case 2:
-        case 3:
-            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice.sharedInstance getCurrentServiceUsername]];
-            break;
-        default:
-            break;
-    }
+    [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice.sharedInstance getCurrentServiceUsername]];
     [output appendFormat:@"%@<user_export_type>1</user_export_type>",tabformatting];
     [output appendString:@"\n\t</myinfo>"];
     for (NSDictionary *d in a) {
@@ -209,17 +199,7 @@
     NSMutableString *output = [NSMutableString new];
     [output appendString:headerstring];
     [output appendString:@"\n\n\t<myinfo>"];
-    switch ([listservice.sharedInstance getCurrentServiceID]) {
-        case 1:
-            [output appendFormat:@"%@<username>%@</username>",tabformatting, [Keychain getusername]];
-            break;
-        case 2:
-        case 3:
-            [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice.sharedInstance getCurrentServiceUsername]];
-            break;
-        default:
-            break;
-    }
+    [output appendFormat:@"%@<username>%@</username>",tabformatting, [listservice.sharedInstance getCurrentServiceUsername]];
     [output appendFormat:@"%@<user_export_type>2</user_export_type>",tabformatting];
     [output appendString:@"\n\t</myinfo>"];
     for (NSDictionary *d in a) {

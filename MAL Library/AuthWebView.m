@@ -8,6 +8,8 @@
 
 #import "AuthWebView.h"
 #import "ClientConstants.h"
+#import "listservice.h"
+#import <Hakuchou/Hakuchou.h>
 
 @interface AuthWebView ()
 @property (strong) WKWebView *webView;
@@ -25,31 +27,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    [self loadAuthorization];
+    [self loadAuthorization:_service];
 }
 
 - (NSURL *)authURL {
-    return [NSURL URLWithString:[NSString stringWithFormat:@"https://anilist.co/api/v2/oauth/authorize?client_id=%@&response_type=code",kanilistclient]];
+    NSString *authurl;
+    switch (_service) {
+        case 3:
+            authurl = [NSString stringWithFormat:@"https://anilist.co/api/v2/oauth/authorize?client_id=%@&response_type=code",kanilistclient];
+            break;
+        case 1:
+            return [listservice.sharedInstance.myanimelistManager retrieveAuthorizeURL];
+        default:
+            break;
+    }
+    return [NSURL URLWithString:authurl];
 }
 
-- (void)loadAuthorization {
+- (void)loadAuthorization:(int)nservice {
+    _service = nservice;
     [_webView loadRequest:[NSURLRequest requestWithURL:[self authURL]]];
 }
 
 - (void)webView:(WKWebView *)webView
 decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction
 decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if ([navigationAction.request.URL.absoluteString containsString:@"shukofukurouauth://anilistauth/?code="]) {
+    NSString *redirectURL;
+    switch (_service) {
+        case 1:
+            redirectURL = @"shukofukurouauth://malauth/?code=";
+            break;
+        case 3:
+            redirectURL = @"shukofukurouauth://anilistauth/?code=";
+            break;
+        default:
+            break;
+    }
+    if ([navigationAction.request.URL.absoluteString containsString:redirectURL]) {
         // Save Pin
         decisionHandler(WKNavigationActionPolicyCancel);
         [self resetWebView];
-        _completion([navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:@"shukofukurouauth://anilistauth/?code=" withString:@""]);
-    }
-    else if ([navigationAction.request.URL.absoluteString containsString:@"http://"]) {
-        NSLog(@"Insecure URL, changing to HTTPS");
-        NSString *newURL = [navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:@"http://" withString:@"https://"];
-        decisionHandler(WKNavigationActionPolicyCancel);
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:newURL]]];
+        _completion([navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:redirectURL withString:@""]);
     }
     else {
         decisionHandler(WKNavigationActionPolicyAllow);

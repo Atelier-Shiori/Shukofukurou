@@ -352,8 +352,6 @@
 		916502C21E8C606E00565D30 /* NotLoggedIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 916502C01E8C606E00565D30 /* NotLoggedIn.m */; };
 		916502C41E8C65A500565D30 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C61E8C65A500565D30 /* ListView.xib */; };
 		916502C71E8C65A900565D30 /* NotLoggedIn.xib in Resources */ = {isa = PBXBuildFile; fileRef = 916502C91E8C65A900565D30 /* NotLoggedIn.xib */; };
-		9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */; };
-		9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */; };
 		9168F92B1E89858900CCB5B3 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
 		9168F9321E8991CB00CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9199BB011E8984E300F6E9FF /* PXSourceList.framework */; };
 		9168F9351E89920300CCB5B3 /* PXSourceList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9168F9341E89920300CCB5B3 /* PXSourceList.framework */; };
@@ -459,7 +457,6 @@
 		91F8E3C8210A46CA007137A7 /* CustomListsPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 91244E8D2108BCFE00AA8F90 /* CustomListsPopover.m */; };
 		91F8E3C9210A46CA007137A7 /* RatingTwentyConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B5AA902044813400132C51 /* RatingTwentyConvert.m */; };
 		91F8E3CA210A46CA007137A7 /* NSTextFieldCellMiddleAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A551EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m */; };
-		91F8E3CB210A46CA007137A7 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */; };
 		91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E8DDF01F64C65C00A34A51 /* ClientConstants.m */; };
 		91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199BABE1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m */; };
 		91F8E3CE210A46CA007137A7 /* EditTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 915E8C571E8C24B3005A49A4 /* EditTitle.m */; };
@@ -580,7 +577,6 @@
 		F888F40C208FB1F500C22C39 /* Keychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D3D89E1E89C0E40046C4CC /* Keychain.m */; };
 		F888F40F208FB1F500C22C39 /* ListStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D371E721ECF8AF500F47138 /* ListStatistics.m */; };
 		F888F410208FB1F500C22C39 /* ListImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D94612C1EC38CC8004E171B /* ListImport.m */; };
-		F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */ = {isa = PBXBuildFile; fileRef = 9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */; };
 		F888F413208FB1F500C22C39 /* Base64Category.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168F92A1E89858900CCB5B3 /* Base64Category.m */; };
 		F888F414208FB1F500C22C39 /* RecommendedTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91822A4A1EAE99E6005E33DB /* RecommendedTitleView.m */; };
 		F888F415208FB1F500C22C39 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91D094C01E983095009454F8 /* HistoryView.m */; };
@@ -1038,8 +1034,6 @@
 		916502C01E8C606E00565D30 /* NotLoggedIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotLoggedIn.m; sourceTree = "<group>"; };
 		916502C51E8C65A500565D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ListView.xib; sourceTree = "<group>"; };
 		916502C81E8C65A900565D30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NotLoggedIn.xib; sourceTree = "<group>"; };
-		9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAnimeList.h; sourceTree = "<group>"; };
-		9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAnimeList.m; sourceTree = "<group>"; };
 		9168F9291E89858900CCB5B3 /* Base64Category.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Category.h; sourceTree = "<group>"; };
 		9168F92A1E89858900CCB5B3 /* Base64Category.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Category.m; sourceTree = "<group>"; };
 		9168F92C1E89861300CCB5B3 /* Keychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keychain.h; sourceTree = "<group>"; };
@@ -1413,8 +1407,6 @@
 				2D71422B1FE2E32C001FA9E9 /* listservice.m */,
 				9199BABB1E89842400F6E9FF /* MSWeakTimer.h */,
 				9199BABC1E89842400F6E9FF /* MSWeakTimer.m */,
-				9167E3D71E9D5FA5002CF119 /* MyAnimeList.h */,
-				9167E3D81E9D5FA5002CF119 /* MyAnimeList.m */,
 				F8B5AA932044888800132C51 /* MyListScoreFormatter.h */,
 				F8B5AA942044888800132C51 /* MyListScoreFormatter.m */,
 				591FC1C021C7E98E001D8684 /* NotificationManagers */,
@@ -2296,7 +2288,6 @@
 				91244EA4210901A100AA8F90 /* datamodel.xcdatamodeld in Sources */,
 				2D94612F1EC38CC8004E171B /* ListImport.m in Sources */,
 				59F08C5F2253B42B00A52539 /* Analytics.m in Sources */,
-				9167E3DA1E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				91244E992108E89C00AA8F90 /* CustomListModify.m in Sources */,
 				913A11621E8F206A00450B66 /* Base64Category.m in Sources */,
 				598B453921AC3AE800F28180 /* TitleIdEnumerator.m in Sources */,
@@ -2442,7 +2433,6 @@
 				91244E8F2108BCFE00AA8F90 /* CustomListsPopover.m in Sources */,
 				F8B5AA912044813400132C51 /* RatingTwentyConvert.m in Sources */,
 				91822A561EAEA77D005E33DB /* NSTextFieldCellMiddleAligned.m in Sources */,
-				9167E3D91E9D5FA5002CF119 /* MyAnimeList.m in Sources */,
 				59E8DDF11F64C65C00A34A51 /* ClientConstants.m in Sources */,
 				9199BADA1E89842400F6E9FF /* NSNumberFormatterNumberOnly.m in Sources */,
 				598B453221AC393600F28180 /* TrendingRetriever.m in Sources */,
@@ -2550,7 +2540,6 @@
 				91F8E3C9210A46CA007137A7 /* RatingTwentyConvert.m in Sources */,
 				91F8E3CA210A46CA007137A7 /* NSTextFieldCellMiddleAligned.m in Sources */,
 				59F356C621B6E09B008C79ED /* EpisodeDetailsWindowController.m in Sources */,
-				91F8E3CB210A46CA007137A7 /* MyAnimeList.m in Sources */,
 				91F8E3CC210A46CA007137A7 /* ClientConstants.m in Sources */,
 				91F8E3CD210A46CA007137A7 /* NSNumberFormatterNumberOnly.m in Sources */,
 				91F8E3CE210A46CA007137A7 /* EditTitle.m in Sources */,
@@ -2618,7 +2607,6 @@
 				91244E8B2108BB3000AA8F90 /* CustomListShouldShowValueTransformer.m in Sources */,
 				59F08C602253B42B00A52539 /* Analytics.m in Sources */,
 				F888F410208FB1F500C22C39 /* ListImport.m in Sources */,
-				F888F412208FB1F500C22C39 /* MyAnimeList.m in Sources */,
 				597D78BA21656FCB00E58C38 /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				5972405B21B5816C00599AAC /* AiringNotificationManager.m in Sources */,
 				593A794A21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
@@ -3390,6 +3378,7 @@
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3445,6 +3434,7 @@
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 3.4;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

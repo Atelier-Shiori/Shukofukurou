@@ -7,16 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MyAnimeList.h"
 #import <Hakuchou/Hakuchou.h>
 #import "TitleIDMapper.h"
 
 @interface listservice : NSObject
 @property (strong) AniList *anilistManager;
 @property (strong) Kitsu *kitsuManager;
+@property (strong) MyAnimeList *myanimelistManager;
 
 + (instancetype)sharedInstance;
 - (int)getCurrentServiceID;
+- (bool)checkUserData;
 - (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveownListWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveAiringSchedule:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;

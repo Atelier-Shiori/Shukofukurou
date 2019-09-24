@@ -366,7 +366,7 @@
 - (IBAction)viewListStats:(id)sender {
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
-            if (![Keychain checkaccount]) {
+            if (![listservice.sharedInstance.myanimelistManager getFirstAccount]) {
                 [self showloginnotice];
                 return;
             }
@@ -499,6 +499,13 @@
         if ((![defaults valueForKey:@"anilist-username"] || ![defaults valueForKey:@"anilist-userid"]) || ((NSString *)[defaults valueForKey:@"anilist-username"]).length == 0 || refreshAniList) {
             [listservice.sharedInstance.anilistManager saveuserinfoforcurrenttoken];
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"anilist-userinformationrefresh"];
+        }
+    }
+    if ([listservice.sharedInstance.myanimelistManager getFirstAccount]) {
+        bool refreshMAL = (![defaults valueForKey:@"mal-userinformationrefresh"] || ((NSDate *)[defaults objectForKey:@"mal-userinformationrefresh"]).timeIntervalSinceNow < 0);
+        if ((![defaults valueForKey:@"mal-username"] || ![defaults valueForKey:@"mal-userid"]) || ((NSString *)[defaults valueForKey:@"mal-username"]).length == 0 || refreshMAL) {
+            [listservice.sharedInstance.myanimelistManager saveuserinfoforcurrenttoken];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"mal-userinformationrefresh"];
         }
     }
 }

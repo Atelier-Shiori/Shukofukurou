@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import <Hakuchou/Hakuchou.h>
 #import "Utility.h"
+#import "listservice.h"
 
 @implementation TrendingRetriever
 + (NSManagedObjectContext *)managedObjectContext {
@@ -35,6 +36,9 @@
 
 + (void)retrieveTrendList:(int)service withType:(int)type completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler {
     switch (service) {
+        case 1:
+            [self retrieveMALTrending:type completion:completionHandler error:errorHandler];
+            break;
         case 2:
             [self retrieveKitsuTrending:type completion:completionHandler error:errorHandler];
             break;
@@ -43,6 +47,51 @@
             break;
     }
 }
+
++ (void)retrieveMALTrending:(int)type completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler {
+    __block NSMutableDictionary *finaldict = [NSMutableDictionary new];
+    __block AFHTTPSessionManager *manager = [Utility jsonmanager];
+    AFOAuthCredential *cred = [listservice.sharedInstance.myanimelistManager getFirstAccount];
+    if (cred && cred.expired) {
+        [listservice.sharedInstance.myanimelistManager refreshToken:^(bool success) {
+            if (success) {
+                [self retrieveMALTrending:type completion:completionHandler error:errorHandler];
+            }
+            else {
+                errorHandler(nil);
+            }
+        }];
+        return;
+    }
+    if (cred) {
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+    }
+    else {
+        errorHandler(nil);
+    }
+    if (type == 0) {
+        [manager GET:@"https://api.myanimelist.net/v2/anime/ranking?ranking_type=airing&limit=20&fields=alternative_titles,num_episodes,media_type,status,mean,nsfw" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            finaldict[@"Popular This Season"] = [AtarashiiAPIListFormatMAL MALAnimeSearchtoAtarashii:responseObject];
+            [manager GET:@"https://api.myanimelist.net/v2/anime/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_episodes,media_type,status,mean,nsfw" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                finaldict[@"Highest Rated"] = [AtarashiiAPIListFormatMAL MALAnimeSearchtoAtarashii:responseObject];
+                completionHandler(finaldict);
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                errorHandler(error);
+            }];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            errorHandler(error);
+        }];
+    }
+    else {
+        [manager GET:@"https://api.myanimelist.net/v2/manga/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_chapters,num_volumes,media_type,status,mean" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            finaldict[@"Highest Rated"] = [AtarashiiAPIListFormatMAL MALMangaSearchtoAtarashii:responseObject];
+            completionHandler(finaldict);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            errorHandler(error);
+        }];
+    }
+}
+
 + (void)retrieveAniListTrending:(int)type completion:(void (^)(id responseobject))completionHandler error:(void (^)(NSError *error))errorHandler {
     NSMutableDictionary *finaldict = [NSMutableDictionary new];
     AFHTTPSessionManager *manager = [Utility jsonmanager];
@@ -243,7 +292,12 @@
 }
 
 + (NSString *)serializeDictionarytoJSON:(id)responseObject {
-    return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingPrettyPrinted error:nil] encoding:NSUTF8StringEncoding];
+    if (@available(macOS 10.13, *)) {
+        return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:NSJSONWritingSortedKeys error:nil] encoding:NSUTF8StringEncoding];
+    } else {
+        // Fallback on earlier versions
+        return [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:responseObject options:0 error:nil] encoding:NSUTF8StringEncoding];
+    }
 }
 
 @end

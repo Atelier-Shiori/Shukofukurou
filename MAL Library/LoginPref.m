@@ -54,12 +54,12 @@
 - (void)loadlogin
 {
     // Load Username
-    if ([Keychain checkaccount]) {
+    if ([listservice.sharedInstance.myanimelistManager getFirstAccount]) {
         _clearbut.enabled = YES;
         _savebut.enabled = NO;
         _loggedinview.hidden = NO;
         _loginview.hidden = YES;
-        _loggedinuser.stringValue = [Keychain getusername];
+        _loggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"mal-username"];
     }
     else {
         //Disable Clearbut
@@ -136,10 +136,12 @@
 - (IBAction)authorize:(id)sender {
     if (!_anilistauthw) {
         _anilistauthw = [AniListAuthWindow new];
+        [_anilistauthw windowDidLoad];
+        [_anilistauthw loadAuthorizationForService:(int)((NSButton *)sender).tag];
     }
     else {
         [_anilistauthw.window makeKeyAndOrderFront:self];
-        [_anilistauthw loadAuthorization];
+        [_anilistauthw loadAuthorizationForService:(int)((NSButton *)sender).tag];
         [_anilistauthw close];
     }
     _anilistauthorizebtn.enabled = NO;
@@ -147,10 +149,10 @@
         if (returnCode == NSModalResponseOK) {
             NSString *pin = _anilistauthw.pin.copy;
             _anilistauthw.pin = nil;
-            [self login:@"" password:pin withServiceID:3];
+            [self login:@"" password:pin withServiceID:(int)((NSButton *)sender).tag];
         }
         else {
-            _anilistauthorizebtn.enabled = YES;
+            ((NSButton *)sender).enabled = YES;
         }
     }];
 }
@@ -169,14 +171,12 @@
     // Store account in login keychain
     switch (serviceid) {
         case 1:
-            [Keychain storeaccount:_fieldusername.stringValue password:_fieldpassword.stringValue];
-            [[NSUserDefaults standardUserDefaults] setObject:[NSDate dateWithTimeIntervalSinceNow:60*60*24] forKey:@"credentialscheckdate"];
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"credentialsvalid"];
             _clearbut.enabled = YES;
-            _loggedinuser.stringValue = username;
+            _loggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"mal-username"];
             _loggedinview.hidden = NO;
             _loginview.hidden = YES;
             [_savebut setEnabled:YES];
+            [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"mal-userinformationrefresh"];
             break;
         case 2:
             _kitsuclearbut.enabled = YES;
@@ -305,7 +305,7 @@
     //Remove account from keychain
     switch (service) {
         case 1:
-            [Keychain removeaccount];
+            [listservice.sharedInstance.myanimelistManager removeAccount];
             break;
         case 2:
             [listservice.sharedInstance.kitsuManager removeAccount];

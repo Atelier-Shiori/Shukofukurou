@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,6 +19,7 @@
                 <outlet property="chapterview" destination="lkk-1I-ccm" id="3vi-3b-cC8"/>
                 <outlet property="closebtn" destination="Lsh-Cq-iPY" id="7FM-7c-lJl"/>
                 <outlet property="editbtn" destination="UJq-d6-uNQ" id="NDR-Y6-ITG"/>
+                <outlet property="enddatelabel" destination="gQb-B1-MHL" id="9fr-xD-Tly"/>
                 <outlet property="enddatepicker" destination="Vwl-gF-w0d" id="7QX-wE-AxA"/>
                 <outlet property="episodefield" destination="jOP-SX-jIh" id="4fh-5u-uGZ"/>
                 <outlet property="episodefieldnumberformat" destination="L1c-fD-PNl" id="eKi-3B-LWP"/>
@@ -41,6 +42,7 @@
                 <outlet property="segmentfield" destination="0VS-xT-OYp" id="hJs-Yw-AD8"/>
                 <outlet property="setenddatecheck" destination="6WI-nf-Nm7" id="Tin-WL-kfA"/>
                 <outlet property="setstartdatecheck" destination="jH3-W2-Fiq" id="ECc-5h-f0z"/>
+                <outlet property="startdatelabel" destination="cr2-0t-ugP" id="GaC-rr-QBt"/>
                 <outlet property="startdatepicker" destination="Y3W-c4-Wdw" id="Wfw-OI-dNs"/>
                 <outlet property="status" destination="IFI-uI-3Nf" id="fN1-f4-7gl"/>
                 <outlet property="tagsfield" destination="XsR-39-bI7" id="yga-Pt-QwV"/>
@@ -60,7 +62,7 @@
             <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="297"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="297"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -285,7 +287,7 @@ Gw
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="316" y="403.5"/>
+            <point key="canvasLocation" x="122" y="339"/>
         </window>
         <menu id="Xss-Ga-Pzn">
             <items>

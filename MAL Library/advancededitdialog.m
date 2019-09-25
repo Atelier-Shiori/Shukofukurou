@@ -414,10 +414,11 @@
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1:
             _score.menu = _malscoremenu;
-            [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_malfieldsview];
+            [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_kitsufieldsview];
             _privatecheck.hidden = YES;
             _advancedscore.hidden = true;
             _score.hidden = false;
+            [self hideDateFields:YES];
             break;
         case 2: {
             [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_kitsufieldsview];
@@ -437,6 +438,7 @@
                 default:
                     break;
             }
+            [self hideDateFields:NO];
             break;
         }
         case 3: {
@@ -466,6 +468,7 @@
                     _score.menu = _AniListThreeScoreMenu;
                 }
             }
+            [self hideDateFields:NO];
             break;
         }
         default:
@@ -567,23 +570,31 @@
     NSString *tags = @"";
     switch ([listservice.sharedInstance getCurrentServiceID]) {
         case 1: {
-            if (((NSArray *)_tagsfield.objectValue).count > 0){
-                tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
-                extrafields[@"tags"] = tags;
+            /*
+             if (((NSArray *)_tagsfield.objectValue).count > 0){
+             tags = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
+             extrafields[@"tags"] = tags;
+             }
+             */
+            /*if (((NSNumber *)udict[@"set start date"]).boolValue) {
+                extrafields[@"start"] = [df stringFromDate:(NSDate *)udict[@"start"]];
             }
-            if (@(_setstartdatecheck.state).boolValue) {
-                extrafields[@"start"] = [df stringFromDate:_startdatepicker.dateValue];
-            }
-            if (@(_setenddatecheck.state).boolValue) {
-                extrafields[@"end"] = [df stringFromDate:_enddatepicker.dateValue];
-            }
+            if (((NSNumber *)udict[@"set end date"]).boolValue) {
+                extrafields[@"end"] = [df stringFromDate:(NSDate *)udict[@"end"]];
+            }*/
             if (type == 0) {
                 extrafields[@"is_rewatching"] = @(_reconsuming.state);
-                extrafields[@"rewatch_count"] = @(_repeattimes.intValue);
+                extrafields[@"num_times_rewatched"] = @(_repeattimes.intValue);
             }
             else {
                 extrafields[@"is_rereading"] = @(_reconsuming.state);
-                extrafields[@"reread_count"] = @(_repeattimes.intValue);
+                extrafields[@"num_times_reread"] = @(_repeattimes.intValue);;
+            }
+            if (_notesfield.stringValue.length > 0) {
+                extrafields[@"comments"] = _notesfield.stringValue;
+            }
+            else {
+                extrafields[@"comments"] = @"";
             }
             break;
         }
@@ -641,16 +652,17 @@
     NSDateFormatter *df = [NSDateFormatter new];
     df.dateFormat = @"yyyy-MM-dd";
     nfields[@"score"] = @(score);
-    if (((NSArray *)_tagsfield.objectValue).count > 0 && [listservice.sharedInstance getCurrentServiceID] == 1){
+    /*if (((NSArray *)_tagsfield.objectValue).count > 0 && [listservice.sharedInstance getCurrentServiceID] == 1){
         nfields[@"personal_tags"] = [(NSArray *)_tagsfield.objectValue componentsJoinedByString:@","];
     }
+     */
+    if (_notesfield.stringValue.length > 0) {
+        nfields[@"personal_comments"] = _notesfield.stringValue;
+    }
+    else {
+        nfields[@"personal_comments"] = @"";
+    }
     if ([listservice.sharedInstance getCurrentServiceID] == 2 && [listservice.sharedInstance getCurrentServiceID] == 3) {
-        if (_notesfield.stringValue.length > 0) {
-            nfields[@"personal_comments"] = _notesfield.stringValue;
-        }
-        else {
-            nfields[@"personal_comments"] = @"";
-        }
         nfields[@"private"] = @(@(_privatecheck.state).boolValue);
     }
     nfields[@"last_updated"] = [Utility getLastUpdatedDateWithResponseObject:responseobject withService:[listservice.sharedInstance getCurrentServiceID]];
@@ -681,5 +693,14 @@
         }
     }
     return nfields;
+}
+
+- (void)hideDateFields:(bool)hide {
+    _setstartdatecheck.hidden = hide;
+    _setenddatecheck.hidden = hide;
+    _startdatepicker.hidden = hide;
+    _enddatepicker.hidden = hide;
+    _startdatelabel.hidden = hide;
+    _enddatelabel.hidden = hide;
 }
 @end

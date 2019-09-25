@@ -27,6 +27,8 @@
 @property (strong) IBOutlet NSTokenField *tagsfield;
 @property (strong) IBOutlet NSDatePicker *startdatepicker;
 @property (strong) IBOutlet NSDatePicker *enddatepicker;
+@property (strong) IBOutlet NSTextField *startdatelabel;
+@property (strong) IBOutlet NSTextField *enddatelabel;
 
 // Kitsu Fields
 @property (strong) IBOutlet NSView *kitsufieldsview;

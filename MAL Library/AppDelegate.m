@@ -48,6 +48,8 @@
 @property (strong) CharactersBrowser *cbrowser;
 @property (strong) IBOutlet NSMenuItem *malexportmenu;
 @property (strong) IBOutlet NSMenuItem *convertexportmenu;
+@property (strong) IBOutlet NSMenuItem *malanimexmlexport;
+@property (strong) IBOutlet NSMenuItem *malmangaxmlexport;
 #if defined(AppStore)
 #if defined(OSS)
 #else
@@ -441,11 +443,15 @@
         _messagesmenuitem.hidden = true;
         //_malexportmenu.hidden = true;
         _convertexportmenu.hidden = false;
+        _malanimexmlexport.hidden = true;
+        _malmangaxmlexport.hidden = true;
     }
     else {
         _messagesmenuitem.hidden = false;
         //_malexportmenu.hidden = false;
         _convertexportmenu.hidden = true;
+        _malanimexmlexport.hidden = false;
+        _malmangaxmlexport.hidden = false;
     }
     switch (selected) {
         case 1:

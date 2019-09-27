@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14865.1" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14865.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,6 +19,8 @@
                 <outlet property="convertexportmenu" destination="cxh-a0-EgH" id="tti-up-Doj"/>
                 <outlet property="importanilist" destination="LhM-Wm-9AK" id="pdr-7y-cxx"/>
                 <outlet property="importkitsumenu" destination="Yfh-DT-TKI" id="YoT-kG-iZP"/>
+                <outlet property="malanimexmlexport" destination="QYw-hI-yCc" id="mlD-xN-zt2"/>
+                <outlet property="malmangaxmlexport" destination="YKV-a6-tzZ" id="Adf-v1-cYv"/>
                 <outlet property="personbrowsermenuitem" destination="t8n-EL-Wev" id="4YN-Pg-1El"/>
                 <outlet property="servicemenucontrol" destination="Soe-9M-Amc" id="6H8-R2-elv"/>
             </connections>
@@ -478,13 +480,13 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Export List" id="pA4-hy-YwK">
                                     <items>
-                                        <menuItem title="Export Anime List…" hidden="YES" id="QYw-hI-yCc">
+                                        <menuItem title="Export Anime List (MAL XML)…" id="QYw-hI-yCc">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportAnimeList:" target="Qdg-2P-lTs" id="Xmy-ZI-xfX"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Export Manga List…" hidden="YES" id="YKV-a6-tzZ">
+                                        <menuItem title="Export Manga List (MAL XML)…" id="YKV-a6-tzZ">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="exportMangaList:" target="Qdg-2P-lTs" id="dEo-BJ-vZX"/>

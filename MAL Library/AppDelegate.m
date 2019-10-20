@@ -425,6 +425,10 @@
     if (!pwc) {
         pwc = [ProfileWindowController new];
     }
+    if ([listservice.sharedInstance getCurrentServiceID] == 1 && ![listservice.sharedInstance checkAccountForCurrentService]) {
+        [self showloginnotice];
+        return;
+    }
     [pwc.window makeKeyAndOrderFront:self];
 }
 

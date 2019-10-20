@@ -220,7 +220,7 @@
         NSLog(@"%@",error);
         _deletetitleitem.enabled = YES;
         [self setUpdatingState:false];
-        [Analytics sendAnalyticsWithEventTitle:@"Entry Deletion Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription, @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.currentlist == 0 ? @"anime" : @"manga"}];
+        [Analytics sendAnalyticsWithEventTitle:@"Entry Deletion Failed" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"localized_error" : error.localizedDescription ? error.localizedDescription : @"none", @"error_description" : [Analytics getErrorDescriptionFromErrorResponse:error], @"media_type" : self.currentlist == 0 ? @"anime" : @"manga"}];
     }];
 }
 

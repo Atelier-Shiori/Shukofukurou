@@ -63,21 +63,21 @@
         if (responseobject[@"details"][@"birthday"] && responseobject[@"details"][@"birthday"] != [NSNull null]) {
             [details appendFormat:@"Birthday: %@<br />", responseobject[@"details"][@"birthday"]];
         }
-        if (responseobject[@"details"][@"location"] && ![NSNull null]) {
+        if (responseobject[@"details"][@"location"] && responseobject[@"details"][@"location"] != [NSNull null]) {
             [details appendFormat:@"Location: %@<br />", responseobject[@"details"][@"location"]];
         }
         [details appendFormat:@"Join Date: %@<br />", responseobject[@"details"][@"join_date"]];
         [details appendFormat:@"Access Rank: %@<br /><br />", responseobject[@"details"][@"access_rank"]];
         [details appendString:@"Member Statistics:<br />"];
-        [details appendFormat:@"Forum Posts: %@<br />", responseobject[@"details"][@"forum_posts"]];
+        //[details appendFormat:@"Forum Posts: %@<br />", responseobject[@"details"][@"forum_posts"]];
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
-                [details appendFormat:@"Reviews: %@<br />", responseobject[@"details"][@"reviews"]];
-                [details appendFormat:@"Recommendations: %@<br />", responseobject[@"details"][@"recommendations"]];
-                [details appendFormat:@"Blog Posts: %@<br />", responseobject[@"details"][@"blog_posts"]];
-                [details appendFormat:@"Clubs Joined: %@<br />", responseobject[@"details"][@"clubs"]];
-                [details appendFormat:@"Comments: %@<br />", responseobject[@"details"][@"comments"]];
-                _sendmessagebtn.hidden = false;
+                //[details appendFormat:@"Reviews: %@<br />", responseobject[@"details"][@"reviews"]];
+                //[details appendFormat:@"Recommendations: %@<br />", responseobject[@"details"][@"recommendations"]];
+                //[details appendFormat:@"Blog Posts: %@<br />", responseobject[@"details"][@"blog_posts"]];
+                //[details appendFormat:@"Clubs Joined: %@<br />", responseobject[@"details"][@"clubs"]];
+                //[details appendFormat:@"Comments: %@<br />", responseobject[@"details"][@"comments"]];
+                //_sendmessagebtn.hidden = false;
                 break;
             }
             case 2: {
@@ -92,7 +92,7 @@
                 break;
         }
 
-        if (responseobject[@"details"][@"website"] && responseobject[@"details"][@"website"] != [NSNull null] && ![(NSString *)responseobject[@"details"][@"website"] containsString:@"myanimelist.net/rss.php"]) {
+        if (responseobject[@"details"][@"website"] && (responseobject[@"details"][@"website"] != [NSNull null] && ((NSString *)responseobject[@"details"][@"website"]).length > 0) && ![(NSString *)responseobject[@"details"][@"website"] containsString:@"myanimelist.net/rss.php"]) {
             _homepageurl = responseobject[@"details"][@"website"];
             _homepagebtn.hidden = false;
         }

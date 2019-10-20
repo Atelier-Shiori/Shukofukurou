@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -12,7 +12,6 @@
                 <outlet property="mainview" destination="Avc-HO-aZl" id="LdO-Rf-N3B"/>
                 <outlet property="noprofileview" destination="dBy-Ld-SNJ" id="njA-Id-kIz"/>
                 <outlet property="noselectionview" destination="bZm-Bf-eg1" id="1i2-GK-UAH"/>
-                <outlet property="ohistoryvc" destination="16y-xY-GW6" id="W2K-ZC-kI4"/>
                 <outlet property="profilevc" destination="zHN-Wg-WZf" id="0Vl-2A-NJx"/>
                 <outlet property="progresswheel" destination="R7D-0X-L3o" id="NTt-Id-Nkc"/>
                 <outlet property="searchfield" destination="OYH-Zt-VCq" id="muE-gR-0hN"/>
@@ -70,7 +69,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R1x-ce-RLs">
-                                                                    <rect key="frame" x="0.0" y="1" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="2" width="189" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="rWF-KK-jRP">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" red="0.43921568630000002" green="0.4941176471" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -99,7 +98,7 @@
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="Ds9-ys-1jh"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rYT-CE-4f9">
-                                                                    <rect key="frame" x="22" y="2" width="97" height="17"/>
+                                                                    <rect key="frame" x="22" y="2" width="97" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="n7k-SV-8a9">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -281,7 +280,6 @@
                 <outlet property="animelistfilter" destination="jFm-Vn-GJM" id="oT6-i5-UbM"/>
             </connections>
         </viewController>
-        <viewController nibName="HistoryView" id="16y-xY-GW6" customClass="OtherHistoryView"/>
     </objects>
     <resources>
         <image name="Info" width="32" height="32"/>

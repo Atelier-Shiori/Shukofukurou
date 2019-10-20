@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)convertAnimeType:(NSString *)type;
 + (NSNumber *)getLastUpdatedDateWithResponseObject:(id)responseObject withService:(int)service;
 + (NSDate *)dateStringToDate:(NSString *)datestring;
++ (NSDate *)isodateStringToDate:(NSString *)datestring;
 + (int)parseSeason:(NSString *)string;
 @end
 

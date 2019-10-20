@@ -205,6 +205,7 @@
 - (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler {
     switch ([self getCurrentServiceID]) {
         case 1: {
+            [myanimelistManager retrieveReviewsForTitle:titleid withType:type withPage:1 completion:completionHandler error:errorHandler];
             break;
         }
         case 2: {

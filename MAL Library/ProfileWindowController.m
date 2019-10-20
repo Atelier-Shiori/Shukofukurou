@@ -20,7 +20,6 @@
 @property (strong) IBOutlet NSVisualEffectView *noselectionview;
 @property (strong) IBOutlet NSView *noprofileview;
 @property (strong) IBOutlet ListView *listview;
-@property (strong) IBOutlet OtherHistoryView *ohistoryvc;
 @property (strong) ListStatistics *liststats;
 
 @property (strong) IBOutlet ProfileViewController *profilevc;
@@ -78,7 +77,6 @@
     // Set Resizing mask
     (_listview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_noselectionview).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
-    _ohistoryvc.view.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     self.window.titleVisibility = NSWindowTitleHidden;
     
     // Fix window size
@@ -229,16 +227,6 @@
              [self loadnoprofileview];
         }
     }
-    else if ([identifier isEqualToString:@"history"]) {
-        if (_loadedprofile) {
-            [self replaceMainViewWithView:_ohistoryvc.view];
-            _ohistoryvc.view.frame = mainviewframe;
-            [_ohistoryvc.view setFrameOrigin:origin];
-        }
-        else {
-            [self loadnoprofileview];
-        }
-    }
     [self loadtoolbar];
 }
 
@@ -312,14 +300,7 @@
     animelistItem.icon = [NSImage imageNamed:@"library"];
     PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
     mangalistItem.icon = [NSImage imageNamed:@"library"];
-    PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
-    historyItem.icon = [NSImage imageNamed:@"history"];
-    if ([listservice.sharedInstance getCurrentServiceID] == 1) {
-        profilegroupItem.children = @[profileItem, animelistItem, mangalistItem, historyItem];
-    }
-    else {
-        profilegroupItem.children = @[profileItem, animelistItem, mangalistItem];
-    }
+    profilegroupItem.children = @[profileItem, animelistItem, mangalistItem];
 
     // Populate Source List
     [self.sourceListItems addObject:profilegroupItem];
@@ -355,7 +336,6 @@
         if (success) {
             [listservice.sharedInstance retrieveList:username listType:MALAnime completion:^(id responseObject) {
                 [_listview populateList:responseObject type:MALAnime];
-                [_ohistoryvc loadHistory:username];
                 [_liststats populateValues:responseObject type:1];
                 [listservice.sharedInstance retrieveList:username listType:MALManga completion:^(id responseObject){
                     [_listview populateList:responseObject type:MALManga];
@@ -520,8 +500,7 @@
             self.window.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
         }
         _noselectionview.appearance = [NSAppearance appearanceNamed:appearancename];
-        _profilevc.view.appearance = [NSAppearance appearanceNamed:appearancename];;
-        _ohistoryvc.view.appearance = [NSAppearance appearanceNamed:appearancename];;
+        _profilevc.view.appearance = [NSAppearance appearanceNamed:appearancename];
         _listview.filterbarview.appearance = [NSAppearance appearanceNamed:appearancename];
         _listview.filterbarview2.appearance = [NSAppearance appearanceNamed:appearancename];
         _listview.customlistpopoverviewcontroller.view.appearance = [NSAppearance appearanceNamed:appearancename];
@@ -548,7 +527,6 @@
     _loadedprofile = false;
     [_liststats.window close];
     [_listview clearalllists];
-    [_ohistoryvc clearHistory];
     [_profilevc resetprofileview];
     [self loadMainView];
 }

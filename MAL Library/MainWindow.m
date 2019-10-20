@@ -464,6 +464,10 @@
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];
     NSPoint origin = NSMakePoint(0, 0);
+    if (![listservice.sharedInstance checkAccountForCurrentService] && [listservice.sharedInstance getCurrentServiceID] == 1) {
+        [self loadNotLoggedIn];
+        return;
+    }
         if ([identifier isEqualToString:@"animelist"]){
             if ([listservice.sharedInstance checkAccountForCurrentService]) {
                 [self replaceMainViewWithView:_listview.view];
@@ -556,6 +560,9 @@
     // Remove Toolbar Items
     for (int i = 0; i < toolbaritems.count; i++) {
         [_toolbar removeItemAtIndex:0];
+    }
+    if (![listservice.sharedInstance checkAccountForCurrentService] && [listservice.sharedInstance getCurrentServiceID] == 1) {
+        return;
     }
     NSIndexSet *selectedIndexes = _sourceList.selectedRowIndexes;
     NSString *identifier = [[_sourceList itemAtRow:selectedIndexes.firstIndex] identifier];

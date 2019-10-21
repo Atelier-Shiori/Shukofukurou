@@ -466,6 +466,7 @@
     NSPoint origin = NSMakePoint(0, 0);
     if (![listservice.sharedInstance checkAccountForCurrentService] && [listservice.sharedInstance getCurrentServiceID] == 1) {
         [self loadNotLoggedIn];
+        [self createToolbar];
         return;
     }
         if ([identifier isEqualToString:@"animelist"]){

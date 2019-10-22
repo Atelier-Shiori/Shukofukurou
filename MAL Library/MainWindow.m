@@ -1009,7 +1009,7 @@
 }
 
 - (void)selectsourcelistitemWithSelectedIndex:(long)selectedindex withOldService:(int)oldservice withNewService:(int)newservice {
-    bool donated = [NSUserDefaults.standardUserDefaults boolForKey:@"donated"];
+    bool donated = [NSUserDefaults.standardUserDefaults boolForKey:@"donated"];/*
     if (oldservice ==  1 && newservice > 1) {
         if (selectedindex < 4 && donated) {
             [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex] byExtendingSelection:false];
@@ -1040,7 +1040,7 @@
     }
     else {
          [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:selectedindex] byExtendingSelection:false];
-    }
+    }*/
 }
 
 - (void)loadtitleinfoWithDifferentService:(int)oldserviceid {

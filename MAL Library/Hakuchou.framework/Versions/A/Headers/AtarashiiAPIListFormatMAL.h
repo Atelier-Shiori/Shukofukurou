@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSArray *)MALMangaSearchtoAtarashii:(NSDictionary *)data;
 + (NSArray *)normalizeSeasonData:(NSArray *)seasonData withSeason:(NSString *)season withYear:(int)year;
 + (NSDictionary *)MalUsertoAtarashii:(NSDictionary *)userdata;
++ (NSArray *)MALReviewstoAtarashii:(NSArray *)data withType:(int)type;
 @end
 
 NS_ASSUME_NONNULL_END

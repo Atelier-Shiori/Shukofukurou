@@ -35,7 +35,7 @@
 + (void)donateCheck:(AppDelegate*)delegate;
 + (void)patreonDonateCheck:(AppDelegate*)delegate;
 + (void)deactivatePatreonLicense:(AppDelegate *)delegate;
-+ (NSDate *)stringDatetoDate:(NSString *)stringdate;
++ (NSDate *)stringDatetoDate:(NSString *)value;
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate;
 + (AFHTTPSessionManager*)jsonmanager;
 + (AFHTTPSessionManager*)httpmanager;

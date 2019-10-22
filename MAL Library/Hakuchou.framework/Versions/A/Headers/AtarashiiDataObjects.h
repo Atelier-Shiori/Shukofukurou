@@ -220,4 +220,3 @@
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
-

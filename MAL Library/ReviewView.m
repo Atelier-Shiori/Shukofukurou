@@ -102,11 +102,16 @@
         }
     }
     __weak ReviewView *weakSelf = self;
-    [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading review..." completion:^(NSAttributedString * _Nonnull astr) {
-        [weakSelf.reviewtext scrollToBeginningOfDocument:weakSelf];
-        [weakSelf.reviewtext scrollToBeginningOfDocument:weakSelf];
-        weakSelf.reviewtext.textColor = NSColor.controlTextColor;
-    }];
+    if (currentservice == 1) {
+        _reviewtext.string = [(NSString *)review[@"review"] stringByReplacingOccurrencesOfString:@"\\n\\n" withString:@"\n\n"];
+    }
+    else {
+        [_reviewtext setTextToHTML:(NSString *)review[@"review"] withLoadingText:@"Loading review..." completion:^(NSAttributedString * _Nonnull astr) {
+            [weakSelf.reviewtext scrollToBeginningOfDocument:weakSelf];
+            [weakSelf.reviewtext scrollToBeginningOfDocument:weakSelf];
+            weakSelf.reviewtext.textColor = NSColor.controlTextColor;
+        }];
+    }
     if (((NSString *)review[@"avatar_url"]).length > 0) {
         [_revieweravatar sd_setImageWithURL:review[@"avatar_url"]];
     }

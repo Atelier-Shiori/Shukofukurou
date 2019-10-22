@@ -393,10 +393,26 @@
     }
 }
 
-+ (NSDate *)stringDatetoDate:(NSString *)stringdate {
++ (NSDate *)stringDatetoDate:(NSString *)value {
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init] ;
     dateFormatter.dateFormat = @"yyyy-MM-dd";
-    return [dateFormatter dateFromString:stringdate];
+    NSDate *finaldate = [dateFormatter dateFromString:value];
+    if (finaldate) {
+        return finaldate;
+    }
+    else {
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        finaldate = [dateFormatter dateFromString:value];
+        if (finaldate) {
+            return finaldate;
+        }
+        dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
+        finaldate = [dateFormatter dateFromString:value];
+        if (finaldate) {
+            return finaldate;
+        }
+    }
+    return nil;
 }
 
 + (NSString *)stringDatetoLocalizedDateString:(NSString *)stringdate {

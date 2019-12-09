@@ -11,7 +11,8 @@
 #import "Utility.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
-#import "StreamDataRetriever.h"
+#import "NewStreamDataRetriever.h"
+#import "listservice.h"
 
 @interface StreamPopup ()
 @property (strong) IBOutlet NSTableViewAction *tb;
@@ -26,16 +27,19 @@
     [self view];
 }
 
-- (bool)checkifdataexists:(NSString *)title {
-    NSDictionary * data = [StreamDataRetriever retrieveSitesForTitle:title];
-    if (data.count > 0) {
-        [self loadTitles:[self convertNSDictionaryData:data]];
-        return true;
-    }
-    NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
-    [a removeAllObjects];
-    _streamsexist = false;
-    return false;
+- (void)checkifdataexists:(int)titleid completion:(void (^)(bool exists, bool success))completionHandler {
+    [NewStreamDataRetriever retrieveStreamDataForTitleID:titleid withService:listservice.sharedInstance.getCurrentServiceID completion:^(NSArray * _Nonnull entries, bool success) {
+        if (entries.count > 0) {
+            [self loadTitles:entries];
+            _streamsexist = true;
+        }
+        else {
+            NSMutableArray *a = [_arraycontroller mutableArrayValueForKey:@"content"];
+            [a removeAllObjects];
+            _streamsexist = false;
+        }
+        completionHandler(_streamsexist, success);
+    }];
 }
 
 - (void)loadTitles:(NSArray *)sites {
@@ -45,17 +49,6 @@
     [_tb reloadData];
     [_tb deselectAll:self];
     _streamsexist = (a.count > 0);
-}
-
-- (NSArray *)convertNSDictionaryData:(NSDictionary *)dict {
-    NSMutableArray *final = [NSMutableArray new];
-    for (int i = 0; i < dict.count; i++) {
-        NSString *site = dict.allKeys[i];
-        site = site.capitalizedString;
-        NSString *url = dict.allValues[i];
-        [final addObject:@{@"site":site, @"url":url}];
-    }
-    return final;
 }
 
 - (IBAction)loadtitle:(id)sender {

@@ -202,7 +202,7 @@
      andSelector:@selector(handleURLEvent:withReplyEvent:)
      forEventClass:kInternetEventClass
      andEventID:kAEGetURL];
-    [StreamDataRetriever retrieveStreamData];
+    //[StreamDataRetriever retrieveStreamData];
 #if defined(AppStore)
 #if defined(OSS)
 #else

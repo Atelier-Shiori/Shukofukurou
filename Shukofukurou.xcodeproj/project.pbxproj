@@ -124,6 +124,10 @@
 		593A799821ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
 		593A799921ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
 		593A799A21ADEE140083FA86 /* TrendingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 593A799C21ADEE140083FA86 /* TrendingView.xib */; };
+		595C2935239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 595C2933239EB6780064F2D4 /* NewStreamDataRetriever.m */; };
+		595C2936239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 595C2933239EB6780064F2D4 /* NewStreamDataRetriever.m */; };
+		595C2937239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 595C2933239EB6780064F2D4 /* NewStreamDataRetriever.m */; };
+		595C2938239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */ = {isa = PBXBuildFile; fileRef = 595C2933239EB6780064F2D4 /* NewStreamDataRetriever.m */; };
 		596BABBD21C00886005C3451 /* RelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BABBB21C00886005C3451 /* RelatedViewController.m */; };
 		596BABBE21C00886005C3451 /* RelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BABBB21C00886005C3451 /* RelatedViewController.m */; };
 		596BABBF21C00886005C3451 /* RelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596BABBB21C00886005C3451 /* RelatedViewController.m */; };
@@ -944,6 +948,9 @@
 		593A798F21ADEE050083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TitleCollectionCell.xib; sourceTree = "<group>"; };
 		593A799521ADEE0C0083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/HeaderView.xib; sourceTree = "<group>"; };
 		593A799B21ADEE140083FA86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TrendingView.xib; sourceTree = "<group>"; };
+		595C2932239EB6200064F2D4 /* datamodel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 4.xcdatamodel"; sourceTree = "<group>"; };
+		595C2933239EB6780064F2D4 /* NewStreamDataRetriever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewStreamDataRetriever.m; sourceTree = "<group>"; };
+		595C2934239EB6780064F2D4 /* NewStreamDataRetriever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewStreamDataRetriever.h; sourceTree = "<group>"; };
 		596BABBA21C00886005C3451 /* RelatedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelatedViewController.h; sourceTree = "<group>"; };
 		596BABBB21C00886005C3451 /* RelatedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelatedViewController.m; sourceTree = "<group>"; };
 		596BABBC21C00886005C3451 /* RelatedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RelatedViewController.xib; sourceTree = "<group>"; };
@@ -1460,6 +1467,8 @@
 				59F08C5D2253B42B00A52539 /* Analytics.m */,
 				59CBB20F2264F51D007CB65B /* OtherFormatExport.h */,
 				59CBB2102264F51D007CB65B /* OtherFormatExport.m */,
+				595C2934239EB6780064F2D4 /* NewStreamDataRetriever.h */,
+				595C2933239EB6780064F2D4 /* NewStreamDataRetriever.m */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -2340,6 +2349,7 @@
 				91B3A8A11EB0097C0066CEB1 /* StringDatetoDate.m in Sources */,
 				2DAB19E61EF9ED9400420182 /* StreamDataRetriever.m in Sources */,
 				591FC1D521C7FA17001D8684 /* NotificationManager.m in Sources */,
+				595C2936239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */,
 				59CBB2122264F51D007CB65B /* OtherFormatExport.m in Sources */,
 				596BABDE21C01988005C3451 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
 				F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */,
@@ -2464,6 +2474,7 @@
 				2D8BF8AB1EC4D6DC0068856A /* ImportPrompt.m in Sources */,
 				5972405921B5816C00599AAC /* AiringNotificationManager.m in Sources */,
 				2D371E7B1ECF8B4F00F47138 /* ratingchartview.m in Sources */,
+				595C2935239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */,
 				F888F404208F889D00C22C39 /* AuthWebView.m in Sources */,
 				915E8C441E8C0ACC005A49A4 /* AdvancedSearch.m in Sources */,
 				2DA863EA1F895F9B00D2876A /* ProfileWindowController.m in Sources */,
@@ -2568,6 +2579,7 @@
 				593A795721ADAF410083FA86 /* TitleCollectionView.m in Sources */,
 				91F8E3E2210A46CA007137A7 /* ratingchartview.m in Sources */,
 				91F8E3E3210A46CA007137A7 /* AuthWebView.m in Sources */,
+				595C2938239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */,
 				91F8E3E4210A46CA007137A7 /* AdvancedSearch.m in Sources */,
 				59F356DC21B716DF008C79ED /* NSTextView+SetHTMLAttributedText.m in Sources */,
 				91F8E3E5210A46CA007137A7 /* ProfileWindowController.m in Sources */,
@@ -2658,6 +2670,7 @@
 				596BABD821C0180B005C3451 /* DonationLicenseManager.m in Sources */,
 				91F71F0D20C7150A00FD5817 /* ExportProgressWindow.m in Sources */,
 				59CBB2132264F51D007CB65B /* OtherFormatExport.m in Sources */,
+				595C2937239EB6780064F2D4 /* NewStreamDataRetriever.m in Sources */,
 				F888F437208FB1F500C22C39 /* siteimage.m in Sources */,
 				F888F438208FB1F500C22C39 /* TypeNumtoStringType.m in Sources */,
 				593A798921ADE8370083FA86 /* HeaderView.m in Sources */,
@@ -3447,7 +3460,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191022;
+				CURRENT_PROJECT_VERSION = 20191209;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3496,7 +3509,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = "3.4-alpha2";
+				MARKETING_VERSION = "3.4-alpha3";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3509,7 +3522,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191022;
+				CURRENT_PROJECT_VERSION = 20191209;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3554,7 +3567,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = "3.4-alpha2";
+				MARKETING_VERSION = "3.4-alpha3";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3621,7 +3634,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191022;
+				CURRENT_PROJECT_VERSION = 20191209;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3661,7 +3674,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = "3.4-alpha2";
+				MARKETING_VERSION = "3.4-alpha3";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3675,7 +3688,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20191022;
+				CURRENT_PROJECT_VERSION = 20191209;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3715,7 +3728,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = "3.4-alpha2";
+				MARKETING_VERSION = "3.4-alpha3";
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3803,11 +3816,12 @@
 		91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				595C2932239EB6200064F2D4 /* datamodel 4.xcdatamodel */,
 				59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */,
 				598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */,
 				91244EA2210901A000AA8F90 /* datamodel.xcdatamodel */,
 			);
-			currentVersion = 59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */;
+			currentVersion = 595C2932239EB6200064F2D4 /* datamodel 4.xcdatamodel */;
 			path = datamodel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -107,12 +107,9 @@
     NSMutableArray *tmptitles = [NSMutableArray new];
     [tmptitles addObject:_infoviewtitle.stringValue];
     [tmptitles addObjectsFromArray:othertitles];
-    for (NSString *t in tmptitles) {
-        if ([_steampopupviewcontroller checkifdataexists:t]){
-            _streambutton.hidden = false;
-            break;
-        }
-    }
+    [_steampopupviewcontroller checkifdataexists:self.selectedid completion:^(bool exists, bool success) {
+        _streambutton.hidden = !exists;
+    }];
     [titles appendString:[Utility appendstringwithArray:othertitles]];
     _infoviewalttitles.stringValue = titles;
     if (d[@"genres"]!= nil) {

@@ -11,5 +11,5 @@
 @interface StreamPopup : NSViewController
 @property (strong) IBOutlet NSPopover *popover;
 @property (readonly) bool streamsexist;
-- (bool)checkifdataexists:(NSString *)title;
+- (void)checkifdataexists:(int)titleid completion:(void (^)(bool exists, bool success))completionHandlerr;
 @end

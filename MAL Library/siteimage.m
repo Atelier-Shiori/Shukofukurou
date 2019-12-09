@@ -18,7 +18,7 @@
     
     if ([value respondsToSelector:@selector(stringByReplacingOccurrencesOfString:withString:)]) {
         NSString *sitename = value;
-        return [NSImage imageNamed:sitename];
+        return [NSImage imageNamed:sitename.capitalizedString];
     }
     return nil;
 }

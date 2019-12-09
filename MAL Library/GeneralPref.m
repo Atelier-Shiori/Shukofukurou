@@ -93,7 +93,7 @@
 }
 
 - (IBAction)refreshstreamdata:(id)sender {
-    [StreamDataRetriever performrestrieveStreamData];
+    //[StreamDataRetriever performrestrieveStreamData];
 }
 
 - (IBAction)resetmappings:(id)sender {

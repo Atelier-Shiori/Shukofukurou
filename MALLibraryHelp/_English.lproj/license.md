@@ -6,7 +6,7 @@ order: .INF
 ---
 Shukofukurou is open sourced and is licensed under the New BSD License.
 
-Copyright © 2017-2019, MAL Updater OS X Group, Moy IT Solutions
+Copyright © 2017-2020, MAL Updater OS X Group, Moy IT Solutions
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: 

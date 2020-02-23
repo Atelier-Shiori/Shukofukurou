@@ -9,7 +9,6 @@
 #import "ProfileWindowController.h"
 #import "ListView.h"
 #import "ProfileViewController.h"
-#import "OtherHistoryView.h"
 #import "listservice.h"
 #import "ListStatistics.h"
 #import "AppDelegate.h"

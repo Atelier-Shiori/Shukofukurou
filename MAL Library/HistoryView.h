@@ -9,13 +9,14 @@
 #import <Cocoa/Cocoa.h>
 @class NSTableViewAction;
 @class MainWindow;
-@interface HistoryView : NSViewController
+@interface HistoryView : NSViewController;
 @property (strong) IBOutlet MainWindow *mw;
 @property (strong) IBOutlet NSTableViewAction *historytb;
 @property (strong) IBOutlet NSArrayController *historyarraycontroller;
+@property (strong) IBOutlet NSSegmentedControl *mediatypeselector;
 
 - (void)loadHistory:(NSNumber *)refresh;
-- (void)populateHistory:(id)history;
+- (void)populateHistory;
 - (void)clearHistory;
-- (void)clearHistory:(int)serviceid;
+- (IBAction)mediatypeselectorchanged:(id)sender;
 @end

@@ -13,6 +13,7 @@
 #import "AiringNotificationManager.h"
 #import "Utility.h"
 #import "Analytics.h"
+#import "HistoryManager.h"
 
 @interface MyListView ()
 @property bool updating;
@@ -213,6 +214,7 @@
         [_mw loadlist:@(false) type:self.currentlist];
         [self setUpdatingState:false];
         [Analytics sendAnalyticsWithEventTitle:@"Entry Deletion Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.currentlist == 0 ? @"anime" : @"manga"}];
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)d[@"id"]).intValue withTitle:d[@"title"] withHistoryActionType:HistoryActionTypeDeleteTitle withSegment:0 withMediaType:self.currentlist withService:listservice.sharedInstance.getCurrentServiceID];
         if ([NSUserDefaults.standardUserDefaults integerForKey:@"airingnotification_service"] == [listservice.sharedInstance getCurrentServiceID] && self.currentlist == 0) {
             [[AiringNotificationManager sharedAiringNotificationManager] removeNotifyingTitle:((NSNumber *)d[@"id"]).intValue withService:[listservice.sharedInstance getCurrentServiceID]];
         }
@@ -391,6 +393,7 @@
                 [AtarashiiListCoreData updateSingleEntry:updatedfields withUserId:[listservice.sharedInstance getCurrentUserID] withService:[listservice.sharedInstance getCurrentServiceID] withType:0 withId:titleid withIdType:1];
                 break;
         }
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)d[@"id"]).intValue withTitle:d[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:watchedepisodes withMediaType:0 withService:listservice.sharedInstance.getCurrentServiceID];
         [_mw loadlist:@(false) type:MALAnime];
         [self setUpdatingState:false];
         [Analytics sendAnalyticsWithEventTitle:@"Increment Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : @"anime"}];
@@ -485,6 +488,7 @@
         }
         [_mw loadlist:@(false) type:MALManga];
         [self setUpdatingState:false];
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)d[@"id"]).intValue withTitle:d[@"title"] withHistoryActionType:HistoryActionTypeIncrement withSegment:volumeincrement ? readvolumes : readchapters withMediaType:1 withService:listservice.sharedInstance.getCurrentServiceID];
         [Analytics sendAnalyticsWithEventTitle:@"Increment Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : @"manga"}];
     } error:^(NSError *error) {
         [self setUpdatingState:false];

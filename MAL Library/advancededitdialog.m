@@ -15,6 +15,7 @@
 #import "AtarashiiListCoreData.h"
 #import "Utility.h"
 #import "Analytics.h"
+#import "HistoryManager.h"
 
 @interface advancededitdialog ()
 @property (strong) IBOutlet NSView *editview;
@@ -243,6 +244,7 @@
         [_progressindicator stopAnimation:nil];
         [_mlv setUpdatingState:false];
         [Analytics sendAnalyticsWithEventTitle:@"Advanced Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.selecteditem[@"id"]).intValue withTitle:self.selecteditem[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:_episodefield.intValue withMediaType:self.selectedtype withService:listservice.sharedInstance.getCurrentServiceID];
         [self updateissuccessful];
         _selecteditem = nil;
     }
@@ -324,6 +326,7 @@
         [_progressindicator stopAnimation:nil];
         [_mlv setUpdatingState:false];
         [Analytics sendAnalyticsWithEventTitle:@"Advanced Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.selecteditem[@"id"]).intValue withTitle:self.selecteditem[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:_chaptersfield.intValue withMediaType:self.selectedtype withService:listservice.sharedInstance.getCurrentServiceID];
         [self updateissuccessful];
         _selecteditem = nil;
     }error:^(NSError * error) {

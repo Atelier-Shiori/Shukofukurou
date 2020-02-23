@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,7 +33,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="title" editable="NO" width="329" minWidth="40" maxWidth="1000" id="rxp-sp-1zu">
+                                    <tableColumn identifier="title" editable="NO" width="317" minWidth="40" maxWidth="1000" id="rxp-sp-1zu">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title and Segment">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -46,25 +46,20 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="t75-mm-BQR" name="displayPatternValue3" keyPath="arrangedObjects.segment" previousBinding="2iC-5i-AO9" id="aEz-Nu-4E9">
+                                            <binding destination="t75-mm-BQR" name="displayPatternValue2" keyPath="arrangedObjects.segment" previousBinding="Naa-az-mLr" id="mhr-Yi-3J7">
                                                 <dictionary key="options">
-                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
+                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="t75-mm-BQR" name="displayPatternValue2" keyPath="arrangedObjects.segment_type" previousBinding="a9A-IM-Cx8" id="2iC-5i-AO9">
+                                            <binding destination="t75-mm-BQR" name="displayPatternValue1" keyPath="arrangedObjects.title" id="Naa-az-mLr">
                                                 <dictionary key="options">
-                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
-                                                </dictionary>
-                                            </binding>
-                                            <binding destination="t75-mm-BQR" name="displayPatternValue1" keyPath="arrangedObjects.title" id="a9A-IM-Cx8">
-                                                <dictionary key="options">
-                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@ %{value3}@</string>
+                                                    <string key="NSDisplayPattern">%{value1}@ %{value2}@</string>
                                                 </dictionary>
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="type" editable="NO" width="84" minWidth="40" maxWidth="1000" id="qEB-Ux-RTF">
-                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Type">
+                                    <tableColumn identifier="type" editable="NO" width="122" minWidth="40" maxWidth="1000" id="qEB-Ux-RTF">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Action">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -76,27 +71,34 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.type" id="RqV-pQ-SiG">
+                                            <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.historyactiontype" id="ncH-y7-gCq">
                                                 <dictionary key="options">
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <string key="NSValueTransformerName">HistoryTypeToString</string>
                                                 </dictionary>
                                             </binding>
                                         </connections>
                                     </tableColumn>
-                                    <tableColumn identifier="lastupdated" editable="NO" width="116" minWidth="10" maxWidth="3.4028234663852886e+38" id="qtu-Li-QWM">
+                                    <tableColumn identifier="lastupdated" editable="NO" width="89" minWidth="10" maxWidth="3.4028234663852886e+38" id="qtu-Li-QWM">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Last Updated">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
                                         <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="MEX-7y-OmR">
+                                            <dateFormatter key="formatter" dateStyle="short" id="tns-NV-kS1"/>
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.last_updated" id="FGy-UN-5ah"/>
+                                            <binding destination="t75-mm-BQR" name="value" keyPath="arrangedObjects.historyactiondate" id="zVc-ak-6PN">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                    <string key="NSValueTransformerName">UnixDateToNSDate</string>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </tableColumn>
                                 </tableColumns>

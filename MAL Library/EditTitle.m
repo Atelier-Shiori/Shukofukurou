@@ -15,6 +15,7 @@
 #import "AtarashiiListCoreData.h"
 #import "Utility.h"
 #import "Analytics.h"
+#import "HistoryManager.h"
 
 @interface EditTitle ()
 
@@ -254,6 +255,7 @@
         [_mw loadlist:@(false) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
         [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.selecteditem[@"id"]).intValue withTitle:self.selecteditem[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:_minipopoverepfield.intValue withMediaType:self.selectedtype withService:listservice.sharedInstance.getCurrentServiceID];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;
@@ -346,6 +348,7 @@
         [_mw loadlist:@(false) type:_selectedtype];
         [_mw loadlist:@(true) type:2];
         [Analytics sendAnalyticsWithEventTitle:@"Entry Edit Successful" withProperties:@{@"service" : [listservice.sharedInstance currentservicename], @"media_type" : self.selectedtype == 0 ? @"anime" : @"manga"}];
+        [HistoryManager.sharedInstance insertHistoryRecord:((NSNumber *)self.selecteditem[@"id"]).intValue withTitle:self.selecteditem[@"title"] withHistoryActionType:HistoryActionTypeUpdateTitle withSegment:_mangapopoverchapfield.intValue withMediaType:self.selectedtype withService:listservice.sharedInstance.getCurrentServiceID];
         [self disableeditbuttons:true];
         _minieditpopover.behavior = NSPopoverBehaviorTransient;
         _minipopoverindicator.hidden = true;

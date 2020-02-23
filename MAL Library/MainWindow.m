@@ -28,6 +28,7 @@
 #import "AtarashiiListCoreData.h"
 #import "TitleInfoCache.h"
 #import "TitleCollectionView.h"
+#import "HistoryManager.h"
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
@@ -139,7 +140,6 @@
 
 - (void)generateSourceList {
     self.sourceListItems = [[NSMutableArray alloc] init];
-    int currentservice = [listservice.sharedInstance getCurrentServiceID];
     //Library Group
     PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
     PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
@@ -149,20 +149,10 @@
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
         mangalistItem.icon = [NSImage imageNamed:@"library"];
-        if (currentservice == 1) {
-            libraryItem.children = @[animelistItem, mangalistItem/*, historyItem*/];
-        }
-        else {
-            libraryItem.children = @[animelistItem, mangalistItem];
-        }
+        libraryItem.children = @[animelistItem, mangalistItem, historyItem];
     }
     else {
-        if (currentservice == 1) {
-            libraryItem.children = @[animelistItem/*, historyItem*/];
-        }
-        else {
-            libraryItem.children = @[animelistItem];
-        }
+        libraryItem.children = @[animelistItem, historyItem];
     }
     // Search
     PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
@@ -608,7 +598,12 @@
     }
     else if ([identifier isEqualToString:@"history"]){
         if ([listservice.sharedInstance checkAccountForCurrentService]) {
-            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:0];
+            //[_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:0];
+            if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"  atIndex:0];
+                [_toolbar insertItemWithItemIdentifier:@"historyselector" atIndex:1];
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"  atIndex:2];
+            }
         }
         
     }
@@ -967,7 +962,6 @@
     //[Utility deleteFile:[listservice.sharedInstance retrieveListFileName:0 withServiceID:service] appendpath:@""];
     //[Utility deleteFile:[listservice.sharedInstance retrieveListFileName:1 withServiceID:service] appendpath:@""];
     [self clearallentriesForService:service];
-    [_historyview clearHistory:service];
     if ([listservice.sharedInstance getCurrentServiceID] == service) {
         //Clears List
         NSMutableArray * a = [_listview.animelistarraycontroller mutableArrayValueForKey:@"content"];

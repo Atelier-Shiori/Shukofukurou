@@ -1258,22 +1258,10 @@
 - (void)changetoinfoview {
     int currentservice = [listservice.sharedInstance getCurrentServiceID];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
-        if (currentservice == 1) {
-            //[_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
-            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:7]byExtendingSelection:false];
-        }
-        else {
-            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:7]byExtendingSelection:false];
-        }
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:8]byExtendingSelection:false];
     }
     else {
-        if (currentservice == 1) {
-            //[_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
-             [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:5]byExtendingSelection:false];
-        }
-        else {
-            [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:5]byExtendingSelection:false];
-        }
+        [_sourceList selectRowIndexes:[NSIndexSet indexSetWithIndex:6]byExtendingSelection:false];
     }
     [self loadmainview];
 }

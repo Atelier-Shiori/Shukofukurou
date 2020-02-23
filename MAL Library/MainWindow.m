@@ -985,7 +985,6 @@
     [a removeAllObjects];
     [_listview.mangalisttb reloadData];
     [_listview.mangalisttb deselectAll:self];
-    [_historyview clearHistory];
     [self loadtitleinfoWithDifferentService:oldserviceid];
     [_searchview clearallsearch];
     long oldselecteditemindex = [_sourceList selectedRow];

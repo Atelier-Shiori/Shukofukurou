@@ -134,6 +134,10 @@
     completionHandler([self retrieveHistoryList]);
     #else
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    if (![NSUserDefaults.standardUserDefaults boolForKey:@"synchistorytoicloud"]) {
+        completionHandler([self retrieveHistoryList]);
+        return;
+    }
     long syncdate = [defaults integerForKey:@"historysyncdate"] ? [defaults integerForKey:@"historysyncdate"] : 0;
     NSPredicate *predicate = [NSPredicate predicateWithValue:YES];
     CKQuery *query = [[CKQuery alloc] initWithRecordType:@"historyRecord" predicate:predicate];

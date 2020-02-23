@@ -52,7 +52,9 @@
     bool refreshlist = refresh.boolValue;
     if (refreshlist || [self needsRefresh]) {
         [HistoryManager.sharedInstance synchistory:^(NSArray * _Nonnull history) {
-            [self populateHistory];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self populateHistory];
+            });
         }];
     }
     else {
@@ -121,8 +123,10 @@
 }
 
 - (void)applyHistoryFilter {
-   /* _historyarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"mediatype == %li", _mediatypeselector.selectedSegment];
-    [_historytb reloadData];
-    [_historytb deselectAll:self];*/
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _historyarraycontroller.filterPredicate = [NSPredicate predicateWithFormat:@"mediatype == %li", _mediatypeselector.selectedSegment];
+        [_historytb reloadData];
+        [_historytb deselectAll:self];
+    });
 }
 @end

@@ -95,6 +95,7 @@
     defaultValues[@"showadult"] = @NO;
     defaultValues[@"cachetitleinfo"] = @YES;
     defaultValues[@"selectedtrending"] = @(0);
+    defaultValues[@"synchistorytoicloud"] = @NO;
     // Export
     defaultValues[@"updateonimportcurrent"] = @YES;
     defaultValues[@"updateonimportcompleted"] = @NO;

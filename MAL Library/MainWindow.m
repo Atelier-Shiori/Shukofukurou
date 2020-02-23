@@ -59,7 +59,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists", @"trending", @"episodes"];
+    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists", @"trending", @"episodes", @"cleanhistory"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -603,6 +603,7 @@
                 [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"  atIndex:0];
                 [_toolbar insertItemWithItemIdentifier:@"historyselector" atIndex:1];
                 [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"  atIndex:2];
+                [_toolbar insertItemWithItemIdentifier:@"ClearHistory" atIndex:3];
             }
         }
         

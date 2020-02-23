@@ -749,9 +749,27 @@
                                     <segment label="Manga"/>
                                 </segments>
                             </segmentedCell>
+                            <connections>
+                                <binding destination="2F9-Ng-hjJ" name="enabled" keyPath="values.donated" id="oYZ-vX-3ur"/>
+                            </connections>
                         </segmentedControl>
                         <connections>
                             <action selector="mediatypeselectorchanged:" target="ONm-Bf-qTf" id="30n-Yv-WMK"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8E9D9C95-F3DC-4023-BAFB-7E7C2AB68D36" explicitItemIdentifier="ClearHistory" label="Clear History" paletteLabel="Clear History" toolTip="Delete Title" image="cleanhistory" id="zNo-1K-mNC">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="G9z-GW-NSx">
+                            <rect key="frame" x="26" y="14" width="24" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="cleanhistory" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Apd-SL-vQJ">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="clearHistory:" target="ONm-Bf-qTf" id="sQd-Ds-sri"/>
                         </connections>
                     </toolbarItem>
                 </allowedToolbarItems>
@@ -896,6 +914,7 @@
         <image name="NSShareTemplate" width="11" height="16"/>
         <image name="advsearch" width="32" height="32"/>
         <image name="cast" width="32" height="32"/>
+        <image name="cleanhistory" width="50" height="50"/>
         <image name="delete" width="32" height="32"/>
         <image name="editcustomlists" width="32" height="32"/>
         <image name="episodes" width="32" height="32"/>

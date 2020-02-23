@@ -12,7 +12,7 @@ Here are the functionality available:
 ## Library
 * Anime List - Allows you to manage your anime list, requires login.
 * Manga List - Allows you to manage your manga library, requires login and Donation Key or App Store version.
-* History - Shows the update history from MyAnimeList. Does not apply to Kitsu and AniList.
+* History - Shows the local update history for the current user and service.
 
 ## Search
 * Anime Search - Allows you to search for anime titles to view information on or to add to your list.

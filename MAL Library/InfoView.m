@@ -67,17 +67,19 @@
 
 - (void)populateAnimeInfoView:(id)object {
     NSDictionary *d = object;
+    self.isNSFW = ((NSNumber *)d[@"isNSFW"]).boolValue;
 #if defined(AppStore)
-    if ([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]]) {
+    if ([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"] || self.isNSFW]) {
         [self infoPopulationDidAbort];
         return;
     }
 #else
-    if (([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]]) && ![NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
+    if (([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]] || self.isNSFW) && ![NSUserDefaults.standardUserDefaults boolForKey:@"showadult"]) {
         [self infoPopulationDidAbort];
         return;
     }
 #endif
+    _streambutton.hidden = true;
     NSMutableString *titles = [NSMutableString new];
     NSMutableString *details = [NSMutableString new];
     NSMutableString *genres = [NSMutableString new];
@@ -109,6 +111,7 @@
     [tmptitles addObjectsFromArray:othertitles];
     [_steampopupviewcontroller checkifdataexists:self.selectedid completion:^(bool exists, bool success) {
         _streambutton.hidden = !exists;
+        [self setButtonPositions];
     }];
     [titles appendString:[Utility appendstringwithArray:othertitles]];
     _infoviewalttitles.stringValue = titles;

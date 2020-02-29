@@ -27,7 +27,11 @@
             NSError *error;
             NSDictionary *jsondata = [NSJSONSerialization JSONObjectWithData:[(NSString *)[entry valueForKey:@"jsondata"] dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
             if (jsondata) {
-                return jsondata;
+                // isNSFW key check
+                if (jsondata[@"isNSFW"]) {
+                    return jsondata;
+                }
+                return nil;
             }
         }
     }

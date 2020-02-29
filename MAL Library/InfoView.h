@@ -15,6 +15,7 @@ typedef NS_ENUM(unsigned int, InfoType) {
     AnimeType = 0,
     MangaType = 1
 };
+@property bool isNSFW;
 @property (strong) IBOutlet MainWindow *mw;
 @property bool forcerefresh;
 @property (getter=getSelectedId, setter=setSelectedId:) int selectedid;

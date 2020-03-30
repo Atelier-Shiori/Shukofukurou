@@ -83,7 +83,7 @@
         }];
     }
     else {
-        [manager GET:@"https://api.myanimelist.net/v2/manga/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_chapters,num_volumes,media_type,status,mean" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager GET:@"https://api.myanimelist.net/v2/manga/ranking?ranking_type=all&limit=20&fields=alternative_titles,num_chapters,num_volumes,media_type,status,mean,nsfw" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             finaldict[@"Highest Rated"] = [AtarashiiAPIListFormatMAL MALMangaSearchtoAtarashii:responseObject];
             completionHandler(finaldict);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

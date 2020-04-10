@@ -69,7 +69,7 @@
     NSDictionary *d = object;
     self.isNSFW = ((NSNumber *)d[@"isNSFW"]).boolValue;
 #if defined(AppStore)
-    if ([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"] || self.isNSFW]) {
+    if ([(NSString *)d[@"classification"] containsString:@"Rx"] || [self checkifTitleIsAdult:d[@"genres"]] || self.isNSFW) {
         [self infoPopulationDidAbort];
         return;
     }

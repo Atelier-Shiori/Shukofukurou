@@ -264,7 +264,7 @@
         for (NSManagedObject *notifyobj in notifications) {
             bool hasAirDate = [notifyobj valueForKey:@"nextairdate"] != [NSNull null];
             bool scheduled = [self scheduledNotificationExist:((NSNumber *)[notifyobj valueForKey:@"anilistid"]).intValue] != nil;
-            if (hasAirDate && !scheduled) {
+            if (hasAirDate && !scheduled && [notifyobj valueForKey:@"anilistid"] && [notifyobj valueForKey:@"servicetitleid"]) {
                 [self setNotification:notifyobj];
             }
         }
@@ -273,7 +273,7 @@
 }
 
 - (void)setNotification:(NSManagedObject *)notificationobj {
-    if ([notificationobj valueForKey:@"nextairdate"] != [NSNull null]) {
+    if ([notificationobj valueForKey:@"nextairdate"] != [NSNull null] && [notificationobj valueForKey:@"anilistid"] && [notificationobj valueForKey:@"servicetitleid"]) {
         [_notificationManager setNotification:notificationobj];
         if (@available(macOS 10.14, *)) {
         }

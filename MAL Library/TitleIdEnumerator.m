@@ -56,7 +56,7 @@
                 }
                 case 3: {
                     [_mapper retrieveTitleIdForService:1 withTitleId:((NSNumber *)_tmplist[self.currentposition][@"id"]).stringValue withTargetServiceId:3 withType:_type completionHandler:^(id  _Nonnull titleid, bool success) {
-                        if (success) {
+                        if (success && ![titleid isKindOfClass:[NSNull class]]) {
                             [self titleidconvertSuccess:((NSNumber *)self.tmplist[self.currentposition][@"id"]).intValue withTargetid:((NSNumber *)titleid).intValue];
                         }
                         else {

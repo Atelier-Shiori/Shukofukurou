@@ -276,6 +276,7 @@
                     [self performtimerlistrefresh];
                 } error:^(NSError *error) {
                     NSLog(@"Error loading list: %@", error.localizedDescription);
+                    [_appdel.servicemenucontrol enableservicemenuitems:YES];
                 }];
             }
             case 3: {
@@ -284,6 +285,7 @@
                     [self performtimerlistrefresh];
                 } error:^(NSError *error) {
                      NSLog(@"Error loading list: %@", error.localizedDescription);
+                    [_appdel.servicemenucontrol enableservicemenuitems:YES];
                 }];
             }
             default: {
@@ -789,6 +791,7 @@
                 [self performlistRefresh];
             } error:^(NSError *error) {
                 NSLog(@"Error loading list: %@", error.localizedDescription);
+                [_appdel.servicemenucontrol enableservicemenuitems:YES];
             }];
         }
         default: {

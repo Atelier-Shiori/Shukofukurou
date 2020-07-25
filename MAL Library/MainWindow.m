@@ -78,7 +78,14 @@
     (_notloggedin.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_airingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_trendingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
-    self.window.titleVisibility = NSWindowTitleHidden;
+    
+    if (@available(macOS 11.0, *)) {
+        self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+        _loggedinuser.hidden = YES;
+    } else {
+        // Fallback on earlier versions
+        self.window.titleVisibility = NSWindowTitleHidden;
+    }
     
     // Fix window size
     NSRect frame = (self.window).frame;
@@ -339,10 +346,20 @@
 
 - (void)refreshloginlabel{
     if ([listservice.sharedInstance checkAccountForCurrentService]) {
-        _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@ (%@)",[listservice.sharedInstance getCurrentServiceUsername], [listservice.sharedInstance currentservicename]];
+        if (@available(macOS 11.0, *)) {
+            self.window.subtitle = [NSString stringWithFormat:@"%@ (%@)",[listservice.sharedInstance getCurrentServiceUsername], [listservice.sharedInstance currentservicename]];
+        } else {
+            // Fallback on earlier versions
+            _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@ (%@)",[listservice.sharedInstance getCurrentServiceUsername], [listservice.sharedInstance currentservicename]];
+        }
     }
     else {
-        _loggedinuser.stringValue = @"Not logged in.";
+        if (@available(macOS 11.0, *)) {
+            self.window.subtitle = @"Not logged in";
+        } else {
+            // Fallback on earlier versions
+            _loggedinuser.stringValue = @"Not logged in.";
+        }
     }
 }
 

@@ -1,0 +1,6 @@
+framework module PXSourceList {
+  umbrella header "PXSourceList.h"
+
+  export *
+  module * { export * }
+}

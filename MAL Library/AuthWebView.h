@@ -13,5 +13,7 @@
 @property (nonatomic, copy) void (^completion)(NSString *pin);
 @property int service;
 - (void)loadAuthorization:(int)service;
+- (NSURL *)authURL;
+- (void)reloadAuth;
 - (void)resetWebView;
 @end

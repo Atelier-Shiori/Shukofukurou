@@ -21,6 +21,7 @@ typedef NS_ENUM(unsigned int, MediaType) {
 - (bool)tokenexpired;
 - (void)refreshToken:(void (^)(bool success))completion;
 - (void)verifyAccountWithPin:(NSString *)pin completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler;
+- (void)reauthAccountWithPin:(NSString *)pin completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler;
 
 - (AFOAuthCredential *)getFirstAccount;
 - (long)getCurrentUserID;

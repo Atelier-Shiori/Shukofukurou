@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17140" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17140"/>
+        <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="10.16"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,44 +39,43 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="mainwindow" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Shukofukurou" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="mainwindow" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="911" y="501" width="700" height="450"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <value key="minSize" type="size" width="700" height="450"/>
-            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="450"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiY-f1-sHX">
-                        <rect key="frame" x="5" y="5" width="684" height="17"/>
+                        <rect key="frame" x="5" y="8" width="684" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="0Vv-cm-AKw">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <splitView dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juR-gi-pJh">
-                        <rect key="frame" x="0.0" y="25" width="700" height="425"/>
+                    <splitView focusRingType="none" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juR-gi-pJh">
+                        <rect key="frame" x="0.0" y="25" width="700" height="422"/>
                         <subviews>
-                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="26" horizontalPageScroll="10" verticalLineScroll="26" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="wrE-GL-h5z">
-                                <rect key="frame" x="0.0" y="0.0" width="137" height="425"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
+                            <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="wrE-GL-h5z">
+                                <rect key="frame" x="0.0" y="0.0" width="137" height="422"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="Q8D-FH-evQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="137" height="425"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="137" height="422"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="5" indentationMarkerFollowsCell="NO" outlineTableColumn="8yX-zH-4tu" id="tEv-Dd-bgp" customClass="PXSourceList">
-                                            <rect key="frame" x="0.0" y="0.0" width="137" height="425"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <size key="intercellSpacing" width="3" height="2"/>
+                                        <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="5" indentationMarkerFollowsCell="NO" outlineTableColumn="8yX-zH-4tu" id="tEv-Dd-bgp" customClass="PXSourceList">
+                                            <rect key="frame" x="0.0" y="0.0" width="137" height="422"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="134" minWidth="16" maxWidth="1000" id="8yX-zH-4tu">
+                                                <tableColumn identifier="AutomaticTableColumnIdentifier.0" width="105" minWidth="16" maxWidth="1000" id="8yX-zH-4tu">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
-                                                        <font key="font" metaFont="miniSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                     </tableHeaderCell>
@@ -87,11 +87,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="HeaderCell" id="hJ3-vZ-NZY" customClass="PXSourceListTableCellView">
-                                                            <rect key="frame" x="1" y="1" width="134" height="17"/>
+                                                            <rect key="frame" x="11" y="0.0" width="114" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4En-nB-AO7">
-                                                                    <rect key="frame" x="0.0" y="2" width="189" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="2" width="169" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="HEADER CELL" id="XOn-HJ-PqY">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" red="0.43921568630000002" green="0.4941176471" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -108,19 +108,19 @@
                                                                 <outlet property="textField" destination="4En-nB-AO7" id="T5t-Xk-MMC"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="MainCell" id="upo-sf-fv4" customClass="PXSourceListTableCellView">
-                                                            <rect key="frame" x="1" y="20" width="134" height="17"/>
+                                                        <tableCellView identifier="MainCell" misplaced="YES" id="upo-sf-fv4" customClass="PXSourceListTableCellView">
+                                                            <rect key="frame" x="11" y="17" width="114" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView translatesAutoresizingMaskIntoConstraints="NO" id="tll-9O-HXs">
-                                                                    <rect key="frame" x="3" y="3" width="14" height="14"/>
+                                                                <imageView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tll-9O-HXs">
+                                                                    <rect key="frame" x="3" y="0.0" width="14" height="15"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="14" id="JnC-Zd-RW7"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="ofC-lC-RFa"/>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lqo-cP-pyV">
-                                                                    <rect key="frame" x="22" y="2" width="97" height="16"/>
+                                                                    <rect key="frame" x="22" y="0.0" width="96" height="16"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Gdk-iz-dik">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -152,7 +152,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="aWC-kE-Os8">
-                                    <rect key="frame" x="-8" y="-15" width="0.0" height="15"/>
+                                    <rect key="frame" x="0.0" y="409" width="137" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="QrW-EX-OOi">
@@ -161,8 +161,8 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="mainview" fixedFrame="YES" id="bkX-dG-MlV">
-                                <rect key="frame" x="138" y="0.0" width="562" height="425"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <rect key="frame" x="138" y="0.0" width="562" height="422"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </customView>
                         </subviews>
                         <holdingPriorities>
@@ -187,7 +187,7 @@
                     <constraint firstItem="oiY-f1-sHX" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="7" id="k7z-Pe-iTY"/>
                 </constraints>
             </view>
-            <toolbar key="toolbar" implicitIdentifier="EDAACB0E-5ADE-41EC-AF7C-2FBC4FD0AC21" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="6eG-p3-l2S">
+            <toolbar key="toolbar" implicitIdentifier="EDAACB0E-5ADE-41EC-AF7C-2FBC4FD0AC21" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="6eG-p3-l2S">
                 <allowedToolbarItems>
                     <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="SBx-yW-0Rh"/>
                     <toolbarItem implicitItemIdentifier="921EB9AA-C6EB-451F-BACB-623C99AB7DBC" explicitItemIdentifier="refresh" label="Refresh" paletteLabel="Refresh" toolTip="Refresh" image="NSRefreshTemplate" id="6qy-e4-N2b">
@@ -298,7 +298,7 @@
                             <action selector="deletetitle:" target="Xk3-JH-b4a" id="RBP-C0-yLT"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="592B486B-1906-4FCE-A1B7-A21E0C346794" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" id="nBW-W8-5VV">
+                    <toolbarItem implicitItemIdentifier="592B486B-1906-4FCE-A1B7-A21E0C346794" explicitItemIdentifier="filterold" label="Filter" paletteLabel="Filter" id="nBW-W8-5VV">
                         <nil key="toolTip"/>
                         <size key="minSize" width="150" height="22"/>
                         <size key="maxSize" width="150" height="22"/>
@@ -315,7 +315,7 @@
                             </connections>
                         </searchField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="405D4DDB-1D52-4DF2-95F5-DB3C2BBBA108" explicitItemIdentifier="search" label="Title Search" paletteLabel="Title Search" id="A84-pG-n29">
+                    <toolbarItem implicitItemIdentifier="405D4DDB-1D52-4DF2-95F5-DB3C2BBBA108" explicitItemIdentifier="searchold" label="Title Search" paletteLabel="Title Search" id="A84-pG-n29">
                         <nil key="toolTip"/>
                         <size key="minSize" width="150" height="22"/>
                         <size key="maxSize" width="150" height="22"/>
@@ -705,8 +705,8 @@
                     <toolbarItem implicitItemIdentifier="A62B128C-C137-4EF2-B533-0E90B118430F" explicitItemIdentifier="trendtype" label="Trending Type" paletteLabel="Trending Type" sizingBehavior="auto" id="Eqk-Og-510">
                         <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="80C-bc-uot">
-                            <rect key="frame" x="0.0" y="14" width="134" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <rect key="frame" x="0.0" y="14" width="102" height="23"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="yTh-I5-ND0">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -740,8 +740,8 @@
                     <toolbarItem implicitItemIdentifier="446C5EAD-9276-4DA5-BE22-703F63915C24" explicitItemIdentifier="historyselector" label="History Selector" paletteLabel="History Selector" sizingBehavior="auto" id="qwr-Sa-GX4">
                         <nil key="toolTip"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="VJf-Is-GSt">
-                            <rect key="frame" x="0.0" y="14" width="127" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <rect key="frame" x="0.0" y="14" width="113" height="23"/>
+                            <autoresizingMask key="autoresizingMask"/>
                             <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedSquare" trackingMode="selectOne" id="szz-jN-DVV">
                                 <font key="font" metaFont="system"/>
                                 <segments>
@@ -772,6 +772,36 @@
                             <action selector="clearHistory:" target="ONm-Bf-qTf" id="sQd-Ds-sri"/>
                         </connections>
                     </toolbarItem>
+                    <searchToolbarItem implicitItemIdentifier="F91638F5-DA79-493D-AF62-666AFD36E34F" explicitItemIdentifier="search" label="Title Search" paletteLabel="Title Search" id="sf9-op-azU">
+                        <nil key="toolTip"/>
+                        <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="i6c-qX-FsS">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="FxE-1Z-kS5">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                        </searchField>
+                        <connections>
+                            <action selector="performsearch:" target="3aF-oI-xAM" id="fSg-gj-6Qm"/>
+                        </connections>
+                    </searchToolbarItem>
+                    <searchToolbarItem implicitItemIdentifier="C93B7C87-D836-49E8-8D9C-95A04C61844C" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" id="Km3-8h-5qv">
+                        <nil key="toolTip"/>
+                        <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="g8Z-6V-ZmN">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="FK1-30-HfS">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                        </searchField>
+                        <connections>
+                            <action selector="filterperform:" target="Xk3-JH-b4a" id="Jhg-uf-q3f"/>
+                        </connections>
+                    </searchToolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -791,7 +821,7 @@
                     <rect key="frame" x="27" y="43" width="494" height="348"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCF-TA-VNr">
+                        <textField wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CCF-TA-VNr">
                             <rect key="frame" x="18" y="154" width="466" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Select a title to view" id="za6-BG-WjI">
@@ -846,7 +876,7 @@
         </viewController>
         <viewController nibName="ListView" id="Xk3-JH-b4a" customClass="MyListView">
             <connections>
-                <outlet property="animelistfilter" destination="KKI-5U-zIm" id="5xL-g5-CGy"/>
+                <outlet property="animelistfilter" destination="g8Z-6V-ZmN" id="1ca-Ov-IjO"/>
                 <outlet property="customlistmodifyitem" destination="uRg-E5-6YT" id="SdW-Cy-TnS"/>
                 <outlet property="deletetitleitem" destination="WJo-Ig-ng6" id="MNY-fm-VYU"/>
                 <outlet property="edittitleitem" destination="7Ap-pp-DuY" id="itg-Y5-qvz"/>
@@ -872,7 +902,7 @@
                 <outlet property="addtitleitem" destination="2dK-au-ShY" id="xXc-hT-v5f"/>
                 <outlet property="moresearchitem" destination="E8o-gm-YxM" id="JZh-yz-49A"/>
                 <outlet property="mw" destination="-2" id="ldd-gL-JEn"/>
-                <outlet property="searchtitlefield" destination="UGJ-OX-Y5p" id="4Xs-bj-wtA"/>
+                <outlet property="searchtitlefield" destination="sf9-op-azU" id="5K3-hs-C0q"/>
             </connections>
         </viewController>
         <viewController id="UX5-t5-v6p" customClass="SeasonView">
@@ -908,13 +938,13 @@
     <resources>
         <image name="Edit" width="32" height="32"/>
         <image name="Info" width="32" height="32"/>
-        <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSRefreshTemplate" width="11" height="15"/>
-        <image name="NSShareTemplate" width="11" height="16"/>
+        <image name="NSActionTemplate" width="15" height="15"/>
+        <image name="NSAddTemplate" width="15" height="13"/>
+        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="NSShareTemplate" width="16" height="17"/>
         <image name="advsearch" width="32" height="32"/>
         <image name="cast" width="32" height="32"/>
-        <image name="cleanhistory" width="50" height="50"/>
+        <image name="cleanhistory" width="25" height="25"/>
         <image name="delete" width="32" height="32"/>
         <image name="editcustomlists" width="32" height="32"/>
         <image name="episodes" width="32" height="32"/>

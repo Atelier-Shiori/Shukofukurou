@@ -14,6 +14,7 @@
 #import "StreamDataRetriever.h"
 #import "TitleIDMapper.h"
 #import "TitleInfoCache.h"
+#import <SDWebImage/SDWebImage.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 
 #if defined(OSS)

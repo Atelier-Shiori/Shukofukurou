@@ -39,6 +39,7 @@
 #import "AppDelegate+Patreon.h"
 #endif
 #import "CharactersBrowser.h"
+#import <SDWebImage/SDWebImage.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "OtherFormatExport.h"
 
@@ -124,7 +125,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Set Image Disk Cache Size
-    SDImageCache.sharedImageCache.config.maxCacheSize = 1000000 * 512;
+    SDImageCache.sharedImageCache.config.maxDiskSize = 1000000 * 96;
     #if defined(OSS)
     #else
     [MSAppCenter start:@"bbc45a4c-a8b0-499b-9a77-35320b21684f" withServices:@[
@@ -313,6 +314,11 @@
         withReplyEvent:(NSAppleEventDescriptor*)replyEvent {
     NSString* url = [event paramDescriptorForKeyword:keyDirectObject].stringValue;
     NSLog(@"%@", url);
+    if ([url containsString:@"shukofukurouauth://"]) {
+        NSString* url = [event paramDescriptorForKeyword:keyDirectObject].stringValue;
+        [NSNotificationCenter.defaultCenter postNotificationName:@"shukofukurou_auth" object:url];
+        return;
+    }
     url = [url stringByReplacingOccurrencesOfString:@"shukofukurou://" withString:@""];
     int service = 0;
     if ([url containsString:@"myanimelist/"]) {

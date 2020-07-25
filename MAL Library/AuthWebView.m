@@ -21,13 +21,42 @@
     _webView = [[WKWebView alloc] initWithFrame:NSZeroRect configuration:webConfiguration];
     _webView.UIDelegate = self;
     _webView.navigationDelegate = self;
+    _webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15";
     self.view = _webView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(oauthredirectreceived:) name:@"shukofukurou_auth" object:nil];
     // Do view setup here.
     [self loadAuthorization:_service];
+}
+
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
+- (void)reloadAuth {
+    [self loadAuthorization:_service];
+}
+
+- (void)oauthredirectreceived: (NSNotification *)notification {
+    NSString *redirectURL;
+    switch (_service) {
+            case 1:
+                redirectURL = @"shukofukurouauth://malauth/?code=";
+                break;
+            case 3:
+                redirectURL = @"shukofukurouauth://anilistauth/?code=";
+                break;
+            default:
+                break;
+    }
+    if ([(NSString *)notification.object containsString:redirectURL]) {
+        // Save Pin
+        [self resetWebView];
+        _completion([(NSString *)notification.object stringByReplacingOccurrencesOfString:redirectURL withString:@""]);
+    }
 }
 
 - (NSURL *)authURL {
@@ -68,6 +97,11 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
         decisionHandler(WKNavigationActionPolicyCancel);
         [self resetWebView];
         _completion([navigationAction.request.URL.absoluteString stringByReplacingOccurrencesOfString:redirectURL withString:@""]);
+    }
+    else if ([navigationAction.request.URL.absoluteString isEqualToString:@"https://myanimelist.net/"]) {
+        // Redirect to OAuth URL for MyAnimeList
+        decisionHandler(WKNavigationActionPolicyCancel);
+        [_webView loadRequest:[NSURLRequest requestWithURL:[self authURL]]];
     }
     else {
         decisionHandler(WKNavigationActionPolicyAllow);

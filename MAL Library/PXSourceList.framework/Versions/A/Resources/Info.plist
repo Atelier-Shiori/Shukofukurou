@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>16D32</string>
+	<string>20A5323l</string>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
+	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>PXSourceList</string>
 	<key>CFBundleIdentifier</key>
@@ -18,29 +18,29 @@
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
 	<string>2.0.7</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2.0.7</string>
+	<string>1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>8A218a</string>
+	<string>12A8169g</string>
+	<key>DTPlatformName</key>
+	<string>macosx</string>
 	<key>DTPlatformVersion</key>
-	<string>GM</string>
+	<string>11.0</string>
 	<key>DTSDKBuild</key>
-	<string>16A300</string>
+	<string>20A5323l</string>
 	<key>DTSDKName</key>
-	<string>macosx10.12</string>
+	<string>macosx11.0</string>
 	<key>DTXcode</key>
-	<string>0800</string>
+	<string>1200</string>
 	<key>DTXcodeBuild</key>
-	<string>8A218a</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2009-15 Alex Rozanski and other contributors. All rights reserved.</string>
+	<string>12A8169g</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>11.0</string>
 </dict>
 </plist>

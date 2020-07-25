@@ -51,4 +51,12 @@
     [_awebview loadAuthorization:service];
 }
 
+- (IBAction)authorizeinbrowser:(id)sender {
+    [NSWorkspace.sharedWorkspace openURL:[_awebview authURL]];
+}
+
+- (IBAction)startover:(id)sender {
+    [_awebview resetWebView];
+    [_awebview reloadAuth];
+}
 @end

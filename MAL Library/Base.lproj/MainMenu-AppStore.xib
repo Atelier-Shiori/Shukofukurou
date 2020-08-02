@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14868" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17140" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14868"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17140"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -22,6 +22,7 @@
                 <outlet property="malanimexmlexport" destination="vX3-MP-bWW" id="sNm-gv-98a"/>
                 <outlet property="malmangaxmlexport" destination="Xzt-w0-bxC" id="iGm-XO-0Ed"/>
                 <outlet property="personbrowsermenuitem" destination="ioe-Dd-yoH" id="D33-bh-sat"/>
+                <outlet property="reauthorizemenuitem" destination="LCv-ui-4mO" id="R8X-SK-5iH"/>
                 <outlet property="servicemenucontrol" destination="NCk-PM-EVr" id="J8r-TZ-Al1"/>
             </connections>
         </customObject>
@@ -481,6 +482,13 @@
                                 <connections>
                                     <action selector="viewListStats:" target="Voe-Tx-rLC" id="PEI-QA-RXk"/>
                                     <binding destination="kZr-4I-AQm" name="enabled" keyPath="values.donated" id="Gdx-c8-uky"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="lJC-hk-dNy"/>
+                            <menuItem title="Reauthorize Account…" id="LCv-ui-4mO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="reauthorizeAccount:" target="Voe-Tx-rLC" id="0D3-bn-zIs"/>
                                 </connections>
                             </menuItem>
                         </items>

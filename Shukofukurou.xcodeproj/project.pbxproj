@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C98056C24D6F32A004A12AC /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C98056B24D6F32A004A12AC /* TokenReauthManager.m */; };
+		1C98056D24D6F32A004A12AC /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C98056B24D6F32A004A12AC /* TokenReauthManager.m */; };
+		1C98056E24D6F32A004A12AC /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C98056B24D6F32A004A12AC /* TokenReauthManager.m */; };
+		1C98056F24D6F32A004A12AC /* TokenReauthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C98056B24D6F32A004A12AC /* TokenReauthManager.m */; };
 		2D08F51F1ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
 		2D08F5201ECDE3470047A2BF /* imagecachetransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */; };
 		2D185EBB1ECCB01F00E1A594 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = 2D96A5171ECBA8B800942B28 /* ShukofukurouHelp.help */; };
@@ -880,6 +884,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1C98056A24D6F32A004A12AC /* TokenReauthManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TokenReauthManager.h; sourceTree = "<group>"; };
+		1C98056B24D6F32A004A12AC /* TokenReauthManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TokenReauthManager.m; sourceTree = "<group>"; };
 		2D08F51D1ECDE3470047A2BF /* imagecachetransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imagecachetransformer.h; sourceTree = "<group>"; };
 		2D08F51E1ECDE3470047A2BF /* imagecachetransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = imagecachetransformer.m; sourceTree = "<group>"; };
 		2D20C4F41EB8FF7600B241B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ReviewView.xib; sourceTree = "<group>"; };
@@ -1494,6 +1500,8 @@
 				59CBB2102264F51D007CB65B /* OtherFormatExport.m */,
 				595C2934239EB6780064F2D4 /* NewStreamDataRetriever.h */,
 				595C2933239EB6780064F2D4 /* NewStreamDataRetriever.m */,
+				1C98056A24D6F32A004A12AC /* TokenReauthManager.h */,
+				1C98056B24D6F32A004A12AC /* TokenReauthManager.m */,
 			);
 			name = Backend;
 			sourceTree = "<group>";
@@ -2328,6 +2336,7 @@
 				91822A4D1EAE99E6005E33DB /* RecommendedTitleView.m in Sources */,
 				91D094C41E983098009454F8 /* HistoryView.m in Sources */,
 				2D86F18C1EC21D4B00650E34 /* ListExporter.m in Sources */,
+				1C98056D24D6F32A004A12AC /* TokenReauthManager.m in Sources */,
 				F84BB9EB2073DE4B0056F5B0 /* AniListAuthWindow.m in Sources */,
 				913A11641E8F206A00450B66 /* ListView.m in Sources */,
 				2D88CA6B1FE815B600AD142E /* servicemenucontroller.m in Sources */,
@@ -2440,6 +2449,7 @@
 				591FC1D421C7FA17001D8684 /* NotificationManager.m in Sources */,
 				598B452C21AC392C00F28180 /* TitleInfoCache.m in Sources */,
 				91521F6A21075E4E001FCBBB /* AtarashiiListCoreData.m in Sources */,
+				1C98056C24D6F32A004A12AC /* TokenReauthManager.m in Sources */,
 				F8F0482020767DF600DAAD57 /* AniListScoreConvert.m in Sources */,
 				2DC64B681EC3D661005A8BCE /* XMLReader.m in Sources */,
 				917CEC7C211B376300259AA7 /* ShouldHidePatreonMenuValueTransformer.m in Sources */,
@@ -2547,6 +2557,7 @@
 				591FC1D721C7FA17001D8684 /* NotificationManager.m in Sources */,
 				598B454E21AC4BCE00F28180 /* AiringSchedule.m in Sources */,
 				91F8E3AC210A46CA007137A7 /* MainWindow.m in Sources */,
+				1C98056F24D6F32A004A12AC /* TokenReauthManager.m in Sources */,
 				91F8E3AE210A46CA007137A7 /* NSTextFieldNumber.m in Sources */,
 				91F8E3AF210A46CA007137A7 /* AtarashiiListCoreData.m in Sources */,
 				91F8E3B0210A46CA007137A7 /* AniListScoreConvert.m in Sources */,
@@ -2655,6 +2666,7 @@
 				593A794A21ADACFF0083FA86 /* TitleCollectionCellView.m in Sources */,
 				F888F413208FB1F500C22C39 /* Base64Category.m in Sources */,
 				F888F414208FB1F500C22C39 /* RecommendedTitleView.m in Sources */,
+				1C98056E24D6F32A004A12AC /* TokenReauthManager.m in Sources */,
 				F888F415208FB1F500C22C39 /* HistoryView.m in Sources */,
 				F888F416208FB1F500C22C39 /* ListExporter.m in Sources */,
 				F888F417208FB1F500C22C39 /* AniListAuthWindow.m in Sources */,
@@ -3497,7 +3509,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200725;
+				CURRENT_PROJECT_VERSION = 20200802;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3546,7 +3558,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = "3.5-alpha1";
+				MARKETING_VERSION = "3.5-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3560,7 +3572,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20200725;
+				CURRENT_PROJECT_VERSION = 20200802;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3605,7 +3617,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				MARKETING_VERSION = "3.5-alpha1";
+				MARKETING_VERSION = "3.5-alpha2";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

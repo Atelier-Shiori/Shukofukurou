@@ -13,6 +13,7 @@
 #import "MyListView.h"
 #import "ListView.h"
 #import "AiringNotificationManager.h"
+#import "AniListAuthWindow.h"
 #if defined(OSS)
 #else
 @import AppCenter;
@@ -42,6 +43,7 @@
 #import <SDWebImage/SDWebImage.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "OtherFormatExport.h"
+#import "TokenReauthManager.h"
 
 @interface AppDelegate ()
 @property (strong, nonatomic) dispatch_queue_t privateQueue;
@@ -51,6 +53,7 @@
 @property (strong) IBOutlet NSMenuItem *convertexportmenu;
 @property (strong) IBOutlet NSMenuItem *malanimexmlexport;
 @property (strong) IBOutlet NSMenuItem *malmangaxmlexport;
+@property (strong) IBOutlet AniListAuthWindow *anilistauthw;
 #if defined(AppStore)
 #if defined(OSS)
 #else
@@ -177,6 +180,7 @@
             [weakself.pwc generateSourceList];
             [weakself.pwc resetprofilewindow];
         }
+        [TokenReauthManager checkRefreshOrReauth];
     };
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self refreshUIServiceChange:[listservice.sharedInstance getCurrentServiceID]];
@@ -217,6 +221,7 @@
     }
 #endif
 #endif
+    [TokenReauthManager checkRefreshOrReauth];
 }
 
 
@@ -621,6 +626,116 @@
     [OtherFormatExport.sharedManager saveExportedList:tag];
 }
 
+#pragma mark - Reauth
+- (IBAction)reauthorizeAccount:(id)sender {
+    if ([listservice.sharedInstance checkAccountForCurrentService]) {
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
+        [alert setMessageText:NSLocalizedString(@"Token Refresh Failed",nil)];
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Do you want to reauthorize your %@ account? Note that you need to login using the same credentials of your currently logged in account",nil),[listservice.sharedInstance currentservicename]];
+        // Set Message type to Warning
+        alert.alertStyle = NSAlertStyleInformational;
+        [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+            // Show Preference Window and go to Login Preference Pane
+            [self performreauthorizeAccount];
+        }
+            }];
+    }
+}
+
+- (void)performreauthorizeAccount {
+    if (!_anilistauthw) {
+        _anilistauthw = [AniListAuthWindow new];
+        [_anilistauthw windowDidLoad];
+        [_anilistauthw loadAuthorizationForService:listservice.sharedInstance.getCurrentServiceID];
+    }
+    else {
+        [_anilistauthw.window makeKeyAndOrderFront:self];
+        [_anilistauthw loadAuthorizationForService:listservice.sharedInstance.getCurrentServiceID];
+        [_anilistauthw close];
+    }
+    [self.mainwindowcontroller.window beginSheet:_anilistauthw.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSModalResponseOK) {
+            NSString *pin = _anilistauthw.pin.copy;
+            _anilistauthw.pin = nil;
+            // Reauthorize Account
+            switch ([listservice.sharedInstance getCurrentServiceID]) {
+                case 1: {
+                    [listservice.sharedInstance.myanimelistManager reauthAccountWithPin:pin completion:^(id responseObject) {
+                        if (((NSNumber *)responseObject[@"success"]).boolValue) {
+                            [self showreauthsuccessfulmessage];
+                        }
+                        else {
+                            [self showreauthunsuccessfulmessage];
+                        }
+                    } error:^(NSError *error) {
+                        [self showreautherrormessage:error];
+                    }];
+                    break;
+                }
+                case 3: {
+                    [listservice.sharedInstance.anilistManager reauthAccountWithPin:pin completion:^(id responseObject) {
+                        if (((NSNumber *)responseObject[@"success"]).boolValue) {
+                            [self showreauthsuccessfulmessage];
+                        }
+                        else {
+                            [self showreauthunsuccessfulmessage];
+                        }
+                    } error:^(NSError *error) {
+                        [self showreautherrormessage:error];
+                    }];
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+        }
+        else {
+        }
+    }];
+}
+
+- (void)showreautherrormessage:(NSError *)error {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"OK",nil)];
+    [alert setMessageText:NSLocalizedString(@"OAuth Failed",nil)];
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"%@",nil),error.localizedDescription];
+    // Set Message type to Warning
+    alert.alertStyle = NSCriticalAlertStyle;
+    [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+        }
+    }];
+}
+
+- (void)showreauthunsuccessfulmessage {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"OK",nil)];
+    [alert setMessageText:NSLocalizedString(@"Reauthorization Failed",nil)];
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"You must reauthorize with the same logged in account. If you want to use a different account, please logout first.",nil)];
+    // Set Message type to Warning
+    alert.alertStyle = NSCriticalAlertStyle;
+    [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+        }
+    }];
+}
+
+- (void)showreauthsuccessfulmessage {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"OK",nil)];
+    [alert setMessageText:NSLocalizedString(@"Reauthorization Completed",nil)];
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Your account has been reauthorized.",nil)];
+    // Set Message type to Warning
+    alert.alertStyle = NSInformationalAlertStyle;
+    [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+        }
+    }];
+}
 #pragma mark - Core Data stack
 
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;

@@ -31,6 +31,7 @@
 @property (strong) IBOutlet servicemenucontroller* servicemenucontrol;
 @property (strong) IBOutlet NSMenuItem *importanilist;
 @property (strong) IBOutlet NSMenuItem *personbrowsermenuitem;
+@property (strong) IBOutlet NSMenuItem *reauthorizemenuitem;
 
 // Preference Window
 @property (nonatomic, readonly) NSWindowController *preferencesWindowController;
@@ -54,4 +55,5 @@
 - (void)clearMessages;
 - (ProfileWindowController *)getProfileWindow;
 - (IBAction)unlockprofeatures:(id)sender;
+- (IBAction)reauthorizeAccount:(id)sender;
 @end

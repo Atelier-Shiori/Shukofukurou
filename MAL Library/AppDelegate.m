@@ -203,6 +203,7 @@
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(loadpersondata:) name:@"loadpersondata" object:nil];
     
     [self showloginnotice];
+    [TokenReauthManager checkRefreshOrReauth];
     [[NSAppleEventManager sharedAppleEventManager]
      setEventHandler:self
      andSelector:@selector(handleURLEvent:withReplyEvent:)
@@ -221,7 +222,6 @@
     }
 #endif
 #endif
-    [TokenReauthManager checkRefreshOrReauth];
 }
 
 
@@ -629,19 +629,24 @@
 #pragma mark - Reauth
 - (IBAction)reauthorizeAccount:(id)sender {
     if ([listservice.sharedInstance checkAccountForCurrentService]) {
-        NSAlert *alert = [[NSAlert alloc] init];
-        [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
-        [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
-        [alert setMessageText:NSLocalizedString(@"Token Refresh Failed",nil)];
-        alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Do you want to reauthorize your %@ account? Note that you need to login using the same credentials of your currently logged in account",nil),[listservice.sharedInstance currentservicename]];
-        // Set Message type to Warning
-        alert.alertStyle = NSAlertStyleInformational;
-        [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode== NSAlertFirstButtonReturn) {
-            // Show Preference Window and go to Login Preference Pane
-            [self performreauthorizeAccount];
+        if (listservice.sharedInstance.getCurrentServiceID != 2) {
+            NSAlert *alert = [[NSAlert alloc] init];
+            [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+            [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
+            [alert setMessageText:NSLocalizedString(@"Reauthorize account?",nil)];
+            alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Do you want to reauthorize your %@ account? Note that you need to login using the same credentials of your currently logged in account. You might need to reauthorize your account since your refresh token may have expired.",nil),[listservice.sharedInstance currentservicename]];
+            // Set Message type to Warning
+            alert.alertStyle = NSAlertStyleInformational;
+            [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+            if (returnCode== NSAlertFirstButtonReturn) {
+                // Show Preference Window and go to Login Preference Pane
+                [self performreauthorizeAccount];
+            }
+                }];
         }
-            }];
+        else {
+            [self showreauthnotavailable];
+        }
     }
 }
 
@@ -731,6 +736,19 @@
     alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Your account has been reauthorized.",nil)];
     // Set Message type to Warning
     alert.alertStyle = NSInformationalAlertStyle;
+    [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+        }
+    }];
+}
+
+- (void)showreauthnotavailable {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:NSLocalizedString(@"OK",nil)];
+    [alert setMessageText:NSLocalizedString(@"Reauthorization Failed",nil)];
+    alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"Reauthorization is not available for Kitsu. Please remove your Kitsu account and log back in.",nil)];
+    // Set Message type to Warning
+    alert.alertStyle = NSCriticalAlertStyle;
     [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode== NSAlertFirstButtonReturn) {
         }

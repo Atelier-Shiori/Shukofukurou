@@ -6,13 +6,17 @@
 	<dict>
 		<key>Resources/Info.plist</key>
 		<data>
-		JdRyqFQ76zxe05eI+XATKgizUGY=
+		sD5vEaFqG/gWSHqbT43fGXj8078=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Headers/PXSourceList.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			6JFAvroiwbYwT3pfTp8YLsm0Zis=
+			</data>
 			<key>hash2</key>
 			<data>
 			pFnomBZ5FOYWaaOVvK1zrCkPITXPCo/IJv/8xziNZ+U=
@@ -20,6 +24,10 @@
 		</dict>
 		<key>Headers/PXSourceListBadgeCell.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			AToiw13ia2SM8UjGhPCKSmWuL68=
+			</data>
 			<key>hash2</key>
 			<data>
 			jJHNyZ9I3/eVCZiHFAppqPKfa8YYEFq4/tE3UC4zG5o=
@@ -27,6 +35,10 @@
 		</dict>
 		<key>Headers/PXSourceListBadgeView.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			Tlic7xK9+wXAvjddDt5/rbDC9ek=
+			</data>
 			<key>hash2</key>
 			<data>
 			l8tABpyGuGDnF1u6rs/nIQHkCLH/edoB54h53qH1raw=
@@ -34,6 +46,10 @@
 		</dict>
 		<key>Headers/PXSourceListDataSource.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			ZlCvjXeyBWDY/G8cDyi4aJLrX78=
+			</data>
 			<key>hash2</key>
 			<data>
 			9EtwKokTFCUfhF6r1U0gItviUZexSuXZ/wceIRlBJlQ=
@@ -41,6 +57,10 @@
 		</dict>
 		<key>Headers/PXSourceListDelegate.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			K3WVyrlh7tW7pezANdWxmnHSz+Q=
+			</data>
 			<key>hash2</key>
 			<data>
 			I9f5dj1OEfNkCpO2g39kEcG4bJ1BJbdlFAxmuXsXqZc=
@@ -48,6 +68,10 @@
 		</dict>
 		<key>Headers/PXSourceListItem.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			tL+4YJ8BLXaxg5diZZ3u3Bxo+SY=
+			</data>
 			<key>hash2</key>
 			<data>
 			71FMX7vvxHEEoOJ1uZWitoszDKkheFM4o64iU/opJIc=
@@ -55,6 +79,10 @@
 		</dict>
 		<key>Headers/PXSourceListTableCellView.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			DZphlDwqKZA17jST08yUy0HSz1I=
+			</data>
 			<key>hash2</key>
 			<data>
 			9h0fBb+PwsIsUatB0HM3srpm5ADyKDQ7tGvABTJnR+Y=
@@ -62,6 +90,10 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			r5J99MfL22B9xra6m0KxigdK8hM=
+			</data>
 			<key>hash2</key>
 			<data>
 			wwCDqszhIdL7PM9pnUa2hufl6dioSqJblTTJAIu0ttA=
@@ -69,9 +101,13 @@
 		</dict>
 		<key>Resources/Info.plist</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			sD5vEaFqG/gWSHqbT43fGXj8078=
+			</data>
 			<key>hash2</key>
 			<data>
-			ldEHQTwpqs4MeAlW3RGEKrahpeg4SsZrmo2/LCe8WSU=
+			8z0srAPFD2NPFYFzGlq58YnkOZmGBdl2YRYviMrXCAY=
 			</data>
 		</dict>
 	</dict>

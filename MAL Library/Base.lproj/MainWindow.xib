@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17140" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17140"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -625,6 +625,12 @@
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="ukN-rU-lOU"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Anime Blog Tracker" tag="10" id="0CG-tv-xSC">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="35r-Xf-0wV"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="Anime News Network" tag="2" id="1zq-Lq-UXu">
                                             <connections>
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="0PO-YR-hHr"/>
@@ -658,6 +664,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="ger-tf-T3K"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Wordpress.com Reader" tag="9" id="vOc-9W-GgW">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="LF1-93-7Aj"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="ピクシブ百科事典" tag="7" id="L56-BR-1kQ">

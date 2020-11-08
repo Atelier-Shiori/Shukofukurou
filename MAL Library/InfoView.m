@@ -551,6 +551,14 @@
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://en-dic.pixiv.net/search?query=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
         }
+        case 9: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://wordpress.com/read/search?q=%@&focus=1",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        }
+        case 10: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://aniblogtracker.com/?query=%@&submit=&start=0",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        }
         default: {
             return;
         }

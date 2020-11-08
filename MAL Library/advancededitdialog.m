@@ -421,7 +421,7 @@
             _privatecheck.hidden = YES;
             _advancedscore.hidden = true;
             _score.hidden = false;
-            [self hideDateFields:YES];
+            [self hideDateFields:NO];
             break;
         case 2: {
             [_listservicefields replaceSubview:_listservicefields.subviews[0] with:_kitsufieldsview];
@@ -579,12 +579,12 @@
              extrafields[@"tags"] = tags;
              }
              */
-            /*if (((NSNumber *)udict[@"set start date"]).boolValue) {
-                extrafields[@"start"] = [df stringFromDate:(NSDate *)udict[@"start"]];
+            if (@(_setstartdatecheck.state).boolValue) {
+                extrafields[@"start_date"] = [df stringFromDate:_startdatepicker.dateValue];
             }
-            if (((NSNumber *)udict[@"set end date"]).boolValue) {
-                extrafields[@"end"] = [df stringFromDate:(NSDate *)udict[@"end"]];
-            }*/
+            if (@(_setenddatecheck.state).boolValue) {
+                extrafields[@"end_date"] = [df stringFromDate:_enddatepicker.dateValue];
+            }
             if (type == 0) {
                 extrafields[@"is_rewatching"] = @(_reconsuming.state);
                 extrafields[@"num_times_rewatched"] = @(_repeattimes.intValue);

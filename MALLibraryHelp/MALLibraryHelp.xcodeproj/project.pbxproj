@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FF43D40B256BDF9900E040F8 /* _sass in Resources */ = {isa = PBXBuildFile; fileRef = FF43D3FF256BDF9900E040F8 /* _sass */; };
+		FF43D40C256BDF9900E040F8 /* _config.yml in Resources */ = {isa = PBXBuildFile; fileRef = FF43D400256BDF9900E040F8 /* _config.yml */; };
+		FF43D40D256BDF9900E040F8 /* _layouts in Resources */ = {isa = PBXBuildFile; fileRef = FF43D401256BDF9900E040F8 /* _layouts */; };
+		FF43D40E256BDF9900E040F8 /* book-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = FF43D402256BDF9900E040F8 /* book-icon.png */; };
+		FF43D40F256BDF9900E040F8 /* css in Resources */ = {isa = PBXBuildFile; fileRef = FF43D403256BDF9900E040F8 /* css */; };
+		FF43D410256BDF9900E040F8 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FF43D404256BDF9900E040F8 /* Info.plist */; };
+		FF43D412256BDF9900E040F8 /* nav.js in Resources */ = {isa = PBXBuildFile; fileRef = FF43D406256BDF9900E040F8 /* nav.js */; };
+		FF43D413256BDF9900E040F8 /* _English.lproj in Resources */ = {isa = PBXBuildFile; fileRef = FF43D407256BDF9900E040F8 /* _English.lproj */; };
+		FF43D414256BDF9900E040F8 /* jekyll-server.command in Resources */ = {isa = PBXBuildFile; fileRef = FF43D408256BDF9900E040F8 /* jekyll-server.command */; };
+		FF43D415256BDF9900E040F8 /* _plugins in Resources */ = {isa = PBXBuildFile; fileRef = FF43D409256BDF9900E040F8 /* _plugins */; };
+		FF43D416256BDF9900E040F8 /* _includes in Resources */ = {isa = PBXBuildFile; fileRef = FF43D40A256BDF9900E040F8 /* _includes */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FF43D3D9256BDEAB00E040F8 /* ShukofukurouHelp.help */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShukofukurouHelp.help; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF43D3FF256BDF9900E040F8 /* _sass */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _sass; sourceTree = "<group>"; };
+		FF43D400256BDF9900E040F8 /* _config.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = _config.yml; sourceTree = "<group>"; };
+		FF43D401256BDF9900E040F8 /* _layouts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _layouts; sourceTree = "<group>"; };
+		FF43D402256BDF9900E040F8 /* book-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "book-icon.png"; sourceTree = "<group>"; };
+		FF43D403256BDF9900E040F8 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; path = css; sourceTree = "<group>"; };
+		FF43D404256BDF9900E040F8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF43D405256BDF9900E040F8 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		FF43D406256BDF9900E040F8 /* nav.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = nav.js; sourceTree = "<group>"; };
+		FF43D407256BDF9900E040F8 /* _English.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _English.lproj; sourceTree = "<group>"; };
+		FF43D408256BDF9900E040F8 /* jekyll-server.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "jekyll-server.command"; sourceTree = "<group>"; };
+		FF43D409256BDF9900E040F8 /* _plugins */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _plugins; sourceTree = "<group>"; };
+		FF43D40A256BDF9900E040F8 /* _includes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = _includes; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FF43D3D6256BDEAB00E040F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FF43D3CB256BDE2F00E040F8 = {
+			isa = PBXGroup;
+			children = (
+				FF43D3DB256BDEAB00E040F8 /* ShukofukurouHelp */,
+				FF43D3DA256BDEAB00E040F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FF43D3DA256BDEAB00E040F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FF43D3D9256BDEAB00E040F8 /* ShukofukurouHelp.help */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FF43D3DB256BDEAB00E040F8 /* ShukofukurouHelp */ = {
+			isa = PBXGroup;
+			children = (
+				FF43D400256BDF9900E040F8 /* _config.yml */,
+				FF43D407256BDF9900E040F8 /* _English.lproj */,
+				FF43D40A256BDF9900E040F8 /* _includes */,
+				FF43D401256BDF9900E040F8 /* _layouts */,
+				FF43D409256BDF9900E040F8 /* _plugins */,
+				FF43D3FF256BDF9900E040F8 /* _sass */,
+				FF43D402256BDF9900E040F8 /* book-icon.png */,
+				FF43D403256BDF9900E040F8 /* css */,
+				FF43D404256BDF9900E040F8 /* Info.plist */,
+				FF43D408256BDF9900E040F8 /* jekyll-server.command */,
+				FF43D405256BDF9900E040F8 /* Makefile */,
+				FF43D406256BDF9900E040F8 /* nav.js */,
+			);
+			name = ShukofukurouHelp;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FF43D3D8256BDEAB00E040F8 /* ShukofukurouHelp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF43D3DD256BDEAB00E040F8 /* Build configuration list for PBXNativeTarget "ShukofukurouHelp" */;
+			buildPhases = (
+				FF43D3D5256BDEAB00E040F8 /* Sources */,
+				FF43D3D6256BDEAB00E040F8 /* Frameworks */,
+				FF43D3D7256BDEAB00E040F8 /* Resources */,
+				FF43D3FD256BDEEF00E040F8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ShukofukurouHelp;
+			productName = ShukofukurouHelp;
+			productReference = FF43D3D9256BDEAB00E040F8 /* ShukofukurouHelp.help */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FF43D3CC256BDE2F00E040F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					FF43D3D8256BDEAB00E040F8 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = FF43D3CF256BDE2F00E040F8 /* Build configuration list for PBXProject "MALLibraryHelp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FF43D3CB256BDE2F00E040F8;
+			productRefGroup = FF43D3DA256BDEAB00E040F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FF43D3D8256BDEAB00E040F8 /* ShukofukurouHelp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FF43D3D7256BDEAB00E040F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF43D40F256BDF9900E040F8 /* css in Resources */,
+				FF43D415256BDF9900E040F8 /* _plugins in Resources */,
+				FF43D412256BDF9900E040F8 /* nav.js in Resources */,
+				FF43D40C256BDF9900E040F8 /* _config.yml in Resources */,
+				FF43D414256BDF9900E040F8 /* jekyll-server.command in Resources */,
+				FF43D410256BDF9900E040F8 /* Info.plist in Resources */,
+				FF43D413256BDF9900E040F8 /* _English.lproj in Resources */,
+				FF43D40E256BDF9900E040F8 /* book-icon.png in Resources */,
+				FF43D416256BDF9900E040F8 /* _includes in Resources */,
+				FF43D40B256BDF9900E040F8 /* _sass in Resources */,
+				FF43D40D256BDF9900E040F8 /* _layouts in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FF43D3FD256BDEEF00E040F8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/make -C \"$(dirname \"$PRODUCT_SETTINGS_PATH\")\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FF43D3D5256BDEAB00E040F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FF43D3D0256BDE2F00E040F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		FF43D3D1256BDE2F00E040F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		FF43D3DE256BDEAB00E040F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.ShukofukurouHelp.help.ShukofukurouHelp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = help;
+			};
+			name = Debug;
+		};
+		FF43D3DF256BDEAB00E040F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MARKETING_VERSION = 1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.ShukofukurouHelp.help.ShukofukurouHelp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = help;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FF43D3CF256BDE2F00E040F8 /* Build configuration list for PBXProject "MALLibraryHelp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF43D3D0256BDE2F00E040F8 /* Debug */,
+				FF43D3D1256BDE2F00E040F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF43D3DD256BDEAB00E040F8 /* Build configuration list for PBXNativeTarget "ShukofukurouHelp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF43D3DE256BDEAB00E040F8 /* Debug */,
+				FF43D3DF256BDEAB00E040F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FF43D3CC256BDE2F00E040F8 /* Project object */;
+}

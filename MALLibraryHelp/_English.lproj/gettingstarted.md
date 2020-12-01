@@ -25,7 +25,7 @@ Here are the functionality available:
 * Trending - Browse trending, highest rated, newly added and popular titles.
 
 ## Service Menu
-The service menu allows you to switch between list services. If you have a title loaded in Title Information, Shukofukurou will atempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.
+The service menu allows you to switch between list services. If you have a title loaded in Title Information, Shukofukurou will attempt to load title information on the chosen service while loading lists associated to the service. Note that you have to log into the respective service in order to manage your list.
 
-To change the current service, click the service menu on the menu bar and select a service. Note that in order to mangage your list for the service you selected, you need to be logged into or authorize an account.
+To change the current service, click the service menu on the menu bar and select a service. Note that in order to manage your list for the service you selected, you need to be logged into or authorize an account.
 

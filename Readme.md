@@ -7,11 +7,9 @@ Shukofukurou an open sourced and native [AniList](https://anilist.co), [Kitsu](h
 
 This app is named after the owl, Shuko from Sora no Woto.
 
-Requires latest SDK (11), XCode 12 or later with a 10.11 macOS Deployment Target.
+Requires latest SDK (macOS 11), XCode 12 or later with a 10.11 macOS Deployment Target.
 
 iOS version of Shukofukurou is available [here](https://github.com/Atelier-Shiori/Shukofukurou-iOS), which uses mostly the same backend code.
-
-** While most of the frameworks are now Universal Binary 2 ready, AppCenter is not avaiable for Universal Binary. Therefore, the app won't be Universal Binary 2 until AppCenter is available for Apple Silicon **
 
 ## Supporting this Project
 

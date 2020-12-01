@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.13.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -46,20 +46,19 @@
                 <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeN-3O-bua">
                     <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" focusRingType="none" ambiguous="YES" id="eGM-Vy-iY0">
+                    <clipView key="contentView" focusRingType="none" id="eGM-Vy-iY0">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="QGW-Oe-htQ" id="etv-3f-0Uh" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="564" height="252"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="title" editable="NO" width="323" minWidth="40" maxWidth="1000" id="DNa-6J-sgF">
+                                    <tableColumn identifier="title" editable="NO" width="294" minWidth="40" maxWidth="1000" id="DNa-6J-sgF">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -70,21 +69,20 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.title" id="vJ2-TN-Pgi">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
                                             <binding destination="hZg-UC-ATg" name="fontBold" keyPath="arrangedObjects.status" id="xPz-zP-YI9">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">IsAiringValueTransformer</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.title" id="vJ2-TN-Pgi">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
                                             </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="Episodes" editable="NO" width="60" minWidth="60" maxWidth="60" id="RuF-sM-oAM">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Watched">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -109,7 +107,6 @@
                                     </tableColumn>
                                     <tableColumn identifier="progress" editable="NO" width="55" minWidth="10" maxWidth="70" id="huN-ki-nxc">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Progress">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -124,7 +121,6 @@
                                     </tableColumn>
                                     <tableColumn identifier="score" editable="NO" width="50" minWidth="50" maxWidth="50" id="CPD-Wd-FF0">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Score">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -144,7 +140,6 @@
                                     </tableColumn>
                                     <tableColumn identifier="type" editable="NO" width="60" minWidth="60" maxWidth="60" id="me1-yQ-9KJ">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -178,7 +173,7 @@
                         <rect key="frame" x="-15" y="15" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="QGW-Oe-htQ">
+                    <tableHeaderView key="headerView" wantsLayer="YES" id="QGW-Oe-htQ">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
@@ -316,20 +311,19 @@
                 <scrollView focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSH-Zq-oIW">
                     <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" focusRingType="none" ambiguous="YES" id="JM6-04-Bb0">
+                    <clipView key="contentView" focusRingType="none" id="JM6-04-Bb0">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="565" height="237"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="0.0" y="0.0" width="594" height="237"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn identifier="mangatitle" editable="NO" width="230" minWidth="40" maxWidth="1000" id="RPx-Ue-cHA">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -340,21 +334,20 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <connections>
-                                            <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.title" id="lhF-oB-Ehs">
-                                                <dictionary key="options">
-                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
-                                                </dictionary>
-                                            </binding>
                                             <binding destination="Ckb-CV-hJI" name="fontBold" keyPath="arrangedObjects.status" id="OSp-vA-c1x">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">IsAiringValueTransformer</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.title" id="lhF-oB-Ehs">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
                                             </binding>
                                         </connections>
                                     </tableColumn>
                                     <tableColumn identifier="chapters" editable="NO" width="60" minWidth="60" maxWidth="60" id="FdI-rc-1zn">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Chapters">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                         </tableHeaderCell>
@@ -379,7 +372,6 @@
                                     </tableColumn>
                                     <tableColumn identifier="chapprogress" editable="NO" width="55" minWidth="10" maxWidth="70" id="kHv-2Q-EdN">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Progress">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -394,7 +386,6 @@
                                     </tableColumn>
                                     <tableColumn identifier="volumes" editable="NO" width="60" minWidth="60" maxWidth="60" id="qlV-Uo-Pgt">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Volumes">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -419,7 +410,6 @@
                                     </tableColumn>
                                     <tableColumn identifier="mangascore" editable="NO" width="50" minWidth="50" maxWidth="50" id="nxv-5k-q0g">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Score">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -439,7 +429,6 @@
                                     </tableColumn>
                                     <tableColumn identifier="readstatus" editable="NO" width="92" minWidth="10" maxWidth="3.4028234663852886e+38" id="YFY-cm-gEc">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Type">
-                                            <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
@@ -473,8 +462,8 @@
                         <rect key="frame" x="-15" y="23" width="15" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <tableHeaderView key="headerView" id="0LX-NX-GMd">
-                        <rect key="frame" x="0.0" y="0.0" width="565" height="23"/>
+                    <tableHeaderView key="headerView" wantsLayer="YES" id="0LX-NX-GMd">
+                        <rect key="frame" x="0.0" y="0.0" width="594" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </tableHeaderView>
                 </scrollView>
@@ -574,6 +563,6 @@
         </customView>
     </objects>
     <resources>
-        <image name="customlist" width="12" height="12"/>
+        <image name="customlist" width="16" height="16"/>
     </resources>
 </document>

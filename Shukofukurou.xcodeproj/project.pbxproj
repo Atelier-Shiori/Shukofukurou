@@ -724,20 +724,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		2D185EBC1ECCB04D00E1A594 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
-			remoteInfo = MALLibraryHelp;
-		};
-		2D185EBE1ECCB05200E1A594 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
-			remoteInfo = MALLibraryHelp;
-		};
 		2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
@@ -745,26 +731,12 @@
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "MAL Library (AppStore)";
 		};
-		91F8E399210A46CA007137A7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
-			remoteInfo = MALLibraryHelp;
-		};
 		F87EF5632098D22E000AD86E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "Shukofukurou (AppStore)";
-		};
-		F888F408208FB1F500C22C39 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D96A5161ECBA8B800942B28;
-			remoteInfo = MALLibraryHelp;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1858,7 +1830,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2D185EBD1ECCB04D00E1A594 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou (AppStore)";
 			productName = "MAL Library";
@@ -1878,7 +1849,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				2D185EBF1ECCB05200E1A594 /* PBXTargetDependency */,
 			);
 			name = Shukofukurou;
 			productName = "MAL Library";
@@ -1898,7 +1868,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				91F8E398210A46CA007137A7 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou Next";
 			productName = "MAL Library";
@@ -1936,7 +1905,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				F888F407208FB1F500C22C39 /* PBXTargetDependency */,
 			);
 			name = "Shukofukurou Community";
 			productName = "MAL Library";
@@ -2305,7 +2273,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/bin/make -C \"$(dirname \"$PRODUCT_SETTINGS_PATH\")\"";
+			shellScript = "/usr/bin/make -C \"$(dirname \"$PRODUCT_SETTINGS_PATH\")\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2757,35 +2725,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		2D185EBD1ECCB04D00E1A594 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */;
-			targetProxy = 2D185EBC1ECCB04D00E1A594 /* PBXContainerItemProxy */;
-		};
-		2D185EBF1ECCB05200E1A594 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */;
-			targetProxy = 2D185EBE1ECCB05200E1A594 /* PBXContainerItemProxy */;
-		};
 		2D60A1251E9B322B0034C3AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* Shukofukurou (AppStore) */;
 			targetProxy = 2D60A1241E9B322B0034C3AA /* PBXContainerItemProxy */;
 		};
-		91F8E398210A46CA007137A7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */;
-			targetProxy = 91F8E399210A46CA007137A7 /* PBXContainerItemProxy */;
-		};
 		F87EF5642098D22E000AD86E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* Shukofukurou (AppStore) */;
 			targetProxy = F87EF5632098D22E000AD86E /* PBXContainerItemProxy */;
-		};
-		F888F407208FB1F500C22C39 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D96A5161ECBA8B800942B28 /* ShukofukurouHelp */;
-			targetProxy = F888F408208FB1F500C22C39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

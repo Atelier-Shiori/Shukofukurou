@@ -131,12 +131,12 @@
     SDImageCache.sharedImageCache.config.maxDiskSize = 1000000 * 96;
     #if defined(OSS)
     #else
-    [MSAppCenter start:@"bbc45a4c-a8b0-499b-9a77-35320b21684f" withServices:@[
-                                                                              [MSAnalytics class],
-                                                                              [MSCrashes class]
+    [MSACAppCenter start:@"bbc45a4c-a8b0-499b-9a77-35320b21684f" withServices:@[
+        [MSACAnalytics class],
+        [MSACCrashes class]
                                                                               ]];
-    [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
-    [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
     #endif
     [Utility checkandclearimagecache];
     _airingnotificationmanager = [AiringNotificationManager new];

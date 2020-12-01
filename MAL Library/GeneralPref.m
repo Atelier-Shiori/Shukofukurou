@@ -126,8 +126,8 @@
 - (IBAction)sendstatstoggle:(id)sender {
 #if defined(OSS)
 #else
-    [MSCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
-    [MSAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACCrashes setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
+    [MSACAnalytics setEnabled:[NSUserDefaults.standardUserDefaults boolForKey:@"sendanalytics"]];
 #endif
 }
 - (IBAction)viewprivacypolicy:(id)sender {

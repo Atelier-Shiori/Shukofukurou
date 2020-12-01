@@ -17,7 +17,7 @@
 + (void)sendAnalyticsWithEventTitle:(NSString *)eventtitle withProperties:(NSDictionary <NSString *,NSString *> *)info {
 #if defined(OSS)
 #else
-    [MSAnalytics trackEvent:eventtitle withProperties:info];
+    [MSACAnalytics trackEvent:eventtitle withProperties:info];
 #endif
 }
 

@@ -583,7 +583,7 @@
                 extrafields[@"start_date"] = [df stringFromDate:_startdatepicker.dateValue];
             }
             if (@(_setenddatecheck.state).boolValue) {
-                extrafields[@"end_date"] = [df stringFromDate:_enddatepicker.dateValue];
+                extrafields[@"finish_date"] = [df stringFromDate:_enddatepicker.dateValue];
             }
             if (type == 0) {
                 extrafields[@"is_rewatching"] = @(_reconsuming.state);

@@ -559,6 +559,10 @@
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://aniblogtracker.com/?query=%@&submit=&start=0",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
         }
+        case 11: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.livechart.me/search?q=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        }
         default: {
             return;
         }
@@ -570,10 +574,12 @@
     if (_type == MALAnime) {
         _anidbmenuitem.hidden = NO;
         _bakaupdatesmenuitem.hidden = YES;
+        _livechartmenuitem.hidden = NO;
     }
     else {
         _anidbmenuitem.hidden = YES;
         _bakaupdatesmenuitem.hidden = NO;
+        _livechartmenuitem.hidden = YES;
     }
 }
 

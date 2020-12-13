@@ -614,7 +614,7 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
                             <rect key="frame" x="0.0" y="14" width="43" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">
@@ -640,6 +640,12 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="em1-qQ-HE6"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="LiveChart" tag="11" id="fwJ-x8-c2x">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="ITC-aT-WXk"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Pixiv Encyclopedia (English)" tag="8" id="hF8-ki-jWx">
@@ -898,6 +904,7 @@
             <connections>
                 <outlet property="anidbmenuitem" destination="E0o-l0-KSr" id="T8F-WP-GAZ"/>
                 <outlet property="bakaupdatesmenuitem" destination="dsG-0s-cXd" id="UkM-ze-0uh"/>
+                <outlet property="livechartmenuitem" destination="fwJ-x8-c2x" id="w1W-lr-vN3"/>
                 <outlet property="mw" destination="-2" id="Hld-0g-zJV"/>
             </connections>
         </viewController>

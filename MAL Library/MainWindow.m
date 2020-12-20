@@ -624,6 +624,11 @@
                 [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"  atIndex:2];
                 [_toolbar insertItemWithItemIdentifier:@"ClearHistory" atIndex:3];
             }
+            else {
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem"  atIndex:0];
+                [_toolbar insertItemWithItemIdentifier:@"ClearHistory" atIndex:1];
+                
+            }
         }
         
     }

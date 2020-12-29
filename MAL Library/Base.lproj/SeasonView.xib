@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -56,17 +56,18 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
-                <visualEffectView hidden="YES" appearanceType="inheritedVibrantLight" fixedFrame="YES" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="o2d-FT-7XO">
-                    <rect key="frame" x="217" y="148" width="128" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                <visualEffectView hidden="YES" appearanceType="inheritedVibrantLight" blendingMode="withinWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="o2d-FT-7XO">
+                    <rect key="frame" x="218" y="148" width="127" height="128"/>
                     <subviews>
-                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="9v6-vD-0Ii">
-                            <rect key="frame" x="48" y="33" width="32" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="9v6-vD-0Ii">
+                            <rect key="frame" x="47" y="33" width="32" height="32"/>
                         </progressIndicator>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DNP-fB-9s4">
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DNP-fB-9s4">
                             <rect key="frame" x="9" y="91" width="109" height="17"/>
-                            <autoresizingMask key="autoresizingMask"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="17" id="N3K-wv-q4f"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="105" id="RPX-Qe-9hW"/>
+                            </constraints>
                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Loading..." id="BaT-0g-8JX">
                                 <font key="font" usesAppearanceFont="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -74,13 +75,23 @@
                             </textFieldCell>
                         </textField>
                     </subviews>
+                    <constraints>
+                        <constraint firstItem="DNP-fB-9s4" firstAttribute="centerX" secondItem="9v6-vD-0Ii" secondAttribute="centerX" id="9bx-Iu-PZO"/>
+                        <constraint firstItem="DNP-fB-9s4" firstAttribute="centerX" secondItem="o2d-FT-7XO" secondAttribute="centerX" id="K1j-tu-ZvS"/>
+                        <constraint firstItem="DNP-fB-9s4" firstAttribute="top" secondItem="o2d-FT-7XO" secondAttribute="top" constant="20" symbolic="YES" id="ZQN-lN-SVg"/>
+                        <constraint firstItem="DNP-fB-9s4" firstAttribute="leading" secondItem="o2d-FT-7XO" secondAttribute="leading" constant="11" id="mcm-Qb-Dec"/>
+                        <constraint firstItem="9v6-vD-0Ii" firstAttribute="top" secondItem="DNP-fB-9s4" secondAttribute="bottom" constant="26" id="wse-F1-PBj"/>
+                    </constraints>
                 </visualEffectView>
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="AEW-Su-Nir" secondAttribute="trailing" id="ABx-8p-U89"/>
                 <constraint firstItem="AEW-Su-Nir" firstAttribute="top" secondItem="31f-Hb-kDm" secondAttribute="top" id="E8K-84-aja"/>
+                <constraint firstAttribute="bottom" secondItem="o2d-FT-7XO" secondAttribute="bottom" constant="148" id="G22-uE-Hko"/>
                 <constraint firstItem="AEW-Su-Nir" firstAttribute="leading" secondItem="31f-Hb-kDm" secondAttribute="leading" id="HNP-su-plo"/>
+                <constraint firstItem="o2d-FT-7XO" firstAttribute="top" secondItem="31f-Hb-kDm" secondAttribute="top" constant="125" id="ayf-gV-yGd"/>
                 <constraint firstAttribute="bottom" secondItem="AEW-Su-Nir" secondAttribute="bottom" id="jx4-Hf-wgu"/>
+                <constraint firstItem="o2d-FT-7XO" firstAttribute="centerX" secondItem="AEW-Su-Nir" secondAttribute="centerX" id="qoI-1a-KsK"/>
             </constraints>
             <point key="canvasLocation" x="91" y="211.5"/>
         </visualEffectView>

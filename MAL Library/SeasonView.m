@@ -133,11 +133,12 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear fromDate:[NSDate date]];
     int currentyear = 1990;
-    while (currentyear <= components.year) {
+    int maxyear = components.year + 1;
+    while (currentyear <= maxyear) {
         [_seasonyrpicker addItemWithTitle:@(currentyear).stringValue];
         currentyear++;
     }
-    [_seasonyrpicker selectItemAtIndex:_seasonyrpicker.itemArray.count-1];
+    [_seasonyrpicker selectItemAtIndex:_seasonyrpicker.itemArray.count-2];
     [self loadseasondata:_seasonyrpicker.title.intValue forSeason: _seasonpicker.title refresh:NO];
 }
 

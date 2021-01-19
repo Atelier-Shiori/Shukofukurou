@@ -66,6 +66,7 @@
 }
 
 - (void)enableservicemenuitems:(bool)enable {
+    _anilistserviceitem.enabled = enable;
     _malserviceitem.enabled = enable;
     _kitsuserviceitem.enabled = enable;
 }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,7 +41,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="911" y="501" width="700" height="450"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="775"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
             <value key="minSize" type="size" width="700" height="450"/>
             <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="700" height="450"/>
@@ -331,13 +330,13 @@
                             </connections>
                         </searchField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="707584EA-0799-4C03-91FB-3ECF55196F59" explicitItemIdentifier="editList" label="Edit Title" paletteLabel="Edit Title" toolTip="Edit Title" image="Edit" id="7Ap-pp-DuY">
+                    <toolbarItem implicitItemIdentifier="707584EA-0799-4C03-91FB-3ECF55196F59" explicitItemIdentifier="editList" label="Edit Title" paletteLabel="Edit Title" toolTip="Edit Title" image="pencil" catalog="system" id="7Ap-pp-DuY">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="MhQ-07-zJu">
                             <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Edit" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Dx-bw-1r7">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="pencil" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="6Dx-bw-1r7">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -346,13 +345,13 @@
                             <action selector="performmodifytitle:" target="-2" id="0rG-d2-5Wq"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="D2F2B7CC-8D28-4977-93C7-65766691DE77" explicitItemIdentifier="viewonmal" label="View on Site" paletteLabel="View on Site" toolTip="View on Site" image="Info" id="Xo3-FI-FWS">
+                    <toolbarItem implicitItemIdentifier="D2F2B7CC-8D28-4977-93C7-65766691DE77" explicitItemIdentifier="viewonmal" label="View on Site" paletteLabel="View on Site" toolTip="View on Site" image="info.circle" catalog="system" id="Xo3-FI-FWS">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Ilq-I7-AtO">
                             <rect key="frame" x="18" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Info" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="19N-6E-tNo">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="info.circle" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="19N-6E-tNo">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -409,13 +408,13 @@
                             </connections>
                         </popUpButton>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="1F1FCE20-BCEE-4A58-9E12-BE970E73674E" explicitItemIdentifier="editInfo" label="Edit Title" paletteLabel="Edit Title" toolTip="Edit Title" image="Edit" id="5XM-zY-JrT">
+                    <toolbarItem implicitItemIdentifier="1F1FCE20-BCEE-4A58-9E12-BE970E73674E" explicitItemIdentifier="editInfo" label="Edit Title" paletteLabel="Edit Title" toolTip="Edit Title" image="pencil" catalog="system" id="5XM-zY-JrT">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="q83-46-NSs">
                             <rect key="frame" x="9" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Edit" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1FY-3s-pVT">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="pencil" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1FY-3s-pVT">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -455,13 +454,13 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Mt7-WY-45F"/>
-                    <toolbarItem implicitItemIdentifier="F8DE7553-EAA2-4394-967D-77376189FB67" explicitItemIdentifier="advsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="Advanced Search" image="advsearch" id="34Q-Qt-FYM">
+                    <toolbarItem implicitItemIdentifier="F8DE7553-EAA2-4394-967D-77376189FB67" explicitItemIdentifier="advsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="Advanced Search" image="mail.and.text.magnifyingglass.rtl" catalog="system" id="34Q-Qt-FYM">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="zKh-eH-mHX">
                             <rect key="frame" x="31" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="advsearch" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y0O-hv-e07">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="mail.and.text.magnifyingglass.rtl" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y0O-hv-e07">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -473,13 +472,13 @@
                             <action selector="performmodifytitle:" target="-2" id="eco-nX-xxF"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A1D0F132-D3CE-4BB9-A94F-AE8E7F490C6E" explicitItemIdentifier="nadvsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="Advanced Search" image="advsearch" id="dV1-q6-VcJ">
+                    <toolbarItem implicitItemIdentifier="A1D0F132-D3CE-4BB9-A94F-AE8E7F490C6E" explicitItemIdentifier="nadvsearch" label="Advanced Search" paletteLabel="Advanced Search" toolTip="Advanced Search" image="mail.and.text.magnifyingglass.rtl" catalog="system" id="dV1-q6-VcJ">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="zpz-Ia-Oza">
                             <rect key="frame" x="31" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="advsearch" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UqQ-lv-VCt">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="mail.and.text.magnifyingglass.rtl" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UqQ-lv-VCt">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -545,13 +544,13 @@
                             <action selector="showaddpopover:" target="-2" id="kx9-81-I4C"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="ABDE0F85-CF79-494D-8F24-B41A9AD5BB9A" explicitItemIdentifier="viewreviews" label="View Reviews" paletteLabel="View Reviews" toolTip="View Reviews" image="reviews" id="b6y-uB-2VD">
+                    <toolbarItem implicitItemIdentifier="ABDE0F85-CF79-494D-8F24-B41A9AD5BB9A" explicitItemIdentifier="viewreviews" label="View Reviews" paletteLabel="View Reviews" toolTip="View Reviews" image="star.square" catalog="system" id="b6y-uB-2VD">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="FwH-Do-1LO">
                             <rect key="frame" x="21" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="reviews" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ATW-lp-8wC">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="star.square" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ATW-lp-8wC">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -560,13 +559,13 @@
                             <action selector="viewreviews:" target="4iy-i9-GZD" id="m9d-5V-N19"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="931E2D8C-4FEC-4B42-8A90-A2EF0EA6C23E" explicitItemIdentifier="viewpeople" label="View People" paletteLabel="View People" toolTip="View People" image="cast" id="1LE-g0-DfX">
+                    <toolbarItem implicitItemIdentifier="931E2D8C-4FEC-4B42-8A90-A2EF0EA6C23E" explicitItemIdentifier="viewpeople" label="View People" paletteLabel="View People" toolTip="View People" image="person" catalog="system" id="1LE-g0-DfX">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Zpy-tB-eoy">
                             <rect key="frame" x="18" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="cast" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kf1-sT-QLm">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="person" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kf1-sT-QLm">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -575,13 +574,13 @@
                             <action selector="openpeoplebrowser:" target="4iy-i9-GZD" id="KJ2-cr-xxa"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="36D82FD2-D4AA-40D9-A16D-0E3BE95DE907" explicitItemIdentifier="viewepisodes" label="View Episodes" paletteLabel="View Episodes" toolTip="View Episodes" image="episodes" id="44R-yq-ILU">
+                    <toolbarItem implicitItemIdentifier="36D82FD2-D4AA-40D9-A16D-0E3BE95DE907" explicitItemIdentifier="viewepisodes" label="View Episodes" paletteLabel="View Episodes" toolTip="View Episodes" image="tv" catalog="system" id="44R-yq-ILU">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="10C-F5-8ES">
                             <rect key="frame" x="23" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="episodes" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aQN-b7-KF1">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="tv" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aQN-b7-KF1">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -590,13 +589,13 @@
                             <action selector="showEpisodesDetailWindow:" target="4iy-i9-GZD" id="aSN-E7-VNg"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="A69A937D-77C2-463E-AC5B-FF5A5D0C6168" explicitItemIdentifier="viewtitleinfo" label="View Title Information" paletteLabel="View Title Information" toolTip="View Title Information" image="Info" id="oYq-IJ-WTb">
+                    <toolbarItem implicitItemIdentifier="A69A937D-77C2-463E-AC5B-FF5A5D0C6168" explicitItemIdentifier="viewtitleinfo" label="View Title Information" paletteLabel="View Title Information" toolTip="View Title Information" image="info.circle" catalog="system" id="oYq-IJ-WTb">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="wCj-68-RQc">
                             <rect key="frame" x="43" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="Info" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KBG-bq-W7W">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="info.circle" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KBG-bq-W7W">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -614,7 +613,7 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
                             <rect key="frame" x="0.0" y="14" width="43" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">
@@ -689,13 +688,13 @@
                             </popUpButtonCell>
                         </popUpButton>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="3455E051-4879-408D-B4C7-BAE84BDC2DB8" explicitItemIdentifier="incrementprogress" label="Increment Progress" paletteLabel="Increment" toolTip="Increment Progress" image="increment" id="glC-Bg-6JC">
+                    <toolbarItem implicitItemIdentifier="3455E051-4879-408D-B4C7-BAE84BDC2DB8" explicitItemIdentifier="incrementprogress" label="Increment Progress" paletteLabel="Increment" toolTip="Increment Progress" image="arrow.up" catalog="system" id="glC-Bg-6JC">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="lX4-6f-ogp">
                             <rect key="frame" x="12" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="increment" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qGB-ik-aab">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="arrow.up" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qGB-ik-aab">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -704,13 +703,13 @@
                             <action selector="increment:" target="Xk3-JH-b4a" id="77C-fO-790"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="E56AA064-8F74-4913-902B-15C487320618" explicitItemIdentifier="editCustomLists" label="Modify Custom Lists" paletteLabel="Modify Custom Lists" toolTip="Modify Custom Lists" image="editcustomlists" id="uRg-E5-6YT">
+                    <toolbarItem implicitItemIdentifier="E56AA064-8F74-4913-902B-15C487320618" explicitItemIdentifier="editCustomLists" label="Modify Custom Lists" paletteLabel="Modify Custom Lists" toolTip="Modify Custom Lists" image="square.and.pencil" catalog="system" id="uRg-E5-6YT">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="Bzk-kL-NTF">
                             <rect key="frame" x="39" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="editcustomlists" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vdK-M0-G0X">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="square.and.pencil" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vdK-M0-G0X">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -739,13 +738,13 @@
                             <action selector="trendingchanged:" target="aeO-w6-I5I" id="uKu-CK-mXp"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="1569161F-3FDA-4A2B-9F25-E059B5C39919" explicitItemIdentifier="moreresults" label="More Results" paletteLabel="More Results" toolTip="More Results" image="moreresults" id="E8o-gm-YxM">
+                    <toolbarItem implicitItemIdentifier="1569161F-3FDA-4A2B-9F25-E059B5C39919" explicitItemIdentifier="moreresults" label="More Results" paletteLabel="More Results" toolTip="More Results" image="magnifyingglass.circle" catalog="system" id="E8o-gm-YxM">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="tP8-97-SVR">
                             <rect key="frame" x="20" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="moreresults" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wSU-7U-do5">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="magnifyingglass.circle" catalog="system" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wSU-7U-do5">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -774,13 +773,13 @@
                             <action selector="mediatypeselectorchanged:" target="ONm-Bf-qTf" id="30n-Yv-WMK"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="8E9D9C95-F3DC-4023-BAFB-7E7C2AB68D36" explicitItemIdentifier="ClearHistory" label="Clear History" paletteLabel="Clear History" toolTip="Delete Title" image="cleanhistory" id="zNo-1K-mNC">
+                    <toolbarItem implicitItemIdentifier="8E9D9C95-F3DC-4023-BAFB-7E7C2AB68D36" explicitItemIdentifier="ClearHistory" label="Clear History" paletteLabel="Clear History" toolTip="Delete Title" image="trash" catalog="system" id="zNo-1K-mNC">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="G9z-GW-NSx">
                             <rect key="frame" x="26" y="14" width="24" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="cleanhistory" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Apd-SL-vQJ">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="trash" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Apd-SL-vQJ">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -924,21 +923,22 @@
         </viewController>
     </objects>
     <resources>
-        <image name="Edit" width="32" height="32"/>
-        <image name="Info" width="32" height="32"/>
         <image name="NSActionTemplate" width="15" height="15"/>
         <image name="NSAddTemplate" width="15" height="13"/>
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="NSShareTemplate" width="16" height="17"/>
-        <image name="advsearch" width="32" height="32"/>
-        <image name="cast" width="32" height="32"/>
-        <image name="cleanhistory" width="25" height="25"/>
+        <image name="arrow.up" catalog="system" width="14" height="14"/>
         <image name="delete" width="32" height="32"/>
-        <image name="editcustomlists" width="32" height="32"/>
-        <image name="episodes" width="32" height="32"/>
-        <image name="increment" width="32" height="32"/>
-        <image name="moreresults" width="32" height="32"/>
-        <image name="reviews" width="32" height="32"/>
+        <image name="info.circle" catalog="system" width="15" height="15"/>
+        <image name="magnifyingglass.circle" catalog="system" width="15" height="15"/>
+        <image name="mail.and.text.magnifyingglass.rtl" catalog="system" width="22" height="15"/>
+        <image name="pencil" catalog="system" width="13" height="13"/>
+        <image name="person" catalog="system" width="16" height="14"/>
+        <image name="safari" catalog="system" width="15" height="15"/>
         <image name="safari" width="32" height="32"/>
+        <image name="square.and.pencil" catalog="system" width="16" height="15"/>
+        <image name="star.square" catalog="system" width="16" height="14"/>
+        <image name="trash" catalog="system" width="15" height="17"/>
+        <image name="tv" catalog="system" width="20" height="15"/>
     </resources>
 </document>

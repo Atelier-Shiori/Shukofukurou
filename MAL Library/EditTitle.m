@@ -81,7 +81,7 @@
         else {
             _selectedaircompleted = false;
         }
-        if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]) {
+        if ([airingstatus isEqualToString:@"finished airing"]||[airingstatus isEqualToString:@"currently airing"]||[airingstatus isEqualToString:@"on hiatus"]) {
             _selectedaired = true;
         }
         else {
@@ -118,14 +118,14 @@
         [_segmentview replaceSubview:(_segmentview.subviews)[0] with:_mangaeditview];
         _minipopoverstatus.menu = _mangastatusmenu;
         [_commonview setFrameOrigin:NSMakePoint(_commonview.frame.origin.x, 18)];
-        NSString *publishtatus = _selecteditem[@"status"];
-        if ([publishtatus isEqualToString:@"finished"]) {
+        NSString *publishstatus = _selecteditem[@"status"];
+        if ([publishstatus isEqualToString:@"finished"]) {
             _selectedfinished = true;
         }
         else {
             _selectedfinished = false;
         }
-        if ([publishtatus isEqualToString:@"finished"]||[publishtatus isEqualToString:@"publishing"]) {
+        if ([publishstatus isEqualToString:@"finished"]||[publishstatus isEqualToString:@"publishing"]||[publishstatus isEqualToString:@"on hiatus"]) {
             _selectedpublished = true;
         }
         else {

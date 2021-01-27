@@ -3193,8 +3193,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = Shukofukurou;
 			};
@@ -3243,8 +3243,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "AppStore=true";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Info-AppStore.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = Shukofukurou;
 			};
@@ -3387,8 +3387,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3444,8 +3444,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "MAL Library/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 3.5;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3507,8 +3507,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = "3.5-beta3";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = "4.0-alpha1";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3566,8 +3566,8 @@
 				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = "3.5-beta3";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = "4.0-alpha1";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3673,8 +3673,8 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = "3.4-beta2";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3727,8 +3727,8 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou (Open Source)-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = "3.4-beta2";
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukuroucommunity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

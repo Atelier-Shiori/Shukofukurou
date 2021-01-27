@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -28,7 +27,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QZ4-g2-MBv">
+                <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QZ4-g2-MBv">
                     <rect key="frame" x="5" y="189" width="142" height="80"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="5Vs-Rw-XXU"/>
@@ -39,22 +38,26 @@
                 <scrollView misplaced="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXb-tc-dm8">
                     <rect key="frame" x="0.0" y="0.0" width="270" height="181"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="St0-mQ-bQc">
-                        <rect key="frame" x="0.0" y="0.0" width="270" height="181"/>
+                        <rect key="frame" x="0.0" y="0.0" width="255" height="181"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" id="b0l-GD-caQ">
-                                <rect key="frame" x="0.0" y="0.0" width="270" height="181"/>
+                                <rect key="frame" x="0.0" y="0.0" width="255" height="181"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="270" height="181"/>
+                                <size key="minSize" width="255" height="181"/>
                                 <size key="maxSize" width="270" height="10000000"/>
                                 <color key="insertionPointColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             </textView>
                         </subviews>
                     </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="RNv-w0-dBg">
+                        <rect key="frame" x="-100" y="-100" width="255" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
                     <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Rto-NK-gPX">
-                        <rect key="frame" x="254" y="0.0" width="16" height="181"/>
+                        <rect key="frame" x="255" y="0.0" width="15" height="181"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>

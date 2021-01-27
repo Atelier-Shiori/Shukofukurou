@@ -165,7 +165,7 @@
          else {
              _selectedaircompleted = false;
          }
-         if ([status isEqualToString:@"finished airing"]||[status isEqualToString:@"currently airing"]) {
+         if ([status isEqualToString:@"finished airing"]||[status isEqualToString:@"currently airing"]||[status isEqualToString:@"on hiatus"]) {
              _selectedaired = true;
          }
          else {
@@ -179,7 +179,7 @@
         else {
             _selectedfinished = false;
         }
-        if ([status isEqualToString:@"finished"]||[status isEqualToString:@"publishing"]) {
+        if ([status isEqualToString:@"finished"]||[status isEqualToString:@"publishing"]||[status isEqualToString:@"on hiatus"]) {
             _selectedpublished = true;
         }
         else {

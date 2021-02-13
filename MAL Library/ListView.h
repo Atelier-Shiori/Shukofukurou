@@ -22,7 +22,7 @@
 @property (strong) IBOutlet NSButton *onholdfilter;
 @property (strong) IBOutlet NSButton *droppedfilter;
 @property (strong) IBOutlet NSButton *plantowatchfilter;
-@property (strong) IBOutlet NSSearchField *animelistfilter;
+@property (strong) IBOutlet NSSearchToolbarItem *animelistfilter;
 @property (strong) IBOutlet NSVisualEffectView *filterbarview;
 @property (strong) IBOutlet NSView *animelistview;
 @property (strong) IBOutlet NSVisualEffectView *filterbarview2;

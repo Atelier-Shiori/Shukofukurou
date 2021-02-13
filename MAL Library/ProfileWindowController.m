@@ -294,11 +294,11 @@
     //Library Group
     PXSourceListItem *profilegroupItem = [PXSourceListItem itemWithTitle:@"PROFILE" identifier:@"profileg"];
     PXSourceListItem *profileItem = [PXSourceListItem itemWithTitle:@"User Profile" identifier:@"profile"];
-    profileItem.icon = [NSImage imageNamed:@"person"];
+    profileItem.icon = [NSImage imageWithSystemSymbolName:@"person.fill" accessibilityDescription:@""];
     PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
-    animelistItem.icon = [NSImage imageNamed:@"library"];
+    animelistItem.icon = [NSImage imageWithSystemSymbolName:@"list.dash" accessibilityDescription:@""];
     PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
-    mangalistItem.icon = [NSImage imageNamed:@"library"];
+    mangalistItem.icon = [NSImage imageWithSystemSymbolName:@"list.dash" accessibilityDescription:@""];
     profilegroupItem.children = @[profileItem, animelistItem, mangalistItem];
 
     // Populate Source List

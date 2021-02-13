@@ -38,10 +38,8 @@
     _mangalistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _animelisttitlefilterstring = @"";
     _mangalisttitlefilterstring = @"";
-    if (@available(macOS 11.0, *)) {
-        _animelisttb.style = NSTableViewStylePlain;
-        _mangalisttb.style = NSTableViewStylePlain;
-    }
+    _animelisttb.style = NSTableViewStylePlain;
+    _mangalisttb.style = NSTableViewStylePlain;
     id transformer;
     if (![self.className isEqualToString:@"MyListView"]) {
         transformer = [OtherListScoreFormatter new];
@@ -75,14 +73,14 @@
 
 - (void)loadList:(int)list {
     if (list == 0) {
-        _mangalisttitlefilterstring = _animelistfilter.stringValue;
-        _animelistfilter.stringValue = _animelisttitlefilterstring;
+        _mangalisttitlefilterstring = _animelistfilter.searchField.stringValue;
+        _animelistfilter.searchField.stringValue = _animelisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_animelistview];
         _currentlist = list;
     }
     else {
-        _animelisttitlefilterstring = _animelistfilter.stringValue;
-        _animelistfilter.stringValue = _mangalisttitlefilterstring;
+        _animelisttitlefilterstring = _animelistfilter.searchField.stringValue;
+        _animelistfilter.searchField.stringValue = _mangalisttitlefilterstring;
         [self.view replaceSubview:(self.view).subviews[0] with:_mangalistview];
         _currentlist = list;
     }
@@ -371,9 +369,9 @@
     NSMutableArray *predicateobjects = [NSMutableArray new];
     bool titlefilterused = false;
     NSArray *filterstatus;
-    if (_animelistfilter.stringValue.length > 0) {
+    if (_animelistfilter.searchField.stringValue.length > 0) {
         [predicateformat addObject: @"(title CONTAINS [cd] %@)"];
-        [predicateobjects addObject: _animelistfilter.stringValue];
+        [predicateobjects addObject: _animelistfilter.searchField.stringValue];
         titlefilterused = true;
     }
     if ((_currentcustomlistanime.length > 0 && type == 0) ||( _currentcustomlistmanga.length > 0 && type == 1)) {

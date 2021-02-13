@@ -43,7 +43,7 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageNamed:NSImageNameUserAccounts];
+    return [NSImage imageWithSystemSymbolName:@"person.crop.circle" accessibilityDescription:@""];
 }
 
 - (NSString *)toolbarItemLabel {

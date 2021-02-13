@@ -79,7 +79,7 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageNamed:@"Notifications"];
+    return [NSImage imageWithSystemSymbolName:@"circle.square" accessibilityDescription:@""];
 }
 
 - (NSString *)toolbarItemLabel {

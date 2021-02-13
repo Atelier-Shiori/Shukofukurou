@@ -32,9 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    if (@available(macOS 11.0, *)) {
-        _airingtb.style = NSTableViewStylePlain;
-    }
+    _airingtb.style = NSTableViewStylePlain;
     [_addtitleitem setEnabled:NO];
     [self autoselectday];
     [self filterTitles];

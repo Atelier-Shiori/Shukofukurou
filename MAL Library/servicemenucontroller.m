@@ -12,27 +12,27 @@
 - (void)setmenuitemvaluefromdefaults {
     switch ([NSUserDefaults.standardUserDefaults integerForKey:@"currentservice"]) {
         case 1: {
-            _malserviceitem.state = NSOnState;
-            _kitsuserviceitem.state = NSOffState;
-            _anilistserviceitem.state = NSOffState;
+            _malserviceitem.state = NSControlStateValueOn;
+            _kitsuserviceitem.state = NSControlStateValueOff;
+            _anilistserviceitem.state = NSControlStateValueOff;
             break;
         }
         case 2: {
-            _malserviceitem.state = NSOffState;
-            _kitsuserviceitem.state = NSOnState;
-            _anilistserviceitem.state = NSOffState;
+            _malserviceitem.state = NSControlStateValueOff;
+            _kitsuserviceitem.state = NSControlStateValueOn;
+            _anilistserviceitem.state = NSControlStateValueOff;
             break;
         }
         case 3: {
-            _malserviceitem.state = NSOffState;
-            _kitsuserviceitem.state = NSOffState;
-            _anilistserviceitem.state = NSOnState;
+            _malserviceitem.state = NSControlStateValueOff;
+            _kitsuserviceitem.state = NSControlStateValueOff;
+            _anilistserviceitem.state = NSControlStateValueOn;
             break;
         default:
             [NSUserDefaults.standardUserDefaults setInteger:1 forKey:@"currentservice"];
-            _malserviceitem.state = NSOnState;
-            _kitsuserviceitem.state = NSOffState;
-            _anilistserviceitem.state = NSOffState;
+            _malserviceitem.state = NSControlStateValueOn;
+            _kitsuserviceitem.state = NSControlStateValueOff;
+            _anilistserviceitem.state = NSControlStateValueOff;
             break;
         }
     }

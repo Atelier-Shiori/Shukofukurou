@@ -132,7 +132,7 @@
         NSMutableArray *charactergroupitems = [NSMutableArray new];
         for (NSDictionary * character in characters) {
             PXSourceListItem *characterI = [PXSourceListItem itemWithTitle:character[@"name"] identifier:[NSString stringWithFormat:@"character-%@",character[@"id"]]];
-            characterI.icon = [NSImage imageNamed:@"person"];
+            characterI.icon = [NSImage imageWithSystemSymbolName:@"person.fill" accessibilityDescription:@""];
             [charactergroupitems addObject:characterI];
         }
         characterItem.children = charactergroupitems;
@@ -141,7 +141,7 @@
             NSMutableArray *voiceactorsgroupitems = [NSMutableArray new];
             for (NSDictionary * voiceactor in voiceactors) {
                 PXSourceListItem *voiceactorI = [PXSourceListItem itemWithTitle:voiceactor[@"name"] identifier:[NSString stringWithFormat:@"staff-%@",voiceactor[@"id"]]];
-                voiceactorI.icon = [NSImage imageNamed:@"person"];
+                voiceactorI.icon = [NSImage imageWithSystemSymbolName:@"person.fill" accessibilityDescription:@""];
                 [voiceactorsgroupitems addObject:voiceactorI];
             }
             voiceactorsItem.children = voiceactorsgroupitems;
@@ -153,7 +153,7 @@
         NSMutableArray *staffgroupitems = [NSMutableArray new];
         for (NSDictionary * member in staff) {
             PXSourceListItem *memberI = [PXSourceListItem itemWithTitle:member[@"name"] identifier:[NSString stringWithFormat:@"staff-%@",member[@"id"]]];
-            memberI.icon = [NSImage imageNamed:@"person"];
+            memberI.icon = [NSImage imageWithSystemSymbolName:@"person.fill" accessibilityDescription:@""];
             [staffgroupitems addObject:memberI];
         }
         staffItem.children = staffgroupitems;

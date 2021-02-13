@@ -79,7 +79,7 @@
         sp.title = type == 0 ? @"Export Anime List" : @"Export Manga List";
         sp.message = type == 0 ? @"Where do you want to export your Anime List?" : @"Where do you want to export your Manga List?";
         [sp beginWithCompletionHandler:^(NSInteger result) {
-            if (result == NSFileHandlingPanelCancelButton) {
+            if (result == NSModalResponseCancel) {
                 return;
             }
             NSString *output;

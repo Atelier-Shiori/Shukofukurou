@@ -171,7 +171,7 @@
         NSBitmapImageRep *bitmaprep = [[NSBitmapImageRep alloc] initWithCGImage:cgref];
         bitmaprep.size = img.size;
         NSDictionary *imageProps = @{NSImageCompressionFactor:@1.0f};
-        NSData *imgdata = [bitmaprep representationUsingType:NSJPEGFileType properties:imageProps];
+        NSData *imgdata = [bitmaprep representationUsingType:NSBitmapImageFileTypeJPEG properties:imageProps];
         NSString *path =[Utility retrieveApplicationSupportDirectory:append];
         [imgdata writeToFile: [NSString stringWithFormat:@"%@/%@",path, filename] atomically:TRUE];
         return [Utility loadImage:filename withAppendPath:append fromURL:url];

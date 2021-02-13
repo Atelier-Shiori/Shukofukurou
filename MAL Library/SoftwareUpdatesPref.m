@@ -23,7 +23,7 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageNamed:@"updates"];
+    return [NSImage imageWithSystemSymbolName:@"arrow.triangle.2.circlepath" accessibilityDescription:@""];
 }
 
 - (NSString *)toolbarItemLabel {

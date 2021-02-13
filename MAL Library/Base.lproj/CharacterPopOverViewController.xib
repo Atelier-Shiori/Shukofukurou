@@ -69,20 +69,20 @@
                                                     <outlet property="textField" destination="wL7-GQ-1Vf" id="kVS-dx-iP6"/>
                                                 </connections>
                                             </tableCellView>
-                                            <tableCellView identifier="MainCell" id="AQd-ID-4Ly" customClass="PXSourceListTableCellView">
+                                            <tableCellView identifier="MainCell" id="YeR-az-Rvp" customClass="PXSourceListTableCellView">
                                                 <rect key="frame" x="11" y="17" width="182" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <imageView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Boo-TT-hm1">
-                                                        <rect key="frame" x="3" y="-2" width="17" height="22"/>
+                                                    <imageView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFM-br-bDP">
+                                                        <rect key="frame" x="3" y="-2" width="24" height="22"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="17" id="BZs-H3-J7v"/>
+                                                            <constraint firstAttribute="width" constant="24" id="oDq-fQ-4bn"/>
                                                         </constraints>
-                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="nZ8-b8-PHS"/>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="CjV-ld-I7H"/>
                                                     </imageView>
-                                                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2nu-Sx-tOF">
+                                                    <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQi-KJ-yNT">
                                                         <rect key="frame" x="25" y="0.0" width="130" height="17"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="XiY-fZ-Wtx">
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="GrI-H3-Exl">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -90,15 +90,15 @@
                                                     </textField>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="Boo-TT-hm1" firstAttribute="leading" secondItem="AQd-ID-4Ly" secondAttribute="leading" constant="3" id="RXy-8v-X8O"/>
-                                                    <constraint firstItem="Boo-TT-hm1" firstAttribute="top" secondItem="2nu-Sx-tOF" secondAttribute="top" id="daZ-jb-MPp"/>
-                                                    <constraint firstItem="Boo-TT-hm1" firstAttribute="bottom" secondItem="2nu-Sx-tOF" secondAttribute="bottom" id="mrb-4i-6y1"/>
-                                                    <constraint firstItem="2nu-Sx-tOF" firstAttribute="leading" secondItem="Boo-TT-hm1" secondAttribute="trailing" constant="7" id="nF5-iI-h95"/>
-                                                    <constraint firstItem="Boo-TT-hm1" firstAttribute="centerY" secondItem="AQd-ID-4Ly" secondAttribute="centerY" id="sDb-6D-IQ4"/>
+                                                    <constraint firstItem="bFM-br-bDP" firstAttribute="centerY" secondItem="YeR-az-Rvp" secondAttribute="centerY" id="2zM-NL-tMp"/>
+                                                    <constraint firstItem="bFM-br-bDP" firstAttribute="leading" secondItem="YeR-az-Rvp" secondAttribute="leading" constant="3" id="RKS-cK-ahE"/>
+                                                    <constraint firstItem="eQi-KJ-yNT" firstAttribute="leading" secondItem="bFM-br-bDP" secondAttribute="trailing" constant="7" id="aoG-Tg-fxJ"/>
+                                                    <constraint firstItem="bFM-br-bDP" firstAttribute="top" secondItem="eQi-KJ-yNT" secondAttribute="top" id="byj-4Y-v0J"/>
+                                                    <constraint firstItem="bFM-br-bDP" firstAttribute="bottom" secondItem="eQi-KJ-yNT" secondAttribute="bottom" id="jKc-1g-faN"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="imageView" destination="Boo-TT-hm1" id="WGi-Oc-BPq"/>
-                                                    <outlet property="textField" destination="2nu-Sx-tOF" id="NoK-SR-bdC"/>
+                                                    <outlet property="imageView" destination="bFM-br-bDP" id="IU8-Wy-DWf"/>
+                                                    <outlet property="textField" destination="eQi-KJ-yNT" id="no8-GD-1KY"/>
                                                 </connections>
                                             </tableCellView>
                                         </prototypeCellViews>

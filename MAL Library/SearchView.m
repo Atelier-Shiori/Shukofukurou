@@ -34,10 +34,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    if (@available(macOS 11.0, *)) {
-        _searchtb.style = NSTableViewStylePlain;
-        _mangasearchtb.style = NSTableViewStylePlain;
-    }
+    _searchtb.style = NSTableViewStylePlain;
+    _mangasearchtb.style = NSTableViewStylePlain;
     [_addtitleitem setEnabled:NO];
     [self view];
     // Set Resizing Mask

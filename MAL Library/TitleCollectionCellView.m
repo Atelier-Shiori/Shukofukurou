@@ -15,7 +15,7 @@
     
     // Drawing code here.
     if (_selected) {
-        [[NSColor alternateSelectedControlColor] set];
+        [[NSColor selectedContentBackgroundColor] set];
         NSRectFill([self bounds]);
     }
 }

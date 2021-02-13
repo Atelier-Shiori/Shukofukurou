@@ -59,7 +59,7 @@
     // Insert code here to initialize your application
     // Fix template images
     // There is a bug where template images are not made even if they are set in XCAssets
-    NSArray *images = @[@"animeinfo", @"delete", @"Edit", @"Info", @"library", @"search", @"seasons", @"anime", @"manga", @"history", @"airing", @"reviews", @"newmessage", @"reply", @"cast", @"person", @"stats", @"safari", @"advsearch", @"send", @"increment", @"customlists", @"editcustomlists", @"trending", @"episodes", @"cleanhistory"];
+    NSArray *images = @[@"customlists"];
     NSImage * image;
     for (NSString *imagename in images){
         image = [NSImage imageNamed:imagename];
@@ -79,13 +79,8 @@
     (_airingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_trendingview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     
-    if (@available(macOS 11.0, *)) {
-        self.window.toolbarStyle = NSWindowToolbarStyleUnified;
-        _loggedinuser.hidden = YES;
-    } else {
-        // Fallback on earlier versions
-        self.window.titleVisibility = NSWindowTitleHidden;
-    }
+    self.window.toolbarStyle = NSWindowToolbarStyleUnified;
+    _loggedinuser.hidden = YES;
     
     // Fix window size
     NSRect frame = (self.window).frame;
@@ -150,12 +145,12 @@
     //Library Group
     PXSourceListItem *libraryItem = [PXSourceListItem itemWithTitle:@"LIBRARY" identifier:@"library"];
     PXSourceListItem *animelistItem = [PXSourceListItem itemWithTitle:@"Anime List" identifier:@"animelist"];
-    animelistItem.icon = [NSImage imageNamed:@"library"];
+    animelistItem.icon = [NSImage imageWithSystemSymbolName:@"list.dash" accessibilityDescription:@""];
     PXSourceListItem *historyItem = [PXSourceListItem itemWithTitle:@"History" identifier:@"history"];
-    historyItem.icon = [NSImage imageNamed:@"history"];
+    historyItem.icon = [NSImage imageWithSystemSymbolName:@"clock" accessibilityDescription:@""];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         PXSourceListItem *mangalistItem = [PXSourceListItem itemWithTitle:@"Manga List" identifier:@"mangalist"];
-        mangalistItem.icon = [NSImage imageNamed:@"library"];
+        mangalistItem.icon = [NSImage imageWithSystemSymbolName:@"list.dash" accessibilityDescription:@""];
         libraryItem.children = @[animelistItem, mangalistItem, historyItem];
     }
     else {
@@ -164,10 +159,10 @@
     // Search
     PXSourceListItem *searchgroupItem = [PXSourceListItem itemWithTitle:@"SEARCH" identifier:@"searchgroup"];
     PXSourceListItem *searchItem = [PXSourceListItem itemWithTitle:@"Anime" identifier:@"search"];
-    searchItem.icon = [NSImage imageNamed:@"anime"];
+    searchItem.icon = [NSImage imageWithSystemSymbolName:@"tv" accessibilityDescription:@""];
     if ([NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
         PXSourceListItem *mangasearchItem = [PXSourceListItem itemWithTitle:@"Manga" identifier:@"mangasearch"];
-        mangasearchItem.icon = [NSImage imageNamed:@"manga"];
+        mangasearchItem.icon = [NSImage imageWithSystemSymbolName:@"book" accessibilityDescription:@""];
         searchgroupItem.children = @[searchItem, mangasearchItem];
     }
     else {
@@ -176,13 +171,13 @@
     // Discover Group
     PXSourceListItem *discoverItem = [PXSourceListItem itemWithTitle:@"DISCOVER" identifier:@"discover"];
     PXSourceListItem *titleinfoItem = [PXSourceListItem itemWithTitle:@"Title Info" identifier:@"titleinfo"];
-    titleinfoItem.icon = [NSImage imageNamed:@"animeinfo"];
+    titleinfoItem.icon = [NSImage imageWithSystemSymbolName:@"magnifyingglass" accessibilityDescription:@""];
     PXSourceListItem *seasonsItem = [PXSourceListItem itemWithTitle:@"Seasons" identifier:@"seasons"];
-    seasonsItem.icon = [NSImage imageNamed:@"seasons"];
+    seasonsItem.icon = [NSImage imageWithSystemSymbolName:@"calendar" accessibilityDescription:@""];
     PXSourceListItem *airingItem = [PXSourceListItem itemWithTitle:@"Airing" identifier:@"airing"];
-    airingItem.icon = [NSImage imageNamed:@"airing"];
+    airingItem.icon = [NSImage imageWithSystemSymbolName:@"calendar.badge.clock" accessibilityDescription:@""];
     PXSourceListItem *trendingItem = [PXSourceListItem itemWithTitle:@"Trending" identifier:@"trending"];
-    trendingItem.icon = [NSImage imageNamed:@"trending"];
+    trendingItem.icon = [NSImage imageWithSystemSymbolName:@"star" accessibilityDescription:@""];
     discoverItem.children = @[titleinfoItem,seasonsItem, airingItem, trendingItem];
     
     // Populate Source List
@@ -346,20 +341,10 @@
 
 - (void)refreshloginlabel{
     if ([listservice.sharedInstance checkAccountForCurrentService]) {
-        if (@available(macOS 11.0, *)) {
-            self.window.subtitle = [NSString stringWithFormat:@"%@ (%@)",[listservice.sharedInstance getCurrentServiceUsername], [listservice.sharedInstance currentservicename]];
-        } else {
-            // Fallback on earlier versions
-            _loggedinuser.stringValue = [NSString stringWithFormat:@"Logged in as %@ (%@)",[listservice.sharedInstance getCurrentServiceUsername], [listservice.sharedInstance currentservicename]];
-        }
+        self.window.subtitle = [NSString stringWithFormat:@"%@ (%@)",[listservice.sharedInstance getCurrentServiceUsername], [listservice.sharedInstance currentservicename]];
     }
     else {
-        if (@available(macOS 11.0, *)) {
-            self.window.subtitle = @"Not logged in";
-        } else {
-            // Fallback on earlier versions
-            _loggedinuser.stringValue = @"Not logged in.";
-        }
+        self.window.subtitle = @"Not logged in";
     }
 }
 

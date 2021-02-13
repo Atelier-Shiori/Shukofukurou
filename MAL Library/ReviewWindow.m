@@ -38,9 +38,7 @@
     [super windowDidLoad];
     
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-    if (@available(macOS 11.0, *)) {
-        _reviewtb.style = NSTableViewStylePlain;
-    }
+    _reviewtb.style = NSTableViewStylePlain;
     [_reviewcontent addSubview:_selectreviewview];
     _selectreviewview.frame = _reviewcontent.frame;
     [_selectreviewview setFrameOrigin:NSMakePoint(0, 0)];

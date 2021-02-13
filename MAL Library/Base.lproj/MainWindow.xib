@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -47,7 +48,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="700" height="450"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiY-f1-sHX">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oiY-f1-sHX">
                         <rect key="frame" x="5" y="8" width="684" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="0Vv-cm-AKw">
                             <font key="font" metaFont="system"/>
@@ -56,17 +57,17 @@
                         </textFieldCell>
                     </textField>
                     <splitView focusRingType="none" dividerStyle="thin" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="juR-gi-pJh">
-                        <rect key="frame" x="0.0" y="25" width="700" height="422"/>
+                        <rect key="frame" x="0.0" y="25" width="700" height="416"/>
                         <subviews>
                             <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="28" horizontalPageScroll="10" verticalLineScroll="28" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="wrE-GL-h5z">
-                                <rect key="frame" x="0.0" y="0.0" width="137" height="422"/>
+                                <rect key="frame" x="0.0" y="0.0" width="137" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <clipView key="contentView" drawsBackground="NO" id="Q8D-FH-evQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="137" height="422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="137" height="416"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="5" indentationMarkerFollowsCell="NO" outlineTableColumn="8yX-zH-4tu" id="tEv-Dd-bgp" customClass="PXSourceList">
-                                            <rect key="frame" x="0.0" y="0.0" width="137" height="422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="137" height="416"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="0.0"/>
                                             <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -106,20 +107,20 @@
                                                                 <outlet property="textField" destination="4En-nB-AO7" id="T5t-Xk-MMC"/>
                                                             </connections>
                                                         </tableCellView>
-                                                        <tableCellView identifier="MainCell" misplaced="YES" id="upo-sf-fv4" customClass="PXSourceListTableCellView">
+                                                        <tableCellView identifier="MainCell" id="LOt-A6-2Td" customClass="PXSourceListTableCellView">
                                                             <rect key="frame" x="11" y="17" width="114" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tll-9O-HXs">
-                                                                    <rect key="frame" x="3" y="0.0" width="14" height="15"/>
+                                                                <imageView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EDF-Ny-I79">
+                                                                    <rect key="frame" x="3" y="-2" width="24" height="22"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="14" id="JnC-Zd-RW7"/>
+                                                                        <constraint firstAttribute="width" constant="24" id="JNr-5N-ey3"/>
                                                                     </constraints>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="ofC-lC-RFa"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="raK-z2-LVy"/>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lqo-cP-pyV">
-                                                                    <rect key="frame" x="22" y="0.0" width="96" height="16"/>
-                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="Gdk-iz-dik">
+                                                                <textField verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INE-na-ZHk">
+                                                                    <rect key="frame" x="25" y="0.0" width="130" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="ff8-Qt-dwd">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -127,15 +128,15 @@
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="bottom" secondItem="tll-9O-HXs" secondAttribute="bottom" constant="3" id="3bL-ON-Cvm"/>
-                                                                <constraint firstAttribute="trailing" secondItem="Lqo-cP-pyV" secondAttribute="trailing" constant="17" id="4zy-Ax-U8g"/>
-                                                                <constraint firstItem="Lqo-cP-pyV" firstAttribute="leading" secondItem="tll-9O-HXs" secondAttribute="trailing" constant="7" id="F7T-6K-CzH"/>
-                                                                <constraint firstItem="tll-9O-HXs" firstAttribute="leading" secondItem="upo-sf-fv4" secondAttribute="leading" constant="3" id="O6g-w6-qgP"/>
-                                                                <constraint firstItem="tll-9O-HXs" firstAttribute="centerY" secondItem="Lqo-cP-pyV" secondAttribute="centerY" id="Sp6-WF-xnm"/>
+                                                                <constraint firstItem="EDF-Ny-I79" firstAttribute="bottom" secondItem="INE-na-ZHk" secondAttribute="bottom" id="TuS-V3-akX"/>
+                                                                <constraint firstItem="EDF-Ny-I79" firstAttribute="top" secondItem="INE-na-ZHk" secondAttribute="top" id="YfB-8R-7UB"/>
+                                                                <constraint firstItem="EDF-Ny-I79" firstAttribute="centerY" secondItem="LOt-A6-2Td" secondAttribute="centerY" id="dft-2Z-J7Z"/>
+                                                                <constraint firstItem="INE-na-ZHk" firstAttribute="leading" secondItem="EDF-Ny-I79" secondAttribute="trailing" constant="7" id="hn9-aG-oRD"/>
+                                                                <constraint firstItem="EDF-Ny-I79" firstAttribute="leading" secondItem="LOt-A6-2Td" secondAttribute="leading" constant="3" id="r2d-6g-ja2"/>
                                                             </constraints>
                                                             <connections>
-                                                                <outlet property="imageView" destination="tll-9O-HXs" id="HB2-H0-zRl"/>
-                                                                <outlet property="textField" destination="Lqo-cP-pyV" id="yfD-63-pT7"/>
+                                                                <outlet property="imageView" destination="EDF-Ny-I79" id="DeG-Uw-6OB"/>
+                                                                <outlet property="textField" destination="INE-na-ZHk" id="euP-Zj-ZDI"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -159,7 +160,7 @@
                                 </scroller>
                             </scrollView>
                             <customView identifier="mainview" fixedFrame="YES" id="bkX-dG-MlV">
-                                <rect key="frame" x="138" y="0.0" width="562" height="422"/>
+                                <rect key="frame" x="138" y="0.0" width="562" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </customView>
                         </subviews>
@@ -180,8 +181,10 @@
                     <constraint firstItem="juR-gi-pJh" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="7PV-Fv-nlD"/>
                     <constraint firstAttribute="trailing" secondItem="oiY-f1-sHX" secondAttribute="trailing" constant="13" id="Bvt-4S-dm8"/>
                     <constraint firstItem="juR-gi-pJh" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="KJQ-45-UaD"/>
+                    <constraint firstItem="oiY-f1-sHX" firstAttribute="top" secondItem="juR-gi-pJh" secondAttribute="bottom" id="OIH-L2-Zd5"/>
                     <constraint firstAttribute="bottom" secondItem="juR-gi-pJh" secondAttribute="bottom" constant="25" id="QVy-NJ-K5G"/>
                     <constraint firstAttribute="trailing" secondItem="juR-gi-pJh" secondAttribute="trailing" id="WgE-gh-DJW"/>
+                    <constraint firstAttribute="bottom" secondItem="oiY-f1-sHX" secondAttribute="bottom" constant="8" id="j64-J4-Q6v"/>
                     <constraint firstItem="oiY-f1-sHX" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="7" id="k7z-Pe-iTY"/>
                 </constraints>
             </view>
@@ -281,13 +284,13 @@
                             <action selector="showaddpopover:" target="-2" id="ura-2a-B0E"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="B87F1C55-7DD2-41B7-A147-4F8E4368E4A2" explicitItemIdentifier="DeleteTitle" label="Delete Title" paletteLabel="Delete Title" toolTip="Delete Title" image="delete" id="WJo-Ig-ng6">
+                    <toolbarItem implicitItemIdentifier="B87F1C55-7DD2-41B7-A147-4F8E4368E4A2" explicitItemIdentifier="DeleteTitle" label="Delete Title" paletteLabel="Delete Title" toolTip="Delete Title" image="xmark" catalog="system" id="WJo-Ig-ng6">
                         <size key="minSize" width="8" height="25"/>
                         <size key="maxSize" width="37" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="lbL-Ll-Zly">
                             <rect key="frame" x="16" y="14" width="37" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="delete" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dcf-Xg-Cx1">
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="xmark" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Dcf-Xg-Cx1">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
@@ -295,23 +298,6 @@
                         <connections>
                             <action selector="deletetitle:" target="Xk3-JH-b4a" id="RBP-C0-yLT"/>
                         </connections>
-                    </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="592B486B-1906-4FCE-A1B7-A21E0C346794" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" id="nBW-W8-5VV">
-                        <nil key="toolTip"/>
-                        <size key="minSize" width="150" height="22"/>
-                        <size key="maxSize" width="150" height="22"/>
-                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="KKI-5U-zIm">
-                            <rect key="frame" x="0.0" y="14" width="150" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" id="26j-cp-6cl">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </searchFieldCell>
-                            <connections>
-                                <action selector="filterperform:" target="Xk3-JH-b4a" id="Ycx-Yv-5K5"/>
-                            </connections>
-                        </searchField>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="405D4DDB-1D52-4DF2-95F5-DB3C2BBBA108" explicitItemIdentifier="search" label="Title Search" paletteLabel="Title Search" id="A84-pG-n29">
                         <nil key="toolTip"/>
@@ -788,6 +774,21 @@
                             <action selector="clearHistory:" target="ONm-Bf-qTf" id="sQd-Ds-sri"/>
                         </connections>
                     </toolbarItem>
+                    <searchToolbarItem implicitItemIdentifier="55E80A33-EF8C-4768-BB58-F1EB5144C2D2" explicitItemIdentifier="filter" label="Filter" paletteLabel="Filter" visibilityPriority="1001" id="DxS-cz-PQv">
+                        <nil key="toolTip"/>
+                        <searchField key="view" verticalHuggingPriority="750" textCompletion="NO" id="n89-7f-cPL">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="21"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="Filter" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="H4h-ao-IO7">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                        </searchField>
+                        <connections>
+                            <action selector="filterperform:" target="Xk3-JH-b4a" id="nrM-QI-8Ne"/>
+                        </connections>
+                    </searchToolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="Mt7-WY-45F"/>
@@ -862,7 +863,7 @@
         </viewController>
         <viewController nibName="ListView" id="Xk3-JH-b4a" customClass="MyListView">
             <connections>
-                <outlet property="animelistfilter" destination="KKI-5U-zIm" id="qve-bR-Z1n"/>
+                <outlet property="animelistfilter" destination="DxS-cz-PQv" id="E3b-yu-loX"/>
                 <outlet property="customlistmodifyitem" destination="uRg-E5-6YT" id="SdW-Cy-TnS"/>
                 <outlet property="deletetitleitem" destination="WJo-Ig-ng6" id="MNY-fm-VYU"/>
                 <outlet property="edittitleitem" destination="7Ap-pp-DuY" id="itg-Y5-qvz"/>
@@ -928,7 +929,6 @@
         <image name="NSRefreshTemplate" width="14" height="16"/>
         <image name="NSShareTemplate" width="16" height="17"/>
         <image name="arrow.up" catalog="system" width="14" height="14"/>
-        <image name="delete" width="32" height="32"/>
         <image name="info.circle" catalog="system" width="15" height="15"/>
         <image name="magnifyingglass.circle" catalog="system" width="15" height="15"/>
         <image name="mail.and.text.magnifyingglass.rtl" catalog="system" width="22" height="15"/>
@@ -940,5 +940,6 @@
         <image name="star.square" catalog="system" width="16" height="14"/>
         <image name="trash" catalog="system" width="15" height="17"/>
         <image name="tv" catalog="system" width="20" height="15"/>
+        <image name="xmark" catalog="system" width="15" height="13"/>
     </resources>
 </document>

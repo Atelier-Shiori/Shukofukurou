@@ -18,6 +18,9 @@ typedef NS_ENUM(unsigned int, ratingType){
     ratingStandard = 1,
     ratingAdvanced = 2
 };
+
+@property (nonatomic, copy) void (^userInfoFailure)(bool failed);
+
 - (instancetype)initWithClientId:(NSString *)clientid withClientSecret:(NSString *)clientsecret;
 - (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveOwnLisWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;;

@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "AiringNotificationManager.h"
 #import <UserNotifications/UserNotifications.h>
+#import "Utility.h"
 
 @interface NotificationPreferencesController ()
 @property (strong) IBOutlet NSArrayController *arraycontroller;
@@ -59,6 +60,8 @@
                 NSLog(@"Can't grant notification permissions: %@", error.localizedDescription);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [NSUserDefaults.standardUserDefaults setBool:NO forKey:@"airnotificationsenabled"];
+                    // Show Error Message
+                    [Utility showsheetmessage:@"Cannot enable Airing Notifications" explaination:[NSString stringWithFormat:@"You need to enable notifications for %@ under Notifications in System Preferences before you can enable Airing Notifications.",[[NSBundle.mainBundle infoDictionary] objectForKey:@"CFBundleName"]] window:self.view.window];
                 });
             }
         }];

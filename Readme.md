@@ -7,7 +7,9 @@ Shukofukurou an open sourced and native [AniList](https://anilist.co), [Kitsu](h
 
 This app is named after the owl, Shuko from Sora no Woto.
 
-Requires latest SDK (macOS 11), XCode 12 or later with a 10.11 macOS Deployment Target.
+**This is an Experimental Branch of Shukofukurou that only runs on macOS Big Sur or later**
+
+Requires latest SDK (macOS 11), XCode 12 or later with a macOS 11 macOS Deployment Target.
 
 iOS version of Shukofukurou is available [here](https://github.com/Atelier-Shiori/Shukofukurou-iOS), which uses mostly the same backend code.
 
@@ -46,8 +48,6 @@ All the frameworks are included. Just build! Here are the frameworks that are us
 * Hiyoko.framework
 
 Licenses for these frameworks and related classes can be seen [here](https://github.com/Atelier-Shiori/mallibrary/wiki/Credits).
-
-Icons provided by [icons8](https://icons8.com/)
 
 ## License
 Unless stated, Source code is licensed under New BSD License

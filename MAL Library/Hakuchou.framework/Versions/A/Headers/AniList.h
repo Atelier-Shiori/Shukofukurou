@@ -21,6 +21,9 @@ typedef NS_ENUM(unsigned int, AniListPersonType) {
     AniListCharacter = 0,
     AniLisStaff = 1
 };
+
+@property (nonatomic, copy) void (^userInfoFailure)(bool failed);
+
 - (instancetype)initWithClientId:(NSString *)clientid withClientSecret:(NSString *)clientsecret;
 - (void)retrieveList:(NSString *)username listType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveOwnListWithType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
@@ -28,6 +31,7 @@ typedef NS_ENUM(unsigned int, AniListPersonType) {
 - (void)searchPeople:(NSString *)searchterm withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveTitleInfo:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)retrieveReviewsForTitle:(int)titleid withType:(int)type completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
+- (void)retrieveStreamLinksForId:(int)animetitleid completion:(void (^)(id responseObject)) completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (bool)tokenexpired;
 - (void)verifyAccountWithPin:(NSString *)pin completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler;
 - (void)reauthAccountWithPin:(NSString *)pin completion:(void (^)(id responseObject))completionHandler error:(void (^)(NSError * error)) errorHandler;

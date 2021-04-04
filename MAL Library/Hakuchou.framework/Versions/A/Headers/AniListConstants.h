@@ -30,6 +30,7 @@ FOUNDATION_EXPORT NSString *const kAniListNextEpisode;
 FOUNDATION_EXPORT NSString *const kAnilistDeleteListEntry;
 FOUNDATION_EXPORT NSString *const kAnilistAddAnimeListEntry;
 FOUNDATION_EXPORT NSString *const kAnilistAddMangaListEntry;
+FOUNDATION_EXPORT NSString *const kAniListStreamingLinks;
 FOUNDATION_EXPORT NSString *const kAnilistUpdateAnimeListEntrySimple;
 FOUNDATION_EXPORT NSString *const kAnilistUpdateMangaListEntrySimple;
 FOUNDATION_EXPORT NSString *const kAnilistUpdateAnimeListEntryAdvanced;

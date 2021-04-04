@@ -11,7 +11,7 @@
 #import "Utility.h"
 #import <CocoaOniguruma/OnigRegexp.h>
 #import <CocoaOniguruma/OnigRegexpUtility.h>
-#import "NewStreamDataRetriever.h"
+#import "StreamDataRetriever.h"
 #import "listservice.h"
 
 @interface StreamPopup ()
@@ -27,10 +27,10 @@
     [self view];
 }
 
-- (void)checkifdataexists:(int)titleid completion:(void (^)(bool exists, bool success))completionHandler {
-    [NewStreamDataRetriever retrieveStreamDataForTitleID:titleid withService:listservice.sharedInstance.getCurrentServiceID completion:^(NSArray * _Nonnull entries, bool success) {
-        if (entries.count > 0) {
-            [self loadTitles:entries];
+- (void)checkifdataexists:(int)titleid completion:(void (^)(bool exists))completionHandler {
+    [StreamDataRetriever retrieveSitesForTitle:titleid completion:^(id responseObject) {
+        if (((NSArray *)responseObject).count > 0) {
+            [self loadTitles:responseObject];
             _streamsexist = true;
         }
         else {
@@ -38,7 +38,7 @@
             [a removeAllObjects];
             _streamsexist = false;
         }
-        completionHandler(_streamsexist, success);
+        completionHandler(self.streamsexist);
     }];
 }
 

@@ -9,14 +9,6 @@
 #import <AppKit/AppKit.h>
 
 @interface StreamDataRetriever : NSObject
-typedef NS_ENUM(unsigned int, StreamLocality) {
-    StreamRegionUS = 0,
-    StreamRegionCA = 1,
-    StreamRegionUK = 2,
-    StreamRegionAU = 3
-};
-+ (void)retrieveStreamData;
-+ (void)performrestrieveStreamData;
-+ (NSDictionary *)retrieveSitesForTitle:(NSString *)title;
++ (void)retrieveSitesForTitle:(int)titleid completion:(void (^)(id responseObject)) completionHandler;
 + (void)removeAllStreamEntries;
 @end

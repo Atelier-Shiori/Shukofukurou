@@ -15,6 +15,8 @@ typedef NS_ENUM(unsigned int, MediaType) {
     MALManga = 1
 };
 
+@property (nonatomic, copy) void (^userInfoFailure)(bool failed);
+
 - (instancetype)initWithClientId:(NSString *)clientid withRedirectURL:(NSString *)redirectURL;
 
 - (NSURL *)retrieveAuthorizeURL;

@@ -53,7 +53,7 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageWithSystemSymbolName:@"gear" accessibilityDescription:@""];
+    return [NSImage imageNamed:NSImageNamePreferencesGeneral];
 }
 
 - (NSString *)toolbarItemLabel {
@@ -91,10 +91,6 @@
             [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{}];
         }
     }];
-}
-
-- (IBAction)refreshstreamdata:(id)sender {
-    //[StreamDataRetriever performrestrieveStreamData];
 }
 
 - (IBAction)resetmappings:(id)sender {

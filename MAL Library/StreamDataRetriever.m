@@ -10,81 +10,37 @@
 #import "StreamDataRetriever.h"
 #import "Utility.h"
 #import <AFNetworking/AFNetworking.h>
+#import "listservice.h"
+#import "TitleIDMapper.h"
 
 @implementation StreamDataRetriever
 + (NSManagedObjectContext *)managedObjectContext {
     return ((AppDelegate *)NSApplication.sharedApplication.delegate).managedObjectContext;
 }
 
-+ (void)retrieveStreamData {
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"stream_data_refresh_date"]){
-        if (((NSDate *)[[NSUserDefaults standardUserDefaults] valueForKey:@"stream_data_refresh_date"]).timeIntervalSinceNow < 0 || [self getAllObjects].count == 0) {
-            [self performrestrieveStreamData];
-        }
-    }
-    else {
-        [self performrestrieveStreamData];
-    }
-}
-
-+ (void)performrestrieveStreamData {
-    NSString *region = @"";
-    switch (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"stream_region"]).intValue) {
-        case StreamRegionUS:
-            region = @"us";
-            break;
-        case StreamRegionCA:
-            region = @"ca";
-            break;
-        case StreamRegionUK:
-            region = @"uk";
-            break;
-        case StreamRegionAU:
-            region = @"au";
-            break;
-        default:
-            break;
-    }
-    // Note: Stream Data provided by Because.moe
-    // PHP script passthrough is needed to retrieve the data securely
-    AFHTTPSessionManager *manager = [Utility jsonmanager];
-    [manager GET:[NSString stringWithFormat:@"https://malupdaterosx.moe/streamdata.php?region=%@",region] parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
-        [self saveStreamData:responseObject];
-        [[NSUserDefaults standardUserDefaults] setValue:[NSDate dateWithTimeIntervalSinceNow:15*24*50*50] forKey:@"stream_data_refresh_date"];
-    } failure:^(NSURLSessionTask *operation, NSError *error) {
-        NSLog(@"Failed to retrieve stream data. Error: %@", error.localizedDescription);
-    }];
-}
 + (void)saveStreamData:(id)responseObject {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSError *error = nil;
-    if (responseObject[@"shows"]) {
-        NSArray *shows = (NSArray *)responseObject[@"shows"];
-        for (NSDictionary *streamentry in shows) {
-            NSManagedObject *entry = [self checkExistingEntryForTitle:streamentry[@"name"]];
-            if (!entry) {
-                entry = [NSEntityDescription insertNewObjectForEntityForName:@"StreamSites" inManagedObjectContext:moc];;
-                [entry setValue:streamentry[@"name"] forKey:@"showTitle"];
-            }
-            NSString *sitesjson = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:streamentry[@"sites"] options:NSJSONWritingPrettyPrinted  error:nil] encoding:NSUTF8StringEncoding];
-            [entry setValue:sitesjson forKey:@"sites"];
-        }
-        for (NSManagedObject *sentry in [self getAllObjects]) {
-            NSArray *tmparray = [shows filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"name ==[c] %@",[sentry valueForKey:@"showTitle"]]];
-            if (tmparray.count == 0) {
-                [moc deleteObject:sentry];
-            }
-        }
-        [moc save:&error];
+    NSDictionary *streamentry = responseObject;
+    NSManagedObject *entry = [self checkExistingEntryForTitle:((NSNumber *)streamentry[@"id"]).intValue];
+    if (!entry) {
+        entry = [NSEntityDescription insertNewObjectForEntityForName:@"AniListStreamSites" inManagedObjectContext:moc];;
+        [entry setValue:streamentry[@"name"] forKey:@"title"];
+        [entry setValue:streamentry[@"id"] forKey:@"titleid"];
     }
+    NSString *sitesjson = [[NSString alloc] initWithData:[NSJSONSerialization dataWithJSONObject:streamentry[@"links"] options:NSJSONWritingPrettyPrinted  error:nil] encoding:NSUTF8StringEncoding];
+    [entry setValue:sitesjson forKey:@"sites"];
+    int unixtimestamp = [NSDate.date timeIntervalSince1970];
+    [entry setValue:@(unixtimestamp) forKey:@"retrievedate"];
+    [moc save:&error];
 }
 
-+ (NSManagedObject *)checkExistingEntryForTitle:(NSString *)title {
++ (NSManagedObject *)checkExistingEntryForTitle:(int)titleid {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSError *error = nil;
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    fetchRequest.entity = [NSEntityDescription entityForName:@"StreamSites" inManagedObjectContext:moc];
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"showTitle ==[c] %@", [self sanitizetitle:title]];
+    fetchRequest.entity = [NSEntityDescription entityForName:@"AniListStreamSites" inManagedObjectContext:moc];
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"titleid == %i", titleid];
     NSArray *streamentries =  [moc executeFetchRequest:fetchRequest error:&error];
     if (streamentries.count > 0) {
         return streamentries[0];
@@ -92,30 +48,60 @@
     return nil;
 }
 
-+ (NSDictionary *)retrieveSitesForTitle:(NSString *)title {
-    NSManagedObject *streamentry = [self checkExistingEntryForTitle:title];
-    if (streamentry) {
-        @try {
-            // Deserialize other_titles JSON object
-            NSError *error;
-            NSDictionary *jsondata = [NSJSONSerialization JSONObjectWithData:[(NSString *)[streamentry valueForKey:@"sites"] dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
-            if (jsondata) {
-                return jsondata;
++ (void)retrieveSitesForTitle:(int)titleid completion:(void (^)(id responseObject)) completionHandler {
+    [TitleIDMapper.sharedInstance retrieveTitleIdForService:listservice.sharedInstance.getCurrentServiceID withTitleId:@(titleid).stringValue withTargetServiceId:titleIDMapAniList withType:MALAnime completionHandler:^(id  _Nonnull ntitleid, bool success) {
+        if (success) {
+            NSManagedObject *streamentry = [self checkExistingEntryForTitle:((NSNumber *)ntitleid).intValue];
+            int lastretrievedate = ((NSNumber *)[streamentry valueForKey:@"retrievedate"]).intValue;
+            int currenttimeintervaldif = (int)[NSDate.date timeIntervalSince1970] - lastretrievedate;
+            if (streamentry && currenttimeintervaldif <= 5184000) {
+                @try {
+                    // Deserialize other_titles JSON object
+                    NSError *error;
+                    NSDictionary *jsondata = [NSJSONSerialization JSONObjectWithData:[(NSString *)[streamentry valueForKey:@"sites"] dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+                    if (jsondata) {
+                        completionHandler(jsondata);
+                    }
+                }
+                @catch (NSException *ex) {
+                    NSLog(@"Unable to deserialize stream site data with exception: %@", ex);
+                    completionHandler(@{});
+                }
+            }
+            else {
+                        [listservice.sharedInstance.anilistManager retrieveStreamLinksForId:((NSNumber *)ntitleid).intValue completion:^(id responseObject) {
+                            [self saveStreamData:responseObject];
+                            [self retrieveSitesForTitle:titleid completion:completionHandler];
+                        } error:^(NSError *error) {
+                            if (!error) {
+                                NSManagedObjectContext *moc = [self managedObjectContext];
+                                NSArray *shows = [self getAllObjects];
+                                NSArray *filteredshows = [shows filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"titleid == %i",titleid]];
+                                for (NSManagedObject *sentry in filteredshows) {
+                                    NSArray *tmparray = [shows filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"titleid == %i",titleid]];
+                                    if (tmparray.count == 0) {
+                                        [moc deleteObject:sentry];
+                                    }
+                                }
+                                completionHandler(@{});
+                            }
+                            else {
+                                completionHandler(@{});
+                            }
+                        }];
             }
         }
-        @catch (NSException *ex) {
-            NSLog(@"Unable to deserialize stream site data with exception: %@", ex);
-            return @{};
+        else {
+            completionHandler(@{});
         }
-    }
-    return @{};
+    }];
 }
 
 + (NSArray *)getAllObjects {
     NSManagedObjectContext *moc = [self managedObjectContext];
     NSError *error = nil;
     NSFetchRequest *fetchRequest = [NSFetchRequest new];
-    fetchRequest.entity = [NSEntityDescription entityForName:@"StreamSites" inManagedObjectContext:moc];
+    fetchRequest.entity = [NSEntityDescription entityForName:@"AniListStreamSites" inManagedObjectContext:moc];
     NSArray *streamentries =  [moc executeFetchRequest:fetchRequest error:&error];
     if (streamentries) {
         return streamentries;
@@ -132,14 +118,4 @@
     [moc save:nil];
 }
 
-+ (NSString *)sanitizetitle:(NSString *)title {
-    NSString *tmpstr = title;
-    // Remove seasons
-    NSError *errRegex = nil;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\s(\\d+(st|nd|rd|th) season|(first|second|third|fourth|fifth|sixth|seventh|eighth|nineth|tenth) season)" options:NSRegularExpressionCaseInsensitive error:&errRegex];
-    tmpstr = [regex stringByReplacingMatchesInString:tmpstr options:0 range:NSMakeRange(0, [tmpstr length]) withTemplate:@""];
-    regex = [NSRegularExpression regularExpressionWithPattern:@"\\s(\\(TV\\)|\\d+|X|VIII|VII|VI|V|IV|III|II|I)" options:NSRegularExpressionCaseInsensitive error:&errRegex];
-    tmpstr = [regex stringByReplacingMatchesInString:tmpstr options:0 range:NSMakeRange(0, [tmpstr length]) withTemplate:@""];
-    return tmpstr;
-}
 @end

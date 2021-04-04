@@ -53,7 +53,7 @@
 }
 
 - (NSImage *)toolbarItemImage {
-    return [NSImage imageNamed:NSImageNamePreferencesGeneral];
+    return [NSImage imageWithSystemSymbolName:@"gear" accessibilityDescription:@""];
 }
 
 - (NSString *)toolbarItemLabel {

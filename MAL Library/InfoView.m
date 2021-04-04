@@ -109,7 +109,7 @@
     NSMutableArray *tmptitles = [NSMutableArray new];
     [tmptitles addObject:_infoviewtitle.stringValue];
     [tmptitles addObjectsFromArray:othertitles];
-    [_steampopupviewcontroller checkifdataexists:self.selectedid completion:^(bool exists, bool success) {
+    [_steampopupviewcontroller checkifdataexists:self.selectedid completion:^(bool exists) {
         _streambutton.hidden = !exists;
         [self setButtonPositions];
     }];

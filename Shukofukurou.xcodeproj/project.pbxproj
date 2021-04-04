@@ -1155,6 +1155,7 @@
 		F8F9E02F2061920E0083912B /* advancededitdialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = advancededitdialog.h; sourceTree = "<group>"; };
 		F8F9E0302061920E0083912B /* advancededitdialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advancededitdialog.m; sourceTree = "<group>"; };
 		FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ShukofukurouHelp.help; path = MALLibraryHelp/build/Release/ShukofukurouHelp.help; sourceTree = SOURCE_ROOT; };
+		FFA3EE82261A0670007BF9D6 /* datamodel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 5.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3816,12 +3817,13 @@
 		91244EA1210901A000AA8F90 /* datamodel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FFA3EE82261A0670007BF9D6 /* datamodel 5.xcdatamodel */,
 				595C2932239EB6200064F2D4 /* datamodel 4.xcdatamodel */,
 				59B3D847221C6F8E001D24E7 /* datamodel 3.xcdatamodel */,
 				598B454221AC3FF800F28180 /* datamodel 2.xcdatamodel */,
 				91244EA2210901A000AA8F90 /* datamodel.xcdatamodel */,
 			);
-			currentVersion = 595C2932239EB6200064F2D4 /* datamodel 4.xcdatamodel */;
+			currentVersion = FFA3EE82261A0670007BF9D6 /* datamodel 5.xcdatamodel */;
 			path = datamodel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

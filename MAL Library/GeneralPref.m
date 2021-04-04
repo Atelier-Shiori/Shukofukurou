@@ -93,10 +93,6 @@
     }];
 }
 
-- (IBAction)refreshstreamdata:(id)sender {
-    //[StreamDataRetriever performrestrieveStreamData];
-}
-
 - (IBAction)resetmappings:(id)sender {
     NSAlert *alert = [[NSAlert alloc] init] ;
     [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];

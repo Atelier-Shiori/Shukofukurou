@@ -58,9 +58,10 @@
                 @try {
                     // Deserialize other_titles JSON object
                     NSError *error;
-                    NSDictionary *jsondata = [NSJSONSerialization JSONObjectWithData:[(NSString *)[streamentry valueForKey:@"sites"] dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+                    NSArray *jsondata = [NSJSONSerialization JSONObjectWithData:[(NSString *)[streamentry valueForKey:@"sites"] dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
                     if (jsondata) {
-                        completionHandler(jsondata);
+                        NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:@"site" ascending:YES];
+                        completionHandler([jsondata sortedArrayUsingDescriptors:@[descriptor]]);
                     }
                 }
                 @catch (NSException *ex) {

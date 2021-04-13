@@ -1,35 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17140" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17140"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AniListAuthWindow">
             <connections>
                 <outlet property="containerview" destination="z5j-H6-4bb" id="vhB-bY-ncT"/>
+                <outlet property="goBackToolbarBtn" destination="Fm6-iB-R1g" id="oty-Gw-RuC"/>
+                <outlet property="goForwardToolbarBtn" destination="uQg-Nf-v2l" id="JFf-sD-oWo"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowStyleMask key="styleMask" titled="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="518" height="497"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
+            <rect key="contentRect" x="196" y="240" width="682" height="497"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
+            <value key="minSize" type="size" width="682" height="497"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="518" height="497"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <rect key="frame" x="0.0" y="0.0" width="682" height="497"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z5j-H6-4bb">
-                        <rect key="frame" x="8" y="54" width="501" height="434"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="8" y="54" width="665" height="434"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                     </customView>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Jo-gh-p2o">
-                        <rect key="frame" x="426" y="13" width="78" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <rect key="frame" x="590" y="13" width="78" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VW2-F4-vLm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -41,9 +43,9 @@ Gw
                             <action selector="cancel:" target="-2" id="Hr5-2v-bvf"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2I-Jp-cWm">
+                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2I-Jp-cWm">
                         <rect key="frame" x="2" y="13" width="179" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Authorize in Browser" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dlN-Oh-g3E">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -52,9 +54,9 @@ Gw
                             <action selector="authorizeinbrowser:" target="-2" id="gh1-Oh-SPf"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqw-SB-1Fc">
+                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cqw-SB-1Fc">
                         <rect key="frame" x="181" y="13" width="110" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <buttonCell key="cell" type="push" title="Start Over" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="S4e-Zn-Rl0">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -65,10 +67,103 @@ Gw
                     </button>
                 </subviews>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="A952591C-C340-4219-AB19-EB9B89AC85CA" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="pib-LM-Xoc">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="4A77842E-0D15-41B2-B9EE-8D5DCBC8B5B0" label="Back" paletteLabel="Back" toolTip="Back" image="NSGoBackTemplate" id="Fm6-iB-R1g">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="ExK-Mc-YOO">
+                            <rect key="frame" x="0.0" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoBackTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vX9-Xn-rQG">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="goBack:" target="-2" id="6d9-1f-v7m"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A1106CE5-FFA6-45DA-A31D-BC0E6D9BEF3B" label="Forward" paletteLabel="Forward" toolTip="Forward" image="NSGoForwardTemplate" id="uQg-Nf-v2l">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="YAi-Uy-kBZ">
+                            <rect key="frame" x="7" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoForwardTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tu3-xl-MSr">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="goForward:" target="-2" id="edy-h1-oAe"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="A40A2E23-0A59-43E1-89B6-BEB53181B0AD" label="Refresh" paletteLabel="Refresh" toolTip="Start Over" image="NSRefreshTemplate" id="dEl-3e-S1Z">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" toolTip="Refresh" verticalHuggingPriority="750" id="pAj-i4-6X2">
+                            <rect key="frame" x="6" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mqt-f8-Sl1">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="refresh:" target="-2" id="anS-Sc-1yA"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="8CAC4852-0904-48E5-8502-31A0E9901128" label="Authorize in Browser" paletteLabel="Authorize in Browser" toolTip="Authorize in Browser" image="safari" catalog="system" id="Gme-zp-fNs">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="XcH-zx-RnK">
+                            <rect key="frame" x="40" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" catalog="system" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UBz-Pw-YdH">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="authorizeinbrowser:" target="-2" id="9u0-vC-GdE"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="F083BBD6-483C-46CC-812D-DAE3F2BDE957" label="Start Over" paletteLabel="Start Over" toolTip="Start Over" image="NSHomeTemplate" id="4xT-Q3-HxE">
+                        <size key="minSize" width="8" height="25"/>
+                        <size key="maxSize" width="37" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="Xn8-vR-Kvt">
+                            <rect key="frame" x="13" y="14" width="37" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSHomeTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qxR-gU-N64">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="startover:" target="-2" id="lqZ-hK-ana"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="Fm6-iB-R1g"/>
+                    <toolbarItem reference="uQg-Nf-v2l"/>
+                    <toolbarItem reference="dEl-3e-S1Z"/>
+                    <toolbarItem reference="Gme-zp-fNs"/>
+                    <toolbarItem reference="4xT-Q3-HxE"/>
+                </defaultToolbarItems>
+            </toolbar>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="114" y="228.5"/>
+            <point key="canvasLocation" x="110" y="182"/>
         </window>
     </objects>
+    <resources>
+        <image name="NSGoBackTemplate" width="10" height="14"/>
+        <image name="NSGoForwardTemplate" width="10" height="14"/>
+        <image name="NSHomeTemplate" width="20" height="16"/>
+        <image name="NSRefreshTemplate" width="14" height="16"/>
+        <image name="safari" catalog="system" width="15" height="15"/>
+    </resources>
 </document>

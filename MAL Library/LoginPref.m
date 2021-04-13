@@ -134,16 +134,9 @@
 }
 
 - (IBAction)authorize:(id)sender {
-    if (!_anilistauthw) {
-        _anilistauthw = [AniListAuthWindow new];
-        [_anilistauthw windowDidLoad];
-        [_anilistauthw loadAuthorizationForService:(int)((NSButton *)sender).tag];
-    }
-    else {
-        [_anilistauthw.window makeKeyAndOrderFront:self];
-        [_anilistauthw loadAuthorizationForService:(int)((NSButton *)sender).tag];
-        [_anilistauthw close];
-    }
+    _anilistauthw = [AniListAuthWindow new];
+    [_anilistauthw windowDidLoad];
+    [_anilistauthw loadAuthorizationForService:(int)((NSButton *)sender).tag];
     _anilistauthorizebtn.enabled = NO;
     [self.view.window beginSheet:_anilistauthw.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {

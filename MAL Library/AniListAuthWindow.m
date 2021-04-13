@@ -12,6 +12,8 @@
 @interface AniListAuthWindow ()
 @property (strong) AuthWebView *awebview;
 @property (strong) IBOutlet NSView *containerview;
+@property (strong) IBOutlet NSToolbarItem *goBackToolbarBtn;
+@property (strong) IBOutlet NSToolbarItem *goForwardToolbarBtn;
 @end
 
 @implementation AniListAuthWindow
@@ -36,6 +38,11 @@
         weakself.pin = pin;
         [weakself.window.sheetParent endSheet:weakself.window returnCode:NSModalResponseOK];
     };
+    _awebview.state = ^(bool canGoBack, bool canGoForward, NSString *pagetitle) {
+        weakself.goBackToolbarBtn.enabled = canGoBack;
+        weakself.goForwardToolbarBtn.enabled = canGoForward;
+        weakself.window.title = pagetitle;
+    };
     _awebview.view.frame = _containerview.frame;
     [_awebview.view setFrameOrigin:NSMakePoint(0, 0)];
     [_containerview  addSubview:_awebview.view];
@@ -58,5 +65,17 @@
 - (IBAction)startover:(id)sender {
     [_awebview resetWebView];
     [_awebview reloadAuth];
+}
+
+- (IBAction)goBack:(id)sender {
+    [_awebview.webView goBack];
+}
+
+- (IBAction)goForward:(id)sender {
+    [_awebview.webView goForward];
+}
+
+- (IBAction)refresh:(id)sender {
+    [_awebview.webView reload];
 }
 @end

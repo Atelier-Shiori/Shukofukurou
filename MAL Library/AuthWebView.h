@@ -10,7 +10,9 @@
 #import <WebKit/WebKit.h>
 
 @interface AuthWebView : NSViewController <WKUIDelegate,WKNavigationDelegate>
+@property (strong) WKWebView *webView;
 @property (nonatomic, copy) void (^completion)(NSString *pin);
+@property (nonatomic, copy) void (^state)(bool canGoBack, bool canGoForward, NSString *pageTitle);
 @property int service;
 - (void)loadAuthorization:(int)service;
 - (NSURL *)authURL;

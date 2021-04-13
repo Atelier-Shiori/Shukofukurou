@@ -12,7 +12,6 @@
 #import <Hakuchou/Hakuchou.h>
 
 @interface AuthWebView ()
-@property (strong) WKWebView *webView;
 @end
 
 @implementation AuthWebView
@@ -23,6 +22,7 @@
     _webView.navigationDelegate = self;
     _webView.customUserAgent = @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15";
     self.view = _webView;
+    _webView.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
 }
 
 - (void)viewDidLoad {
@@ -106,6 +106,7 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     else {
         decisionHandler(WKNavigationActionPolicyAllow);
     }
+    self.state(webView.canGoBack, webView.canGoForward, webView.title);
 }
 
 

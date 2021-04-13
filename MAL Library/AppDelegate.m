@@ -651,16 +651,9 @@
 }
 
 - (void)performreauthorizeAccount {
-    if (!_anilistauthw) {
-        _anilistauthw = [AniListAuthWindow new];
-        [_anilistauthw windowDidLoad];
-        [_anilistauthw loadAuthorizationForService:listservice.sharedInstance.getCurrentServiceID];
-    }
-    else {
-        [_anilistauthw.window makeKeyAndOrderFront:self];
-        [_anilistauthw loadAuthorizationForService:listservice.sharedInstance.getCurrentServiceID];
-        [_anilistauthw close];
-    }
+    _anilistauthw = [AniListAuthWindow new];
+    [_anilistauthw windowDidLoad];
+    [_anilistauthw loadAuthorizationForService:listservice.sharedInstance.getCurrentServiceID];
     [self.mainwindowcontroller.window beginSheet:_anilistauthw.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             NSString *pin = _anilistauthw.pin.copy;

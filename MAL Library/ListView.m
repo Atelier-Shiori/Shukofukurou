@@ -31,6 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupViewHeaderMenu:_animelisttb];
+    [self setupViewHeaderMenu:_mangalisttb];
     // Do view setup here
     [self view];
     [self.view addSubview:_animelistview];
@@ -648,4 +650,42 @@
     [self setToolTipForType:0 shouldReset:true];
     [self setToolTipForType:1 shouldReset:true];
 }
+
+#pragma mark Column View Customization
+- (void)setupViewHeaderMenu:(id)view {
+    NSMenu *menu = [[view headerView] menu];
+    menu.delegate = self;
+    for (NSTableColumn *col in [view tableColumns]) {
+        if ([col.identifier isEqualToString:@"mangatitle"] || [col.identifier isEqualToString:@"title"]) {
+            continue;   // Do not hide title column
+        }
+        NSMenuItem *mi = [[NSMenuItem alloc] initWithTitle:[col.headerCell stringValue]
+                                                    action:@selector(toggleColumn:)  keyEquivalent:@""];
+        mi.target = self;
+        mi.representedObject = col;
+        [menu addItem:mi];
+    }
+    return;
+}
+
+- (void)toggleColumn:(id)sender {
+    NSTableColumn *col = [sender representedObject];
+    [col setHidden:![col isHidden]];
+}
+
+- (void)menuNeedsUpdate:(NSMenu *)menu {
+    for (NSMenuItem *mi in menu.itemArray) {
+        NSTableColumn *col = [mi representedObject];
+        [mi setState:col.isHidden ? NSControlStateValueOff : NSControlStateValueOn];
+    }
+}
+
+- (void)menuWillOpen:(NSMenu *)menu {
+    for (NSMenuItem *mi in menu.itemArray) {
+        NSTableColumn *col = [mi representedObject];
+        [mi setState:col.isHidden ? NSControlStateValueOff : NSControlStateValueOn];
+    }
+}
+
+
 @end

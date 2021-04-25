@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -50,7 +49,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="564" height="275"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="QGW-Oe-htQ" id="etv-3f-0Uh" customClass="NSTableViewAction">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="listtb" headerView="QGW-Oe-htQ" id="etv-3f-0Uh" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="564" height="252"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -176,6 +175,9 @@
                     <tableHeaderView key="headerView" wantsLayer="YES" id="QGW-Oe-htQ">
                         <rect key="frame" x="0.0" y="0.0" width="564" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="menu" destination="TbH-yc-XFE" id="KAf-Wc-KMC"/>
+                        </connections>
                     </tableHeaderView>
                 </scrollView>
                 <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="T41-us-5RD">
@@ -315,7 +317,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="564" height="260"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
+                            <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
                                 <rect key="frame" x="0.0" y="0.0" width="594" height="237"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
@@ -465,6 +467,9 @@
                     <tableHeaderView key="headerView" wantsLayer="YES" id="0LX-NX-GMd">
                         <rect key="frame" x="0.0" y="0.0" width="594" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <outlet property="menu" destination="utc-tM-BGv" id="6tw-bZ-zeW"/>
+                        </connections>
                     </tableHeaderView>
                 </scrollView>
                 <visualEffectView fixedFrame="YES" blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="zwH-Mn-Icd">
@@ -561,6 +566,12 @@
             </subviews>
             <point key="canvasLocation" x="682" y="704"/>
         </customView>
+        <menu title="AnimeListMenu" id="TbH-yc-XFE">
+            <point key="canvasLocation" x="942" y="288"/>
+        </menu>
+        <menu title="MangaListMenu" id="utc-tM-BGv">
+            <point key="canvasLocation" x="942" y="408"/>
+        </menu>
     </objects>
     <resources>
         <image name="customlist" width="16" height="16"/>

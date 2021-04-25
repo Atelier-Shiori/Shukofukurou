@@ -10,7 +10,7 @@
 #import "CustomListsPopover.h"
 #import "CustomListModify.h"
 
-@interface ListView : NSViewController <NSTableViewDelegate>
+@interface ListView : NSViewController <NSTableViewDelegate, NSMenuDelegate>
 
 @property int currentlist;
 

@@ -658,15 +658,14 @@
             </subviews>
             <point key="canvasLocation" x="78" y="744"/>
         </customView>
-        <menu title="AnimeListMenu" id="TbH-yc-XFE">
+        <menu title="AnimeListMenu" identifier="animelistmenu" id="TbH-yc-XFE">
             <point key="canvasLocation" x="942" y="288"/>
         </menu>
-        <menu title="MangaListMenu" id="utc-tM-BGv">
+        <menu title="MangaListMenu" identifier="mangalistmenu" id="utc-tM-BGv">
             <point key="canvasLocation" x="942" y="408"/>
         </menu>
     </objects>
     <resources>
         <image name="list.dash" catalog="system" width="17" height="11"/>
-        <image name="list.dash" width="128" height="128"/>
     </resources>
 </document>

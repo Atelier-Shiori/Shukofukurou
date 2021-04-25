@@ -672,16 +672,20 @@
 }
 
 - (void)menuNeedsUpdate:(NSMenu *)menu {
-    for (NSMenuItem *mi in menu.itemArray) {
-        NSTableColumn *col = [mi representedObject];
-        [mi setState:col.isHidden ? NSControlStateValueOff : NSControlStateValueOn];
+    if ([menu.identifier isEqualToString:@"animelistmenu"] || [menu.identifier isEqualToString:@"mangalistmenu"]) {
+        for (NSMenuItem *mi in menu.itemArray) {
+            NSTableColumn *col = [mi representedObject];
+            [mi setState:col.isHidden ? NSControlStateValueOff : NSControlStateValueOn];
+        }
     }
 }
 
 - (void)menuWillOpen:(NSMenu *)menu {
-    for (NSMenuItem *mi in menu.itemArray) {
-        NSTableColumn *col = [mi representedObject];
-        [mi setState:col.isHidden ? NSControlStateValueOff : NSControlStateValueOn];
+    if ([menu.identifier isEqualToString:@"animelistmenu"] || [menu.identifier isEqualToString:@"mangalistmenu"]) {
+        for (NSMenuItem *mi in menu.itemArray) {
+            NSTableColumn *col = [mi representedObject];
+            [mi setState:col.isHidden ? NSControlStateValueOff : NSControlStateValueOn];
+        }
     }
 }
 

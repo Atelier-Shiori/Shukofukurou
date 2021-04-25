@@ -339,7 +339,7 @@
                         <button toolTip="Custom Lists" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sql-kd-s00">
                             <rect key="frame" x="540" y="3" width="22" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="list.dash" imagePosition="below" alignment="center" alternateImage="list.dash" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJb-lE-k2a">
+                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="list.dash" catalog="system" imagePosition="below" alignment="center" alternateImage="list.dash" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJb-lE-k2a">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
@@ -628,7 +628,7 @@
                                 <binding destination="vm0-rJ-Ss3" name="value" keyPath="values.mcompletedfilter" id="yaW-gD-fRj"/>
                             </connections>
                         </button>
-                        <button toolTip="Custom Lists" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pf8-4G-Ii3">
+                        <button toolTip="Custom Lists" wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pf8-4G-Ii3">
                             <rect key="frame" x="535" y="3" width="27" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                             <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="list.dash" catalog="system" imagePosition="below" alignment="center" alternateImage="list.dash" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8J5-sX-LZl">
@@ -666,7 +666,7 @@
         </menu>
     </objects>
     <resources>
-        <image name="list.dash" width="128" height="128"/>
         <image name="list.dash" catalog="system" width="17" height="11"/>
+        <image name="list.dash" width="128" height="128"/>
     </resources>
 </document>

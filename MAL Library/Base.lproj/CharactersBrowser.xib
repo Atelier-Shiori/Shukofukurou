@@ -95,18 +95,18 @@
                             </connections>
                         </searchField>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="93042D83-7C96-4BAA-B1F5-DDCDDC77E64D" explicitItemIdentifier="web" label="Web" paletteLabel="Web" toolTip="Web" image="safari" id="J5Y-x7-7cY">
+                    <toolbarItem implicitItemIdentifier="93042D83-7C96-4BAA-B1F5-DDCDDC77E64D" explicitItemIdentifier="web" label="Web" paletteLabel="Web" toolTip="Web" image="safari" catalog="system" id="J5Y-x7-7cY">
                         <size key="minSize" width="35" height="28"/>
                         <size key="maxSize" width="43" height="28"/>
                         <popUpButton key="view" verticalHuggingPriority="750" id="8Mj-hs-i9J">
                             <rect key="frame" x="0.0" y="14" width="43" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="safari" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Ykq-1E-oDR">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="Ykq-1E-oDR">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="mUw-4M-3TY">
                                     <items>
-                                        <menuItem state="on" image="safari" hidden="YES" id="oIl-lv-gae"/>
+                                        <menuItem state="on" image="safari" catalog="system" hidden="YES" id="oIl-lv-gae"/>
                                         <menuItem title="Anime News Network" tag="2" id="Fst-SD-cDC">
                                             <connections>
                                                 <action selector="openwebinfo:" target="-2" id="umO-pe-tT4"/>
@@ -190,6 +190,6 @@
     <resources>
         <image name="NSShareTemplate" width="16" height="17"/>
         <image name="info.circle" catalog="system" width="15" height="15"/>
-        <image name="safari" width="32" height="32"/>
+        <image name="safari" catalog="system" width="15" height="15"/>
     </resources>
 </document>

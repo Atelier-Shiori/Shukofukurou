@@ -21,12 +21,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView wantsLayer="YES" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63d-vb-Jts">
-                    <rect key="frame" x="14" y="189" width="185" height="263"/>
+                    <rect key="frame" x="14" y="141" width="185" height="263"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="Vwc-dr-8Co"/>
                 </imageView>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3wV-MV-xY1">
-                    <rect key="frame" x="211" y="428" width="535" height="24"/>
+                    <rect key="frame" x="211" y="380" width="535" height="24"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Username" id="5eQ-DB-dJ4">
                         <font key="font" metaFont="system" size="18"/>
@@ -35,7 +35,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NjO-lq-1iz">
-                    <rect key="frame" x="211" y="403" width="415" height="17"/>
+                    <rect key="frame" x="211" y="355" width="415" height="17"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Profile" id="urz-x6-PdC">
                         <font key="font" metaFont="systemBold"/>
@@ -44,22 +44,22 @@
                     </textFieldCell>
                 </textField>
                 <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="eWx-JU-ExM">
-                    <rect key="frame" x="213" y="398" width="531" height="5"/>
+                    <rect key="frame" x="213" y="350" width="531" height="5"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                 </box>
                 <scrollView fixedFrame="YES" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVg-Kf-JQd">
-                    <rect key="frame" x="213" y="12" width="531" height="382"/>
+                    <rect key="frame" x="213" y="12" width="531" height="332"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="hX6-Sm-CPV">
-                        <rect key="frame" x="0.0" y="0.0" width="516" height="382"/>
+                        <rect key="frame" x="0.0" y="0.0" width="516" height="332"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView editable="NO" drawsBackground="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="panel" allowsUndo="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="dhw-Dt-c12">
-                                <rect key="frame" x="0.0" y="0.0" width="531" height="382"/>
+                                <rect key="frame" x="0.0" y="0.0" width="531" height="332"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                <size key="minSize" width="516" height="382"/>
+                                <size key="minSize" width="516" height="332"/>
                                 <size key="maxSize" width="1098" height="10000000"/>
                                 <attributedString key="textStorage">
                                     <fragment content="Text">
@@ -79,12 +79,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="TZZ-rp-Cwn">
-                        <rect key="frame" x="516" y="0.0" width="15" height="382"/>
+                        <rect key="frame" x="516" y="0.0" width="15" height="332"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ufd-l7-gaU">
-                    <rect key="frame" x="11" y="141" width="191" height="32"/>
+                    <rect key="frame" x="11" y="93" width="191" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="push" title="View User's Homepage" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7WN-DG-3Ek">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

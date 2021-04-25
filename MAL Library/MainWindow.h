@@ -27,7 +27,7 @@
 @class AiringView;
 @class TrendingView;
 
-@interface MainWindow : NSWindowController <PXSourceListDataSource, PXSourceListDelegate, NSSplitViewDelegate>
+@interface MainWindow : NSWindowController <PXSourceListDataSource, PXSourceListDelegate>
 @property (strong)IBOutlet NSWindow *w;
 @property (strong)NSDictionary *selecteditem;
 @property (strong) IBOutlet NSView *mainview;
@@ -79,6 +79,9 @@
 
 //Advanced Edit Dialog
 @property (strong) advancededitdialog *ade;
+
+@property (strong) IBOutlet NSViewController *sourceListViewController;
+@property (strong) IBOutlet NSViewController *mainViewController;
 
 //Public Methods
 - (void)setDelegate:(AppDelegate*) adelegate;

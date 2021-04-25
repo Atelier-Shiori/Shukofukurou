@@ -32,7 +32,7 @@
 
 @interface MainWindow ()
 @property (strong, nonatomic) NSMutableArray *sourceListItems;
-@property (strong) IBOutlet NSSplitView *splitview;
+@property (strong) NSSplitViewController *splitview;
 @property bool refreshanime;
 @property bool refreshmanga;
 @end
@@ -68,6 +68,9 @@
     // Generate Source List
     [self generateSourceList];
     
+    // Setup Splitview
+    [self setUpSplitView];
+    
     // Set Resizing mask
     (_infoview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     (_listview.view).autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
@@ -95,6 +98,17 @@
     
     // Set logged in user
     [self refreshloginlabel];
+}
+
+- (void)setUpSplitView {
+    _splitview = [NSSplitViewController new];
+    NSSplitViewItem *sourceListSplitViewItem = [NSSplitViewItem sidebarWithViewController:_sourceListViewController];
+    NSSplitViewItem *mainViewSplitViewItem = [NSSplitViewItem splitViewItemWithViewController:_mainViewController];
+    sourceListSplitViewItem.maximumThickness = 250;
+    [_splitview addSplitViewItem:sourceListSplitViewItem];
+    [_splitview addSplitViewItem:mainViewSplitViewItem];
+    _splitview.splitView.autosaveName = @"mainWindowSplitView";
+    [self.window setContentViewController:_splitview];
 }
 
 - (void)windowDidLoad {
@@ -410,47 +424,6 @@
 }
 
 #pragma mark -
-#pragma mark SplitView Delegate
-
-- (void) splitView:(NSSplitView*) splitView resizeSubviewsWithOldSize:(NSSize) oldSize
-{
-    if (splitView == _splitview)
-    {
-        CGFloat dividerPos = NSWidth((splitView.subviews[0]).frame);
-        CGFloat width = NSWidth(splitView.frame);
-        
-        if (dividerPos < 0)
-            dividerPos = 0;
-        if (width - dividerPos < 558 + splitView.dividerThickness)
-            dividerPos = width - (558 + splitView.dividerThickness);
-        
-        [splitView adjustSubviews];
-        [splitView setPosition:dividerPos ofDividerAtIndex:0];
-    }
-}
-
-- (CGFloat) splitView:(NSSplitView*) splitView constrainSplitPosition:(CGFloat) proposedPosition ofSubviewAt:(NSInteger) dividerIndex
-{
-    if (splitView == _splitview)
-    {
-        CGFloat width = NSWidth(splitView.frame);
-        
-        if (ABS(137 - proposedPosition) <= 8)
-            proposedPosition = 150;
-        if (proposedPosition < 0)
-            proposedPosition = 0;
-        if (width - proposedPosition < 558 + splitView.dividerThickness)
-            proposedPosition = width - (558 + splitView.dividerThickness);
-    }
-    
-    return proposedPosition;
-}
-
-- (void)splitViewDidResizeSubviews:(NSNotification *)notification{
-    [_w setFrame:_w.frame display:false];
-}
-
-#pragma mark -
 #pragma mark Main View Control
 - (void)loadmainview {
     NSRect mainviewframe = _mainview.frame;
@@ -564,39 +537,41 @@
     int indexoffset = 0;
     if ([identifier isEqualToString:@"animelist"]){
         if ([listservice.sharedInstance checkAccountForCurrentService]) {
-            [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
-            [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
-            [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"progress" atIndex:0];
+            [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:1];
+            [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:2];
+            [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:3];
             if ([listservice.sharedInstance getCurrentServiceID] == 3 && [NSUserDefaults.standardUserDefaults boolForKey:@"donated"]) {
-                [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:3];
+                [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:4];
             }
             else {
                 indexoffset = -1;
             }
-            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:4+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:5+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:6+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:7+indexoffset];
-            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:8+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:5+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:6+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:7+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:8+indexoffset];
+            [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:9+indexoffset];
         }
     }
     else if ([identifier isEqualToString:@"mangalist"]){
         if (((NSNumber *)[[NSUserDefaults standardUserDefaults] valueForKey:@"donated"]).boolValue) {
             if ([listservice.sharedInstance checkAccountForCurrentService]) {
-                [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:0];
-                [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:1];
-                [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:2];
+                [_toolbar insertItemWithItemIdentifier:@"progress" atIndex:0];
+                [_toolbar insertItemWithItemIdentifier:@"editList" atIndex:1];
+                [_toolbar insertItemWithItemIdentifier:@"DeleteTitle" atIndex:2];
+                [_toolbar insertItemWithItemIdentifier:@"incrementprogress" atIndex:3];
                 if ([listservice.sharedInstance getCurrentServiceID] == 3) {
-                    [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:3];
+                    [_toolbar insertItemWithItemIdentifier:@"editCustomLists" atIndex:4];
                 }
                 else {
                     indexoffset = -1;
                 }
-                [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:4+indexoffset];
-                [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:5+indexoffset];
-                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:6+indexoffset];
-                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:7+indexoffset];
-                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:8+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"refresh" atIndex:5+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"viewtitleinfo" atIndex:6+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"ShareList" atIndex:7+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"NSToolbarFlexibleSpaceItem" atIndex:8+indexoffset];
+                [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:9+indexoffset];
             }
         }
     }

@@ -15,7 +15,6 @@
 #import "servicemenucontroller.h"
 
 @interface ProfileWindowController ()
-@property (strong) IBOutlet NSSplitView *splitview;
 @property (strong) IBOutlet NSVisualEffectView *noselectionview;
 @property (strong) IBOutlet NSView *noprofileview;
 @property (strong) IBOutlet ListView *listview;
@@ -27,6 +26,7 @@
 @property bool loadedprofile;
 @property (strong) IBOutlet NSSearchField *searchfield;
 @property (strong) IBOutlet NSToolbar *toolbar;
+@property (strong) NSSplitViewController *splitview;
 @end
 
 @implementation ProfileWindowController
@@ -70,6 +70,7 @@
 {
     // Add blank subview to mainview
     [_mainview addSubview:[NSView new]];
+    [self setUpSplitView];
     // Generate Source List
     [self generateSourceList];
     
@@ -87,6 +88,17 @@
         frame.size.height = frame.size.height - 22;
     }
     [self.window setFrame:frame display:NO];
+}
+
+- (void)setUpSplitView {
+    _splitview = [NSSplitViewController new];
+    NSSplitViewItem *sourceListSplitViewItem = [NSSplitViewItem sidebarWithViewController:_sourcelistviewcontroller];
+    NSSplitViewItem *mainViewSplitViewItem = [NSSplitViewItem splitViewItemWithViewController:_mainviewcontroller];
+    sourceListSplitViewItem.maximumThickness = 250;
+    [_splitview addSplitViewItem:sourceListSplitViewItem];
+    [_splitview addSplitViewItem:mainViewSplitViewItem];
+    _splitview.splitView.autosaveName = @"ProfileWindowSplitView";
+    [self.window setContentViewController:_splitview];
 }
 
 #pragma mark -
@@ -147,46 +159,6 @@
     [self loadMainView];
 }
 
-#pragma mark -
-#pragma mark SplitView Delegate
-
-- (void) splitView:(NSSplitView*) splitView resizeSubviewsWithOldSize:(NSSize) oldSize
-{
-    if (splitView == _splitview)
-    {
-        CGFloat dividerPos = NSWidth((splitView.subviews[0]).frame);
-        CGFloat width = NSWidth(splitView.frame);
-        
-        if (dividerPos < 0)
-            dividerPos = 0;
-        if (width - dividerPos < 528 + splitView.dividerThickness)
-            dividerPos = width - (528 + splitView.dividerThickness);
-        
-        [splitView adjustSubviews];
-        [splitView setPosition:dividerPos ofDividerAtIndex:0];
-    }
-}
-
-- (CGFloat) splitView:(NSSplitView*) splitView constrainSplitPosition:(CGFloat) proposedPosition ofSubviewAt:(NSInteger) dividerIndex
-{
-    if (splitView == _splitview)
-    {
-        CGFloat width = NSWidth(splitView.frame);
-        
-        if (ABS(167 - proposedPosition) <= 8)
-            proposedPosition = 180;
-        if (proposedPosition < 0)
-            proposedPosition = 0;
-        if (width - proposedPosition < 528 + splitView.dividerThickness)
-            proposedPosition = width - (528 + splitView.dividerThickness);
-    }
-    
-    return proposedPosition;
-}
-
-- (void)splitViewDidResizeSubviews:(NSNotification *)notification{
-    [self.window setFrame:self.window.frame display:false];
-}
 
 - (void)loadMainView {
     NSRect mainviewframe = _mainview.frame;

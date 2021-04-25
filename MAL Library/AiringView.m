@@ -32,7 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
-    _airingtb.style = NSTableViewStylePlain;
     [_addtitleitem setEnabled:NO];
     [self autoselectday];
     [self filterTitles];

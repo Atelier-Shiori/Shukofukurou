@@ -40,8 +40,6 @@
     _mangalistview.autoresizingMask = NSViewWidthSizable|NSViewHeightSizable;
     _animelisttitlefilterstring = @"";
     _mangalisttitlefilterstring = @"";
-    _animelisttb.style = NSTableViewStylePlain;
-    _mangalisttb.style = NSTableViewStylePlain;
     id transformer;
     if (![self.className isEqualToString:@"MyListView"]) {
         transformer = [OtherListScoreFormatter new];

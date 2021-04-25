@@ -7,7 +7,7 @@ Shukofukurou an open sourced and native [AniList](https://anilist.co), [Kitsu](h
 
 This app is named after the owl, Shuko from Sora no Woto.
 
-**This is an Experimental Branch of Shukofukurou that only runs on macOS Big Sur or later**
+**This is an Experimental Branch of Shukofukurou that only runs on macOS Big Sur or later. The 3.5.x branch will run on Mac OS High sierra or later**
 
 Requires latest SDK (macOS 11), XCode 12 or later with a macOS 11 macOS Deployment Target.
 

@@ -72,6 +72,10 @@
 @property bool private_entry;
 @property (strong) NSString * custom_lists;
 @property long lastupdated;
+@property (strong) NSString *aired_season;
+@property int aired_year;
+@property (strong) NSString *aired_start;
+@property (strong) NSString *aired_finish;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
@@ -124,6 +128,8 @@
 @property bool private_entry;
 @property (strong) NSString * custom_lists;
 @property long lastupdated;
+@property (strong) NSString *publishing_start;
+@property (strong) NSString *publishing_finish;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

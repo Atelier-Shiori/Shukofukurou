@@ -1151,6 +1151,7 @@
 		F8F9E02F2061920E0083912B /* advancededitdialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = advancededitdialog.h; sourceTree = "<group>"; };
 		F8F9E0302061920E0083912B /* advancededitdialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advancededitdialog.m; sourceTree = "<group>"; };
 		FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ShukofukurouHelp.help; path = MALLibraryHelp/build/Release/ShukofukurouHelp.help; sourceTree = SOURCE_ROOT; };
+		FF7913042635BD980050A617 /* datamodel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 6.xcdatamodel"; sourceTree = "<group>"; };
 		FFF9064E261A1D9100703A79 /* datamodel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 4.xcdatamodel"; sourceTree = "<group>"; };
 		FFF9064F261A1D9100703A79 /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
 		FFF90650261A1D9100703A79 /* datamodel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -3817,13 +3818,14 @@
 		FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				FF7913042635BD980050A617 /* datamodel 6.xcdatamodel */,
 				FFF9064E261A1D9100703A79 /* datamodel 4.xcdatamodel */,
 				FFF9064F261A1D9100703A79 /* datamodel 2.xcdatamodel */,
 				FFF90650261A1D9100703A79 /* datamodel 5.xcdatamodel */,
 				FFF90651261A1D9100703A79 /* datamodel.xcdatamodel */,
 				FFF90652261A1D9100703A79 /* datamodel 3.xcdatamodel */,
 			);
-			currentVersion = FFF90650261A1D9100703A79 /* datamodel 5.xcdatamodel */;
+			currentVersion = FF7913042635BD980050A617 /* datamodel 6.xcdatamodel */;
 			path = datamodel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

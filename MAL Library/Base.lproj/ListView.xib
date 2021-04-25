@@ -118,6 +118,21 @@
                                             <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.watched_episodes" previousBinding="NJn-dh-iRj" id="Kbo-VB-DmZ"/>
                                         </connections>
                                     </tableColumn>
+                                    <tableColumn identifier="duration" width="100" minWidth="10" maxWidth="100" hidden="YES" id="w6I-OI-8gI">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Duration">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="4Ee-cT-osu">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.duration" id="IAb-Wo-2Ic"/>
+                                        </connections>
+                                    </tableColumn>
                                     <tableColumn identifier="score" editable="NO" width="50" minWidth="50" maxWidth="50" id="CPD-Wd-FF0">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Score">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -156,6 +171,83 @@
                                             </binding>
                                         </connections>
                                     </tableColumn>
+                                    <tableColumn identifier="season" editable="NO" width="80" minWidth="10" maxWidth="3.4028234663852886e+38" hidden="YES" id="f3q-4X-5CF">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Season">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="w2M-nJ-NGJ">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.aired_season" id="yOG-pD-wMS">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="year" editable="NO" width="80" minWidth="10" maxWidth="3.4028234663852886e+38" hidden="YES" id="nXb-Pr-gJx">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Year">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="s1N-TM-54o">
+                                            <numberFormatter key="formatter" formatterBehavior="default10_4" usesGroupingSeparator="NO" formatWidth="-1" groupingSize="0" minimumIntegerDigits="1" maximumIntegerDigits="42" id="6Vu-TG-aT8"/>
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.aired_year" id="2qv-m1-Jhr">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="airedstart" editable="NO" width="100" minWidth="10" maxWidth="3.4028234663852886e+38" hidden="YES" id="j1w-uC-o3f">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Aired Start">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="Rge-IP-FbM">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.aired_start" id="GLz-4Q-1Tk">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn identifier="airedfinish" editable="NO" width="100" minWidth="10" maxWidth="3.4028234663852886e+38" hidden="YES" id="PRq-xB-0Ge">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Aired Finish">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="GVc-pe-frY">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="hZg-UC-ATg" name="value" keyPath="arrangedObjects.aired_finish" id="aT9-Kg-fXk">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
                                 </tableColumns>
                                 <connections>
                                     <action trigger="doubleAction" selector="animelistdoubleclick:" target="-2" id="G1z-4A-yaL"/>
@@ -165,7 +257,7 @@
                         </subviews>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="FeI-hR-6wx">
-                        <rect key="frame" x="-8" y="8" width="0.0" height="15"/>
+                        <rect key="frame" x="0.0" y="260" width="862" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="B5h-dx-wLN">
@@ -272,7 +364,7 @@
                     </subviews>
                 </visualEffectView>
             </subviews>
-            <point key="canvasLocation" x="309" y="458"/>
+            <point key="canvasLocation" x="682" y="704"/>
         </customView>
         <viewController id="SjI-NT-6kl" userLabel="Popover View Controller" customClass="CustomListsPopover"/>
         <popover behavior="t" id="rPB-KT-LXT">

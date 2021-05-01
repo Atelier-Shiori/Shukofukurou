@@ -454,12 +454,12 @@
                         </connections>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="812BCCAC-ED3B-4D35-8333-FCAA07164B40" explicitItemIdentifier="web" label="Web" paletteLabel="Web" toolTip="Web" image="safari" catalog="system" id="FjT-Dr-l87">
-                        <size key="minSize" width="35" height="28"/>
-                        <size key="maxSize" width="43" height="28"/>
+                        <size key="minSize" width="26" height="28"/>
+                        <size key="maxSize" width="50" height="30"/>
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
-                            <rect key="frame" x="0.0" y="14" width="43" height="28"/>
+                            <rect key="frame" x="0.0" y="14" width="35" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="2Xc-IB-nEl" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">

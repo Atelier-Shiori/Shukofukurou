@@ -339,7 +339,7 @@
                         <button toolTip="Custom Lists" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sql-kd-s00">
                             <rect key="frame" x="540" y="3" width="22" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="list.dash" catalog="system" imagePosition="below" alignment="center" alternateImage="list.dash" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJb-lE-k2a">
+                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="list.dash" catalog="system" imagePosition="only" alignment="center" alternateImage="list.dash" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="NJb-lE-k2a">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
@@ -406,17 +406,17 @@
                     <rect key="frame" x="0.0" y="0.0" width="564" height="307"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" focusRingType="none" id="JM6-04-Bb0">
-                        <rect key="frame" x="0.0" y="0.0" width="564" height="292"/>
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="307"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveName="listtb" headerView="0LX-NX-GMd" id="3rR-dz-UWg" customClass="NSTableViewAction">
-                                <rect key="frame" x="0.0" y="0.0" width="594" height="269"/>
+                                <rect key="frame" x="0.0" y="0.0" width="564" height="284"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="mangatitle" editable="NO" width="230" minWidth="40" maxWidth="1000" id="RPx-Ue-cHA">
+                                    <tableColumn identifier="mangatitle" editable="NO" width="200" minWidth="40" maxWidth="1000" id="RPx-Ue-cHA">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Title">
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -526,7 +526,7 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="4lw-v6-4Hd">
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="center" title="Text Cell" id="4lw-v6-4Hd">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -534,6 +534,44 @@
                                         <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
                                         <connections>
                                             <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.type" id="8D8-CV-xfb">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn editable="NO" width="100" minWidth="10" maxWidth="3.4028234663852886e+38" hidden="YES" id="WIt-yy-svh">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Publishing Start">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="owD-NC-bll">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.publishing_start" id="Xhy-yQ-dja">
+                                                <dictionary key="options">
+                                                    <bool key="NSConditionallySetsEditable" value="YES"/>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </tableColumn>
+                                    <tableColumn editable="NO" width="100" minWidth="10" maxWidth="3.4028234663852886e+38" hidden="YES" id="gAa-Fa-ECX">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Publishing End">
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="0tO-Wh-lIi">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" userResizable="YES"/>
+                                        <connections>
+                                            <binding destination="Ckb-CV-hJI" name="value" keyPath="arrangedObjects.publishing_finish" id="8bw-YV-saC">
                                                 <dictionary key="options">
                                                     <bool key="NSConditionallySetsEditable" value="YES"/>
                                                 </dictionary>
@@ -548,8 +586,8 @@
                             </tableView>
                         </subviews>
                     </clipView>
-                    <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="L75-cp-VFK">
-                        <rect key="frame" x="0.0" y="292" width="564" height="15"/>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="L75-cp-VFK">
+                        <rect key="frame" x="0.0" y="292" width="703" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Ejw-DP-Ces">
@@ -557,7 +595,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                     <tableHeaderView key="headerView" wantsLayer="YES" id="0LX-NX-GMd">
-                        <rect key="frame" x="0.0" y="0.0" width="594" height="23"/>
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="23"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <outlet property="menu" destination="utc-tM-BGv" id="6tw-bZ-zeW"/>
@@ -631,7 +669,7 @@
                         <button toolTip="Custom Lists" wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="Pf8-4G-Ii3">
                             <rect key="frame" x="535" y="3" width="27" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="list.dash" catalog="system" imagePosition="below" alignment="center" alternateImage="list.dash" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8J5-sX-LZl">
+                            <buttonCell key="cell" type="recessed" bezelStyle="recessed" image="list.dash" catalog="system" imagePosition="only" alignment="center" alternateImage="list.dash" controlSize="small" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8J5-sX-LZl">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="cellTitle"/>
                             </buttonCell>
@@ -656,7 +694,7 @@
                     </subviews>
                 </visualEffectView>
             </subviews>
-            <point key="canvasLocation" x="78" y="744"/>
+            <point key="canvasLocation" x="1284" y="744"/>
         </customView>
         <menu title="AnimeListMenu" identifier="animelistmenu" id="TbH-yc-XFE">
             <point key="canvasLocation" x="942" y="288"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20E5229a" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="1.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20F5046g" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="1.0">
     <entity name="Airing" representedClassName="Airing" syncable="YES" codeGenerationType="class">
         <attribute name="day" optional="YES" attributeType="String"/>
         <attribute name="episodes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -66,7 +66,7 @@
         <attribute name="personal_comments" optional="YES" attributeType="String"/>
         <attribute name="personal_tags" optional="YES" attributeType="String"/>
         <attribute name="private" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="publishing_end" optional="YES" attributeType="String"/>
+        <attribute name="publishing_finish" optional="YES" attributeType="String"/>
         <attribute name="publishing_start" optional="YES" attributeType="String"/>
         <attribute name="read_status" optional="YES" attributeType="String"/>
         <attribute name="reading_end" optional="YES" attributeType="String"/>

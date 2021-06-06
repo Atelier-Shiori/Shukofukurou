@@ -44,6 +44,8 @@
 @property (strong) NSArray *opening_theme;
 @property (strong) NSArray *ending_theme;
 @property (strong) NSArray *recommendations;
+@property long nextairdate;
+@property int nextepisode;
 @property (strong) NSDictionary *mappings;
 @property bool isNSFW;
 @property int parsedseason;

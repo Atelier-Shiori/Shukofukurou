@@ -713,10 +713,20 @@
 		F8F0482120767DF600DAAD57 /* AniListScoreConvert.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */; };
 		F8F9E0322061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
 		F8F9E0332061920E0083912B /* advancededitdialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F9E0302061920E0083912B /* advancededitdialog.m */; };
+		FF229D072688ACDF00322E11 /* ezregex.m in Sources */ = {isa = PBXBuildFile; fileRef = FF229D062688ACDF00322E11 /* ezregex.m */; };
+		FF229D0A2688AD1900322E11 /* NSString+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = FF229D092688AD1900322E11 /* NSString+HTML.m */; };
+		FF229D0D2688AD2200322E11 /* MediaStreamParse.m in Sources */ = {isa = PBXBuildFile; fileRef = FF229D0B2688AD2200322E11 /* MediaStreamParse.m */; };
+		FF229D0F2688BCD600322E11 /* toolbar-icon-38.png in Resources */ = {isa = PBXBuildFile; fileRef = FF229D0E2688BCD600322E11 /* toolbar-icon-38.png */; };
+		FF229D102688BEC600322E11 /* hachidorilite.js in Resources */ = {isa = PBXBuildFile; fileRef = FF2FB4272687D00400BCCFFB /* hachidorilite.js */; };
 		FF2DC5CC25757F75009ABC35 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */; };
 		FF2DC5CD25757F75009ABC35 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */; };
 		FF2DC5CE25757F75009ABC35 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */; };
 		FF2DC5CF25757F75009ABC35 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */; };
+		FF2FB41E2687D00400BCCFFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D401E8A00ED0037898E /* Cocoa.framework */; };
+		FF2FB4222687D00400BCCFFB /* SafariExtensionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2FB4212687D00400BCCFFB /* SafariExtensionHandler.m */; };
+		FF2FB4322687D00400BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FF2FB4362687D02900BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FF2FB4382687D03600BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FFF90653261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
 		FFF90654261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
 		FFF90655261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
@@ -737,6 +747,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "Shukofukurou (AppStore)";
+		};
+		FF2FB4302687D00400BCCFFB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FF2FB41C2687D00400BCCFFB;
+			remoteInfo = hachidorilite;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -764,6 +781,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				FF2FB4362687D02900BCCFFB /* hachidorilite.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -774,6 +792,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				FF2FB4322687D00400BCCFFB /* hachidorilite.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -822,6 +841,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				FF2FB4382687D03600BCCFFB /* hachidorilite.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1150,7 +1170,21 @@
 		F8F0481F20767DF600DAAD57 /* AniListScoreConvert.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AniListScoreConvert.m; sourceTree = "<group>"; };
 		F8F9E02F2061920E0083912B /* advancededitdialog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = advancededitdialog.h; sourceTree = "<group>"; };
 		F8F9E0302061920E0083912B /* advancededitdialog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advancededitdialog.m; sourceTree = "<group>"; };
+		FF229D052688ACDF00322E11 /* ezregex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ezregex.h; sourceTree = "<group>"; };
+		FF229D062688ACDF00322E11 /* ezregex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ezregex.m; sourceTree = "<group>"; };
+		FF229D082688AD1900322E11 /* NSString+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HTML.h"; sourceTree = "<group>"; };
+		FF229D092688AD1900322E11 /* NSString+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HTML.m"; sourceTree = "<group>"; };
+		FF229D0B2688AD2200322E11 /* MediaStreamParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaStreamParse.m; sourceTree = "<group>"; };
+		FF229D0C2688AD2200322E11 /* MediaStreamParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaStreamParse.h; sourceTree = "<group>"; };
+		FF229D0E2688BCD600322E11 /* toolbar-icon-38.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbar-icon-38.png"; sourceTree = "<group>"; };
 		FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ShukofukurouHelp.help; path = MALLibraryHelp/build/Release/ShukofukurouHelp.help; sourceTree = SOURCE_ROOT; };
+		FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = hachidorilite.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF2FB4202687D00400BCCFFB /* SafariExtensionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SafariExtensionHandler.h; sourceTree = "<group>"; };
+		FF2FB4212687D00400BCCFFB /* SafariExtensionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafariExtensionHandler.m; sourceTree = "<group>"; };
+		FF2FB4272687D00400BCCFFB /* hachidorilite.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = hachidorilite.js; sourceTree = "<group>"; };
+		FF2FB4292687D00400BCCFFB /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		FF2FB42E2687D00400BCCFFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF2FB42F2687D00400BCCFFB /* hachidorilite.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = hachidorilite.entitlements; sourceTree = "<group>"; };
 		FF7913042635BD980050A617 /* datamodel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 6.xcdatamodel"; sourceTree = "<group>"; };
 		FFF9064E261A1D9100703A79 /* datamodel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 4.xcdatamodel"; sourceTree = "<group>"; };
 		FFF9064F261A1D9100703A79 /* datamodel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "datamodel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -1291,6 +1325,14 @@
 				F888F463208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
 				F888F464208FB1F500C22C39 /* CocoaOniguruma.framework in Frameworks */,
 				F888F466208FB1F500C22C39 /* PXSourceList.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2FB41A2687D00400BCCFFB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2FB41E2687D00400BCCFFB /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1684,6 +1726,7 @@
 				2D60A1201E9B322A0034C3AA /* MAL LibraryUITests */,
 				2D96A5181ECBA8B800942B28 /* MALLibraryHelp */,
 				F87EF55F2098D22E000AD86E /* ShukofukurouTests */,
+				FF2FB41F2687D00400BCCFFB /* hachidorilite */,
 				918C0D3F1E8A00ED0037898E /* Frameworks */,
 				9199BA971E89836000F6E9FF /* Products */,
 			);
@@ -1699,6 +1742,7 @@
 				F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */,
 				F87EF55E2098D22E000AD86E /* ShukofukurouTests.xctest */,
 				91F8E43D210A46CA007137A7 /* Shukofukurou Next.app */,
+				FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1783,6 +1827,34 @@
 			path = ShukofukurouTests;
 			sourceTree = "<group>";
 		};
+		FF2FB41F2687D00400BCCFFB /* hachidorilite */ = {
+			isa = PBXGroup;
+			children = (
+				FF229D052688ACDF00322E11 /* ezregex.h */,
+				FF229D062688ACDF00322E11 /* ezregex.m */,
+				FF229D0C2688AD2200322E11 /* MediaStreamParse.h */,
+				FF229D0B2688AD2200322E11 /* MediaStreamParse.m */,
+				FF2FB4202687D00400BCCFFB /* SafariExtensionHandler.h */,
+				FF2FB4212687D00400BCCFFB /* SafariExtensionHandler.m */,
+				FF229D082688AD1900322E11 /* NSString+HTML.h */,
+				FF229D092688AD1900322E11 /* NSString+HTML.m */,
+				FF2FB42E2687D00400BCCFFB /* Info.plist */,
+				FF2FB42F2687D00400BCCFFB /* hachidorilite.entitlements */,
+				FF2FB4262687D00400BCCFFB /* Resources */,
+			);
+			path = hachidorilite;
+			sourceTree = "<group>";
+		};
+		FF2FB4262687D00400BCCFFB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FF2FB4272687D00400BCCFFB /* hachidorilite.js */,
+				FF229D0E2688BCD600322E11 /* toolbar-icon-38.png */,
+				FF2FB4292687D00400BCCFFB /* ToolbarItemIcon.pdf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1853,6 +1925,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FF2FB4312687D00400BCCFFB /* PBXTargetDependency */,
 			);
 			name = Shukofukurou;
 			productName = "MAL Library";
@@ -1914,6 +1987,23 @@
 			productName = "MAL Library";
 			productReference = F888F49A208FB1F500C22C39 /* Shukofukurou Community.app */;
 			productType = "com.apple.product-type.application";
+		};
+		FF2FB41C2687D00400BCCFFB /* hachidorilite */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF2FB4332687D00400BCCFFB /* Build configuration list for PBXNativeTarget "hachidorilite" */;
+			buildPhases = (
+				FF2FB4192687D00400BCCFFB /* Sources */,
+				FF2FB41A2687D00400BCCFFB /* Frameworks */,
+				FF2FB41B2687D00400BCCFFB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hachidorilite;
+			productName = hachidorilite;
+			productReference = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1991,6 +2081,11 @@
 							};
 						};
 					};
+					FF2FB41C2687D00400BCCFFB = {
+						CreatedOnToolsVersion = 12.5;
+						DevelopmentTeam = 9HDZTER525;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 9199BA911E89836000F6E9FF /* Build configuration list for PBXProject "Shukofukurou" */;
@@ -2013,6 +2108,7 @@
 				F888F406208FB1F500C22C39 /* Shukofukurou Community */,
 				F87EF55D2098D22E000AD86E /* ShukofukurouTests */,
 				91F8E397210A46CA007137A7 /* Shukofukurou Next */,
+				FF2FB41C2687D00400BCCFFB /* hachidorilite */,
 			);
 		};
 /* End PBXProject section */
@@ -2259,6 +2355,15 @@
 				F888F48C208FB1F500C22C39 /* AdvancedSearch.xib in Resources */,
 				F888F48D208FB1F500C22C39 /* StreamPopup.xib in Resources */,
 				F888F48E208FB1F500C22C39 /* ListView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF2FB41B2687D00400BCCFFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF229D0F2688BCD600322E11 /* toolbar-icon-38.png in Resources */,
+				FF229D102688BEC600322E11 /* hachidorilite.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2726,6 +2831,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FF2FB4192687D00400BCCFFB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF229D0D2688AD2200322E11 /* MediaStreamParse.m in Sources */,
+				FF229D072688ACDF00322E11 /* ezregex.m in Sources */,
+				FF229D0A2688AD1900322E11 /* NSString+HTML.m in Sources */,
+				FF2FB4222687D00400BCCFFB /* SafariExtensionHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -2738,6 +2854,11 @@
 			isa = PBXTargetDependency;
 			target = 913A115F1E8F206A00450B66 /* Shukofukurou (AppStore) */;
 			targetProxy = F87EF5632098D22E000AD86E /* PBXContainerItemProxy */;
+		};
+		FF2FB4312687D00400BCCFFB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FF2FB41C2687D00400BCCFFB /* hachidorilite */;
+			targetProxy = FF2FB4302687D00400BCCFFB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3737,6 +3858,71 @@
 			};
 			name = Release;
 		};
+		FF2FB4342687D00400BCCFFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = hachidorilite/hachidorilite.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = hachidorilite/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou.hachidorilite;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FF2FB4352687D00400BCCFFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = hachidorilite/hachidorilite.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9HDZTER525;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = hachidorilite/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = moe.malupdaterosx.shukofukurou.hachidorilite;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3808,6 +3994,15 @@
 			buildConfigurations = (
 				F888F498208FB1F500C22C39 /* Debug */,
 				F888F499208FB1F500C22C39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FF2FB4332687D00400BCCFFB /* Build configuration list for PBXNativeTarget "hachidorilite" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF2FB4342687D00400BCCFFB /* Debug */,
+				FF2FB4352687D00400BCCFFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>hachidorilite</string>
+	<string>Hachidori Lite</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
+	<string>hachidorilite</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -65,6 +65,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2021 Atelier Shiori. All rights reserved.</string>
 	<key>NSHumanReadableDescription</key>
-	<string>This is hachidorilite. You should tell us what your extension does here.</string>
+	<string>Hachidori Lite allows detection of Anime legal streams, which allows users to update their Anime list based on what they are watching currently.</string>
 </dict>
 </plist>

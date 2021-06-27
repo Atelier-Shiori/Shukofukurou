@@ -21,7 +21,7 @@
 
 @implementation SafariExtensionHandler
 
-NSString *const supportedSites = @"(crunchyroll|funimation|hidive)";
+NSString *const supportedSites = @"(crunchyroll|hidive|funimation|vrv)";
 
 - (void)messageReceivedWithName:(NSString *)messageName fromPage:(SFSafariPage *)page userInfo:(NSDictionary *)userInfo {
     // This method will be called when a content script provided by your extension calls safari.extension.dispatchMessage("message").
@@ -29,7 +29,10 @@ NSString *const supportedSites = @"(crunchyroll|funimation|hidive)";
         //NSLog(@"The extension received a message (%@) from a script injected into (%@) with userInfo (%@)", messageName, properties.url, userInfo);
         if ([messageName isEqualToString: @"DomReceived"]) {
             if (userInfo[@"DOM"]) {
+                self.pageurl = properties.url.absoluteString;
+                self.pagetitle = properties.title;
                 self.pagedom = userInfo[@"DOM"];
+                self.pagesite = [self checkURL:self.pageurl];
                 [self performparsing:page];
             }
         }
@@ -38,55 +41,13 @@ NSString *const supportedSites = @"(crunchyroll|funimation|hidive)";
 
 - (void)toolbarItemClickedInWindow:(SFSafariWindow *)window {
     // This method will be called when your toolbar item is clicked.
-    NSLog(@"Starting detection");
-    [window getActiveTabWithCompletionHandler:^(SFSafariTab * _Nullable activeTab) {
-        if (activeTab) {
-            [activeTab getActivePageWithCompletionHandler:^(SFSafariPage * _Nullable activePage) {
-                if (activePage) {
-                    [activePage getPagePropertiesWithCompletionHandler:^(SFSafariPageProperties * _Nullable properties) {
-                        if (properties) {
-                            self.pageurl = properties.url.absoluteString;
-                            self.pagetitle = properties.title;
-                            [self performDetectionwithPage:activePage];
-                        }
-                    }];
-                }
-            }];
-        }
-    }];
-}
-
-- (void)performDetectionwithPage: (SFSafariPage *)page {
-    _pagesite = [self checkURL:_pageurl];
-    if (_pagesite.length > 0) {
-        if ([_pagesite isEqualToString:@"crunchyroll"] && [_pageurl containsString:@"beta"]){
-            if ([_pageurl containsString:@"history"]) {
-                [page dispatchMessageToScriptWithName:@"CrunchyrollHistory" userInfo:nil];
-            }
-            else {
-                [page dispatchMessageToScriptWithName:@"CrunchyrollDetection" userInfo:nil];
-            }
-        }
-        else if ([_pagesite isEqualToString:@"funimation"] && [[ezregex alloc] findMatches:_pageurl pattern:@"account"].count > 0) {
-            [page dispatchMessageToScriptWithName:@"FunimationHistory" userInfo:nil];
-        }
-        else {
-            _pagedom = @"";
-            [self performparsing:page];
-        }
-    }
-    else {
-        [page dispatchMessageToScriptWithName:@"DetectNotFound" userInfo:nil];
-    }
+   
 }
 
 - (void)performparsing:(SFSafariPage *)page {
     NSArray *final = @[ @{@"title": _pagetitle, @"url": _pageurl, @"browser": @"Safari", @"site": _pagesite, @"DOM": _pagedom}];
     _detected = [MediaStreamParse parse:final];
     NSLog(@"%@",_detected);
-    if (_detected.count > 0) {
-        [page dispatchMessageToScriptWithName:@"ShowResults" userInfo:_detected[0]];
-    }
 }
 
 - (void)showNotFoundMessage: (SFSafariPage *)page {

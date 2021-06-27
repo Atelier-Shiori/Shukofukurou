@@ -1,12 +1,29 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-    safari.extension.dispatchMessage("Hello World!");
-    console.log("Hachidori Lite loaded");
-});
-function notSupported(event) {
-    alert("Hachidori Lite does not support this website. Sites Supported are Crunchyroll, Hidive, and Funimation.");
-}
+            document.addEventListener("DOMContentLoaded", function(event) {
+                safari.extension.dispatchMessage("Hello World!");
+                console.log("Hachidori Lite loaded");
+                console.log("Detecting");
+                setTimeout(function(){
+                    var url = window.location.href;
+                    if (url.includes("crunchyroll")) {
+                        if (url.includes("history")) {
+                            detectCrunchyrollHistory();
+                        }
+                        else {
+                            detectCrunchyroll();
+                        }
+                    }
+                    else if (url.includes("funimation")) {
+                        if (url.includes("account")) {
+                            detectFunimationHistory()
+                        }
+                    }
+                    else {
+                          getDOM();
+                    }
+                }, 15000);
+        });
 
-function getDOM(event) {
+function getDOM() {
     var dom = document.documentElement.innerHTML;
     console.log(dom);
     if (dom.length > 0) {
@@ -14,14 +31,14 @@ function getDOM(event) {
     }
 }
 
-function detectCrunchyroll(event) {
+function detectCrunchyroll() {
     var mediainfo = document.querySelector('.erc-current-media-info').innerHTML;
     console.log(mediainfo);
     if (mediainfo.length > 0) {
         safari.extension.dispatchMessage("DomReceived", {"DOM" : mediainfo});
     }
 }
-function detectCrunchyrollHistory(event) {
+function detectCrunchyrollHistory() {
     var history = document.querySelector('.history-collection').innerHTML;
     console.log(history);
     if (history.length > 0) {
@@ -29,7 +46,7 @@ function detectCrunchyrollHistory(event) {
     }
 }
 
-function detectFunimationHistory(event) {
+function detectFunimationHistory() {
     var history = document.querySelector('.history-item').innerHTML;
     console.log(history);
     if (history.length > 0) {
@@ -40,13 +57,3 @@ function detectFunimationHistory(event) {
 function showResults(event) {
     console.log(event.message);
 }
-
-document.addEventListener("DetectNotFound", function(event) {
-    alert("Hachidori Lite does not support this website. Sites Supported are Crunchyroll, Hidive, and Funimation.");
-    console.log("Unsupported Site");
-});
-document.addEventListener("CrunchyrollHistory", detectCrunchyrollHistory);
-document.addEventListener("CrunchyrollDetection", detectCrunchyroll);
-document.addEventListener("FunimationHistory", detectFunimationHistory);
-document.addEventListener("GetDOM", getDOM);
-document.addEventListener("ShowResults", showResults);

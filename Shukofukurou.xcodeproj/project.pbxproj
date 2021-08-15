@@ -726,7 +726,6 @@
 		FF2FB4222687D00400BCCFFB /* SafariExtensionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2FB4212687D00400BCCFFB /* SafariExtensionHandler.m */; };
 		FF2FB4322687D00400BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FF2FB4362687D02900BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FF2FB4382687D03600BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FFF90653261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
 		FFF90654261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
 		FFF90655261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
@@ -841,7 +840,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				FF2FB4382687D03600BCCFFB /* hachidorilite.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3582,7 +3580,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210606;
+				CURRENT_PROJECT_VERSION = 20210815;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3631,7 +3629,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "3.6-alpha3";
+				MARKETING_VERSION = "3.6-beta11";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3645,7 +3643,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210606;
+				CURRENT_PROJECT_VERSION = 20210815;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3690,7 +3688,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "3.6-alpha3";
+				MARKETING_VERSION = "3.6-beta11";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

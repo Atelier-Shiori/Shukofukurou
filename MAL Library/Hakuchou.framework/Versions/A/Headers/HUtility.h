@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSNumber *)getLastUpdatedDateWithResponseObject:(id)responseObject withService:(int)service;
 + (NSDate *)dateStringToDate:(NSString *)datestring;
 + (NSDate *)isodateStringToDate:(NSString *)datestring;
++ (NSDictionary *)dateStringToAiringSeasonAndYear:(NSString *)datestring;
++ (NSDictionary *)aniListdateStringToAiringSeasonAndYear:(NSDictionary *)dateDict;
 + (int)parseSeason:(NSString *)string;
 + (bool)grayAreaCheckByClassification:(NSString *)classification;
 + (bool)grayAreaCheckByTags:(NSArray *)tags;

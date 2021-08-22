@@ -44,6 +44,8 @@
 @property (strong) NSArray *opening_theme;
 @property (strong) NSArray *ending_theme;
 @property (strong) NSArray *recommendations;
+@property long nextairdate;
+@property int nextepisode;
 @property (strong) NSDictionary *mappings;
 @property bool isNSFW;
 @property int parsedseason;
@@ -72,6 +74,10 @@
 @property bool private_entry;
 @property (strong) NSString * custom_lists;
 @property long lastupdated;
+@property (strong) NSString *aired_season;
+@property int aired_year;
+@property (strong) NSString *aired_start;
+@property (strong) NSString *aired_finish;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 
@@ -124,6 +130,8 @@
 @property bool private_entry;
 @property (strong) NSString * custom_lists;
 @property long lastupdated;
+@property (strong) NSString *publishing_start;
+@property (strong) NSString *publishing_finish;
 - (NSDictionary *)NSDictionaryRepresentation;
 @end
 

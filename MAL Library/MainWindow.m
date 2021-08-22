@@ -1130,7 +1130,7 @@
         NSDictionary *d = (_seasonview.seasonarraycontroller).arrangedObjects[selected.item];
         switch ([listservice.sharedInstance getCurrentServiceID]) {
             case 1: {
-                [listservice.sharedInstance retrieveTitleInfo:((NSNumber *)d[@"idMal"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
+                listservice.sharedInstance retrieveTitleInfo:((NSNumber *)d[@"id"]).intValue withType:MALAnime useAccount:NO completion:^(id responseObject){
                     [_addtitlecontroller showAddPopover:(NSDictionary *)responseObject showRelativeToRec:collectionitem.view.bounds ofView:collectionitem.view preferredEdge:NSMinYEdge type:0];
                 }error:^(NSError *error){
                     NSLog(@"Error: %@", error);

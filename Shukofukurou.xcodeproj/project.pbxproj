@@ -3580,7 +3580,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210815;
+				CURRENT_PROJECT_VERSION = 20210822;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3629,7 +3629,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "3.6-beta1";
+				MARKETING_VERSION = "3.6-beta2";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -3643,7 +3643,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou Next.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210815;
+				CURRENT_PROJECT_VERSION = 20210822;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3688,7 +3688,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/MAL Library/Shukofukurou Next-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = "3.6-beta1";
+				MARKETING_VERSION = "3.6-beta2";
 				PRODUCT_BUNDLE_IDENTIFIER = "moe.malupdaterosx.shukofukurou-next";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

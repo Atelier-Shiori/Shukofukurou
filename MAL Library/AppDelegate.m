@@ -94,7 +94,7 @@
     defaultValues[@"sendanalytics"] = @YES;
 #endif
     defaultValues[@"stream_region"] = @(0);
-    defaultValues[@"currentservice"] = @(3);
+    defaultValues[@"currentservice"] = @(1);
     defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
     defaultValues[@"showadult"] = @NO;
     defaultValues[@"cachetitleinfo"] = @YES;

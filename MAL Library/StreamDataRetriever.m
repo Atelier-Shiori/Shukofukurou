@@ -50,7 +50,7 @@
 
 + (void)retrieveSitesForTitle:(int)titleid completion:(void (^)(id responseObject)) completionHandler {
     [TitleIDMapper.sharedInstance retrieveTitleIdForService:listservice.sharedInstance.getCurrentServiceID withTitleId:@(titleid).stringValue withTargetServiceId:titleIDMapAniList withType:MALAnime completionHandler:^(id  _Nonnull ntitleid, bool success) {
-        if (success) {
+        if (success && ntitleid != [NSNull null]) {
             NSManagedObject *streamentry = [self checkExistingEntryForTitle:((NSNumber *)ntitleid).intValue];
             int lastretrievedate = ((NSNumber *)[streamentry valueForKey:@"retrievedate"]).intValue;
             int currenttimeintervaldif = (int)[NSDate.date timeIntervalSince1970] - lastretrievedate;

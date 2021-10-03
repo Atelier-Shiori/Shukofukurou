@@ -451,7 +451,7 @@
     return pwc;
 }
 - (IBAction)reportbugs:(id)sender {
-    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/shukofukurou/issues"]];
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://support.malupdaterosx.moe/index.php?forums/shukofukurou-for-macos-issue-tracker-support.7/"]];
 }
 
 - (void)refreshUIServiceChange:(int)selected {

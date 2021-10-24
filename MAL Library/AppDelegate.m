@@ -19,9 +19,7 @@
 @import AppCenter;
 @import AppCenterAnalytics;
 @import AppCenterCrashes;
-#if defined(BETA)
 #import <DonationCheck/MigrateAppStoreLicense.h>
-#endif
 #endif
 #import "Utility.h"
 #import "StreamDataRetriever.h"
@@ -94,7 +92,7 @@
     defaultValues[@"sendanalytics"] = @YES;
 #endif
     defaultValues[@"stream_region"] = @(0);
-    defaultValues[@"currentservice"] = @(3);
+    defaultValues[@"currentservice"] = @(1);
     defaultValues[@"kitsu-profilebrowserratingsystem"] = @(0);
     defaultValues[@"showadult"] = @NO;
     defaultValues[@"cachetitleinfo"] = @YES;
@@ -147,7 +145,6 @@
     #else
     PFMoveToApplicationsFolderIfNecessary();
     #endif
-#if defined(BETA)
     if ((![NSUserDefaults.standardUserDefaults valueForKey:@"donation_license"] && ![NSUserDefaults.standardUserDefaults valueForKey:@"donation_name"]) || (![NSUserDefaults.standardUserDefaults boolForKey:@"donated"] && ![NSUserDefaults.standardUserDefaults boolForKey:@"activepatron"])) {
         [MigrateAppStoreLicense validateShukofukurou:^(bool success, id responseObject, NSString *path) {
             if (success) {
@@ -163,9 +160,6 @@
             }
         }];
     }
-#else
-    [self checkdonationstatus];
-#endif
     #endif
     __weak AppDelegate *weakself = self;
     _servicemenucontrol.actionblock = ^(int selected, int previousservice) {
@@ -185,16 +179,6 @@
     [_servicemenucontrol setmenuitemvaluefromdefaults];
     [self refreshUIServiceChange:[listservice.sharedInstance getCurrentServiceID]];
     [self checkaccountinformation];
-#if defined(BETA)
-    // Show Beta Notice
-    NSAlert *alert = [[NSAlert alloc] init] ;
-    [alert addButtonWithTitle:NSLocalizedString(@"Got it",nil)];
-    [alert setMessageText:NSLocalizedString(@"You are running the Prerelease version of Shukofukurou.",nil)];
-    alert.informativeText = NSLocalizedString(@"This is a prerelease version of Shukofukurou meant to test new features or changes. This release may or may not have all the features that will be in the final release. These releases allows users to test and share feedback back to the developer.\r\rThis release will run independently from the stable release, but you do not need to login again. Note that you need to add the license details to unlock the donor features. If you normally use the Mac App Store version, these features should unlock automatically.",nil);
-    // Set Message type to Warning
-    alert.alertStyle = NSAlertStyleInformational;
-    [alert runModal];
-#endif
     // Load main window
     _mainwindowcontroller = [MainWindow new];
     [_mainwindowcontroller setDelegate:self];
@@ -451,7 +435,7 @@
     return pwc;
 }
 - (IBAction)reportbugs:(id)sender {
-    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://github.com/Atelier-Shiori/shukofukurou/issues"]];
+    [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://support.malupdaterosx.moe/index.php?forums/shukofukurou-for-macos-issue-tracker-support.7/"]];
 }
 
 - (void)refreshUIServiceChange:(int)selected {

@@ -724,8 +724,6 @@
 		FF2DC5CF25757F75009ABC35 /* ShukofukurouHelp.help in Resources */ = {isa = PBXBuildFile; fileRef = FF2DC5CB25757F75009ABC35 /* ShukofukurouHelp.help */; };
 		FF2FB41E2687D00400BCCFFB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 918C0D401E8A00ED0037898E /* Cocoa.framework */; };
 		FF2FB4222687D00400BCCFFB /* SafariExtensionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2FB4212687D00400BCCFFB /* SafariExtensionHandler.m */; };
-		FF2FB4322687D00400BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		FF2FB4362687D02900BCCFFB /* hachidorilite.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FF2FB41D2687D00400BCCFFB /* hachidorilite.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		FFF90653261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
 		FFF90654261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
 		FFF90655261A1D9100703A79 /* datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFF9064D261A1D9100703A79 /* datamodel.xcdatamodeld */; };
@@ -747,13 +745,6 @@
 			remoteGlobalIDString = 913A115F1E8F206A00450B66;
 			remoteInfo = "Shukofukurou (AppStore)";
 		};
-		FF2FB4302687D00400BCCFFB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9199BA8E1E89836000F6E9FF /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF2FB41C2687D00400BCCFFB;
-			remoteInfo = hachidorilite;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -772,28 +763,6 @@
 				913A11A31E8F206A00450B66 /* MASPreferences.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		913A11A61E8F206A00450B66 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				FF2FB4362687D02900BCCFFB /* hachidorilite.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		918C0D551E8A00ED0037898E /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				FF2FB4322687D00400BCCFFB /* hachidorilite.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		9199BB001E89847D00F6E9FF /* Embed Frameworks */ = {
@@ -1899,7 +1868,6 @@
 				913A117D1E8F206A00450B66 /* Frameworks */,
 				913A118C1E8F206A00450B66 /* Resources */,
 				913A11A01E8F206A00450B66 /* Embed Frameworks */,
-				913A11A61E8F206A00450B66 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -1918,12 +1886,10 @@
 				9199BA931E89836000F6E9FF /* Frameworks */,
 				9199BA941E89836000F6E9FF /* Resources */,
 				9199BB001E89847D00F6E9FF /* Embed Frameworks */,
-				918C0D551E8A00ED0037898E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FF2FB4312687D00400BCCFFB /* PBXTargetDependency */,
 			);
 			name = Shukofukurou;
 			productName = "MAL Library";
@@ -2853,11 +2819,6 @@
 			target = 913A115F1E8F206A00450B66 /* Shukofukurou (AppStore) */;
 			targetProxy = F87EF5632098D22E000AD86E /* PBXContainerItemProxy */;
 		};
-		FF2FB4312687D00400BCCFFB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF2FB41C2687D00400BCCFFB /* hachidorilite */;
-			targetProxy = FF2FB4302687D00400BCCFFB /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -3278,7 +3239,7 @@
 				CODE_SIGN_ENTITLEMENTS = "./MAL Library/MAL Library.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210606;
+				CURRENT_PROJECT_VERSION = 20211024;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3328,7 +3289,7 @@
 				CODE_SIGN_ENTITLEMENTS = "./MAL Library/MAL Library.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210606;
+				CURRENT_PROJECT_VERSION = 20211024;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3465,7 +3426,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210606;
+				CURRENT_PROJECT_VERSION = 20211024;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3522,7 +3483,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MAL Library/Shukofukurou.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20210606;
+				CURRENT_PROJECT_VERSION = 20211024;
 				DEVELOPMENT_TEAM = 9HDZTER525;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -206,6 +206,20 @@
     }
 #endif
 #endif
+    if (@available(macOS 11, *)) {
+        NSAlert *alert = [[NSAlert alloc] init] ;
+        [alert addButtonWithTitle:NSLocalizedString(@"Yes",nil)];
+        [alert addButtonWithTitle:NSLocalizedString(@"No",nil)];
+        [alert setMessageText:NSLocalizedString(@"You sre using a legacy release of Shukofukurou",nil)];
+        alert.informativeText = [NSString stringWithFormat:NSLocalizedString(@"You are using a legacy release meant for macOS 10.15 users or below. You are running macOS Big Sur or later and you should use the latest release. For App Store users, simply install the update and use the regular release. Do you want to download the latest release?",nil)];
+        // Set Message type to Warning
+        alert.alertStyle = NSAlertStyleInformational;
+        [alert beginSheetModalForWindow:_mainwindowcontroller.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode== NSAlertFirstButtonReturn) {
+            [NSWorkspace.sharedWorkspace openURL:[NSURL URLWithString:@"https://malupdaterosx.moe/downloadshukofukurou.php"]];
+        }
+            }];
+    }
 }
 
 

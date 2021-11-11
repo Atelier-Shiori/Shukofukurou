@@ -62,7 +62,7 @@
 	<key>SUEnableSystemProfiling</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://updates.malupdaterosx.moe/shukofukurou/profileInfo.php</string>
+	<string>https://updates.malupdaterosx.moe/shukofukurou-legacy/profileInfo.php</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>

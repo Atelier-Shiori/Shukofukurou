@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -206,7 +207,7 @@
                             <action selector="viewonmal:" target="4iy-i9-GZD" id="cjd-gI-3l1"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="B007FB1F-D7B7-4E1C-B09F-A81CF140598C" explicitItemIdentifier="yearselect" label="Year" paletteLabel="Year" toolTip="Year" id="hME-DZ-uLk">
+                    <toolbarItem implicitItemIdentifier="B007FB1F-D7B7-4E1C-B09F-A81CF140598C" explicitItemIdentifier="yearselect" label="Year" paletteLabel="Year" toolTip="Year" title="Item 1" id="hME-DZ-uLk">
                         <size key="minSize" width="100" height="25"/>
                         <size key="maxSize" width="100" height="25"/>
                         <popUpButton key="view" verticalHuggingPriority="750" id="UWH-1l-PJ4">
@@ -228,7 +229,7 @@
                             </connections>
                         </popUpButton>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="4D11C8AF-BBD0-444C-BB8F-5FFEE63192DB" explicitItemIdentifier="seasonselect" label="Season" paletteLabel="Season" toolTip="Season" id="oXq-OQ-f2y">
+                    <toolbarItem implicitItemIdentifier="4D11C8AF-BBD0-444C-BB8F-5FFEE63192DB" explicitItemIdentifier="seasonselect" label="Season" paletteLabel="Season" toolTip="Season" title="Winter" id="oXq-OQ-f2y">
                         <size key="minSize" width="100" height="25"/>
                         <size key="maxSize" width="100" height="25"/>
                         <popUpButton key="view" verticalHuggingPriority="750" id="E2N-f0-9rS">
@@ -333,7 +334,7 @@
                             <action selector="viewAdvPopover:" target="3aF-oI-xAM" id="3V0-qL-yJq"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="3B45B1B9-3088-40F4-B8DC-CD9DC8512EDE" explicitItemIdentifier="airingdayselect" label="Day" paletteLabel="Day" id="hTd-hf-Vqb">
+                    <toolbarItem implicitItemIdentifier="3B45B1B9-3088-40F4-B8DC-CD9DC8512EDE" explicitItemIdentifier="airingdayselect" label="Day" paletteLabel="Day" title="Monday" id="hTd-hf-Vqb">
                         <nil key="toolTip"/>
                         <size key="minSize" width="100" height="28"/>
                         <size key="maxSize" width="114" height="28"/>
@@ -916,7 +917,7 @@
         <image name="arrow.up" catalog="system" width="14" height="14"/>
         <image name="info.circle" catalog="system" width="15" height="15"/>
         <image name="magnifyingglass.circle" catalog="system" width="15" height="15"/>
-        <image name="mail.and.text.magnifyingglass.rtl" catalog="system" width="22" height="15"/>
+        <image name="mail.and.text.magnifyingglass.rtl" catalog="system" width="21" height="15"/>
         <image name="pencil" catalog="system" width="13" height="13"/>
         <image name="person" catalog="system" width="16" height="14"/>
         <image name="safari" catalog="system" width="15" height="15"/>

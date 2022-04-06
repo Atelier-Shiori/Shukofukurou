@@ -12,6 +12,7 @@
 #import <Hakuchou/Hakuchou.h>
 #import "Utility.h"
 #import "listservice.h"
+#import "ClientConstants.h"
 
 @implementation TrendingRetriever
 + (NSManagedObjectContext *)managedObjectContext {
@@ -65,9 +66,10 @@
     }
     if (cred) {
         [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@", cred.accessToken] forHTTPHeaderField:@"Authorization"];
+        [manager.requestSerializer setValue:nil forHTTPHeaderField:@"X-MAL-CLIENT-ID"];
     }
     else {
-        errorHandler(nil);
+        [manager.requestSerializer setValue:[NSString stringWithFormat:@"%@",kMALClient] forHTTPHeaderField:@"X-MAL-CLIENT-ID"];
     }
     if (type == 0) {
         [manager GET:@"https://api.myanimelist.net/v2/anime/ranking?ranking_type=airing&limit=20&fields=alternative_titles,num_episodes,media_type,status,mean,nsfw" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

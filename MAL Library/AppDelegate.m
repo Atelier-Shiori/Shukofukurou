@@ -91,7 +91,11 @@
     defaultValues[@"malapiurl"] = @"http://localhost:8000";
 #else
     defaultValues[@"malapiurl"] = @"https://malapi.malupdaterosx.moe";
+#if defined(AppStore)
     defaultValues[@"sendanalytics"] = @YES;
+#else
+    defaultValues[@"sendanalytics"] = @NO;
+#endif
 #endif
     defaultValues[@"stream_region"] = @(0);
     defaultValues[@"currentservice"] = @(1);

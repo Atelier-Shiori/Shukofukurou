@@ -563,6 +563,32 @@
             openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://www.livechart.me/search?q=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
             break;
         }
+        case 12: {
+            NSString *tmptitle;
+            if (((NSArray *)_selectedinfo[@"other_titles"][@"japanese"]).count > 0) {
+                tmptitle = _selectedinfo[@"other_titles"][@"japanese"][0];
+            }
+            else {
+                tmptitle = _infoviewtitle.stringValue;
+            }
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://bookwalker.jp/search/?qcat=&word=%@",[Utility urlEncodeString:tmptitle]]];
+            break;
+        }
+        case 13: {
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://global.bookwalker.jp/search/?word=%@",[Utility urlEncodeString:_infoviewtitle.stringValue]]];
+            break;
+        }
+        case 14: {
+            NSString *tmptitle;
+            if (((NSArray *)_selectedinfo[@"other_titles"][@"japanese"]).count > 0) {
+                tmptitle = _selectedinfo[@"other_titles"][@"japanese"][0];
+            }
+            else {
+                tmptitle = _infoviewtitle.stringValue;
+            }
+            openurl = [NSURL URLWithString:[NSString stringWithFormat:@"https://learnnatively.com/resources/search/?q=%@&series=series",[Utility urlEncodeString:tmptitle]]];
+            break;
+        }
         default: {
             return;
         }
@@ -575,11 +601,17 @@
         _anidbmenuitem.hidden = NO;
         _bakaupdatesmenuitem.hidden = YES;
         _livechartmenuitem.hidden = NO;
+        _bookwalkerjapanmenuitem.hidden = YES;
+        _bookwalkerglobalmenuitem.hidden = YES;
+        _nativelymenuitem.hidden = YES;
     }
     else {
         _anidbmenuitem.hidden = YES;
         _bakaupdatesmenuitem.hidden = NO;
         _livechartmenuitem.hidden = YES;
+        _bookwalkerjapanmenuitem.hidden = NO;
+        _bookwalkerglobalmenuitem.hidden = NO;
+        _nativelymenuitem.hidden = NO;
     }
 }
 

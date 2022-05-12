@@ -137,7 +137,7 @@
     _anilistauthw = [AniListAuthWindow new];
     [_anilistauthw windowDidLoad];
     [_anilistauthw loadAuthorizationForService:(int)((NSButton *)sender).tag];
-    _anilistauthorizebtn.enabled = NO;
+    ((NSButton *)sender).enabled = NO;
     [self.view.window beginSheet:_anilistauthw.window completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSModalResponseOK) {
             NSString *pin = _anilistauthw.pin.copy;
@@ -168,7 +168,7 @@
             _loggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"mal-username"];
             _loggedinview.hidden = NO;
             _loginview.hidden = YES;
-            [_savebut setEnabled:YES];
+            _savebut.enabled = YES;
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"mal-userinformationrefresh"];
             break;
         case 2:
@@ -176,7 +176,7 @@
             _kitsuloggedinuser.stringValue = [NSUserDefaults.standardUserDefaults valueForKey:@"kitsu-username"];
             _kitsuloggedinview.hidden = NO;
             _kitsuloginview.hidden = YES;
-            [_kitsusavebut setEnabled:YES];
+            _kitsusavebut.enabled = YES;
             [NSUserDefaults.standardUserDefaults setObject:[NSDate dateWithTimeIntervalSinceNow:259200] forKey:@"kitsu-userinformationrefresh"];
             break;
         case 3:

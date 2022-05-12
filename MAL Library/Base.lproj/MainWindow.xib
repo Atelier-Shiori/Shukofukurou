@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19455" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="20037" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19455"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="20037"/>
         <capability name="Search Toolbar Item" minToolsVersion="12.0" minSystemVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -460,7 +460,7 @@
                         <popUpButton key="view" verticalHuggingPriority="750" id="gLo-Ya-vq1">
                             <rect key="frame" x="0.0" y="14" width="35" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="2Xc-IB-nEl" id="jEa-9a-8Km">
+                            <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" id="jEa-9a-8Km">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="eya-Bh-nbV">
@@ -488,10 +488,28 @@
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="em1-qQ-HE6"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="BookWalker (Japan Store)" tag="12" id="oZ5-LG-iUj">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="i29-dX-Q9h"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="BookWalker Global" tag="13" id="Ipp-xN-Wxx">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="ixR-3t-LFX"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem title="LiveChart" tag="11" id="fwJ-x8-c2x">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="searchsite:" target="4iy-i9-GZD" id="ITC-aT-WXk"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Natively" tag="14" id="jCb-kM-8mF">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="searchsite:" target="4iy-i9-GZD" id="MHZ-OW-5e6"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Pixiv Encyclopedia (English)" tag="8" id="hF8-ki-jWx">
@@ -701,7 +719,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <clipView key="contentView" drawsBackground="NO" id="Q8D-FH-evQ">
                 <rect key="frame" x="0.0" y="0.0" width="131" height="300"/>
-                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" multipleSelection="NO" autosaveColumns="NO" rowHeight="28" rowSizeStyle="systemDefault" viewBased="YES" indentationPerLevel="5" indentationMarkerFollowsCell="NO" outlineTableColumn="8yX-zH-4tu" id="tEv-Dd-bgp" customClass="PXSourceList">
                         <rect key="frame" x="0.0" y="0.0" width="131" height="300"/>
@@ -875,8 +893,11 @@
             <connections>
                 <outlet property="anidbmenuitem" destination="E0o-l0-KSr" id="T8F-WP-GAZ"/>
                 <outlet property="bakaupdatesmenuitem" destination="dsG-0s-cXd" id="UkM-ze-0uh"/>
+                <outlet property="bookwalkerglobalmenuitem" destination="Ipp-xN-Wxx" id="pK4-Ou-EPc"/>
+                <outlet property="bookwalkerjapanmenuitem" destination="oZ5-LG-iUj" id="DlD-zl-G1s"/>
                 <outlet property="livechartmenuitem" destination="fwJ-x8-c2x" id="w1W-lr-vN3"/>
                 <outlet property="mw" destination="-2" id="Hld-0g-zJV"/>
+                <outlet property="nativelymenuitem" destination="jCb-kM-8mF" id="SmS-MI-pg9"/>
             </connections>
         </viewController>
         <viewController id="GCr-4Z-jYZ" customClass="AiringView">

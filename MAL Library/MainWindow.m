@@ -647,7 +647,7 @@
                     [_toolbar insertItemWithItemIdentifier:@"viewepisodes" atIndex:3+indexoffset];
                 }
                 else {
-                    indexoffset = -1;
+                    indexoffset = indexoffset-1;
                 }
                 [_toolbar insertItemWithItemIdentifier:@"ShareInfo" atIndex:4+indexoffset];
                 [_toolbar insertItemWithItemIdentifier:@"web" atIndex:5+indexoffset];

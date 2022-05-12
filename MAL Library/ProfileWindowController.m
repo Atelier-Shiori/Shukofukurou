@@ -258,6 +258,7 @@
             [_toolbar insertItemWithItemIdentifier:@"filter" atIndex:4];
         }
     }
+    [_toolbar insertItemWithItemIdentifier:NSToolbarToggleSidebarItemIdentifier atIndex:0];
 }
 
 - (void)generateSourceList {

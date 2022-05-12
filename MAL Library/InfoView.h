@@ -31,6 +31,9 @@ typedef NS_ENUM(unsigned int, InfoType) {
 @property (strong) IBOutlet NSMenuItem *anidbmenuitem;
 @property (strong) IBOutlet NSMenuItem *bakaupdatesmenuitem;
 @property (strong) IBOutlet NSMenuItem *livechartmenuitem;
+@property (strong) IBOutlet NSMenuItem *bookwalkerjapanmenuitem;
+@property (strong) IBOutlet NSMenuItem *bookwalkerglobalmenuitem;
+@property (strong) IBOutlet NSMenuItem *nativelymenuitem;
 
 - (void)populateAnimeInfoView:(id)object;
 - (void)populateMangaInfoView:(id)object;
